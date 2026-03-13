@@ -1,0 +1,13 @@
+{
+  "name": "parermaster2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "tsx scripts/sync-spreadsheet.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "googleapis": "^171.4.0",
+    "tsx": "^4.21.0"
+  }
+}

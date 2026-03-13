@@ -1,0 +1,12 @@
+{
+  "spreadsheetId": "YOUR_SPREADSHEET_ID",
+  "credentialsPath": "secrets/service-account-key.json",
+  "sheets": {
+    "talents": {
+      "1期生": 1
+    },
+    "awards": "受賞歴",
+    "questions": "知識問題",
+    "answerSets": "選択肢セット"
+  }
+}

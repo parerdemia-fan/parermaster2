@@ -823,7 +823,14 @@ export const badgeDefinitions: BadgeDefinition[] = [
 | `public/data/result_messages.json` | 結果画面メッセージ | 前作踏襲（構造は要検討） |
 | `public/data/staff.json` | スタッフクレジット | 前作踏襲 |
 
-前作の `answer_set.json` は廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。
+前作の `answer_set.json` は独立ファイルとしては廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。イベント系等のカスタム選択肢セットは questions.json 内の `answerSets` に統合。
+
+**データ同期:**
+- Googleスプレッドシートをマスタデータとし、`pnpm sync` で各JSONを自動生成する
+- スプレッドシートのシート構成: 1期生, 受賞歴, 知識問題, 選択肢セット
+- スクリプト: `scripts/sync-spreadsheet.ts`
+- 設定（スプレッドシートID・認証情報パス）: `scripts/sync-config.json`（gitignore対象）
+- 退学者（dropout列に値がある行）はtalents.json・awards.jsonから自動的に除外される
 
 ### 6.2 タレントデータ（talents.json）
 
@@ -845,10 +852,10 @@ export const badgeDefinitions: BadgeDefinition[] = [
       // === 名前 ===
       "name": "星空ひかり",       // フルネーム
       "kana": "ホシゾラヒカリ",    // フルネーム（カナ）
-      "familyName": "星空",       // 姓（文字集め・タイピング問題で使用）
+      "familyName": "星空",       // 姓（スプレッドシートのname_separatedからスペースで分割）
       "givenName": "ひかり",      // 名
-      "familyKana": "ホシゾラ",   // 姓（カナ）
-      "givenKana": "ヒカリ",      // 名（カナ）
+      "familyKana": "ホシゾラ",   // 姓カナ（kana_separatedから同様に分割）
+      "givenKana": "ヒカリ",      // 名カナ
       "nickname": "ひかりん",     // あだ名（空文字列可）
       "firstPerson": "わたし",    // 一人称（空文字列可）
 
@@ -898,7 +905,7 @@ export const badgeDefinitions: BadgeDefinition[] = [
 |------|------|-----------|------|
 | ID | 暗黙（配列index） | `id`（学籍番号） | 安定した参照 |
 | 世代 | なし | `generation` | 1期生/2期生の区別 |
-| 姓名 | `name_separated`（文字列） | `familyName` + `givenName` | 問題タイプで個別利用 |
+| 姓名 | `name_separated`（文字列） | `familyName` + `givenName` | name_separatedをスペースで分割。洋風名は正確でない場合がある |
 | 寮 | 正式名のみ | コード（`"co"`等） | questions.jsonとの統一 |
 | 目の色 | なし | `eyeColorLeft` + `eyeColorRight` | オッドアイ対応 |
 | 血液型 | なし | `bloodType` | プロフィール拡充 |
@@ -945,10 +952,15 @@ export const DORMITORIES = {
       "sortAnswers": false,      // 選択肢をソートして表示するか
       "hideIcon": false,         // タレントアイコンを回答前に隠すか
       "image": null,             // 問題画像ファイル名（null=なし）
+      "answerPool": "",           // 空の選択肢を自動補完するプール名（後述）
       "comment": "桜雲ほわりは172cmで最も背が高い",
       "sourceUrl": ""            // 出典URL
     }
-  ]
+  ],
+  "answerSets": {               // カスタム選択肢セット（寮・世代で表現できないグループ）
+    "声劇サークル": ["タレント名1", "タレント名2", "..."],
+    "バレンタイングッズ化": ["タレント名1", "タレント名2", "..."]
+  }
 }
 ```
 
@@ -964,7 +976,39 @@ export const DORMITORIES = {
 | questioner | 全問空 | 廃止 | 未使用のため削除 |
 | image | question直下 + comment内 `[image:]` 混在 | `image` に統一 | 二重管理の解消 |
 | genre | 表記揺れあり | そのまま踏襲 | 表示用のみ。判定に使わないため正規化不要 |
+| answer_set.json | 別ファイル | `answerSets` として questions.json に統合 | ファイル数削減 |
 | キー命名 | snake_case | camelCase | TypeScript親和性 |
+
+#### 選択肢の自動補完（answerPool）
+
+知識クイズの選択肢は通常4つすべてスプレッドシートに記入するが、選択肢の一部を空にして `answerPool` を指定すると、ゲーム側が実行時にプールからランダムに補完する。
+
+**スプレッドシートの記入例:**
+
+| 問題文 | 選択肢1(正解) | 選択肢2 | 選択肢3 | 選択肢4 | 選択肢補完元 |
+|--------|-------------|---------|---------|---------|------------|
+| ミュゥ寮で一番背が高いのは？ | 月読みるく | | | | 2期生/ミュゥ寮 |
+| 声劇サークルのリーダーは？ | 星空ひかり | | | | 声劇サークル |
+| この中で身長が一番高いのは？ | 桜雲ほわり | 月読みるく | 猫乃間うと | 姫宮ねね | |
+
+**answerPool の命名規則:**
+
+| 記法 | 意味 | プールの実体 |
+|------|------|------------|
+| （空） | 自動補完なし | 選択肢4つすべて記入必須 |
+| `2期生/ミュゥ寮` | 2期生のミュゥ寮 | talents.json から generation=2, dormitory=me のタレント名 |
+| `2期生/全員` | 2期生全員 | talents.json から generation=2 のタレント名 |
+| `1期生/バゥ寮` | 1期生のバゥ寮 | talents.json から generation=1, dormitory=wa のタレント名 |
+| `1期生/全員` | 1期生全員 | talents.json から generation=1 のタレント名 |
+| `全員` | 全タレント | talents.json の全タレント名 |
+| `声劇サークル` | カスタムセット | questions.json の `answerSets` から参照 |
+
+**ゲーム側の補完ロジック:**
+1. `answerPool` が空 → 補完なし（answers をそのまま使用）
+2. `answerPool` が `N期生/寮名` or `N期生/全員` or `全員` → talents.json からフィルタしてプール生成
+3. それ以外 → `answerSets` からカスタムセットを参照
+4. answers の空文字列をプールからランダムに選んで埋める（正解と重複しないように）
+5. 補完後にシャッフルして表示
 
 ### 6.4 イベント実績データ（awards.json）
 
@@ -1132,4 +1176,4 @@ export const DORMITORIES = {
 ---
 
 *作成日: 2026-03-12*
-*最終更新: 2026-03-13*
+*最終更新: 2026-03-14*
