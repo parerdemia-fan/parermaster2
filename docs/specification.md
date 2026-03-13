@@ -275,6 +275,8 @@ Lv.3 (★★★相当): 各タイプ × 数問 = 約34問
 │ （条件達成で設定可能に）    │
 │                            │
 │      【スタート！】         │
+│                            │
+│  リスナー [名前変更]       │
 └──────────────────────────┘
 ```
 
@@ -310,6 +312,12 @@ Lv.3 (★★★相当): 各タイプ × 数問 = 約34問
 │      【スタート！】         │
 └──────────────────────────┘
 ```
+
+#### プレイヤー名
+- デフォルト: 「リスナー」
+- 設定画面の下部に現在の名前と「名前変更」ボタンを配置
+- 初回起動時に入力を促す演出はしない（すぐ遊べることを優先）
+- 使用箇所: AIの手記、応援演出、結果画面、Xシェア文言、タイムアタック記録
 
 #### 設定の保持
 - 前回の設定をLocalStorageに保存し、次回起動時に復元
@@ -997,7 +1005,9 @@ export const DORMITORIES = {
 | `parermaster2_badges` | バッジ獲得状況 | `Record<slotId, 'bronze' \| 'silver' \| 'gold'>` |
 | `parermaster2_unlocked_types` | 解放済み問題タイプ | `string[]` |
 | `parermaster2_settings` | 前回のゲーム設定 | `{ generation, game, range, difficulty, ... }` |
+| `parermaster2_player_name` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |
 | `parermaster2_time_attack_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
+| `parermaster2_memoir` | AIの手記データ（生成済みエントリ） | `MemoirEntry[]` |
 
 ---
 
