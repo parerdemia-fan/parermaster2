@@ -250,8 +250,8 @@ export const DORMITORIES = {
 | キー | 内容 | 型 |
 |------|------|-----|
 | `parermaster2_badges` | バッジ獲得状況 | `Record<slotId, 'bronze' \| 'silver' \| 'gold'>` |
-| `parermaster2_unlocked_types` | 解放済み問題タイプ | `string[]` |
+| `parermaster2_enabled_types` | 有効な問題タイプ（ON/OFF設定） | `string[]` |
 | `parermaster2_settings` | 前回のゲーム設定 | `{ generation, game, range, difficulty, ... }` |
 | `parermaster2_player_name` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |
 | `parermaster2_time_attack_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
-| `parermaster2_memoir` | AIの手記データ（生成済みエントリ） | `MemoirEntry[]` |
+| `parermaster2_diary_entries` | 開発日誌の手記エントリ（動的生成分） | `DiaryMemoirEntry[]` |
