@@ -14,7 +14,7 @@
 | `public/data/questions.json` | 知識クイズ問題（1期生+2期生） | 前作から構造変更 |
 | `public/data/awards.json` | イベント実績データ | 新規（前作はtalents.json内） |
 | `public/data/diary.json` | 開発日誌 | 前作踏襲 |
-| `public/data/result_messages.json` | 結果画面メッセージ | 前作踏襲（構造は要検討） |
+| `public/data/result_messages.json` | 結果画面メッセージ | 前作踏襲 |
 | `public/data/staff.json` | スタッフクレジット | 前作踏襲 |
 
 前作の `answer_set.json` は独立ファイルとしては廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。イベント系等のカスタム選択肢セットは questions.json 内の `answerSets` に統合。
@@ -124,7 +124,7 @@ export const DORMITORIES = {
 } as const
 ```
 
-2期生の寮構成が1期生と異なる場合は、世代ごとに寮マスタを持てるようにする。寮数・寮名をハードコードしない。
+2期生の寮構成は1期生と同じ4寮（バゥ寮・ミュゥ寮・クゥ寮・ウィニー寮）。ただし将来の変更に備え、寮数・寮名をハードコードしない設計とする。
 
 ---
 

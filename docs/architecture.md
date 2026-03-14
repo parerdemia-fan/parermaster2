@@ -124,9 +124,9 @@ src/
 │   │   │   ├── BlurLayout.tsx
 │   │   │   └── generator.ts
 │   │   │
-│   │   └── knowledge-quiz/      # 問題タイプ4: 知識クイズ
+│   │   └── text-quiz/           # 問題タイプ4: テキストクイズ（通常モードでは知識クイズモードとして独立出題）
 │   │       ├── index.ts
-│   │       ├── KnowledgeQuizLayout.tsx
+│   │       ├── TextQuizLayout.tsx
 │   │       └── generator.ts
 │   │
 │   ├── time-attack/             # タイムアタック
