@@ -346,4 +346,4 @@
 
 #### デザインの方向性
 - 明るく、春っぽく、ポップ
-- デザイン素材の生成はGemini Nano Banana Proを活用
+- デザイン素材の生成はGemini Nano Banana 2を活用
