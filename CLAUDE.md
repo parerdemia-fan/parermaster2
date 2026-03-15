@@ -42,3 +42,5 @@ Webクイズゲーム。React 19 + TypeScript + Vite 8 + Tailwind CSS v4.2 + Zus
 - `public/data/` のJSONファイル（talents.json, questions.json, awards.json）は `pnpm sync` で生成される成果物。直接編集せず、生成元（`scripts/sync-spreadsheet.ts` またはスプレッドシート）を修正する
 - データ設計を変更する際は、既存データの使われ方を全パターン確認してから設計する（「統一」「簡略化」で用途を潰さない）
 - 前作（`../parermaster/`）の構成を参考にできる場合は先に確認し、合理的なら踏襲する
+- ゲーム背景画像は `body`（`src/app/index.css`）に設定する。画面コンポーネント内に設定すると 4:3 GameContainer 外に余白が生じる
+- UI のレイアウト・サイズは前作の具体的な CSS 値（cqmin 等）を起点にする。独自の値で試行錯誤せず、前作の値をまず確認してからそれをベースに調整する
