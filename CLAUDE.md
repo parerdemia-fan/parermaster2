@@ -32,3 +32,7 @@ Webクイズゲーム。React 19 + TypeScript + Vite 8 + Tailwind CSS v4.2 + Zus
 
 - `public/data/` — JSONデータ
 - `public/data/images/` — 画像リソース
+
+## 画像アセット管理
+
+- `public/data/images/` に画像を追加・差し替えしたら `docs/image-assets.md` の該当行の「状態」列を更新する（done / wip / —）
