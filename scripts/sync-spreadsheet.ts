@@ -126,6 +126,16 @@ function toNum(value: string): number {
   return isNaN(n) ? 0 : n
 }
 
+/** テキスト中の [image:filename] を抽出し、テキストと画像ファイル名に分離する */
+function extractImage(text: string): { text: string; image: string | null } {
+  const match = text.match(/\[image:([^\]]+)\]/)
+  if (!match) return { text, image: null }
+  return {
+    text: text.replace(/\[image:[^\]]+\]/, '').trim(),
+    image: match[1],
+  }
+}
+
 /**
  * ハッシュタグのパース
  *
@@ -239,10 +249,13 @@ function transformQuestion(
   const talentName = row['タレント'] || ''
   const generation = talentName ? (nameToGeneration.get(talentName) ?? 0) : 0
 
+  const { text: question, image: questionImage } = extractImage(row['問題文'] || '')
+  const { text: comment, image: commentImage } = extractImage(row['回答後コメント'] || '')
+
   return {
     id: makeId('q', index),
     generation,
-    question: row['問題文'] || '',
+    question,
     answers: [
       row['選択肢1(正解)'] || '',
       row['選択肢2'] || '',
@@ -253,9 +266,10 @@ function transformQuestion(
     genre: row['ジャンル'] || '',
     sortAnswers: toBool(row['選択肢ソート'] || ''),
     hideIcon: toBool(row['アイコンを隠す'] || ''),
-    image: null,
+    questionImage,
+    commentImage,
     answerPool: row['選択肢補完元'] || '',
-    comment: row['回答後コメント'] || '',
+    comment,
     sourceUrl: row['情報源URL'] || '',
   }
 }

@@ -8,9 +8,13 @@
 
 - パネルは**単一画像**（CSS伸縮）— 9-patchは不採用
 - ボタンは**3-patch**（left / middle / right）
-- ラベルは全て**テキスト描画**（画像へのテキスト埋め込み廃止）
+- ボタンラベルは原則**テキスト描画**（必要に応じて画像ラベルも可）
 - バッジは共有画像 + CSSエフェクトで進化表現（前作の27枚 → 最大10枚）
-- 画像配置先: `public/data/images/`
+- 配置先:
+  - `public/data/images/ui/` — UIアセット（ボタン、パネル、背景、ロゴ等）
+  - `public/data/images/questions/` — 知識クイズの問題・解説画像
+  - `public/data/images/face/` — 2期生正方形画像
+  - `public/data/images/kv/` — 1期生画像（orig + sq）
 
 ### 状態の凡例
 
@@ -34,9 +38,24 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 | btn_secondary_left | 75×144 | 左端 | サブボタン（前作の赤ボタン相当） | — |
 | btn_secondary_middle | 293×144 | 中央（横リピート） | 同上 | — |
 | btn_secondary_right | 75×144 | 右端 | 同上 | — |
+| btn_timeattack_left | 75×144 | 左端 | タイムアタック専用ボタン | — |
+| btn_timeattack_middle | 293×144 | 中央（横リピート） | 同上 | — |
+| btn_timeattack_right | 75×144 | 右端 | 同上 | — |
 | btn_disabled_left | 12×54 | 左端 | 無効状態ボタン | — |
 | btn_disabled_middle | 任意×54 | 中央（横リピート） | 同上 | — |
 | btn_disabled_right | 12×54 | 右端 | 同上 | — |
+
+---
+
+## 1b. アイコンボタン
+
+タイトル画面のサブメニュー用。前作から流用。
+
+| 画像 | サイズ (px) | 用途 | 状態 |
+|------|------------|------|------|
+| btn_help | 144×184 | ヘルプ | done |
+| btn_talents | 144×184 | タレント一覧 | done |
+| btn_achievement | 144×184 | アチーブメント | done |
 
 ---
 

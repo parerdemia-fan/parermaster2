@@ -36,3 +36,9 @@ Webクイズゲーム。React 19 + TypeScript + Vite 8 + Tailwind CSS v4.2 + Zus
 ## 画像アセット管理
 
 - `public/data/images/` に画像を追加・差し替えしたら `docs/image-assets.md` の該当行の「状態」列を更新する（done / wip / —）
+
+## 注意事項
+
+- `public/data/` のJSONファイル（talents.json, questions.json, awards.json）は `pnpm sync` で生成される成果物。直接編集せず、生成元（`scripts/sync-spreadsheet.ts` またはスプレッドシート）を修正する
+- データ設計を変更する際は、既存データの使われ方を全パターン確認してから設計する（「統一」「簡略化」で用途を潰さない）
+- 前作（`../parermaster/`）の構成を参考にできる場合は先に確認し、合理的なら踏襲する

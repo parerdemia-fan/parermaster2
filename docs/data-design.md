@@ -150,9 +150,10 @@ export const DORMITORIES = {
       "genre": "プロフィール",    // ジャンル（表示用。判定には使わない）
       "sortAnswers": false,      // 選択肢をソートして表示するか
       "hideIcon": false,         // タレントアイコンを回答前に隠すか
-      "image": null,             // 問題画像ファイル名（null=なし）
+      "questionImage": null,     // 問題画像ファイル名（null=なし。配置先: public/data/images/questions/）
+      "commentImage": null,      // 解説画像ファイル名（null=なし。同上）
       "answerPool": "",           // 空の選択肢を自動補完するプール名（後述）
-      "comment": "桜雲ほわりは172cmで最も背が高い",
+      "comment": "桜雲ほわりは172cmで最も背が高い"
       "sourceUrl": ""            // 出典URL
     }
   ],
@@ -173,10 +174,18 @@ export const DORMITORIES = {
 | difficulty | 0〜5 | 0〜8（拡張可能） | 将来の難易度追加に備える |
 | dormitory | 寮コード | 廃止 | 知識クイズは寮ごとの出題がないため不要 |
 | questioner | 全問空 | 廃止 | 未使用のため削除 |
-| image | question直下 + comment内 `[image:]` 混在 | `image` に統一 | 二重管理の解消 |
+| image | question直下 + comment内 `[image:]` 混在 | `questionImage` + `commentImage` に分離 | 用途を明確に分離し、独立して指定可能に |
 | genre | 表記揺れあり | そのまま踏襲 | 表示用のみ。判定に使わないため正規化不要 |
 | answer_set.json | 別ファイル | `answerSets` として questions.json に統合 | ファイル数削減 |
 | キー命名 | snake_case | camelCase | TypeScript親和性 |
+
+### 知識クイズの画像表示
+
+- 画像ファイルは `public/data/images/questions/` に配置
+- `questionImage` — 問題文の下に表示する画像（出題時に表示）
+- `commentImage` — 解説テキストと一緒に表示する画像（回答後に表示）
+- いずれも null で画像なし。片方だけ・両方・両方とも別画像、いずれも可
+- 前作では `image` フィールドと comment 内の `[image:]` 記法が混在していたが、2フィールドに分離して明確化
 
 ### 選択肢の自動補完（answerPool）
 
