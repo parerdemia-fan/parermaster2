@@ -152,7 +152,7 @@ src/
 ├── shared/                      # 共有ユーティリティ・コンポーネント
 │   ├── components/
 │   │   ├── ThreePatchButton.tsx
-│   │   ├── NinePatchPanel.tsx
+│   │   ├── Panel.tsx
 │   │   └── ...
 │   ├── hooks/
 │   ├── utils/
