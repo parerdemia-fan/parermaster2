@@ -51,32 +51,32 @@ export function TitleScreen() {
           style={{ gap: '6cqmin' }}
         >
           <button
-            className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95 whitespace-nowrap"
+            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95 whitespace-nowrap"
             style={{
               fontSize: '5cqmin',
               padding: '1.5cqmin 5cqmin',
-              borderRadius: '2cqmin',
-              border: 'none',
-              background: 'linear-gradient(180deg, #8ec8a0 0%, #6aaa80 100%)',
+              borderRadius: '5cqmin',
+              border: '0.3cqmin solid rgba(255,255,255,0.5)',
+              background: 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)',
               color: 'white',
-              boxShadow: '0 0.8cqmin 0 #4a8a60, 0 1cqmin 2cqmin rgba(0,0,0,0.2)',
-              textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+              boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(74,138,96,0.4)',
+              textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
           >
             🌙 1期生編
           </button>
 
           <button
-            className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95 whitespace-nowrap"
+            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95 whitespace-nowrap"
             style={{
               fontSize: '5cqmin',
               padding: '1.5cqmin 5cqmin',
-              borderRadius: '2cqmin',
-              border: 'none',
-              background: 'linear-gradient(180deg, #f8a4c8 0%, #e8789e 100%)',
+              borderRadius: '5cqmin',
+              border: '0.3cqmin solid rgba(255,255,255,0.5)',
+              background: 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)',
               color: 'white',
-              boxShadow: '0 0.8cqmin 0 #c05a7a, 0 1cqmin 2cqmin rgba(0,0,0,0.2)',
-              textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+              boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(192,90,122,0.4)',
+              textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
           >
             🌸 2期生編
@@ -89,13 +89,12 @@ export function TitleScreen() {
           style={{
             fontSize: '4cqmin',
             padding: '1.5cqmin 5cqmin',
-            borderRadius: '2cqmin',
-            border: 'none',
-            background: 'linear-gradient(180deg, #c0c0c0 0%, #999 100%)',
+            borderRadius: '5cqmin',
+            border: '0.3cqmin solid rgba(255,255,255,0.3)',
+            background: 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)',
             color: 'rgba(255,255,255,0.7)',
-            boxShadow: '0 0.6cqmin 0 #777, 0 0.8cqmin 1.5cqmin rgba(0,0,0,0.2)',
-            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
-            filter: 'grayscale(0.3)',
+            boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.2), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
+            textShadow: '0 1px 2px rgba(0,0,0,0.15)',
           }}
           disabled
         >
