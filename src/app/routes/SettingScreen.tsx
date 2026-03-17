@@ -7,13 +7,13 @@ interface SettingScreenProps {
   onBack: () => void
 }
 
-type DormId = 'bau' | 'myu' | 'cu' | 'winnie'
+type DormId = 'wa' | 'me' | 'co' | 'wh'
 
 const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
-  { id: 'bau', label: 'バゥ', emblem: 'emblem_bau.webp' },
-  { id: 'myu', label: 'ミュゥ', emblem: 'emblem_myu.webp' },
-  { id: 'cu', label: 'クゥ', emblem: 'emblem_cu.webp' },
-  { id: 'winnie', label: 'ウィニー', emblem: 'emblem_winnie.webp' },
+  { id: 'wa', label: 'バゥ', emblem: 'emblem_wa.webp' },
+  { id: 'me', label: 'ミュゥ', emblem: 'emblem_me.webp' },
+  { id: 'co', label: 'クゥ', emblem: 'emblem_co.webp' },
+  { id: 'wh', label: 'ウィニー', emblem: 'emblem_wh.webp' },
 ]
 
 type Scope = DormId | 'all'
