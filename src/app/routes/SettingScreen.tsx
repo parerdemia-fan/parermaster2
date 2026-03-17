@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const BASE = import.meta.env.BASE_URL
 
 interface SettingScreenProps {
@@ -5,12 +7,16 @@ interface SettingScreenProps {
   onBack: () => void
 }
 
-const DORMS = [
+type DormId = 'bau' | 'myu' | 'cu' | 'winnie'
+
+const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
   { id: 'bau', label: 'バゥ', emblem: 'emblem_bau.webp' },
   { id: 'myu', label: 'ミュゥ', emblem: 'emblem_myu.webp' },
   { id: 'cu', label: 'クゥ', emblem: 'emblem_cu.webp' },
   { id: 'winnie', label: 'ウィニー', emblem: 'emblem_winnie.webp' },
-] as const
+]
+
+type Scope = DormId | 'all'
 
 export function SettingScreen({ generation, onBack }: SettingScreenProps) {
   const genLabel = generation === 'gen2' ? '2期生' : '1期生'
@@ -19,6 +25,8 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
     generation === 'gen2'
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
+
+  const [scope, setScope] = useState<Scope>('all')
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -84,9 +92,16 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
           style={{ gap: '2cqmin' }}
         >
           {DORMS.map((dorm) => (
-            <DormButton key={dorm.id} label={dorm.label} emblem={dorm.emblem} selected={false} accentColor={accentColor} />
+            <DormButton
+              key={dorm.id}
+              label={dorm.label}
+              emblem={dorm.emblem}
+              selected={scope === dorm.id}
+              accentColor={accentColor}
+              onClick={() => setScope(dorm.id)}
+            />
           ))}
-          <PillButton label="全員" selected accentColor={accentColor} size="small" />
+          <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => setScope('all')} />
         </div>
 
         {/* ── 難易度 ── */}
@@ -181,12 +196,14 @@ function PillButton({
   accentColor,
   size = 'normal',
   locked = false,
+  onClick,
 }: {
   label: string
   selected: boolean
   accentColor: string
   size?: 'normal' | 'small'
   locked?: boolean
+  onClick?: () => void
 }) {
   const isSmall = size === 'small'
   const height = isSmall ? '7cqmin' : '9cqmin'
@@ -213,13 +230,14 @@ function PillButton({
           : selected
             ? 'white'
             : '#666',
-        cursor: locked ? 'not-allowed' : 'default',
+        cursor: locked ? 'not-allowed' : onClick ? 'pointer' : 'default',
         boxShadow: selected
           ? '0 0.2cqmin 0.6cqmin rgba(0,0,0,0.12)'
           : 'none',
         opacity: locked ? 0.7 : 1,
       }}
       disabled={locked}
+      onClick={onClick}
     >
       {label}
     </button>
@@ -231,11 +249,13 @@ function DormButton({
   emblem,
   selected,
   accentColor,
+  onClick,
 }: {
   label: string
   emblem: string
   selected: boolean
   accentColor: string
+  onClick: () => void
 }) {
   return (
     <button
@@ -250,12 +270,13 @@ function DormButton({
           : '0.3cqmin solid #ddd',
         background: selected ? accentColor : 'white',
         color: selected ? 'white' : '#666',
-        cursor: 'default',
+        cursor: 'pointer',
         boxShadow: selected
           ? '0 0.2cqmin 0.6cqmin rgba(0,0,0,0.12)'
           : 'none',
         gap: '1cqmin',
       }}
+      onClick={onClick}
     >
       <img
         src={`${BASE}data/images/ui/${emblem}`}
