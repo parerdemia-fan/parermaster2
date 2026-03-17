@@ -71,7 +71,7 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
         }}
       >
         {/* ── ゲーム ── */}
-        <SectionHeading label="ゲーム" />
+        <SectionHeading label="ゲーム" first />
         <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
           <PillButton label="顔名前当て" selected accentColor={accentColor} />
           <PillButton label="知識クイズ" selected={false} accentColor={accentColor} />
@@ -101,7 +101,7 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
         <button
           className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
           style={{
-            marginTop: '3cqmin',
+            marginTop: '4.5cqmin',
             width: '40cqmin',
             height: '9cqmin',
             fontSize: '4.5cqmin',
@@ -150,20 +150,20 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
 
 /* ─── サブコンポーネント ─── */
 
-function SectionHeading({ label }: { label: string }) {
+function SectionHeading({ label, first = false }: { label: string; first?: boolean }) {
   return (
     <div
       className="w-full flex items-center"
       style={{
-        margin: '2cqmin 0 1.5cqmin',
+        margin: first ? '0.5cqmin 0 2.5cqmin' : '3.5cqmin 0 2.5cqmin',
         gap: '2cqmin',
       }}
     >
-      <div style={{ flex: 1, height: '1px', background: '#ddd' }} />
+      <div style={{ flex: 1, height: '1px', background: '#ccc' }} />
       <span
         style={{
           fontSize: '3cqmin',
-          color: '#999',
+          color: '#555',
           whiteSpace: 'nowrap',
           fontWeight: 600,
         }}
