@@ -1,13 +1,7 @@
 import { useRef, useState } from 'react'
+import { useSettingsStore, type DormId } from '../../stores/settingsStore.ts'
 
 const BASE = import.meta.env.BASE_URL
-
-interface SettingScreenProps {
-  generation: 'gen1' | 'gen2'
-  onBack: () => void
-}
-
-type DormId = 'wa' | 'me' | 'co' | 'wh'
 
 const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
   { id: 'wa', label: 'バゥ', emblem: 'emblem_wa.webp' },
@@ -16,9 +10,12 @@ const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
   { id: 'wh', label: 'ウィニー', emblem: 'emblem_wh.webp' },
 ]
 
-type Scope = DormId | 'all'
+export function SettingScreen() {
+  const {
+    generation, gameMode, scope, difficulty, playerName,
+    goToTitle, setGameMode, setScope, setDifficulty, setPlayerName,
+  } = useSettingsStore()
 
-export function SettingScreen({ generation, onBack }: SettingScreenProps) {
   const genLabel = generation === 'gen2' ? '2期生' : '1期生'
   const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
   const accentGradient =
@@ -26,17 +23,17 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
-  const [scope, setScope] = useState<Scope>('all')
-  const [playerName, setPlayerName] = useState(
-    () => localStorage.getItem('playerName') ?? 'リスナー'
-  )
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false)
 
   const handleNameChange = (name: string) => {
     setPlayerName(name)
-    localStorage.setItem('playerName', name)
     setIsNameDialogOpen(false)
   }
+
+  // 知識クイズでは出題範囲・問題タイプを表示しない
+  const isFaceName = gameMode === 'face-name'
+  // 知識クイズの難易度は1期生のみ
+  const showDifficulty = isFaceName || generation === 'gen1'
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -55,7 +52,7 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
             background: 'rgba(255,255,255,0.6)',
             color: '#555',
           }}
-          onClick={onBack}
+          onClick={goToTitle}
         >
           ◀ 戻る
         </button>
@@ -91,36 +88,54 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
         {/* ── ゲーム ── */}
         <SectionHeading label="ゲーム" first />
         <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
-          <PillButton label="顔名前当て" selected accentColor={accentColor} />
-          <PillButton label="知識クイズ" selected={false} accentColor={accentColor} />
+          <PillButton
+            label="顔名前当て"
+            selected={isFaceName}
+            accentColor={accentColor}
+            onClick={() => setGameMode('face-name')}
+          />
+          <PillButton
+            label="知識クイズ"
+            selected={!isFaceName}
+            accentColor={accentColor}
+            onClick={() => setGameMode('knowledge')}
+          />
         </div>
 
-        {/* ── 出題範囲 ── */}
-        <SectionHeading label="出題範囲" />
-        <div
-          className="flex flex-wrap items-center justify-center"
-          style={{ gap: '2cqmin' }}
-        >
-          {DORMS.map((dorm) => (
-            <DormButton
-              key={dorm.id}
-              label={dorm.label}
-              emblem={dorm.emblem}
-              selected={scope === dorm.id}
-              accentColor={accentColor}
-              onClick={() => setScope(dorm.id)}
-            />
-          ))}
-          <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => setScope('all')} />
-        </div>
+        {/* ── 出題範囲 ──（顔名前当てのみ） */}
+        {isFaceName && (
+          <>
+            <SectionHeading label="出題範囲" />
+            <div
+              className="flex flex-wrap items-center justify-center"
+              style={{ gap: '2cqmin' }}
+            >
+              {DORMS.map((dorm) => (
+                <DormButton
+                  key={dorm.id}
+                  label={dorm.label}
+                  emblem={dorm.emblem}
+                  selected={scope === dorm.id}
+                  accentColor={accentColor}
+                  onClick={() => setScope(dorm.id)}
+                />
+              ))}
+              <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => setScope('all')} />
+            </div>
+          </>
+        )}
 
         {/* ── 難易度 ── */}
-        <SectionHeading label="難易度" />
-        <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
-          <PillButton label="★☆☆" selected accentColor={accentColor} size="small" />
-          <PillButton label="★★☆" selected={false} accentColor={accentColor} size="small" />
-          <PillButton label="🔒 ★★★" selected={false} accentColor={accentColor} size="small" locked />
-        </div>
+        {showDifficulty && (
+          <>
+            <SectionHeading label="難易度" />
+            <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
+              <PillButton label="★☆☆" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
+              <PillButton label="★★☆" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
+              <PillButton label="🔒 ★★★" selected={difficulty === 3} accentColor={accentColor} size="small" locked />
+            </div>
+          </>
+        )}
 
         {/* スタートボタン */}
         <button

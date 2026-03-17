@@ -1,10 +1,10 @@
+import { useSettingsStore } from '../../stores/settingsStore.ts'
+
 const BASE = import.meta.env.BASE_URL
 
-interface TitleScreenProps {
-  onSelectGeneration: (gen: 'gen1' | 'gen2') => void
-}
+export function TitleScreen() {
+  const goToSetting = useSettingsStore((s) => s.goToSetting)
 
-export function TitleScreen({ onSelectGeneration }: TitleScreenProps) {
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
       {/* 横画面推奨表示（縦画面時のみ） */}
@@ -66,7 +66,7 @@ export function TitleScreen({ onSelectGeneration }: TitleScreenProps) {
               boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(74,138,96,0.4)',
               textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
-            onClick={() => onSelectGeneration('gen1')}
+            onClick={() => goToSetting('gen1')}
           >
             🌙 1期生編
           </button>
@@ -83,7 +83,7 @@ export function TitleScreen({ onSelectGeneration }: TitleScreenProps) {
               boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(192,90,122,0.4)',
               textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
-            onClick={() => onSelectGeneration('gen2')}
+            onClick={() => goToSetting('gen2')}
           >
             🌸 2期生編
           </button>
@@ -165,5 +165,5 @@ export function TitleScreen({ onSelectGeneration }: TitleScreenProps) {
         ※このゲームは二次創作物であり非公式のものです
       </div>
     </div>
-  );
+  )
 }
