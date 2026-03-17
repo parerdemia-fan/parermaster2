@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -27,6 +27,8 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
   const [scope, setScope] = useState<Scope>('all')
+  const [playerName, setPlayerName] = useState('リスナー')
+  const [isNameDialogOpen, setIsNameDialogOpen] = useState(false)
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -143,7 +145,7 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
           }}
         >
           <span>あなたの名前:</span>
-          <span className="font-bold" style={{ color: '#333' }}>リスナー</span>
+          <span className="font-bold" style={{ color: '#333' }}>{playerName}</span>
           <button
             className="cursor-pointer transition hover:brightness-105 active:scale-95"
             style={{
@@ -154,11 +156,25 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
               background: 'white',
               color: '#888',
             }}
+            onClick={() => setIsNameDialogOpen(true)}
           >
             変更
           </button>
         </div>
       </div>
+
+      {/* 名前変更ダイアログ */}
+      {isNameDialogOpen && (
+        <NameDialog
+          currentName={playerName}
+          accentColor={accentColor}
+          onConfirm={(name) => {
+            setPlayerName(name)
+            setIsNameDialogOpen(false)
+          }}
+          onCancel={() => setIsNameDialogOpen(false)}
+        />
+      )}
     </div>
   )
 }
@@ -289,3 +305,122 @@ function DormButton({
   )
 }
 
+/* ─── 名前変更ダイアログ ─── */
+
+const MAX_NAME_LENGTH = 15
+
+function NameDialog({
+  currentName,
+  accentColor,
+  onConfirm,
+  onCancel,
+}: {
+  currentName: string
+  accentColor: string
+  onConfirm: (name: string) => void
+  onCancel: () => void
+}) {
+  const [value, setValue] = useState(currentName)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const trimmed = value.trim()
+  const canConfirm = trimmed.length > 0 && trimmed.length <= MAX_NAME_LENGTH
+
+  const handleConfirm = () => {
+    if (canConfirm) onConfirm(trimmed)
+  }
+
+  return (
+    <div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{ backgroundColor: 'rgba(0,0,0,0.4)', zIndex: 50 }}
+      onClick={onCancel}
+    >
+      <div
+        className="flex flex-col items-center"
+        style={{
+          backgroundColor: 'rgba(255,255,255,0.92)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderRadius: '3cqmin',
+          padding: '4cqmin 5cqmin',
+          boxShadow: '0 0.5cqmin 3cqmin rgba(0,0,0,0.2)',
+          minWidth: '50cqmin',
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span
+          className="font-bold"
+          style={{ fontSize: '4cqmin', color: '#333', marginBottom: '3cqmin' }}
+        >
+          名前を入力
+        </span>
+        <input
+          ref={inputRef}
+          type="text"
+          value={value}
+          maxLength={MAX_NAME_LENGTH}
+          autoFocus
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') handleConfirm()
+          }}
+          className="font-bold"
+          style={{
+            fontSize: '4cqmin',
+            padding: '1.5cqmin 2cqmin',
+            borderRadius: '2cqmin',
+            border: '0.3cqmin solid #ccc',
+            outline: 'none',
+            textAlign: 'center',
+            width: '40cqmin',
+          }}
+        />
+        <span
+          style={{
+            fontSize: '2.5cqmin',
+            color: '#999',
+            marginTop: '1cqmin',
+          }}
+        >
+          {trimmed.length} / {MAX_NAME_LENGTH}
+        </span>
+        <div
+          className="flex items-center justify-center"
+          style={{ gap: '3cqmin', marginTop: '3cqmin' }}
+        >
+          <button
+            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+            style={{
+              fontSize: '3.5cqmin',
+              padding: '1.5cqmin 4cqmin',
+              borderRadius: '5cqmin',
+              border: '0.3cqmin solid #ddd',
+              background: 'white',
+              color: '#666',
+            }}
+            onClick={onCancel}
+          >
+            キャンセル
+          </button>
+          <button
+            className="font-bold transition"
+            style={{
+              fontSize: '3.5cqmin',
+              padding: '1.5cqmin 4cqmin',
+              borderRadius: '5cqmin',
+              border: 'none',
+              background: canConfirm ? accentColor : '#ccc',
+              color: 'white',
+              cursor: canConfirm ? 'pointer' : 'not-allowed',
+            }}
+            disabled={!canConfirm}
+            onClick={handleConfirm}
+          >
+            決定
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
