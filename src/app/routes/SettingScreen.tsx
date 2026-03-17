@@ -1,5 +1,8 @@
 import { useRef, useState } from 'react'
 import { useSettingsStore, type DormId } from '../../stores/settingsStore.ts'
+import { useGameStore } from '../../stores/gameStore.ts'
+import { useTalents } from '../../shared/hooks/useTalents.ts'
+import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -13,8 +16,10 @@ const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
 export function SettingScreen() {
   const {
     generation, gameMode, scope, difficulty, playerName,
-    goToTitle, setGameMode, setScope, setDifficulty, setPlayerName,
+    goToTitle, goToQuiz, setGameMode, setScope, setDifficulty, setPlayerName,
   } = useSettingsStore()
+  const startQuiz = useGameStore((s) => s.startQuiz)
+  const { talents, loading } = useTalents()
 
   const genLabel = generation === 'gen2' ? '2期生' : '1期生'
   const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
@@ -34,6 +39,24 @@ export function SettingScreen() {
   const isFaceName = gameMode === 'face-name'
   // 知識クイズの難易度は1期生のみ
   const showDifficulty = isFaceName || generation === 'gen1'
+
+  const handleStart = () => {
+    if (loading || talents.length === 0) return
+
+    const gen = generation === 'gen2' ? 2 : 1
+    const filtered = scope === 'all'
+      ? talents.filter((t) => t.generation === gen)
+      : talents.filter((t) => t.generation === gen && t.dormitory === scope)
+
+    if (filtered.length < 4) return
+
+    // 同世代全員を選択肢プールとして使う
+    const pool = talents.filter((t) => t.generation === gen)
+    const questions = generateNameGuessQuestions(filtered, pool)
+
+    startQuiz(questions)
+    goToQuiz()
+  }
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -152,9 +175,12 @@ export function SettingScreen() {
             boxShadow:
               'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
             textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+            opacity: loading ? 0.5 : 1,
           }}
+          disabled={loading}
+          onClick={handleStart}
         >
-          スタート！
+          {loading ? '読み込み中...' : 'スタート！'}
         </button>
 
         {/* プレイヤー名 */}
