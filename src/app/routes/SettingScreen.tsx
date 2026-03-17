@@ -27,8 +27,16 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
   const [scope, setScope] = useState<Scope>('all')
-  const [playerName, setPlayerName] = useState('リスナー')
+  const [playerName, setPlayerName] = useState(
+    () => localStorage.getItem('playerName') ?? 'リスナー'
+  )
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false)
+
+  const handleNameChange = (name: string) => {
+    setPlayerName(name)
+    localStorage.setItem('playerName', name)
+    setIsNameDialogOpen(false)
+  }
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -168,10 +176,7 @@ export function SettingScreen({ generation, onBack }: SettingScreenProps) {
         <NameDialog
           currentName={playerName}
           accentColor={accentColor}
-          onConfirm={(name) => {
-            setPlayerName(name)
-            setIsNameDialogOpen(false)
-          }}
+          onConfirm={handleNameChange}
           onCancel={() => setIsNameDialogOpen(false)}
         />
       )}
