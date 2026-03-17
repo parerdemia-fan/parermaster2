@@ -52,7 +52,7 @@ export function SettingScreen() {
 
     // 同世代全員を選択肢プールとして使う
     const pool = talents.filter((t) => t.generation === gen)
-    const questions = generateNameGuessQuestions(filtered, pool)
+    const questions = generateNameGuessQuestions(filtered, pool, difficulty)
 
     startQuiz(questions)
     goToQuiz()

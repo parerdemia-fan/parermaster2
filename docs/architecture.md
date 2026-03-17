@@ -223,11 +223,38 @@ return (
 
 | ストア | 責務 |
 |--------|------|
-| gameStore | ゲーム進行状態（currentIndex, quizState, answers） |
-| settingsStore | ゲーム設定・LocalStorage永続化 |
+| gameStore | クイズ進行状態（currentIndex, quizState, correctCount）。問題の内容や回答方法の詳細を知らない |
+| settingsStore | 画面遷移・ゲーム設定・LocalStorage永続化 |
 | achievementStore | バッジ・解放状態・LocalStorage永続化 |
 
 各ストアは100〜300行程度を目安とする。
+
+### 問題タイプの型設計と責務分離
+
+共通層（`features/quiz/`）は問題の内容や回答方法を一切知らない。各問題タイプが型・生成・UI・正誤判定をすべて自己完結で持つ。
+
+**型の階層:**
+```
+BaseQuestion（typeId, difficulty のみ）
+  └─ NameGuessQuestion extends BaseQuestion（answers, correctIndex, talentImagePath 等）
+  └─ FaceGuessQuestion extends BaseQuestion（...）
+  └─ NameBuildQuestion extends BaseQuestion（文字グリッド等、選択肢なし）
+```
+
+**各層の責務:**
+
+| 層 | 知っていること | 知らないこと |
+|----|------------|-----------|
+| BaseQuestion / AnswerRecord | typeId, difficulty / isCorrect | 選択肢、画像、正誤判定ロジック |
+| gameStore | 何問目か、回答済みか、正解数 | 問題の表示方法、回答の仕組み |
+| QuizScreen | typeIdによる振り分け | 各問題タイプの内部実装 |
+| 各問題タイプのLayout | 自分の型の全フィールド、選択状態の管理、正誤判定 | 他の問題タイプ |
+
+**問題タイプの追加手順:**
+1. `features/question-types/<type-name>/types.ts` — BaseQuestion を拡張した型を定義
+2. `features/question-types/<type-name>/generator.ts` — 問題生成ロジック
+3. `features/question-types/<type-name>/<TypeName>Layout.tsx` — 出題UI・選択状態管理・正誤判定
+4. `QuizScreen.tsx` に typeId の分岐を1行追加
 
 ### 改善: アチーブメントのデータ駆動化
 

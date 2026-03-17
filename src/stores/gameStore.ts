@@ -1,20 +1,19 @@
 import { create } from 'zustand'
-import type { AnswerRecord, ProcessedQuestion } from '../features/quiz/types.ts'
+import type { AnswerRecord, BaseQuestion } from '../features/quiz/types.ts'
 
 export type QuizState = 'answering' | 'answered'
 
 interface GameState {
-  questions: ProcessedQuestion[]
+  questions: BaseQuestion[]
   currentIndex: number
   quizState: QuizState
-  selectedAnswer: number | null
   correctCount: number
   answerRecords: AnswerRecord[]
 }
 
 interface GameActions {
-  startQuiz: (questions: ProcessedQuestion[]) => void
-  selectAnswer: (index: number) => void
+  startQuiz: (questions: BaseQuestion[]) => void
+  recordAnswer: (isCorrect: boolean) => void
   nextQuestion: () => void
   isLastQuestion: () => boolean
 }
@@ -23,7 +22,6 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   questions: [],
   currentIndex: 0,
   quizState: 'answering',
-  selectedAnswer: null,
   correctCount: 0,
   answerRecords: [],
 
@@ -32,22 +30,16 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
       questions,
       currentIndex: 0,
       quizState: 'answering',
-      selectedAnswer: null,
       correctCount: 0,
       answerRecords: [],
     }),
 
-  selectAnswer: (index) => {
-    const { questions, currentIndex, correctCount, answerRecords } = get()
-    const current = questions[currentIndex]
-    if (!current) return
-
-    const isCorrect = index === current.correctIndex
+  recordAnswer: (isCorrect) => {
+    const { currentIndex, correctCount, answerRecords } = get()
     const newRecords = [...answerRecords]
-    newRecords[currentIndex] = { selectedAnswer: index, isCorrect }
+    newRecords[currentIndex] = { isCorrect }
 
     set({
-      selectedAnswer: index,
       quizState: 'answered',
       correctCount: isCorrect ? correctCount + 1 : correctCount,
       answerRecords: newRecords,
@@ -61,7 +53,6 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
     set({
       currentIndex: currentIndex + 1,
       quizState: 'answering',
-      selectedAnswer: null,
     })
   },
 

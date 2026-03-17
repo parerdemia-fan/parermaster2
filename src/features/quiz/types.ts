@@ -1,19 +1,12 @@
-export interface ProcessedQuestion {
+import type { Difficulty } from '../../stores/settingsStore.ts'
+
+export interface BaseQuestion {
   /** 問題タイプID */
   typeId: string
-  /** 出題対象タレントID */
-  talentId: string
-  /** 出題対象タレント名 */
-  talentName: string
-  /** 出題タレントの顔画像パス */
-  talentImagePath: string
-  /** 選択肢テキスト */
-  answers: string[]
-  /** 正解のインデックス */
-  correctIndex: number
+  /** 難易度 */
+  difficulty: Difficulty
 }
 
 export interface AnswerRecord {
-  selectedAnswer: number
   isCorrect: boolean
 }

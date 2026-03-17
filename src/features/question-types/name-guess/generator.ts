@@ -1,5 +1,6 @@
+import type { Difficulty } from '../../../stores/settingsStore.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
-import type { ProcessedQuestion } from '../../quiz/types.ts'
+import type { NameGuessQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -27,22 +28,26 @@ function getTalentImagePath(talent: Talent): string {
 export function generateNameGuessQuestions(
   targetTalents: Talent[],
   pool: Talent[],
-): ProcessedQuestion[] {
+  difficulty: Difficulty,
+): NameGuessQuestion[] {
   const shuffledTargets = shuffleArray(targetTalents)
 
   return shuffledTargets.map((talent) => {
-    // 正解以外のタレントから3人選ぶ
+    // TODO: ★★☆では髪色/髪型が似たタレントを優先選出
+    // TODO: ★★★ではシルエットモード + 似た髪型優先
     const others = shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
     const allChoices = shuffleArray([talent, ...others])
     const correctIndex = allChoices.findIndex((t) => t.id === talent.id)
 
     return {
       typeId: 'name-guess',
+      difficulty,
       talentId: talent.id,
       talentName: talent.name,
       talentImagePath: getTalentImagePath(talent),
       answers: allChoices.map((t) => t.name),
       correctIndex,
+      isSilhouette: difficulty === 3,
     }
   })
 }
