@@ -2,17 +2,17 @@ import type { Difficulty } from '../../../stores/settingsStore.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
 import { shuffleArray } from '../../../shared/utils/array.ts'
 import { getTalentImagePath } from '../../../shared/utils/talent.ts'
-import type { NameGuessQuestion } from './types.ts'
+import type { FaceGuessQuestion } from './types.ts'
 
 /**
- * 名前当て問題を生成する
- * 顔画像を見て4択から正しい名前を選ぶ
+ * 顔当て問題を生成する
+ * タレント名を見て4択の顔画像から正しい顔を選ぶ
  */
-export function generateNameGuessQuestions(
+export function generateFaceGuessQuestions(
   targetTalents: Talent[],
   pool: Talent[],
   difficulty: Difficulty,
-): NameGuessQuestion[] {
+): FaceGuessQuestion[] {
   const shuffledTargets = shuffleArray(targetTalents)
 
   return shuffledTargets.map((talent) => {
@@ -23,12 +23,12 @@ export function generateNameGuessQuestions(
     const correctIndex = allChoices.findIndex((t) => t.id === talent.id)
 
     return {
-      typeId: 'name-guess',
+      typeId: 'face-guess' as const,
       difficulty,
       talentId: talent.id,
       talentName: talent.name,
-      talentImagePath: getTalentImagePath(talent),
-      answers: allChoices.map((t) => t.name),
+      answerImages: allChoices.map((t) => getTalentImagePath(t)),
+      answerNames: allChoices.map((t) => t.name),
       correctIndex,
       isSilhouette: difficulty === 3,
     }
