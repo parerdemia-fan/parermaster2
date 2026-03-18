@@ -52,11 +52,27 @@ export function SettingScreen() {
 
     if (filtered.length < 4) return
 
-    // 同世代全員を選択肢プールとして使う
-    const pool = talents.filter((t) => t.generation === gen)
-    const nameQuestions = generateNameGuessQuestions(filtered, pool, difficulty)
-    const faceQuestions = generateFaceGuessQuestions(filtered, pool, difficulty)
-    const questions = shuffleArray([...nameQuestions, ...faceQuestions])
+    // 選択肢プールは出題範囲と同じ
+    const pool = filtered
+
+    // タレントをシャッフルして問題タイプごとに均等分割
+    const shuffled = shuffleArray(filtered)
+    const typeGenerators = [
+      { generate: generateNameGuessQuestions },
+      { generate: generateFaceGuessQuestions },
+    ]
+    const totalTypes = typeGenerators.length
+    const baseCount = Math.floor(shuffled.length / totalTypes)
+    const remainder = shuffled.length % totalTypes
+
+    const questions = []
+    let offset = 0
+    for (let i = 0; i < totalTypes; i++) {
+      const count = baseCount + (i < remainder ? 1 : 0)
+      const slice = shuffled.slice(offset, offset + count)
+      offset += count
+      questions.push(...typeGenerators[i].generate(slice, pool, difficulty))
+    }
 
     startQuiz(questions)
     goToQuiz()
