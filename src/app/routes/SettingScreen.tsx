@@ -4,6 +4,7 @@ import { useGameStore } from '../../stores/gameStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
+import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -60,6 +61,7 @@ export function SettingScreen() {
     const typeGenerators = [
       { generate: generateNameGuessQuestions },
       { generate: generateFaceGuessQuestions },
+      { generate: generateNameBuildQuestions },
     ]
     const totalTypes = typeGenerators.length
     const baseCount = Math.floor(shuffled.length / totalTypes)

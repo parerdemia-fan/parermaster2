@@ -4,6 +4,8 @@ import { NameGuessLayout } from '../../features/question-types/name-guess/NameGu
 import type { NameGuessQuestion } from '../../features/question-types/name-guess/types.ts'
 import { FaceGuessLayout } from '../../features/question-types/face-guess/FaceGuessLayout.tsx'
 import type { FaceGuessQuestion } from '../../features/question-types/face-guess/types.ts'
+import { NameBuildLayout } from '../../features/question-types/name-build/NameBuildLayout.tsx'
+import type { NameBuildQuestion } from '../../features/question-types/name-build/types.ts'
 
 export function QuizScreen() {
   const { questions, currentIndex, quizState, correctCount, recordAnswer, nextQuestion, isLastQuestion } = useGameStore()
@@ -68,6 +70,13 @@ export function QuizScreen() {
       {current.typeId === 'face-guess' && (
         <FaceGuessLayout
           question={current as FaceGuessQuestion}
+          isAnswered={isAnswered}
+          onAnswer={recordAnswer}
+        />
+      )}
+      {current.typeId === 'name-build' && (
+        <NameBuildLayout
+          question={current as NameBuildQuestion}
           isAnswered={isAnswered}
           onAnswer={recordAnswer}
         />
