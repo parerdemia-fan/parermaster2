@@ -9,13 +9,16 @@ const BASE = import.meta.env.BASE_URL
 interface TextQuizLayoutProps {
   question: TextQuizQuestion
   isAnswered: boolean
-  onAnswer: (isCorrect: boolean) => void
+  onAnswer: (isCorrect: boolean, selectedIndex: number) => void
+  /** 戻って閲覧する際の選択済みインデックス */
+  restoredSelectedIndex?: number
 }
 
 export function TextQuizLayout({
   question,
   isAnswered,
   onAnswer,
+  restoredSelectedIndex,
 }: TextQuizLayoutProps) {
   return (
     <TextQuizLayoutInner
@@ -23,6 +26,7 @@ export function TextQuizLayout({
       question={question}
       isAnswered={isAnswered}
       onAnswer={onAnswer}
+      restoredSelectedIndex={restoredSelectedIndex}
     />
   )
 }
@@ -31,14 +35,15 @@ function TextQuizLayoutInner({
   question,
   isAnswered,
   onAnswer,
+  restoredSelectedIndex,
 }: TextQuizLayoutProps) {
-  const [selected, setSelected] = useState<number | null>(null)
+  const [selected, setSelected] = useState<number | null>(restoredSelectedIndex ?? null)
   const { talents } = useTalents()
 
   const handleSelect = (index: number) => {
     if (isAnswered) return
     setSelected(index)
-    onAnswer(index === question.correctIndex)
+    onAnswer(index === question.correctIndex, index)
   }
 
   const isCorrect = selected !== null && selected === question.correctIndex
@@ -128,7 +133,7 @@ function TextQuizLayoutInner({
       )}
 
       {/* 解説 */}
-      {isAnswered && (question.comment || question.commentImage) && (
+      {isAnswered && (question.comment || question.commentImage || question.sourceUrl) && (
         <div
           className="w-full flex flex-col items-center"
           style={{
@@ -163,6 +168,17 @@ function TextQuizLayoutInner({
             {/* 解説文は回答後のみ表示されるため常に showIcon=true */}
             {parseTextWithTalentIcons(question.comment, talents, true)}
           </span>
+          {question.sourceUrl && (
+            <a
+              href={question.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 underline inline-flex items-center gap-1"
+              style={{ fontSize: '2.2cqmin', color: '#500' }}
+            >
+              📎 情報源: {getSourceSiteName(question.sourceUrl)}
+            </a>
+          )}
         </div>
       )}
     </div>
@@ -364,4 +380,19 @@ function TalentGridChoices({
       })}
     </div>
   )
+}
+
+/* ── URLからサイト名を取得 ── */
+
+function getSourceSiteName(url: string): string {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase()
+    if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) return 'YouTube'
+    if (hostname.includes('x.com') || hostname.includes('twitter.com')) return 'X'
+    if (hostname.includes('tiktok.com')) return 'TikTok'
+    if (hostname.includes('parerdemia.jp')) return 'パレデミア学園公式サイト'
+    return hostname
+  } catch {
+    return url
+  }
 }

@@ -10,7 +10,7 @@ import { TextQuizLayout } from '../../features/question-types/text-quiz/TextQuiz
 import type { TextQuizQuestion } from '../../features/question-types/text-quiz/types.ts'
 
 export function QuizScreen() {
-  const { questions, currentIndex, quizState, correctCount, recordAnswer, nextQuestion, isLastQuestion } = useGameStore()
+  const { questions, currentIndex, quizState, correctCount, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion } = useGameStore()
   const { goToResult, goToTitle } = useSettingsStore()
 
   const current = questions[currentIndex]
@@ -18,6 +18,8 @@ export function QuizScreen() {
 
   const isAnswered = quizState === 'answered'
   const total = questions.length
+  const isTextQuiz = current.typeId === 'text-quiz'
+  const canGoBack = isTextQuiz && currentIndex > 0
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -87,17 +89,35 @@ export function QuizScreen() {
         <TextQuizLayout
           question={current as TextQuizQuestion}
           isAnswered={isAnswered}
-          onAnswer={recordAnswer}
+          onAnswer={(isCorrect, selectedIndex) => recordAnswer(isCorrect, selectedIndex)}
+          restoredSelectedIndex={answerRecords[currentIndex]?.selectedIndex}
         />
       )}
 
-      {/* フッター: 次へボタン（回答後のみ） */}
-      {isAnswered && (
+      {/* フッター: 戻る/次へボタン */}
+      {(isAnswered || canGoBack) && (
         <div
-          className="w-full flex justify-center"
-          style={{ padding: '2cqmin 0 3cqmin' }}
+          className="w-full flex justify-center items-center"
+          style={{ padding: '2cqmin 0 3cqmin', gap: '3cqmin' }}
         >
-          <button
+          {canGoBack && (
+            <button
+              className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+              style={{
+                fontSize: '3cqmin',
+                padding: '1.2cqmin 3cqmin',
+                borderRadius: '5cqmin',
+                border: 'none',
+                background: 'rgba(255,255,255,0.7)',
+                color: '#777',
+                boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+              }}
+              onClick={prevQuestion}
+            >
+              ← 前へ
+            </button>
+          )}
+          {isAnswered && <button
             className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
             style={{
               fontSize: '4cqmin',
@@ -119,7 +139,7 @@ export function QuizScreen() {
             }}
           >
             {isLastQuestion() ? '結果を見る' : '次へ →'}
-          </button>
+          </button>}
         </div>
       )}
     </div>

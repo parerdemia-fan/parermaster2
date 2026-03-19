@@ -13,8 +13,9 @@ interface GameState {
 
 interface GameActions {
   startQuiz: (questions: BaseQuestion[]) => void
-  recordAnswer: (isCorrect: boolean) => void
+  recordAnswer: (isCorrect: boolean, selectedIndex?: number) => void
   nextQuestion: () => void
+  prevQuestion: () => void
   isLastQuestion: () => boolean
 }
 
@@ -34,10 +35,10 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
       answerRecords: [],
     }),
 
-  recordAnswer: (isCorrect) => {
+  recordAnswer: (isCorrect, selectedIndex) => {
     const { currentIndex, correctCount, answerRecords } = get()
     const newRecords = [...answerRecords]
-    newRecords[currentIndex] = { isCorrect }
+    newRecords[currentIndex] = { isCorrect, selectedIndex }
 
     set({
       quizState: 'answered',
@@ -47,12 +48,23 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   },
 
   nextQuestion: () => {
-    const { currentIndex, questions } = get()
+    const { currentIndex, questions, answerRecords } = get()
     if (currentIndex >= questions.length - 1) return
 
+    const nextIndex = currentIndex + 1
     set({
-      currentIndex: currentIndex + 1,
-      quizState: 'answering',
+      currentIndex: nextIndex,
+      quizState: answerRecords[nextIndex] ? 'answered' : 'answering',
+    })
+  },
+
+  prevQuestion: () => {
+    const { currentIndex } = get()
+    if (currentIndex <= 0) return
+
+    set({
+      currentIndex: currentIndex - 1,
+      quizState: 'answered',
     })
   },
 
