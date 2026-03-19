@@ -63,9 +63,13 @@
 | ハードコードされたカテゴリ | SettingScreenに各ステージのカテゴリが直書き | ゲームモード変更のたびにUI修正 |
 | ハードコードされたアチーブメント | 26個のアチーブメントがストア内にべた書き | 追加・変更が困難 |
 
-### 改善: プラグイン的問題タイプシステム
+### 改善: 問題タイプのディレクトリ分離
 
 問題タイプをディレクトリ単位で分離し、追加・変更を容易にする。
+
+> **検討の結果不採用とした構想:**
+> - **プラグインレジストリシステム**（registry.ts + registerQuestionType）: 問題タイプが最大8つで爆発的に増えないこと、各レイアウトのpropsが微妙に異なること（TextQuizLayoutのrestoredSelectedIndex等）から、統一インターフェースに押し込む複雑さに見合わない。QuizScreen.tsx での typeId 分岐で十分。
+> - **QuizLayout.tsx への共通レイアウト分離**: QuizScreen.tsx が148行と小さく、フッターに問題タイプ固有ロジック（知識クイズの「戻る」ボタン等）が含まれるため、分離のメリットが薄い。
 
 **ディレクトリ構成:**
 ```
@@ -76,84 +80,45 @@ src/
 │   └── routes/                  # 画面コンポーネント
 │       ├── TitleScreen.tsx
 │       ├── SettingScreen.tsx
-│       ├── QuizScreen.tsx       # 薄いラッパー（問題タイプに応じてプラグインを呼ぶだけ）
+│       ├── QuizScreen.tsx       # ヘッダー・フッター・typeId分岐を直接管理
 │       ├── ResultScreen.tsx
+│       ├── TalentListScreen.tsx # タレント一覧+詳細（1画面で左右分割）
+│       ├── DiaryScreen.tsx
 │       └── ...
 │
 ├── features/                    # 機能単位のモジュール
 │   ├── quiz/                    # クイズ共通ロジック
-│   │   ├── types.ts             # QuestionTypePlugin インターフェース等
-│   │   ├── registry.ts          # 問題タイプレジストリ
-│   │   ├── QuizLayout.tsx       # 共通レイアウト（ヘッダー・フッター・進行制御）
-│   │   └── hooks/
-│   │       └── useQuiz.ts       # クイズ進行ロジック
+│   │   └── types.ts             # BaseQuestion, AnswerRecord
 │   │
 │   ├── question-types/          # 各問題タイプが独立ディレクトリ
 │   │   ├── face-guess/          # 問題タイプ1: 顔当て
-│   │   │   ├── index.ts         # プラグイン登録（エントリポイント）
 │   │   │   ├── FaceGuessLayout.tsx
-│   │   │   └── generator.ts     # 問題生成ロジック
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
 │   │   │
 │   │   ├── name-guess/          # 問題タイプ2: 名前当て
-│   │   │   ├── index.ts
 │   │   │   ├── NameGuessLayout.tsx
-│   │   │   └── generator.ts
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
 │   │   │
 │   │   ├── name-build/          # 問題タイプ3: 名前を作ろう
-│   │   │   ├── index.ts
 │   │   │   ├── NameBuildLayout.tsx
-│   │   │   └── generator.ts
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
 │   │   │
-│   │   ├── profile-guess/       # 問題タイプ5: プロフィール→顔当て（TA専用）
-│   │   │   ├── index.ts
-│   │   │   ├── ProfileGuessLayout.tsx
-│   │   │   └── generator.ts
-│   │   │
-│   │   ├── name-search/         # 問題タイプ6: 名前はどこ？（TA専用）
-│   │   │   ├── index.ts
-│   │   │   ├── NameSearchLayout.tsx
-│   │   │   └── generator.ts
-│   │   │
-│   │   ├── spotlight/           # 問題タイプ7: スポットライト（TA専用）
-│   │   │   ├── index.ts
-│   │   │   ├── SpotlightLayout.tsx
-│   │   │   └── generator.ts
-│   │   │
-│   │   ├── blur/                # 問題タイプ8: ぼかし（TA専用）
-│   │   │   ├── index.ts
-│   │   │   ├── BlurLayout.tsx
-│   │   │   └── generator.ts
-│   │   │
-│   │   └── text-quiz/           # 問題タイプ4: テキストクイズ（通常モードでは知識クイズモードとして独立出題）
-│   │       ├── index.ts
+│   │   └── text-quiz/           # 問題タイプ4: テキストクイズ
 │   │       ├── TextQuizLayout.tsx
-│   │       └── generator.ts
+│   │       ├── generator.ts
+│   │       └── types.ts
 │   │
-│   ├── time-attack/             # タイムアタック
-│   │   ├── index.ts
-│   │   ├── TimeAttackScreen.tsx
-│   │   └── hooks/
-│   │
-│   ├── achievements/            # アチーブメント
-│   │   ├── definitions.ts       # データ駆動のアチーブメント定義
-│   │   ├── hooks/
-│   │   └── AchievementScreen.tsx
-│   │
-│   └── talents/                 # タレント関連
-│       ├── TalentListScreen.tsx
-│       ├── TalentDetailScreen.tsx
-│       └── hooks/
+│   └── ...                      # 将来: time-attack/, achievements/ 等
 │
 ├── stores/                      # Zustand ストア（機能ごとに分割）
-│   ├── gameStore.ts             # ゲーム進行状態（薄く保つ）
-│   ├── settingsStore.ts         # 設定・永続化
-│   └── achievementStore.ts      # アチーブメント状態
+│   ├── gameStore.ts             # ゲーム進行状態
+│   └── settingsStore.ts         # 画面遷移・ゲーム設定
 │
 ├── shared/                      # 共有ユーティリティ・コンポーネント
 │   ├── components/
-│   │   ├── ThreePatchButton.tsx
-│   │   ├── Panel.tsx
-│   │   └── ...
 │   ├── hooks/
 │   ├── utils/
 │   └── types/
@@ -161,61 +126,11 @@ src/
 └── assets/
 ```
 
-**問題タイププラグインのインターフェース:**
-```typescript
-interface QuestionTypePlugin {
-  /** 一意な識別子 */
-  id: string
-  /** 表示名（設定画面用） */
-  displayName: string
-  /** 問題生成 */
-  generate(context: GeneratorContext): ProcessedQuestion[]
-  /** 出題UIコンポーネント */
-  layoutComponent: React.ComponentType<QuestionLayoutProps>
-  /** タイムアタックで使用するか */
-  availableInTimeAttack: boolean
-}
-```
-
-**問題タイプレジストリ:**
-```typescript
-// registry.ts
-const questionTypeRegistry = new Map<string, QuestionTypePlugin>()
-
-export function registerQuestionType(plugin: QuestionTypePlugin) {
-  questionTypeRegistry.set(plugin.id, plugin)
-}
-
-export function getQuestionType(id: string): QuestionTypePlugin { ... }
-export function getAllQuestionTypes(): QuestionTypePlugin[] { ... }
-```
-
-**各問題タイプのエントリポイント（例: face-guess/index.ts）:**
-```typescript
-import { registerQuestionType } from '../../quiz/registry'
-import { FaceGuessLayout } from './FaceGuessLayout'
-import { generateFaceGuessQuestions } from './generator'
-
-registerQuestionType({
-  id: 'face-guess',
-  displayName: '顔当て',
-  generate: generateFaceGuessQuestions,
-  layoutComponent: FaceGuessLayout,
-  availableInTimeAttack: true,
-})
-```
-
-**QuizScreenは薄いラッパーになる:**
-```typescript
-// QuizScreen.tsx（概念）
-const plugin = getQuestionType(currentQuestion.typeId)
-const Layout = plugin.layoutComponent
-return (
-  <QuizLayout header={...} footer={...}>
-    <Layout question={currentQuestion} onAnswer={handleAnswer} />
-  </QuizLayout>
-)
-```
+**問題タイプの追加手順:**
+1. `features/question-types/<type-name>/types.ts` — BaseQuestion を拡張した型を定義
+2. `features/question-types/<type-name>/generator.ts` — 問題生成ロジック
+3. `features/question-types/<type-name>/<TypeName>Layout.tsx` — 出題UI・選択状態管理・正誤判定
+4. `QuizScreen.tsx` に typeId の分岐を追加
 
 ### 改善: ストアの分割
 
