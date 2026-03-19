@@ -23,7 +23,10 @@ const OUTPUT_DIR = resolve(__dirname, '..', 'public', 'data')
 // =============================================================================
 
 interface SyncConfig {
-  spreadsheetId: string
+  /** プロフィール用スプレッドシートID（タレント・受賞歴） */
+  profileSpreadsheetId: string
+  /** 問題用スプレッドシートID（知識問題・選択肢セット） */
+  questionSpreadsheetId: string
   credentialsPath: string
   sheets: {
     /** シート名 → 世代番号 のマッピング（例: { "1期生": 1, "2期生": 2 }） */
@@ -62,9 +65,9 @@ const sheetsApi = google.sheets({ version: 'v4', auth })
 
 type RawRow = Record<string, string>
 
-async function fetchSheet(sheetName: string): Promise<RawRow[]> {
+async function fetchSheet(spreadsheetId: string, sheetName: string): Promise<RawRow[]> {
   const response = await sheetsApi.spreadsheets.values.get({
-    spreadsheetId: config.spreadsheetId,
+    spreadsheetId,
     range: `'${sheetName}'!A:ZZ`,
   })
 
@@ -288,7 +291,7 @@ async function main() {
 
   for (const [sheetName, generation] of Object.entries(config.sheets.talents)) {
     console.log(`[${sheetName}] シートを取得中...`)
-    const rows = await fetchSheet(sheetName)
+    const rows = await fetchSheet(config.profileSpreadsheetId, sheetName)
 
     let skipped = 0
     for (const row of rows) {
@@ -314,7 +317,7 @@ async function main() {
 
   // --- 受賞歴 ---
   console.log(`[${config.sheets.awards}] シートを取得中...`)
-  const awardRows = await fetchSheet(config.sheets.awards)
+  const awardRows = await fetchSheet(config.profileSpreadsheetId, config.sheets.awards)
   const allAwards = awardRows.map((row, i) => transformAward(row, i, nameToId))
   // タレントが見つからない（退学者）の受賞歴は除外
   const awards = allAwards.filter(a => a.talentId)
@@ -331,7 +334,7 @@ async function main() {
   // fetchSheet（ヘッダーをキーにする）では最後の1つしか取れない。生データから直接処理する。
   console.log(`[${config.sheets.answerSets}] シートを取得中...`)
   const answerSetsRaw = await sheetsApi.spreadsheets.values.get({
-    spreadsheetId: config.spreadsheetId,
+    spreadsheetId: config.questionSpreadsheetId,
     range: `'${config.sheets.answerSets}'!A:ZZ`,
   })
   const answerSets: Record<string, string[]> = {}
@@ -356,7 +359,7 @@ async function main() {
 
   // --- 知識問題 ---
   console.log(`[${config.sheets.questions}] シートを取得中...`)
-  const questionRows = await fetchSheet(config.sheets.questions)
+  const questionRows = await fetchSheet(config.questionSpreadsheetId, config.sheets.questions)
   const questions = questionRows.map((row, i) =>
     transformQuestion(row, i, nameToGeneration),
   )

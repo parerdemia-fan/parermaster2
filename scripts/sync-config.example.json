@@ -1,5 +1,6 @@
 {
-  "spreadsheetId": "YOUR_SPREADSHEET_ID",
+  "profileSpreadsheetId": "YOUR_PROFILE_SPREADSHEET_ID",
+  "questionSpreadsheetId": "YOUR_QUESTION_SPREADSHEET_ID",
   "credentialsPath": "secrets/service-account-key.json",
   "sheets": {
     "talents": {
