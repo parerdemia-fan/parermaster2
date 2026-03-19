@@ -5,6 +5,8 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
+import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
+import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -22,7 +24,9 @@ export function SettingScreen() {
     goToTitle, goToQuiz, setGameMode, setScope, setDifficulty, setPlayerName,
   } = useSettingsStore()
   const startQuiz = useGameStore((s) => s.startQuiz)
-  const { talents, loading } = useTalents()
+  const { talents, loading: talentsLoading } = useTalents()
+  const { questions: questionPool, answerSets, loading: questionsLoading } = useQuestions()
+  const loading = talentsLoading || questionsLoading
 
   const genLabel = generation === 'gen2' ? '2期生' : '1期生'
   const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
@@ -47,16 +51,28 @@ export function SettingScreen() {
     if (loading || talents.length === 0) return
 
     const gen = generation === 'gen2' ? 2 : 1
+
+    if (gameMode === 'knowledge') {
+      // 知識クイズモード
+      const maxDifficulty = difficulty === 1 ? 2 : difficulty === 2 ? 4 : 8
+      const pool = questionPool.filter(
+        (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === gen),
+      )
+      if (pool.length === 0) return
+      const questions = generateTextQuizQuestions(pool, 30, difficulty, talents, answerSets)
+      startQuiz(questions)
+      goToQuiz()
+      return
+    }
+
+    // 顔名前当てモード
     const filtered = scope === 'all'
       ? talents.filter((t) => t.generation === gen)
       : talents.filter((t) => t.generation === gen && t.dormitory === scope)
 
     if (filtered.length < 4) return
 
-    // 選択肢プールは出題範囲と同じ
     const pool = filtered
-
-    // タレントをシャッフルして問題タイプごとに均等分割
     const shuffled = shuffleArray(filtered)
     const typeGenerators = [
       { generate: generateNameGuessQuestions },
