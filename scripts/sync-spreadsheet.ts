@@ -247,10 +247,8 @@ function transformAward(row: RawRow, index: number, nameToId: Map<string, string
 function transformQuestion(
   row: RawRow,
   index: number,
-  nameToGeneration: Map<string, number>,
 ) {
-  const talentName = row['タレント'] || ''
-  const generation = talentName ? (nameToGeneration.get(talentName) ?? 0) : 0
+  const generation = toNum(row['世代'])
 
   const { text: question, image: questionImage } = extractImage(row['問題文'] || '')
   const { text: comment, image: commentImage } = extractImage(row['回答後コメント'] || '')
@@ -287,7 +285,6 @@ async function main() {
   // --- タレント ---
   const allTalents: ReturnType<typeof transformTalent>[] = []
   const nameToId = new Map<string, string>()
-  const nameToGeneration = new Map<string, number>()
 
   for (const [sheetName, generation] of Object.entries(config.sheets.talents)) {
     console.log(`[${sheetName}] シートを取得中...`)
@@ -302,7 +299,6 @@ async function main() {
       const talent = transformTalent(row, generation)
       allTalents.push(talent)
       nameToId.set(row['name'], talent.id)
-      nameToGeneration.set(row['name'], generation)
     }
 
     const count = rows.length - skipped
@@ -361,7 +357,7 @@ async function main() {
   console.log(`[${config.sheets.questions}] シートを取得中...`)
   const questionRows = await fetchSheet(config.questionSpreadsheetId, config.sheets.questions)
   const questions = questionRows.map((row, i) =>
-    transformQuestion(row, i, nameToGeneration),
+    transformQuestion(row, i),
   )
 
   writeFileSync(
