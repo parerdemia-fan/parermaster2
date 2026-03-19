@@ -1,3 +1,13 @@
+export interface TalentLink {
+  type: string
+  url: string
+}
+
+export interface TalentHashtag {
+  tag: string
+  usage: string
+}
+
 export interface Talent {
   id: string
   generation: number
@@ -8,6 +18,25 @@ export interface Talent {
   givenName: string
   familyKana: string
   givenKana: string
+  nickname: string
+  firstPerson: string
+  intro: string
+  dream: string
+  birthday: string
+  height: number
+  bloodType: string
+  hairColor: string
+  hairStyle: string
+  eyeColorLeft: string
+  eyeColorRight: string
+  mbti: string
+  fanName: string
+  fanMark: string
+  hashtags: TalentHashtag[]
+  hobbies: string[]
+  skills: string[]
+  favorites: string[]
+  links: TalentLink[]
 }
 
 export interface TalentsJson {

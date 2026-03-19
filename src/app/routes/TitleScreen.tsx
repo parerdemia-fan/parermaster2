@@ -5,6 +5,7 @@ const BASE = import.meta.env.BASE_URL
 export function TitleScreen() {
   const goToSetting = useSettingsStore((s) => s.goToSetting)
   const goToDiary = useSettingsStore((s) => s.goToDiary)
+  const goToTalents = useSettingsStore((s) => s.goToTalents)
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -150,6 +151,7 @@ export function TitleScreen() {
         <button
           className="cursor-pointer transition-transform active:scale-95"
           style={{ background: 'none', border: 'none', padding: 0, width: '9cqmin' }}
+          onClick={goToTalents}
         >
           <img
             src={`${BASE}data/images/ui/btn_talents.png`}
