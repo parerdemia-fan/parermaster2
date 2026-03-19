@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { Talent } from '../../../shared/types/talent.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { getTalentImagePath } from '../../../shared/utils/talent.ts'
 import { parseTextWithTalentIcons } from '../../../shared/utils/talentIconParser.tsx'
@@ -118,6 +119,7 @@ function TextQuizLayoutInner({
         <TalentGridChoices
           question={question}
           talentIds={question.answerTalentIds}
+          talents={talents}
           isAnswered={isAnswered}
           selected={selected}
           showIcon={showIconInQuestion}
@@ -257,6 +259,7 @@ function TextChoices({
 function TalentGridChoices({
   question,
   talentIds,
+  talents,
   isAnswered,
   selected,
   showIcon,
@@ -264,12 +267,12 @@ function TalentGridChoices({
 }: {
   question: TextQuizQuestion
   talentIds: string[]
+  talents: Talent[]
   isAnswered: boolean
   selected: number | null
   showIcon: boolean
   onSelect: (i: number) => void
 }) {
-  const { talents } = useTalents()
 
   return (
     <div

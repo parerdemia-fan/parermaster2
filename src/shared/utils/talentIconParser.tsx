@@ -5,6 +5,31 @@
 import type { Talent } from '../types/talent.ts'
 import { getTalentImagePath } from './talent.ts'
 
+// talents 参照が変わらない限りキャッシュを再利用する
+let cachedTalentsRef: Talent[] | null = null
+let cachedPattern: RegExp | null = null
+let cachedNameToTalent: Map<string, Talent> | null = null
+
+function ensureCache(talents: Talent[]) {
+  if (cachedTalentsRef === talents) return
+  cachedTalentsRef = talents
+
+  const entries = talents
+    .flatMap((t) => {
+      const noSpace = t.name.replace(/\s/g, '')
+      return noSpace !== t.name
+        ? [{ name: t.name, talent: t }, { name: noSpace, talent: t }]
+        : [{ name: t.name, talent: t }]
+    })
+    .sort((a, b) => b.name.length - a.name.length)
+
+  const escapedNames = entries.map((e) =>
+    e.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+  )
+  cachedPattern = new RegExp(`(${escapedNames.join('|')})`, 'g')
+  cachedNameToTalent = new Map(entries.map((e) => [e.name, e.talent]))
+}
+
 /**
  * テキスト中のタレント名にインラインアイコンを付与した React ノード配列を返す
  * @param text 変換対象テキスト
@@ -20,24 +45,12 @@ export function parseTextWithTalentIcons(
     return [text]
   }
 
-  // タレント名→Talent のマップ（長い名前順でマッチさせるためソート）
-  const entries = talents
-    .flatMap((t) => {
-      const noSpace = t.name.replace(/\s/g, '')
-      return noSpace !== t.name
-        ? [{ name: t.name, talent: t }, { name: noSpace, talent: t }]
-        : [{ name: t.name, talent: t }]
-    })
-    .sort((a, b) => b.name.length - a.name.length)
+  ensureCache(talents)
+  const pattern = cachedPattern!
+  const nameToTalent = cachedNameToTalent!
 
-  // 正規表現を構築
-  const escapedNames = entries.map((e) =>
-    e.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
-  )
-  const pattern = new RegExp(`(${escapedNames.join('|')})`, 'g')
-
-  // name → Talent のルックアップ
-  const nameToTalent = new Map(entries.map((e) => [e.name, e.talent]))
+  // RegExp は stateful（lastIndex）なのでリセット
+  pattern.lastIndex = 0
 
   const parts: React.ReactNode[] = []
   let lastIndex = 0

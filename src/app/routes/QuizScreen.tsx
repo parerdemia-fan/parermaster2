@@ -89,7 +89,7 @@ export function QuizScreen() {
         <TextQuizLayout
           question={current as TextQuizQuestion}
           isAnswered={isAnswered}
-          onAnswer={(isCorrect, selectedIndex) => recordAnswer(isCorrect, selectedIndex)}
+          onAnswer={recordAnswer}
           restoredSelectedIndex={answerRecords[currentIndex]?.selectedIndex}
         />
       )}
