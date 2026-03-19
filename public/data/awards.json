@@ -1113,6 +1113,41 @@
       "eventName": "新髪型イベント",
       "result": "5位",
       "talentId": "25CO014"
+    },
+    {
+      "id": "a172",
+      "eventDate": "202603",
+      "eventName": "歌ってみた制作イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a173",
+      "eventDate": "202603",
+      "eventName": "歌ってみた制作イベント",
+      "result": "2位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a174",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "1位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a175",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "2位",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a176",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "3位",
+      "talentId": "25CO014"
     }
   ]
 }
