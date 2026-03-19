@@ -1,11 +1,30 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useDiary } from '../../shared/hooks/useDiary.ts'
+
+const backButtonStyle: React.CSSProperties = {
+  fontSize: '3cqmin',
+  padding: '0.8cqmin 1.5cqmin',
+  borderRadius: '2cqmin',
+  border: 'none',
+  background: 'rgba(255,255,255,0.6)',
+  color: '#555',
+}
+
+const navButtonStyle: React.CSSProperties = {
+  fontSize: '2.5cqmin',
+  padding: '0.5cqmin 1.5cqmin',
+  borderRadius: '1.5cqmin',
+  border: 'none',
+  background: 'rgba(255,255,255,0.4)',
+  color: '#777',
+}
 
 export function DiaryScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const { entries, loading } = useDiary()
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const reversedEntries = useMemo(() => [...entries].reverse(), [entries])
 
   if (loading) {
     return (
@@ -18,6 +37,7 @@ export function DiaryScreen() {
   // エントリ詳細表示
   if (selectedIndex !== null) {
     const entry = entries[selectedIndex]
+    if (!entry) return null
     return (
       <div className="relative w-full h-full flex flex-col overflow-hidden animate-fade-in">
         {/* ヘッダー */}
@@ -27,14 +47,7 @@ export function DiaryScreen() {
         >
           <button
             className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
-            style={{
-              fontSize: '3cqmin',
-              padding: '0.8cqmin 1.5cqmin',
-              borderRadius: '2cqmin',
-              border: 'none',
-              background: 'rgba(255,255,255,0.6)',
-              color: '#555',
-            }}
+            style={backButtonStyle}
             onClick={() => setSelectedIndex(null)}
           >
             ◀ 一覧
@@ -43,14 +56,7 @@ export function DiaryScreen() {
             {selectedIndex > 0 && (
               <button
                 className="cursor-pointer transition active:scale-95"
-                style={{
-                  fontSize: '2.5cqmin',
-                  padding: '0.5cqmin 1.5cqmin',
-                  borderRadius: '1.5cqmin',
-                  border: 'none',
-                  background: 'rgba(255,255,255,0.4)',
-                  color: '#777',
-                }}
+                style={navButtonStyle}
                 onClick={() => setSelectedIndex(selectedIndex - 1)}
               >
                 ← 前
@@ -59,14 +65,7 @@ export function DiaryScreen() {
             {selectedIndex < entries.length - 1 && (
               <button
                 className="cursor-pointer transition active:scale-95"
-                style={{
-                  fontSize: '2.5cqmin',
-                  padding: '0.5cqmin 1.5cqmin',
-                  borderRadius: '1.5cqmin',
-                  border: 'none',
-                  background: 'rgba(255,255,255,0.4)',
-                  color: '#777',
-                }}
+                style={navButtonStyle}
                 onClick={() => setSelectedIndex(selectedIndex + 1)}
               >
                 次 →
@@ -125,14 +124,7 @@ export function DiaryScreen() {
       >
         <button
           className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
-          style={{
-            fontSize: '3cqmin',
-            padding: '0.8cqmin 1.5cqmin',
-            borderRadius: '2cqmin',
-            border: 'none',
-            background: 'rgba(255,255,255,0.6)',
-            color: '#555',
-          }}
+          style={backButtonStyle}
           onClick={goToTitle}
         >
           ◀ 戻る
@@ -152,40 +144,38 @@ export function DiaryScreen() {
 
       {/* エントリ一覧 */}
       <div
-        className="flex-1 overflow-y-auto"
-        style={{ padding: '2cqmin 4cqmin 3cqmin' }}
+        className="flex-1 overflow-y-auto flex flex-col"
+        style={{ padding: '2cqmin 4cqmin 3cqmin', gap: '2cqmin' }}
       >
-        <div className="flex flex-col" style={{ gap: '2cqmin' }}>
-          {[...entries].reverse().map((entry, i) => {
-            const originalIndex = entries.length - 1 - i
-            return (
-              <button
-                key={originalIndex}
-                className="text-left cursor-pointer transition hover:brightness-105 active:scale-99"
-                style={{
-                  background: 'rgba(255,255,255,0.55)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  borderRadius: '2cqmin',
-                  padding: '2cqmin 3cqmin',
-                  border: 'none',
-                  boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.08)',
-                }}
-                onClick={() => setSelectedIndex(originalIndex)}
+        {reversedEntries.map((entry, i) => {
+          const originalIndex = entries.length - 1 - i
+          return (
+            <button
+              key={originalIndex}
+              className="text-left cursor-pointer transition hover:brightness-105 active:scale-99"
+              style={{
+                background: 'rgba(255,255,255,0.55)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                borderRadius: '2cqmin',
+                padding: '2cqmin 3cqmin',
+                border: 'none',
+                boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.08)',
+              }}
+              onClick={() => setSelectedIndex(originalIndex)}
+            >
+              <div style={{ fontSize: '2.2cqmin', color: '#999' }}>
+                {entry.date}
+              </div>
+              <div
+                className="font-bold"
+                style={{ fontSize: '3cqmin', color: '#333', marginTop: '0.5cqmin' }}
               >
-                <div style={{ fontSize: '2.2cqmin', color: '#999' }}>
-                  {entry.date}
-                </div>
-                <div
-                  className="font-bold"
-                  style={{ fontSize: '3cqmin', color: '#333', marginTop: '0.5cqmin' }}
-                >
-                  {entry.title}
-                </div>
-              </button>
-            )
-          })}
-        </div>
+                {entry.title}
+              </div>
+            </button>
+          )
+        })}
       </div>
     </div>
   )
