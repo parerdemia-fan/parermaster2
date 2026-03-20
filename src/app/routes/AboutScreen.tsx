@@ -162,10 +162,7 @@ export function AboutScreen() {
 
         {/* バージョン */}
         <Section title="バージョン">
-          <p style={{ marginBottom: '1.5cqmin' }}>{version || '読み込み中...'}</p>
-          <LinkButton onClick={() => window.location.reload()}>
-            リロードして最新版にする
-          </LinkButton>
+          <p>{version || '読み込み中...'}</p>
         </Section>
       </div>
     </div>
