@@ -1,3 +1,4 @@
+import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import type { NameGuessQuestion } from './types.ts'
 
 interface NameGuessLayoutProps {
@@ -65,6 +66,10 @@ function NameGuessLayoutInner({
             borderRadius: '3cqmin',
             border: '0.4cqmin solid rgba(255,255,255,0.8)',
             boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.2)',
+            filter: question.isSilhouette && !isAnswered
+              ? SILHOUETTE_FILTER
+              : undefined,
+            transition: 'filter 0.3s',
           }}
           draggable={false}
         />

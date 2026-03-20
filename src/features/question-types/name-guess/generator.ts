@@ -18,10 +18,11 @@ export function generateNameGuessQuestions(
 
   return shuffledTargets.map((talent) => {
     const others =
-      difficulty >= 2
-        ? selectSimilarDistractors(talent, pool, 3)
-        : shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
-    // TODO: ★★★では出題画像がシルエット + 似た髪型優先
+      difficulty === 3
+        ? selectSimilarDistractors(talent, pool, 3, 'style')
+        : difficulty >= 2
+          ? selectSimilarDistractors(talent, pool, 3)
+          : shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
     const allChoices = shuffleArray([talent, ...others])
     const correctIndex = allChoices.findIndex((t) => t.id === talent.id)
 

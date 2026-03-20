@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import type { FaceGuessQuestion } from './types.ts'
 
 interface FaceGuessLayoutProps {
@@ -124,6 +125,10 @@ function FaceGuessLayoutInner({
                   aspectRatio: '1',
                   objectFit: 'cover',
                   display: 'block',
+                  filter: question.isSilhouette && !isAnswered
+                    ? SILHOUETTE_FILTER
+                    : undefined,
+                  transition: 'filter 0.3s',
                 }}
                 draggable={false}
               />

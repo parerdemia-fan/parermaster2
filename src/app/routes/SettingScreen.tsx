@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
-import { useSettingsStore, type DormId } from '../../stores/settingsStore.ts'
+import { useSettingsStore, type DormId, type Scope, type GameMode } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
+import type { Talent } from '../../shared/types/talent.ts'
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
@@ -10,6 +11,7 @@ import { generateTextQuizQuestions } from '../../features/question-types/text-qu
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 import { toSlotId } from '../../features/achievement/constants.ts'
+import type { BadgeSlotId } from '../../features/achievement/types.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -54,6 +56,21 @@ export function SettingScreen() {
   // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
   const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, generation, scope))
 
+  // 設定変更後、新条件で★★★が未解放なら難易度を下げる
+  const downgradeDifficultyIfLocked = (slotId: BadgeSlotId) => {
+    if (difficulty === 3 && !isDifficulty3Unlocked(slotId)) {
+      setDifficulty(2)
+    }
+  }
+  const handleScopeChange = (newScope: Scope) => {
+    setScope(newScope)
+    downgradeDifficultyIfLocked(toSlotId(gameMode, generation, newScope))
+  }
+  const handleGameModeChange = (newMode: GameMode) => {
+    setGameMode(newMode)
+    downgradeDifficultyIfLocked(toSlotId(newMode, generation, scope))
+  }
+
   const handleStart = () => {
     if (loading || talents.length === 0) return
 
@@ -80,10 +97,13 @@ export function SettingScreen() {
     if (filtered.length < 4) return
 
     const pool = filtered
+    const generationPool = difficulty === 3
+      ? talents.filter((t) => t.generation === gen)
+      : undefined
     const shuffled = shuffleArray(filtered)
     const typeGenerators = [
       { generate: generateNameGuessQuestions },
-      { generate: generateFaceGuessQuestions },
+      { generate: (t: Talent[], p: Talent[], d: typeof difficulty) => generateFaceGuessQuestions(t, p, d, generationPool) },
       { generate: generateNameBuildQuestions },
     ]
     const totalTypes = typeGenerators.length
@@ -160,13 +180,13 @@ export function SettingScreen() {
             label="顔名前当て"
             selected={isFaceName}
             accentColor={accentColor}
-            onClick={() => setGameMode('face-name')}
+            onClick={() => handleGameModeChange('face-name')}
           />
           <PillButton
             label="知識クイズ"
             selected={!isFaceName}
             accentColor={accentColor}
-            onClick={() => setGameMode('knowledge')}
+            onClick={() => handleGameModeChange('knowledge')}
           />
         </div>
 
@@ -185,10 +205,10 @@ export function SettingScreen() {
                   emblem={dorm.emblem}
                   selected={scope === dorm.id}
                   accentColor={accentColor}
-                  onClick={() => setScope(dorm.id)}
+                  onClick={() => handleScopeChange(dorm.id)}
                 />
               ))}
-              <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => setScope('all')} />
+              <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => handleScopeChange('all')} />
             </div>
           </>
         )}

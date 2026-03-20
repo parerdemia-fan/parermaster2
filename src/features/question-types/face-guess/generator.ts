@@ -13,15 +13,17 @@ export function generateFaceGuessQuestions(
   targetTalents: Talent[],
   pool: Talent[],
   difficulty: Difficulty,
+  generationPool?: Talent[],
 ): FaceGuessQuestion[] {
   const shuffledTargets = shuffleArray(targetTalents)
 
   return shuffledTargets.map((talent) => {
     const others =
-      difficulty >= 2
-        ? selectSimilarDistractors(talent, pool, 3)
-        : shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
-    // TODO: ★★★ではシルエットモード + 同世代全タレントから似た髪型優先
+      difficulty === 3 && generationPool
+        ? selectSimilarDistractors(talent, generationPool, 3, 'style')
+        : difficulty >= 2
+          ? selectSimilarDistractors(talent, pool, 3)
+          : shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
     const allChoices = shuffleArray([talent, ...others])
     const correctIndex = allChoices.findIndex((t) => t.id === talent.id)
 
