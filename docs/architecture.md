@@ -83,6 +83,7 @@ src/
 │       ├── QuizScreen.tsx       # ヘッダー・フッター・typeId分岐を直接管理
 │       ├── ResultScreen.tsx
 │       ├── TalentListScreen.tsx # タレント一覧+詳細（1画面で左右分割）
+│       ├── AchievementScreen.tsx
 │       ├── DiaryScreen.tsx
 │       └── ...
 │
@@ -128,8 +129,6 @@ src/
 │   ├── hooks/
 │   ├── utils/
 │   └── types/
-│
-└── assets/
 ```
 
 **問題タイプの追加手順:**
@@ -146,7 +145,7 @@ src/
 |--------|------|
 | gameStore | クイズ進行状態（currentIndex, quizState, correctCount）。問題の内容や回答方法の詳細を知らない |
 | settingsStore | 画面遷移・ゲーム設定・LocalStorage永続化 |
-| achievementStore | バッジ・解放状態・LocalStorage永続化 |
+| badgeStore | バッジ・解放状態・LocalStorage永続化 |
 
 各ストアは100〜300行程度を目安とする。
 
