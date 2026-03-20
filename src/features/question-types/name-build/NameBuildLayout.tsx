@@ -186,6 +186,7 @@ function CharPickLayout({
   const familyLen = question.correctFamilyName.length
   const givenLen = question.correctGivenName.length
   const totalSlots = familyLen + givenLen
+  const isHard = question.difficulty === 3
 
   // 選択済み選択肢インデックス（選択順）
   const [selectedIndices, setSelectedIndices] = useState<number[]>([])
@@ -240,8 +241,8 @@ function CharPickLayout({
         gap: '1.5cqmin',
       }}
     >
-      {/* 顔画像: 22cqmin（★★☆は選択肢が多いためやや小さく） */}
-      <FaceImage src={question.talentImagePath} size="22cqmin" />
+      {/* 顔画像（★★★は選択肢が多いためさらに小さく） */}
+      <FaceImage src={question.talentImagePath} size={isHard ? '18cqmin' : '22cqmin'} />
 
       {/* 文字スロット */}
       <div
@@ -280,12 +281,12 @@ function CharPickLayout({
       {/* 正誤フィードバック */}
       {isAnswered && <Feedback isCorrect={isCorrect} />}
 
-      {/* 選択肢（5列×3行）: 15文字 */}
+      {/* 選択肢グリッド: ★★☆=5列×3行(15文字), ★★★=7列×5行(35文字) */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: '1.2cqmin',
+          gridTemplateColumns: `repeat(${isHard ? 7 : 5}, 1fr)`,
+          gap: isHard ? '0.8cqmin' : '1.2cqmin',
           width: '100%',
           maxWidth: '85cqmin',
         }}
@@ -317,8 +318,8 @@ function CharPickLayout({
               key={i}
               className="font-bold transition active:scale-98"
               style={{
-                height: '8cqmin',
-                fontSize: '3.5cqmin',
+                height: isHard ? '6.5cqmin' : '8cqmin',
+                fontSize: isHard ? '3cqmin' : '3.5cqmin',
                 borderRadius: '1.5cqmin',
                 border: `0.3cqmin solid ${borderColor}`,
                 background: bg,

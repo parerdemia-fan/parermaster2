@@ -10,6 +10,6 @@ export interface NameBuildQuestion extends BaseQuestion {
   correctFamilyName: string
   /** 正解の名前 */
   correctGivenName: string
-  /** 選択肢（★☆☆: 苗字・名前の文字列8個 / ★★☆: 1文字ずつ15個、シャッフル済み） */
+  /** 選択肢（★☆☆: 苗字・名前の文字列8個 / ★★☆: 1文字ずつ15個 / ★★★: 同音異字含む35個、シャッフル済み） */
   choices: string[]
 }
