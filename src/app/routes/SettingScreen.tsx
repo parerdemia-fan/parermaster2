@@ -9,7 +9,7 @@ import { generateNameBuildQuestions } from '../../features/question-types/name-b
 import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
-import type { BadgeSlotId } from '../../features/achievement/types.ts'
+import { toSlotId } from '../../features/achievement/constants.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -52,10 +52,7 @@ export function SettingScreen() {
   const showDifficulty = isFaceName || generation === 'gen1'
 
   // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
-  const currentSlotId: BadgeSlotId = isFaceName
-    ? `${generation}_${scope}` as BadgeSlotId
-    : `${generation}_knowledge` as BadgeSlotId
-  const difficulty3Unlocked = isDifficulty3Unlocked(currentSlotId)
+  const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, generation, scope))
 
   const handleStart = () => {
     if (loading || talents.length === 0) return

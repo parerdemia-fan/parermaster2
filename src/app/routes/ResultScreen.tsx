@@ -1,21 +1,17 @@
-import { useMemo } from 'react'
+import { useRef } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { judgeBadge } from '../../features/achievement/judge.ts'
-import { getBadgeSlotDef } from '../../features/achievement/constants.ts'
+import { getBadgeSlotDef, RANK_LABELS, RANK_COLORS } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
 
-const RANK_LABELS: Record<BadgeRank, string> = {
-  bronze: 'ブロンズ',
-  silver: 'シルバー',
-  gold: 'ゴールド',
-}
-
-const RANK_COLORS: Record<BadgeRank, string> = {
-  bronze: '#cd7f32',
-  silver: '#a0a0a0',
-  gold: '#ffd700',
+interface BadgeAwardResult {
+  awarded: boolean
+  isRankUp: boolean
+  slotLabel: string
+  rank: BadgeRank | null
+  masterAchievement: string | null
 }
 
 export function ResultScreen() {
@@ -33,9 +29,9 @@ export function ResultScreen() {
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
-  // バッジ判定（マウント時に1回だけ実行）
-  const badgeResult = useMemo(() => {
-    // 現状は全問題タイプ固定（問題タイプON/OFF設定は未実装）
+  // バッジ判定・付与（初回レンダー時に1回だけ実行）
+  const badgeResultRef = useRef<BadgeAwardResult | null>(null)
+  if (badgeResultRef.current === null) {
     const enabledTypes = ['face-guess', 'name-guess', 'name-build']
     const result = judgeBadge({
       gameMode,
@@ -47,26 +43,27 @@ export function ResultScreen() {
       enabledTypes,
     })
 
+    let awarded = false
+    let isRankUp = false
+    let slotLabel = ''
+    let rank: BadgeRank | null = null
+
     if (result.eligible && result.slotId && result.rank) {
       const prevRank = getBadgeRank(result.slotId)
-      const awarded = awardBadge(result.slotId, result.rank)
-      return {
-        ...result,
-        awarded,
-        isRankUp: awarded && prevRank !== null,
-        slotLabel: getBadgeSlotDef(result.slotId).label,
-      }
+      awarded = awardBadge(result.slotId, result.rank)
+      isRankUp = awarded && prevRank !== null
+      slotLabel = getBadgeSlotDef(result.slotId).label
+      rank = result.rank
     }
-    return { ...result, awarded: false, isRankUp: false, slotLabel: '' }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // 複合アチーブメント判定
-  const masterAchievement = useMemo(() => {
-    if (isParerMaster()) return 'パレ学マスター達成！'
-    if (isGen2Master()) return '2期生マスター達成！'
-    if (isGen1Master()) return '1期生マスター達成！'
-    return null
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    let masterAchievement: string | null = null
+    if (isParerMaster()) masterAchievement = 'パレ学マスター達成！'
+    else if (isGen2Master()) masterAchievement = '2期生マスター達成！'
+    else if (isGen1Master()) masterAchievement = '1期生マスター達成！'
+
+    badgeResultRef.current = { awarded, isRankUp, slotLabel, rank, masterAchievement }
+  }
+  const badgeResult = badgeResultRef.current
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
@@ -136,7 +133,7 @@ export function ResultScreen() {
           </div>
         )}
 
-        {masterAchievement && (
+        {badgeResult.masterAchievement && (
           <span
             className="font-bold"
             style={{
@@ -146,7 +143,7 @@ export function ResultScreen() {
               textShadow: '0 1px 2px rgba(0,0,0,0.1)',
             }}
           >
-            {masterAchievement}
+            {badgeResult.masterAchievement}
           </span>
         )}
 

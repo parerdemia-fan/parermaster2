@@ -1,5 +1,5 @@
 import type { BadgeRank, BadgeSlotId } from './types.ts'
-import type { Difficulty } from '../../stores/settingsStore.ts'
+import type { Difficulty, GameMode, Generation, Scope } from '../../stores/settingsStore.ts'
 
 export type BadgeCategory = 'clear' | 'knowledge'
 
@@ -51,4 +51,21 @@ export function difficultyToRank(difficulty: Difficulty): BadgeRank {
   if (difficulty === 3) return 'gold'
   if (difficulty === 2) return 'silver'
   return 'bronze'
+}
+
+export function toSlotId(gameMode: GameMode, generation: Generation, scope: Scope): BadgeSlotId {
+  if (gameMode === 'knowledge') return `${generation}_knowledge` as BadgeSlotId
+  return `${generation}_${scope}` as BadgeSlotId
+}
+
+export const RANK_LABELS: Record<BadgeRank, string> = {
+  bronze: 'ブロンズ',
+  silver: 'シルバー',
+  gold: 'ゴールド',
+}
+
+export const RANK_COLORS: Record<BadgeRank, string> = {
+  bronze: '#cd7f32',
+  silver: '#a0a0a0',
+  gold: '#ffd700',
 }

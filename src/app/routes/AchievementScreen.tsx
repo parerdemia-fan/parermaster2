@@ -2,15 +2,10 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import {
   BADGE_SLOTS,
+  RANK_LABELS,
   type BadgeSlotDef,
 } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
-
-const RANK_LABELS: Record<BadgeRank, string> = {
-  bronze: 'ブロンズ',
-  silver: 'シルバー',
-  gold: 'ゴールド',
-}
 
 const RANK_BG: Record<BadgeRank, string> = {
   bronze: 'linear-gradient(135deg, #e8c49e 0%, #cd7f32 100%)',

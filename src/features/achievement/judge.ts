@@ -1,5 +1,5 @@
 import type { BadgeRank, BadgeSlotId } from './types.ts'
-import { difficultyToRank } from './constants.ts'
+import { difficultyToRank, toSlotId } from './constants.ts'
 import type { GameMode, Generation, Scope, Difficulty } from '../../stores/settingsStore.ts'
 
 export interface JudgeInput {
@@ -37,13 +37,13 @@ export function judgeBadge(input: JudgeInput): JudgeResult {
       return { eligible: false, slotId: null, rank: null, reason: '全問題タイプがONではない' }
     }
 
-    const slotId = `${generation}_${scope}` as BadgeSlotId
+    const slotId = toSlotId(gameMode, generation, scope)
     const rank = difficultyToRank(difficulty)
     return { eligible: true, slotId, rank }
   }
 
   if (gameMode === 'knowledge') {
-    const slotId = `${generation}_knowledge` as BadgeSlotId
+    const slotId = toSlotId(gameMode, generation, scope)
     // 2期生知識クイズは常にブロンズ
     const rank: BadgeRank = generation === 'gen2' ? 'bronze' : difficultyToRank(difficulty)
     return { eligible: true, slotId, rank }
