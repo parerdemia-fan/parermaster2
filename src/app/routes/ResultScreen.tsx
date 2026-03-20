@@ -1,9 +1,27 @@
+import { useMemo } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
+import { useBadgeStore } from '../../stores/badgeStore.ts'
+import { judgeBadge } from '../../features/achievement/judge.ts'
+import { getBadgeSlotDef } from '../../features/achievement/constants.ts'
+import type { BadgeRank } from '../../features/achievement/types.ts'
+
+const RANK_LABELS: Record<BadgeRank, string> = {
+  bronze: 'ブロンズ',
+  silver: 'シルバー',
+  gold: 'ゴールド',
+}
+
+const RANK_COLORS: Record<BadgeRank, string> = {
+  bronze: '#cd7f32',
+  silver: '#a0a0a0',
+  gold: '#ffd700',
+}
 
 export function ResultScreen() {
   const { questions, correctCount } = useGameStore()
-  const { goToTitle, goToSetting, generation } = useSettingsStore()
+  const { goToTitle, goToSetting, generation, gameMode, scope, difficulty } = useSettingsStore()
+  const { awardBadge, getBadgeRank, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
 
   const total = questions.length
   const rate = total > 0 ? Math.round((correctCount / total) * 100 * 10) / 10 : 0
@@ -14,6 +32,41 @@ export function ResultScreen() {
     generation === 'gen2'
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
+
+  // バッジ判定（マウント時に1回だけ実行）
+  const badgeResult = useMemo(() => {
+    // 現状は全問題タイプ固定（問題タイプON/OFF設定は未実装）
+    const enabledTypes = ['face-guess', 'name-guess', 'name-build']
+    const result = judgeBadge({
+      gameMode,
+      generation,
+      scope,
+      difficulty,
+      correctCount,
+      totalCount: total,
+      enabledTypes,
+    })
+
+    if (result.eligible && result.slotId && result.rank) {
+      const prevRank = getBadgeRank(result.slotId)
+      const awarded = awardBadge(result.slotId, result.rank)
+      return {
+        ...result,
+        awarded,
+        isRankUp: awarded && prevRank !== null,
+        slotLabel: getBadgeSlotDef(result.slotId).label,
+      }
+    }
+    return { ...result, awarded: false, isRankUp: false, slotLabel: '' }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 複合アチーブメント判定
+  const masterAchievement = useMemo(() => {
+    if (isParerMaster()) return 'パレ学マスター達成！'
+    if (isGen2Master()) return '2期生マスター達成！'
+    if (isGen1Master()) return '1期生マスター達成！'
+    return null
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden animate-fade-in">
@@ -59,6 +112,41 @@ export function ResultScreen() {
             }}
           >
             全問正解！
+          </span>
+        )}
+
+        {badgeResult.awarded && badgeResult.rank && (
+          <div
+            className="flex flex-col items-center"
+            style={{ marginTop: '2cqmin', gap: '0.5cqmin' }}
+          >
+            <span
+              className="font-bold"
+              style={{
+                fontSize: '4cqmin',
+                color: RANK_COLORS[badgeResult.rank],
+                textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+              }}
+            >
+              {badgeResult.isRankUp ? 'ランクアップ！' : 'バッジ獲得！'}
+            </span>
+            <span style={{ fontSize: '3cqmin', color: '#555' }}>
+              {badgeResult.slotLabel} — {RANK_LABELS[badgeResult.rank]}
+            </span>
+          </div>
+        )}
+
+        {masterAchievement && (
+          <span
+            className="font-bold"
+            style={{
+              fontSize: '4cqmin',
+              color: '#9333ea',
+              marginTop: '1.5cqmin',
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+            }}
+          >
+            {masterAchievement}
           </span>
         )}
 

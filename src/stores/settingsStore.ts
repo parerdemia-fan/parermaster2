@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -27,6 +27,7 @@ interface SettingsActions {
   goToResult: () => void
   goToDiary: () => void
   goToTalents: () => void
+  goToAchievements: () => void
   // ゲーム設定
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
@@ -52,6 +53,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToResult: () => set({ screen: 'result' }),
     goToDiary: () => set({ screen: 'diary' }),
     goToTalents: () => set({ screen: 'talents' }),
+    goToAchievements: () => set({ screen: 'achievements' }),
 
     // ゲーム設定
     setGameMode: (mode) => set({ gameMode: mode }),

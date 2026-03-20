@@ -248,11 +248,32 @@ export const DORMITORIES = {
 
 ---
 
-## 5. 永続化データ（LocalStorage）
+## 5. バッジスロットID定義
+
+バッジスロットIDは `{世代}_{スコープ}` の命名規則に従う。
+
+| スロットID | 対応 | 最大ランク |
+|-----------|------|-----------|
+| `gen2_wa` | 2期生・バゥ寮 | gold |
+| `gen2_me` | 2期生・ミュゥ寮 | gold |
+| `gen2_co` | 2期生・クゥ寮 | gold |
+| `gen2_wh` | 2期生・ウィニー寮 | gold |
+| `gen2_all` | 2期生・全員 | gold |
+| `gen2_knowledge` | 2期生・知識クイズ | bronze（難易度なしのため） |
+| `gen1_wa` | 1期生・バゥ寮 | gold |
+| `gen1_me` | 1期生・ミュゥ寮 | gold |
+| `gen1_co` | 1期生・クゥ寮 | gold |
+| `gen1_wh` | 1期生・ウィニー寮 | gold |
+| `gen1_all` | 1期生・全員 | gold |
+| `gen1_knowledge` | 1期生・知識クイズ | gold |
+
+---
+
+## 6. 永続化データ（LocalStorage）
 
 | キー | 内容 | 型 |
 |------|------|-----|
-| `parermaster2_badges` | バッジ獲得状況 | `Record<slotId, 'bronze' \| 'silver' \| 'gold'>` |
+| `parermaster2_badges` | バッジ獲得状況 | `Record<BadgeSlotId, 'bronze' \| 'silver' \| 'gold'>` |
 | `parermaster2_enabled_types` | 有効な問題タイプ（ON/OFF設定） | `string[]` |
 | `parermaster2_settings` | 前回のゲーム設定 | `{ generation, game, range, difficulty, ... }` |
 | `parermaster2_player_name` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |

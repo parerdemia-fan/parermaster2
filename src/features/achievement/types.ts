@@ -1,0 +1,15 @@
+export type BadgeRank = 'bronze' | 'silver' | 'gold'
+
+export type BadgeSlotId =
+  | 'gen2_wa'
+  | 'gen2_me'
+  | 'gen2_co'
+  | 'gen2_wh'
+  | 'gen2_all'
+  | 'gen2_knowledge'
+  | 'gen1_wa'
+  | 'gen1_me'
+  | 'gen1_co'
+  | 'gen1_wh'
+  | 'gen1_all'
+  | 'gen1_knowledge'

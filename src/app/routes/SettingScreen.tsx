@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { useSettingsStore, type DormId } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
+import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
@@ -8,6 +9,7 @@ import { generateNameBuildQuestions } from '../../features/question-types/name-b
 import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
+import type { BadgeSlotId } from '../../features/achievement/types.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -42,10 +44,18 @@ export function SettingScreen() {
     setIsNameDialogOpen(false)
   }
 
+  const isDifficulty3Unlocked = useBadgeStore((s) => s.isDifficulty3Unlocked)
+
   // 知識クイズでは出題範囲・問題タイプを表示しない
   const isFaceName = gameMode === 'face-name'
   // 知識クイズの難易度は1期生のみ
   const showDifficulty = isFaceName || generation === 'gen1'
+
+  // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
+  const currentSlotId: BadgeSlotId = isFaceName
+    ? `${generation}_${scope}` as BadgeSlotId
+    : `${generation}_knowledge` as BadgeSlotId
+  const difficulty3Unlocked = isDifficulty3Unlocked(currentSlotId)
 
   const handleStart = () => {
     if (loading || talents.length === 0) return
@@ -193,7 +203,14 @@ export function SettingScreen() {
             <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
               <PillButton label="★☆☆" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
               <PillButton label="★★☆" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
-              <PillButton label="🔒 ★★★" selected={difficulty === 3} accentColor={accentColor} size="small" locked />
+              <PillButton
+                label={difficulty3Unlocked ? '★★★' : '🔒 ★★★'}
+                selected={difficulty === 3}
+                accentColor={accentColor}
+                size="small"
+                locked={!difficulty3Unlocked}
+                onClick={difficulty3Unlocked ? () => setDifficulty(3) : undefined}
+              />
             </div>
           </>
         )}
