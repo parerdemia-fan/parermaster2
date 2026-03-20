@@ -25,8 +25,8 @@ function loadSettings(): Partial<SavedSettings> {
   }
 }
 
-function saveSettings(s: SavedSettings): void {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s))
+function persistSettings({ gameMode, scope, difficulty }: SavedSettings): void {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify({ gameMode, scope, difficulty }))
 }
 
 const saved = loadSettings()
@@ -80,21 +80,9 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToAchievements: () => set({ screen: 'achievements' }),
 
     // ゲーム設定（変更時にlocalStorageへ保存）
-    setGameMode: (mode) => {
-      set({ gameMode: mode })
-      const { scope, difficulty } = get()
-      saveSettings({ gameMode: mode, scope, difficulty })
-    },
-    setScope: (scope) => {
-      set({ scope })
-      const { gameMode, difficulty } = get()
-      saveSettings({ gameMode, scope, difficulty })
-    },
-    setDifficulty: (difficulty) => {
-      set({ difficulty })
-      const { gameMode, scope } = get()
-      saveSettings({ gameMode, scope, difficulty })
-    },
+    setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },
+    setScope: (scope) => { set({ scope }); persistSettings(get()) },
+    setDifficulty: (difficulty) => { set({ difficulty }); persistSettings(get()) },
 
     // プレイヤー
     setPlayerName: (name) => {
