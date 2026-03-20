@@ -51,7 +51,7 @@ export function selectSimilarDistractors(
   target: Talent,
   pool: Talent[],
   count: number,
-  prioritizeStyle: boolean = false,
+  priority: 'color' | 'style' = 'color',
 ): Talent[] {
   const others = pool.filter((t) => t.id !== target.id)
 
@@ -73,7 +73,7 @@ export function selectSimilarDistractors(
   )
 
   // 優先順位に従って候補を連結
-  const candidates = prioritizeStyle
+  const candidates = priority === 'style'
     ? [...sameStyle, ...simStyle, ...sameColor, ...simColor, ...remaining]
     : [...sameColor, ...simColor, ...sameStyle, ...simStyle, ...remaining]
 

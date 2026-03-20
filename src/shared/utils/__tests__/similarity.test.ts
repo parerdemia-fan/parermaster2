@@ -48,7 +48,7 @@ describe('selectSimilarDistractors', () => {
   ]
 
   it('髪色優先モードで同じ髪色のタレントを最優先で選出する', () => {
-    const result = selectSimilarDistractors(target, pool, 3, false)
+    const result = selectSimilarDistractors(target, pool, 3, 'color')
     expect(result).toHaveLength(3)
     // T1(同じ髪色)が必ず含まれる
     expect(result.some((t) => t.id === 'T1')).toBe(true)
@@ -57,7 +57,7 @@ describe('selectSimilarDistractors', () => {
   })
 
   it('髪型優先モードで同じ髪型のタレントを最優先で選出する', () => {
-    const result = selectSimilarDistractors(target, pool, 3, true)
+    const result = selectSimilarDistractors(target, pool, 3, 'style')
     expect(result).toHaveLength(3)
     // T4(同じ髪型)が必ず含まれる
     expect(result.some((t) => t.id === 'T4')).toBe(true)
