@@ -111,11 +111,17 @@ src/
 │   │       ├── generator.ts
 │   │       └── types.ts
 │   │
-│   └── ...                      # 将来: time-attack/, achievements/ 等
+│   ├── achievement/             # アチーブメント（バッジ）
+│   │   ├── types.ts             # BadgeRank, BadgeSlotId
+│   │   ├── constants.ts         # スロット定義, ランク関連ユーティリティ
+│   │   └── judge.ts             # バッジ獲得判定（純粋関数）
+│   │
+│   └── ...                      # 将来: time-attack/ 等
 │
 ├── stores/                      # Zustand ストア（機能ごとに分割）
 │   ├── gameStore.ts             # ゲーム進行状態
-│   └── settingsStore.ts         # 画面遷移・ゲーム設定
+│   ├── settingsStore.ts         # 画面遷移・ゲーム設定
+│   └── badgeStore.ts            # バッジ獲得状態・LocalStorage永続化
 │
 ├── shared/                      # 共有ユーティリティ・コンポーネント
 │   ├── components/
@@ -176,18 +182,12 @@ BaseQuestion（typeId, difficulty のみ）
 前作のハードコードされたアチーブメントをデータ定義に置き換える。
 
 ```typescript
-// definitions.ts
-export const badgeDefinitions: BadgeDefinition[] = [
-  {
-    id: 'gen2-bau',
-    slot: 0,
-    area: 'gen2',
-    type: 'clear',
-    range: 'bau',
-    evolvable: true, // ブロンズ→シルバー→ゴールド
-  },
-  // ...
+// features/achievement/constants.ts
+export const BADGE_SLOTS: readonly BadgeSlotDef[] = [
+  { id: 'gen2_wa', label: '2期生・バゥ寮', category: 'clear', maxRank: 'gold' },
+  { id: 'gen2_knowledge', label: '2期生・知識クイズ', category: 'knowledge', maxRank: 'bronze' },
+  // ... 計12スロット
 ]
 ```
 
-条件チェックも汎用的な判定関数で処理し、個別のif文を不要にする。
+バッジ獲得判定は `features/achievement/judge.ts` の純粋関数で行い、結果画面から呼び出す。永続化は `stores/badgeStore.ts`（Zustand + localStorage）で管理。

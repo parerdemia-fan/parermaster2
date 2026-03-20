@@ -9,9 +9,9 @@ import type { Talent } from '../../shared/types/talent.ts'
 const BASE = import.meta.env.BASE_URL
 
 const DORMITORIES = [
-  { code: 'co', name: 'クゥ寮', color: '#22d3ee' },
-  { code: 'me', name: 'ミュゥ寮', color: '#f472b6' },
   { code: 'wa', name: 'バゥ寮', color: '#ef4444' },
+  { code: 'me', name: 'ミュゥ寮', color: '#f472b6' },
+  { code: 'co', name: 'クゥ寮', color: '#22d3ee' },
   { code: 'wh', name: 'ウィニー寮', color: '#22c55e' },
 ] as const
 
