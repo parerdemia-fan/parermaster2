@@ -4,9 +4,9 @@ const BASE = import.meta.env.BASE_URL
 
 export function TitleScreen() {
   const goToSetting = useSettingsStore((s) => s.goToSetting)
-  const goToDiary = useSettingsStore((s) => s.goToDiary)
   const goToTalents = useSettingsStore((s) => s.goToTalents)
   const goToAchievements = useSettingsStore((s) => s.goToAchievements)
+  const goToAbout = useSettingsStore((s) => s.goToAbout)
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -111,24 +111,6 @@ export function TitleScreen() {
         </button>
       </div>
 
-      {/* 開発日誌（仮導線） */}
-      <button
-        className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
-        style={{
-          marginTop: '3cqmin',
-          fontSize: '3.5cqmin',
-          padding: '1cqmin 3cqmin',
-          borderRadius: '5cqmin',
-          border: '0.3cqmin solid rgba(255,255,255,0.5)',
-          background: 'rgba(255,255,255,0.6)',
-          color: '#888',
-          backdropFilter: 'blur(4px)',
-        }}
-        onClick={goToDiary}
-      >
-        📖 開発日誌
-      </button>
-
       {/* サブメニューアイコン（3つ横並び） */}
       <div
         className="flex items-end justify-center absolute"
@@ -140,10 +122,11 @@ export function TitleScreen() {
         <button
           className="cursor-pointer transition-transform active:scale-95"
           style={{ background: 'none', border: 'none', padding: 0, width: '9cqmin' }}
+          onClick={goToAbout}
         >
           <img
             src={`${BASE}data/images/ui/btn_help.png`}
-            alt="ヘルプ"
+            alt="このゲームについて"
             className="transition brightness-100 hover:brightness-140"
             style={{ width: '100%', height: 'auto', display: 'block' }}
             draggable={false}

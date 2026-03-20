@@ -41,6 +41,8 @@ interface BadgeActions {
   isGen1Master: () => boolean
   isParerMaster: () => boolean
   isTimeAttackUnlocked: () => boolean
+  /** 全バッジをリセット */
+  resetAll: () => void
 }
 
 function isSlotMaxLevel(badges: BadgeMap, slotId: BadgeSlotId): boolean {
@@ -93,5 +95,10 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
   isTimeAttackUnlocked: () => {
     const badges = get().badges
     return BADGE_SLOTS.every((slot) => isSlotMaxLevel(badges, slot.id))
+  },
+
+  resetAll: () => {
+    localStorage.removeItem(STORAGE_KEY)
+    set({ badges: {} })
   },
 }))

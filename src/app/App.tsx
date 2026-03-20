@@ -7,6 +7,7 @@ import { ResultScreen } from './routes/ResultScreen.tsx'
 import { DiaryScreen } from './routes/DiaryScreen.tsx'
 import { TalentListScreen } from './routes/TalentListScreen.tsx'
 import { AchievementScreen } from './routes/AchievementScreen.tsx'
+import { AboutScreen } from './routes/AboutScreen.tsx'
 
 export function App() {
   const screen = useSettingsStore((s) => s.screen)
@@ -20,6 +21,7 @@ export function App() {
       {screen === 'diary' && <DiaryScreen />}
       {screen === 'talents' && <TalentListScreen />}
       {screen === 'achievements' && <AchievementScreen />}
+      {screen === 'about' && <AboutScreen />}
     </GameContainer>
   )
 }
