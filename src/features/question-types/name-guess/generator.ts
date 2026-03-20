@@ -1,6 +1,7 @@
 import type { Difficulty } from '../../../stores/settingsStore.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
 import { shuffleArray } from '../../../shared/utils/array.ts'
+import { selectSimilarDistractors } from '../../../shared/utils/similarity.ts'
 import { getTalentImagePath } from '../../../shared/utils/talent.ts'
 import type { NameGuessQuestion } from './types.ts'
 
@@ -16,9 +17,11 @@ export function generateNameGuessQuestions(
   const shuffledTargets = shuffleArray(targetTalents)
 
   return shuffledTargets.map((talent) => {
-    // TODO: ★★☆では髪色/髪型が似たタレントを優先選出
-    // TODO: ★★★ではシルエットモード + 似た髪型優先
-    const others = shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
+    const others =
+      difficulty >= 2
+        ? selectSimilarDistractors(talent, pool, 3)
+        : shuffleArray(pool.filter((t) => t.id !== talent.id)).slice(0, 3)
+    // TODO: ★★★では出題画像がシルエット + 似た髪型優先
     const allChoices = shuffleArray([talent, ...others])
     const correctIndex = allChoices.findIndex((t) => t.id === talent.id)
 
