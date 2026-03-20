@@ -7,6 +7,30 @@ export type DormId = 'wa' | 'me' | 'co' | 'wh'
 export type Scope = DormId | 'all'
 export type Difficulty = 1 | 2 | 3
 
+const SETTINGS_KEY = 'parermaster2_settings'
+
+interface SavedSettings {
+  gameMode: GameMode
+  scope: Scope
+  difficulty: Difficulty
+}
+
+function loadSettings(): Partial<SavedSettings> {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY)
+    if (!raw) return {}
+    return JSON.parse(raw) as Partial<SavedSettings>
+  } catch {
+    return {}
+  }
+}
+
+function saveSettings(s: SavedSettings): void {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s))
+}
+
+const saved = loadSettings()
+
 interface SettingsState {
   // 画面遷移
   screen: Screen
@@ -37,13 +61,13 @@ interface SettingsActions {
 }
 
 export const useSettingsStore = create<SettingsState & SettingsActions>()(
-  (set) => ({
-    // 初期値
+  (set, get) => ({
+    // 初期値（localStorageから復元）
     screen: 'title',
     generation: 'gen2',
-    gameMode: 'face-name',
-    scope: 'all',
-    difficulty: 1,
+    gameMode: saved.gameMode ?? 'face-name',
+    scope: saved.scope ?? 'all',
+    difficulty: saved.difficulty ?? 1,
     playerName: localStorage.getItem('playerName') ?? 'リスナー',
 
     // 画面遷移
@@ -55,10 +79,22 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToTalents: () => set({ screen: 'talents' }),
     goToAchievements: () => set({ screen: 'achievements' }),
 
-    // ゲーム設定
-    setGameMode: (mode) => set({ gameMode: mode }),
-    setScope: (scope) => set({ scope }),
-    setDifficulty: (difficulty) => set({ difficulty }),
+    // ゲーム設定（変更時にlocalStorageへ保存）
+    setGameMode: (mode) => {
+      set({ gameMode: mode })
+      const { scope, difficulty } = get()
+      saveSettings({ gameMode: mode, scope, difficulty })
+    },
+    setScope: (scope) => {
+      set({ scope })
+      const { gameMode, difficulty } = get()
+      saveSettings({ gameMode, scope, difficulty })
+    },
+    setDifficulty: (difficulty) => {
+      set({ difficulty })
+      const { gameMode, scope } = get()
+      saveSettings({ gameMode, scope, difficulty })
+    },
 
     // プレイヤー
     setPlayerName: (name) => {
