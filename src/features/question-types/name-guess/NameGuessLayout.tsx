@@ -183,7 +183,7 @@ function NameGuessLayoutInner({
             position: 'absolute',
             bottom: '1cqmin',
             left: '2cqmin',
-            width: '40%',
+            width: '38%',
             padding: '2cqmin 2.5cqmin',
             background: 'rgba(255,255,255,0.88)',
             backdropFilter: 'blur(12px)',
@@ -223,7 +223,7 @@ function NameGuessLayoutInner({
           top: '13cqmin',
           right: '2.5cqmin',
           bottom: '1cqmin',
-          width: '50%',
+          width: '48%',
           gap: '2cqmin',
         }}
       >

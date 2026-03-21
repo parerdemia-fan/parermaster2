@@ -23,20 +23,20 @@ export function QuizScreen() {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
-      {/* ヘッダー: 進捗 */}
+      {/* ヘッダー: やめる / 進捗 / 正解数 */}
       <div
         className="w-full flex items-center justify-between"
-        style={{ padding: '1.5cqmin 3cqmin' }}
+        style={{ padding: '0.8cqmin 3cqmin', flexShrink: 0 }}
       >
         <button
           className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
           style={{
-            fontSize: '3cqmin',
-            padding: '0.8cqmin 1.5cqmin',
-            borderRadius: '2cqmin',
+            fontSize: '2.5cqmin',
+            padding: '0.5cqmin 1.5cqmin',
+            borderRadius: '1.5cqmin',
             border: 'none',
-            background: 'rgba(255,255,255,0.6)',
-            color: '#555',
+            background: 'rgba(255,255,255,0.5)',
+            color: '#666',
           }}
           onClick={goToTitle}
         >
@@ -45,7 +45,7 @@ export function QuizScreen() {
         <span
           className="font-bold"
           style={{
-            fontSize: '3.5cqmin',
+            fontSize: '3cqmin',
             color: 'white',
             textShadow: '0 1px 3px rgba(0,0,0,0.3)',
           }}
@@ -54,8 +54,8 @@ export function QuizScreen() {
         </span>
         <span
           style={{
-            fontSize: '3cqmin',
-            color: 'white',
+            fontSize: '2.5cqmin',
+            color: 'rgba(255,255,255,0.8)',
             textShadow: '0 1px 3px rgba(0,0,0,0.3)',
           }}
         >
@@ -97,8 +97,8 @@ export function QuizScreen() {
       {/* フッター: 戻る/次へボタン */}
       {(isAnswered || canGoBack) && (
         <div
-          className="w-full flex justify-center items-center"
-          style={{ padding: '2cqmin 0 3cqmin', gap: '3cqmin' }}
+          className="w-full flex justify-end items-center"
+          style={{ padding: '1cqmin 3cqmin 2cqmin', gap: '3cqmin' }}
         >
           {canGoBack && (
             <button
