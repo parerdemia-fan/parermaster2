@@ -165,19 +165,16 @@ function NameGuessLayoutInner({
           gap: '1.5cqmin',
         }}
       >
-        {/* 吹き出し部分 */}
+        {/* コメントテキスト */}
         <div
           style={{
             marginTop: '1.5cqmin',
-            padding: '1.5cqmin 2cqmin',
+            padding: '1cqmin 0',
             fontSize: '2.2cqmin',
-            color: '#444',
+            color: 'rgba(255,255,255,0.95)',
+            textShadow: '0 1px 3px rgba(0,0,0,0.6)',
             lineHeight: 1.5,
-            maxWidth: '20cqmin',
-            background: 'rgba(255,255,255,0.92)',
-            borderRadius: '1.5cqmin',
-            border: '0.15cqmin solid rgba(0,0,0,0.06)',
-            boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
+            maxWidth: '18cqmin',
           }}
         >
           {!isAnswered
@@ -188,28 +185,18 @@ function NameGuessLayoutInner({
         </div>
         {/* 画像＋名前 */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div
+          <img
+            src={COMMENT_IMAGE}
+            alt={COMMENT_NAME}
             style={{
               width: '13cqmin',
               height: '13cqmin',
-              borderRadius: '0 0 1.5cqmin 1.5cqmin',
-              overflow: 'hidden',
-              background: 'rgba(255,255,255,0.9)',
-              boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
+              objectFit: 'cover',
+              objectPosition: 'top',
+              borderRadius: '1.5cqmin',
             }}
-          >
-            <img
-              src={COMMENT_IMAGE}
-              alt={COMMENT_NAME}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'top',
-              }}
-              draggable={false}
-            />
-          </div>
+            draggable={false}
+          />
           <div
             style={{
               fontSize: '1.6cqmin',
