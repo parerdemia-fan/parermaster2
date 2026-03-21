@@ -69,58 +69,54 @@ function NameGuessLayoutInner({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* 最上部: ラベル + 問題文 */}
+      {/* 最上部左: シャープラベル */}
       <div
-        className="flex items-center"
+        className="font-bold"
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
-          right: 0,
-          padding: '0 2.5cqmin',
-          gap: '1.5cqmin',
           zIndex: 10,
+          fontSize: '3.2cqmin',
+          padding: '1cqmin 3.5cqmin 1cqmin 2.5cqmin',
+          background: 'linear-gradient(135deg, #d6336c 0%, #e8789e 100%)',
+          color: 'white',
+          clipPath: 'polygon(0 0, 100% 0, calc(100% - 1.5cqmin) 100%, 0 100%)',
+          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+          letterSpacing: '0.05em',
+          whiteSpace: 'nowrap',
         }}
       >
-        <div
-          className="font-bold"
-          style={{
-            fontSize: '3.2cqmin',
-            padding: '1cqmin 3.5cqmin 1cqmin 2.5cqmin',
-            background: 'linear-gradient(135deg, #d6336c 0%, #e8789e 100%)',
-            color: 'white',
-            clipPath: 'polygon(0 0, 100% 0, calc(100% - 1.5cqmin) 100%, 0 100%)',
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-            letterSpacing: '0.05em',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >
-          🔍 名前当て
-        </div>
-        <div
-          className="font-bold"
-          style={{
-            fontSize: '3.8cqmin',
-            padding: '0.8cqmin 4cqmin',
-            background: 'rgba(255,255,255,0.92)',
-            borderRadius: '1.2cqmin',
-            color: '#333',
-            boxShadow: '0 0.3cqmin 1.2cqmin rgba(0,0,0,0.12)',
-            border: '0.15cqmin solid rgba(0,0,0,0.06)',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >
-          この生徒の名前は？
-        </div>
+        🔍 名前当て
+      </div>
+
+      {/* 最上部中央: 問題文 */}
+      <div
+        className="font-bold"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10,
+          fontSize: '3.8cqmin',
+          padding: '0.8cqmin 5cqmin',
+          background: 'rgba(255,255,255,0.92)',
+          borderRadius: '0 0 1.2cqmin 1.2cqmin',
+          color: '#333',
+          boxShadow: '0 0.3cqmin 1.2cqmin rgba(0,0,0,0.12)',
+          border: '0.15cqmin solid rgba(0,0,0,0.06)',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        この生徒の名前は？
       </div>
 
       {/* 進捗バー（中央） */}
       <div
         style={{
           position: 'absolute',
-          top: '7.5cqmin',
+          top: '9cqmin',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '30%',
@@ -128,7 +124,12 @@ function NameGuessLayoutInner({
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '0.3cqmin' }}>
-          <span style={{ fontSize: '2cqmin', color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+          <span style={{
+            fontSize: '2.2cqmin',
+            color: 'white',
+            textShadow: '0 1px 3px rgba(0,0,0,0.5), 0 0 6px rgba(0,0,0,0.2)',
+            fontWeight: 'bold',
+          }}>
             達成度: {currentIndex + 1}/{total}
           </span>
         </div>
@@ -152,7 +153,7 @@ function NameGuessLayoutInner({
         </div>
       </div>
 
-      {/* アシスタント（右上） */}
+      {/* アシスタント（右上、一体化カード） */}
       <div
         style={{
           position: 'absolute',
@@ -160,61 +161,50 @@ function NameGuessLayoutInner({
           right: '2cqmin',
           zIndex: 10,
           display: 'flex',
-          alignItems: 'flex-start',
-          gap: '1cqmin',
+          alignItems: 'stretch',
+          background: 'rgba(255,255,255,0.9)',
+          borderRadius: '0 0 1.5cqmin 1.5cqmin',
+          border: '0.15cqmin solid rgba(0,0,0,0.06)',
+          boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
+          overflow: 'hidden',
         }}
       >
+        {/* テキスト部分 */}
         <div
           style={{
-            marginTop: '1.5cqmin',
-            padding: '1.2cqmin 2cqmin',
-            background: 'rgba(255,255,255,0.9)',
-            borderRadius: '1.5cqmin',
-            border: '0.15cqmin solid rgba(0,0,0,0.06)',
-            boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
+            padding: '1.5cqmin 2cqmin',
             fontSize: '2.2cqmin',
             color: '#444',
             lineHeight: 1.5,
-            maxWidth: '22cqmin',
+            maxWidth: '20cqmin',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
-          {!isAnswered
-            ? COMMENT_BEFORE
-            : isCorrect
-              ? COMMENT_CORRECT
-              : COMMENT_WRONG}
-        </div>
-        <div className="flex flex-col items-center" style={{ flexShrink: 0 }}>
-          <img
-            src={COMMENT_IMAGE}
-            alt={COMMENT_NAME}
-            style={{
-              width: '13cqmin',
-              height: '13cqmin',
-              objectFit: 'cover',
-              objectPosition: 'top',
-              borderRadius: '0 0 1cqmin 1cqmin',
-              border: '0.2cqmin solid rgba(0,0,0,0.06)',
-              marginTop: '-1cqmin',
-            }}
-            draggable={false}
-          />
-          <span
-            style={{
-              fontSize: '1.6cqmin',
-              color: '#555',
-              background: 'rgba(255,255,255,0.85)',
-              padding: '0.3cqmin 1.2cqmin',
-              borderRadius: '0.8cqmin',
-              marginTop: '-1.2cqmin',
-              zIndex: 1,
-              border: '0.15cqmin solid rgba(0,0,0,0.08)',
-              whiteSpace: 'nowrap',
-            }}
-          >
+          <div>
+            {!isAnswered
+              ? COMMENT_BEFORE
+              : isCorrect
+                ? COMMENT_CORRECT
+                : COMMENT_WRONG}
+          </div>
+          <div style={{ fontSize: '1.6cqmin', color: '#999', marginTop: '0.3cqmin' }}>
             {COMMENT_NAME}
-          </span>
+          </div>
         </div>
+        {/* 画像部分 */}
+        <img
+          src={COMMENT_IMAGE}
+          alt={COMMENT_NAME}
+          style={{
+            width: '13cqmin',
+            height: '13cqmin',
+            objectFit: 'cover',
+            objectPosition: 'top',
+          }}
+          draggable={false}
+        />
       </div>
 
       {/* 立ち絵（大きく表示、下ははみ出し） */}
@@ -243,11 +233,11 @@ function NameGuessLayoutInner({
         <div
           style={{
             position: 'absolute',
-            top: '42cqmin',
-            left: '2cqmin',
-            width: '36%',
+            bottom: '1cqmin',
+            left: '10cqmin',
+            width: '34%',
             padding: '1.5cqmin 2.5cqmin',
-            background: 'rgba(255,255,255,0.88)',
+            background: 'rgba(255,255,255,0.6)',
             backdropFilter: 'blur(12px)',
             borderRadius: '1.5cqmin',
             border: '0.15cqmin solid rgba(0,0,0,0.06)',
@@ -339,9 +329,9 @@ function NameGuessLayoutInner({
               {/* 顔画像: 回答前はシルエット、回答後は実画像 */}
               <div
                 style={{
-                  width: '7cqmin',
-                  height: '7cqmin',
-                  borderRadius: '1cqmin',
+                  width: '8.5cqmin',
+                  height: '8.5cqmin',
+                  borderRadius: '1.2cqmin',
                   overflow: 'hidden',
                   flexShrink: 0,
                   display: 'flex',
