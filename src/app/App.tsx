@@ -13,11 +13,12 @@ import { AboutScreen } from './routes/AboutScreen.tsx'
 
 const BASE = import.meta.env.BASE_URL
 
-const DORM_BG: Partial<Record<Scope, string>> = {
+const DORM_BG: Record<Scope, string> = {
   wa: `${BASE}data/images/ui/bg_wa.png`,
   me: `${BASE}data/images/ui/bg_me.png`,
   co: `${BASE}data/images/ui/bg_co.png`,
   wh: `${BASE}data/images/ui/bg_wh.png`,
+  all: `${BASE}data/images/ui/bg_stage.png`,
 }
 const DEFAULT_BG = `${BASE}data/images/ui/bg_title.png`
 
