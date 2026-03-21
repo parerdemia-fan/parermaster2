@@ -15,6 +15,9 @@ const BASE = import.meta.env.BASE_URL
 
 const DORM_BG: Partial<Record<Scope, string>> = {
   wa: `${BASE}data/images/ui/bg_wa.png`,
+  me: `${BASE}data/images/ui/bg_me.png`,
+  co: `${BASE}data/images/ui/bg_co.png`,
+  wh: `${BASE}data/images/ui/bg_wh.png`,
 }
 const DEFAULT_BG = `${BASE}data/images/ui/bg_title.png`
 
