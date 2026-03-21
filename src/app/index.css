@@ -12,14 +12,24 @@ html, body, #root {
   overflow: hidden;
 }
 
-/* フォント設定と背景画像 */
+/* フォント設定 */
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  background-image: url('/parermaster2/data/images/ui/bg_title.png');
+}
+
+/* 背景画像レイヤー（疑似要素で分離し、ぼかしがコンテンツに影響しないようにする） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--bg-image, url('/parermaster2/data/images/ui/bg_title.png'));
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  filter: blur(var(--bg-blur, 0px));
+  /* ぼかし時に端が透ける対策: 少し拡大 */
+  scale: calc(1 + var(--bg-blur-scale, 0));
 }
 
 /* 縦長画面用の背景色 (アスペクト比が 1:1 より縦長の場合) */

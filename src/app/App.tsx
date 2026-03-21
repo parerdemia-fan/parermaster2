@@ -18,11 +18,17 @@ const DORM_BG: Partial<Record<Scope, string>> = {
 }
 const DEFAULT_BG = `${BASE}data/images/ui/bg_title.png`
 
-function getBackgroundUrl(screen: string, scope: Scope): string {
+/** クイズ画面の背景ぼかし強度（px） */
+const QUIZ_BG_BLUR = 3
+
+function getBackground(screen: string, scope: Scope): { url: string; blur: number } {
   if (screen === 'quiz' || screen === 'result') {
-    return DORM_BG[scope] ?? DEFAULT_BG
+    return {
+      url: DORM_BG[scope] ?? DEFAULT_BG,
+      blur: QUIZ_BG_BLUR,
+    }
   }
-  return DEFAULT_BG
+  return { url: DEFAULT_BG, blur: 0 }
 }
 
 export function App() {
@@ -30,7 +36,12 @@ export function App() {
   const scope = useSettingsStore((s) => s.scope)
 
   useEffect(() => {
-    document.body.style.backgroundImage = `url('${getBackgroundUrl(screen, scope)}')`
+    const { url, blur } = getBackground(screen, scope)
+    const s = document.body.style
+    s.setProperty('--bg-image', `url('${url}')`)
+    s.setProperty('--bg-blur', `${blur}px`)
+    // ぼかし時に端が透けるのを防ぐため、ぼかし量に応じて拡大
+    s.setProperty('--bg-blur-scale', blur > 0 ? '0.03' : '0')
   }, [screen, scope])
 
   return (
