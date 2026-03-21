@@ -10,58 +10,44 @@ import { TextQuizLayout } from '../../features/question-types/text-quiz/TextQuiz
 import type { TextQuizQuestion } from '../../features/question-types/text-quiz/types.ts'
 
 export function QuizScreen() {
-  const { questions, currentIndex, quizState, correctCount, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion } = useGameStore()
+  const { questions, currentIndex, quizState, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion } = useGameStore()
   const { goToResult, goToTitle } = useSettingsStore()
 
   const current = questions[currentIndex]
   if (!current) return null
 
   const isAnswered = quizState === 'answered'
-  const total = questions.length
   const isTextQuiz = current.typeId === 'text-quiz'
   const canGoBack = isTextQuiz && currentIndex > 0
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
-      {/* ヘッダー: やめる / 進捗 / 正解数 */}
-      <div
-        className="w-full flex items-center justify-between"
-        style={{ padding: '0.8cqmin 3cqmin', flexShrink: 0 }}
+      {/* 左下: やめるボタン */}
+      <button
+        className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
+        style={{
+          position: 'absolute',
+          left: '2cqmin',
+          bottom: '2cqmin',
+          fontSize: '2.5cqmin',
+          padding: '1cqmin 2cqmin',
+          borderRadius: '50%',
+          border: 'none',
+          background: 'rgba(255,255,255,0.7)',
+          color: '#666',
+          zIndex: 20,
+          width: '7cqmin',
+          height: '7cqmin',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
+          backdropFilter: 'blur(6px)',
+        }}
+        onClick={goToTitle}
       >
-        <button
-          className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
-          style={{
-            fontSize: '2.5cqmin',
-            padding: '0.5cqmin 1.5cqmin',
-            borderRadius: '1.5cqmin',
-            border: 'none',
-            background: 'rgba(255,255,255,0.5)',
-            color: '#666',
-          }}
-          onClick={goToTitle}
-        >
-          ✕ やめる
-        </button>
-        <span
-          className="font-bold"
-          style={{
-            fontSize: '3cqmin',
-            color: 'white',
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-          }}
-        >
-          {currentIndex + 1} / {total}
-        </span>
-        <span
-          style={{
-            fontSize: '2.5cqmin',
-            color: 'rgba(255,255,255,0.8)',
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-          }}
-        >
-          正解: {correctCount}
-        </span>
-      </div>
+        ←
+      </button>
 
       {/* 問題タイプ別レイアウト */}
       {current.typeId === 'name-guess' && (

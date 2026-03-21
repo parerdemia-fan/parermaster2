@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
+import { useGameStore } from '../../../stores/gameStore.ts'
+import { getTalentImagePath } from '../../../shared/utils/talent.ts'
 import type { NameGuessQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -9,13 +11,6 @@ const COMMENT_NAME = '灯野ぺけ。'
 const COMMENT_BEFORE = 'この子の名前、わかる〜？'
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
-
-const DORM_NAMES: Record<string, string> = {
-  wa: 'バゥ寮',
-  me: 'ミュゥ寮',
-  co: 'クゥ寮',
-  wh: 'ウィニー寮',
-}
 
 interface NameGuessLayoutProps {
   question: NameGuessQuestion
@@ -45,6 +40,7 @@ function NameGuessLayoutInner({
 }: NameGuessLayoutProps) {
   const [selected, setSelected] = useState<number | null>(null)
   const { talents } = useTalents()
+  const { currentIndex, questions } = useGameStore()
 
   const handleSelect = (index: number) => {
     if (isAnswered) return
@@ -54,6 +50,8 @@ function NameGuessLayoutInner({
 
   const isCorrect = selected !== null && selected === question.correctIndex
   const talent = talents.find((t) => t.id === question.talentId)
+  const total = questions.length
+  const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
 
   const standingImagePath = talent
     ? talent.generation === 2
@@ -63,12 +61,15 @@ function NameGuessLayoutInner({
 
   const isStanding = talent ? talent.generation === 1 : false
 
+  // 選択肢のタレント画像パス
+  const answerTalents = question.answerTalentIds.map((id) => talents.find((t) => t.id === id))
+
   return (
     <div
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* ヘッダー: ラベル + 問題文 + コメント欄 */}
+      {/* 最上部: ラベル + 問題文 */}
       <div
         className="flex items-center"
         style={{
@@ -81,7 +82,6 @@ function NameGuessLayoutInner({
           zIndex: 10,
         }}
       >
-        {/* シャープラベル */}
         <div
           className="font-bold"
           style={{
@@ -98,7 +98,6 @@ function NameGuessLayoutInner({
         >
           🔍 名前当て
         </div>
-        {/* 問題文プレート */}
         <div
           className="font-bold"
           style={{
@@ -115,55 +114,118 @@ function NameGuessLayoutInner({
         >
           この生徒の名前は？
         </div>
-        <div style={{ flex: 1 }} />
-        {/* コメント欄 */}
+      </div>
+
+      {/* 進捗バー（中央） */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '7.5cqmin',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '30%',
+          zIndex: 10,
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '0.3cqmin' }}>
+          <span style={{ fontSize: '2cqmin', color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+            達成度: {currentIndex + 1}/{total}
+          </span>
+        </div>
         <div
-          className="flex items-center"
           style={{
-            gap: '1.5cqmin',
-            padding: '1.2cqmin 2.5cqmin',
+            height: '1.5cqmin',
+            background: 'rgba(255,255,255,0.4)',
+            borderRadius: '1cqmin',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              height: '100%',
+              width: `${progress}%`,
+              background: 'linear-gradient(90deg, #4ade80, #22c55e)',
+              borderRadius: '1cqmin',
+              transition: 'width 0.3s',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* アシスタント（右上） */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '0',
+          right: '2cqmin',
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '1cqmin',
+        }}
+      >
+        <div
+          style={{
+            marginTop: '1.5cqmin',
+            padding: '1.2cqmin 2cqmin',
             background: 'rgba(255,255,255,0.9)',
-            backdropFilter: 'blur(10px)',
             borderRadius: '1.5cqmin',
             border: '0.15cqmin solid rgba(0,0,0,0.06)',
             boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
-            flexShrink: 0,
+            fontSize: '2.2cqmin',
+            color: '#444',
+            lineHeight: 1.5,
+            maxWidth: '22cqmin',
           }}
         >
-          <div className="flex flex-col items-center" style={{ flexShrink: 0, gap: '0.2cqmin' }}>
-            <img
-              src={COMMENT_IMAGE}
-              alt={COMMENT_NAME}
-              style={{
-                width: '7cqmin',
-                height: '7cqmin',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                border: '0.3cqmin solid #f49aba',
-              }}
-              draggable={false}
-            />
-            <span style={{ fontSize: '1.6cqmin', color: '#888' }}>{COMMENT_NAME}</span>
-          </div>
-          <span style={{ fontSize: '2.5cqmin', color: '#444', lineHeight: 1.4 }}>
-            {!isAnswered
-              ? COMMENT_BEFORE
-              : isCorrect
-                ? COMMENT_CORRECT
-                : COMMENT_WRONG}
+          {!isAnswered
+            ? COMMENT_BEFORE
+            : isCorrect
+              ? COMMENT_CORRECT
+              : COMMENT_WRONG}
+        </div>
+        <div className="flex flex-col items-center" style={{ flexShrink: 0 }}>
+          <img
+            src={COMMENT_IMAGE}
+            alt={COMMENT_NAME}
+            style={{
+              width: '13cqmin',
+              height: '13cqmin',
+              objectFit: 'cover',
+              objectPosition: 'top',
+              borderRadius: '0 0 1cqmin 1cqmin',
+              border: '0.2cqmin solid rgba(0,0,0,0.06)',
+              marginTop: '-1cqmin',
+            }}
+            draggable={false}
+          />
+          <span
+            style={{
+              fontSize: '1.6cqmin',
+              color: '#555',
+              background: 'rgba(255,255,255,0.85)',
+              padding: '0.3cqmin 1.2cqmin',
+              borderRadius: '0.8cqmin',
+              marginTop: '-1.2cqmin',
+              zIndex: 1,
+              border: '0.15cqmin solid rgba(0,0,0,0.08)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {COMMENT_NAME}
           </span>
         </div>
       </div>
 
-      {/* 立ち絵（画面左寄り、大きく表示） */}
+      {/* 立ち絵（大きく表示、下ははみ出し） */}
       <img
         src={standingImagePath}
         alt="誰でしょう？"
         style={{
           position: 'absolute',
-          left: isStanding ? '8%' : '10%',
-          top: isStanding ? '-2cqmin' : '10cqmin',
-          height: isStanding ? '75cqmin' : '40cqmin',
+          left: isStanding ? '2%' : '8%',
+          top: isStanding ? '10cqmin' : '12cqmin',
+          height: isStanding ? '110cqmin' : '55cqmin',
           width: 'auto',
           objectFit: 'contain',
           zIndex: 2,
@@ -176,14 +238,14 @@ function NameGuessLayoutInner({
         draggable={false}
       />
 
-      {/* プロフィール（左下、立ち絵に重なる） */}
+      {/* プロフィール（左、立ち絵の腰あたりに重なる） */}
       {talent && (
         <div
           style={{
             position: 'absolute',
-            bottom: '1cqmin',
+            top: '42cqmin',
             left: '2cqmin',
-            width: '38%',
+            width: '36%',
             padding: '2cqmin 2.5cqmin',
             background: 'rgba(255,255,255,0.88)',
             backdropFilter: 'blur(12px)',
@@ -196,21 +258,13 @@ function NameGuessLayoutInner({
             zIndex: 3,
           }}
         >
-          <div className="font-bold" style={{
-            fontSize: '2.8cqmin',
-            color: '#333',
-            marginBottom: '0.5cqmin',
-            borderBottom: '0.15cqmin solid rgba(0,0,0,0.1)',
-            paddingBottom: '0.5cqmin',
-          }}>
-            生徒プロフィール
-          </div>
-          <div>所属寮：{DORM_NAMES[talent.dormitory] ?? talent.dormitory}</div>
-          <div>誕生日：{talent.birthday}</div>
-          <div>身長：{talent.height}cm</div>
-          <div>血液型：{talent.bloodType}</div>
+          {talent.intro && <div>「{talent.intro}」</div>}
+          {talent.dream && <div>夢：{talent.dream}</div>}
           {talent.hobbies.length > 0 && (
             <div>趣味：{talent.hobbies.join('、')}</div>
+          )}
+          {talent.favorites.length > 0 && (
+            <div>好き：{talent.favorites.join('、')}</div>
           )}
         </div>
       )}
@@ -220,14 +274,17 @@ function NameGuessLayoutInner({
         className="flex flex-col justify-center"
         style={{
           position: 'absolute',
-          top: '13cqmin',
+          top: '12cqmin',
           right: '2.5cqmin',
-          bottom: '1cqmin',
+          bottom: '2cqmin',
           width: '48%',
           gap: '2cqmin',
         }}
       >
         {question.answers.map((answer, i) => {
+          const answerTalent = answerTalents[i]
+          const faceImagePath = answerTalent ? getTalentImagePath(answerTalent) : undefined
+
           let bg = 'rgba(255,255,255,0.92)'
           let borderColor = 'rgba(180,180,180,0.5)'
           let color = '#333'
@@ -256,8 +313,8 @@ function NameGuessLayoutInner({
               className="font-bold transition active:scale-98"
               style={{
                 height: '10cqmin',
-                fontSize: '4cqmin',
-                padding: '0 4cqmin',
+                fontSize: '3.8cqmin',
+                padding: '0 3cqmin',
                 borderRadius: '2cqmin',
                 border: `0.2cqmin solid ${borderColor}`,
                 background: bg,
@@ -269,10 +326,39 @@ function NameGuessLayoutInner({
                 boxShadow: shadow,
                 display: 'flex',
                 alignItems: 'center',
+                gap: '2cqmin',
               }}
               disabled={isAnswered}
               onClick={() => handleSelect(i)}
             >
+              {/* 顔画像: 回答前はシルエット、回答後は実画像 */}
+              <div
+                style={{
+                  width: '7cqmin',
+                  height: '7cqmin',
+                  borderRadius: '1cqmin',
+                  overflow: 'hidden',
+                  flexShrink: 0,
+                  background: isAnswered ? 'transparent' : 'rgba(0,0,0,0.08)',
+                }}
+              >
+                {faceImagePath ? (
+                  <img
+                    src={faceImagePath}
+                    alt=""
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: isAnswered ? 'none' : 'brightness(0) saturate(0)',
+                      transition: 'filter 0.3s',
+                    }}
+                    draggable={false}
+                  />
+                ) : (
+                  <div style={{ width: '100%', height: '100%', background: 'rgba(0,0,0,0.08)' }} />
+                )}
+              </div>
               <span style={{ flex: 1 }}>{answer}</span>
               {isAnswered && i === question.correctIndex && (
                 <span style={{ fontSize: '4cqmin' }}>✓</span>
