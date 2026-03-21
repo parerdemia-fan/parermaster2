@@ -77,11 +77,13 @@ export function AboutScreen() {
       <div
         className="flex-1 overflow-y-auto"
         style={{
-          padding: '2cqmin 3cqmin',
+          padding: '3cqmin 4cqmin',
           lineHeight: 1.6,
-          color: 'white',
-          textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+          color: '#444',
           scrollbarWidth: 'none',
+          background: 'rgba(255,255,255,0.75)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '2cqmin',
         }}
       >
         {/* このゲームについて */}
@@ -174,7 +176,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
         style={{
           fontSize: '3.5cqmin',
           marginBottom: '1.5cqmin',
-          color: 'rgba(255,255,255,0.9)',
+          color: '#d6336c',
         }}
       >
         {title}
