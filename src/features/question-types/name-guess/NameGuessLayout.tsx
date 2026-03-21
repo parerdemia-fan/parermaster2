@@ -153,7 +153,7 @@ function NameGuessLayoutInner({
         </div>
       </div>
 
-      {/* アシスタント（右上、一体化カード） */}
+      {/* アシスタント（右上） */}
       <div
         style={{
           position: 'absolute',
@@ -161,50 +161,67 @@ function NameGuessLayoutInner({
           right: '2cqmin',
           zIndex: 10,
           display: 'flex',
-          alignItems: 'stretch',
-          background: 'rgba(255,255,255,0.9)',
-          borderRadius: '0 0 1.5cqmin 1.5cqmin',
-          border: '0.15cqmin solid rgba(0,0,0,0.06)',
-          boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
-          overflow: 'hidden',
+          alignItems: 'flex-start',
+          gap: '1.5cqmin',
         }}
       >
-        {/* テキスト部分 */}
+        {/* 吹き出し部分 */}
         <div
           style={{
+            marginTop: '1.5cqmin',
             padding: '1.5cqmin 2cqmin',
             fontSize: '2.2cqmin',
             color: '#444',
             lineHeight: 1.5,
             maxWidth: '20cqmin',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            background: 'rgba(255,255,255,0.92)',
+            borderRadius: '1.5cqmin',
+            border: '0.15cqmin solid rgba(0,0,0,0.06)',
+            boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
           }}
         >
-          <div>
-            {!isAnswered
-              ? COMMENT_BEFORE
-              : isCorrect
-                ? COMMENT_CORRECT
-                : COMMENT_WRONG}
+          {!isAnswered
+            ? COMMENT_BEFORE
+            : isCorrect
+              ? COMMENT_CORRECT
+              : COMMENT_WRONG}
+        </div>
+        {/* 画像＋名前 */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div
+            style={{
+              width: '13cqmin',
+              height: '13cqmin',
+              borderRadius: '0 0 1.5cqmin 1.5cqmin',
+              overflow: 'hidden',
+              background: 'rgba(255,255,255,0.9)',
+              boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.1)',
+            }}
+          >
+            <img
+              src={COMMENT_IMAGE}
+              alt={COMMENT_NAME}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'top',
+              }}
+              draggable={false}
+            />
           </div>
-          <div style={{ fontSize: '1.6cqmin', color: '#999', marginTop: '0.3cqmin' }}>
+          <div
+            style={{
+              fontSize: '1.6cqmin',
+              color: 'rgba(255,255,255,0.9)',
+              textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+              marginTop: '0.3cqmin',
+              whiteSpace: 'nowrap',
+            }}
+          >
             {COMMENT_NAME}
           </div>
         </div>
-        {/* 画像部分 */}
-        <img
-          src={COMMENT_IMAGE}
-          alt={COMMENT_NAME}
-          style={{
-            width: '13cqmin',
-            height: '13cqmin',
-            objectFit: 'cover',
-            objectPosition: 'top',
-          }}
-          draggable={false}
-        />
       </div>
 
       {/* 立ち絵（大きく表示、下ははみ出し） */}
