@@ -5,6 +5,7 @@ import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { judgeBadge } from '../../features/achievement/judge.ts'
 import { getBadgeSlotDef, RANK_LABELS, RANK_COLORS } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
+import { GAME_URL } from '../../shared/constants/urls.ts'
 
 interface BadgeAwardResult {
   awarded: boolean
@@ -22,6 +23,20 @@ export function ResultScreen() {
   const total = questions.length
   const rate = total > 0 ? Math.round((correctCount / total) * 100 * 10) / 10 : 0
   const isPerfect = correctCount === total
+
+  const genLabel = generation === 'gen2' ? '2期生編' : '1期生編'
+  const diffLabel = difficulty === 1 ? '★☆☆' : difficulty === 2 ? '★★☆' : '★★★'
+  const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'
+
+  const shareOnX = () => {
+    const perfectMark = isPerfect ? '🎉全問正解！' : ''
+    const text = `パレ学マスター 2nd Season
+${genLabel} ${modeLabel} ${diffLabel}
+${correctCount}/${total}問正解（${rate}%）${perfectMark}
+#パレ学マスター #パレデミア学園`
+    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(GAME_URL)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
 
   const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
   const accentGradient =
@@ -147,9 +162,26 @@ export function ResultScreen() {
           </span>
         )}
 
+        {/* Xシェアボタン */}
+        <button
+          className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+          style={{
+            fontSize: '3cqmin',
+            padding: '1cqmin 3cqmin',
+            borderRadius: '5cqmin',
+            border: 'none',
+            background: '#000',
+            color: 'white',
+            marginTop: '3cqmin',
+          }}
+          onClick={shareOnX}
+        >
+          𝕏 結果をシェア
+        </button>
+
         <div
           className="flex items-center justify-center"
-          style={{ gap: '3cqmin', marginTop: '4cqmin' }}
+          style={{ gap: '3cqmin', marginTop: '2cqmin' }}
         >
           <button
             className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"

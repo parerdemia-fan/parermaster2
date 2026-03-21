@@ -2,10 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { getVersion } from '../../shared/utils/version.ts'
-
-const PARERDEMIA_OFFICIAL_URL = 'https://www.parerdemia.jp/'
-const QUESTION_FORM_URL = 'https://forms.gle/PQkrKT2VNux1RP1C6'
-const GAME_URL = 'https://parerdemia-fan.github.io/parermaster2/'
+import { GAME_URL, PARERDEMIA_OFFICIAL_URL, QUESTION_FORM_URL } from '../../shared/constants/urls.ts'
 
 export function AboutScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
