@@ -194,7 +194,7 @@
 ```
 
 ### タレント詳細
-- 前作のTalentDetailScreenを踏襲
+- TalentListScreen 内に統合（左: 一覧グリッド、右: 詳細プロフィール）
 - データ構造の詳細は [data-design.md](data-design.md) を参照
 
 ---
@@ -358,21 +358,19 @@
 
 ### 画面一覧（前作ベース + 新規画面）
 
-| # | 画面名 | 前作対応 | 変更方針 |
+| # | 画面名 | コンポーネント | 備考 |
 |---|--------|---------|---------|
 | 1 | タイトル画面 | TitleScreen | |
 | 2 | 設定画面 | SettingScreen | |
 | 3 | クイズ画面 | QuizScreen | |
 | 4 | 結果画面 | ResultScreen | |
-| 5 | タレント一覧 | TalentListScreen | |
-| 6 | タレント詳細 | TalentDetailScreen | |
-| 7 | アチーブメント | AchievementScreen | |
-| 8 | ヘルプ | HelpScreen | |
-| 9 | 談話室 | RoomArea | |
-| 10 | スタッフロール | StaffRollScreen | |
-| 11 | 開発日誌 | DiaryScreen | |
-| 12 | ショートストーリー | SSScreen | |
-| 13 | （新規画面） | - | |
+| 5 | タレント一覧・詳細 | TalentListScreen | 前作のTalentDetailScreenを統合（左右レイアウト） |
+| 6 | アチーブメント | AchievementScreen | |
+| 7 | このゲームについて | AboutScreen | 前作HelpScreenから改名 |
+| 8 | 開発日誌 | DiaryScreen | |
+| 9 | 談話室 | RoomArea | Phase 5 |
+| 10 | スタッフロール | StaffRollScreen | Phase 5 |
+| 11 | ショートストーリー | SSScreen | Phase 5 |
 
 ### 画面遷移図
 基本的に前作踏襲。
@@ -425,6 +423,9 @@
   - 全員（1期生）: 1期生用の背景
   - 全員（2期生）: 2期生用の背景
   - タイムアタック/ハードコア: 専用背景 or 問題ごとに切り替え（未確定）
+- 実装方式: `body::before` 疑似要素で背景レイヤーを分離し、CSS変数（`--bg-image`, `--bg-blur`, `--bg-blur-scale`）で動的制御
+- クイズ/結果画面では背景に軽いぼかし（3px）を適用し、手前のキャラクター・UIを引き立たせる
+- 寮別背景が未作成の場合はデフォルト背景（bg_title）にフォールバック
 
 #### 選択肢レイアウト（基本形、前作踏襲）
 - 画像選択肢: 正方形で2×2グリッド
