@@ -157,52 +157,103 @@ function NameGuessLayoutInner({
       <div
         style={{
           position: 'absolute',
-          top: '0',
+          top: '5cqmin',
           right: '2cqmin',
           zIndex: 10,
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '1.5cqmin',
         }}
       >
-        {/* コメントテキスト */}
-        <div
-          style={{
-            marginTop: '1.5cqmin',
-            padding: '1cqmin 0',
-            fontSize: '2.2cqmin',
-            color: 'rgba(255,255,255,0.95)',
-            textShadow: '0 1px 3px rgba(0,0,0,0.6)',
-            lineHeight: 1.5,
-            maxWidth: '18cqmin',
-          }}
-        >
-          {!isAnswered
-            ? COMMENT_BEFORE
-            : isCorrect
-              ? COMMENT_CORRECT
-              : COMMENT_WRONG}
-        </div>
-        {/* 画像＋名前 */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {/* カード + はみ出し画像の基準 */}
+        <div style={{ position: 'relative' }}>
+          {/* 角丸長方形カード（テキスト左 + 画像背景右） */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'stretch',
+              height: '10cqmin',
+              borderRadius: '1.5cqmin',
+              overflow: 'hidden',
+              border: '0.3cqmin double rgba(150,150,150,0.6)',
+              boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.12)',
+            }}
+          >
+            {/* テキスト部分（白背景 + 吹き出し尖り） */}
+            <div
+              style={{
+                position: 'relative',
+                padding: '1.8cqmin 1.5cqmin 1.8cqmin 2cqmin',
+                fontSize: '1.9cqmin',
+                color: '#444',
+                lineHeight: 1.5,
+                maxWidth: '18cqmin',
+                background: 'white',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              {!isAnswered
+                ? COMMENT_BEFORE
+                : isCorrect
+                  ? COMMENT_CORRECT
+                  : COMMENT_WRONG}
+              {/* 吹き出しの尖り（右向き三角） */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: '-0.8cqmin',
+                  transform: 'translateY(-50%)',
+                  width: 0,
+                  height: 0,
+                  borderTop: '1.2cqmin solid transparent',
+                  borderBottom: '1.2cqmin solid transparent',
+                  borderLeft: '1.2cqmin solid white',
+                }}
+              />
+            </div>
+            {/* 画像背景部分（薄暖色） */}
+            <div
+              style={{
+                width: '13cqmin',
+                flexShrink: 0,
+                background: 'rgba(255, 225, 200, 0.6)',
+              }}
+            />
+          </div>
+          {/* タレント画像（上にはみ出し、下はカード下辺で見切れ） */}
           <img
             src={COMMENT_IMAGE}
             alt={COMMENT_NAME}
             style={{
-              width: '13cqmin',
-              height: '13cqmin',
-              objectFit: 'cover',
-              objectPosition: 'top',
-              borderRadius: '1.5cqmin',
+              position: 'absolute',
+              right: '-0.5cqmin',
+              bottom: 0,
+              width: '14cqmin',
+              clipPath: 'inset(-999px -999px 0 -999px)',
+              pointerEvents: 'none',
             }}
             draggable={false}
           />
+        </div>
+        {/* タレント名ラベル（下辺に重なるオレンジ角丸ラベル） */}
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            marginTop: '-1.5cqmin',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            paddingRight: '0.5cqmin',
+          }}
+        >
           <div
             style={{
+              padding: '0.3cqmin 2cqmin',
               fontSize: '1.6cqmin',
-              color: 'rgba(255,255,255,0.9)',
-              textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-              marginTop: '0.3cqmin',
+              color: 'white',
+              background: 'linear-gradient(135deg, #f0a050, #e08830)',
+              borderRadius: '1cqmin',
+              fontWeight: 'bold',
+              textShadow: '0 1px 2px rgba(0,0,0,0.2)',
               whiteSpace: 'nowrap',
             }}
           >
