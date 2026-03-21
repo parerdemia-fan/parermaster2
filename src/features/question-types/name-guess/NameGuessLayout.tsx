@@ -223,9 +223,9 @@ function NameGuessLayoutInner({
         alt="誰でしょう？"
         style={{
           position: 'absolute',
-          left: isStanding ? '2%' : '8%',
-          top: isStanding ? '10cqmin' : '12cqmin',
-          height: isStanding ? '110cqmin' : '55cqmin',
+          left: isStanding ? '-2%' : '3%',
+          top: isStanding ? '0cqmin' : '5cqmin',
+          height: isStanding ? '150cqmin' : '75cqmin',
           width: 'auto',
           objectFit: 'contain',
           zIndex: 2,
@@ -246,25 +246,30 @@ function NameGuessLayoutInner({
             top: '42cqmin',
             left: '2cqmin',
             width: '36%',
-            padding: '2cqmin 2.5cqmin',
+            padding: '1.5cqmin 2.5cqmin',
             background: 'rgba(255,255,255,0.88)',
             backdropFilter: 'blur(12px)',
             borderRadius: '1.5cqmin',
             border: '0.15cqmin solid rgba(0,0,0,0.06)',
             boxShadow: '0 0.3cqmin 1.2cqmin rgba(0,0,0,0.1)',
-            fontSize: '2.5cqmin',
-            lineHeight: 1.7,
+            fontSize: '2.3cqmin',
+            lineHeight: 1.6,
             color: '#444',
             zIndex: 3,
+            maxHeight: '28cqmin',
+            overflowY: 'auto',
+            scrollbarWidth: 'none' as const,
           }}
         >
-          {talent.intro && <div>「{talent.intro}」</div>}
           {talent.dream && <div>夢：{talent.dream}</div>}
           {talent.hobbies.length > 0 && (
             <div>趣味：{talent.hobbies.join('、')}</div>
           )}
           {talent.favorites.length > 0 && (
             <div>好き：{talent.favorites.join('、')}</div>
+          )}
+          {talent.skills.length > 0 && (
+            <div>特技：{talent.skills.join('、')}</div>
           )}
         </div>
       )}
@@ -339,24 +344,21 @@ function NameGuessLayoutInner({
                   borderRadius: '1cqmin',
                   overflow: 'hidden',
                   flexShrink: 0,
-                  background: isAnswered ? 'transparent' : 'rgba(0,0,0,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: isAnswered ? 'transparent' : 'rgba(0,0,0,0.06)',
                 }}
               >
-                {faceImagePath ? (
+                {isAnswered && faceImagePath ? (
                   <img
                     src={faceImagePath}
                     alt=""
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      filter: isAnswered ? 'none' : 'brightness(0) saturate(0)',
-                      transition: 'filter 0.3s',
-                    }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     draggable={false}
                   />
                 ) : (
-                  <div style={{ width: '100%', height: '100%', background: 'rgba(0,0,0,0.08)' }} />
+                  <span style={{ fontSize: '4cqmin', opacity: 0.25 }}>👤</span>
                 )}
               </div>
               <span style={{ flex: 1 }}>{answer}</span>

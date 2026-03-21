@@ -80,11 +80,17 @@ export function QuizScreen() {
         />
       )}
 
-      {/* フッター: 戻る/次へボタン */}
+      {/* フッター: 戻る/次へボタン（絶対配置でレイアウトに影響しない） */}
       {(isAnswered || canGoBack) && (
         <div
-          className="w-full flex justify-end items-center"
-          style={{ padding: '1cqmin 3cqmin 2cqmin', gap: '3cqmin' }}
+          className="flex items-center"
+          style={{
+            position: 'absolute',
+            bottom: '2cqmin',
+            right: '3cqmin',
+            gap: '3cqmin',
+            zIndex: 20,
+          }}
         >
           {canGoBack && (
             <button
