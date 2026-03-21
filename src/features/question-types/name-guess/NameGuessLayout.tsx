@@ -233,7 +233,7 @@ function NameGuessLayoutInner({
         <div
           style={{
             position: 'absolute',
-            bottom: '1cqmin',
+            bottom: '12cqmin',
             left: '10cqmin',
             width: '34%',
             padding: '1.5cqmin 2.5cqmin',
