@@ -351,8 +351,7 @@ function FaceGuessLayoutInner({
                 opacity,
                 boxShadow: shadow,
                 overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
+                position: 'relative',
               }}
               disabled={isAnswered}
               onClick={() => handleSelect(i)}
@@ -362,7 +361,7 @@ function FaceGuessLayoutInner({
                 alt={isAnswered ? question.answerNames[i] : '選択肢'}
                 style={{
                   width: '100%',
-                  flex: 1,
+                  height: '100%',
                   objectFit: 'cover',
                   display: 'block',
                   filter: question.isSilhouette && !isAnswered
@@ -376,6 +375,10 @@ function FaceGuessLayoutInner({
                 <div
                   className="font-bold"
                   style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
                     height: '5cqmin',
                     fontSize: question.answerNames[i].length <= 6 ? '3.5cqmin'
                       : question.answerNames[i].length <= 8 ? '3cqmin'
