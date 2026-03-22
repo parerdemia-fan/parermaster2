@@ -33,13 +33,20 @@ export function QuizScreen() {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             zIndex: 30,
-            fontSize: '8cqmin',
-            color: lastRecord.isCorrect ? '#22c55e' : '#ef4444',
-            textShadow: `0 0 2cqmin ${lastRecord.isCorrect ? 'rgba(34,197,94,0.5)' : 'rgba(239,68,68,0.5)'}, 0 2px 4px rgba(0,0,0,0.3)`,
+            fontSize: '7cqmin',
+            color: 'white',
+            background: lastRecord.isCorrect
+              ? 'rgba(34,197,94,0.85)'
+              : 'rgba(239,68,68,0.85)',
+            padding: '1.5cqmin 5cqmin',
+            borderRadius: '2cqmin',
+            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.25)',
+            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             pointerEvents: 'none',
+            whiteSpace: 'nowrap',
           }}
         >
-          {lastRecord.isCorrect ? '正解！' : '不正解..'}
+          {lastRecord.isCorrect ? '🎉 正解！' : '😢 不正解..'}
         </div>
       )}
       {/* 左下: やめるボタン */}
