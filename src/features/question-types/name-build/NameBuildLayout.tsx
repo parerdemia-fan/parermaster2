@@ -358,7 +358,9 @@ function PairPickLayout({
                 className="font-bold transition active:scale-98"
                 style={{
                   height: '8cqmin',
-                  fontSize: '3cqmin',
+                  fontSize: choice.length <= 3 ? '3cqmin'
+                    : choice.length <= 5 ? '2.6cqmin'
+                    : '2.2cqmin',
                   borderRadius: '1.5cqmin',
                   border: `0.3cqmin solid ${borderColor}`,
                   background: bg,
@@ -367,6 +369,9 @@ function PairPickLayout({
                   cursor: isAnswered || isUsed ? 'default' : 'pointer',
                   backdropFilter: 'blur(4px)',
                   boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                 }}
                 disabled={isAnswered || isUsed}
                 onClick={() => handleChoiceClick(choice)}
@@ -621,14 +626,15 @@ function PairSlot({
   isCorrectSlot: boolean
   correctValue: string
 }) {
-  let bg = 'rgba(255,255,255,0.3)'
-  let borderColor = 'rgba(255,255,255,0.6)'
-  const textColor = 'white'
+  let bg = 'rgba(255,255,255,0.75)'
+  let borderColor = 'rgba(180,140,160,0.6)'
+  const textColor = '#333'
 
   if (isAnswered && value !== null) {
     if (isCorrectSlot) {
       bg = 'rgba(34,197,94,0.3)'
       borderColor = '#22c55e'
+      // textColor stays #333
     } else {
       bg = 'rgba(239,68,68,0.3)'
       borderColor = '#ef4444'
@@ -648,12 +654,12 @@ function PairSlot({
         border: `0.4cqmin dashed ${borderColor}`,
         background: bg,
         color: textColor,
-        textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-        backdropFilter: 'blur(4px)',
+        backdropFilter: 'blur(8px)',
+        boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
       }}
     >
       {displayValue ?? (
-        <span style={{ fontSize: '2.5cqmin', opacity: 0.6 }}>{label}</span>
+        <span style={{ fontSize: '2.5cqmin', opacity: 0.5 }}>{label}</span>
       )}
     </div>
   )
