@@ -111,6 +111,16 @@ function NameGuessLayoutInner({
         }}
       >
         この生徒の名前は？
+        {isAnswered && (
+          <span
+            style={{
+              marginLeft: '2cqmin',
+              color: isCorrect ? '#22c55e' : '#ef4444',
+            }}
+          >
+            {isCorrect ? '正解！' : '不正解..'}
+          </span>
+        )}
       </div>
 
       {/* 進捗バー（中央） */}
@@ -363,7 +373,7 @@ function NameGuessLayoutInner({
               key={i}
               className="font-bold transition active:scale-98"
               style={{
-                height: '10cqmin',
+                height: '13cqmin',
                 fontSize: '3.8cqmin',
                 padding: '0 3cqmin',
                 borderRadius: '2cqmin',
@@ -385,8 +395,8 @@ function NameGuessLayoutInner({
               {/* 顔画像: 回答前はシルエット、回答後は実画像 */}
               <div
                 style={{
-                  width: '8.5cqmin',
-                  height: '8.5cqmin',
+                  width: '11cqmin',
+                  height: '11cqmin',
                   borderRadius: '1.2cqmin',
                   overflow: 'hidden',
                   flexShrink: 0,
@@ -407,12 +417,12 @@ function NameGuessLayoutInner({
                   <span style={{ fontSize: '4cqmin', opacity: 0.25 }}>👤</span>
                 )}
               </div>
-              <span style={{ flex: 1 }}>{answer}</span>
+              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{answer}</span>
               {isAnswered && i === question.correctIndex && (
-                <span style={{ fontSize: '4cqmin' }}>✓</span>
+                <span style={{ fontSize: '4cqmin', flexShrink: 0 }}>✓</span>
               )}
               {isAnswered && i !== question.correctIndex && (
-                <span style={{ fontSize: '3.5cqmin', opacity: 0.6 }}>✕</span>
+                <span style={{ fontSize: '3.5cqmin', opacity: 0.6, flexShrink: 0 }}>✕</span>
               )}
             </button>
           )

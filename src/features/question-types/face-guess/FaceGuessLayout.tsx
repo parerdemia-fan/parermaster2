@@ -250,7 +250,7 @@ function FaceGuessLayoutInner({
           position: 'absolute',
           top: '16cqmin',
           left: '3cqmin',
-          bottom: '2cqmin',
+          bottom: '3cqmin',
           width: '42%',
           display: 'flex',
           flexDirection: 'column',
@@ -258,29 +258,32 @@ function FaceGuessLayoutInner({
           zIndex: 3,
         }}
       >
-        {/* タレント名（大きく表示） */}
-        <div
-          className="font-bold"
-          style={{
-            fontSize: talent && question.talentName.length > 8 ? '6cqmin' : '8cqmin',
-            color: 'white',
-            textShadow: '0 2px 6px rgba(0,0,0,0.4)',
-            textAlign: 'center',
-            padding: '1cqmin 0',
-          }}
-        >
-          {question.talentName}
+        {/* タレント名（大きく表示）+ 正誤表示 */}
+        <div style={{ position: 'relative' }}>
+          <div
+            className="font-bold"
+            style={{
+              fontSize: question.talentName.length > 8 ? '6cqmin' : '8cqmin',
+              color: 'white',
+              textShadow: '0 2px 6px rgba(0,0,0,0.4)',
+              textAlign: 'center',
+              padding: '1cqmin 0',
+            }}
+          >
+            {question.talentName}
+          </div>
           {isAnswered && (
-            <span
+            <div
+              className="font-bold"
               style={{
-                display: 'block',
                 fontSize: '4cqmin',
                 color: isCorrect ? '#22c55e' : '#ef4444',
-                marginTop: '0.5cqmin',
+                textShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                textAlign: 'center',
               }}
             >
               {isCorrect ? '正解！' : '不正解..'}
-            </span>
+            </div>
           )}
         </div>
 
@@ -323,7 +326,7 @@ function FaceGuessLayoutInner({
           position: 'absolute',
           top: '16cqmin',
           right: '2.5cqmin',
-          bottom: '2cqmin',
+          bottom: '10cqmin',
           width: '48%',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
