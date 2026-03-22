@@ -197,11 +197,10 @@ function LinkButton({ onClick, children }: { onClick: () => void; children: Reac
         padding: '0 4cqmin',
         fontSize: '3cqmin',
         borderRadius: '1.5cqmin',
-        border: '0.3cqmin solid rgba(255,255,255,0.5)',
-        background: 'rgba(255,255,255,0.7)',
+        border: '0.2cqmin solid rgba(200,160,180,0.4)',
+        background: 'rgba(240,220,230,0.6)',
         color: '#555',
         cursor: 'pointer',
-        backdropFilter: 'blur(4px)',
         textAlign: 'left',
       }}
       onClick={onClick}
