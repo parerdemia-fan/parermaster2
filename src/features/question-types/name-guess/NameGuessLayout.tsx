@@ -111,16 +111,6 @@ function NameGuessLayoutInner({
         }}
       >
         この生徒の名前は？
-        {isAnswered && (
-          <span
-            style={{
-              marginLeft: '2cqmin',
-              color: isCorrect ? '#22c55e' : '#ef4444',
-            }}
-          >
-            {isCorrect ? '正解！' : '不正解..'}
-          </span>
-        )}
       </div>
 
       {/* 進捗バー（中央） */}

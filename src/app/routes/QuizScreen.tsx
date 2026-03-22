@@ -19,9 +19,29 @@ export function QuizScreen() {
   const isAnswered = quizState === 'answered'
   const isTextQuiz = current.typeId === 'text-quiz'
   const canGoBack = isTextQuiz && currentIndex > 0
+  const lastRecord = answerRecords[currentIndex]
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
+      {/* 正解/不正解フローティング表示（全問題タイプ共通） */}
+      {isAnswered && lastRecord && (
+        <div
+          className="font-bold animate-fade-in"
+          style={{
+            position: 'absolute',
+            top: '38%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 30,
+            fontSize: '8cqmin',
+            color: lastRecord.isCorrect ? '#22c55e' : '#ef4444',
+            textShadow: `0 0 2cqmin ${lastRecord.isCorrect ? 'rgba(34,197,94,0.5)' : 'rgba(239,68,68,0.5)'}, 0 2px 4px rgba(0,0,0,0.3)`,
+            pointerEvents: 'none',
+          }}
+        >
+          {lastRecord.isCorrect ? '正解！' : '不正解..'}
+        </div>
+      )}
       {/* 左下: やめるボタン */}
       <button
         className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
