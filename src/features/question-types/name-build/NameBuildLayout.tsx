@@ -360,7 +360,8 @@ function PairPickLayout({
                   height: '8cqmin',
                   fontSize: choice.length <= 3 ? '3cqmin'
                     : choice.length <= 5 ? '2.6cqmin'
-                    : '2.2cqmin',
+                    : choice.length <= 7 ? '2.2cqmin'
+                    : '1.8cqmin',
                   borderRadius: '1.5cqmin',
                   border: `0.3cqmin solid ${borderColor}`,
                   background: bg,
@@ -370,8 +371,7 @@ function PairPickLayout({
                   backdropFilter: 'blur(4px)',
                   boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
                   whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
+                  padding: '0 1cqmin',
                 }}
                 disabled={isAnswered || isUsed}
                 onClick={() => handleChoiceClick(choice)}
@@ -446,6 +446,10 @@ function CharPickLayout({
     builtGiven === question.correctGivenName
 
   const correctChars = [...question.correctFamilyName, ...question.correctGivenName]
+  const totalChars = familyLen + givenLen
+  // 文字数が多い場合はスロットサイズを縮小して折り返しを防止
+  const slotSize = totalChars <= 6 ? 7 : totalChars <= 8 ? 6.5 : 6.2
+  const slotFontSize = totalChars <= 6 ? 3.5 : totalChars <= 8 ? 3.2 : 3.1
   const faceSize = isHard ? '28cqmin' : '30cqmin'
   const rightWidth = isHard ? '60%' : '58%'
 
@@ -486,6 +490,8 @@ function CharPickLayout({
               isCorrectSlot={isAnswered && filledChars[i] === correctChar}
               correctValue={correctChar}
               isCurrent={!isAnswered && filledChars.length === i}
+              size={slotSize}
+              fontSize={slotFontSize}
             />
           ))}
           <div style={{ width: '2cqmin' }} />
@@ -499,6 +505,8 @@ function CharPickLayout({
                 isCorrectSlot={isAnswered && filledChars[slotIndex] === correctChar}
                 correctValue={correctChar}
                 isCurrent={!isAnswered && filledChars.length === slotIndex}
+                size={slotSize}
+                fontSize={slotFontSize}
               />
             )
           })}
@@ -632,11 +640,8 @@ function PairSlot({
 
   if (isAnswered && value !== null) {
     if (isCorrectSlot) {
-      bg = 'rgba(34,197,94,0.3)'
       borderColor = '#22c55e'
-      // textColor stays #333
     } else {
-      bg = 'rgba(239,68,68,0.3)'
       borderColor = '#ef4444'
     }
   }
@@ -651,7 +656,7 @@ function PairSlot({
         height: '7cqmin',
         fontSize: '3.5cqmin',
         borderRadius: '1.5cqmin',
-        border: `0.4cqmin dashed ${borderColor}`,
+        border: `0.4cqmin ${isAnswered ? 'solid' : 'dashed'} ${borderColor}`,
         background: bg,
         color: textColor,
         backdropFilter: 'blur(8px)',
@@ -671,22 +676,24 @@ function CharSlot({
   isCorrectSlot,
   correctValue,
   isCurrent,
+  size = 7,
+  fontSize = 3.5,
 }: {
   value: string | null
   isAnswered: boolean
   isCorrectSlot: boolean
   correctValue: string
   isCurrent: boolean
+  size?: number
+  fontSize?: number
 }) {
-  let bg = 'rgba(255,255,255,0.3)'
-  let borderColor = isCurrent ? 'rgba(59,130,246,0.8)' : 'rgba(255,255,255,0.6)'
+  let bg = 'rgba(255,255,255,0.75)'
+  let borderColor = isCurrent ? 'rgba(59,130,246,0.8)' : 'rgba(180,140,160,0.6)'
 
   if (isAnswered && value !== null) {
     if (isCorrectSlot) {
-      bg = 'rgba(34,197,94,0.3)'
       borderColor = '#22c55e'
     } else {
-      bg = 'rgba(239,68,68,0.3)'
       borderColor = '#ef4444'
     }
   }
@@ -697,15 +704,15 @@ function CharSlot({
     <div
       className="flex items-center justify-center font-bold"
       style={{
-        width: '7cqmin',
-        height: '7cqmin',
-        fontSize: '3.5cqmin',
+        width: `${size}cqmin`,
+        height: `${size}cqmin`,
+        fontSize: `${fontSize}cqmin`,
         borderRadius: '1cqmin',
         border: `0.4cqmin ${value ? 'solid' : 'dashed'} ${borderColor}`,
         background: bg,
-        color: 'white',
-        textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-        backdropFilter: 'blur(4px)',
+        color: '#333',
+        backdropFilter: 'blur(8px)',
+        boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
         transition: 'border-color 0.15s',
       }}
     >
