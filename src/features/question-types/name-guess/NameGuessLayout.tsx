@@ -407,13 +407,7 @@ function NameGuessLayoutInner({
                   <span style={{ fontSize: '4cqmin', opacity: 0.25 }}>👤</span>
                 )}
               </div>
-              <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{answer}</span>
-              {isAnswered && i === question.correctIndex && (
-                <span style={{ fontSize: '4cqmin', flexShrink: 0 }}>✓</span>
-              )}
-              {isAnswered && i !== question.correctIndex && (
-                <span style={{ fontSize: '3.5cqmin', opacity: 0.6, flexShrink: 0 }}>✕</span>
-              )}
+              <span style={{ flex: 1 }}>{answer}</span>
             </button>
           )
         })}
