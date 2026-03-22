@@ -40,7 +40,8 @@ function NameGuessLayoutInner({
 }: NameGuessLayoutProps) {
   const [selected, setSelected] = useState<number | null>(null)
   const { talents } = useTalents()
-  const { currentIndex, questions } = useGameStore()
+  const currentIndex = useGameStore((s) => s.currentIndex)
+  const questions = useGameStore((s) => s.questions)
 
   const handleSelect = (index: number) => {
     if (isAnswered) return
