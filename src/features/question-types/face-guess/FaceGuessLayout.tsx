@@ -376,17 +376,19 @@ function FaceGuessLayoutInner({
                 <div
                   className="font-bold"
                   style={{
+                    height: '5cqmin',
                     fontSize: question.answerNames[i].length <= 6 ? '3.5cqmin'
                       : question.answerNames[i].length <= 8 ? '3cqmin'
                       : '2.5cqmin',
-                    padding: '1cqmin 0.5cqmin',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     background: i === question.correctIndex
                       ? 'rgba(34,197,94,0.85)'
                       : i === selected
                         ? 'rgba(239,68,68,0.85)'
                         : 'rgba(0,0,0,0.5)',
                     color: 'white',
-                    textAlign: 'center',
                     whiteSpace: 'nowrap',
                   }}
                 >
