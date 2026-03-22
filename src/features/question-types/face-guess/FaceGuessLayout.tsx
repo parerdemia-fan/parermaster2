@@ -376,8 +376,10 @@ function FaceGuessLayoutInner({
                 <div
                   className="font-bold"
                   style={{
-                    fontSize: '2.5cqmin',
-                    padding: '0.5cqmin',
+                    fontSize: question.answerNames[i].length <= 6 ? '3.5cqmin'
+                      : question.answerNames[i].length <= 8 ? '3cqmin'
+                      : '2.5cqmin',
+                    padding: '1cqmin 0.5cqmin',
                     background: i === question.correctIndex
                       ? 'rgba(34,197,94,0.85)'
                       : i === selected
@@ -385,6 +387,7 @@ function FaceGuessLayoutInner({
                         : 'rgba(0,0,0,0.5)',
                     color: 'white',
                     textAlign: 'center',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {question.answerNames[i]}

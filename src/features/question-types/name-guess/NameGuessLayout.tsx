@@ -364,7 +364,9 @@ function NameGuessLayoutInner({
               className="font-bold transition active:scale-98"
               style={{
                 height: '13cqmin',
-                fontSize: '3.8cqmin',
+                fontSize: answer.length <= 6 ? '4.5cqmin'
+                  : answer.length <= 8 ? '3.8cqmin'
+                  : '3.2cqmin',
                 padding: '0 3cqmin',
                 borderRadius: '2cqmin',
                 border: `0.2cqmin solid ${borderColor}`,
