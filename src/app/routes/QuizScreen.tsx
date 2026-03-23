@@ -29,19 +29,21 @@ export function QuizScreen() {
           className="font-bold animate-fade-in"
           style={{
             position: 'absolute',
-            top: '38%',
+            top: '20%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
             zIndex: 30,
             fontSize: '5cqmin',
             color: 'white',
             background: lastRecord.isCorrect
-              ? 'rgba(34,197,94,0.8)'
-              : 'rgba(239,68,68,0.8)',
+              ? 'rgba(34,197,94,0.85)'
+              : 'rgba(239,68,68,0.85)',
             padding: '1cqmin 4cqmin',
             borderRadius: '1.5cqmin',
-            boxShadow: '0 0.3cqmin 1.5cqmin rgba(0,0,0,0.2)',
-            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.4)',
+            textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+            WebkitTextStroke: '0.5px rgba(0,0,0,0.3)',
+            border: '0.3cqmin solid rgba(255,255,255,0.4)',
             pointerEvents: 'none',
             whiteSpace: 'nowrap',
           }}
