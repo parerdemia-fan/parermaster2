@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
+import { CHOICE_PALETTES, FACE_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import type { FaceGuessQuestion } from './types.ts'
@@ -319,20 +320,20 @@ function FaceGuessLayoutInner({
         }}
       >
         {question.answerImages.map((imagePath, i) => {
-          let borderColor = 'rgba(180,180,180,0.5)'
+          const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+          const patternSvg = generatePattern(palette.motif, palette.motifFill, i * 1000 + currentIndex * 7, FACE_GUESS_ZONES, { w: 100, h: 100 })
+          let borderColor = 'rgba(255,255,255,0.7)'
           let opacity = 1
-          let shadow = '0 0.2cqmin 1cqmin rgba(0,0,0,0.06)'
-          let bg = 'rgba(255,255,255,0.92)'
+          let boxShadow = `0 0.5cqmin 1.5cqmin ${palette.outerShadow}, inset 0 1cqmin 3cqmin ${palette.insetShadow}`
+          let bg = `url("data:image/svg+xml,${patternSvg}") center / 100% 100% no-repeat, ${palette.gradient}`
 
           if (isAnswered) {
             if (i === question.correctIndex) {
               borderColor = '#16a34a'
-              bg = 'rgba(34,197,94,0.92)'
-              shadow = '0 0.3cqmin 1.2cqmin rgba(34,197,94,0.3)'
+              boxShadow = `0 0.5cqmin 1.5cqmin rgba(22,163,74,0.5), inset 0 1cqmin 3cqmin rgba(0,80,30,0.2)`
             } else if (i === selected) {
               borderColor = '#dc2626'
-              bg = 'rgba(239,68,68,0.92)'
-              shadow = '0 0.3cqmin 1.2cqmin rgba(239,68,68,0.3)'
+              boxShadow = `0 0.5cqmin 1.5cqmin rgba(220,38,38,0.5), inset 0 1cqmin 3cqmin rgba(100,0,0,0.2)`
             } else {
               opacity = 0.4
             }
@@ -344,12 +345,12 @@ function FaceGuessLayoutInner({
               className="transition active:scale-97"
               style={{
                 padding: 0,
-                border: `0.2cqmin solid ${borderColor}`,
+                border: `0.5cqmin solid ${borderColor}`,
                 borderRadius: '2cqmin',
                 background: bg,
                 cursor: isAnswered ? 'default' : 'pointer',
                 opacity,
-                boxShadow: shadow,
+                boxShadow,
                 overflow: 'hidden',
                 position: 'relative',
               }}
