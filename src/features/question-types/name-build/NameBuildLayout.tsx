@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
+import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import type { NameBuildQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -243,6 +244,7 @@ function PairPickLayout({
   isAnswered,
   onAnswer,
 }: NameBuildLayoutProps) {
+  const { talents } = useTalents()
   const [slots, setSlots] = useState<[string | null, string | null]>([null, null])
 
   const handleChoiceClick = (choice: string) => {
@@ -276,6 +278,14 @@ function PairPickLayout({
 
   const bothFilled = slots[0] !== null && slots[1] !== null
 
+  const talent = talents.find((t) => t.id === question.talentId)
+  const isStanding = talent ? talent.generation === 1 : false
+  const imagePath = talent
+    ? talent.generation === 2
+      ? `${BASE}data/images/face/${talent.id}.png`
+      : `${BASE}data/images/kv/orig/${talent.id}.png`
+    : question.talentImagePath
+
   return (
     <div
       className="relative"
@@ -283,8 +293,22 @@ function PairPickLayout({
     >
       <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
 
-      {/* 左側: 顔画像 */}
-      <FaceImage src={question.talentImagePath} size="35cqmin" top="16cqmin" left="5cqmin" />
+      {/* 左側: 立ち絵（名前当てと同じスタイル） */}
+      <img
+        src={imagePath}
+        alt="誰でしょう？"
+        style={{
+          position: 'absolute',
+          left: isStanding ? '-10%' : '1%',
+          top: isStanding ? '0cqmin' : '5cqmin',
+          height: isStanding ? '150cqmin' : '75cqmin',
+          width: 'auto',
+          objectFit: 'contain',
+          zIndex: 2,
+          borderRadius: isStanding ? undefined : '3cqmin',
+        }}
+        draggable={false}
+      />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
       <div
@@ -294,9 +318,10 @@ function PairPickLayout({
           right: '2.5cqmin',
           bottom: '10cqmin',
           width: '55%',
+          zIndex: 3,
           display: 'flex',
           flexDirection: 'column',
-          gap: '2cqmin',
+          gap: '3cqmin',
           justifyContent: 'center',
         }}
       >
@@ -383,13 +408,13 @@ function PairPickLayout({
         </div>
 
         {/* クリア＋決定ボタン */}
-        {!isAnswered && (
+        <div style={{ visibility: isAnswered ? 'hidden' : 'visible' }}>
           <ActionButtons
             canSubmit={bothFilled}
             onClear={handleClear}
             onSubmit={handleSubmit}
           />
-        )}
+        </div>
       </div>
     </div>
   )
@@ -402,6 +427,7 @@ function CharPickLayout({
   isAnswered,
   onAnswer,
 }: NameBuildLayoutProps) {
+  const { talents } = useTalents()
   const familyLen = question.correctFamilyName.length
   const givenLen = question.correctGivenName.length
   const totalSlots = familyLen + givenLen
@@ -450,8 +476,15 @@ function CharPickLayout({
   // 文字数が多い場合はスロットサイズを縮小して折り返しを防止
   const slotSize = totalChars <= 6 ? 7 : totalChars <= 8 ? 6.5 : 6.2
   const slotFontSize = totalChars <= 6 ? 3.5 : totalChars <= 8 ? 3.2 : 3.1
-  const faceSize = isHard ? '28cqmin' : '30cqmin'
   const rightWidth = isHard ? '60%' : '58%'
+
+  const talent = talents.find((t) => t.id === question.talentId)
+  const isStanding = talent ? talent.generation === 1 : false
+  const imagePath = talent
+    ? talent.generation === 2
+      ? `${BASE}data/images/face/${talent.id}.png`
+      : `${BASE}data/images/kv/orig/${talent.id}.png`
+    : question.talentImagePath
 
   return (
     <div
@@ -460,8 +493,22 @@ function CharPickLayout({
     >
       <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
 
-      {/* 左側: 顔画像 */}
-      <FaceImage src={question.talentImagePath} size={faceSize} top="16cqmin" left="3cqmin" />
+      {/* 左側: 立ち絵（名前当てと同じスタイル） */}
+      <img
+        src={imagePath}
+        alt="誰でしょう？"
+        style={{
+          position: 'absolute',
+          left: isStanding ? '-10%' : '1%',
+          top: isStanding ? '0cqmin' : '5cqmin',
+          height: isStanding ? '150cqmin' : '75cqmin',
+          width: 'auto',
+          objectFit: 'contain',
+          zIndex: 2,
+          borderRadius: isStanding ? undefined : '3cqmin',
+        }}
+        draggable={false}
+      />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
       <div
@@ -471,9 +518,10 @@ function CharPickLayout({
           right: '2.5cqmin',
           bottom: '10cqmin',
           width: rightWidth,
+          zIndex: 3,
           display: 'flex',
           flexDirection: 'column',
-          gap: '1.5cqmin',
+          gap: isHard ? '1.5cqmin' : '2.5cqmin',
           justifyContent: 'center',
         }}
       >
@@ -568,58 +616,34 @@ function CharPickLayout({
         </div>
 
         {/* クリア＋1文字戻す＋決定ボタン */}
-        {!isAnswered && (
-          <div
-            className="flex justify-center"
-            style={{ gap: '2cqmin' }}
-          >
-            <ActionButton
-              label="クリア"
-              onClick={handleClear}
-              variant="secondary"
-            />
-            <ActionButton
-              label="1字戻す"
-              onClick={handleBackspace}
-              variant="secondary"
-              disabled={selectedIndices.length === 0}
-            />
-            <ActionButton
-              label="OK"
-              onClick={handleSubmit}
-              variant={allFilled ? 'primary' : 'disabled'}
-              disabled={!allFilled}
-            />
-          </div>
-        )}
+        <div
+          className="flex justify-center"
+          style={{ gap: '2cqmin', visibility: isAnswered ? 'hidden' : 'visible' }}
+        >
+          <ActionButton
+            label="クリア"
+            onClick={handleClear}
+            variant="secondary"
+          />
+          <ActionButton
+            label="1字戻す"
+            onClick={handleBackspace}
+            variant="secondary"
+            disabled={selectedIndices.length === 0}
+          />
+          <ActionButton
+            label="OK"
+            onClick={handleSubmit}
+            variant={allFilled ? 'primary' : 'disabled'}
+            disabled={!allFilled}
+          />
+        </div>
       </div>
     </div>
   )
 }
 
 // ─── 共通コンポーネント ─────────────────────────────
-
-function FaceImage({ src, size, top, left }: { src: string; size: string; top: string; left: string }) {
-  return (
-    <img
-      src={src}
-      alt="誰でしょう？"
-      style={{
-        position: 'absolute',
-        top,
-        left,
-        width: size,
-        height: size,
-        objectFit: 'cover',
-        borderRadius: '3cqmin',
-        border: '0.4cqmin solid rgba(255,255,255,0.8)',
-        boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.2)',
-        zIndex: 2,
-      }}
-      draggable={false}
-    />
-  )
-}
 
 function PairSlot({
   label,
