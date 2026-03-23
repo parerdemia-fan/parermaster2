@@ -12,6 +12,30 @@ const COMMENT_BEFORE = 'この子の名前、わかる〜？'
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
 
+/** 選択肢ボタンのパステルカラーパレット（暖色寒色交互: 水色→薄ピンク→ミントグリーン→薄紫） */
+const CHOICE_PALETTES = [
+  { // 水色
+    gradient: 'linear-gradient(160deg, rgba(215,238,252,0.95) 0%, rgba(170,215,242,0.95) 100%)',
+    outerShadow: 'rgba(60,120,170,0.5)',
+    insetShadow: 'rgba(50,100,160,0.3)',
+  },
+  { // 薄ピンク（サクラ）
+    gradient: 'linear-gradient(160deg, rgba(252,218,228,0.95) 0%, rgba(242,180,200,0.95) 100%)',
+    outerShadow: 'rgba(170,80,110,0.5)',
+    insetShadow: 'rgba(160,70,100,0.3)',
+  },
+  { // ミントグリーン
+    gradient: 'linear-gradient(160deg, rgba(210,242,220,0.95) 0%, rgba(170,228,190,0.95) 100%)',
+    outerShadow: 'rgba(60,150,90,0.5)',
+    insetShadow: 'rgba(50,140,80,0.3)',
+  },
+  { // 薄紫（ラベンダー）
+    gradient: 'linear-gradient(160deg, rgba(228,215,248,0.95) 0%, rgba(195,175,235,0.95) 100%)',
+    outerShadow: 'rgba(100,70,160,0.5)',
+    insetShadow: 'rgba(90,60,150,0.3)',
+  },
+]
+
 interface NameGuessLayoutProps {
   question: NameGuessQuestion
   isAnswered: boolean
@@ -337,23 +361,27 @@ function NameGuessLayoutInner({
           const answerTalent = answerTalents[i]
           const faceImagePath = answerTalent ? getTalentImagePath(answerTalent) : undefined
 
-          let bg = 'rgba(255,255,255,0.92)'
-          let borderColor = 'rgba(180,180,180,0.5)'
+          const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+          let bg = palette.gradient
+          let borderColor = 'rgba(255,255,255,0.7)'
           let color = '#333'
           let opacity = 1
-          let shadow = '0 0.2cqmin 1cqmin rgba(0,0,0,0.06)'
+          let boxShadow = `0 0.5cqmin 1.5cqmin ${palette.outerShadow}, inset 0 1cqmin 3cqmin ${palette.insetShadow}`
+          let textShadow = '0 0.1cqmin 0.3cqmin rgba(0,0,0,0.15)'
 
           if (isAnswered) {
             if (i === question.correctIndex) {
-              bg = 'rgba(34,197,94,0.92)'
-              borderColor = '#16a34a'
+              bg = 'linear-gradient(135deg, rgba(34,197,94,0.92), rgba(22,163,74,0.92))'
+              borderColor = 'rgba(255,255,255,0.8)'
               color = 'white'
-              shadow = '0 0.3cqmin 1.2cqmin rgba(34,197,94,0.3)'
+              boxShadow = '0 0.4cqmin 1.2cqmin rgba(22,163,74,0.4), inset 0 0.8cqmin 2cqmin rgba(0,80,30,0.2)'
+              textShadow = '0 1px 3px rgba(0,0,0,0.3)'
             } else if (i === selected) {
-              bg = 'rgba(239,68,68,0.92)'
-              borderColor = '#dc2626'
+              bg = 'linear-gradient(135deg, rgba(239,68,68,0.92), rgba(220,38,38,0.92))'
+              borderColor = 'rgba(255,255,255,0.8)'
               color = 'white'
-              shadow = '0 0.3cqmin 1.2cqmin rgba(239,68,68,0.3)'
+              boxShadow = '0 0.4cqmin 1.2cqmin rgba(220,38,38,0.4), inset 0 0.8cqmin 2cqmin rgba(100,0,0,0.2)'
+              textShadow = '0 1px 3px rgba(0,0,0,0.3)'
             } else {
               opacity = 0.4
             }
@@ -370,14 +398,14 @@ function NameGuessLayoutInner({
                   : '3.8cqmin',
                 padding: '0 3cqmin 0 0',
                 borderRadius: '2cqmin',
-                border: `0.2cqmin solid ${borderColor}`,
+                border: `0.5cqmin solid ${borderColor}`,
                 background: bg,
                 color,
                 opacity,
                 cursor: isAnswered ? 'default' : 'pointer',
                 textAlign: 'left',
-                backdropFilter: 'blur(6px)',
-                boxShadow: shadow,
+                boxShadow,
+                textShadow,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '2cqmin',
@@ -391,7 +419,6 @@ function NameGuessLayoutInner({
                 style={{
                   width: '13cqmin',
                   height: '100%',
-                  borderRadius: 0,
                   overflow: 'hidden',
                   flexShrink: 0,
                   display: 'flex',
