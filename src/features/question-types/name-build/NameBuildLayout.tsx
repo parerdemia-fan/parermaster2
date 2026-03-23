@@ -244,7 +244,6 @@ function PairPickLayout({
   isAnswered,
   onAnswer,
 }: NameBuildLayoutProps) {
-  const { talents } = useTalents()
   const [slots, setSlots] = useState<[string | null, string | null]>([null, null])
 
   const handleChoiceClick = (choice: string) => {
@@ -278,14 +277,6 @@ function PairPickLayout({
 
   const bothFilled = slots[0] !== null && slots[1] !== null
 
-  const talent = talents.find((t) => t.id === question.talentId)
-  const isStanding = talent ? talent.generation === 1 : false
-  const imagePath = talent
-    ? talent.generation === 2
-      ? `${BASE}data/images/face/${talent.id}.png`
-      : `${BASE}data/images/kv/orig/${talent.id}.png`
-    : question.talentImagePath
-
   return (
     <div
       className="relative"
@@ -293,22 +284,7 @@ function PairPickLayout({
     >
       <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
 
-      {/* 左側: 立ち絵（名前当てと同じスタイル） */}
-      <img
-        src={imagePath}
-        alt="誰でしょう？"
-        style={{
-          position: 'absolute',
-          left: isStanding ? '-10%' : '1%',
-          top: isStanding ? '0cqmin' : '5cqmin',
-          height: isStanding ? '150cqmin' : '75cqmin',
-          width: 'auto',
-          objectFit: 'contain',
-          zIndex: 2,
-          borderRadius: isStanding ? undefined : '3cqmin',
-        }}
-        draggable={false}
-      />
+      <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
       <div
@@ -427,17 +403,16 @@ function CharPickLayout({
   isAnswered,
   onAnswer,
 }: NameBuildLayoutProps) {
-  const { talents } = useTalents()
   const familyLen = question.correctFamilyName.length
   const givenLen = question.correctGivenName.length
-  const totalSlots = familyLen + givenLen
+  const totalChars = familyLen + givenLen
   const isHard = question.difficulty === 3
 
   const [selectedIndices, setSelectedIndices] = useState<number[]>([])
 
   const filledChars = selectedIndices.map((i) => question.choices[i])
   const usedSet = new Set(selectedIndices)
-  const allFilled = selectedIndices.length >= totalSlots
+  const allFilled = selectedIndices.length >= totalChars
 
   const handleChoiceClick = (index: number) => {
     if (isAnswered || usedSet.has(index) || allFilled) return
@@ -472,19 +447,12 @@ function CharPickLayout({
     builtGiven === question.correctGivenName
 
   const correctChars = [...question.correctFamilyName, ...question.correctGivenName]
-  const totalChars = familyLen + givenLen
   // 文字数が多い場合はスロットサイズを縮小して折り返しを防止
-  const slotSize = totalChars <= 6 ? 7 : totalChars <= 8 ? 6.5 : 6.2
-  const slotFontSize = totalChars <= 6 ? 3.5 : totalChars <= 8 ? 3.2 : 3.1
+  // 右側コンテナ幅≒77cqmin、gap=1cqmin×(totalChars-1)、spacer=2cqmin から逆算
+  const computedSize = (75 - totalChars) / totalChars
+  const slotSize = totalChars <= 5 ? 13 : Math.min(12, Math.max(5.5, computedSize))
+  const slotFontSize = slotSize * 0.5
   const rightWidth = isHard ? '60%' : '58%'
-
-  const talent = talents.find((t) => t.id === question.talentId)
-  const isStanding = talent ? talent.generation === 1 : false
-  const imagePath = talent
-    ? talent.generation === 2
-      ? `${BASE}data/images/face/${talent.id}.png`
-      : `${BASE}data/images/kv/orig/${talent.id}.png`
-    : question.talentImagePath
 
   return (
     <div
@@ -493,22 +461,7 @@ function CharPickLayout({
     >
       <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
 
-      {/* 左側: 立ち絵（名前当てと同じスタイル） */}
-      <img
-        src={imagePath}
-        alt="誰でしょう？"
-        style={{
-          position: 'absolute',
-          left: isStanding ? '-10%' : '1%',
-          top: isStanding ? '0cqmin' : '5cqmin',
-          height: isStanding ? '150cqmin' : '75cqmin',
-          width: 'auto',
-          objectFit: 'contain',
-          zIndex: 2,
-          borderRadius: isStanding ? undefined : '3cqmin',
-        }}
-        draggable={false}
-      />
+      <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
       <div
@@ -645,6 +598,35 @@ function CharPickLayout({
 
 // ─── 共通コンポーネント ─────────────────────────────
 
+function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPath: string }) {
+  const { talents } = useTalents()
+  const talent = talents.find((t) => t.id === talentId)
+  const isStanding = talent ? talent.generation === 1 : false
+  const imagePath = talent
+    ? talent.generation === 2
+      ? `${BASE}data/images/face/${talent.id}.png`
+      : `${BASE}data/images/kv/orig/${talent.id}.png`
+    : fallbackPath
+
+  return (
+    <img
+      src={imagePath}
+      alt="誰でしょう？"
+      style={{
+        position: 'absolute',
+        left: isStanding ? '-10%' : '1%',
+        top: isStanding ? '0cqmin' : '5cqmin',
+        height: isStanding ? '150cqmin' : '75cqmin',
+        width: 'auto',
+        objectFit: 'contain',
+        zIndex: 2,
+        borderRadius: isStanding ? undefined : '3cqmin',
+      }}
+      draggable={false}
+    />
+  )
+}
+
 function PairSlot({
   label,
   value,
@@ -658,7 +640,7 @@ function PairSlot({
   isCorrectSlot: boolean
   correctValue: string
 }) {
-  let bg = 'rgba(255,255,255,0.75)'
+  const bg = 'rgba(255,255,255,0.75)'
   let borderColor = 'rgba(180,140,160,0.6)'
   const textColor = '#333'
 
@@ -711,7 +693,7 @@ function CharSlot({
   size?: number
   fontSize?: number
 }) {
-  let bg = 'rgba(255,255,255,0.75)'
+  const bg = 'rgba(255,255,255,0.75)'
   let borderColor = isCurrent ? 'rgba(59,130,246,0.8)' : 'rgba(180,140,160,0.6)'
 
   if (isAnswered && value !== null) {

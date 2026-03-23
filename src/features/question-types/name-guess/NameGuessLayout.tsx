@@ -330,6 +330,7 @@ function NameGuessLayoutInner({
           bottom: '2cqmin',
           width: '48%',
           gap: '2cqmin',
+          zIndex: 3,
         }}
       >
         {question.answers.map((answer, i) => {
@@ -367,7 +368,7 @@ function NameGuessLayoutInner({
                 fontSize: answer.length <= 6 ? '4.5cqmin'
                   : answer.length <= 8 ? '4.2cqmin'
                   : '3.8cqmin',
-                padding: '0 3cqmin',
+                padding: '0 3cqmin 0 0',
                 borderRadius: '2cqmin',
                 border: `0.2cqmin solid ${borderColor}`,
                 background: bg,
@@ -380,6 +381,7 @@ function NameGuessLayoutInner({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '2cqmin',
+                overflow: 'hidden',
               }}
               disabled={isAnswered}
               onClick={() => handleSelect(i)}
@@ -387,9 +389,9 @@ function NameGuessLayoutInner({
               {/* 顔画像: 回答前はシルエット、回答後は実画像 */}
               <div
                 style={{
-                  width: '11cqmin',
-                  height: '11cqmin',
-                  borderRadius: '1.2cqmin',
+                  width: '13cqmin',
+                  height: '100%',
+                  borderRadius: 0,
                   overflow: 'hidden',
                   flexShrink: 0,
                   display: 'flex',
@@ -406,7 +408,7 @@ function NameGuessLayoutInner({
                     draggable={false}
                   />
                 ) : (
-                  <span style={{ fontSize: '4cqmin', opacity: 0.25 }}>👤</span>
+                  <span style={{ fontSize: '7cqmin', opacity: 0.25 }}>👤</span>
                 )}
               </div>
               <span style={{ flex: 1 }}>{answer}</span>
