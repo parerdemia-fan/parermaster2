@@ -139,7 +139,7 @@ export function TitleScreen() {
         >
           <img
             src={`${BASE}data/images/ui/btn_talents.png`}
-            alt="タレント一覧"
+            alt="寮生一覧"
             className="transition brightness-100 hover:brightness-140"
             style={{ width: '100%', height: 'auto', display: 'block' }}
             draggable={false}

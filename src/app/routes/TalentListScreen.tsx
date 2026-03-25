@@ -230,7 +230,7 @@ export function TalentListScreen() {
                 className="flex items-center justify-center h-full font-bold"
                 style={{ fontSize: '3cqmin', color: '#999' }}
               >
-                タレントを選択してください
+                寮生を選択してください
               </div>
             )}
           </div>

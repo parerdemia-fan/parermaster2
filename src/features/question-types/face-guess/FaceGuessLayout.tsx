@@ -99,7 +99,7 @@ function FaceGuessLayoutInner({
           whiteSpace: 'nowrap',
         }}
       >
-        この生徒はどれ？
+        この子はどれ？
       </div>
 
       {/* 進捗バー（中央） */}

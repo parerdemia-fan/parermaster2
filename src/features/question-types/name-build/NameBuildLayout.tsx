@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
+import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import type { NameBuildQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -88,7 +89,7 @@ function QuizHeader({ isAnswered, isCorrect }: { isAnswered: boolean; isCorrect:
           whiteSpace: 'nowrap',
         }}
       >
-        この生徒の名前を作ろう！
+        この子の名前を作ろう！
       </div>
 
       {/* 進捗バー（中央） */}
@@ -239,11 +240,18 @@ function QuizHeader({ isAnswered, isCorrect }: { isAnswered: boolean; isCorrect:
 
 // ─── ★☆☆ 苗字・名前ペア選択 ───────────────────────────
 
+// ★のペアボタン用装飾ゾーン（横長ボタン200x100）
+const NAME_BUILD_PAIR_ZONES = [
+  { x: 80, y: 15, w: 40, h: 50 },
+  { x: 140, y: 20, w: 40, h: 50 },
+]
+
 function PairPickLayout({
   question,
   isAnswered,
   onAnswer,
 }: NameBuildLayoutProps) {
+  const currentIndex = useGameStore((s) => s.currentIndex)
   const [slots, setSlots] = useState<[string | null, string | null]>([null, null])
 
   const handleChoiceClick = (choice: string) => {
@@ -332,22 +340,27 @@ function PairPickLayout({
         >
           {question.choices.map((choice, i) => {
             const isUsed = choice === slots[0] || choice === slots[1]
-            let bg = 'rgba(255,255,255,0.85)'
-            let borderColor = 'rgba(255,255,255,0.5)'
+            const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+            const patternSvg = generatePattern(palette.motif, palette.motifFill, i * 1000 + currentIndex * 7, NAME_BUILD_PAIR_ZONES, { w: 200, h: 100 })
+            let bg = `url("data:image/svg+xml,${patternSvg}") center / 100% auto no-repeat, ${palette.gradient}`
+            let borderColor = 'rgba(255,255,255,0.7)'
             let color = '#333'
             let opacity = isUsed && !isAnswered ? 0.4 : 1
+            let boxShadow = `0 0.5cqmin 1.5cqmin ${palette.outerShadow}, inset 0 1cqmin 3cqmin ${palette.insetShadow}`
 
             if (isAnswered) {
               const isCorrectFamily = choice === question.correctFamilyName
               const isCorrectGiven = choice === question.correctGivenName
               if (isCorrectFamily || isCorrectGiven) {
-                bg = 'rgba(34,197,94,0.85)'
-                borderColor = '#22c55e'
+                bg = 'linear-gradient(135deg, rgba(34,197,94,0.92), rgba(22,163,74,0.92))'
+                borderColor = 'rgba(255,255,255,0.8)'
                 color = 'white'
+                boxShadow = '0 0.5cqmin 1.5cqmin rgba(22,163,74,0.5), inset 0 1cqmin 3cqmin rgba(0,80,30,0.2)'
               } else if (isUsed) {
-                bg = 'rgba(239,68,68,0.85)'
-                borderColor = '#ef4444'
+                bg = 'linear-gradient(135deg, rgba(239,68,68,0.92), rgba(220,38,38,0.92))'
+                borderColor = 'rgba(255,255,255,0.8)'
                 color = 'white'
+                boxShadow = '0 0.5cqmin 1.5cqmin rgba(220,38,38,0.5), inset 0 1cqmin 3cqmin rgba(100,0,0,0.2)'
               } else {
                 opacity = 0.4
               }
@@ -364,13 +377,13 @@ function PairPickLayout({
                     : choice.length <= 7 ? '2.2cqmin'
                     : '1.8cqmin',
                   borderRadius: '1.5cqmin',
-                  border: `0.3cqmin solid ${borderColor}`,
+                  border: `0.5cqmin solid ${borderColor}`,
                   background: bg,
                   color,
                   opacity,
                   cursor: isAnswered || isUsed ? 'default' : 'pointer',
-                  backdropFilter: 'blur(4px)',
-                  boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+                  boxShadow,
+                  textShadow: '0 0.1cqmin 0.3cqmin rgba(0,0,0,0.15)',
                   whiteSpace: 'nowrap',
                   padding: '0 1cqmin',
                 }}
@@ -523,21 +536,21 @@ function CharPickLayout({
         >
           {question.choices.map((char, i) => {
             const isUsed = usedSet.has(i)
-            let bg = 'rgba(255,255,255,0.85)'
-            let borderColor = 'rgba(255,255,255,0.5)'
+            const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+            let bg = palette.gradient
+            let borderColor = 'rgba(255,255,255,0.7)'
             let color = '#333'
             let opacity = isUsed && !isAnswered ? 0.4 : 1
+            let boxShadow = `0 0.3cqmin 0.8cqmin ${palette.outerShadow}, inset 0 0.5cqmin 1.5cqmin ${palette.insetShadow}`
 
             if (isAnswered) {
               const isCorrectChar = correctChars.includes(char)
               if (isCorrectChar) {
-                bg = 'rgba(34,197,94,0.85)'
                 borderColor = '#22c55e'
-                color = 'white'
+                boxShadow = '0 0.3cqmin 0.8cqmin rgba(22,163,74,0.4), inset 0 0.5cqmin 1.5cqmin rgba(0,80,30,0.15)'
               } else if (isUsed) {
-                bg = 'rgba(239,68,68,0.85)'
                 borderColor = '#ef4444'
-                color = 'white'
+                boxShadow = '0 0.3cqmin 0.8cqmin rgba(220,38,38,0.4), inset 0 0.5cqmin 1.5cqmin rgba(100,0,0,0.15)'
               } else {
                 opacity = 0.4
               }
@@ -551,13 +564,12 @@ function CharPickLayout({
                   height: isHard ? '6.5cqmin' : '8cqmin',
                   fontSize: isHard ? '3cqmin' : '3.5cqmin',
                   borderRadius: '1.5cqmin',
-                  border: `0.3cqmin solid ${borderColor}`,
+                  border: `0.5cqmin solid ${borderColor}`,
                   background: bg,
                   color,
                   opacity,
                   cursor: isAnswered || isUsed ? 'default' : 'pointer',
-                  backdropFilter: 'blur(4px)',
-                  boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+                  boxShadow,
                 }}
                 disabled={isAnswered || isUsed}
                 onClick={() => handleChoiceClick(i)}
@@ -640,9 +652,7 @@ function PairSlot({
   isCorrectSlot: boolean
   correctValue: string
 }) {
-  const bg = 'rgba(255,255,255,0.75)'
   let borderColor = 'rgba(180,140,160,0.6)'
-  const textColor = '#333'
 
   if (isAnswered && value !== null) {
     if (isCorrectSlot) {
@@ -658,15 +668,15 @@ function PairSlot({
     <div
       className="flex items-center justify-center font-bold"
       style={{
-        minWidth: '20cqmin',
-        height: '7cqmin',
-        fontSize: '3.5cqmin',
+        minWidth: '28cqmin',
+        height: '10cqmin',
+        fontSize: '4.5cqmin',
         borderRadius: '1.5cqmin',
-        border: `0.4cqmin ${isAnswered ? 'solid' : 'dashed'} ${borderColor}`,
-        background: bg,
-        color: textColor,
-        backdropFilter: 'blur(8px)',
-        boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
+        border: `0.5cqmin ${isAnswered ? 'solid' : 'dashed'} ${borderColor}`,
+        background: 'linear-gradient(160deg, rgba(255,245,248,0.92), rgba(255,235,240,0.92))',
+        color: '#333',
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 0.4cqmin 1.2cqmin rgba(180,100,130,0.25), inset 0 0.5cqmin 1.5cqmin rgba(180,100,130,0.08)',
       }}
     >
       {displayValue ?? (
@@ -693,7 +703,6 @@ function CharSlot({
   size?: number
   fontSize?: number
 }) {
-  const bg = 'rgba(255,255,255,0.75)'
   let borderColor = isCurrent ? 'rgba(59,130,246,0.8)' : 'rgba(180,140,160,0.6)'
 
   if (isAnswered && value !== null) {
@@ -714,11 +723,11 @@ function CharSlot({
         height: `${size}cqmin`,
         fontSize: `${fontSize}cqmin`,
         borderRadius: '1cqmin',
-        border: `0.4cqmin ${value ? 'solid' : 'dashed'} ${borderColor}`,
-        background: bg,
+        border: `0.5cqmin ${value ? 'solid' : 'dashed'} ${borderColor}`,
+        background: 'linear-gradient(160deg, rgba(255,245,248,0.92), rgba(255,235,240,0.92))',
         color: '#333',
-        backdropFilter: 'blur(8px)',
-        boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 0.4cqmin 1.2cqmin rgba(180,100,130,0.25), inset 0 0.5cqmin 1.5cqmin rgba(180,100,130,0.08)',
         transition: 'border-color 0.15s',
       }}
     >

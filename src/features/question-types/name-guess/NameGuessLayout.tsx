@@ -111,7 +111,7 @@ function NameGuessLayoutInner({
           whiteSpace: 'nowrap',
         }}
       >
-        この生徒の名前は？
+        この子の名前は？
       </div>
 
       {/* 進捗バー（中央） */}
