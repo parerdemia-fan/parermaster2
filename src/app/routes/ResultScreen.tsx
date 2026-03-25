@@ -25,7 +25,7 @@ export function ResultScreen() {
   const isPerfect = correctCount === total
 
   const genLabel = generation === 'gen2' ? '2期生編' : '1期生編'
-  const diffLabel = difficulty === 1 ? '★☆☆' : difficulty === 2 ? '★★☆' : '★★★'
+  const diffLabel = difficulty === 1 ? 'ふつう' : difficulty === 2 ? 'むずかしい' : '激ムズ'
   const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'
 
   const shareOnX = () => {

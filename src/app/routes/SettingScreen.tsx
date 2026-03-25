@@ -102,8 +102,8 @@ export function SettingScreen() {
       : undefined
     const shuffled = shuffleArray(filtered)
     const typeGenerators = [
-      { generate: generateNameGuessQuestions },
       { generate: (t: Talent[], p: Talent[], d: typeof difficulty) => generateFaceGuessQuestions(t, p, d, generationPool) },
+      { generate: generateNameGuessQuestions },
       { generate: generateNameBuildQuestions },
     ]
     const totalTypes = typeGenerators.length
@@ -218,10 +218,10 @@ export function SettingScreen() {
           <>
             <SectionHeading label="難易度" />
             <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
-              <PillButton label="★☆☆" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
-              <PillButton label="★★☆" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
+              <PillButton label="ふつう" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
+              <PillButton label="むずかしい" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
               <PillButton
-                label={difficulty3Unlocked ? '★★★' : '🔒 ★★★'}
+                label={difficulty3Unlocked ? '激ムズ' : '🔒 激ムズ'}
                 selected={difficulty === 3}
                 accentColor={accentColor}
                 size="small"
