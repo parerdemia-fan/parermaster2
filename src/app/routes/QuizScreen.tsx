@@ -1,5 +1,6 @@
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
+import { QuizHeader } from '../../shared/components/QuizHeader.tsx'
 import { NameGuessLayout } from '../../features/question-types/name-guess/NameGuessLayout.tsx'
 import type { NameGuessQuestion } from '../../features/question-types/name-guess/types.ts'
 import { FaceGuessLayout } from '../../features/question-types/face-guess/FaceGuessLayout.tsx'
@@ -77,6 +78,12 @@ export function QuizScreen() {
       >
         ←
       </button>
+
+      {/* 共通ヘッダー（問題タイプ/問題文/難易度/進捗 + アシスタント） */}
+      <QuizHeader
+        isAnswered={isAnswered}
+        isCorrect={!!lastRecord?.isCorrect}
+      />
 
       {/* 問題タイプ別レイアウト */}
       {current.typeId === 'name-guess' && (

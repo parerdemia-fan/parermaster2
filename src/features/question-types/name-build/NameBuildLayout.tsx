@@ -5,11 +5,6 @@ import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceSt
 import type { NameBuildQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
-const COMMENT_IMAGE = `${BASE}data/images/kv/sq/25ME006.png`
-const COMMENT_NAME = '灯野ぺけ。'
-const COMMENT_BEFORE = 'この子の名前、作れる〜？'
-const COMMENT_CORRECT = 'すごい！正解だよ〜！'
-const COMMENT_WRONG = 'あちゃ〜、残念！'
 
 interface NameBuildLayoutProps {
   question: NameBuildQuestion
@@ -39,206 +34,7 @@ export function NameBuildLayout({
   )
 }
 
-// ─── 共通ヘッダー＋アシスタント ─────────────────────
-
-function QuizHeader({ isAnswered, isCorrect }: { isAnswered: boolean; isCorrect: boolean }) {
-  const currentIndex = useGameStore((s) => s.currentIndex)
-  const questions = useGameStore((s) => s.questions)
-  const total = questions.length
-  const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
-
-  return (
-    <>
-      {/* 最上部左: シャープラベル */}
-      <div
-        className="font-bold"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          zIndex: 10,
-          fontSize: '3.2cqmin',
-          padding: '1cqmin 3.5cqmin 1cqmin 2.5cqmin',
-          background: 'linear-gradient(135deg, #d6336c 0%, #e8789e 100%)',
-          color: 'white',
-          clipPath: 'polygon(0 0, 100% 0, calc(100% - 1.5cqmin) 100%, 0 100%)',
-          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-          letterSpacing: '0.05em',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        🔤 名前を作ろう
-      </div>
-
-      {/* 最上部中央: 問題文 */}
-      <div
-        className="font-bold"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 10,
-          fontSize: '3.8cqmin',
-          padding: '0.8cqmin 5cqmin',
-          background: 'rgba(255,255,255,0.92)',
-          borderRadius: '0 0 1.2cqmin 1.2cqmin',
-          color: '#333',
-          boxShadow: '0 0.3cqmin 1.2cqmin rgba(0,0,0,0.12)',
-          border: '0.15cqmin solid rgba(0,0,0,0.06)',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        この子の名前を作ろう！
-      </div>
-
-      {/* 進捗バー（中央） */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '9cqmin',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '30%',
-          zIndex: 10,
-        }}
-      >
-        <div style={{ textAlign: 'center', marginBottom: '0.3cqmin' }}>
-          <span style={{
-            fontSize: '2.2cqmin',
-            color: 'white',
-            textShadow: '0 1px 3px rgba(0,0,0,0.5), 0 0 6px rgba(0,0,0,0.2)',
-            fontWeight: 'bold',
-          }}>
-            達成度: {currentIndex + 1}/{total}
-          </span>
-        </div>
-        <div
-          style={{
-            height: '1.5cqmin',
-            background: 'rgba(255,255,255,0.4)',
-            borderRadius: '1cqmin',
-            overflow: 'hidden',
-          }}
-        >
-          <div
-            style={{
-              height: '100%',
-              width: `${progress}%`,
-              background: 'linear-gradient(90deg, #4ade80, #22c55e)',
-              borderRadius: '1cqmin',
-              transition: 'width 0.3s',
-            }}
-          />
-        </div>
-      </div>
-
-      {/* アシスタント（右上） */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '5cqmin',
-          right: '2cqmin',
-          zIndex: 10,
-        }}
-      >
-        <div style={{ position: 'relative' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'stretch',
-              height: '10cqmin',
-              borderRadius: '1.5cqmin',
-              overflow: 'hidden',
-              border: '0.3cqmin double rgba(150,150,150,0.6)',
-              boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.12)',
-            }}
-          >
-            <div
-              style={{
-                position: 'relative',
-                padding: '1.8cqmin 1.5cqmin 1.8cqmin 2cqmin',
-                fontSize: '1.9cqmin',
-                color: '#444',
-                lineHeight: 1.5,
-                maxWidth: '18cqmin',
-                background: 'white',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              {!isAnswered
-                ? COMMENT_BEFORE
-                : isCorrect
-                  ? COMMENT_CORRECT
-                  : COMMENT_WRONG}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '-0.8cqmin',
-                  transform: 'translateY(-50%)',
-                  width: 0,
-                  height: 0,
-                  borderTop: '1.2cqmin solid transparent',
-                  borderBottom: '1.2cqmin solid transparent',
-                  borderLeft: '1.2cqmin solid white',
-                }}
-              />
-            </div>
-            <div
-              style={{
-                width: '13cqmin',
-                flexShrink: 0,
-                background: 'rgba(255, 225, 200, 0.6)',
-              }}
-            />
-          </div>
-          <img
-            src={COMMENT_IMAGE}
-            alt={COMMENT_NAME}
-            style={{
-              position: 'absolute',
-              right: '-0.5cqmin',
-              bottom: 0,
-              width: '14cqmin',
-              clipPath: 'inset(-999px -999px 0 -999px)',
-              pointerEvents: 'none',
-            }}
-            draggable={false}
-          />
-        </div>
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            marginTop: '-1.5cqmin',
-            display: 'flex',
-            justifyContent: 'flex-end',
-            paddingRight: '0.5cqmin',
-          }}
-        >
-          <div
-            style={{
-              padding: '0.3cqmin 2cqmin',
-              fontSize: '1.6cqmin',
-              color: 'white',
-              background: 'linear-gradient(135deg, #f0a050, #e08830)',
-              borderRadius: '1cqmin',
-              fontWeight: 'bold',
-              textShadow: '0 1px 2px rgba(0,0,0,0.2)',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {COMMENT_NAME}
-          </div>
-        </div>
-      </div>
-    </>
-  )
-}
-
-// ─── ★☆☆ 苗字・名前ペア選択 ───────────────────────────
+// ─── ふつう: 苗字・名前ペア選択 ───────────────────────────
 
 // ★のペアボタン用装飾ゾーン（横長ボタン200x100）
 const NAME_BUILD_PAIR_ZONES = [
@@ -278,11 +74,6 @@ function PairPickLayout({
     onAnswer(isCorrect)
   }
 
-  const isCorrect =
-    isAnswered &&
-    slots[0] === question.correctFamilyName &&
-    slots[1] === question.correctGivenName
-
   const bothFilled = slots[0] !== null && slots[1] !== null
 
   return (
@@ -290,8 +81,6 @@ function PairPickLayout({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
-
       <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
@@ -452,13 +241,6 @@ function CharPickLayout({
     onAnswer(isCorrect)
   }
 
-  const builtFamily = filledChars.slice(0, familyLen).join('')
-  const builtGiven = filledChars.slice(familyLen).join('')
-  const isCorrect =
-    isAnswered &&
-    builtFamily === question.correctFamilyName &&
-    builtGiven === question.correctGivenName
-
   const correctChars = [...question.correctFamilyName, ...question.correctGivenName]
   // 文字数が多い場合はスロットサイズを縮小して折り返しを防止
   // 右側コンテナ幅≒77cqmin、gap=1cqmin×(totalChars-1)、spacer=2cqmin から逆算
@@ -472,8 +254,6 @@ function CharPickLayout({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      <QuizHeader isAnswered={isAnswered} isCorrect={isCorrect} />
-
       <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
 
       {/* 右側: スロット＋グリッド＋ボタン */}
