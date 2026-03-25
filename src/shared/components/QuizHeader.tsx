@@ -43,22 +43,24 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const commentText = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
 
   return (
-    <>
-      {/* ヘッダー（左寄せ、右上アシスタント領域を避ける） */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '62%',
-          zIndex: 10,
-          padding: '2cqmin 3cqmin 2.5cqmin',
-          background: 'rgba(0,0,0,0.35)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '0 0 1.5cqmin 0',
-          color: 'white',
-        }}
-      >
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 10,
+        display: 'flex',
+        alignItems: 'stretch',
+        padding: '2cqmin 0 0 3cqmin',
+        background: 'rgba(0,0,0,0.35)',
+        backdropFilter: 'blur(8px)',
+        borderRadius: '0 0 1.5cqmin 1.5cqmin',
+        color: 'white',
+      }}
+    >
+      {/* 左側: 問題情報 */}
+      <div style={{ flex: 1, minWidth: 0, paddingBottom: '2.5cqmin' }}>
         {/* 1行目: 問題タイプラベル + 問題文 */}
         <div
           className="font-bold"
@@ -93,7 +95,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            gap: '3cqmin',
             fontSize: '2.8cqmin',
             marginTop: '0.5cqmin',
             opacity: 0.9,
@@ -108,24 +110,38 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
         </div>
       </div>
 
-      {/* アシスタント（右上） */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '4cqmin',
-          right: '2cqmin',
-          zIndex: 10,
-        }}
-      >
+      {/* 右側: アシスタント */}
+      <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end' }}>
         <div style={{ position: 'relative' }}>
+          {/* 名前ラベル（セリフ左上、半分重なる） */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '-1.2cqmin',
+              left: '0.5cqmin',
+              zIndex: 2,
+              padding: '0.3cqmin 2cqmin',
+              fontSize: '1.6cqmin',
+              color: 'white',
+              background: 'linear-gradient(135deg, #f0a050, #e08830)',
+              borderRadius: '1cqmin',
+              fontWeight: 'bold',
+              textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {ASSISTANT_NAME}
+          </div>
           <div
             style={{
               display: 'flex',
               alignItems: 'stretch',
               height: '10cqmin',
-              borderRadius: '1.5cqmin',
+              borderRadius: '1.5cqmin 0 0 0',
               overflow: 'hidden',
-              border: '0.3cqmin double rgba(150,150,150,0.6)',
+              border: '0.3cqmin double rgba(255,255,255,0.3)',
+              borderRight: 'none',
+              borderBottom: 'none',
               boxShadow: '0 0.3cqmin 1cqmin rgba(0,0,0,0.12)',
             }}
           >
@@ -137,7 +153,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
                 color: '#444',
                 lineHeight: 1.5,
                 maxWidth: '18cqmin',
-                background: 'white',
+                background: 'rgba(255,255,255,0.85)',
                 display: 'flex',
                 alignItems: 'center',
               }}
@@ -146,14 +162,14 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
               <div
                 style={{
                   position: 'absolute',
-                  top: '50%',
-                  right: '-0.8cqmin',
+                  top: '40%',
+                  right: '-1.1cqmin',
                   transform: 'translateY(-50%)',
                   width: 0,
                   height: 0,
                   borderTop: '1.2cqmin solid transparent',
                   borderBottom: '1.2cqmin solid transparent',
-                  borderLeft: '1.2cqmin solid white',
+                  borderLeft: '1.2cqmin solid rgba(255,255,255,0.85)',
                 }}
               />
             </div>
@@ -161,7 +177,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
               style={{
                 width: '13cqmin',
                 flexShrink: 0,
-                background: 'rgba(255, 225, 200, 0.6)',
+                background: 'rgba(255, 225, 200, 0.5)',
               }}
             />
           </div>
@@ -179,26 +195,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
             draggable={false}
           />
         </div>
-        {/* 名前ラベル（セリフ左上、半分重なる） */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-1.2cqmin',
-            left: '0.5cqmin',
-            zIndex: 2,
-            padding: '0.3cqmin 2cqmin',
-            fontSize: '1.6cqmin',
-            color: 'white',
-            background: 'linear-gradient(135deg, #f0a050, #e08830)',
-            borderRadius: '1cqmin',
-            fontWeight: 'bold',
-            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {ASSISTANT_NAME}
-        </div>
       </div>
-    </>
+    </div>
   )
 }
