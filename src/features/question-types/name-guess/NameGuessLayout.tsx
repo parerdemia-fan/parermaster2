@@ -370,35 +370,35 @@ function NameGuessLayoutInner({
               key={i}
               className="font-bold transition active:scale-98"
               style={{
+                position: 'relative',
                 height: '13cqmin',
-                fontSize: answer.length <= 6 ? '4.5cqmin'
+                fontSize: answer.length <= 4 ? '5cqmin'
+                  : answer.length <= 6 ? '4.5cqmin'
                   : answer.length <= 8 ? '4.2cqmin'
                   : '3.8cqmin',
-                padding: '0 3cqmin 0 0',
+                padding: 0,
                 borderRadius: '2cqmin',
                 border: `0.5cqmin solid ${borderColor}`,
                 background: bg,
                 color,
                 opacity,
                 cursor: isAnswered ? 'default' : 'pointer',
-                textAlign: 'left',
                 boxShadow,
                 textShadow,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '2cqmin',
                 overflow: 'hidden',
               }}
               disabled={isAnswered}
               onClick={() => handleSelect(i)}
             >
-              {/* 顔画像: 回答前はシルエット、回答後は実画像 */}
+              {/* 顔画像: absoluteでフロー外に配置 */}
               <div
                 style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
                   width: '13cqmin',
                   height: '100%',
                   overflow: 'hidden',
-                  flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -416,7 +416,20 @@ function NameGuessLayoutInner({
                   <span style={{ fontSize: '7cqmin', opacity: 0.25 }}>👤</span>
                 )}
               </div>
-              <span style={{ flex: 1 }}>{answer}</span>
+              {/* テキスト: 画像幅の半分だけ左パディングを取り、視覚的な中央寄せ */}
+              <span
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 2cqmin 0 7cqmin',
+                  pointerEvents: 'none',
+                }}
+              >
+                {answer}
+              </span>
             </button>
           )
         })}
