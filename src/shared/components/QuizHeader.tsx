@@ -7,10 +7,10 @@ const ASSISTANT_IMAGE = `${BASE}data/images/kv/sq/25ME006.png`
 const ASSISTANT_NAME = '灯野ぺけ。'
 
 const TYPE_META: Record<string, { emoji: string; label: string; questionText: string; commentBefore: string }> = {
-  'face-guess': { emoji: '👁️', label: '顔当て', questionText: 'この子はどれ？', commentBefore: 'この子の顔、わかる〜？' },
-  'name-guess': { emoji: '🔍', label: '名前当て', questionText: 'この子の名前は？', commentBefore: 'この子の名前、わかる〜？' },
-  'name-build': { emoji: '🔤', label: '名前を作ろう', questionText: 'この子の名前を作ろう！', commentBefore: 'この子の名前、作れる〜？' },
-  'text-quiz': { emoji: '📝', label: '知識クイズ', questionText: '', commentBefore: 'どれだけ知ってる〜？' },
+  'face-guess': { emoji: '📸', label: '顔当て', questionText: 'この子はどれ？', commentBefore: 'この子の顔、わかる〜？' },
+  'name-guess': { emoji: '✏️', label: '名前当て', questionText: 'この子の名前は？', commentBefore: 'この子の名前、わかる〜？' },
+  'name-build': { emoji: '🧩', label: '名前を作ろう', questionText: 'この子の名前を作ろう！', commentBefore: 'この子の名前、作れる〜？' },
+  'text-quiz': { emoji: '💡', label: '知識クイズ', questionText: '', commentBefore: 'どれだけ知ってる〜？' },
 }
 
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
@@ -49,6 +49,57 @@ function StarRating({ stars }: { stars: number }) {
     }
   }
   return <>{elements}</>
+}
+
+function ProgressRing({ current, total, progress, style }: { current: number; total: number; progress: number; style?: React.CSSProperties }) {
+  const size = 48
+  const strokeWidth = 4
+  const radius = (size - strokeWidth) / 2
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference * (1 - progress / 100)
+
+  return (
+    <div style={{ width: '10cqmin', height: '10cqmin', position: 'relative', flexShrink: 0, ...style }}>
+      <svg viewBox={`0 0 ${size} ${size}`} style={{ width: '100%', height: '100%', transform: 'rotate(-90deg)' }}>
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="rgba(200,200,200,0.5)"
+          strokeWidth={strokeWidth}
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="#22c55e"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          style={{ transition: 'stroke-dashoffset 0.3s' }}
+        />
+      </svg>
+      <span
+        className="font-bold"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '2.2cqmin',
+          color: 'white',
+          textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {current}/{total}
+      </span>
+    </div>
+  )
 }
 
 interface QuizHeaderProps {
@@ -92,46 +143,48 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           color: 'white',
         }}
       >
-        {/* 左側: 問題情報 */}
-        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column' }}>
-          {/* 1行目: 問題タイプラベル（左上ぴったり） + ★ */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5cqmin' }}>
-            <div
-              className="font-bold"
-              style={{
-                fontSize: '3cqmin',
-                padding: '0.8cqmin 3.5cqmin 0.8cqmin 2.5cqmin',
-                background: 'linear-gradient(135deg, #d6336c 0%, #e8789e 100%)',
-                clipPath: 'polygon(0 0, 100% 0, calc(100% - 1.5cqmin) 100%, 0 100%)',
-                letterSpacing: '0.05em',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {meta.emoji} {meta.label}
-            </div>
-            <span style={{ fontSize: '2.8cqmin', letterSpacing: '0.05em' }}>
-              <StarRating stars={displayStars} />
-            </span>
+        {/* 左側: 問題タイプラベル + ★（左上縦並び） */}
+        <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div
+            className="font-bold"
+            style={{
+              fontSize: '3cqmin',
+              padding: '0.8cqmin 3.5cqmin 0.8cqmin 2.5cqmin',
+              background: 'linear-gradient(135deg, #d6336c 0%, #e8789e 100%)',
+              clipPath: 'polygon(0 0, 100% 0, calc(100% - 1.5cqmin) 100%, 0 100%)',
+              letterSpacing: '0.05em',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {meta.emoji} {meta.label}
           </div>
-          {/* 2行目: 問題文（アシスタント幅分の右パディングでやや中央寄せ） */}
-          {meta.questionText && (
-            <div
-              className="font-bold"
-              style={{
-                fontSize: '5cqmin',
-                marginTop: '-1.5cqmin',
-                padding: '0 0 0 2.5cqmin',
-                textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-                textAlign: 'center',
-              }}
-            >
-              {meta.questionText}
-            </div>
-          )}
+          <span style={{ fontSize: '3cqmin', letterSpacing: '0.05em', marginLeft: '2.5cqmin', marginTop: '0.3cqmin' }}>
+            <StarRating stars={displayStars} />
+          </span>
         </div>
 
-        {/* 右側: アシスタント */}
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end' }}>
+        {/* 中央: 問題文（上下中央、左マージンで位置調整） */}
+        {meta.questionText && (
+          <div
+            className="font-bold"
+            style={{
+              flex: 1,
+              minWidth: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '5.5cqmin',
+              marginLeft: '4cqmin',
+              textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+            }}
+          >
+            {meta.questionText}
+          </div>
+        )}
+
+        {/* 右側: プログレスリング + アシスタント */}
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end', gap: '1cqmin' }}>
+          <ProgressRing current={currentIndex + 1} total={total} progress={progress} style={{ alignSelf: 'center' }} />
           <div style={{ position: 'relative' }}>
             {/* 名前ラベル（セリフ左上、半分重なる） */}
             <div
@@ -217,53 +270,6 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           </div>
         </div>
 
-        {/* プログレスバー（ヘッダー下端に半分重なる、中央配置） */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-1.5cqmin',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1.5cqmin',
-            width: '33%',
-            zIndex: 5,
-          }}
-        >
-          <div
-            style={{
-              flex: 1,
-              height: '2cqmin',
-              background: 'rgba(200,200,200,0.8)',
-              borderRadius: '1cqmin',
-              overflow: 'hidden',
-              border: '0.3cqmin solid rgba(255,255,255,0.6)',
-              boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.2)',
-            }}
-          >
-            <div
-              style={{
-                height: '100%',
-                width: `${progress}%`,
-                background: 'linear-gradient(90deg, #4ade80, #22c55e)',
-                borderRadius: '1cqmin',
-                transition: 'width 0.3s',
-              }}
-            />
-          </div>
-          <span
-            className="font-bold"
-            style={{
-              fontSize: '2.2cqmin',
-              color: 'white',
-              textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {currentIndex + 1}/{total}
-          </span>
-        </div>
       </div>
     </div>
   )
