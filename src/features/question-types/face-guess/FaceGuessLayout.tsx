@@ -70,11 +70,11 @@ function FaceGuessLayoutInner({
           className="font-bold"
           style={{
             flexShrink: 0,
-            fontSize: question.talentName.length > 8 ? '6cqmin' : '8cqmin',
+            fontSize: question.talentName.length > 10 ? '5cqmin' : question.talentName.length > 8 ? '6cqmin' : '8cqmin',
             color: 'white',
             textShadow: '0 2px 6px rgba(0,0,0,0.5)',
             textAlign: 'center',
-            padding: '2cqmin 2.5cqmin 1cqmin',
+            padding: '2cqmin 1cqmin 1cqmin',
           }}
         >
           {question.talentName}
