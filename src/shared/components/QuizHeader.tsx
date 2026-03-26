@@ -1,10 +1,9 @@
+import { useMemo } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
+import { useTalents } from '../hooks/useTalents.ts'
+import { getTalentImagePath } from '../utils/talent.ts'
 import { getDisplayDifficulty } from '../utils/difficulty.ts'
-
-const BASE = import.meta.env.BASE_URL
-const ASSISTANT_IMAGE = `${BASE}data/images/kv/sq/25ME006.png`
-const ASSISTANT_NAME = '灯野ぺけ。'
 
 const TYPE_META: Record<string, { emoji: string; label: string; questionText: string; commentBefore: string }> = {
   'face-guess': { emoji: '📸', label: '顔当て', questionText: 'この子はどれ？', commentBefore: 'この子の顔、わかる〜？' },
@@ -111,8 +110,25 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const currentIndex = useGameStore((s) => s.currentIndex)
   const questions = useGameStore((s) => s.questions)
   const difficulty = useSettingsStore((s) => s.difficulty)
-
+  const { talents } = useTalents()
   const current = questions[currentIndex]
+
+  // 1問ごとにランダムな1期生をアシスタントとして選出（選択肢のタレントを除外）
+  const assistant = useMemo(() => {
+    const gen1 = talents.filter((t) => t.generation === 1)
+    if (gen1.length === 0) return null
+    const q = questions[currentIndex]
+    const excludeIds = new Set<string>()
+    if (q) {
+      if ('talentId' in q) excludeIds.add(q.talentId as string)
+      if ('answerTalentIds' in q) (q.answerTalentIds as string[])?.forEach((id) => excludeIds.add(id))
+    }
+    const candidates = excludeIds.size > 0 ? gen1.filter((t) => !excludeIds.has(t.id)) : gen1
+    const pool = candidates.length > 0 ? candidates : gen1
+    const picked = pool[Math.floor(Math.random() * pool.length)]
+    return { name: picked.nickname || picked.name, image: getTalentImagePath(picked) }
+  }, [talents, currentIndex, questions]) // eslint-disable-line react-hooks/exhaustive-deps
+
   if (!current) return null
 
   const total = questions.length
@@ -120,6 +136,8 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
   const displayStars = getDisplayDifficulty(current.typeId, difficulty)
   const commentText = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
+  const assistantName = assistant?.name ?? ''
+  const assistantImage = assistant?.image ?? ''
 
   return (
     <div
@@ -203,7 +221,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
                 whiteSpace: 'nowrap',
               }}
             >
-              {ASSISTANT_NAME}
+              {assistantName}
             </div>
             <div
               style={{
@@ -255,8 +273,8 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
               />
             </div>
             <img
-              src={ASSISTANT_IMAGE}
-              alt={ASSISTANT_NAME}
+              src={assistantImage}
+              alt={assistantName}
               style={{
                 position: 'absolute',
                 right: '-0.5cqmin',

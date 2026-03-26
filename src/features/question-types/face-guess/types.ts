@@ -8,6 +8,8 @@ export interface FaceGuessQuestion extends BaseQuestion {
   talentName: string
   /** 選択肢の顔画像パス */
   answerImages: string[]
+  /** 選択肢のタレントID */
+  answerTalentIds: string[]
   /** 選択肢のタレント名（回答後に表示） */
   answerNames: string[]
   /** 正解のインデックス */
