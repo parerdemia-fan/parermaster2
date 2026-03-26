@@ -48,29 +48,33 @@ function FaceGuessLayoutInner({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* 左側: タレント名 + プロフィールヒント */}
+      {/* 左側: タレント名 + プロフィールヒント（一体パネル） */}
       <div
         style={{
           position: 'absolute',
-          top: '16cqmin',
-          left: '3cqmin',
-          bottom: '3cqmin',
-          width: '42%',
+          top: '17cqmin',
+          left: '1cqmin',
+          bottom: '9cqmin',
+          width: '45%',
+          zIndex: 3,
           display: 'flex',
           flexDirection: 'column',
-          gap: '2cqmin',
-          zIndex: 3,
+          background: 'rgba(0,0,0,0.45)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '1.5cqmin',
+          overflow: 'hidden',
         }}
       >
-        {/* タレント名（大きく表示） */}
+        {/* タレント名 */}
         <div
           className="font-bold"
           style={{
+            flexShrink: 0,
             fontSize: question.talentName.length > 8 ? '6cqmin' : '8cqmin',
             color: 'white',
-            textShadow: '0 2px 6px rgba(0,0,0,0.4)',
+            textShadow: '0 2px 6px rgba(0,0,0,0.5)',
             textAlign: 'center',
-            padding: '1cqmin 0',
+            padding: '2cqmin 2.5cqmin 1cqmin',
           }}
         >
           {question.talentName}
@@ -80,29 +84,30 @@ function FaceGuessLayoutInner({
         {talent && (
           <div
             style={{
-              padding: '1.5cqmin 2.5cqmin',
-              background: 'rgba(255,255,255,0.6)',
-              backdropFilter: 'blur(12px)',
-              borderRadius: '1.5cqmin',
-              border: '0.15cqmin solid rgba(0,0,0,0.06)',
-              boxShadow: '0 0.3cqmin 1.2cqmin rgba(0,0,0,0.1)',
-              fontSize: '2.3cqmin',
+              flex: 1,
+              minHeight: 0,
+              padding: '0 2.5cqmin 2cqmin',
+              fontSize: '2.8cqmin',
               lineHeight: 1.6,
-              color: '#444',
-              maxHeight: '28cqmin',
+              color: 'rgba(255,255,255,0.92)',
               overflowY: 'auto',
               scrollbarWidth: 'none' as const,
+              display: 'flex',
+              flexDirection: 'column' as const,
+              gap: '2cqmin',
             }}
           >
-            {talent.dream && <div>夢：{talent.dream}</div>}
-            {talent.hobbies.length > 0 && (
-              <div>趣味：{talent.hobbies.join('、')}</div>
+            {talent.dream && (
+              <ProfileItem emoji="💫" label="夢" text={talent.dream} />
             )}
-            {talent.favorites.length > 0 && (
-              <div>好き：{talent.favorites.join('、')}</div>
+            {talent.hobbies.length > 0 && (
+              <ProfileItem emoji="🎮" label="趣味" text={talent.hobbies.join('、')} />
             )}
             {talent.skills.length > 0 && (
-              <div>特技：{talent.skills.join('、')}</div>
+              <ProfileItem emoji="🎤" label="特技" text={talent.skills.join('、')} />
+            )}
+            {talent.favorites.length > 0 && (
+              <ProfileItem emoji="❤️" label="好きなもの" text={talent.favorites.join('、')} />
             )}
           </div>
         )}
@@ -205,6 +210,19 @@ function FaceGuessLayoutInner({
             </button>
           )
         })}
+      </div>
+    </div>
+  )
+}
+
+function ProfileItem({ emoji, label, text }: { emoji: string; label: string; text: string }) {
+  return (
+    <div>
+      <div className="font-bold" style={{ fontSize: '3.6cqmin' }}>
+        {emoji} {label}
+      </div>
+      <div style={{ marginLeft: '2cqmin' }}>
+        {text}
       </div>
     </div>
   )
