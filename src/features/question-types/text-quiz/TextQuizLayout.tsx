@@ -58,26 +58,36 @@ function TextQuizLayoutInner({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* 左側: 問題文 + 解説（一体パネル） */}
+      {/* 左側: 位置決めラッパー（中央寄せ） */}
       <div
         style={{
           position: 'absolute',
           left: '2cqmin',
           width: '45%',
+          top: '15cqmin',
+          bottom: '3cqmin',
           zIndex: 3,
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: '2cqmin',
-          background: 'rgba(0,0,0,0.45)',
-          backdropFilter: 'blur(8px)',
-          overflowY: hasComment ? 'auto' : 'hidden',
-          scrollbarWidth: 'none' as const,
-          top: '45%',
-          transform: 'translateY(-50%)',
-          maxHeight: hasComment ? 'calc(75cqmin - 3cqmin)' : '50cqmin',
-          transition: 'max-height 0.4s ease',
+          justifyContent: 'center',
+          paddingBottom: '15cqmin',
+          pointerEvents: 'none',
         }}
       >
+        {/* パネル本体 */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            borderRadius: '2cqmin',
+            background: 'rgba(0,0,0,0.45)',
+            backdropFilter: 'blur(8px)',
+            maxHeight: '100%',
+            overflowY: 'auto',
+            scrollbarWidth: 'none' as const,
+            pointerEvents: 'auto',
+          }}
+        >
         {/* 問題文 */}
         <div
           className="flex flex-col items-center"
@@ -85,13 +95,12 @@ function TextQuizLayoutInner({
             flexShrink: 0,
             padding: '2.5cqmin 2.5cqmin',
             gap: '1.5cqmin',
-            justifyContent: hasComment ? 'flex-start' : 'center',
           }}
         >
           <span
             className="font-bold text-center"
             style={{
-              fontSize: '3.5cqmin',
+              fontSize: '4.5cqmin',
               color: 'white',
               lineHeight: 1.5,
               textShadow: '0 1px 3px rgba(0,0,0,0.4)',
@@ -170,6 +179,7 @@ function TextQuizLayoutInner({
             </div>
           </div>
         )}
+        </div>
       </div>
 
       {/* 右側: 選択肢 */}
@@ -311,7 +321,7 @@ function TalentGridChoices({
         position: 'absolute',
         top: '16cqmin',
         right: '2.5cqmin',
-        bottom: '10cqmin',
+        bottom: '12cqmin',
         width: '48%',
         gap: '2cqmin',
         zIndex: 3,

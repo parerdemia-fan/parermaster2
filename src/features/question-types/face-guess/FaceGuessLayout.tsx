@@ -120,7 +120,7 @@ function FaceGuessLayoutInner({
           position: 'absolute',
           top: '16cqmin',
           right: '2.5cqmin',
-          bottom: '10cqmin',
+          bottom: '12cqmin',
           width: '48%',
           gridTemplateColumns: 'repeat(2, 1fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
