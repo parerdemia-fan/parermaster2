@@ -3,6 +3,8 @@ import type { Talent } from '../../../shared/types/talent.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { getTalentImagePath } from '../../../shared/utils/talent.ts'
 import { parseTextWithTalentIcons } from '../../../shared/utils/talentIconParser.tsx'
+import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
+import { useGameStore } from '../../../stores/gameStore.ts'
 import type { TextQuizQuestion } from './types.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -47,74 +49,130 @@ function TextQuizLayoutInner({
     onAnswer(index === question.correctIndex, index)
   }
 
-  const isCorrect = selected !== null && selected === question.correctIndex
-
   // hideIcon=true かつ未回答 → アイコン非表示
   const showIconInQuestion = question.hideIcon ? isAnswered : true
+  const hasComment = isAnswered && !!(question.comment || question.commentImage || question.sourceUrl)
 
   return (
     <div
-      className="flex flex-col items-center flex-1 overflow-y-auto"
-      style={{
-        width: '100%',
-        padding: '2cqmin 4cqmin',
-        gap: '2cqmin',
-      }}
+      className="relative"
+      style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* 問題文 */}
+      {/* 左側: 問題文 + 解説（一体パネル） */}
       <div
-        className="w-full flex flex-col items-center justify-center"
         style={{
-          minHeight: '10cqmin',
-          padding: '2cqmin 3cqmin',
+          position: 'absolute',
+          left: '2cqmin',
+          width: '45%',
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
           borderRadius: '2cqmin',
-          background: 'rgba(255,255,255,0.55)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          gap: '1.5cqmin',
+          background: 'rgba(0,0,0,0.45)',
+          backdropFilter: 'blur(8px)',
+          overflowY: hasComment ? 'auto' : 'hidden',
+          scrollbarWidth: 'none' as const,
+          top: '45%',
+          transform: 'translateY(-50%)',
+          maxHeight: hasComment ? 'calc(75cqmin - 3cqmin)' : '50cqmin',
+          transition: 'max-height 0.4s ease',
         }}
       >
-        <span
-          className="font-bold text-center"
+        {/* 問題文 */}
+        <div
+          className="flex flex-col items-center"
           style={{
-            fontSize: '3.5cqmin',
-            color: '#333',
-            lineHeight: 1.5,
+            flexShrink: 0,
+            padding: '2.5cqmin 2.5cqmin',
+            gap: '1.5cqmin',
+            justifyContent: hasComment ? 'flex-start' : 'center',
           }}
         >
-          {parseTextWithTalentIcons(question.question, talents, showIconInQuestion)}
-        </span>
-        {question.questionImage && (
-          <img
-            src={`${BASE}data/images/questions/${question.questionImage}`}
-            alt="問題画像"
+          <span
+            className="font-bold text-center"
             style={{
-              maxWidth: '50cqmin',
-              maxHeight: '20cqmin',
-              objectFit: 'contain',
-              borderRadius: '1.5cqmin',
+              fontSize: '3.5cqmin',
+              color: 'white',
+              lineHeight: 1.5,
+              textShadow: '0 1px 3px rgba(0,0,0,0.4)',
             }}
-            draggable={false}
-          />
+          >
+            {parseTextWithTalentIcons(question.question, talents, showIconInQuestion)}
+          </span>
+          {question.questionImage && (
+            <img
+              src={`${BASE}data/images/questions/${question.questionImage}`}
+              alt="問題画像"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '20cqmin',
+                objectFit: 'contain',
+                borderRadius: '1.5cqmin',
+              }}
+              draggable={false}
+            />
+          )}
+        </div>
+
+        {/* 解説（アニメーションで展開） */}
+        {(question.comment || question.commentImage || question.sourceUrl) && (
+          <div
+            style={{
+              maxHeight: hasComment ? '80cqmin' : '0',
+              opacity: hasComment ? 1 : 0,
+              overflow: 'hidden',
+              transition: 'max-height 0.5s ease, opacity 0.4s ease',
+            }}
+          >
+            <div style={{ borderTop: '0.15cqmin solid rgba(255,255,255,0.2)', margin: '0 2cqmin' }} />
+            <div
+              className="flex flex-col"
+              style={{
+                padding: '1.5cqmin 2.5cqmin 2cqmin',
+                gap: '1.5cqmin',
+              }}
+            >
+              {question.commentImage && (
+                <img
+                  src={`${BASE}data/images/questions/${question.commentImage}`}
+                  alt="解説画像"
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '20cqmin',
+                    objectFit: 'contain',
+                    borderRadius: '1.5cqmin',
+                  }}
+                  draggable={false}
+                />
+              )}
+              {question.comment && (
+                <span
+                  style={{
+                    fontSize: '2.5cqmin',
+                    color: 'rgba(255,255,255,0.88)',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {parseTextWithTalentIcons(question.comment, talents, true)}
+                </span>
+              )}
+              {question.sourceUrl && (
+                <a
+                  href={question.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 underline inline-flex items-center gap-1"
+                  style={{ fontSize: '2.2cqmin', color: 'rgba(200,200,255,0.9)' }}
+                >
+                  📎 情報源: {getSourceSiteName(question.sourceUrl)}
+                </a>
+              )}
+            </div>
+          </div>
         )}
       </div>
 
-      {/* 正誤表示 */}
-      {isAnswered && (
-        <div
-          className="font-bold"
-          style={{
-            fontSize: '4cqmin',
-            color: isCorrect ? '#22c55e' : '#ef4444',
-            textShadow: '0 1px 3px rgba(0,0,0,0.2)',
-            lineHeight: 1,
-          }}
-        >
-          {isCorrect ? '正解！' : '不正解..'}
-        </div>
-      )}
-
-      {/* 選択肢 */}
+      {/* 右側: 選択肢 */}
       {question.answerTalentIds ? (
         <TalentGridChoices
           question={question}
@@ -133,61 +191,11 @@ function TextQuizLayoutInner({
           onSelect={handleSelect}
         />
       )}
-
-      {/* 解説 */}
-      {isAnswered && (question.comment || question.commentImage || question.sourceUrl) && (
-        <div
-          className="w-full flex flex-col items-center"
-          style={{
-            padding: '2cqmin 3cqmin',
-            borderRadius: '2cqmin',
-            background: 'rgba(255,255,255,0.45)',
-            backdropFilter: 'blur(8px)',
-            maxWidth: '80cqmin',
-            gap: '1.5cqmin',
-          }}
-        >
-          {question.commentImage && (
-            <img
-              src={`${BASE}data/images/questions/${question.commentImage}`}
-              alt="解説画像"
-              style={{
-                maxWidth: '50cqmin',
-                maxHeight: '20cqmin',
-                objectFit: 'contain',
-                borderRadius: '1.5cqmin',
-              }}
-              draggable={false}
-            />
-          )}
-          <span
-            style={{
-              fontSize: '2.5cqmin',
-              color: '#555',
-              lineHeight: 1.6,
-            }}
-          >
-            {/* 解説文は回答後のみ表示されるため常に showIcon=true */}
-            {parseTextWithTalentIcons(question.comment, talents, true)}
-          </span>
-          {question.sourceUrl && (
-            <a
-              href={question.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 underline inline-flex items-center gap-1"
-              style={{ fontSize: '2.2cqmin', color: '#500' }}
-            >
-              📎 情報源: {getSourceSiteName(question.sourceUrl)}
-            </a>
-          )}
-        </div>
-      )}
     </div>
   )
 }
 
-/* ── 通常テキスト選択肢（4行レイアウト） ── */
+/* ── 通常テキスト選択肢（右側、4行レイアウト） ── */
 
 function TextChoices({
   question,
@@ -200,28 +208,46 @@ function TextChoices({
   selected: number | null
   onSelect: (i: number) => void
 }) {
+  const currentIndex = useGameStore((s) => s.currentIndex)
+
   return (
     <div
-      className="w-full flex flex-col"
-      style={{ gap: '1.5cqmin', maxWidth: '80cqmin' }}
+      className="flex flex-col justify-center"
+      style={{
+        position: 'absolute',
+        top: '16cqmin',
+        right: '2.5cqmin',
+        bottom: '3cqmin',
+        width: '48%',
+        gap: '2cqmin',
+        zIndex: 3,
+      }}
     >
       {question.answers.map((answer, i) => {
-        let bg = 'rgba(255,255,255,0.85)'
-        let borderColor = 'rgba(255,255,255,0.5)'
+        const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+        const patternSvg = generatePattern(palette.motif, palette.motifFill, i * 1000 + currentIndex * 7, NAME_GUESS_ZONES)
+        let bg = `url("data:image/svg+xml,${patternSvg}") center / 100% auto no-repeat, ${palette.gradient}`
+        let borderColor = 'rgba(255,255,255,0.7)'
         let color = '#333'
         let opacity = 1
+        let boxShadow = `0 0.5cqmin 1.5cqmin ${palette.outerShadow}, inset 0 1cqmin 3cqmin ${palette.insetShadow}`
+        let textShadow = '0 0.1cqmin 0.3cqmin rgba(0,0,0,0.15)'
 
         if (isAnswered) {
           if (i === question.correctIndex) {
-            bg = 'rgba(34,197,94,0.85)'
-            borderColor = '#22c55e'
+            bg = 'linear-gradient(135deg, rgba(34,197,94,0.92), rgba(22,163,74,0.92))'
+            borderColor = 'rgba(255,255,255,0.8)'
             color = 'white'
+            boxShadow = '0 0.4cqmin 1.2cqmin rgba(22,163,74,0.4), inset 0 0.8cqmin 2cqmin rgba(0,80,30,0.2)'
+            textShadow = '0 1px 3px rgba(0,0,0,0.3)'
           } else if (i === selected) {
-            bg = 'rgba(239,68,68,0.85)'
-            borderColor = '#ef4444'
+            bg = 'linear-gradient(135deg, rgba(239,68,68,0.92), rgba(220,38,38,0.92))'
+            borderColor = 'rgba(255,255,255,0.8)'
             color = 'white'
+            boxShadow = '0 0.4cqmin 1.2cqmin rgba(220,38,38,0.4), inset 0 0.8cqmin 2cqmin rgba(100,0,0,0.2)'
+            textShadow = '0 1px 3px rgba(0,0,0,0.3)'
           } else {
-            opacity = 0.5
+            opacity = 0.4
           }
         }
 
@@ -230,18 +256,22 @@ function TextChoices({
             key={i}
             className="font-bold transition active:scale-98"
             style={{
-              height: '8cqmin',
-              fontSize: '3cqmin',
+              height: '13cqmin',
+              fontSize: answer.length <= 8 ? '5cqmin'
+                : answer.length <= 12 ? '4cqmin'
+                : '3cqmin',
               padding: '0 3cqmin',
               borderRadius: '2cqmin',
-              border: `0.3cqmin solid ${borderColor}`,
+              border: `0.5cqmin solid ${borderColor}`,
               background: bg,
               color,
               opacity,
               cursor: isAnswered ? 'default' : 'pointer',
-              textAlign: 'left',
-              backdropFilter: 'blur(4px)',
-              boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+              boxShadow,
+              textShadow,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             disabled={isAnswered}
             onClick={() => onSelect(i)}
@@ -254,7 +284,7 @@ function TextChoices({
   )
 }
 
-/* ── タレント名選択肢（2×2 グリッドレイアウト） ── */
+/* ── タレント名選択肢（右側、2×2 グリッドレイアウト） ── */
 
 function TalentGridChoices({
   question,
@@ -278,9 +308,13 @@ function TalentGridChoices({
     <div
       className="grid grid-cols-2 grid-rows-2"
       style={{
-        width: '70cqmin',
-        maxHeight: '50cqmin',
-        gap: '1.5cqmin',
+        position: 'absolute',
+        top: '16cqmin',
+        right: '2.5cqmin',
+        bottom: '10cqmin',
+        width: '48%',
+        gap: '2cqmin',
+        zIndex: 3,
       }}
     >
       {question.answers.map((answer, i) => {
@@ -333,7 +367,7 @@ function TalentGridChoices({
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'contain',
+                    objectFit: 'cover',
                   }}
                   draggable={false}
                 />

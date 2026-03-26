@@ -9,7 +9,7 @@ const TYPE_META: Record<string, { emoji: string; label: string; questionText: st
   'face-guess': { emoji: '📸', label: '顔当て', questionText: 'この子はどれ？', commentBefore: 'この子の顔、わかる〜？' },
   'name-guess': { emoji: '✏️', label: '名前当て', questionText: 'この子の名前は？', commentBefore: 'この子の名前、わかる〜？' },
   'name-build': { emoji: '🧩', label: '名前を作ろう', questionText: 'この子の名前を作ろう！', commentBefore: 'この子の名前、作れる〜？' },
-  'text-quiz': { emoji: '💡', label: '知識クイズ', questionText: '', commentBefore: 'どれだけ知ってる〜？' },
+  'text-quiz': { emoji: '💡', label: '知識クイズ', questionText: 'クイズに挑戦！', commentBefore: 'どれだけ知ってる〜？' },
 }
 
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
@@ -181,24 +181,22 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           </span>
         </div>
 
-        {/* 中央: 問題文（上下中央、左マージンで位置調整） */}
-        {meta.questionText && (
-          <div
-            className="font-bold"
-            style={{
-              flex: 1,
-              minWidth: 0,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '5.5cqmin',
-              marginLeft: '4cqmin',
-              textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-            }}
-          >
-            {meta.questionText}
-          </div>
-        )}
+        {/* 中央: 問題文（上下中央）。問題文がない場合もスペーサーとして確保 */}
+        <div
+          className="font-bold"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '5.5cqmin',
+            marginLeft: '4cqmin',
+            textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+          }}
+        >
+          {meta.questionText}
+        </div>
 
         {/* 右側: プログレスリング + アシスタント */}
         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end', gap: '1cqmin' }}>
