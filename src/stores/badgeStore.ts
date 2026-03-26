@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 import type { BadgeRank, BadgeSlotId } from '../features/achievement/types.ts'
 import {
-  BADGE_SLOTS,
   GEN1_SLOT_IDS,
   GEN2_SLOT_IDS,
+  TIME_ATTACK_SLOT_IDS,
   getBadgeSlotDef,
   isRankHigherOrEqual,
 } from '../features/achievement/constants.ts'
@@ -94,7 +94,7 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
 
   isTimeAttackUnlocked: () => {
     const badges = get().badges
-    return BADGE_SLOTS.every((slot) => isSlotMaxLevel(badges, slot.id))
+    return TIME_ATTACK_SLOT_IDS.every((id) => isSlotMaxLevel(badges, id))
   },
 
   resetAll: () => {

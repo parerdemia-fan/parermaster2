@@ -2,11 +2,9 @@ import { useState } from 'react'
 import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { useGameStore } from '../../../stores/gameStore.ts'
-import { getTalentImagePath } from '../../../shared/utils/talent.ts'
+import { getTalentImagePath, getTalentStandingPath } from '../../../shared/utils/talent.ts'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import type { NameGuessQuestion } from './types.ts'
-
-const BASE = import.meta.env.BASE_URL
 
 interface NameGuessLayoutProps {
   question: NameGuessQuestion
@@ -47,12 +45,8 @@ function NameGuessLayoutInner({
   const talent = talents.find((t) => t.id === question.talentId)
 
   const standingImagePath = talent
-    ? talent.generation === 2
-      ? `${BASE}data/images/face/${talent.id}.png`
-      : `${BASE}data/images/kv/orig/${talent.id}.png`
+    ? getTalentStandingPath(talent)
     : question.talentImagePath
-
-  const isStanding = talent ? talent.generation === 1 : false
 
   // 選択肢のタレント画像パス
   const answerTalents = question.answerTalentIds.map((id) => talents.find((t) => t.id === id))
@@ -68,9 +62,9 @@ function NameGuessLayoutInner({
         alt="誰でしょう？"
         style={{
           position: 'absolute',
-          left: isStanding ? '-2%' : '3%',
-          top: isStanding ? '0cqmin' : '5cqmin',
-          height: isStanding ? '150cqmin' : '75cqmin',
+          left: '-2%',
+          top: '0cqmin',
+          height: '150cqmin',
           width: 'auto',
           objectFit: 'contain',
           zIndex: 2,
@@ -78,7 +72,6 @@ function NameGuessLayoutInner({
             ? SILHOUETTE_FILTER
             : undefined,
           transition: 'filter 0.3s',
-          borderRadius: isStanding ? undefined : '3cqmin',
         }}
         draggable={false}
       />

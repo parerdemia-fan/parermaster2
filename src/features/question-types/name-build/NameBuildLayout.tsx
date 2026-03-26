@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
+import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
 import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import type { NameBuildQuestion } from './types.ts'
-
-const BASE = import.meta.env.BASE_URL
 
 interface NameBuildLayoutProps {
   question: NameBuildQuestion
@@ -393,11 +392,8 @@ function CharPickLayout({
 function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPath: string }) {
   const { talents } = useTalents()
   const talent = talents.find((t) => t.id === talentId)
-  const isStanding = talent ? talent.generation === 1 : false
   const imagePath = talent
-    ? talent.generation === 2
-      ? `${BASE}data/images/face/${talent.id}.png`
-      : `${BASE}data/images/kv/orig/${talent.id}.png`
+    ? getTalentStandingPath(talent)
     : fallbackPath
 
   return (
@@ -406,13 +402,12 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
       alt="誰でしょう？"
       style={{
         position: 'absolute',
-        left: isStanding ? '-10%' : '1%',
-        top: isStanding ? '0cqmin' : '5cqmin',
-        height: isStanding ? '150cqmin' : '75cqmin',
+        left: '-10%',
+        top: '0cqmin',
+        height: '150cqmin',
         width: 'auto',
         objectFit: 'contain',
         zIndex: 2,
-        borderRadius: isStanding ? undefined : '3cqmin',
       }}
       draggable={false}
     />

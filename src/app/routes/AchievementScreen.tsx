@@ -1,6 +1,9 @@
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import {
+  GEN2_SLOT_IDS,
+  GEN1_SLOT_IDS,
+  DORM_SLOT_IDS,
   BADGE_SLOTS,
   RANK_LABELS,
   type BadgeSlotDef,
@@ -17,8 +20,10 @@ export function AchievementScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const { badges, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
 
-  const gen2Slots = BADGE_SLOTS.filter((s) => s.id.startsWith('gen2_'))
-  const gen1Slots = BADGE_SLOTS.filter((s) => s.id.startsWith('gen1_'))
+  const slotsById = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
+  const gen2Slots = GEN2_SLOT_IDS.map((id) => slotsById.get(id)!)
+  const gen1Slots = GEN1_SLOT_IDS.map((id) => slotsById.get(id)!)
+  const dormSlots = DORM_SLOT_IDS.map((id) => slotsById.get(id)!)
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -73,11 +78,15 @@ export function AchievementScreen() {
       >
         {/* 2期生エリア */}
         <AreaHeading label="2期生" color="#e8789e" />
-        <BadgeGrid slots={gen2Slots} badges={badges} />
+        <BadgeGrid slots={gen2Slots} badges={badges} columns={2} />
 
         {/* 1期生エリア */}
         <AreaHeading label="1期生" color="#6aaa80" />
-        <BadgeGrid slots={gen1Slots} badges={badges} />
+        <BadgeGrid slots={gen1Slots} badges={badges} columns={2} />
+
+        {/* 寮別エリア */}
+        <AreaHeading label="寮別" color="#5b8db8" />
+        <BadgeGrid slots={dormSlots} badges={badges} columns={4} />
 
         {/* 総合称号 */}
         <div
@@ -107,15 +116,17 @@ function AreaHeading({ label, color }: { label: string; color: string }) {
 function BadgeGrid({
   slots,
   badges,
+  columns = 3,
 }: {
   slots: BadgeSlotDef[]
   badges: Partial<Record<string, BadgeRank>>
+  columns?: number
 }) {
   return (
     <div
       className="grid"
       style={{
-        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: '1.5cqmin',
       }}
     >

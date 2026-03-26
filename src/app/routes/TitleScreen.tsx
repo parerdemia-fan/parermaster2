@@ -92,6 +92,24 @@ export function TitleScreen() {
           </button>
         </div>
 
+        {/* 寮別モード */}
+        <button
+          className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95 whitespace-nowrap"
+          style={{
+            fontSize: '4.5cqmin',
+            padding: '1.5cqmin 5cqmin',
+            borderRadius: '5cqmin',
+            border: '0.3cqmin solid rgba(255,255,255,0.5)',
+            background: 'linear-gradient(180deg, #b8d4e8 0%, #7aabc4 40%, #5b8db8 100%)',
+            color: 'white',
+            boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(60,100,140,0.4)',
+            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+          }}
+          onClick={() => goToSetting('dorm')}
+        >
+          🏠 寮別モード
+        </button>
+
         {/* タイムアタック（下段） */}
         <button
           className="font-bold cursor-not-allowed whitespace-nowrap"

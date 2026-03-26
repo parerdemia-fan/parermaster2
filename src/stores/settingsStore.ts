@@ -6,6 +6,8 @@ export type GameMode = 'face-name' | 'knowledge'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
 export type Scope = DormId | 'all'
 export type Difficulty = 1 | 2 | 3
+/** タイトル画面で選択するモードカテゴリ */
+export type ModeCategory = 'gen1' | 'gen2' | 'dorm'
 
 const SETTINGS_KEY = 'parermaster2_settings'
 
@@ -13,6 +15,8 @@ interface SavedSettings {
   gameMode: GameMode
   scope: Scope
   difficulty: Difficulty
+  /** 寮別モードで最後に選んだ寮 */
+  dormScope?: DormId
 }
 
 function loadSettings(): Partial<SavedSettings> {
@@ -25,8 +29,8 @@ function loadSettings(): Partial<SavedSettings> {
   }
 }
 
-function persistSettings({ gameMode, scope, difficulty }: SavedSettings): void {
-  localStorage.setItem(SETTINGS_KEY, JSON.stringify({ gameMode, scope, difficulty }))
+function persistSettings({ gameMode, scope, difficulty, dormScope }: SavedSettings): void {
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify({ gameMode, scope, difficulty, dormScope }))
 }
 
 const saved = loadSettings()
@@ -35,6 +39,7 @@ interface SettingsState {
   // 画面遷移
   screen: Screen
   // ゲーム設定
+  modeCategory: ModeCategory
   generation: Generation
   gameMode: GameMode
   scope: Scope
@@ -45,7 +50,7 @@ interface SettingsState {
 
 interface SettingsActions {
   // 画面遷移
-  goToSetting: (gen: Generation) => void
+  goToSetting: (mode: ModeCategory) => void
   goToTitle: () => void
   goToQuiz: () => void
   goToResult: () => void
@@ -65,6 +70,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
   (set, get) => ({
     // 初期値（localStorageから復元）
     screen: 'title',
+    modeCategory: 'gen2',
     generation: 'gen2',
     gameMode: saved.gameMode ?? 'face-name',
     scope: saved.scope ?? 'all',
@@ -72,7 +78,15 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     playerName: localStorage.getItem('playerName') ?? 'リスナー',
 
     // 画面遷移
-    goToSetting: (gen) => set({ screen: 'setting', generation: gen }),
+    goToSetting: (mode) => {
+      if (mode === 'dorm') {
+        const dormScope = saved.dormScope ?? 'wa'
+        set({ screen: 'setting', modeCategory: 'dorm', gameMode: 'face-name', scope: dormScope })
+      } else {
+        const gen: Generation = mode === 'gen1' ? 'gen1' : 'gen2'
+        set({ screen: 'setting', modeCategory: mode, generation: gen, scope: 'all' })
+      }
+    },
     goToTitle: () => set({ screen: 'title' }),
     goToQuiz: () => set({ screen: 'quiz' }),
     goToResult: () => set({ screen: 'result' }),
@@ -83,7 +97,12 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
 
     // ゲーム設定（変更時にlocalStorageへ保存）
     setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },
-    setScope: (scope) => { set({ scope }); persistSettings(get()) },
+    setScope: (scope) => {
+      set({ scope })
+      const state = get()
+      const dormScope = state.modeCategory === 'dorm' && scope !== 'all' ? scope as DormId : saved.dormScope
+      persistSettings({ ...state, dormScope })
+    },
     setDifficulty: (difficulty) => { set({ difficulty }); persistSettings(get()) },
 
     // プレイヤー

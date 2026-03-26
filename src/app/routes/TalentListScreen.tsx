@@ -3,7 +3,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
-import { getTalentImagePath } from '../../shared/utils/talent.ts'
+import { getTalentImagePath, getTalentStandingPath } from '../../shared/utils/talent.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -198,16 +198,12 @@ export function TalentListScreen() {
             }}
           />
 
-          {/* 立ち絵（1期生: kv/orig、2期生: face） */}
+          {/* 立ち絵 */}
           {selected && (
             <img
-              src={selected.generation === 2
-                ? `${BASE}data/images/face/${selected.id}.png`
-                : `${BASE}data/images/kv/orig/${selected.id}.png`}
+              src={getTalentStandingPath(selected)}
               className="absolute pointer-events-none"
-              style={selected.generation === 2
-                ? { width: '35cqmin', right: '2cqmin', top: '5cqmin', zIndex: 1, opacity: 0.85, borderRadius: '3cqmin' }
-                : { width: '60cqmin', right: '-8cqmin', top: '-3cqmin', zIndex: 1, opacity: 0.9 }}
+              style={{ width: '60cqmin', right: '-8cqmin', top: '-3cqmin', zIndex: 1, opacity: 0.9 }}
               draggable={false}
             />
           )}

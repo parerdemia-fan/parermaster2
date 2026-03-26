@@ -17,14 +17,16 @@ interface BadgeAwardResult {
 
 export function ResultScreen() {
   const { questions, correctCount } = useGameStore()
-  const { goToTitle, goToSetting, generation, gameMode, scope, difficulty } = useSettingsStore()
+  const { goToTitle, goToSetting, modeCategory, generation, gameMode, scope, difficulty } = useSettingsStore()
   const { awardBadge, getBadgeRank, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
 
   const total = questions.length
   const rate = total > 0 ? Math.round((correctCount / total) * 100 * 10) / 10 : 0
   const isPerfect = correctCount === total
 
-  const genLabel = generation === 'gen2' ? '2期生編' : '1期生編'
+  const isDormMode = modeCategory === 'dorm'
+  const DORM_LABELS: Record<string, string> = { wa: 'バゥ寮', me: 'ミュゥ寮', co: 'クゥ寮', wh: 'ウィニー寮' }
+  const genLabel = isDormMode ? (DORM_LABELS[scope] ?? '寮別モード') : generation === 'gen2' ? '2期生編' : '1期生編'
   const diffLabel = difficulty === 1 ? 'ふつう' : difficulty === 2 ? 'むずかしい' : '激ムズ'
   const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'
 
@@ -38,9 +40,10 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
-  const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
-  const accentGradient =
-    generation === 'gen2'
+  const accentColor = isDormMode ? '#5b8db8' : generation === 'gen2' ? '#e8789e' : '#6aaa80'
+  const accentGradient = isDormMode
+    ? 'linear-gradient(180deg, #b8d4e8 0%, #7aabc4 40%, #5b8db8 100%)'
+    : generation === 'gen2'
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
@@ -50,7 +53,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
     const enabledTypes = ['face-guess', 'name-guess', 'name-build']
     const result = judgeBadge({
       gameMode,
-      generation,
+      modeCategory,
       scope,
       difficulty,
       correctCount,
@@ -209,7 +212,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
               boxShadow:
                 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
             }}
-            onClick={() => goToSetting(generation)}
+            onClick={() => goToSetting(modeCategory)}
           >
             もう一度
           </button>

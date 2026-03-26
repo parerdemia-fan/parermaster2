@@ -1,5 +1,5 @@
 import type { BadgeRank, BadgeSlotId } from './types.ts'
-import type { Difficulty, GameMode, Generation, Scope } from '../../stores/settingsStore.ts'
+import type { Difficulty, GameMode, ModeCategory, Scope } from '../../stores/settingsStore.ts'
 
 export type BadgeCategory = 'clear' | 'knowledge'
 
@@ -12,28 +12,26 @@ export interface BadgeSlotDef {
 
 export const BADGE_SLOTS: readonly BadgeSlotDef[] = [
   // 2期生エリア
-  { id: 'gen2_wa', label: '2期生・バゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen2_me', label: '2期生・ミュゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen2_co', label: '2期生・クゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen2_wh', label: '2期生・ウィニー寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen2_all', label: '2期生・全員', category: 'clear', maxRank: 'gold' },
+  { id: 'gen2_all', label: '2期生', category: 'clear', maxRank: 'gold' },
   { id: 'gen2_knowledge', label: '2期生・知識クイズ', category: 'knowledge', maxRank: 'bronze' },
   // 1期生エリア
-  { id: 'gen1_wa', label: '1期生・バゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen1_me', label: '1期生・ミュゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen1_co', label: '1期生・クゥ寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen1_wh', label: '1期生・ウィニー寮', category: 'clear', maxRank: 'gold' },
-  { id: 'gen1_all', label: '1期生・全員', category: 'clear', maxRank: 'gold' },
+  { id: 'gen1_all', label: '1期生', category: 'clear', maxRank: 'gold' },
   { id: 'gen1_knowledge', label: '1期生・知識クイズ', category: 'knowledge', maxRank: 'gold' },
+  // 寮別エリア
+  { id: 'dorm_wa', label: 'バゥ寮', category: 'clear', maxRank: 'gold' },
+  { id: 'dorm_me', label: 'ミュゥ寮', category: 'clear', maxRank: 'gold' },
+  { id: 'dorm_co', label: 'クゥ寮', category: 'clear', maxRank: 'gold' },
+  { id: 'dorm_wh', label: 'ウィニー寮', category: 'clear', maxRank: 'gold' },
 ] as const
 
-export const GEN2_SLOT_IDS: readonly BadgeSlotId[] = BADGE_SLOTS.filter((s) =>
-  s.id.startsWith('gen2_'),
-).map((s) => s.id)
+export const GEN2_SLOT_IDS: readonly BadgeSlotId[] = ['gen2_all', 'gen2_knowledge']
 
-export const GEN1_SLOT_IDS: readonly BadgeSlotId[] = BADGE_SLOTS.filter((s) =>
-  s.id.startsWith('gen1_'),
-).map((s) => s.id)
+export const GEN1_SLOT_IDS: readonly BadgeSlotId[] = ['gen1_all', 'gen1_knowledge']
+
+export const DORM_SLOT_IDS: readonly BadgeSlotId[] = ['dorm_wa', 'dorm_me', 'dorm_co', 'dorm_wh']
+
+/** タイムアタック解放に必要なスロット（世代別のみ） */
+export const TIME_ATTACK_SLOT_IDS: readonly BadgeSlotId[] = [...GEN2_SLOT_IDS, ...GEN1_SLOT_IDS]
 
 const BADGE_SLOT_MAP = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
 
@@ -53,9 +51,10 @@ export function difficultyToRank(difficulty: Difficulty): BadgeRank {
   return 'bronze'
 }
 
-export function toSlotId(gameMode: GameMode, generation: Generation, scope: Scope): BadgeSlotId {
-  if (gameMode === 'knowledge') return `${generation}_knowledge` as BadgeSlotId
-  return `${generation}_${scope}` as BadgeSlotId
+export function toSlotId(gameMode: GameMode, modeCategory: ModeCategory, scope: Scope): BadgeSlotId {
+  if (gameMode === 'knowledge') return `${modeCategory}_knowledge` as BadgeSlotId
+  if (modeCategory === 'dorm') return `dorm_${scope}` as BadgeSlotId
+  return `${modeCategory}_all` as BadgeSlotId
 }
 
 export const RANK_LABELS: Record<BadgeRank, string> = {

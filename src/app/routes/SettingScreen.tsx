@@ -24,7 +24,7 @@ const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
 
 export function SettingScreen() {
   const {
-    generation, gameMode, scope, difficulty, playerName,
+    modeCategory, generation, gameMode, scope, difficulty, playerName,
     goToTitle, goToQuiz, setGameMode, setScope, setDifficulty, setPlayerName,
   } = useSettingsStore()
   const startQuiz = useGameStore((s) => s.startQuiz)
@@ -32,10 +32,12 @@ export function SettingScreen() {
   const { questions: questionPool, answerSets, loading: questionsLoading } = useQuestions()
   const loading = talentsLoading || questionsLoading
 
-  const genLabel = generation === 'gen2' ? '2期生' : '1期生'
-  const accentColor = generation === 'gen2' ? '#e8789e' : '#6aaa80'
-  const accentGradient =
-    generation === 'gen2'
+  const isDormMode = modeCategory === 'dorm'
+  const genLabel = isDormMode ? '寮別モード' : generation === 'gen2' ? '2期生' : '1期生'
+  const accentColor = isDormMode ? '#5b8db8' : generation === 'gen2' ? '#e8789e' : '#6aaa80'
+  const accentGradient = isDormMode
+    ? 'linear-gradient(180deg, #b8d4e8 0%, #7aabc4 40%, #5b8db8 100%)'
+    : generation === 'gen2'
       ? 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)'
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
@@ -48,13 +50,13 @@ export function SettingScreen() {
 
   const isDifficulty3Unlocked = useBadgeStore((s) => s.isDifficulty3Unlocked)
 
-  // 知識クイズでは出題範囲・問題タイプを表示しない
-  const isFaceName = gameMode === 'face-name'
+  // 寮別モードでは顔名前当てのみ（知識クイズ非提供）
+  const isFaceName = gameMode === 'face-name' || isDormMode
   // 知識クイズの難易度は1期生のみ
   const showDifficulty = isFaceName || generation === 'gen1'
 
   // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
-  const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, generation, scope))
+  const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, modeCategory, scope))
 
   // 設定変更後、新条件で★★★が未解放なら難易度を下げる
   const downgradeDifficultyIfLocked = (slotId: BadgeSlotId) => {
@@ -64,11 +66,11 @@ export function SettingScreen() {
   }
   const handleScopeChange = (newScope: Scope) => {
     setScope(newScope)
-    downgradeDifficultyIfLocked(toSlotId(gameMode, generation, newScope))
+    downgradeDifficultyIfLocked(toSlotId(gameMode, modeCategory, newScope))
   }
   const handleGameModeChange = (newMode: GameMode) => {
     setGameMode(newMode)
-    downgradeDifficultyIfLocked(toSlotId(newMode, generation, scope))
+    downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
   }
 
   const handleStart = () => {
@@ -76,8 +78,8 @@ export function SettingScreen() {
 
     const gen = generation === 'gen2' ? 2 : 1
 
-    if (gameMode === 'knowledge') {
-      // 知識クイズモード
+    if (!isDormMode && gameMode === 'knowledge') {
+      // 知識クイズモード（世代別のみ）
       const maxDifficulty = difficulty === 1 ? 2 : difficulty === 2 ? 4 : 8
       const pool = questionPool.filter(
         (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === gen),
@@ -90,15 +92,15 @@ export function SettingScreen() {
     }
 
     // 顔名前当てモード
-    const filtered = scope === 'all'
-      ? talents.filter((t) => t.generation === gen)
-      : talents.filter((t) => t.generation === gen && t.dormitory === scope)
+    const filtered = isDormMode
+      ? talents.filter((t) => t.dormitory === scope)  // 寮別: 1期+2期混合
+      : talents.filter((t) => t.generation === gen)    // 世代別: 全員固定
 
     if (filtered.length < 4) return
 
     const pool = filtered
     const generationPool = difficulty === 3
-      ? talents.filter((t) => t.generation === gen)
+      ? (isDormMode ? talents.filter((t) => t.dormitory === scope) : talents.filter((t) => t.generation === gen))
       : undefined
     const shuffled = shuffleArray(filtered)
     const typeGenerators = [
@@ -173,27 +175,10 @@ export function SettingScreen() {
           overflowY: 'auto',
         }}
       >
-        {/* ── ゲーム ── */}
-        <SectionHeading label="ゲーム" first />
-        <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
-          <PillButton
-            label="顔名前当て"
-            selected={isFaceName}
-            accentColor={accentColor}
-            onClick={() => handleGameModeChange('face-name')}
-          />
-          <PillButton
-            label="知識クイズ"
-            selected={!isFaceName}
-            accentColor={accentColor}
-            onClick={() => handleGameModeChange('knowledge')}
-          />
-        </div>
-
-        {/* ── 出題範囲 ──（顔名前当てのみ） */}
-        {isFaceName && (
+        {/* ── 寮 ──（寮別モードのみ） */}
+        {isDormMode && (
           <>
-            <SectionHeading label="出題範囲" />
+            <SectionHeading label="寮" first />
             <div
               className="flex flex-wrap items-center justify-center"
               style={{ gap: '2cqmin' }}
@@ -208,7 +193,27 @@ export function SettingScreen() {
                   onClick={() => handleScopeChange(dorm.id)}
                 />
               ))}
-              <PillButton label="全員" selected={scope === 'all'} accentColor={accentColor} size="small" onClick={() => handleScopeChange('all')} />
+            </div>
+          </>
+        )}
+
+        {/* ── ゲーム ──（世代別のみ。寮別モードでは顔名前当て固定） */}
+        {!isDormMode && (
+          <>
+            <SectionHeading label="ゲーム" first={!isDormMode} />
+            <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
+              <PillButton
+                label="顔名前当て"
+                selected={isFaceName}
+                accentColor={accentColor}
+                onClick={() => handleGameModeChange('face-name')}
+              />
+              <PillButton
+                label="知識クイズ"
+                selected={!isFaceName}
+                accentColor={accentColor}
+                onClick={() => handleGameModeChange('knowledge')}
+              />
             </div>
           </>
         )}
