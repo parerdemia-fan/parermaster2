@@ -16,7 +16,7 @@
 - 配置先:
   - `public/data/images/ui/` — UIアセット（ボタン、パネル、背景、ロゴ等）
   - `public/data/images/questions/` — 知識クイズの問題・解説画像
-  - `public/data/images/face/` — 2期生正方形画像
+  - `public/data/images/live2d/` — 2期生画像（orig + sq）
   - `public/data/images/kv/` — 1期生画像（orig + sq）
 
 ### 状態の凡例

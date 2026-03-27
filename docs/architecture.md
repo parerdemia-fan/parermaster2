@@ -107,8 +107,23 @@ src/
 │   │   │   ├── generator.ts
 │   │   │   └── types.ts
 │   │   │
-│   │   └── text-quiz/           # 問題タイプ4: テキストクイズ
-│   │       ├── TextQuizLayout.tsx
+│   │   ├── text-quiz/           # 問題タイプ4: テキストクイズ
+│   │   │   ├── TextQuizLayout.tsx
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
+│   │   │
+│   │   ├── blur/                # 問題タイプ5: ぼかし（タイムアタック専用）
+│   │   │   ├── BlurLayout.tsx
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
+│   │   │
+│   │   ├── spotlight/           # 問題タイプ6: スポットライト（タイムアタック専用）
+│   │   │   ├── SpotlightLayout.tsx
+│   │   │   ├── generator.ts
+│   │   │   └── types.ts
+│   │   │
+│   │   └── word-search/         # 問題タイプ7: 名前はどこ？（タイムアタック専用）
+│   │       ├── WordSearchLayout.tsx
 │   │       ├── generator.ts
 │   │       └── types.ts
 │   │
@@ -117,7 +132,9 @@ src/
 │   │   ├── constants.ts         # スロット定義, ランク関連ユーティリティ
 │   │   └── judge.ts             # バッジ獲得判定（純粋関数）
 │   │
-│   └── ...                      # 将来: time-attack/ 等
+│   └── time-attack/             # タイムアタックモード
+│       ├── constants.ts         # 出題構成定義, タイム別メッセージ
+│       └── generator.ts         # 100問生成
 │
 ├── stores/                      # Zustand ストア（機能ごとに分割）
 │   ├── gameStore.ts             # ゲーム進行状態
@@ -183,9 +200,9 @@ BaseQuestion（typeId, difficulty のみ）
 ```typescript
 // features/achievement/constants.ts
 export const BADGE_SLOTS: readonly BadgeSlotDef[] = [
-  { id: 'gen2_wa', label: '2期生・バゥ寮', category: 'clear', maxRank: 'gold' },
+  { id: 'gen2_all', label: '2期生', category: 'clear', maxRank: 'gold' },
   { id: 'gen2_knowledge', label: '2期生・知識クイズ', category: 'knowledge', maxRank: 'bronze' },
-  // ... 計12スロット
+  // ... 計8スロット（世代別4 + 寮別4）
 ]
 ```
 

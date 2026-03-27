@@ -250,22 +250,16 @@ export const DORMITORIES = {
 
 ## 5. バッジスロットID定義
 
-バッジスロットIDは `{世代}_{スコープ}` の命名規則に従う。
-
 | スロットID | 対応 | 最大ランク |
 |-----------|------|-----------|
-| `gen2_wa` | 2期生・バゥ寮 | gold |
-| `gen2_me` | 2期生・ミュゥ寮 | gold |
-| `gen2_co` | 2期生・クゥ寮 | gold |
-| `gen2_wh` | 2期生・ウィニー寮 | gold |
 | `gen2_all` | 2期生・全員 | gold |
 | `gen2_knowledge` | 2期生・知識クイズ | bronze（難易度なしのため） |
-| `gen1_wa` | 1期生・バゥ寮 | gold |
-| `gen1_me` | 1期生・ミュゥ寮 | gold |
-| `gen1_co` | 1期生・クゥ寮 | gold |
-| `gen1_wh` | 1期生・ウィニー寮 | gold |
 | `gen1_all` | 1期生・全員 | gold |
 | `gen1_knowledge` | 1期生・知識クイズ | gold |
+| `dorm_wa` | バゥ寮（1期+2期混合） | gold |
+| `dorm_me` | ミュゥ寮（1期+2期混合） | gold |
+| `dorm_co` | クゥ寮（1期+2期混合） | gold |
+| `dorm_wh` | ウィニー寮（1期+2期混合） | gold |
 
 ---
 
@@ -276,5 +270,5 @@ export const DORMITORIES = {
 | `parermaster2_badges` | バッジ獲得状況 | `Record<BadgeSlotId, 'bronze' \| 'silver' \| 'gold'>` |
 | `parermaster2_settings` | 前回のゲーム設定 | `{ gameMode: 'face-name' \| 'knowledge', scope: DormId \| 'all', difficulty: 1 \| 2 \| 3 }` |
 | `playerName` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |
-| `parermaster2_time_attack_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
+| `parermaster2_ta_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
 | `parermaster2_diary_entries` | 開発日誌の手記エントリ（動的生成分） | `DiaryMemoirEntry[]` |
