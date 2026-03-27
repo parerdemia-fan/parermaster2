@@ -4,16 +4,16 @@
     {
       "id": "q001",
       "generation": 0,
-      "question": "パレデミア学園で一斉デビューした新人VTuberは何名？",
+      "question": "犬の鳴き声が名前の由来の寮の名前は？",
       "answers": [
-        "60名",
-        "45名",
-        "30名",
-        "15名"
+        "バゥ寮",
+        "ワォン寮",
+        "キャン寮",
+        "ワンワン寮"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
-      "sortAnswers": true,
+      "genre": "パレ学",
+      "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
@@ -24,35 +24,35 @@
     {
       "id": "q002",
       "generation": 0,
-      "question": "パレデミア学園を運営する会社の名前は？",
+      "question": "バゥ寮のテーマは？",
       "answers": [
-        "jig.jp",
-        "A Inc.",
-        "B Inc.",
-        "C Inc."
+        "歌って踊れる正統派アイドル",
+        "癒やしのマスコット系アイドル",
+        "ワイルドなロック系アイドル",
+        "奇想天外なビックリ箱系アイドル"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
-      "sortAnswers": true,
+      "genre": "パレ学",
+      "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "A Inc. B Inc. C Inc.はjig.jpの子会社です。",
+      "comment": "『歌って踊れる正統派アイドル』をテーマに創立された寮。幼い頃に憧れたアイドルを夢見て頑張る女の子が多く集まっている。",
       "sourceUrl": ""
     },
     {
       "id": "q003",
       "generation": 0,
-      "question": "パレデミア学園はどこにある？",
+      "question": "猫の鳴き声が名前の由来の寮の名前は？",
       "answers": [
-        "ジグ島",
-        "パレ島",
-        "渋谷",
-        "あなたの心の中"
+        "ミュゥ寮",
+        "ニャァ寮",
+        "ミィ寮",
+        "ミャゥ寮"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -64,35 +64,35 @@
     {
       "id": "q004",
       "generation": 0,
-      "question": "パレデミア学園1期生の実写公開オーディションの特徴は？",
+      "question": "ミュゥ寮のテーマは？",
       "answers": [
-        "お面と黒い着ぐるみ",
-        "顔出し",
-        "カラオケ大会",
-        "ゲームの実力だけで合否を決定"
+        "ゴージャス・ガールズパワー",
+        "ミラクル・パーティークイーン",
+        "ウルトラ・ギャルズ",
+        "ハッピー・プリンセス"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "",
+      "comment": "『ゴージャス・ガールズパワー』をテーマに創立された寮。ウチら最高ギャルマインドを持つ女の子が多く集まっている。",
       "sourceUrl": ""
     },
     {
       "id": "q005",
       "generation": 0,
-      "question": "犬の鳴き声が名前の由来の寮の名前は？",
+      "question": "鳩の鳴き声が名前の由来の寮の名前は？",
       "answers": [
-        "バゥ寮",
-        "ワォン寮",
-        "キャン寮",
-        "ワンワン寮"
+        "クゥ寮",
+        "ポッポ寮",
+        "ホッホゥ寮",
+        "クルック寮"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -104,35 +104,35 @@
     {
       "id": "q006",
       "generation": 0,
-      "question": "バゥ寮のテーマは？",
+      "question": "クゥ寮のテーマは？",
       "answers": [
-        "歌って踊れる正統派アイドル",
-        "癒やしのマスコット系アイドル",
-        "ワイルドなロック系アイドル",
-        "奇想天外なビックリ箱系アイドル"
+        "キュートなサイバーパンク",
+        "レトロなスチームパンク",
+        "美食とクッキング",
+        "愛と平和のメッセンジャー"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "『歌って踊れる正統派アイドル』をテーマに創立された寮。幼い頃に憧れたアイドルを夢見て頑張る女の子が多く集まっている。",
+      "comment": "『キュートなサイバーパンク』をテーマに創立された寮。ゲームが好きな美技巧者なゲーミング女子が多く集まっている。",
       "sourceUrl": ""
     },
     {
       "id": "q007",
       "generation": 0,
-      "question": "猫の鳴き声が名前の由来の寮の名前は？",
+      "question": "馬の鳴き声が名前の由来の寮の名前は？",
       "answers": [
-        "ミュゥ寮",
-        "ニャァ寮",
-        "ミィ寮",
-        "ミャゥ寮"
+        "ウィニー寮",
+        "ヒヒン寮",
+        "ブルル寮",
+        "ネーイ寮"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -144,35 +144,35 @@
     {
       "id": "q008",
       "generation": 0,
-      "question": "ミュゥ寮のテーマは？",
+      "question": "ウィニー寮のテーマは？",
       "answers": [
-        "ゴージャス・ガールズパワー",
-        "ミラクル・パーティークイーン",
-        "ウルトラ・ギャルズ",
-        "ハッピー・プリンセス"
+        "ウェスタンゴシック",
+        "アーバンノワール",
+        "ロイヤルバロック",
+        "デカダンスロココ"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "『ゴージャス・ガールズパワー』をテーマに創立された寮。ウチら最高ギャルマインドを持つ女の子が多く集まっている。",
+      "comment": "『ウェスタンゴシック』をテーマに創立された寮。心に強さを秘めた麗しい女性が多く集まっている。",
       "sourceUrl": ""
     },
     {
       "id": "q009",
-      "generation": 0,
-      "question": "鳩の鳴き声が名前の由来の寮の名前は？",
+      "generation": 1,
+      "question": "パレデミア学園1期生の実写公開オーディションの特徴は？",
       "answers": [
-        "クゥ寮",
-        "ポッポ寮",
-        "ホッホゥ寮",
-        "クルック寮"
+        "お面と黒い着ぐるみ",
+        "顔出し",
+        "カラオケ大会",
+        "ゲームの実力だけで合否を決定"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -183,36 +183,36 @@
     },
     {
       "id": "q010",
-      "generation": 0,
-      "question": "クゥ寮のテーマは？",
+      "generation": 2,
+      "question": "2期生は全部で何人？",
       "answers": [
-        "キュートなサイバーパンク",
-        "レトロなスチームパンク",
-        "美食とクッキング",
-        "愛と平和のメッセンジャー"
+        "24人",
+        "20人",
+        "28人",
+        "32人"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
-      "sortAnswers": false,
+      "genre": "パレ学",
+      "sortAnswers": true,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "『キュートなサイバーパンク』をテーマに創立された寮。ゲームが好きな美技巧者なゲーミング女子が多く集まっている。",
+      "comment": "",
       "sourceUrl": ""
     },
     {
       "id": "q011",
       "generation": 0,
-      "question": "馬の鳴き声が名前の由来の寮の名前は？",
+      "question": "パレデミア学園はどこにある？",
       "answers": [
-        "ウィニー寮",
-        "ヒヒン寮",
-        "ブルル寮",
-        "ネーイ寮"
+        "ジグ島",
+        "パレ島",
+        "渋谷",
+        "あなたの心の中"
       ],
       "difficulty": 1,
-      "genre": "基本問題",
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -224,26 +224,6 @@
     {
       "id": "q012",
       "generation": 0,
-      "question": "ウィニー寮のテーマは？",
-      "answers": [
-        "ウェスタンゴシック",
-        "アーバンノワール",
-        "ロイヤルバロック",
-        "デカダンスロココ"
-      ],
-      "difficulty": 1,
-      "genre": "基本問題",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "『ウェスタンゴシック』をテーマに創立された寮。心に強さを秘めた麗しい女性が多く集まっている。",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q013",
-      "generation": 0,
       "question": "パレデミア学園のグッズを購入できる場所はどこ？",
       "answers": [
         "パレデミア学園公式ストア",
@@ -251,8 +231,8 @@
         "アニメイト",
         "jig.jp本社"
       ],
-      "difficulty": 1,
-      "genre": "基本問題",
+      "difficulty": 2,
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -262,8 +242,8 @@
       "sourceUrl": ""
     },
     {
-      "id": "q014",
-      "generation": 0,
+      "id": "q013",
+      "generation": 1,
       "question": "パレデミア学園の入寮式で、寮分けを任されたのは？",
       "answers": [
         "魔法の鏡",
@@ -271,8 +251,8 @@
         "魔法の鍵",
         "魔法の鎧"
       ],
-      "difficulty": 1,
-      "genre": "基本問題",
+      "difficulty": 2,
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -282,7 +262,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=kStZKpKGwoM"
     },
     {
-      "id": "q015",
+      "id": "q014",
       "generation": 0,
       "question": "寮生たちが目指しているものは？",
       "answers": [
@@ -291,14 +271,34 @@
         "ジググランデステージ",
         "渋谷サクラステージ"
       ],
-      "difficulty": 1,
-      "genre": "基本問題",
+      "difficulty": 2,
+      "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
       "comment": "3年間の活動の後、8名が選抜されてルナエイトになり、ルナグランデステージへ",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q015",
+      "generation": 0,
+      "question": "パレデミア学園を運営する会社の名前は？",
+      "answers": [
+        "jig.jp",
+        "A Inc.",
+        "B Inc.",
+        "C Inc."
+      ],
+      "difficulty": 2,
+      "genre": "パレ学",
+      "sortAnswers": true,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "A Inc. B Inc. C Inc.はjig.jpの子会社です。",
       "sourceUrl": ""
     },
     {
@@ -311,7 +311,7 @@
         "ねるねるうらうら",
         "ねる音(ねるね)"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -331,7 +331,7 @@
         "ガンベルト",
         "酒場の看板"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
@@ -351,7 +351,7 @@
         "麗技精妙",
         "電光石火"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
@@ -371,7 +371,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -391,7 +391,7 @@
         "恋愛裁判",
         "トリノコシティ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -411,7 +411,7 @@
         "2人で乗った橋が壊れた",
         "ぺけ。がなでこに食べられる"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -431,7 +431,7 @@
         "天天爛漫",
         "ゆらぐあわー"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -451,7 +451,7 @@
         "オハさとラヂオ",
         "上↑下↓らじお"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -471,7 +471,7 @@
         "まるさと製麺",
         "あまみんさとりん"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -491,7 +491,7 @@
         "アルパカ",
         "ハシビロコウ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -511,7 +511,7 @@
         "ウィニー寮",
         "バゥ寮"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -531,7 +531,7 @@
         "体重計",
         "すいか"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -551,7 +551,7 @@
         "ドクターペッパー1ケース",
         "スポーツドリンク1ケース"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -571,7 +571,7 @@
         "ハワイ土産",
         "福井土産"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -591,7 +591,7 @@
         "コスプレ",
         "トレカ"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -611,7 +611,7 @@
         "パレデミア学園のロゴ",
         "時計塔"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -631,7 +631,7 @@
         "ISFJ(擁護者)",
         "ESFP(エンターテイナー)"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -651,7 +651,7 @@
         "ボボボーボ・ボーボボ",
         "おそ松さん"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -671,7 +671,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -691,7 +691,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -711,7 +711,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -731,7 +731,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -751,7 +751,7 @@
         "こしあん",
         "白あん"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -771,7 +771,7 @@
         "ラブレター",
         "✕のヘアピン2個"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -791,7 +791,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -811,7 +811,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -831,7 +831,7 @@
         "ピーマン",
         "トマト"
       ],
-      "difficulty": 4,
+      "difficulty": 6,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -851,7 +851,7 @@
         "ISFJ-AS(芯の強いペンギン)",
         "ISTP-TS(探求する猫)"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -871,7 +871,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -891,7 +891,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -911,7 +911,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -951,7 +951,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 6,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -971,7 +971,7 @@
         "猫乃間うと",
         "愛上オハナ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -991,7 +991,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1011,7 +1011,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1031,7 +1031,7 @@
         "ギガンティックO.T.N",
         "仇返しシンドローム"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1051,7 +1051,7 @@
         "救世主",
         "童"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1071,7 +1071,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1111,7 +1111,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1124,21 +1124,21 @@
     {
       "id": "q057",
       "generation": 1,
-      "question": "クゥ寮で最も背が低いのは誰？",
+      "question": "クゥ寮の1期生で最も背が低いのは誰？",
       "answers": [
         "畑スイカ",
         "猫乃間うと",
         "肇明日空",
         "桜雲ほわり"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "スイカ＜うと＜ほわり＜あすから",
+      "comment": "スイカ＜うと＜ほわり",
       "sourceUrl": ""
     },
     {
@@ -1151,7 +1151,7 @@
         "玉ねぎ(1 Onion)",
         "卵(10 Eggs)"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1171,7 +1171,7 @@
         "ハーモニカ",
         "カホン"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1191,7 +1191,7 @@
         "人の血液型を当てる",
         "人の体調を見抜く"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1211,7 +1211,7 @@
         "R.E.P.O.",
         "雀エボライブ"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1231,7 +1231,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1251,7 +1251,7 @@
         "雲上人",
         "花見会"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1271,7 +1271,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1291,7 +1291,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1311,7 +1311,7 @@
         "10個",
         "30個"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "エピソード",
       "sortAnswers": true,
       "hideIcon": false,
@@ -1331,7 +1331,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1344,14 +1344,14 @@
     {
       "id": "q068",
       "generation": 1,
-      "question": "クゥ寮で唯一ニーハイを履いてない人は？",
+      "question": "クゥ寮1期生で唯一ニーハイを履いてない人は？",
       "answers": [
         "桜雲ほわり",
         "[クゥ寮]",
         "[クゥ寮]",
         "[クゥ寮]"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1371,7 +1371,7 @@
         "バゥ寮",
         "ウィニー寮"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1391,7 +1391,7 @@
         "飛渡ココ",
         "亀城ちかり"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1411,7 +1411,7 @@
         "ロース",
         "海鮮"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1431,7 +1431,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1451,7 +1451,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1471,7 +1471,7 @@
         "おもち",
         "あんこ"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "その他",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1491,7 +1491,7 @@
         "カナタリアン",
         "かなたっこ"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1511,7 +1511,7 @@
         "星",
         "斜め線"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1531,7 +1531,7 @@
         "ハンバーグ寿司",
         "フォアグラの握り"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1551,7 +1551,7 @@
         "[声劇サークル]",
         "[声劇サークル]"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1571,7 +1571,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1591,7 +1591,7 @@
         "マンボウ",
         "イソギンチャク"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1611,7 +1611,7 @@
         "犬丸なでこ",
         "灯野ぺけ。"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1631,7 +1631,7 @@
         "Driver’s High",
         "負けないで"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1651,7 +1651,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1671,7 +1671,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -1691,7 +1691,7 @@
         "鮭を咥えたクマ",
         "アメショー"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1711,7 +1711,7 @@
         "サンタ人形",
         "クリスマスツリー"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1731,7 +1731,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1751,7 +1751,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1771,7 +1771,7 @@
         "白",
         "青"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -1791,7 +1791,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1811,7 +1811,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1831,7 +1831,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1851,7 +1851,7 @@
         "☔🍋",
         "🌧️🍊"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1871,7 +1871,7 @@
         "恋歌さわこ",
         "雛菊のん"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -1891,7 +1891,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1911,7 +1911,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1931,7 +1931,7 @@
         "愛上オハナ",
         "黒鋼亜華"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1951,7 +1951,7 @@
         "采多しゆあ",
         "雛菊のん"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -1971,7 +1971,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -1991,7 +1991,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2011,7 +2011,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2031,7 +2031,7 @@
         "かぼちゃランタン",
         "人魂"
       ],
-      "difficulty": 2,
+      "difficulty": 6,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2051,7 +2051,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2071,7 +2071,7 @@
         "鈴木沙透",
         "飛渡ココ"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2091,7 +2091,7 @@
         "提灯の消灯",
         "花火を打ち上げる"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2111,7 +2111,7 @@
         "天辻ゆらぐ",
         "飛渡ココ"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2123,6 +2123,26 @@
     },
     {
       "id": "q107",
+      "generation": 1,
+      "question": "灯野ぺけ。が歌える曲が最も多いアーティストは？",
+      "answers": [
+        "L'Arc~en~Ciel",
+        "LiSA",
+        "T.M.Revolution",
+        "浜崎あゆみ"
+      ],
+      "difficulty": 4,
+      "genre": "その他",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "L'Arc~en~Cielは歌える曲リストに44曲も載っています。↓L'Arc~en~Ciel縛り歌枠🌈",
+      "sourceUrl": "https://www.youtube.com/watch?v=QV4WeaH4DGM"
+    },
+    {
+      "id": "q108",
       "generation": 1,
       "question": "ファンネームが「みんな達」の っょっょ𝑮𝑨𝑳アイドルVTuberは？",
       "answers": [
@@ -2142,7 +2162,7 @@
       "sourceUrl": "https://youtu.be/E3HLHpVV3Oc?t=1669"
     },
     {
-      "id": "q108",
+      "id": "q109",
       "generation": 1,
       "question": "陰山アゲハのネームロゴに絆創膏は何枚ある？",
       "answers": [
@@ -2151,7 +2171,7 @@
         "3枚",
         "4枚"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "ネームロゴ",
       "sortAnswers": true,
       "hideIcon": false,
@@ -2162,7 +2182,7 @@
       "sourceUrl": "https://x.com/Ageha_kageyama"
     },
     {
-      "id": "q109",
+      "id": "q110",
       "generation": 1,
       "question": "『ぱ』Tシャツに対して「イカれてやがるでしょ(誉め言葉)」とツイートした人は？",
       "answers": [
@@ -2171,7 +2191,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2182,7 +2202,7 @@
       "sourceUrl": "https://x.com/Ageha_kageyama/status/2000506515443298575"
     },
     {
-      "id": "q110",
+      "id": "q111",
       "generation": 1,
       "question": "カラオケでangelaのProofを歌って97.585点という高得点を取った人は？",
       "answers": [
@@ -2191,7 +2211,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2202,7 +2222,7 @@
       "sourceUrl": "https://x.com/Ageha_kageyama/status/2007015114449510545"
     },
     {
-      "id": "q111",
+      "id": "q112",
       "generation": 1,
       "question": "カーリング歴10年の人は？",
       "answers": [
@@ -2222,7 +2242,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=pz8ea8H7G7I"
     },
     {
-      "id": "q112",
+      "id": "q113",
       "generation": 1,
       "question": "クリオネを飼ったことがあるバーチャル北海道在住の人は？",
       "answers": [
@@ -2242,7 +2262,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/i6ITfl60u_4"
     },
     {
-      "id": "q113",
+      "id": "q114",
       "generation": 1,
       "question": "音海まいるのネームロゴの「ま」の部分に描かれているものは何？",
       "answers": [
@@ -2251,7 +2271,7 @@
         "ハート",
         "クリオネ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2262,7 +2282,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q114",
+      "id": "q115",
       "generation": 1,
       "question": "音海まいるの小さい頃の将来の夢は？",
       "answers": [
@@ -2271,7 +2291,7 @@
         "動物のお医者さん",
         "水族館の飼育員さん"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2282,7 +2302,7 @@
       "sourceUrl": "https://x.com/me_mairu/status/2013946402473451556"
     },
     {
-      "id": "q115",
+      "id": "q116",
       "generation": 1,
       "question": "Xでの投票によって決定した音海まいるのエゴサタグは？",
       "answers": [
@@ -2291,7 +2311,7 @@
         "音海監視隊",
         "はなまるまいる"
       ],
-      "difficulty": 4,
+      "difficulty": 6,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2302,7 +2322,7 @@
       "sourceUrl": "https://x.com/me_mairu/status/2027299488751366350"
     },
     {
-      "id": "q116",
+      "id": "q117",
       "generation": 1,
       "question": "鈴木沙透のファンネームは？",
       "answers": [
@@ -2311,7 +2331,7 @@
         "なかじま㌠",
         "やまもと㌠"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2322,7 +2342,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q117",
+      "id": "q118",
       "generation": 1,
       "question": "前髪に大きい黒兎の髪留めをつけている人は？",
       "answers": [
@@ -2331,7 +2351,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -2342,7 +2362,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q118",
+      "id": "q119",
       "generation": 1,
       "question": "鈴木沙透が初めて入賞したグッズ化イベントは？",
       "answers": [
@@ -2351,7 +2371,7 @@
         "新年グッズ化",
         "ロリグッズ化"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2362,7 +2382,7 @@
       "sourceUrl": "https://x.com/seabass_sugar/status/1976598498184429816"
     },
     {
-      "id": "q119",
+      "id": "q120",
       "generation": 1,
       "question": "鈴木沙透のXのIDは？",
       "answers": [
@@ -2371,7 +2391,7 @@
         "@suzusato",
         "@suzuki_kurousagi"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2382,7 +2402,7 @@
       "sourceUrl": "https://x.com/seabass_sugar"
     },
     {
-      "id": "q120",
+      "id": "q121",
       "generation": 1,
       "question": "ミュゥ寮マイクラサーバーで洞窟にいたチキンジョッキーを倒してLava Chickenのレコードを手に入れた人は？",
       "answers": [
@@ -2391,7 +2411,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2402,7 +2422,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=7Vq5nwKmduI&t=4686s"
     },
     {
-      "id": "q121",
+      "id": "q122",
       "generation": 1,
       "question": "恋歌さわこのメガネを取るとどうなっている？",
       "answers": [
@@ -2411,7 +2431,7 @@
         "金の目",
         "青い目"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2422,7 +2442,7 @@
       "sourceUrl": "https://x.com/Ageha_kageyama/status/1979705608535458248"
     },
     {
-      "id": "q122",
+      "id": "q123",
       "generation": 1,
       "question": "お菓子作りの国家資格を持っているDJは？",
       "answers": [
@@ -2431,7 +2451,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2442,7 +2462,7 @@
       "sourceUrl": "https://youtu.be/kStZKpKGwoM?t=4943"
     },
     {
-      "id": "q123",
+      "id": "q124",
       "generation": 1,
       "question": "ミュウ寮で恋歌さわこだけが持つ特徴は？",
       "answers": [
@@ -2451,7 +2471,7 @@
         "アホ毛がハート",
         "オッドアイ"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2462,7 +2482,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q124",
+      "id": "q125",
       "generation": 1,
       "question": "恋歌さわこが「午年なので踊ってみました！」という動画で踊っていた曲は？",
       "answers": [
@@ -2471,7 +2491,7 @@
         "江南スタイル",
         "U.M.A. NEW WORLD!!"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2482,7 +2502,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/A5pheV-GZZY"
     },
     {
-      "id": "q125",
+      "id": "q126",
       "generation": 1,
       "question": "ウインクするときにバチコーンと言う人は？",
       "answers": [
@@ -2491,7 +2511,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2502,7 +2522,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q126",
+      "id": "q127",
       "generation": 1,
       "question": "犬を2匹飼っていて実家がドッグホテルなのにミュゥ寮に入った人は？",
       "answers": [
@@ -2511,7 +2531,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2522,7 +2542,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/cga5Nz5W9aY"
     },
     {
-      "id": "q127",
+      "id": "q128",
       "generation": 1,
       "question": "亀城ちかりの妹の名前は？",
       "answers": [
@@ -2531,7 +2551,7 @@
         "亀城あかり",
         "亀城ゆかり"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2542,7 +2562,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=KMfhNAebpT4"
     },
     {
-      "id": "q128",
+      "id": "q129",
       "generation": 1,
       "question": "「ギャルが語るJKの現実」など、ギャルに関連するショート動画を多数投稿している人は？",
       "answers": [
@@ -2551,7 +2571,7 @@
         "[ミュゥ寮]",
         "[ミュゥ寮]"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2562,7 +2582,7 @@
       "sourceUrl": "https://www.youtube.com/@%E9%9B%9B%E8%8F%8A%E3%81%AE%E3%82%93/shorts"
     },
     {
-      "id": "q129",
+      "id": "q130",
       "generation": 1,
       "question": "雛菊のんのネームロゴの「菊」に描かれているものは？",
       "answers": [
@@ -2571,7 +2591,7 @@
         "ハート",
         "雷"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2582,7 +2602,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/ll6FFSnliAI"
     },
     {
-      "id": "q130",
+      "id": "q131",
       "generation": 1,
       "question": "雛菊のんが「最高に壮大で楽しすぎるゲームだったね🤣🤣」と言っていたゲームは？",
       "answers": [
@@ -2591,7 +2611,7 @@
         "おしゃべりキング",
         "VALORANT"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2602,7 +2622,7 @@
       "sourceUrl": "https://x.com/Hinagiku_Non/status/2007437122161234270"
     },
     {
-      "id": "q131",
+      "id": "q132",
       "generation": 1,
       "question": "語尾が「のじゃ」で魔界出身の人は？",
       "answers": [
@@ -2611,7 +2631,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2622,7 +2642,7 @@
       "sourceUrl": "https://x.com/yayoikaren/status/1940025548174237896"
     },
     {
-      "id": "q132",
+      "id": "q133",
       "generation": 1,
       "question": "ハロウィングッズで夜宵カレンは何になった？",
       "answers": [
@@ -2631,7 +2651,7 @@
         "コウモリ",
         "貞子"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2642,7 +2662,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q133",
+      "id": "q134",
       "generation": 1,
       "question": "誰のツイート？\n「童磨様にえらい‼️がんばったね‼️してもらえたから明日からも生きる🤩🤩🤩🤩🤩👍👍👍👍👍💖💖💖💖💖サイコ～～～～～⤴️⤴️⤴️⤴️⤴️」",
       "answers": [
@@ -2651,7 +2671,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2662,7 +2682,7 @@
       "sourceUrl": "https://x.com/yayoikaren/status/1959644316546261281"
     },
     {
-      "id": "q134",
+      "id": "q135",
       "generation": 1,
       "question": "東雲アカリが灯野ぺけ。のPCでヴァロラントをプレイしたときにリストラしたものは？",
       "answers": [
@@ -2671,7 +2691,7 @@
         "キーボード",
         "コントローラー"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2682,7 +2702,7 @@
       "sourceUrl": "https://x.com/hino_pekemaru/status/1978690260742676525"
     },
     {
-      "id": "q135",
+      "id": "q136",
       "generation": 1,
       "question": "これは誰のツイート？「150km/h直球ストレートでマシュマロ投げてや🍭」",
       "answers": [
@@ -2691,7 +2711,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2702,7 +2722,7 @@
       "sourceUrl": "https://x.com/shinonome_akari/status/1909767984329163124"
     },
     {
-      "id": "q136",
+      "id": "q137",
       "generation": 1,
       "question": "東雲アカリが主にプレイしているゲームは？",
       "answers": [
@@ -2722,31 +2742,11 @@
       "sourceUrl": ""
     },
     {
-      "id": "q137",
+      "id": "q138",
       "generation": 1,
       "question": "「マミ子」と呼ばれることがある人は誰？",
       "answers": [
         "東雲アカリ",
-        "",
-        "",
-        ""
-      ],
-      "difficulty": 3,
-      "genre": "エピソード",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "誰か由来を教えてください。Grokさんによると言動がママっぽいかららしいけど本当？",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q138",
-      "generation": 1,
-      "question": "最終面接にメイド服を着ていったのは？",
-      "answers": [
-        "犬丸なでこ",
         "",
         "",
         ""
@@ -2758,11 +2758,31 @@
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
+      "comment": "誰か由来を教えてください。Grokさんによると言動がママっぽいかららしいけど本当？",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q139",
+      "generation": 1,
+      "question": "最終面接にメイド服を着ていったのは？",
+      "answers": [
+        "犬丸なでこ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 5,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/shorts/hPO3qZJawT0"
     },
     {
-      "id": "q139",
+      "id": "q140",
       "generation": 1,
       "question": "髪に骨のヘアピンを2個付けている人は？",
       "answers": [
@@ -2782,7 +2802,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q140",
+      "id": "q141",
       "generation": 1,
       "question": "犬丸なでこがグルメイベントの賞品としてもらったものは？",
       "answers": [
@@ -2791,7 +2811,7 @@
         "霜降り和牛",
         "高級チョコレート"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2802,7 +2822,7 @@
       "sourceUrl": "https://x.com/nadeko_inumaru/status/1989863000564781314"
     },
     {
-      "id": "q141",
+      "id": "q142",
       "generation": 1,
       "question": "犬丸なでこが誕生日凸待ち配信で覚えた言葉は？",
       "answers": [
@@ -2811,7 +2831,7 @@
         "清一色",
         "シュールストレミング"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2822,7 +2842,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=O-MN4m_2U4I&t=5511s"
     },
     {
-      "id": "q142",
+      "id": "q143",
       "generation": 1,
       "question": "飛渡ココに関係の深い動物は？",
       "answers": [
@@ -2831,28 +2851,8 @@
         "リス",
         "キツネザル"
       ],
-      "difficulty": 1,
-      "genre": "プロフィール",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q143",
-      "generation": 1,
-      "question": "2025年5月11日の初配信から10時間×30日=300時間配信を行ったのは誰？",
-      "answers": [
-        "飛渡ココ",
-        "",
-        "",
-        ""
-      ],
       "difficulty": 2,
-      "genre": "エピソード",
+      "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -2864,6 +2864,26 @@
     {
       "id": "q144",
       "generation": 1,
+      "question": "2025年5月11日の初配信から10時間×30日=300時間配信を行ったのは誰？",
+      "answers": [
+        "飛渡ココ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q145",
+      "generation": 1,
       "question": "飛渡ココのネームロゴの1つ目の「コ」に描かれているものは？",
       "answers": [
         "地球儀",
@@ -2871,7 +2891,7 @@
         "卵",
         "靴"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2882,7 +2902,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q145",
+      "id": "q146",
       "generation": 1,
       "question": "パレ学MBTIまとめを作った人は？",
       "answers": [
@@ -2891,7 +2911,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2902,7 +2922,7 @@
       "sourceUrl": "https://x.com/totococopopo/status/2004932973737771173"
     },
     {
-      "id": "q146",
+      "id": "q147",
       "generation": 1,
       "question": "飛渡ココが描く「おはぽぽ漫画」に登場する食パンのキャラの名前は？",
       "answers": [
@@ -2911,7 +2931,7 @@
         "賢者クァ",
         "食パン◯ン"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2922,7 +2942,7 @@
       "sourceUrl": "https://x.com/totococopopo/status/2002846663778717988"
     },
     {
-      "id": "q147",
+      "id": "q148",
       "generation": 1,
       "question": "ギャップで即落ち💘ロリ顔イケボ⁉️といえば？",
       "answers": [
@@ -2942,7 +2962,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q148",
+      "id": "q149",
       "generation": 1,
       "question": "フローレ・ブランカは配信中に誰にプロポーズした？",
       "answers": [
@@ -2962,7 +2982,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q149",
+      "id": "q150",
       "generation": 1,
       "question": "バゥ寮エアホッケー大会の優勝者は？",
       "answers": [
@@ -2982,7 +3002,7 @@
       "sourceUrl": "https://x.com/flore_blanka/status/1933149573536747755"
     },
     {
-      "id": "q150",
+      "id": "q151",
       "generation": 1,
       "question": "フローレ・ブランカのネームロゴに描かれている花は？",
       "answers": [
@@ -2991,7 +3011,7 @@
         "クレマチス",
         "彼岸花"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3002,7 +3022,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=tJEe-CzBu9U"
     },
     {
-      "id": "q151",
+      "id": "q152",
       "generation": 1,
       "question": "灯野ぺけ。の家にGが出たときに駆けつけてくれたのは？",
       "answers": [
@@ -3011,7 +3031,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3022,9 +3042,29 @@
       "sourceUrl": "https://x.com/hino_pekemaru/status/1973259820368273697"
     },
     {
-      "id": "q152",
+      "id": "q153",
       "generation": 1,
-      "question": "ファンネームが「まるちーず」でゆるふわ関西弁の人は？",
+      "question": "ゲリラ配信を自称しており、予定表を出した時にほぼ全てゲリラだった寮生は？",
+      "answers": [
+        "フローレ・ブランカ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "ツイート",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "自称ゲリラ配信者",
+      "sourceUrl": "https://x.com/i/status/1949168796490760446"
+    },
+    {
+      "id": "q154",
+      "generation": 1,
+      "question": "ファンネームが「まるちーず」で歌と少しレトロなものが好きなゆるふわ関西弁の人は？",
       "answers": [
         "雨海まる",
         "灯野ぺけ。",
@@ -3042,7 +3082,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q153",
+      "id": "q155",
       "generation": 1,
       "question": "青い帽子・青い服・緑色の眼・水色のショートヘアの人は？",
       "answers": [
@@ -3051,7 +3091,7 @@
         "天透あわ",
         "愛葉はな"
       ],
-      "difficulty": 1,
+      "difficulty": 3,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -3062,27 +3102,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q154",
-      "generation": 1,
-      "question": "歌と少しレトロなものが好きな関西弁VTuberといえば？",
-      "answers": [
-        "雨海まる",
-        "",
-        "",
-        ""
-      ],
-      "difficulty": 2,
-      "genre": "プロフィール",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q155",
+      "id": "q156",
       "generation": 1,
       "question": "雨海まるが人生初マインクラフト配信で仲間にした狼の名前は？",
       "answers": [
@@ -3091,7 +3111,7 @@
         "次郎",
         "一郎"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3102,7 +3122,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/dyGWIGlJF20"
     },
     {
-      "id": "q156",
+      "id": "q157",
       "generation": 1,
       "question": "雨海まるの一人称は？",
       "answers": [
@@ -3111,7 +3131,7 @@
         "わい",
         "ぼく"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3122,7 +3142,7 @@
       "sourceUrl": "https://x.com/search?q=maru_amami%20%22%E3%81%8A%E3%81%A7%22&src=typed_query&f=top"
     },
     {
-      "id": "q157",
+      "id": "q158",
       "generation": 1,
       "question": "魚を正確に切るのが得意な人は？",
       "answers": [
@@ -3131,7 +3151,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3142,7 +3162,7 @@
       "sourceUrl": "https://www.tiktok.com/@siyua_cider/video/7502649426675059976"
     },
     {
-      "id": "q158",
+      "id": "q159",
       "generation": 1,
       "question": "私のこと好きになっちゃうよ配信をしている炭酸系の人は？",
       "answers": [
@@ -3151,7 +3171,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3162,7 +3182,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q159",
+      "id": "q160",
       "generation": 1,
       "question": "采多しゆあが初めて1位を獲得したイベントは？",
       "answers": [
@@ -3171,7 +3191,7 @@
         "バレンタインイベント",
         "クリスマスイベント"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3182,7 +3202,7 @@
       "sourceUrl": "https://x.com/cider_siyua/status/1977678695348486261"
     },
     {
-      "id": "q160",
+      "id": "q161",
       "generation": 1,
       "question": "アイスクリームメーカーでアイスを作れる人は？",
       "answers": [
@@ -3202,7 +3222,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q161",
+      "id": "q162",
       "generation": 1,
       "question": "堂下さとりが得意なのは？",
       "answers": [
@@ -3211,7 +3231,7 @@
         "大盤振舞",
         "大立回り"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3222,7 +3242,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q162",
+      "id": "q163",
       "generation": 1,
       "question": "BackStage Rookie Challenge Vol.5で接客人数No.1になったのは？",
       "answers": [
@@ -3231,7 +3251,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3242,7 +3262,7 @@
       "sourceUrl": "https://x.com/BSapp_/status/1982659300473577945"
     },
     {
-      "id": "q163",
+      "id": "q164",
       "generation": 1,
       "question": "おでんTier表を作ったのは誰？",
       "answers": [
@@ -3251,7 +3271,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3262,7 +3282,7 @@
       "sourceUrl": "https://x.com/doushitasatori/status/1999198751957877117"
     },
     {
-      "id": "q164",
+      "id": "q165",
       "generation": 1,
       "question": "2025年に堂下さとりが食べたソフトクリームの数は？",
       "answers": [
@@ -3271,7 +3291,7 @@
         "216個",
         "155個"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": true,
       "hideIcon": false,
@@ -3282,7 +3302,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/Qd5sgF_3GOU"
     },
     {
-      "id": "q165",
+      "id": "q166",
       "generation": 1,
       "question": "青い目・青いリボン・青い制服・青い帽子の人は？",
       "answers": [
@@ -3291,7 +3311,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -3302,7 +3322,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q166",
+      "id": "q167",
       "generation": 1,
       "question": "天透あわのネームロゴの文字の特徴は？",
       "answers": [
@@ -3311,7 +3331,7 @@
         "泡でできている文字",
         "明朝体でかっこいい文字"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3322,7 +3342,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q167",
+      "id": "q168",
       "generation": 1,
       "question": "天透あわが嫌いな食べ物は？",
       "answers": [
@@ -3331,28 +3351,8 @@
         "たこ焼き",
         "マヌカハニー"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "趣味嗜好",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": "https://x.com/Amatoawa/status/1955996243957833797"
-    },
-    {
-      "id": "q168",
-      "generation": 1,
-      "question": "2025年8月のバゥ寮オフコラボの主催者は誰？",
-      "answers": [
-        "天透あわ",
-        "フローレ・ブランカ",
-        "黄金つむぎ",
-        "堂下さとり"
-      ],
-      "difficulty": 3,
-      "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -3364,6 +3364,26 @@
     {
       "id": "q169",
       "generation": 1,
+      "question": "2025年8月のバゥ寮オフコラボの主催者は誰？",
+      "answers": [
+        "天透あわ",
+        "フローレ・ブランカ",
+        "黄金つむぎ",
+        "堂下さとり"
+      ],
+      "difficulty": 6,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Amatoawa/status/1955996243957833797"
+    },
+    {
+      "id": "q170",
+      "generation": 1,
       "question": "バレンタイングッズでスプーンを持っているのは誰？",
       "answers": [
         "天透あわ",
@@ -3371,7 +3391,7 @@
         "[2026バレンタイングッズ化]",
         "[2026バレンタイングッズ化]"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3382,7 +3402,7 @@
       "sourceUrl": "https://x.com/parerdemia/status/2021133312727843024"
     },
     {
-      "id": "q170",
+      "id": "q171",
       "generation": 1,
       "question": "相栖るじゅが初めて素手で割った果物は？",
       "answers": [
@@ -3402,7 +3422,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=i8bwZI3IBkI"
     },
     {
-      "id": "q171",
+      "id": "q172",
       "generation": 1,
       "question": "相栖るじゅがスイカの次に素手で割った果物は？",
       "answers": [
@@ -3411,7 +3431,7 @@
         "パイナップル",
         "グレープフルーツ"
       ],
-      "difficulty": 5,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3422,16 +3442,16 @@
       "sourceUrl": "https://www.youtube.com/watch?v=qxMbpGxAMXU"
     },
     {
-      "id": "q172",
+      "id": "q173",
       "generation": 1,
-      "question": "誕生日配信の準備が間に合わなくて今年の誕生日を変更した人は？",
+      "question": "2025年の誕生日配信の準備が間に合わなくてその年の誕生日を変更した人は？",
       "answers": [
         "相栖るじゅ",
         "",
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3442,7 +3462,7 @@
       "sourceUrl": "https://x.com/aisu_ruju/status/1943181518576455738"
     },
     {
-      "id": "q173",
+      "id": "q174",
       "generation": 1,
       "question": "ハロウィンイベント中に「地味ハロウィン」の仮装をやっていたのは？",
       "answers": [
@@ -3451,7 +3471,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3462,7 +3482,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/lzLR7MYhM3I"
     },
     {
-      "id": "q174",
+      "id": "q175",
       "generation": 1,
       "question": "学マスガチ勢の銀髪ツインテオッドアイの人は？",
       "answers": [
@@ -3471,7 +3491,7 @@
         "瀬奈りるか",
         "ローズ・ダマスクハート"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": true,
@@ -3482,7 +3502,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q175",
+      "id": "q176",
       "generation": 1,
       "question": "夢ト見りんねの初めての寮外コラボ相手は？",
       "answers": [
@@ -3491,7 +3511,7 @@
         "[ミュゥ寮]",
         "[ウィニー寮]"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3502,7 +3522,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q176",
+      "id": "q177",
       "generation": 1,
       "question": "夢ト見りんねが神ゲーだと言っていたゲームは？",
       "answers": [
@@ -3511,7 +3531,7 @@
         "LoL",
         "CoD"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3522,7 +3542,7 @@
       "sourceUrl": "https://x.com/search?q=Yumetomi_Rinne%20APEX&src=typed_query&f=live"
     },
     {
-      "id": "q177",
+      "id": "q178",
       "generation": 1,
       "question": "黄金つむぎのファンネームは？",
       "answers": [
@@ -3530,6 +3550,46 @@
         "ゴールデンレトリバー",
         "つむぎびと",
         "つむとも"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q179",
+      "generation": 1,
+      "question": "パレ学で唯一の濃い金髪の人は？",
+      "answers": [
+        "黄金つむぎ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "容姿",
+      "sortAnswers": false,
+      "hideIcon": true,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q180",
+      "generation": 1,
+      "question": "黄金つむぎが好きなパンは？",
+      "answers": [
+        "メロンパン",
+        "チョココロネ",
+        "カレーパン",
+        "クロワッサン"
       ],
       "difficulty": 3,
       "genre": "プロフィール",
@@ -3542,47 +3602,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q178",
-      "generation": 1,
-      "question": "パレ学で唯一の濃い金髪の人は？",
-      "answers": [
-        "黄金つむぎ",
-        "",
-        "",
-        ""
-      ],
-      "difficulty": 1,
-      "genre": "容姿",
-      "sortAnswers": false,
-      "hideIcon": true,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q179",
-      "generation": 1,
-      "question": "黄金つむぎが好きなパンは？",
-      "answers": [
-        "メロンパン",
-        "チョココロネ",
-        "カレーパン",
-        "クロワッサン"
-      ],
-      "difficulty": 2,
-      "genre": "プロフィール",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q180",
+      "id": "q181",
       "generation": 1,
       "question": "八重森ふゆのによる2026年パレデミア学園運勢ランキングでNo.1になった人は誰？",
       "answers": [
@@ -3591,7 +3611,7 @@
         "[2026年パレデミア学園運勢ランキング]",
         "[2026年パレデミア学園運勢ランキング]"
       ],
-      "difficulty": 4,
+      "difficulty": 7,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3602,7 +3622,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2016411483215954136"
     },
     {
-      "id": "q181",
+      "id": "q182",
       "generation": 1,
       "question": "黄金つむぎが一番得意な料理は？",
       "answers": [
@@ -3611,7 +3631,7 @@
         "カステラ",
         "黄金炒飯"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "特技",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3622,7 +3642,7 @@
       "sourceUrl": "https://youtu.be/KiRdNdiUy8c?t=1059"
     },
     {
-      "id": "q182",
+      "id": "q183",
       "generation": 1,
       "question": "パレ学一期生で唯一の緑髪の人は？",
       "answers": [
@@ -3631,7 +3651,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -3642,7 +3662,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q183",
+      "id": "q184",
       "generation": 1,
       "question": "おばあちゃんに借りたお琴を弾いているのは？",
       "answers": [
@@ -3651,28 +3671,8 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "特技・所作",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q184",
-      "generation": 1,
-      "question": "愛上オハナがキャラ崩壊させられたゲームは？",
-      "answers": [
-        "1/8192",
-        "マインクラフト",
-        "雀魂",
-        "8番出口"
-      ],
-      "difficulty": 2,
-      "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -3684,6 +3684,26 @@
     {
       "id": "q185",
       "generation": 1,
+      "question": "愛上オハナがキャラ崩壊させられたゲームは？",
+      "answers": [
+        "1/8192",
+        "マインクラフト",
+        "雀魂",
+        "8番出口"
+      ],
+      "difficulty": 3,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q186",
+      "generation": 1,
       "question": "本当は怖いグリム童話のショート動画を投稿していたのは？",
       "answers": [
         "愛上オハナ",
@@ -3691,7 +3711,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3702,7 +3722,7 @@
       "sourceUrl": "https://www.youtube.com/@%E6%84%9B%E4%B8%8A%E3%82%AA%E3%83%8F%E3%83%8A/shorts"
     },
     {
-      "id": "q186",
+      "id": "q187",
       "generation": 1,
       "question": "流星群の煌めきと共に現れた💫 学園No.1魔法使いといえば？",
       "answers": [
@@ -3711,7 +3731,7 @@
         "藤森ちとせ",
         "夜宵カレン"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3722,7 +3742,7 @@
       "sourceUrl": "https://x.com/tose_hiori"
     },
     {
-      "id": "q187",
+      "id": "q188",
       "generation": 1,
       "question": "クリスマスイベント時の公約でシチュエーションボイスを5本投稿した人は？",
       "answers": [
@@ -3731,7 +3751,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3742,7 +3762,7 @@
       "sourceUrl": "https://www.tiktok.com/@tosetidde71"
     },
     {
-      "id": "q188",
+      "id": "q189",
       "generation": 1,
       "question": "斗瀬ひおりが好きなカップヌードルの味は？",
       "answers": [
@@ -3751,7 +3771,7 @@
         "グリーンカレー",
         "チリトマト"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3762,7 +3782,7 @@
       "sourceUrl": "https://x.com/tose_hiori/status/1968472211045707922"
     },
     {
-      "id": "q189",
+      "id": "q190",
       "generation": 1,
       "question": "春旅行グッズ化イベントで最終日にすごい追い上げで1位になった人は？",
       "answers": [
@@ -3771,7 +3791,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "イベント",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3782,7 +3802,7 @@
       "sourceUrl": "https://x.com/parerdemia/status/2027720469424836914"
     },
     {
-      "id": "q190",
+      "id": "q191",
       "generation": 1,
       "question": "パレ学一期生で唯一色付きメガネをかけている人は？",
       "answers": [
@@ -3791,7 +3811,7 @@
         "八重森ふゆの",
         "ローズ・ダマスクハート"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": true,
@@ -3802,7 +3822,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q191",
+      "id": "q192",
       "generation": 1,
       "question": "入寮式の1番目は犬丸なでこでしたが、2番目は誰？",
       "answers": [
@@ -3811,7 +3831,7 @@
         "八重森ふゆの",
         "フローレ・ブランカ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3822,7 +3842,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q192",
+      "id": "q193",
       "generation": 1,
       "question": "この画像の作者は誰？",
       "answers": [
@@ -3831,7 +3851,7 @@
         "堂下さとり",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3842,7 +3862,7 @@
       "sourceUrl": "https://x.com/Aka_kurogane_/status/1974813687799328906"
     },
     {
-      "id": "q193",
+      "id": "q194",
       "generation": 1,
       "question": "以下のボカロ曲が好きだとツイートした人は？\n『毒占欲』『合い鳴き』『名のない星が空に落ちたら』『GEDO』『タランタ・ラ・ムジカ』",
       "answers": [
@@ -3851,7 +3871,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3862,7 +3882,7 @@
       "sourceUrl": "https://x.com/Aka_kurogane_/status/2012061144056545368"
     },
     {
-      "id": "q194",
+      "id": "q195",
       "generation": 1,
       "question": "タロット占いができるのは？",
       "answers": [
@@ -3871,7 +3891,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3882,7 +3902,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q195",
+      "id": "q196",
       "generation": 1,
       "question": "八重森ふゆののネームロゴの「重」の時に描かれているものは？",
       "answers": [
@@ -3891,7 +3911,7 @@
         "葉っぱ",
         "三つ編み"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3902,16 +3922,16 @@
       "sourceUrl": ""
     },
     {
-      "id": "q196",
+      "id": "q197",
       "generation": 1,
       "question": "八重森ふゆのがタロットカードで当てたものは？",
       "answers": [
-        "有馬記念単勝",
+        "有馬記念",
         "ロト6",
         "宝くじ",
         "ミニトト"
       ],
-      "difficulty": 3,
+      "difficulty": 7,
       "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3922,7 +3942,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2005204324205678857"
     },
     {
-      "id": "q197",
+      "id": "q198",
       "generation": 1,
       "question": "八重森ふゆのの年齢は？",
       "answers": [
@@ -3931,7 +3951,7 @@
         "25歳",
         "20歳"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3942,7 +3962,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/5KH20X--jM0"
     },
     {
-      "id": "q198",
+      "id": "q199",
       "generation": 1,
       "question": "八重森ふゆのが2026年の初詣で奉納した絵馬の形は？",
       "answers": [
@@ -3951,7 +3971,7 @@
         "ハート",
         "五角形"
       ],
-      "difficulty": 4,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3962,7 +3982,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2008803932207018111"
     },
     {
-      "id": "q199",
+      "id": "q200",
       "generation": 1,
       "question": "◯◯◯◯のもり〜が口癖の人は？",
       "answers": [
@@ -3971,7 +3991,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3982,7 +4002,7 @@
       "sourceUrl": "https://x.com/Fujinomori_WH/status/1991674618936193455"
     },
     {
-      "id": "q200",
+      "id": "q201",
       "generation": 1,
       "question": "毎日ショート動画で誕生花を紹介している人は？",
       "answers": [
@@ -3991,28 +4011,8 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q201",
-      "generation": 1,
-      "question": "藤森ちとせの「藤森」は何と読む？",
-      "answers": [
-        "ふじのもり",
-        "ふじもり",
-        "とうもり",
-        "とうのもり"
-      ],
-      "difficulty": 1,
-      "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -4024,6 +4024,26 @@
     {
       "id": "q202",
       "generation": 1,
+      "question": "藤森ちとせの「藤森」は何と読む？",
+      "answers": [
+        "ふじのもり",
+        "ふじもり",
+        "とうもり",
+        "とうのもり"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q203",
+      "generation": 1,
       "question": "藤森ちとせの第1回投票イベント賞品の新衣装ビジュアルの特徴は？",
       "answers": [
         "涙メガネと三つ編みリング",
@@ -4031,7 +4051,7 @@
         "ゴシックロリータ",
         "彼シャツ風ルームウェア"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4042,7 +4062,27 @@
       "sourceUrl": "https://x.com/parerdemia/status/2011030492670542064"
     },
     {
-      "id": "q203",
+      "id": "q204",
+      "generation": 1,
+      "question": "1月1日の配信で藤森ちとせさんがつけてたものは？",
+      "answers": [
+        "馬の耳",
+        "鏡もち",
+        "ウィニーのエンブレム(紋章)",
+        "門松"
+      ],
+      "difficulty": 6,
+      "genre": "容姿",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "午年だから馬の耳付けてましたね",
+      "sourceUrl": "https://www.youtube.com/live/2CbG0540Vwo?si=1jbTV0SuzChJ93kg"
+    },
+    {
+      "id": "q205",
       "generation": 1,
       "question": "花晴りらはきのこ派？たけのこ派？",
       "answers": [
@@ -4051,7 +4091,7 @@
         "アルフォート派",
         "ポッキー派"
       ],
-      "difficulty": 5,
+      "difficulty": 7,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4062,7 +4102,7 @@
       "sourceUrl": "https://www.youtube.com/live/dy-NK8jmiGw"
     },
     {
-      "id": "q204",
+      "id": "q206",
       "generation": 1,
       "question": "納豆が嫌いなことをよくいじられている人は？",
       "answers": [
@@ -4071,48 +4111,8 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "趣味嗜好",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": ""
-    },
-    {
-      "id": "q205",
-      "generation": 1,
-      "question": "第一回 パレデミア学園雀魂大会の企画者は？",
-      "answers": [
-        "花晴りら",
-        "灯野ぺけ。",
-        "猫乃間うと",
-        "瀬奈りるか"
-      ],
-      "difficulty": 2,
-      "genre": "イベント",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "",
-      "sourceUrl": "https://x.com/LilaHanahare/status/1998336413537067332"
-    },
-    {
-      "id": "q206",
-      "generation": 1,
-      "question": "水着グッズで頭に赤い花をつけている人は？",
-      "answers": [
-        "花晴りら",
-        "",
-        "",
-        ""
-      ],
-      "difficulty": 4,
-      "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -4124,35 +4124,35 @@
     {
       "id": "q207",
       "generation": 1,
-      "question": "よく圧倒的自由な配信を行っているウィニー寮のピンク髪の人は？",
+      "question": "第一回 パレデミア学園雀魂大会の企画者は？",
       "answers": [
-        "桜堂ねる",
-        "七音うら",
-        "水無瀬天",
-        "藤森ちとせ"
+        "花晴りら",
+        "灯野ぺけ。",
+        "猫乃間うと",
+        "瀬奈りるか"
       ],
-      "difficulty": 1,
-      "genre": "プロフィール",
+      "difficulty": 4,
+      "genre": "イベント",
       "sortAnswers": false,
-      "hideIcon": true,
+      "hideIcon": false,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
       "comment": "",
-      "sourceUrl": ""
+      "sourceUrl": "https://x.com/LilaHanahare/status/1998336413537067332"
     },
     {
       "id": "q208",
       "generation": 1,
-      "question": "ネームロゴに黒帯が描かれているのは誰？",
+      "question": "水着グッズで頭に赤い花をつけている人は？",
       "answers": [
-        "桜堂ねる",
+        "花晴りら",
         "",
         "",
         ""
       ],
-      "difficulty": 2,
-      "genre": "ネームロゴ",
+      "difficulty": 5,
+      "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -4164,32 +4164,12 @@
     {
       "id": "q209",
       "generation": 1,
-      "question": "桜堂ねるが年末年始に食べていた珍しい根菜は？",
+      "question": "よく圧倒的自由な配信を行っているウィニー寮のピンク髪の人は？",
       "answers": [
-        "ちょろぎ",
-        "くわい",
-        "パースニップ",
-        "ヤーコン"
-      ],
-      "difficulty": 4,
-      "genre": "エピソード",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "「ダイソーにもあるんだって。いつかたべてみてー！」",
-      "sourceUrl": "https://x.com/oudoneru/status/2006314003233161223"
-    },
-    {
-      "id": "q210",
-      "generation": 1,
-      "question": "パレ学1期生で青髪オッドアイの人は誰？",
-      "answers": [
-        "久堂れしあ",
-        "愛葉はな",
-        "ローズ・ダマスクハート",
-        ""
+        "桜堂ねる",
+        "七音うら",
+        "水無瀬天",
+        "藤森ちとせ"
       ],
       "difficulty": 2,
       "genre": "プロフィール",
@@ -4202,7 +4182,67 @@
       "sourceUrl": ""
     },
     {
+      "id": "q210",
+      "generation": 1,
+      "question": "ネームロゴに黒帯が描かれているのは誰？",
+      "answers": [
+        "桜堂ねる",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "ネームロゴ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
       "id": "q211",
+      "generation": 1,
+      "question": "桜堂ねるが年末年始に食べていた珍しい根菜は？",
+      "answers": [
+        "ちょろぎ",
+        "くわい",
+        "パースニップ",
+        "ヤーコン"
+      ],
+      "difficulty": 5,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "「ダイソーにもあるんだって。いつかたべてみてー！」",
+      "sourceUrl": "https://x.com/oudoneru/status/2006314003233161223"
+    },
+    {
+      "id": "q212",
+      "generation": 1,
+      "question": "パレ学1期生で青髪オッドアイの人は誰？",
+      "answers": [
+        "久堂れしあ",
+        "愛葉はな",
+        "ローズ・ダマスクハート",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": true,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q213",
       "generation": 1,
       "question": "ウィニー寮で華道の準師範の人は？",
       "answers": [
@@ -4211,7 +4251,7 @@
         "[ウィニー寮]",
         "[ウィニー寮]"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4222,7 +4262,7 @@
       "sourceUrl": "https://www.parerdemia.jp/students/25WH007"
     },
     {
-      "id": "q212",
+      "id": "q214",
       "generation": 1,
       "question": "久堂れしあの初めての歌ってみた動画の曲は？",
       "answers": [
@@ -4231,7 +4271,7 @@
         "アイドル/YOASOBI",
         "うっせぇわ/Ado"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4242,7 +4282,7 @@
       "sourceUrl": "https://x.com/reshia_kudou/status/1914596538975981640"
     },
     {
-      "id": "q213",
+      "id": "q215",
       "generation": 1,
       "question": "ファンマークが🥀⚔️の、記憶を亡くした祓魔師といえば？",
       "answers": [
@@ -4251,7 +4291,7 @@
         "愛葉はな",
         "愛上オハナ"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4262,7 +4302,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q214",
+      "id": "q216",
       "generation": 1,
       "question": "初配信で殺人チャーハン(未遂)の話をしたのは？",
       "answers": [
@@ -4271,7 +4311,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4282,7 +4322,7 @@
       "sourceUrl": "https://x.com/search?q=hizukiroseblade%20%E3%83%81%E3%83%A3%E3%83%BC%E3%83%8F%E3%83%B3&src=typed_query&f=top"
     },
     {
-      "id": "q215",
+      "id": "q217",
       "generation": 1,
       "question": "緋月・ローズ・ブレイドがマシュマロで好きなアーティストを聞かれたときに名前を挙げた人は？",
       "answers": [
@@ -4291,7 +4331,7 @@
         "DECO*27",
         "みきとP"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4302,7 +4342,7 @@
       "sourceUrl": "https://marshmallow-qa.com/messages/10383928-5ce0-47bb-95c1-d249b15e99aa?utm_medium=twitter&utm_source=answer"
     },
     {
-      "id": "q216",
+      "id": "q218",
       "generation": 1,
       "question": "アイドル目指すシーシャ屋Vtuberといえば？",
       "answers": [
@@ -4311,7 +4351,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4322,7 +4362,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q217",
+      "id": "q219",
       "generation": 1,
       "question": "水無瀬天が好きな雨に関する言葉は？",
       "answers": [
@@ -4331,7 +4371,7 @@
         "雨ニモマケズ",
         "雨垂れ石を穿つ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4342,7 +4382,7 @@
       "sourceUrl": "https://x.com/Minase_Ame/status/1921238374435672232"
     },
     {
-      "id": "q218",
+      "id": "q220",
       "generation": 1,
       "question": "水無瀬天がお土産でもらって「食べ方がわかりませんでした…」と困惑したものは？",
       "answers": [
@@ -4351,7 +4391,7 @@
         "陣太鼓",
         "ベイクドモチョチョ"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4362,7 +4402,7 @@
       "sourceUrl": "https://x.com/Minase_Ame/status/1965100712846917830"
     },
     {
-      "id": "q219",
+      "id": "q221",
       "generation": 1,
       "question": "9.5cmヒールで劇ムズ足ダンスの踊ってみた動画を出したのは誰？",
       "answers": [
@@ -4371,7 +4411,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "特技・所作",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4382,7 +4422,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/Y4uGDCB6ycc"
     },
     {
-      "id": "q220",
+      "id": "q222",
       "generation": 1,
       "question": "ウィニー寮所属 自称なろう系アイドルvtuberといえば？",
       "answers": [
@@ -4391,7 +4431,7 @@
         "[ウィニー寮]",
         "[ウィニー寮]"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4402,7 +4442,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q221",
+      "id": "q223",
       "generation": 1,
       "question": "ローズ・ダマスクハートが顔にくっつけている食べ物は？",
       "answers": [
@@ -4411,7 +4451,7 @@
         "ハンバーグ",
         "唐揚げ"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "容姿",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4422,7 +4462,7 @@
       "sourceUrl": "https://x.com/rose_damaskht/status/1943513752860557788"
     },
     {
-      "id": "q222",
+      "id": "q224",
       "generation": 1,
       "question": "ローズ・ダマスクハートのネームロゴのoの文字の中に描かれているものは？",
       "answers": [
@@ -4431,7 +4471,7 @@
         "ティアラ",
         "ハート"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4442,7 +4482,7 @@
       "sourceUrl": "https://x.com/rose_damaskht/status/1973890580003631271/photo/1"
     },
     {
-      "id": "q223",
+      "id": "q225",
       "generation": 1,
       "question": "亡国の王女でたびたび海外に出張するなど世界で活躍している寮生は？",
       "answers": [
@@ -4451,7 +4491,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "活動",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4462,7 +4502,7 @@
       "sourceUrl": "https://x.com/i/status/2010543027031568892"
     },
     {
-      "id": "q224",
+      "id": "q226",
       "generation": 1,
       "question": "七音うらが得意な楽器は？",
       "answers": [
@@ -4482,7 +4522,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q225",
+      "id": "q227",
       "generation": 1,
       "question": "七音うらのネームロゴに入っている一番大きいモチーフは？",
       "answers": [
@@ -4491,7 +4531,7 @@
         "マリンバ",
         "リボン"
       ],
-      "difficulty": 2,
+      "difficulty": 4,
       "genre": "ネームロゴ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4502,7 +4542,7 @@
       "sourceUrl": "https://youtu.be/mRfPP8GWdAA?t=791"
     },
     {
-      "id": "q226",
+      "id": "q228",
       "generation": 1,
       "question": "お正月グッズで七音うらは何をしている？",
       "answers": [
@@ -4511,7 +4551,7 @@
         "門松を持っている",
         "鏡餅の仮装をしている"
       ],
-      "difficulty": 2,
+      "difficulty": 5,
       "genre": "グッズ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4522,7 +4562,7 @@
       "sourceUrl": "https://x.com/parerdemia/status/2008087610733035887"
     },
     {
-      "id": "q227",
+      "id": "q229",
       "generation": 1,
       "question": "犬丸なでこ・灯野ぺけ。・雨海まるの3人の第1回まるまるまるコラボでプレイしたゲームは？",
       "answers": [
@@ -4531,7 +4571,7 @@
         "R.E.P.O.",
         "RV There Yet"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4542,7 +4582,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=B9AE5oKbuUo"
     },
     {
-      "id": "q228",
+      "id": "q230",
       "generation": 1,
       "question": "レポコラボ中に昔のあだ名の話になった時に「ごぼう」と答えた寮生はだれ？",
       "answers": [
@@ -4551,7 +4591,7 @@
         "七音うら",
         "[ウィニー寮]"
       ],
-      "difficulty": 5,
+      "difficulty": 6,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4562,67 +4602,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/e33zwWZQkr0"
     },
     {
-      "id": "q229",
-      "generation": 1,
-      "question": "ゲリラ配信を自称しており、予定表を出した時にほぼ全てゲリラだった寮生は？",
-      "answers": [
-        "フローレ・ブランカ",
-        "",
-        "",
-        ""
-      ],
-      "difficulty": 1,
-      "genre": "ツイート",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "自称ゲリラ配信者",
-      "sourceUrl": "https://x.com/i/status/1949168796490760446"
-    },
-    {
-      "id": "q230",
-      "generation": 1,
-      "question": "1月1日の配信で藤森ちとせさんがつけてたものは？",
-      "answers": [
-        "馬の耳",
-        "鏡もち",
-        "ウィニーのエンブレム(紋章)",
-        "門松"
-      ],
-      "difficulty": 2,
-      "genre": "容姿",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "午年だから馬の耳付けてましたね",
-      "sourceUrl": "https://www.youtube.com/live/2CbG0540Vwo?si=1jbTV0SuzChJ93kg"
-    },
-    {
       "id": "q231",
-      "generation": 1,
-      "question": "灯野ぺけ。が歌える曲が最も多いアーティストは？",
-      "answers": [
-        "L'Arc~en~Ciel",
-        "LiSA",
-        "T.M.Revolution",
-        "浜崎あゆみ"
-      ],
-      "difficulty": 3,
-      "genre": "その他",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "L'Arc~en~Cielは歌える曲リストに44曲も載っています。↓L'Arc~en~Ciel縛り歌枠🌈",
-      "sourceUrl": "https://www.youtube.com/watch?v=QV4WeaH4DGM"
-    },
-    {
-      "id": "q232",
       "generation": 1,
       "question": "シグマ・イングラムによる相栖るじゅの第一印象は？",
       "answers": [
@@ -4631,7 +4611,7 @@
         "同じにおいがする",
         "まじめでしっかりしてる"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "コラボ",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4643,60 +4623,6 @@
     }
   ],
   "answerSets": {
-    "バゥ寮": [
-      "犬丸なでこ",
-      "飛渡ココ",
-      "フローレ・ブランカ",
-      "雨海まる",
-      "采多しゆあ",
-      "堂下さとり",
-      "天透あわ",
-      "相栖るじゅ",
-      "夢ト見りんね",
-      "黄金つむぎ",
-      "愛上オハナ",
-      "斗瀬ひおり"
-    ],
-    "ミュゥ寮": [
-      "新巻るろな",
-      "氷雨セイ",
-      "緋雨柚",
-      "愛葉はな",
-      "灯野ぺけ。",
-      "陰山アゲハ",
-      "音海まいる",
-      "鈴木沙透",
-      "恋歌さわこ",
-      "亀城ちかり",
-      "雛菊のん",
-      "夜宵カレン",
-      "東雲アカリ"
-    ],
-    "クゥ寮": [
-      "シグマ・イングラム",
-      "愛乃宮ゆめ",
-      "桜庭羽奈",
-      "瀬奈りるか",
-      "神童めしあ",
-      "畑スイカ",
-      "山田スバル",
-      "桜雲ほわり",
-      "猫乃間うと",
-      "彼方ルカ",
-      "天辻ゆらぐ"
-    ],
-    "ウィニー寮": [
-      "黒鋼亜華",
-      "八重森ふゆの",
-      "藤森ちとせ",
-      "花晴りら",
-      "桜堂ねる",
-      "久堂れしあ",
-      "緋月・ローズ・ブレイド",
-      "水無瀬天",
-      "ローズ・ダマスクハート",
-      "七音うら"
-    ],
     "声劇サークル": [
       "田中ルイ",
       "雨次ゆうら",
