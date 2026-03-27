@@ -5,6 +5,18 @@ import { shuffleArray } from '../../../shared/utils/array.ts'
 import type { TextQuizQuestion } from './types.ts'
 
 /**
+ * 問題構成の1セグメント
+ * @param level questions.json の difficulty 値（1〜7）
+ * @param count 出題数
+ * @param ordered true なら順番通り、false ならランダム
+ */
+export interface QuizSegment {
+  level: number
+  count: number
+  ordered: boolean
+}
+
+/**
  * [セット名] 形式かどうか判定し、セット名を返す
  */
 function extractSetName(answer: string): string | null {
@@ -78,36 +90,37 @@ function resolveAnswerTalentIds(
 
 /**
  * テキストクイズ問題を生成する
+ * @param pool 出題候補の問題データ（世代フィルタ済み）
+ * @param segments 問題構成定義（レベル・問題数・順序の配列）
+ * @param difficulty 設定難易度（UIの難易度表示用）
  */
 export function generateTextQuizQuestions(
   pool: QuestionData[],
-  maxCount: number,
+  segments: QuizSegment[],
   difficulty: Difficulty,
   talents: Talent[],
   answerSets: Record<string, string[]>,
 ): TextQuizQuestion[] {
   // 難易度ごとにグループ分け
-  const byDifficulty = new Map<number, QuestionData[]>()
+  const byLevel = new Map<number, QuestionData[]>()
   for (const q of pool) {
-    const group = byDifficulty.get(q.difficulty) ?? []
+    const group = byLevel.get(q.difficulty) ?? []
     group.push(q)
-    byDifficulty.set(q.difficulty, group)
+    byLevel.set(q.difficulty, group)
   }
 
-  // 各難易度を均等に選出
-  const diffLevels = [...byDifficulty.keys()].sort((a, b) => a - b)
-  const perLevel = Math.floor(maxCount / diffLevels.length)
-  const remainder = maxCount % diffLevels.length
-
+  // セグメント定義に従って問題を選出
   const selected: QuestionData[] = []
-  for (let i = 0; i < diffLevels.length; i++) {
-    const group = byDifficulty.get(diffLevels[i])!
-    const count = Math.min(perLevel + (i < remainder ? 1 : 0), group.length)
-    selected.push(...shuffleArray(group).slice(0, count))
+  for (const seg of segments) {
+    const group = byLevel.get(seg.level) ?? []
+    if (seg.ordered) {
+      // 順番通り（IDやデータ順）
+      selected.push(...group.slice(0, seg.count))
+    } else {
+      // ランダム
+      selected.push(...shuffleArray(group).slice(0, seg.count))
+    }
   }
-
-  // 難易度順にソート
-  selected.sort((a, b) => a.difficulty - b.difficulty)
 
   // タレント名→IDのルックアップマップ
   const talentNameToId = new Map<string, string>()

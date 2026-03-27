@@ -7,7 +7,7 @@ import type { Talent } from '../../shared/types/talent.ts'
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
-import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
+import { generateTextQuizQuestions, type QuizSegment } from '../../features/question-types/text-quiz/generator.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 import { toSlotId } from '../../features/achievement/constants.ts'
@@ -80,12 +80,39 @@ export function SettingScreen() {
 
     if (!isDormMode && gameMode === 'knowledge') {
       // 知識クイズモード（世代別のみ）
-      const maxDifficulty = difficulty === 1 ? 2 : difficulty === 2 ? 4 : 8
       const pool = questionPool.filter(
-        (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === gen),
+        (q) => q.generation === 0 || q.generation === gen,
       )
       if (pool.length === 0) return
-      const questions = generateTextQuizQuestions(pool, 30, difficulty, talents, answerSets)
+
+      let segments: QuizSegment[]
+      if (gen === 2) {
+        // 2期生: テキストクイズ1を順番に10問
+        segments = [{ level: 1, count: 10, ordered: true }]
+      } else if (difficulty === 1) {
+        // 1期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
+        segments = [
+          { level: 1, count: 10, ordered: true },
+          { level: 2, count: 10, ordered: false },
+          { level: 3, count: 5, ordered: false },
+        ]
+      } else if (difficulty === 2) {
+        // 1期生むずかしい: TQ3ランダム10問 → TQ4ランダム15問 → TQ5ランダム5問
+        segments = [
+          { level: 3, count: 10, ordered: false },
+          { level: 4, count: 15, ordered: false },
+          { level: 5, count: 5, ordered: false },
+        ]
+      } else {
+        // 1期生激ムズ: TQ5ランダム10問 → TQ6ランダム15問 → TQ7ランダム5問
+        segments = [
+          { level: 5, count: 10, ordered: false },
+          { level: 6, count: 15, ordered: false },
+          { level: 7, count: 5, ordered: false },
+        ]
+      }
+
+      const questions = generateTextQuizQuestions(pool, segments, difficulty, talents, answerSets)
       startQuiz(questions)
       goToQuiz()
       return

@@ -11,24 +11,24 @@ import { generateSpotlightQuestions } from '../../features/question-types/spotli
 import { generateWordSearchQuestions } from '../../features/question-types/word-search/generator.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 
-type QuestionTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'text-quiz' | 'blur' | 'spotlight' | 'word-search'
+type FaceNameTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'blur' | 'spotlight' | 'word-search'
 
 /** 難易度1〜3のある問題タイプ */
-const MULTI_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
+const MULTI_DIFFICULTY_TYPES: { typeId: FaceNameTypeId; label: string }[] = [
   { typeId: 'face-guess', label: '顔当て' },
   { typeId: 'name-guess', label: '名前当て' },
   { typeId: 'name-build', label: '名前を作ろう' },
-  { typeId: 'text-quiz', label: 'テキストクイズ' },
 ]
 
 /** 難易度固定の問題タイプ */
-const SINGLE_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
+const SINGLE_DIFFICULTY_TYPES: { typeId: FaceNameTypeId; label: string }[] = [
   { typeId: 'blur', label: 'ぼかし' },
   { typeId: 'spotlight', label: 'スポットライト' },
   { typeId: 'word-search', label: '名前はどこ？' },
 ]
 
 const DIFFICULTIES: Difficulty[] = [1, 2, 3]
+const TEXT_QUIZ_LEVELS = [1, 2, 3, 4, 5, 6, 7]
 
 const DEBUG_QUESTION_COUNT = 5
 
@@ -40,33 +40,17 @@ export function DebugScreen() {
   const { questions: questionPool, answerSets, loading: questionsLoading } = useQuestions()
   const loading = talentsLoading || questionsLoading
 
-  const handleStart = (typeId: QuestionTypeId, difficulty: Difficulty) => {
+  const handleFaceNameStart = (typeId: FaceNameTypeId, difficulty: Difficulty) => {
     if (loading || talents.length === 0) return
 
-    const isFaceName = typeId !== 'text-quiz'
-
-    // settingsStore の状態をセット（ResultScreen 等が正しく動作するために必要）
     useSettingsStore.setState({
       generation: 'gen1',
       modeCategory: 'gen1',
-      gameMode: isFaceName ? 'face-name' : 'knowledge',
+      gameMode: 'face-name',
       scope: 'all',
       difficulty,
     })
 
-    if (typeId === 'text-quiz') {
-      const maxDifficulty = difficulty === 1 ? 2 : difficulty === 2 ? 4 : 8
-      const pool = questionPool.filter(
-        (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === 1),
-      )
-      if (pool.length === 0) return
-      const questions = generateTextQuizQuestions(pool, DEBUG_QUESTION_COUNT, difficulty, talents, answerSets)
-      startQuiz(questions)
-      goToQuiz()
-      return
-    }
-
-    // 顔名前系
     const filtered = talents.filter((t) => t.generation === 1)
     if (filtered.length < DEBUG_QUESTION_COUNT) return
 
@@ -99,6 +83,45 @@ export function DebugScreen() {
     startQuiz(questions)
     goToQuiz()
   }
+
+  const handleTextQuizStart = (level: number) => {
+    if (loading || talents.length === 0) return
+
+    useSettingsStore.setState({
+      generation: 'gen1',
+      modeCategory: 'gen1',
+      gameMode: 'knowledge',
+      scope: 'all',
+      difficulty: 1,
+    })
+
+    const pool = questionPool.filter(
+      (q) => q.generation === 0 || q.generation === 1,
+    )
+    if (pool.length === 0) return
+
+    const segments = [{ level, count: DEBUG_QUESTION_COUNT, ordered: false }]
+    const questions = generateTextQuizQuestions(pool, segments, 1, talents, answerSets)
+    startQuiz(questions)
+    goToQuiz()
+  }
+
+  const btnStyle = {
+    fontSize: '3cqmin',
+    padding: '1.5cqmin 0',
+    borderRadius: '1.5cqmin',
+    border: '0.2cqmin solid rgba(255,255,255,0.4)',
+    background: 'linear-gradient(180deg, #555 0%, #333 100%)',
+    color: 'white',
+    boxShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.3)',
+  } as const
+
+  const labelStyle = {
+    fontSize: '3cqmin',
+    color: 'white',
+    textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+    paddingRight: '1cqmin',
+  } as const
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -141,10 +164,10 @@ export function DebugScreen() {
       ) : (
         <div
           className="flex flex-col items-center"
-          style={{ gap: '2cqmin', marginTop: '2cqmin' }}
+          style={{ gap: '1.5cqmin', marginTop: '1cqmin' }}
         >
           {/* 難易度ヘッダー */}
-          <div className="grid" style={{ gridTemplateColumns: '25cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}>
+          <div className="grid" style={{ gridTemplateColumns: '20cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}>
             <div />
             {DIFFICULTIES.map((d) => (
               <div
@@ -157,38 +180,22 @@ export function DebugScreen() {
             ))}
           </div>
 
-          {/* タイプ × 難易度ボタン */}
+          {/* 顔名前系 × 難易度1〜3 */}
           {MULTI_DIFFICULTY_TYPES.map(({ typeId, label }) => (
             <div
               key={typeId}
               className="grid items-center"
-              style={{ gridTemplateColumns: '25cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}
+              style={{ gridTemplateColumns: '20cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}
             >
-              <div
-                className="font-bold text-right"
-                style={{
-                  fontSize: '3cqmin',
-                  color: 'white',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                  paddingRight: '1cqmin',
-                }}
-              >
+              <div className="font-bold text-right" style={labelStyle}>
                 {label}
               </div>
               {DIFFICULTIES.map((d) => (
                 <button
                   key={d}
                   className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
-                  style={{
-                    fontSize: '3cqmin',
-                    padding: '1.5cqmin 0',
-                    borderRadius: '1.5cqmin',
-                    border: '0.2cqmin solid rgba(255,255,255,0.4)',
-                    background: 'linear-gradient(180deg, #555 0%, #333 100%)',
-                    color: 'white',
-                    boxShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.3)',
-                  }}
-                  onClick={() => handleStart(typeId, d)}
+                  style={btnStyle}
+                  onClick={() => handleFaceNameStart(typeId, d)}
                 >
                   {label} {d}
                 </button>
@@ -201,37 +208,40 @@ export function DebugScreen() {
             <div
               key={typeId}
               className="grid items-center"
-              style={{ gridTemplateColumns: '25cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}
+              style={{ gridTemplateColumns: '20cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}
             >
-              <div
-                className="font-bold text-right"
-                style={{
-                  fontSize: '3cqmin',
-                  color: 'white',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                  paddingRight: '1cqmin',
-                }}
-              >
+              <div className="font-bold text-right" style={labelStyle}>
                 {label}
               </div>
               <button
                 className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
-                style={{
-                  gridColumn: 'span 3',
-                  fontSize: '3cqmin',
-                  padding: '1.5cqmin 0',
-                  borderRadius: '1.5cqmin',
-                  border: '0.2cqmin solid rgba(255,255,255,0.4)',
-                  background: 'linear-gradient(180deg, #555 0%, #333 100%)',
-                  color: 'white',
-                  boxShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.3)',
-                }}
-                onClick={() => handleStart(typeId, 3)}
+                style={{ ...btnStyle, gridColumn: 'span 3' }}
+                onClick={() => handleFaceNameStart(typeId, 3)}
               >
                 {label}
               </button>
             </div>
           ))}
+
+          {/* テキストクイズ1〜7 */}
+          <div
+            className="grid items-center"
+            style={{ gridTemplateColumns: '20cqmin repeat(7, 7.5cqmin)', gap: '1cqmin', marginTop: '1cqmin' }}
+          >
+            <div className="font-bold text-right" style={labelStyle}>
+              テキストクイズ
+            </div>
+            {TEXT_QUIZ_LEVELS.map((level) => (
+              <button
+                key={level}
+                className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+                style={{ ...btnStyle, fontSize: '2.5cqmin', padding: '1.2cqmin 0' }}
+                onClick={() => handleTextQuizStart(level)}
+              >
+                TQ{level}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
