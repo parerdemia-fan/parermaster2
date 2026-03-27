@@ -24,6 +24,14 @@ function extractSetName(answer: string): string | null {
   return match ? match[1] : null
 }
 
+/** 寮名ラベル → dormitory ID のマッピング */
+const DORM_LABEL_TO_ID: Record<string, string> = {
+  'バゥ寮': 'wa',
+  'ミュゥ寮': 'me',
+  'クゥ寮': 'co',
+  'ウィニー寮': 'wh',
+}
+
 /**
  * 空の選択肢と [セット名] 形式の選択肢を補完する
  * @param generation 問題の世代（0=全員、1=1期生、2=2期生）
@@ -46,6 +54,7 @@ function fillAnswers(
     // [セット名] 形式
     const setName = extractSetName(result[i])
     if (setName) {
+      // answerSets から検索
       const members = answerSets[setName]
       if (members) {
         const candidates = members.filter((m) => !used.has(m))
@@ -55,6 +64,19 @@ function fillAnswers(
           continue
         }
       }
+
+      // 寮名マッチ（例: [ミュゥ寮] → ミュゥ寮のタレントからランダム）
+      const dormId = DORM_LABEL_TO_ID[setName]
+      if (dormId) {
+        const dormTalents = talentPool.filter((t) => t.dormitory === dormId && !used.has(t.name))
+        if (dormTalents.length > 0) {
+          const picked = dormTalents[Math.floor(Math.random() * dormTalents.length)]
+          result[i] = picked.name
+          used.add(result[i])
+          continue
+        }
+      }
+
       result[i] = ''
     }
 
