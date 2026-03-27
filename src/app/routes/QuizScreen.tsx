@@ -9,6 +9,8 @@ import { NameBuildLayout } from '../../features/question-types/name-build/NameBu
 import type { NameBuildQuestion } from '../../features/question-types/name-build/types.ts'
 import { TextQuizLayout } from '../../features/question-types/text-quiz/TextQuizLayout.tsx'
 import type { TextQuizQuestion } from '../../features/question-types/text-quiz/types.ts'
+import { BlurLayout } from '../../features/question-types/blur/BlurLayout.tsx'
+import type { BlurQuestion } from '../../features/question-types/blur/types.ts'
 
 export function QuizScreen() {
   const { questions, currentIndex, quizState, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion } = useGameStore()
@@ -113,6 +115,13 @@ export function QuizScreen() {
           isAnswered={isAnswered}
           onAnswer={recordAnswer}
           restoredSelectedIndex={answerRecords[currentIndex]?.selectedIndex}
+        />
+      )}
+      {current.typeId === 'blur' && (
+        <BlurLayout
+          question={current as BlurQuestion}
+          isAnswered={isAnswered}
+          onAnswer={recordAnswer}
         />
       )}
 

@@ -6,15 +6,22 @@ import { generateFaceGuessQuestions } from '../../features/question-types/face-g
 import { generateNameGuessQuestions } from '../../features/question-types/name-guess/generator.ts'
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
 import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
+import { generateBlurQuestions } from '../../features/question-types/blur/generator.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 
-type QuestionTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'text-quiz'
+type QuestionTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'text-quiz' | 'blur'
 
-const QUESTION_TYPES: { typeId: QuestionTypeId; label: string }[] = [
+/** 難易度1〜3のある問題タイプ */
+const MULTI_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
   { typeId: 'face-guess', label: '顔当て' },
   { typeId: 'name-guess', label: '名前当て' },
   { typeId: 'name-build', label: '名前を作ろう' },
   { typeId: 'text-quiz', label: 'テキストクイズ' },
+]
+
+/** 難易度固定の問題タイプ */
+const SINGLE_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
+  { typeId: 'blur', label: 'ぼかし' },
 ]
 
 const DIFFICULTIES: Difficulty[] = [1, 2, 3]
@@ -36,8 +43,8 @@ export function DebugScreen() {
 
     // settingsStore の状態をセット（ResultScreen 等が正しく動作するために必要）
     useSettingsStore.setState({
-      generation: 'gen2',
-      modeCategory: 'gen2',
+      generation: 'gen1',
+      modeCategory: 'gen1',
       gameMode: isFaceName ? 'face-name' : 'knowledge',
       scope: 'all',
       difficulty,
@@ -46,7 +53,7 @@ export function DebugScreen() {
     if (typeId === 'text-quiz') {
       const maxDifficulty = difficulty === 1 ? 2 : difficulty === 2 ? 4 : 8
       const pool = questionPool.filter(
-        (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === 2),
+        (q) => q.difficulty <= maxDifficulty && (q.generation === 0 || q.generation === 1),
       )
       if (pool.length === 0) return
       const questions = generateTextQuizQuestions(pool, DEBUG_QUESTION_COUNT, difficulty, talents, answerSets)
@@ -56,7 +63,7 @@ export function DebugScreen() {
     }
 
     // 顔名前系
-    const filtered = talents.filter((t) => t.generation === 2)
+    const filtered = talents.filter((t) => t.generation === 1)
     if (filtered.length < DEBUG_QUESTION_COUNT) return
 
     const targets = shuffleArray(filtered).slice(0, DEBUG_QUESTION_COUNT)
@@ -73,6 +80,9 @@ export function DebugScreen() {
         break
       case 'name-build':
         questions = generateNameBuildQuestions(targets, pool, difficulty)
+        break
+      case 'blur':
+        questions = generateBlurQuestions(targets, pool, difficulty)
         break
     }
 
@@ -138,7 +148,7 @@ export function DebugScreen() {
           </div>
 
           {/* タイプ × 難易度ボタン */}
-          {QUESTION_TYPES.map(({ typeId, label }) => (
+          {MULTI_DIFFICULTY_TYPES.map(({ typeId, label }) => (
             <div
               key={typeId}
               className="grid items-center"
@@ -173,6 +183,43 @@ export function DebugScreen() {
                   {label} {d}
                 </button>
               ))}
+            </div>
+          ))}
+
+          {/* 難易度固定の問題タイプ */}
+          {SINGLE_DIFFICULTY_TYPES.map(({ typeId, label }) => (
+            <div
+              key={typeId}
+              className="grid items-center"
+              style={{ gridTemplateColumns: '25cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}
+            >
+              <div
+                className="font-bold text-right"
+                style={{
+                  fontSize: '3cqmin',
+                  color: 'white',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                  paddingRight: '1cqmin',
+                }}
+              >
+                {label}
+              </div>
+              <button
+                className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+                style={{
+                  gridColumn: 'span 3',
+                  fontSize: '3cqmin',
+                  padding: '1.5cqmin 0',
+                  borderRadius: '1.5cqmin',
+                  border: '0.2cqmin solid rgba(255,255,255,0.4)',
+                  background: 'linear-gradient(180deg, #555 0%, #333 100%)',
+                  color: 'white',
+                  boxShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.3)',
+                }}
+                onClick={() => handleStart(typeId, 3)}
+              >
+                {label}
+              </button>
             </div>
           ))}
         </div>
