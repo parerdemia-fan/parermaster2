@@ -224,7 +224,18 @@ export function SettingScreen() {
           </>
         )}
 
-        {/* ── ゲーム ──（世代別のみ。寮別モードでは顔名前当て固定） */}
+        {/* ── ゲーム ──（寮別モードでは顔名前当て固定の旨を表示） */}
+        {isDormMode && (
+          <div
+            style={{
+              fontSize: '2.8cqmin',
+              color: '#888',
+              marginTop: '2cqmin',
+            }}
+          >
+            ※ 寮別モードは顔名前当てのみ
+          </div>
+        )}
         {!isDormMode && (
           <>
             <SectionHeading label="ゲーム" first={!isDormMode} />
