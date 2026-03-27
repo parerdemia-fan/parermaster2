@@ -13,6 +13,8 @@ import { BlurLayout } from '../../features/question-types/blur/BlurLayout.tsx'
 import type { BlurQuestion } from '../../features/question-types/blur/types.ts'
 import { SpotlightLayout } from '../../features/question-types/spotlight/SpotlightLayout.tsx'
 import type { SpotlightQuestion } from '../../features/question-types/spotlight/types.ts'
+import { WordSearchLayout } from '../../features/question-types/word-search/WordSearchLayout.tsx'
+import type { WordSearchQuestion } from '../../features/question-types/word-search/types.ts'
 
 export function QuizScreen() {
   const { questions, currentIndex, quizState, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion } = useGameStore()
@@ -129,6 +131,13 @@ export function QuizScreen() {
       {current.typeId === 'spotlight' && (
         <SpotlightLayout
           question={current as SpotlightQuestion}
+          isAnswered={isAnswered}
+          onAnswer={recordAnswer}
+        />
+      )}
+      {current.typeId === 'word-search' && (
+        <WordSearchLayout
+          question={current as WordSearchQuestion}
           isAnswered={isAnswered}
           onAnswer={recordAnswer}
         />
