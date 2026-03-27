@@ -10,6 +10,7 @@ import { DiaryScreen } from './routes/DiaryScreen.tsx'
 import { TalentListScreen } from './routes/TalentListScreen.tsx'
 import { AchievementScreen } from './routes/AchievementScreen.tsx'
 import { AboutScreen } from './routes/AboutScreen.tsx'
+import { DebugScreen } from './routes/DebugScreen.tsx'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -60,6 +61,7 @@ export function App() {
       {screen === 'talents' && <TalentListScreen />}
       {screen === 'achievements' && <AchievementScreen />}
       {screen === 'about' && <AboutScreen />}
+      {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
     </GameContainer>
   )
 }

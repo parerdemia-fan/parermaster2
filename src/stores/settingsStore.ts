@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -58,6 +58,7 @@ interface SettingsActions {
   goToTalents: () => void
   goToAchievements: () => void
   goToAbout: () => void
+  goToDebug: () => void
   // ゲーム設定
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
@@ -94,6 +95,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToTalents: () => set({ screen: 'talents' }),
     goToAchievements: () => set({ screen: 'achievements' }),
     goToAbout: () => set({ screen: 'about' }),
+    goToDebug: () => set({ screen: 'debug' }),
 
     // ゲーム設定（変更時にlocalStorageへ保存）
     setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },

@@ -7,6 +7,7 @@ export function TitleScreen() {
   const goToTalents = useSettingsStore((s) => s.goToTalents)
   const goToAchievements = useSettingsStore((s) => s.goToAchievements)
   const goToAbout = useSettingsStore((s) => s.goToAbout)
+  const goToDebug = useSettingsStore((s) => s.goToDebug)
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -177,6 +178,26 @@ export function TitleScreen() {
           />
         </button>
       </div>
+
+      {/* DEVボタン（開発環境のみ） */}
+      {import.meta.env.DEV && (
+        <button
+          className="absolute cursor-pointer"
+          style={{
+            top: '1cqmin',
+            right: '1cqmin',
+            fontSize: '2.5cqmin',
+            background: 'rgba(0,0,0,0.5)',
+            color: '#0f0',
+            border: 'none',
+            borderRadius: '1cqmin',
+            padding: '0.5cqmin 1.5cqmin',
+          }}
+          onClick={goToDebug}
+        >
+          DEV
+        </button>
+      )}
 
       {/* 免責テキスト */}
       <div
