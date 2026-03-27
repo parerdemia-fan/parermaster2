@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import type { Talent } from '../../../shared/types/talent.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentImagePath } from '../../../shared/utils/talent.ts'
 import { parseTextWithTalentIcons } from '../../../shared/utils/talentIconParser.tsx'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
+import { TalentChoiceButtons } from '../../../shared/components/TalentChoiceButtons.tsx'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import type { TextQuizQuestion } from './types.ts'
 
@@ -184,15 +183,28 @@ function TextQuizLayoutInner({
 
       {/* 右側: 選択肢 */}
       {question.answerTalentIds ? (
-        <TalentGridChoices
-          question={question}
-          talentIds={question.answerTalentIds}
-          talents={talents}
-          isAnswered={isAnswered}
-          selected={selected}
-          showIcon={showIconInQuestion}
-          onSelect={handleSelect}
-        />
+        <div
+          className="flex flex-col justify-center"
+          style={{
+            position: 'absolute',
+            top: '16cqmin',
+            right: '2.5cqmin',
+            bottom: '3cqmin',
+            width: '48%',
+            gap: '2cqmin',
+            zIndex: 3,
+          }}
+        >
+          <TalentChoiceButtons
+            answers={question.answers}
+            answerTalentIds={question.answerTalentIds}
+            correctIndex={question.correctIndex}
+            isAnswered={isAnswered}
+            selected={selected}
+            onSelect={handleSelect}
+            showIconBeforeAnswer={!question.hideIcon}
+          />
+        </div>
       ) : (
         <TextChoices
           question={question}
@@ -287,141 +299,6 @@ function TextChoices({
             onClick={() => onSelect(i)}
           >
             {answer}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
-/* ── タレント名選択肢（右側、2×2 グリッドレイアウト） ── */
-
-function TalentGridChoices({
-  question,
-  talentIds,
-  talents,
-  isAnswered,
-  selected,
-  showIcon,
-  onSelect,
-}: {
-  question: TextQuizQuestion
-  talentIds: string[]
-  talents: Talent[]
-  isAnswered: boolean
-  selected: number | null
-  showIcon: boolean
-  onSelect: (i: number) => void
-}) {
-
-  return (
-    <div
-      className="grid grid-cols-2 grid-rows-2"
-      style={{
-        position: 'absolute',
-        top: '16cqmin',
-        right: '2.5cqmin',
-        bottom: '12cqmin',
-        width: '48%',
-        gap: '2cqmin',
-        zIndex: 3,
-      }}
-    >
-      {question.answers.map((answer, i) => {
-        const talentId = talentIds[i]
-        const talent = talents.find((t) => t.id === talentId)
-
-        let borderColor = 'rgba(255,255,255,0.4)'
-        let opacity = 1
-        if (isAnswered) {
-          if (i === question.correctIndex) {
-            borderColor = '#22c55e'
-          } else if (i === selected) {
-            borderColor = '#ef4444'
-          } else {
-            opacity = 0.5
-          }
-        }
-
-        return (
-          <button
-            key={i}
-            className="relative flex flex-col items-center overflow-hidden transition active:scale-98"
-            style={{
-              borderRadius: '2cqmin',
-              border: `0.4cqmin solid ${borderColor}`,
-              background: 'rgba(255,255,255,0.7)',
-              backdropFilter: 'blur(4px)',
-              opacity,
-              cursor: isAnswered ? 'default' : 'pointer',
-              padding: 0,
-              minHeight: 0,
-            }}
-            disabled={isAnswered}
-            onClick={() => onSelect(i)}
-          >
-            {/* 顔画像 or プレースホルダー */}
-            <div
-              className="flex items-center justify-center"
-              style={{
-                flex: 1,
-                width: '100%',
-                minHeight: 0,
-                overflow: 'hidden',
-              }}
-            >
-              {showIcon && talent ? (
-                <img
-                  src={getTalentImagePath(talent)}
-                  alt={answer}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
-                  draggable={false}
-                />
-              ) : (
-                <span
-                  style={{
-                    fontSize: '12cqmin',
-                    lineHeight: 1,
-                    color: '#aaa',
-                  }}
-                >
-                  👤
-                </span>
-              )}
-            </div>
-
-            {/* タレント名ラベル */}
-            <div
-              className="w-full flex items-center justify-center"
-              style={{
-                flexShrink: 0,
-                height: '4.5cqmin',
-                background:
-                  isAnswered && i === question.correctIndex
-                    ? 'rgba(34,197,94,0.9)'
-                    : isAnswered && i === selected
-                      ? 'rgba(239,68,68,0.9)'
-                      : 'rgba(255,255,255,0.9)',
-              }}
-            >
-              <span
-                className="font-bold truncate"
-                style={{
-                  fontSize: '2.5cqmin',
-                  color:
-                    isAnswered && (i === question.correctIndex || i === selected)
-                      ? 'white'
-                      : '#374151',
-                  padding: '0 1cqmin',
-                }}
-              >
-                {answer}
-              </span>
-            </div>
           </button>
         )
       })}
