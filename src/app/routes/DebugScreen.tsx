@@ -7,9 +7,10 @@ import { generateNameGuessQuestions } from '../../features/question-types/name-g
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
 import { generateTextQuizQuestions } from '../../features/question-types/text-quiz/generator.ts'
 import { generateBlurQuestions } from '../../features/question-types/blur/generator.ts'
+import { generateSpotlightQuestions } from '../../features/question-types/spotlight/generator.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
 
-type QuestionTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'text-quiz' | 'blur'
+type QuestionTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'text-quiz' | 'blur' | 'spotlight'
 
 /** 難易度1〜3のある問題タイプ */
 const MULTI_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
@@ -22,6 +23,7 @@ const MULTI_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
 /** 難易度固定の問題タイプ */
 const SINGLE_DIFFICULTY_TYPES: { typeId: QuestionTypeId; label: string }[] = [
   { typeId: 'blur', label: 'ぼかし' },
+  { typeId: 'spotlight', label: 'スポットライト' },
 ]
 
 const DIFFICULTIES: Difficulty[] = [1, 2, 3]
@@ -83,6 +85,9 @@ export function DebugScreen() {
         break
       case 'blur':
         questions = generateBlurQuestions(targets, pool, difficulty)
+        break
+      case 'spotlight':
+        questions = generateSpotlightQuestions(targets, pool, difficulty)
         break
     }
 
