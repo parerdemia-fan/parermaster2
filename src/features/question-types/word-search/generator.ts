@@ -77,9 +77,14 @@ function placeName(grid: string[][], name: string): { row: number; col: number }
   return cells
 }
 
+/** 長音記号を含むか（縦書き不向き） */
+function containsLongVowel(name: string): boolean {
+  return name.includes('ー')
+}
+
 /** 名前をグリッドのランダム位置に配置を試みる。成功時はセル座標配列、失敗時はnull */
 function tryPlaceName(grid: string[][], name: string): { row: number; col: number }[] | null {
-  const horizontal = Math.random() < 0.5
+  const horizontal = containsLongVowel(name) ? true : Math.random() < 0.5
   const len = name.length
 
   if (horizontal) {

@@ -10,6 +10,9 @@ const TYPE_META: Record<string, { emoji: string; label: string; questionText: st
   'name-guess': { emoji: '✏️', label: '名前当て', questionText: 'この子の名前は？', commentBefore: 'この子の名前、わかる〜？' },
   'name-build': { emoji: '🧩', label: '名前を作ろう', questionText: 'この子の名前を作ろう！', commentBefore: 'この子の名前、作れる〜？' },
   'text-quiz': { emoji: '💡', label: '知識クイズ', questionText: 'クイズに挑戦！', commentBefore: 'どれだけ知ってる〜？' },
+  'blur': { emoji: '🌫️', label: 'ぼかし', questionText: 'この子は誰？', commentBefore: 'だんだん見えてくるよ〜' },
+  'spotlight': { emoji: '🔦', label: 'スポットライト', questionText: 'この子は誰？', commentBefore: 'よーく見て〜！' },
+  'word-search': { emoji: '🔍', label: '名前はどこ？', questionText: '名前を探そう！', commentBefore: 'どこにあるかな〜？' },
 }
 
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
