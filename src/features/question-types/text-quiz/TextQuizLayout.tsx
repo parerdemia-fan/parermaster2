@@ -217,6 +217,24 @@ function TextQuizLayoutInner({
   )
 }
 
+/**
+ * テキストの視覚的な文字幅を計算する
+ * 全角文字は1.0、半角英数字・記号（U+0020〜U+007E）は0.65として計算
+ */
+function getVisualLength(text: string): number {
+  let len = 0
+  for (const char of text) {
+    len += (char.charCodeAt(0) >= 0x20 && char.charCodeAt(0) <= 0x7e) ? 0.65 : 1
+  }
+  return len
+}
+
+/** 選択肢テキストの視覚的な幅に応じたフォントサイズを返す（前作準拠: 50/visualLength、3.5〜5.5cqmin） */
+function getAnswerFontSize(text: string): string {
+  const size = 50 / getVisualLength(text)
+  return `${Math.min(Math.max(size, 3.5), 5.5)}cqmin`
+}
+
 /* ── 通常テキスト選択肢（右側、4行レイアウト） ── */
 
 function TextChoices({
@@ -279,9 +297,7 @@ function TextChoices({
             className="font-bold transition active:scale-98"
             style={{
               height: '13cqmin',
-              fontSize: answer.length <= 8 ? '5cqmin'
-                : answer.length <= 12 ? '4cqmin'
-                : '3cqmin',
+              fontSize: getAnswerFontSize(answer),
               padding: '0 3cqmin',
               borderRadius: '2cqmin',
               border: `0.5cqmin solid ${borderColor}`,
