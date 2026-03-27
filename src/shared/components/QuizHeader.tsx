@@ -1,9 +1,10 @@
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../hooks/useTalents.ts'
 import { getTalentImagePath } from '../utils/talent.ts'
 import { getDisplayDifficulty } from '../utils/difficulty.ts'
+import { formatTime } from '../../features/time-attack/constants.ts'
 
 const TYPE_META: Record<string, { emoji: string; label: string; questionText: string; commentBefore: string }> = {
   'face-guess': { emoji: '📸', label: '顔当て', questionText: 'この子はどれ？', commentBefore: 'この子の顔、わかる〜？' },
@@ -113,6 +114,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const currentIndex = useGameStore((s) => s.currentIndex)
   const questions = useGameStore((s) => s.questions)
   const difficulty = useSettingsStore((s) => s.difficulty)
+  const isTimeAttack = useSettingsStore((s) => s.isTimeAttack)
   const { talents } = useTalents()
   const current = questions[currentIndex]
 
@@ -137,7 +139,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const total = questions.length
   const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
   const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
-  const displayStars = getDisplayDifficulty(current.typeId, difficulty)
+  const displayStars = current.displayStars ?? getDisplayDifficulty(current.typeId, difficulty)
   const commentText = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
   const assistantName = assistant?.name ?? ''
   const assistantImage = assistant?.image ?? ''
@@ -201,8 +203,9 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           {meta.questionText}
         </div>
 
-        {/* 右側: プログレスリング + アシスタント */}
+        {/* 右側: タイマー + プログレスリング + アシスタント */}
         <div style={{ flexShrink: 0, display: 'flex', alignItems: 'flex-end', gap: '1cqmin' }}>
+          {isTimeAttack && <TimerDisplay />}
           <ProgressRing current={currentIndex + 1} total={total} progress={progress} style={{ alignSelf: 'center' }} />
           <div style={{ position: 'relative' }}>
             {/* 名前ラベル（セリフ左上、半分重なる） */}
@@ -290,6 +293,40 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
         </div>
 
       </div>
+    </div>
+  )
+}
+
+function TimerDisplay() {
+  const getElapsedMs = useGameStore((s) => s.getElapsedMs)
+  const timerStartedAt = useGameStore((s) => s.timerStartedAt)
+  const [displayMs, setDisplayMs] = useState(0)
+
+  useEffect(() => {
+    if (timerStartedAt == null) {
+      // paused — show final value
+      setDisplayMs(getElapsedMs())
+      return
+    }
+    // running — update every 100ms
+    const id = setInterval(() => setDisplayMs(getElapsedMs()), 100)
+    return () => clearInterval(id)
+  }, [timerStartedAt, getElapsedMs])
+
+  return (
+    <div
+      className="font-bold"
+      style={{
+        alignSelf: 'center',
+        fontSize: '3.5cqmin',
+        color: '#ffd700',
+        textShadow: '0 1px 3px rgba(0,0,0,0.6)',
+        fontVariantNumeric: 'tabular-nums',
+        whiteSpace: 'nowrap',
+        marginRight: '0.5cqmin',
+      }}
+    >
+      {formatTime(displayMs)}
     </div>
   )
 }

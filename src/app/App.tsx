@@ -11,6 +11,7 @@ import { TalentListScreen } from './routes/TalentListScreen.tsx'
 import { AchievementScreen } from './routes/AchievementScreen.tsx'
 import { AboutScreen } from './routes/AboutScreen.tsx'
 import { DebugScreen } from './routes/DebugScreen.tsx'
+import { TimeAttackResultScreen } from './routes/TimeAttackResultScreen.tsx'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -27,7 +28,7 @@ const DEFAULT_BG = `${BASE}data/images/ui/bg_title.png`
 const QUIZ_BG_BLUR = 3
 
 function getBackground(screen: string, modeCategory: ModeCategory, scope: Scope): { url: string; blur: number } {
-  if (screen === 'quiz' || screen === 'result') {
+  if (screen === 'quiz' || screen === 'result' || screen === 'time-attack-result') {
     if (modeCategory === 'dorm') {
       return { url: DORM_BG[scope] ?? DEFAULT_BG, blur: QUIZ_BG_BLUR }
     }
@@ -61,6 +62,7 @@ export function App() {
       {screen === 'talents' && <TalentListScreen />}
       {screen === 'achievements' && <AchievementScreen />}
       {screen === 'about' && <AboutScreen />}
+      {screen === 'time-attack-result' && <TimeAttackResultScreen />}
       {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
     </GameContainer>
   )

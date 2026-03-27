@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -44,6 +44,8 @@ interface SettingsState {
   gameMode: GameMode
   scope: Scope
   difficulty: Difficulty
+  // タイムアタック
+  isTimeAttack: boolean
   // プレイヤー
   playerName: string
 }
@@ -59,6 +61,8 @@ interface SettingsActions {
   goToAchievements: () => void
   goToAbout: () => void
   goToDebug: () => void
+  goToTimeAttack: () => void
+  goToTimeAttackResult: () => void
   // ゲーム設定
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
@@ -71,6 +75,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
   (set, get) => ({
     // 初期値（localStorageから復元）
     screen: 'title',
+    isTimeAttack: false,
     modeCategory: 'gen2',
     generation: 'gen2',
     gameMode: saved.gameMode ?? 'face-name',
@@ -88,7 +93,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
         set({ screen: 'setting', modeCategory: mode, generation: gen, scope: 'all' })
       }
     },
-    goToTitle: () => set({ screen: 'title' }),
+    goToTitle: () => set({ screen: 'title', isTimeAttack: false }),
     goToQuiz: () => set({ screen: 'quiz' }),
     goToResult: () => set({ screen: 'result' }),
     goToDiary: () => set({ screen: 'diary' }),
@@ -96,6 +101,8 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToAchievements: () => set({ screen: 'achievements' }),
     goToAbout: () => set({ screen: 'about' }),
     goToDebug: () => set({ screen: 'debug' }),
+    goToTimeAttack: () => set({ screen: 'quiz', isTimeAttack: true }),
+    goToTimeAttackResult: () => set({ screen: 'time-attack-result' }),
 
     // ゲーム設定（変更時にlocalStorageへ保存）
     setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },

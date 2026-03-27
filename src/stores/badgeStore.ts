@@ -99,6 +99,7 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
 
   resetAll: () => {
     localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem('parermaster2_ta_best')
     set({ badges: {} })
   },
 }))

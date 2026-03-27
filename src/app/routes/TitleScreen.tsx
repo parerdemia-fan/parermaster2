@@ -1,4 +1,10 @@
+import { useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
+import { useGameStore } from '../../stores/gameStore.ts'
+import { useBadgeStore } from '../../stores/badgeStore.ts'
+import { useTalents } from '../../shared/hooks/useTalents.ts'
+import { useQuestions } from '../../shared/hooks/useQuestions.ts'
+import { generateTimeAttackQuestions } from '../../features/time-attack/generator.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -8,6 +14,22 @@ export function TitleScreen() {
   const goToAchievements = useSettingsStore((s) => s.goToAchievements)
   const goToAbout = useSettingsStore((s) => s.goToAbout)
   const goToDebug = useSettingsStore((s) => s.goToDebug)
+  const goToTimeAttack = useSettingsStore((s) => s.goToTimeAttack)
+  const startQuiz = useGameStore((s) => s.startQuiz)
+  const isTimeAttackUnlocked = useBadgeStore((s) => s.isTimeAttackUnlocked)
+  const { talents } = useTalents()
+  const { questions: questionPool, answerSets } = useQuestions()
+
+  const [showTADialog, setShowTADialog] = useState(false)
+  const taUnlocked = isTimeAttackUnlocked()
+
+  const handleTimeAttackStart = () => {
+    if (talents.length === 0) return
+    const questions = generateTimeAttackQuestions(talents, questionPool, answerSets)
+    startQuiz(questions)
+    goToTimeAttack()
+    setShowTADialog(false)
+  }
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -113,20 +135,27 @@ export function TitleScreen() {
 
         {/* タイムアタック（下段） */}
         <button
-          className="font-bold cursor-not-allowed whitespace-nowrap"
+          className={`font-bold whitespace-nowrap ${taUnlocked ? 'cursor-pointer transition hover:brightness-105 active:scale-95' : 'cursor-not-allowed'}`}
           style={{
             fontSize: '4cqmin',
             padding: '1.5cqmin 5cqmin',
             borderRadius: '5cqmin',
-            border: '0.3cqmin solid rgba(255,255,255,0.3)',
-            background: 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)',
-            color: 'rgba(255,255,255,0.7)',
-            boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.2), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
-            textShadow: '0 1px 2px rgba(0,0,0,0.15)',
+            border: taUnlocked
+              ? '0.3cqmin solid rgba(255,255,255,0.5)'
+              : '0.3cqmin solid rgba(255,255,255,0.3)',
+            background: taUnlocked
+              ? 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)'
+              : 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)',
+            color: taUnlocked ? 'white' : 'rgba(255,255,255,0.7)',
+            boxShadow: taUnlocked
+              ? 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(200,150,0,0.4)'
+              : 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.2), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
+            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
           }}
-          disabled
+          disabled={!taUnlocked}
+          onClick={() => taUnlocked && setShowTADialog(true)}
         >
-          🔒 タイムアタック
+          {taUnlocked ? '⏱️ タイムアタック' : '🔒 タイムアタック'}
         </button>
       </div>
 
@@ -209,6 +238,71 @@ export function TitleScreen() {
       >
         ※このゲームは二次創作物であり非公式のものです
       </div>
+
+      {/* タイムアタック確認ダイアログ */}
+      {showTADialog && (
+        <div
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 50 }}
+          onClick={() => setShowTADialog(false)}
+        >
+          <div
+            className="flex flex-col items-center"
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.92)',
+              backdropFilter: 'blur(12px)',
+              borderRadius: '3cqmin',
+              padding: '4cqmin 5cqmin',
+              boxShadow: '0 0.5cqmin 3cqmin rgba(0,0,0,0.3)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span
+              className="font-bold"
+              style={{ fontSize: '4.5cqmin', color: '#333', marginBottom: '1.5cqmin' }}
+            >
+              ⏱️ タイムアタック
+            </span>
+            <span
+              style={{ fontSize: '3cqmin', color: '#666', marginBottom: '3cqmin', textAlign: 'center' }}
+            >
+              全100問に挑戦！
+            </span>
+            <div className="flex items-center" style={{ gap: '3cqmin' }}>
+              <button
+                className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+                style={{
+                  fontSize: '3.5cqmin',
+                  padding: '1.5cqmin 4cqmin',
+                  borderRadius: '5cqmin',
+                  border: '0.3cqmin solid #ddd',
+                  background: 'white',
+                  color: '#666',
+                }}
+                onClick={() => setShowTADialog(false)}
+              >
+                やめる
+              </button>
+              <button
+                className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+                style={{
+                  fontSize: '3.5cqmin',
+                  padding: '1.5cqmin 4cqmin',
+                  borderRadius: '5cqmin',
+                  border: 'none',
+                  background: 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)',
+                  color: 'white',
+                  boxShadow: '0 0.3cqmin 1cqmin rgba(200,150,0,0.4)',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                }}
+                onClick={handleTimeAttackStart}
+              >
+                スタート！
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

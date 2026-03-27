@@ -3,12 +3,19 @@ import type { AnswerRecord, BaseQuestion } from '../features/quiz/types.ts'
 
 export type QuizState = 'answering' | 'answered'
 
+/** ペナルティ1回あたりの加算秒数 */
+const PENALTY_SECONDS = 5
+
 interface GameState {
   questions: BaseQuestion[]
   currentIndex: number
   quizState: QuizState
   correctCount: number
   answerRecords: AnswerRecord[]
+  // タイマー（タイムアタック用）
+  timerStartedAt: number | null
+  accumulatedTime: number
+  penaltyCount: number
 }
 
 interface GameActions {
@@ -17,6 +24,13 @@ interface GameActions {
   nextQuestion: () => void
   prevQuestion: () => void
   isLastQuestion: () => boolean
+  // タイマー
+  startTimer: () => void
+  pauseTimer: () => void
+  resumeTimer: () => void
+  addPenalty: () => void
+  /** 現在の経過時間（ms）= 累積 + 稼働中の分 + ペナルティ */
+  getElapsedMs: () => number
 }
 
 export const useGameStore = create<GameState & GameActions>()((set, get) => ({
@@ -25,6 +39,9 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   quizState: 'answering',
   correctCount: 0,
   answerRecords: [],
+  timerStartedAt: null,
+  accumulatedTime: 0,
+  penaltyCount: 0,
 
   startQuiz: (questions) =>
     set({
@@ -33,6 +50,9 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
       quizState: 'answering',
       correctCount: 0,
       answerRecords: [],
+      timerStartedAt: null,
+      accumulatedTime: 0,
+      penaltyCount: 0,
     }),
 
   recordAnswer: (isCorrect, selectedIndex) => {
@@ -71,5 +91,27 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   isLastQuestion: () => {
     const { currentIndex, questions } = get()
     return currentIndex >= questions.length - 1
+  },
+
+  // タイマー
+  startTimer: () => set({ timerStartedAt: Date.now(), accumulatedTime: 0, penaltyCount: 0 }),
+
+  pauseTimer: () => {
+    const { timerStartedAt, accumulatedTime } = get()
+    if (timerStartedAt == null) return
+    set({
+      accumulatedTime: accumulatedTime + (Date.now() - timerStartedAt),
+      timerStartedAt: null,
+    })
+  },
+
+  resumeTimer: () => set({ timerStartedAt: Date.now() }),
+
+  addPenalty: () => set((s) => ({ penaltyCount: s.penaltyCount + 1 })),
+
+  getElapsedMs: () => {
+    const { timerStartedAt, accumulatedTime, penaltyCount } = get()
+    const running = timerStartedAt != null ? Date.now() - timerStartedAt : 0
+    return accumulatedTime + running + penaltyCount * PENALTY_SECONDS * 1000
   },
 }))

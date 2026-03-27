@@ -9,6 +9,7 @@ import {
   type BadgeSlotDef,
 } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
+import { formatTime } from '../../features/time-attack/constants.ts'
 
 const RANK_BG: Record<BadgeRank, string> = {
   bronze: 'linear-gradient(135deg, #e8c49e 0%, #cd7f32 100%)',
@@ -18,7 +19,14 @@ const RANK_BG: Record<BadgeRank, string> = {
 
 export function AchievementScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
-  const { badges, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
+  const { badges, isGen2Master, isGen1Master, isParerMaster, isTimeAttackUnlocked } = useBadgeStore()
+  const taUnlocked = isTimeAttackUnlocked()
+  const taBest = (() => {
+    try {
+      const raw = localStorage.getItem('parermaster2_ta_best')
+      return raw ? Number(raw) : null
+    } catch { return null }
+  })()
 
   const slotsById = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
   const gen2Slots = GEN2_SLOT_IDS.map((id) => slotsById.get(id)!)
@@ -96,6 +104,25 @@ export function AchievementScreen() {
           <MasterTitle label="2期生マスター" achieved={isGen2Master()} />
           <MasterTitle label="1期生マスター" achieved={isGen1Master()} />
           <MasterTitle label="パレ学マスター" achieved={isParerMaster()} />
+        </div>
+
+        {/* タイムアタック自己ベスト */}
+        <div
+          className="flex flex-col items-center"
+          style={{ marginTop: '1cqmin', gap: '0.5cqmin' }}
+        >
+          <span className="font-bold" style={{ fontSize: '3cqmin', color: taUnlocked ? '#e6a000' : '#ccc' }}>
+            {taUnlocked ? '⏱️ タイムアタック' : '🔒 タイムアタック'}
+          </span>
+          {taUnlocked && (
+            <span style={{ fontSize: '2.5cqmin', color: '#666' }}>
+              {taBest != null ? (
+                <>自己ベスト: <span className="font-bold" style={{ color: '#e6a000' }}>{formatTime(taBest)}</span></>
+              ) : (
+                '未プレイ'
+              )}
+            </span>
+          )}
         </div>
       </div>
     </div>

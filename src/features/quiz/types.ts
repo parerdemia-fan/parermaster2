@@ -5,6 +5,8 @@ export interface BaseQuestion {
   typeId: string
   /** 難易度 */
   difficulty: Difficulty
+  /** タイムアタック用: 表示用★数（設定されていれば getDisplayDifficulty を上書き） */
+  displayStars?: number
 }
 
 export interface AnswerRecord {
