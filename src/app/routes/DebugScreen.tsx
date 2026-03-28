@@ -256,8 +256,70 @@ export function DebugScreen() {
 
           {/* バッジ操作 */}
           <BadgeEditor />
+
+          {/* タイムアタック クリアタイム設定 */}
+          <TimeAttackEditor />
         </div>
       )}
+    </div>
+  )
+}
+
+const TA_TIMES = [
+  { label: '4min', ms: 4 * 60 * 1000 },
+  { label: '6min', ms: 6 * 60 * 1000 },
+  { label: '8min', ms: 8 * 60 * 1000 },
+  { label: '10min', ms: 10 * 60 * 1000 },
+  { label: 'Clear', ms: null as number | null },
+]
+
+function TimeAttackEditor() {
+  const current = (() => {
+    try {
+      const raw = localStorage.getItem('parermaster2_ta_best')
+      return raw ? Number(raw) : null
+    } catch { return null }
+  })()
+
+  const setTaBest = (ms: number | null) => {
+    if (ms == null) {
+      localStorage.removeItem('parermaster2_ta_best')
+    } else {
+      localStorage.setItem('parermaster2_ta_best', String(ms))
+    }
+    window.dispatchEvent(new Event('storage'))
+    location.reload()
+  }
+
+  return (
+    <div style={{ marginTop: '2cqmin', width: '100%', maxWidth: '80cqmin' }}>
+      <div className="flex items-center" style={{ gap: '1cqmin', marginBottom: '1cqmin' }}>
+        <span className="font-bold" style={{ fontSize: '3cqmin', color: '#0f0', textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+          TA Best
+        </span>
+        <span style={{ fontSize: '2cqmin', color: 'rgba(255,255,255,0.6)' }}>
+          {current != null ? `${(current / 60000).toFixed(1)}min` : 'none'}
+        </span>
+      </div>
+      <div className="flex" style={{ gap: '1cqmin' }}>
+        {TA_TIMES.map(({ label, ms }) => (
+          <button
+            key={label}
+            className="cursor-pointer font-bold transition hover:brightness-120 active:scale-95"
+            style={{
+              fontSize: '2cqmin',
+              padding: '0.5cqmin 1.5cqmin',
+              borderRadius: '0.8cqmin',
+              border: '0.2cqmin solid rgba(255,255,255,0.3)',
+              background: 'rgba(255,255,255,0.1)',
+              color: 'white',
+            }}
+            onClick={() => setTaBest(ms)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
