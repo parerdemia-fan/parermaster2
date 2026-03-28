@@ -60,7 +60,7 @@ export function TitleScreen() {
         alt="パレ学マスター 2nd Season"
         style={{
           marginTop: '3cqmin',
-          height: '35cqmin',
+          height: '42cqmin',
           width: 'auto',
           objectFit: 'contain',
         }}
@@ -71,7 +71,7 @@ export function TitleScreen() {
       <div
         className="flex flex-col items-center"
         style={{
-          gap: '3cqmin',
+          gap: '5cqmin',
           marginTop: '5cqmin',
         }}
       >
@@ -119,7 +119,7 @@ export function TitleScreen() {
         <button
           className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95 whitespace-nowrap"
           style={{
-            fontSize: '4.5cqmin',
+            fontSize: '5cqmin',
             padding: '1.5cqmin 5cqmin',
             borderRadius: '5cqmin',
             border: '0.3cqmin solid rgba(255,255,255,0.5)',
@@ -159,53 +159,37 @@ export function TitleScreen() {
         </button>
       </div>
 
-      {/* サブメニューアイコン（3つ横並び） */}
+      {/* サブメニューアイコン（右端に縦並び） */}
       <div
-        className="flex items-end justify-center absolute"
+        className="flex flex-col items-center absolute"
         style={{
-          gap: '4cqmin',
-          bottom: '5%',
+          gap: '3cqmin',
+          right: '3cqmin',
+          bottom: '3cqmin',
         }}
       >
-        <button
-          className="cursor-pointer transition-transform active:scale-95"
-          style={{ background: 'none', border: 'none', padding: 0, width: '9cqmin' }}
+        <SubMenuButton
+          emoji="?"
+          label="ヘルプ"
+          useText
+          gradient="linear-gradient(180deg, #b8e6c8 0%, #7cc49a 40%, #5faa7e 100%)"
+          shadowColor="rgba(60,140,90,0.4)"
           onClick={goToAbout}
-        >
-          <img
-            src={`${BASE}data/images/ui/btn_help.png`}
-            alt="このゲームについて"
-            className="transition brightness-100 hover:brightness-140"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-            draggable={false}
-          />
-        </button>
-        <button
-          className="cursor-pointer transition-transform active:scale-95"
-          style={{ background: 'none', border: 'none', padding: 0, width: '9cqmin' }}
+        />
+        <SubMenuButton
+          emoji="📋"
+          label="寮生一覧"
+          gradient="linear-gradient(180deg, #f8c8d8 0%, #e8a0b8 40%, #d4849e 100%)"
+          shadowColor="rgba(180,90,120,0.4)"
           onClick={goToTalents}
-        >
-          <img
-            src={`${BASE}data/images/ui/btn_talents.png`}
-            alt="寮生一覧"
-            className="transition brightness-100 hover:brightness-140"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-            draggable={false}
-          />
-        </button>
-        <button
-          className="cursor-pointer transition-transform active:scale-95"
-          style={{ background: 'none', border: 'none', padding: 0, width: '9cqmin' }}
+        />
+        <SubMenuButton
+          emoji="🏆"
+          label="実績"
+          gradient="linear-gradient(180deg, #f0d8a0 0%, #d4b870 40%, #c0a050 100%)"
+          shadowColor="rgba(160,130,50,0.4)"
           onClick={goToAchievements}
-        >
-          <img
-            src={`${BASE}data/images/ui/btn_achievement.png`}
-            alt="アチーブメント"
-            className="transition brightness-100 hover:brightness-140"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-            draggable={false}
-          />
-        </button>
+        />
       </div>
 
       {/* DEVボタン（開発環境のみ） */}
@@ -304,5 +288,63 @@ export function TitleScreen() {
         </div>
       )}
     </div>
+  )
+}
+
+function SubMenuButton({
+  emoji,
+  label,
+  gradient,
+  shadowColor,
+  onClick,
+  useText = false,
+}: {
+  emoji: string
+  label: string
+  gradient: string
+  shadowColor: string
+  onClick: () => void
+  useText?: boolean
+}) {
+  return (
+    <button
+      className="flex flex-col items-center cursor-pointer transition hover:brightness-110 active:scale-95"
+      style={{ background: 'none', border: 'none', padding: 0, position: 'relative' }}
+      onClick={onClick}
+    >
+      <div
+        style={{
+          width: '10cqmin',
+          height: '10cqmin',
+          borderRadius: '50%',
+          background: gradient,
+          border: '0.3cqmin solid rgba(255,255,255,0.6)',
+          boxShadow: `inset 0 0.5cqmin 1cqmin rgba(255,255,255,0.4), 0 0.4cqmin 1cqmin ${shadowColor}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: useText ? '5cqmin' : '4cqmin',
+          color: useText ? 'white' : undefined,
+          textShadow: useText ? '0 1px 2px rgba(0,0,0,0.2)' : undefined,
+        }}
+      >
+        {emoji}
+      </div>
+      <span
+        className="font-bold"
+        style={{
+          position: 'absolute',
+          bottom: '-1cqmin',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          fontSize: '2cqmin',
+          color: 'white',
+          textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {label}
+      </span>
+    </button>
   )
 }

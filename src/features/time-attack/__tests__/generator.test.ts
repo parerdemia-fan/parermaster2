@@ -84,7 +84,7 @@ describe('generateTimeAttackQuestions', () => {
     const faceNameTypes = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
     const talentIds = result
       .filter((q) => faceNameTypes.has(q.typeId))
-      .map((q) => (q as { talentId: string }).talentId)
+      .map((q) => (q as unknown as { talentId: string }).talentId)
 
     // 70問（全タレント数）
     expect(talentIds).toHaveLength(70)
