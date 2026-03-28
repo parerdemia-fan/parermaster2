@@ -9,10 +9,10 @@ import type { Talent } from '../../shared/types/talent.ts'
 const BASE = import.meta.env.BASE_URL
 
 const DORMITORIES = [
-  { code: 'wa', name: 'バゥ寮', color: '#ef4444' },
-  { code: 'me', name: 'ミュゥ寮', color: '#f472b6' },
-  { code: 'co', name: 'クゥ寮', color: '#22d3ee' },
-  { code: 'wh', name: 'ウィニー寮', color: '#22c55e' },
+  { code: 'wa', name: 'バゥ寮', color: '#ef4444', gradient: 'linear-gradient(180deg, #f87171 0%, #ef4444 40%, #dc2626 100%)' },
+  { code: 'me', name: 'ミュゥ寮', color: '#f472b6', gradient: 'linear-gradient(180deg, #f9a8d4 0%, #f472b6 40%, #e44d95 100%)' },
+  { code: 'co', name: 'クゥ寮', color: '#22d3ee', gradient: 'linear-gradient(180deg, #67e8f9 0%, #22d3ee 40%, #0ea5cf 100%)' },
+  { code: 'wh', name: 'ウィニー寮', color: '#22c55e', gradient: 'linear-gradient(180deg, #6ee7b7 0%, #22c55e 40%, #16a34a 100%)' },
 ] as const
 
 const SNS_ICONS: Record<string, { icon: string; label: string; isImage: boolean }> = {
@@ -32,12 +32,14 @@ function getNameFontSize(text: string): string {
   if (len <= 5) return '3.5cqmin'
   if (len <= 6) return '3cqmin'
   if (len <= 9) return '2cqmin'
-  return '1.7cqmin'
+  return '1.6cqmin'
 }
 
 function getDetailNameFontSize(text: string): string {
-  return `${40 / text.length}cqmin`
+  return `${Math.min(40 / text.length, 10)}cqmin`
 }
+
+const TAB_ACCENT = '#d6336c'
 
 export function TalentListScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
@@ -59,17 +61,17 @@ export function TalentListScreen() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col animate-fade-in">
+    <div className="w-full h-full flex flex-col animate-fade-in" style={{ overflow: 'visible' }}>
       {/* ヘッダー */}
       <div
-        className="w-full flex items-center justify-between shrink-0"
-        style={{ height: '10%', padding: '0 3cqmin' }}
+        className="w-full flex items-center shrink-0"
+        style={{ padding: '2cqmin 3cqmin 0' }}
       >
         <button
           className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
           style={{
-            fontSize: '3cqmin',
-            padding: '0.8cqmin 1.5cqmin',
+            fontSize: '4cqmin',
+            padding: '1cqmin 2cqmin',
             borderRadius: '2cqmin',
             border: 'none',
             background: 'rgba(255,255,255,0.6)',
@@ -79,19 +81,32 @@ export function TalentListScreen() {
         >
           ◀ 戻る
         </button>
+        <span
+          className="font-bold"
+          style={{
+            fontSize: '5cqmin',
+            marginLeft: '3cqmin',
+            color: '#555',
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+          }}
+        >
+          寮生一覧
+        </span>
+
         {/* 世代タブ */}
-        <div className="flex" style={{ gap: '1cqmin' }}>
+        <div className="flex" style={{ gap: '1.5cqmin', marginLeft: 'auto' }}>
           {([1, 2] as const).map((gen) => (
             <button
               key={gen}
               className="font-bold cursor-pointer transition active:scale-95"
               style={{
-                fontSize: '3cqmin',
-                padding: '0.6cqmin 2.5cqmin',
-                borderRadius: '2cqmin',
-                border: 'none',
-                background: tab === gen ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.3)',
-                color: tab === gen ? '#333' : 'rgba(255,255,255,0.8)',
+                fontSize: '3.2cqmin',
+                padding: '0.8cqmin 3cqmin',
+                borderRadius: '5cqmin',
+                border: tab === gen ? `0.3cqmin solid ${TAB_ACCENT}` : '0.3cqmin solid #ddd',
+                background: tab === gen ? TAB_ACCENT : 'white',
+                color: tab === gen ? 'white' : '#666',
+                boxShadow: tab === gen ? '0 0.2cqmin 0.6cqmin rgba(0,0,0,0.12)' : 'none',
               }}
               onClick={() => { setTab(gen); setSelected(null) }}
             >
@@ -99,28 +114,40 @@ export function TalentListScreen() {
             </button>
           ))}
         </div>
-        <div style={{ width: '12cqmin' }} />
       </div>
 
       {/* メインコンテンツ: 左右2分割 */}
-      <div className="flex-1 flex overflow-hidden" style={{ gap: '2cqmin', padding: '0 2cqmin 2cqmin' }}>
+      <div className="flex-1 flex overflow-hidden" style={{ gap: '2cqmin', padding: '2cqmin 2cqmin 2cqmin' }}>
         {/* 左側: 寮生一覧グリッド */}
         <div
           className="overflow-y-auto"
-          style={{ width: '50%', scrollbarWidth: 'thin', minHeight: 0 }}
+          style={{
+            width: '50%',
+            minHeight: 0,
+            scrollbarWidth: 'none',
+            borderRadius: '3cqmin',
+            backgroundColor: 'rgba(255,255,255,0.55)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
+            padding: '1cqmin',
+          }}
         >
-          {talentsByDorm.map((dorm) => (
-            <div key={dorm.code}>
+          {talentsByDorm.map((dorm, dormIdx) => (
+            <div key={dorm.code} style={{ marginTop: dormIdx > 0 ? '2cqmin' : 0 }}>
               {/* 寮名ヘッダー */}
               <div
                 className="font-bold text-white text-center"
                 style={{
                   fontSize: '3.5cqmin',
                   padding: '1cqmin 0',
-                  background: dorm.color,
+                  background: dorm.gradient,
                   borderRadius: '1.5cqmin 1.5cqmin 0 0',
+                  border: '0.2cqmin solid rgba(255,255,255,0.4)',
+                  borderBottom: 'none',
+                  boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-                  marginTop: '1.5cqmin',
+                  letterSpacing: '0.1em',
                 }}
               >
                 {dorm.name}
@@ -133,7 +160,7 @@ export function TalentListScreen() {
                   gridTemplateColumns: 'repeat(3, 1fr)',
                   gap: '1cqmin',
                   padding: '1cqmin',
-                  background: 'rgba(0,0,0,0.25)',
+                  background: 'rgba(0,0,0,0.08)',
                   borderRadius: '0 0 1.5cqmin 1.5cqmin',
                 }}
               >
@@ -158,7 +185,7 @@ export function TalentListScreen() {
                         className="absolute inset-0 w-full h-full object-cover"
                         style={{
                           borderRadius: '1cqmin',
-                          boxShadow: isSelected ? '0 0 0 0.5cqmin #facc15' : 'none',
+                          boxShadow: isSelected ? '0 0 0 0.5cqmin #facc15' : '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
                         }}
                       />
                       <div
@@ -192,21 +219,14 @@ export function TalentListScreen() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(135deg, rgba(245,240,230,0.95), rgba(235,228,215,0.95))',
-              borderRadius: '2cqmin',
+              background: 'rgba(255,255,255,0.55)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              borderRadius: '3cqmin',
+              boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
               zIndex: 0,
             }}
           />
-
-          {/* 立ち絵 */}
-          {selected && (
-            <img
-              src={getTalentStandingPath(selected)}
-              className="absolute pointer-events-none"
-              style={{ width: '60cqmin', right: '-8cqmin', top: '-3cqmin', zIndex: 1, opacity: 0.9 }}
-              draggable={false}
-            />
-          )}
 
           {/* スクロール可能なプロフィールエリア */}
           <div
@@ -232,6 +252,22 @@ export function TalentListScreen() {
           </div>
         </div>
       </div>
+
+      {/* 立ち絵（右パネル右端から1/3はみ出し） */}
+      {selected && (
+        <img
+          src={getTalentStandingPath(selected)}
+          alt={selected.name}
+          className="absolute pointer-events-none"
+          style={{
+            width: '65cqmin',
+            right: 'calc(50% - 90cqmin)',
+            top: '-3cqmin',
+            zIndex: 1,
+          }}
+          draggable={false}
+        />
+      )}
     </div>
   )
 }
