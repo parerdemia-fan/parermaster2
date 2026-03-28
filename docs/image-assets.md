@@ -119,11 +119,16 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 
 | 画像 | サイズ (px) | 用途 | 状態 |
 |------|------------|------|------|
-| badge_clear | 250×250 | クリアバッジ（10スロット共有、CSSで進化表現） | — |
-| badge_knowledge | 250×250 | 知識バッジ（2スロット共有） | — |
-| title_gen2_master | 250×250 | 2期生マスター称号 | — |
-| title_gen1_master | 250×250 | 1期生マスター称号 | — |
-| title_paregaku_master | 250×250 | パレ学マスター称号 | — |
+| clear1 | 250×250 | クリアバッジ ブロンズ | done |
+| clear2 | 250×250 | クリアバッジ シルバー | done |
+| clear3 | 250×250 | クリアバッジ ゴールド | done |
+| chishiki1 | 250×250 | 知識バッジ ブロンズ | done |
+| chishiki2 | 250×250 | 知識バッジ シルバー | done |
+| chishiki3 | 250×250 | 知識バッジ ゴールド | done |
+| trophy_1st | 78×70 | 1期生マスター称号 | done |
+| trophy_2nd | 85×70 | 2期生マスター称号 | done |
+| trophy_master | 112×100 | パレ学マスター称号 | done |
+| trophy_grandmaster | 250×250 | パレ学グランドマスター称号 | done |
 | badge_timeattack | 250×250 | タイムアタック解放記念 | — |
 | badge_reserve_1〜4 | 250×250 | 予備（4枚） | — |
 

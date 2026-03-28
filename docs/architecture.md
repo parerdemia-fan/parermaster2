@@ -85,6 +85,8 @@ src/
 │       ├── TalentListScreen.tsx # タレント一覧+詳細（1画面で左右分割）
 │       ├── AchievementScreen.tsx
 │       ├── DiaryScreen.tsx
+│       ├── TimeAttackResultScreen.tsx  # タイムアタック結果画面
+│       ├── DebugScreen.tsx            # デバッグ画面（DEV環境のみ）
 │       └── ...
 │
 ├── features/                    # 機能単位のモジュール
