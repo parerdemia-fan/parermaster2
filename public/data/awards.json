@@ -1148,6 +1148,76 @@
       "eventName": "パレ学1期生学力テスト",
       "result": "3位",
       "talentId": "25CO014"
+    },
+    {
+      "id": "a177",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a178",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a179",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "3位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a180",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "4位",
+      "talentId": "25WA015"
+    },
+    {
+      "id": "a181",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "5位",
+      "talentId": "25WH010"
+    },
+    {
+      "id": "a182",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "6位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a183",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "7位",
+      "talentId": "25CO003"
+    },
+    {
+      "id": "a184",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "8位",
+      "talentId": "25WA004"
+    },
+    {
+      "id": "a185",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "9位",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a186",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "10位",
+      "talentId": "25WA010"
     }
   ]
 }
