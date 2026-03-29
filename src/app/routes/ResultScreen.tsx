@@ -108,11 +108,17 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
 
   // 紙吹雪の遅延マウント
   const [showConfetti, setShowConfetti] = useState(false)
+  // バッジ/称号カードの遅延表示
+  const [showAward, setShowAward] = useState(false)
   useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = []
     if (tier >= 3) {
-      const id = setTimeout(() => setShowConfetti(true), 1500)
-      return () => clearTimeout(id)
+      timers.push(setTimeout(() => setShowConfetti(true), 1500))
     }
+    if (tier >= 4) {
+      timers.push(setTimeout(() => setShowAward(true), 2000))
+    }
+    return () => timers.forEach(clearTimeout)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // スパークル位置の生成（1回だけ）
@@ -154,21 +160,6 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
           50% { transform: scale(1) rotate(180deg); opacity: 1; }
           100% { transform: scale(0) rotate(360deg); opacity: 0; }
         }
-        @keyframes result-badge-in {
-          0% { opacity: 0; transform: translateY(3cqmin) scale(0.8); }
-          70% { opacity: 1; transform: translateY(-0.5cqmin) scale(1.02); }
-          100% { opacity: 1; transform: translateY(0) scale(1.0); }
-        }
-        @keyframes result-badge-glow {
-          0%, 100% { box-shadow: 0 0 1cqmin ${rankColor}66, 0 0 2cqmin ${rankColor}33; }
-          50% { box-shadow: 0 0 2cqmin ${rankColor}99, 0 0 4cqmin ${rankColor}66; }
-        }
-        @keyframes result-trophy-in {
-          0% { opacity: 0; transform: scale(0.7); }
-          50% { opacity: 1; transform: scale(1.05); }
-          70% { transform: scale(0.98); }
-          100% { opacity: 1; transform: scale(1.0); }
-        }
         @keyframes result-swirl {
           0% { transform: translate(-50%,-50%) rotate(0deg); }
           100% { transform: translate(-50%,-50%) rotate(360deg); }
@@ -177,7 +168,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
 
       <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
         {/* 紙吹雪（画面全体） */}
-        {tier >= 3 && showConfetti && <ConfettiCanvas triggerKey={1} />}
+        {tier >= 3 && showConfetti && <ConfettiCanvas triggerKey={1} repeat repeatInterval={1000} />}
 
         {/* スパークル（画面全体） */}
         {tier >= 3 && sparkles.map((s, i) => (
@@ -205,6 +196,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
             zIndex: 1,
             width: '75%',
             maxWidth: '95cqmin',
+            height: '42cqmin',
             backgroundColor: 'rgba(255,255,255,0.8)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
@@ -308,13 +300,13 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
           </div>
 
           {/* パネル内コンテンツ */}
-          <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
+          <div className="flex items-center justify-center" style={{ height: '100%', gap: showAward ? '3cqmin' : '0' , transition: 'gap 0.8s ease-out' }}>
             {/* 左側: スコアエリア */}
             <div
               className="flex flex-col items-center"
               style={{
                 position: 'relative',
-                flex: (showBadge || showTrophy) ? 1 : undefined,
+                flex: 1,
                 padding: '2cqmin 3cqmin',
               }}
             >
@@ -343,48 +335,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   borderRadius: '50%',
                   WebkitMaskImage: 'radial-gradient(circle, white 0%, white 30%, transparent 70%)',
                   maskImage: 'radial-gradient(circle, white 0%, white 30%, transparent 70%)',
-                  background: `
-                    conic-gradient(
-                      from 0deg at 50% 50%,
-                      rgba(255,255,255,0.4) 0deg, rgba(255,255,255,0) 5deg,
-                      rgba(255,255,255,0) 10deg, rgba(255,255,255,0.4) 15deg,
-                      rgba(255,255,255,0) 20deg, rgba(255,255,255,0) 25deg,
-                      rgba(255,255,255,0.4) 30deg, rgba(255,255,255,0) 35deg,
-                      rgba(255,255,255,0) 40deg, rgba(255,255,255,0.4) 45deg,
-                      rgba(255,255,255,0) 50deg, rgba(255,255,255,0) 55deg,
-                      rgba(255,255,255,0.4) 60deg, rgba(255,255,255,0) 65deg,
-                      rgba(255,255,255,0) 70deg, rgba(255,255,255,0.4) 75deg,
-                      rgba(255,255,255,0) 80deg, rgba(255,255,255,0) 85deg,
-                      rgba(255,255,255,0.4) 90deg, rgba(255,255,255,0) 95deg,
-                      rgba(255,255,255,0) 100deg, rgba(255,255,255,0.4) 105deg,
-                      rgba(255,255,255,0) 110deg, rgba(255,255,255,0) 115deg,
-                      rgba(255,255,255,0.4) 120deg, rgba(255,255,255,0) 125deg,
-                      rgba(255,255,255,0) 130deg, rgba(255,255,255,0.4) 135deg,
-                      rgba(255,255,255,0) 140deg, rgba(255,255,255,0) 145deg,
-                      rgba(255,255,255,0.4) 150deg, rgba(255,255,255,0) 155deg,
-                      rgba(255,255,255,0) 160deg, rgba(255,255,255,0.4) 165deg,
-                      rgba(255,255,255,0) 170deg, rgba(255,255,255,0) 175deg,
-                      rgba(255,255,255,0.4) 180deg, rgba(255,255,255,0) 185deg,
-                      rgba(255,255,255,0) 190deg, rgba(255,255,255,0.4) 195deg,
-                      rgba(255,255,255,0) 200deg, rgba(255,255,255,0) 205deg,
-                      rgba(255,255,255,0.4) 210deg, rgba(255,255,255,0) 215deg,
-                      rgba(255,255,255,0) 220deg, rgba(255,255,255,0.4) 225deg,
-                      rgba(255,255,255,0) 230deg, rgba(255,255,255,0) 235deg,
-                      rgba(255,255,255,0.4) 240deg, rgba(255,255,255,0) 245deg,
-                      rgba(255,255,255,0) 250deg, rgba(255,255,255,0.4) 255deg,
-                      rgba(255,255,255,0) 260deg, rgba(255,255,255,0) 265deg,
-                      rgba(255,255,255,0.4) 270deg, rgba(255,255,255,0) 275deg,
-                      rgba(255,255,255,0) 280deg, rgba(255,255,255,0.4) 285deg,
-                      rgba(255,255,255,0) 290deg, rgba(255,255,255,0) 295deg,
-                      rgba(255,255,255,0.4) 300deg, rgba(255,255,255,0) 305deg,
-                      rgba(255,255,255,0) 310deg, rgba(255,255,255,0.4) 315deg,
-                      rgba(255,255,255,0) 320deg, rgba(255,255,255,0) 325deg,
-                      rgba(255,255,255,0.4) 330deg, rgba(255,255,255,0) 335deg,
-                      rgba(255,255,255,0) 340deg, rgba(255,255,255,0.4) 345deg,
-                      rgba(255,255,255,0) 350deg, rgba(255,255,255,0) 355deg,
-                      rgba(255,255,255,0.4) 360deg
-                    )
-                  `,
+                  background: 'repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.4) 0deg, rgba(255,255,255,0) 5deg, rgba(255,255,255,0) 15deg)',
                 }} />
                 </>
               )}
@@ -426,19 +377,27 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
             {/* 右側: バッジカード（称号がない場合のみ） */}
             {showBadge && badgeResult.rank && badgeResult.badgeCategory && (
               <div
-                className="flex flex-col items-center"
                 style={{
-                  flex: 1,
-                  padding: '1.5cqmin 2cqmin',
+                  maxWidth: showAward ? '50cqmin' : '0',
+                  opacity: showAward ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'max-width 0.8s ease-out, opacity 0.6s ease-out 0.2s',
+                  flexShrink: 0,
+                }}
+              >
+              <div
+                className="flex flex-col items-center justify-center"
+                style={{
+                  width: '30cqmin',
+                  aspectRatio: '1',
                   borderRadius: '2cqmin',
                   background: 'linear-gradient(135deg, rgba(255,230,130,0.6) 0%, rgba(255,200,50,0.35) 100%)',
                   border: `0.3cqmin solid ${rankColor}55`,
-                  animation: `result-badge-in 0.6s 2.0s both, result-badge-glow 2s 2.6s ease-in-out infinite both`,
                 }}
               >
                 <span
                   className="font-bold"
-                  style={{ fontSize: '3cqmin', color: rankColor, textShadow: '0 1px 2px rgba(0,0,0,0.15)' }}
+                  style={{ fontSize: '3.5cqmin', color: rankColor, textShadow: '0 1px 2px rgba(0,0,0,0.15)' }}
                 >
                   {badgeResult.isRankUp ? 'ランクアップ！' : 'バッジ獲得！'}
                 </span>
@@ -446,18 +405,17 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   src={BADGE_IMAGES[badgeResult.badgeCategory][badgeResult.rank]}
                   alt={badgeResult.slotLabel}
                   style={{
-                    width: '15cqmin',
-                    height: '15cqmin',
+                    width: '14cqmin',
+                    height: '14cqmin',
                     objectFit: 'contain',
                     flexShrink: 0,
                     filter: 'drop-shadow(0 0.3cqmin 0.8cqmin rgba(0,0,0,0.3))',
-                    margin: '0.5cqmin 0',
                   }}
                 />
                 <span
                   className="font-bold"
                   style={{
-                    fontSize: '2.2cqmin',
+                    fontSize: '2.5cqmin',
                     color: '#555',
                     padding: '0.3cqmin 1.5cqmin',
                     borderRadius: '5cqmin',
@@ -467,10 +425,20 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   {badgeResult.slotLabel} — {RANK_LABELS[badgeResult.rank]}
                 </span>
               </div>
+              </div>
             )}
 
             {/* 右側: 称号カード（最上位のみ） */}
             {showTrophy && (
+              <div
+                style={{
+                  maxWidth: showAward ? '40cqmin' : '0',
+                  opacity: showAward ? 1 : 0,
+                  overflow: 'hidden',
+                  transition: 'max-width 0.8s ease-out, opacity 0.6s ease-out 0.2s',
+                  flexShrink: 0,
+                }}
+              >
               <div
                 className="flex flex-col items-center justify-center"
                 style={{
@@ -479,8 +447,6 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   aspectRatio: '1',
                   borderRadius: '2cqmin',
                   overflow: 'hidden',
-                  flexShrink: 0,
-                  animation: 'result-trophy-in 0.8s 2.8s both',
                 }}
               >
                 {/* 紫背景 */}
@@ -499,28 +465,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   width: '120%',
                   height: '120%',
                   zIndex: 0,
-                  background: `conic-gradient(
-                    from 0deg at 50% 50%,
-                    rgba(255,255,255,0.3) 0deg, transparent 10deg,
-                    transparent 20deg, rgba(255,255,255,0.3) 30deg,
-                    transparent 40deg, transparent 50deg,
-                    rgba(255,255,255,0.3) 60deg, transparent 70deg,
-                    transparent 80deg, rgba(255,255,255,0.3) 90deg,
-                    transparent 100deg, transparent 110deg,
-                    rgba(255,255,255,0.3) 120deg, transparent 130deg,
-                    transparent 140deg, rgba(255,255,255,0.3) 150deg,
-                    transparent 160deg, transparent 170deg,
-                    rgba(255,255,255,0.3) 180deg, transparent 190deg,
-                    transparent 200deg, rgba(255,255,255,0.3) 210deg,
-                    transparent 220deg, transparent 230deg,
-                    rgba(255,255,255,0.3) 240deg, transparent 250deg,
-                    transparent 260deg, rgba(255,255,255,0.3) 270deg,
-                    transparent 280deg, transparent 290deg,
-                    rgba(255,255,255,0.3) 300deg, transparent 310deg,
-                    transparent 320deg, rgba(255,255,255,0.3) 330deg,
-                    transparent 340deg, transparent 350deg,
-                    rgba(255,255,255,0.3) 360deg
-                  )`,
+                  background: 'repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.3) 0deg, transparent 10deg, transparent 30deg)',
                   animation: 'result-swirl 8s linear infinite',
                 }} />
                 {/* 外側の渦巻風エフェクト（回転する白リング） */}
@@ -588,6 +533,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                 >
                   {badgeResult.masterAchievement}
                 </span>
+              </div>
               </div>
             )}
           </div>
