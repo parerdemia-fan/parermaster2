@@ -194,14 +194,16 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
           style={{
             position: 'relative',
             zIndex: 1,
-            width: '75%',
-            maxWidth: '95cqmin',
+            width: showAward ? '85%' : '55%',
+            maxWidth: showAward ? '100cqmin' : '65cqmin',
             height: '42cqmin',
-            backgroundColor: 'rgba(255,255,255,0.8)',
+            transition: 'width 0.6s ease-out, max-width 0.6s ease-out',
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(240,255,248,0.88) 100%)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
             borderRadius: '3cqmin',
-            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
+            border: '0.4cqmin solid rgba(120,200,170,0.5)',
+            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.12), inset 0 0 0 0.4cqmin rgba(255,255,255,0.8), 0 0 0 0.8cqmin rgba(120,200,170,0.25)',
             padding: '6cqmin 3cqmin 3cqmin',
             animation: 'result-score-in 0.5s 0.3s both',
           }}
@@ -310,6 +312,21 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                 padding: '2cqmin 3cqmin',
               }}
             >
+              {/* モード情報 */}
+              <span
+                className="font-bold"
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  fontSize: '3cqmin',
+                  color: '#777',
+                  marginBottom: '0.5cqmin',
+                  animation: 'result-fade-up 0.3s 0.5s both',
+                }}
+              >
+                {genLabel}・{modeLabel}・{diffLabel}
+              </span>
+
               {/* 全問正解時の金色放射状背景 */}
               {isPerfect && (
                 <>
