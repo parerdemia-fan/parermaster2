@@ -56,7 +56,6 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
-  const accentColor = isDormMode ? '#5b8db8' : generation === 'gen2' ? '#e8789e' : '#6aaa80'
   const accentGradient = isDormMode
     ? 'linear-gradient(180deg, #b8d4e8 0%, #7aabc4 40%, #5b8db8 100%)'
     : generation === 'gen2'
@@ -101,6 +100,11 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
   const badgeResult = badgeResultRef.current
   const tier = getTier(isPerfect, badgeResult)
   const btnDelay = getButtonDelay(tier)
+  const rankColor = badgeResult.rank ? RANK_COLORS[badgeResult.rank] : '#cd7f32'
+
+  // 称号がある場合はバッジを非表示（最上位の称号のみ表示）
+  const showBadge = badgeResult.awarded && badgeResult.rank && badgeResult.badgeCategory && !badgeResult.masterAchievement
+  const showTrophy = !!badgeResult.masterAchievement
 
   // 紙吹雪の遅延マウント
   const [showConfetti, setShowConfetti] = useState(false)
@@ -120,8 +124,6 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
       delay: Math.random() * 2,
     })),
   [])
-
-  const rankColor = badgeResult.rank ? RANK_COLORS[badgeResult.rank] : '#cd7f32'
 
   return (
     <>
@@ -147,11 +149,6 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
             text-shadow: 0 0 2cqmin rgba(255,215,0,1), 0 0 4cqmin rgba(255,215,0,0.8), 0 0 6cqmin rgba(255,165,0,0.6);
           }
         }
-        @keyframes result-burst {
-          0% { transform: translate(-50%,-50%) scale(0) rotate(0deg); opacity: 0; }
-          30% { opacity: 0.7; }
-          100% { transform: translate(-50%,-50%) scale(2) rotate(15deg); opacity: 0; }
-        }
         @keyframes result-sparkle {
           0% { transform: scale(0) rotate(0deg); opacity: 0; }
           50% { transform: scale(1) rotate(180deg); opacity: 1; }
@@ -167,288 +164,456 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
           50% { box-shadow: 0 0 2cqmin ${rankColor}99, 0 0 4cqmin ${rankColor}66; }
         }
         @keyframes result-trophy-in {
-          0% { opacity: 0; transform: translateY(3cqmin) scale(0.7); }
-          50% { opacity: 1; transform: translateY(-1cqmin) scale(1.05); }
-          70% { transform: translateY(0.3cqmin) scale(0.98); }
-          100% { opacity: 1; transform: translateY(0) scale(1.0); }
+          0% { opacity: 0; transform: scale(0.7); }
+          50% { opacity: 1; transform: scale(1.05); }
+          70% { transform: scale(0.98); }
+          100% { opacity: 1; transform: scale(1.0); }
         }
-        @keyframes result-trophy-aura {
-          0%, 100% { box-shadow: 0 0 2cqmin rgba(147,51,234,0.4), 0 0 4cqmin rgba(255,215,0,0.2); }
-          50% { box-shadow: 0 0 3cqmin rgba(147,51,234,0.7), 0 0 6cqmin rgba(255,215,0,0.4); }
+        @keyframes result-swirl {
+          0% { transform: translate(-50%,-50%) rotate(0deg); }
+          100% { transform: translate(-50%,-50%) rotate(360deg); }
         }
       `}</style>
 
       <div className="relative w-full h-full flex flex-col items-center justify-center overflow-hidden">
-        {/* 背景エフェクト層 */}
-        {tier >= 3 && (
-          <>
-            {/* 光芒 */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                width: '100%',
-                height: '100%',
-                pointerEvents: 'none',
-                zIndex: 0,
-                background: `conic-gradient(
-                  from 0deg,
-                  rgba(255,215,0,0.3) 0deg, transparent 5deg,
-                  transparent 25deg, rgba(255,215,0,0.3) 30deg,
-                  rgba(255,215,0,0.3) 30deg, transparent 35deg,
-                  transparent 55deg, rgba(255,215,0,0.3) 60deg,
-                  rgba(255,215,0,0.3) 60deg, transparent 65deg,
-                  transparent 85deg, rgba(255,215,0,0.3) 90deg,
-                  rgba(255,215,0,0.3) 90deg, transparent 95deg,
-                  transparent 115deg, rgba(255,215,0,0.3) 120deg,
-                  rgba(255,215,0,0.3) 120deg, transparent 125deg,
-                  transparent 145deg, rgba(255,215,0,0.3) 150deg,
-                  rgba(255,215,0,0.3) 150deg, transparent 155deg,
-                  transparent 175deg, rgba(255,215,0,0.3) 180deg,
-                  rgba(255,215,0,0.3) 180deg, transparent 185deg,
-                  transparent 205deg, rgba(255,215,0,0.3) 210deg,
-                  rgba(255,215,0,0.3) 210deg, transparent 215deg,
-                  transparent 235deg, rgba(255,215,0,0.3) 240deg,
-                  rgba(255,215,0,0.3) 240deg, transparent 245deg,
-                  transparent 265deg, rgba(255,215,0,0.3) 270deg,
-                  rgba(255,215,0,0.3) 270deg, transparent 275deg,
-                  transparent 295deg, rgba(255,215,0,0.3) 300deg,
-                  rgba(255,215,0,0.3) 300deg, transparent 305deg,
-                  transparent 325deg, rgba(255,215,0,0.3) 330deg,
-                  rgba(255,215,0,0.3) 330deg, transparent 335deg,
-                  transparent 355deg, rgba(255,215,0,0.3) 360deg
-                )`,
-                animation: 'result-burst 2s 1.3s ease-out both',
-              }}
-            />
-            {/* スパークル */}
-            {sparkles.map((s, i) => (
-              <div
-                key={i}
-                style={{
-                  position: 'absolute',
-                  left: `${s.x}%`,
-                  top: `${s.y}%`,
-                  width: `${s.size}cqmin`,
-                  height: `${s.size}cqmin`,
-                  borderRadius: '50%',
-                  background: 'radial-gradient(circle, #FFD700 0%, transparent 70%)',
-                  pointerEvents: 'none',
-                  zIndex: 0,
-                  animation: `result-sparkle 1.5s ${1.3 + s.delay}s ease-in-out infinite both`,
-                }}
-              />
-            ))}
-            {/* 紙吹雪 */}
-            {showConfetti && <ConfettiCanvas triggerKey={1} />}
-          </>
-        )}
+        {/* 紙吹雪（画面全体） */}
+        {tier >= 3 && showConfetti && <ConfettiCanvas triggerKey={1} />}
 
-        {/* コンテンツパネル */}
+        {/* スパークル（画面全体） */}
+        {tier >= 3 && sparkles.map((s, i) => (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              left: `${s.x}%`,
+              top: `${s.y}%`,
+              width: `${s.size}cqmin`,
+              height: `${s.size}cqmin`,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, #FFD700 0%, transparent 70%)',
+              pointerEvents: 'none',
+              zIndex: 10,
+              animation: `result-sparkle 1.5s ${1.3 + s.delay}s ease-in-out infinite both`,
+            }}
+          />
+        ))}
+
+        {/* ===== 白パネル（メインコンテンツ） ===== */}
         <div
-          className="flex flex-col items-center"
           style={{
             position: 'relative',
             zIndex: 1,
-            padding: '3cqmin 6cqmin',
+            width: '75%',
+            maxWidth: '95cqmin',
+            backgroundColor: 'rgba(255,255,255,0.8)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             borderRadius: '3cqmin',
-            backgroundColor: 'rgba(255,255,255,0.55)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
             boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
+            padding: '6cqmin 3cqmin 3cqmin',
+            animation: 'result-score-in 0.5s 0.3s both',
           }}
         >
-          {/* 結果発表 */}
-          <span
-            className="font-bold"
+          {/* ===== リボン（パネル上部に半分重なる） ===== */}
+          <div
             style={{
-              fontSize: '5cqmin',
-              color: '#333',
-              marginBottom: '1cqmin',
-              animation: 'result-header-in 0.4s 0.3s both',
+              position: 'absolute',
+              top: '-4.5cqmin',
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              zIndex: 2,
+              pointerEvents: 'none',
+              animation: 'result-header-in 0.4s 0.5s both',
             }}
           >
-            結果発表
-          </span>
-
-          {/* スコア */}
-          <span
-            className="font-bold"
-            style={{
-              fontSize: '7cqmin',
-              color: accentColor,
-              animation: 'result-score-in 0.5s 0.7s both',
-            }}
-          >
-            {correctCount} / {total}
-          </span>
-
-          {/* 正解率 */}
-          <span
-            style={{
-              fontSize: '3.5cqmin',
-              color: '#666',
-              marginTop: '0.5cqmin',
-              animation: 'result-fade-up 0.3s 1.0s both',
-            }}
-          >
-            正解率: {rate}%
-          </span>
-
-          {/* 全問正解 */}
-          {isPerfect && (
-            <span
-              className="font-bold"
-              style={{
-                fontSize: '5cqmin',
-                color: '#b08101',
-                marginTop: '1.5cqmin',
-                animation: 'result-perfect-glow 1.5s 1.3s ease-in-out infinite both',
-              }}
-            >
-              全問正解！
-            </span>
-          )}
-
-          {/* バッジ獲得 */}
-          {badgeResult.awarded && badgeResult.rank && badgeResult.badgeCategory && (
-            <div
-              className="flex items-center"
-              style={{
-                gap: '1.5cqmin',
-                marginTop: '1.5cqmin',
-                padding: '1cqmin 2.5cqmin',
-                borderRadius: '2cqmin',
-                backgroundColor: 'rgba(255,255,255,0.6)',
-                animation: `result-badge-in 0.6s 2.0s both, result-badge-glow 2s 2.0s ease-in-out infinite both`,
-              }}
-            >
-              <img
-                src={BADGE_IMAGES[badgeResult.badgeCategory][badgeResult.rank]}
-                alt={badgeResult.slotLabel}
-                style={{
-                  width: '7cqmin',
-                  height: '7cqmin',
-                  objectFit: 'contain',
-                  flexShrink: 0,
-                  filter: 'drop-shadow(0 0.2cqmin 0.4cqmin rgba(0,0,0,0.3))',
-                }}
-              />
-              <div className="flex flex-col">
+            <div style={{ display: 'flex', alignItems: 'stretch' }}>
+              {/* 左端: V字切り込み（右側が切り込み、左側が直線で広め） */}
+              <div style={{
+                position: 'relative',
+                top: '1.5cqmin',
+                width: '6cqmin',
+                height: '70%',
+                marginRight: '-2cqmin',
+                flexShrink: 0,
+                zIndex: -1,
+                background: 'linear-gradient(180deg, #80cfb0 0%, #60b898 100%)',
+                clipPath: 'polygon(0 0, 100% 0, 73% 80%, 100% 100%, 0 100%, 42% 50%)',
+              }} />
+              {/* リボン中央（上下アーチ） */}
+              <div style={{
+                position: 'relative',
+                top: '-1.5cqmin',
+                width: '45cqmin',
+                height: '11cqmin',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                {/* アーチ形状の背景（上は上に膨らみ、下は中央が上に凹む） */}
+                <svg
+                  viewBox="0 0 200 60"
+                  preserveAspectRatio="none"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                >
+                  <defs>
+                    <linearGradient id="ribbon-grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#c8f0e0" />
+                      <stop offset="50%" stopColor="#a8e0cc" />
+                      <stop offset="100%" stopColor="#80cfb0" />
+                    </linearGradient>
+                  </defs>
+                  {/* リボン本体 */}
+                  <path
+                    d="M0,10 Q100,-5 200,10 L200,50 Q100,35 0,50 Z"
+                    fill="url(#ribbon-grad)"
+                  />
+                  {/* 内側の白ボーダー（上下のみ） */}
+                  <path d="M0,13 Q100,-5 200,13" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="2" />
+                  <path d="M0,47 Q100,33 200,47" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="2" />
+                </svg>
                 <span
                   className="font-bold"
                   style={{
-                    fontSize: '2.8cqmin',
-                    color: rankColor,
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                    position: 'relative',
+                    zIndex: 1,
+                    fontSize: '7.8cqmin',
+                    fontWeight: 900,
+                    marginTop: '-2cqmin',
+                    WebkitTextStroke: '0.3cqmin white',
+                    color: '#5dbfa0',
+                    textShadow: '0 0 0.3cqmin #fff, 0 0 0.3cqmin #fff, 0.1cqmin 0.1cqmin 0 #fff, -0.1cqmin -0.1cqmin 0 #fff, 0.1cqmin -0.1cqmin 0 #fff, -0.1cqmin 0.1cqmin 0 #fff',
+                    letterSpacing: '0.15em',
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {badgeResult.isRankUp ? 'ランクアップ！' : 'バッジ獲得！'}
-                </span>
-                <span style={{ fontSize: '2.2cqmin', color: '#555', whiteSpace: 'nowrap' }}>
-                  {badgeResult.slotLabel} — {RANK_LABELS[badgeResult.rank]}
+                  結果発表
                 </span>
               </div>
+              {/* 右端: V字切り込み（左側が切り込み、右側が直線で広め） */}
+              <div style={{
+                position: 'relative',
+                top: '1.5cqmin',
+                width: '6cqmin',
+                height: '70%',
+                marginLeft: '-2cqmin',
+                flexShrink: 0,
+                zIndex: -1,
+                background: 'linear-gradient(180deg, #80cfb0 0%, #60b898 100%)',
+                clipPath: 'polygon(0 0, 27% 80%, 0 100%, 100% 100%, 58% 50%, 100% 0)',
+              }} />
             </div>
-          )}
+          </div>
 
-          {/* 称号獲得 */}
-          {badgeResult.masterAchievement && (
+          {/* パネル内コンテンツ */}
+          <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
+            {/* 左側: スコアエリア */}
             <div
-              className="flex items-center"
+              className="flex flex-col items-center"
               style={{
-                gap: '1.5cqmin',
-                marginTop: '1cqmin',
-                padding: '1cqmin 2.5cqmin',
-                borderRadius: '2cqmin',
-                backgroundColor: 'rgba(255,255,255,0.6)',
-                animation: 'result-trophy-in 0.8s 2.8s both, result-trophy-aura 2s 2.8s ease-in-out infinite both',
+                position: 'relative',
+                flex: (showBadge || showTrophy) ? 1 : undefined,
+                padding: '2cqmin 3cqmin',
               }}
             >
-              <img
-                src={getTrophyImage(badgeResult.masterAchievement)}
-                alt={badgeResult.masterAchievement}
-                style={{
-                  width: '7cqmin',
-                  height: '7cqmin',
-                  objectFit: 'contain',
-                  flexShrink: 0,
-                  filter: 'drop-shadow(0 0.2cqmin 0.4cqmin rgba(0,0,0,0.3))',
-                }}
-              />
+              {/* 全問正解時の金色放射状背景（円形にフェードアウト） */}
+              {isPerfect && (
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '50cqmin',
+                  height: '50cqmin',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 0,
+                  borderRadius: '50%',
+                  background: `
+                    radial-gradient(circle at center, rgba(255,248,200,0.9) 0%, rgba(255,240,150,0.4) 40%, transparent 70%),
+                    conic-gradient(
+                      from 0deg at 50% 50%,
+                      rgba(255,215,0,0.25) 0deg, rgba(255,215,0,0) 15deg,
+                      rgba(255,215,0,0) 30deg, rgba(255,215,0,0.25) 45deg,
+                      rgba(255,215,0,0) 60deg, rgba(255,215,0,0) 75deg,
+                      rgba(255,215,0,0.25) 90deg, rgba(255,215,0,0) 105deg,
+                      rgba(255,215,0,0) 120deg, rgba(255,215,0,0.25) 135deg,
+                      rgba(255,215,0,0) 150deg, rgba(255,215,0,0) 165deg,
+                      rgba(255,215,0,0.25) 180deg, rgba(255,215,0,0) 195deg,
+                      rgba(255,215,0,0) 210deg, rgba(255,215,0,0.25) 225deg,
+                      rgba(255,215,0,0) 240deg, rgba(255,215,0,0) 255deg,
+                      rgba(255,215,0,0.25) 270deg, rgba(255,215,0,0) 285deg,
+                      rgba(255,215,0,0) 300deg, rgba(255,215,0,0.25) 315deg,
+                      rgba(255,215,0,0) 330deg, rgba(255,215,0,0) 345deg,
+                      rgba(255,215,0,0.25) 360deg
+                    )
+                  `,
+                }} />
+              )}
+
+              {isPerfect && (
+                <span
+                  className="font-bold"
+                  style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    fontSize: (showBadge || showTrophy) ? '5cqmin' : '7cqmin',
+                    color: '#b08101',
+                    animation: 'result-perfect-glow 1.5s 1.3s ease-in-out infinite both',
+                  }}
+                >
+                  全問正解！
+                </span>
+              )}
               <span
                 className="font-bold"
                 style={{
-                  fontSize: '2.8cqmin',
-                  color: '#9333ea',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.1)',
-                  whiteSpace: 'nowrap',
+                  position: 'relative',
+                  zIndex: 1,
+                  fontSize: (showBadge || showTrophy) ? '10cqmin' : '12cqmin',
+                  color: '#333',
+                  lineHeight: 1,
                 }}
               >
-                {badgeResult.masterAchievement}
+                {correctCount}
+                <span style={{ fontSize: (showBadge || showTrophy) ? '5cqmin' : '6cqmin', color: '#999' }}>
+                  /{total}
+                </span>
+              </span>
+              <span style={{ position: 'relative', zIndex: 1, fontSize: '3cqmin', color: '#666', marginTop: '0.5cqmin' }}>
+                正解率：{rate}%
               </span>
             </div>
-          )}
 
-          {/* Xシェアボタン */}
+            {/* 右側: バッジカード（称号がない場合のみ） */}
+            {showBadge && badgeResult.rank && badgeResult.badgeCategory && (
+              <div
+                className="flex flex-col items-center"
+                style={{
+                  flex: 1,
+                  padding: '1.5cqmin 2cqmin',
+                  borderRadius: '2cqmin',
+                  background: 'linear-gradient(135deg, rgba(255,230,130,0.6) 0%, rgba(255,200,50,0.35) 100%)',
+                  border: `0.3cqmin solid ${rankColor}55`,
+                  animation: `result-badge-in 0.6s 2.0s both, result-badge-glow 2s 2.6s ease-in-out infinite both`,
+                }}
+              >
+                <span
+                  className="font-bold"
+                  style={{ fontSize: '3cqmin', color: rankColor, textShadow: '0 1px 2px rgba(0,0,0,0.15)' }}
+                >
+                  {badgeResult.isRankUp ? 'ランクアップ！' : 'バッジ獲得！'}
+                </span>
+                <img
+                  src={BADGE_IMAGES[badgeResult.badgeCategory][badgeResult.rank]}
+                  alt={badgeResult.slotLabel}
+                  style={{
+                    width: '15cqmin',
+                    height: '15cqmin',
+                    objectFit: 'contain',
+                    flexShrink: 0,
+                    filter: 'drop-shadow(0 0.3cqmin 0.8cqmin rgba(0,0,0,0.3))',
+                    margin: '0.5cqmin 0',
+                  }}
+                />
+                <span
+                  className="font-bold"
+                  style={{
+                    fontSize: '2.2cqmin',
+                    color: '#555',
+                    padding: '0.3cqmin 1.5cqmin',
+                    borderRadius: '5cqmin',
+                    backgroundColor: 'rgba(255,255,255,0.6)',
+                  }}
+                >
+                  {badgeResult.slotLabel} — {RANK_LABELS[badgeResult.rank]}
+                </span>
+              </div>
+            )}
+
+            {/* 右側: 称号カード（最上位のみ） */}
+            {showTrophy && (
+              <div
+                className="flex flex-col items-center justify-center"
+                style={{
+                  position: 'relative',
+                  width: '38cqmin',
+                  aspectRatio: '1',
+                  borderRadius: '2cqmin',
+                  overflow: 'hidden',
+                  flexShrink: 0,
+                  animation: 'result-trophy-in 0.8s 2.8s both',
+                }}
+              >
+                {/* 紫背景 */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  zIndex: 0,
+                  background: 'radial-gradient(circle at center, rgba(220,200,255,0.9) 0%, rgba(147,51,234,0.4) 50%, rgba(100,20,180,0.6) 100%)',
+                  borderRadius: '2cqmin',
+                }} />
+                {/* 白い放射状エフェクト */}
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '120%',
+                  height: '120%',
+                  zIndex: 0,
+                  background: `conic-gradient(
+                    from 0deg at 50% 50%,
+                    rgba(255,255,255,0.3) 0deg, transparent 10deg,
+                    transparent 20deg, rgba(255,255,255,0.3) 30deg,
+                    transparent 40deg, transparent 50deg,
+                    rgba(255,255,255,0.3) 60deg, transparent 70deg,
+                    transparent 80deg, rgba(255,255,255,0.3) 90deg,
+                    transparent 100deg, transparent 110deg,
+                    rgba(255,255,255,0.3) 120deg, transparent 130deg,
+                    transparent 140deg, rgba(255,255,255,0.3) 150deg,
+                    transparent 160deg, transparent 170deg,
+                    rgba(255,255,255,0.3) 180deg, transparent 190deg,
+                    transparent 200deg, rgba(255,255,255,0.3) 210deg,
+                    transparent 220deg, transparent 230deg,
+                    rgba(255,255,255,0.3) 240deg, transparent 250deg,
+                    transparent 260deg, rgba(255,255,255,0.3) 270deg,
+                    transparent 280deg, transparent 290deg,
+                    rgba(255,255,255,0.3) 300deg, transparent 310deg,
+                    transparent 320deg, rgba(255,255,255,0.3) 330deg,
+                    transparent 340deg, transparent 350deg,
+                    rgba(255,255,255,0.3) 360deg
+                  )`,
+                  animation: 'result-swirl 8s linear infinite',
+                }} />
+                {/* 外側の渦巻風エフェクト（回転する白リング） */}
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '130%',
+                  height: '130%',
+                  zIndex: 0,
+                  borderRadius: '50%',
+                  border: '0.3cqmin solid rgba(255,255,255,0.15)',
+                  boxShadow: 'inset 0 0 3cqmin rgba(255,255,255,0.2), 0 0 3cqmin rgba(255,255,255,0.1)',
+                  animation: 'result-swirl 12s linear infinite reverse',
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '150%',
+                  height: '150%',
+                  zIndex: 0,
+                  borderRadius: '50%',
+                  border: '0.2cqmin dashed rgba(255,255,255,0.12)',
+                  animation: 'result-swirl 20s linear infinite',
+                }} />
+
+                <span
+                  className="font-bold"
+                  style={{
+                    position: 'relative', zIndex: 1,
+                    fontSize: '3cqmin',
+                    color: '#fff',
+                    textShadow: '0 1px 4px rgba(100,0,180,0.6)',
+                  }}
+                >
+                  称号獲得！
+                </span>
+                <img
+                  src={getTrophyImage(badgeResult.masterAchievement!)}
+                  alt={badgeResult.masterAchievement!}
+                  style={{
+                    position: 'relative', zIndex: 1,
+                    width: '18cqmin',
+                    height: '18cqmin',
+                    objectFit: 'contain',
+                    flexShrink: 0,
+                    filter: 'drop-shadow(0 0.3cqmin 1cqmin rgba(147,51,234,0.5))',
+                    margin: '0.5cqmin 0',
+                  }}
+                />
+                <span
+                  className="font-bold"
+                  style={{
+                    position: 'relative', zIndex: 1,
+                    fontSize: '2.5cqmin',
+                    color: '#fff',
+                    textShadow: '0 1px 3px rgba(100,0,180,0.5)',
+                    padding: '0.3cqmin 1.5cqmin',
+                    borderRadius: '5cqmin',
+                    backgroundColor: 'rgba(147,51,234,0.35)',
+                    border: '0.2cqmin solid rgba(255,255,255,0.3)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {badgeResult.masterAchievement}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ===== ボタン3つ横並び（画面最下部固定） ===== */}
+        <div
+          className="flex items-center justify-center"
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 10,
+            gap: '2cqmin',
+            padding: '1.5cqmin 4cqmin 2cqmin',
+            animation: `result-fade-up 0.3s ${btnDelay}s both`,
+          }}
+        >
           <button
             className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
             style={{
               fontSize: '3cqmin',
-              padding: '1cqmin 3cqmin',
+              padding: '1.5cqmin 3.5cqmin',
+              borderRadius: '5cqmin',
+              border: '0.3cqmin solid #ddd',
+              background: 'white',
+              color: '#666',
+              boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.1)',
+            }}
+            onClick={goToTitle}
+          >
+            ← トップに戻る
+          </button>
+          <button
+            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+            style={{
+              fontSize: '3cqmin',
+              padding: '1.5cqmin 3.5cqmin',
               borderRadius: '5cqmin',
               border: 'none',
-              background: '#000',
+              background: accentGradient,
               color: 'white',
-              marginTop: '2cqmin',
-              animation: `result-fade-up 0.3s ${btnDelay}s both`,
+              boxShadow: 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.3), 0 0.3cqmin 0.8cqmin rgba(0,0,0,0.15)',
+            }}
+            onClick={() => goToSetting(modeCategory)}
+          >
+            もう一度
+          </button>
+          <button
+            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+            style={{
+              fontSize: '3cqmin',
+              padding: '1.5cqmin 3.5cqmin',
+              borderRadius: '5cqmin',
+              border: 'none',
+              background: '#222',
+              color: 'white',
+              boxShadow: '0 0.2cqmin 0.5cqmin rgba(0,0,0,0.2)',
             }}
             onClick={shareOnX}
           >
             𝕏 結果をシェア
           </button>
-
-          {/* ナビゲーションボタン */}
-          <div
-            className="flex items-center justify-center"
-            style={{
-              gap: '3cqmin',
-              marginTop: '1.5cqmin',
-              animation: `result-fade-up 0.3s ${btnDelay + 0.2}s both`,
-            }}
-          >
-            <button
-              className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
-              style={{
-                fontSize: '3.5cqmin',
-                padding: '1.5cqmin 4cqmin',
-                borderRadius: '5cqmin',
-                border: '0.3cqmin solid #ddd',
-                background: 'white',
-                color: '#666',
-              }}
-              onClick={goToTitle}
-            >
-              トップに戻る
-            </button>
-            <button
-              className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
-              style={{
-                fontSize: '3.5cqmin',
-                padding: '1.5cqmin 4cqmin',
-                borderRadius: '5cqmin',
-                border: 'none',
-                background: accentGradient,
-                color: 'white',
-                boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
-              }}
-              onClick={() => goToSetting(modeCategory)}
-            >
-              もう一度
-            </button>
-          </div>
         </div>
       </div>
     </>
