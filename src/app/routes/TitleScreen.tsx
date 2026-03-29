@@ -170,7 +170,7 @@ export function TitleScreen() {
       >
         <SubMenuButton
           emoji="?"
-          label="ヘルプ"
+          label="案内"
           useText
           gradient="linear-gradient(180deg, #b8e6c8 0%, #7cc49a 40%, #5faa7e 100%)"
           shadowColor="rgba(60,140,90,0.4)"

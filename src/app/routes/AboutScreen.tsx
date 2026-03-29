@@ -35,55 +35,53 @@ export function AboutScreen() {
   }
 
   return (
-    <div
-      className="w-full h-full flex flex-col animate-fade-in"
-      style={{ padding: '2cqmin 3cqmin' }}
-    >
+    <div className="relative w-full h-full flex flex-col animate-fade-in">
       {/* ヘッダー */}
       <div
-        className="flex items-center justify-between shrink-0"
-        style={{ height: '8cqmin', padding: '0 2cqmin' }}
+        className="w-full flex items-center shrink-0"
+        style={{ padding: '2cqmin 3cqmin 0' }}
       >
         <button
-          className="font-bold transition active:scale-95"
+          className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
           style={{
-            fontSize: '3cqmin',
-            padding: '1cqmin 3cqmin',
-            borderRadius: '1.5cqmin',
-            border: '0.3cqmin solid rgba(255,255,255,0.5)',
-            background: 'rgba(255,255,255,0.7)',
-            color: '#666',
-            cursor: 'pointer',
-            backdropFilter: 'blur(4px)',
+            fontSize: '4cqmin',
+            padding: '1cqmin 2cqmin',
+            borderRadius: '2cqmin',
+            border: 'none',
+            background: 'rgba(255,255,255,0.6)',
+            color: '#555',
           }}
           onClick={goToTitle}
         >
-          戻る
+          ◀ 戻る
         </button>
-        <h1
+        <span
           className="font-bold"
           style={{
-            fontSize: '4.5cqmin',
-            color: 'white',
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+            fontSize: '5cqmin',
+            marginLeft: '3cqmin',
+            color: '#555',
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
           }}
         >
-          このゲームについて
-        </h1>
-        <div style={{ width: '12cqmin' }} />
+          案内
+        </span>
       </div>
 
       {/* コンテンツ（スクロール可能） */}
       <div
         className="flex-1 overflow-y-auto"
         style={{
+          margin: '2cqmin',
           padding: '3cqmin 4cqmin',
           lineHeight: 1.6,
           color: '#444',
           scrollbarWidth: 'none',
-          background: 'rgba(255,255,255,0.75)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '2cqmin',
+          borderRadius: '3cqmin',
+          backgroundColor: 'rgba(255,255,255,0.55)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
         }}
       >
         {/* このゲームについて */}
@@ -170,17 +168,23 @@ export function AboutScreen() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section style={{ marginBottom: '4cqmin' }}>
-      <h2
-        className="font-bold"
+    <section style={{ marginBottom: '3cqmin' }}>
+      <div
+        className="font-bold text-center text-white"
         style={{
-          fontSize: '3.5cqmin',
+          fontSize: '3cqmin',
+          padding: '0.8cqmin 0',
+          background: 'linear-gradient(180deg, #fcc4dc 0%, #e8789e 100%)',
+          borderRadius: '1.5cqmin',
+          border: '0.2cqmin solid rgba(255,255,255,0.4)',
+          boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)',
+          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+          letterSpacing: '0.1em',
           marginBottom: '1.5cqmin',
-          color: '#d6336c',
         }}
       >
         {title}
-      </h2>
+      </div>
       <div style={{ fontSize: '3cqmin', display: 'flex', flexDirection: 'column', gap: '1cqmin' }}>
         {children}
       </div>
@@ -191,16 +195,16 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function LinkButton({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {
   return (
     <button
-      className="font-bold transition active:scale-98"
+      className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
       style={{
         height: '7cqmin',
         padding: '0 4cqmin',
         fontSize: '3cqmin',
         borderRadius: '1.5cqmin',
-        border: '0.2cqmin solid rgba(200,160,180,0.4)',
-        background: 'rgba(240,220,230,0.6)',
+        border: '0.2cqmin solid rgba(255,255,255,0.4)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(240,220,230,0.6) 100%)',
+        boxShadow: 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.3), 0 0.2cqmin 0.5cqmin rgba(0,0,0,0.08)',
         color: '#555',
-        cursor: 'pointer',
         textAlign: 'left',
       }}
       onClick={onClick}
