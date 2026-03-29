@@ -10,37 +10,13 @@ import {
   type BadgeSlotDef,
 } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
+import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.ts'
 import { formatTime } from '../../features/time-attack/constants.ts'
-
-const BASE = import.meta.env.BASE_URL
 
 const RANK_BORDER: Record<BadgeRank, string> = {
   bronze: '#cd7f32',
   silver: '#a0a0a0',
   gold: '#daa520',
-}
-
-
-
-/** バッジカテゴリ × ランク → 画像パス */
-const BADGE_IMAGES: Record<string, Record<BadgeRank, string>> = {
-  clear: {
-    bronze: `${BASE}data/images/ui/clear1.png`,
-    silver: `${BASE}data/images/ui/clear2.png`,
-    gold: `${BASE}data/images/ui/clear3.png`,
-  },
-  knowledge: {
-    bronze: `${BASE}data/images/ui/chishiki1.png`,
-    silver: `${BASE}data/images/ui/chishiki2.png`,
-    gold: `${BASE}data/images/ui/chishiki3.png`,
-  },
-}
-
-const TITLE_IMAGES = {
-  gen2: `${BASE}data/images/ui/trophy_2nd.png`,
-  gen1: `${BASE}data/images/ui/trophy_1st.png`,
-  master: `${BASE}data/images/ui/trophy_master.png`,
-  grandmaster: `${BASE}data/images/ui/trophy_grandmaster.png`,
 }
 
 /** バッジの条件情報を生成 */
@@ -184,8 +160,8 @@ export function AchievementScreen() {
 
           {/* 称号カード */}
           <div className="flex flex-col" style={{ gap: '1.5cqmin' }}>
-            <TitleCard label="1期生マスター" achieved={isGen1Master()} image={TITLE_IMAGES.gen1} gradient="linear-gradient(135deg, #a8dbb8 0%, #6aaa80 100%)" onTap={() => setTooltip(getTitleTooltip('1期生マスター'))} />
-            <TitleCard label="2期生マスター" achieved={isGen2Master()} image={TITLE_IMAGES.gen2} gradient="linear-gradient(135deg, #fcc4dc 0%, #e8789e 100%)" onTap={() => setTooltip(getTitleTooltip('2期生マスター'))} />
+            <TitleCard label="1期生マスター" achieved={isGen1Master()} image={TROPHY_IMAGES.gen1} gradient="linear-gradient(135deg, #a8dbb8 0%, #6aaa80 100%)" onTap={() => setTooltip(getTitleTooltip('1期生マスター'))} />
+            <TitleCard label="2期生マスター" achieved={isGen2Master()} image={TROPHY_IMAGES.gen2} gradient="linear-gradient(135deg, #fcc4dc 0%, #e8789e 100%)" onTap={() => setTooltip(getTitleTooltip('2期生マスター'))} />
           </div>
 
           {/* パレ学マスター / グランドマスター（シークレット: 達成時のみ表示、残りスペースを使う） */}
@@ -491,7 +467,7 @@ function SecretMasterCard({
   isGrandMaster: boolean
   onTap: () => void
 }) {
-  const image = isGrandMaster ? TITLE_IMAGES.grandmaster : TITLE_IMAGES.master
+  const image = isGrandMaster ? TROPHY_IMAGES.grandmaster : TROPHY_IMAGES.master
   const label = isGrandMaster ? 'パレ学グランドマスター' : 'パレ学マスター'
   const gradient = isGrandMaster
     ? 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 30%, #ff9a9e 70%, #fad0c4 100%)'

@@ -8,6 +8,7 @@ export interface BadgeAwardResult {
   isRankUp: boolean
   slotLabel: string
   rank: BadgeRank | null
+  badgeCategory: 'clear' | 'knowledge' | null
   masterAchievement: string | null
 }
 

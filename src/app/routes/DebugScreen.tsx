@@ -270,12 +270,13 @@ export function DebugScreen() {
   )
 }
 
-const NO_BADGE: BadgeAwardResult = { awarded: false, isRankUp: false, slotLabel: '', rank: null, masterAchievement: null }
+const NO_BADGE: BadgeAwardResult = { awarded: false, isRankUp: false, slotLabel: '', rank: null, badgeCategory: null, masterAchievement: null }
 
 const RESULT_PREVIEWS: { label: string; correctCount: number; total: number; badgeOverride: BadgeAwardResult }[] = [
   { label: '50%', correctCount: 5, total: 10, badgeOverride: NO_BADGE },
   { label: '100% (獲得済)', correctCount: 10, total: 10, badgeOverride: NO_BADGE },
-  { label: '100% (獲得)', correctCount: 10, total: 10, badgeOverride: { awarded: true, isRankUp: false, slotLabel: '1期生・顔名前当て', rank: 'bronze', masterAchievement: null } },
+  { label: '100% (獲得)', correctCount: 10, total: 10, badgeOverride: { awarded: true, isRankUp: false, slotLabel: '1期生', rank: 'bronze', badgeCategory: 'clear', masterAchievement: null } },
+  { label: '100% (称号)', correctCount: 10, total: 10, badgeOverride: { awarded: true, isRankUp: false, slotLabel: '1期生', rank: 'gold', badgeCategory: 'clear', masterAchievement: '1期生マスター達成！' } },
 ]
 
 function ResultPreview() {
