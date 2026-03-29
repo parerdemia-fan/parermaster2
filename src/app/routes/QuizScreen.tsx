@@ -16,6 +16,8 @@ import { SpotlightLayout } from '../../features/question-types/spotlight/Spotlig
 import type { SpotlightQuestion } from '../../features/question-types/spotlight/types.ts'
 import { WordSearchLayout } from '../../features/question-types/word-search/WordSearchLayout.tsx'
 import type { WordSearchQuestion } from '../../features/question-types/word-search/types.ts'
+import { AnswerFeedbackLabel } from '../../shared/components/AnswerFeedbackLabel.tsx'
+import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 
 export function QuizScreen() {
   const { questions, currentIndex, quizState, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion,
@@ -85,33 +87,18 @@ export function QuizScreen() {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
-      {/* 正解/不正解フローティング表示（全問題タイプ共通） */}
+      {/* 正解/不正解アニメーション表示（全問題タイプ共通） */}
       {isAnswered && lastRecord && (
-        <div
-          className="font-bold animate-fade-in"
-          style={{
-            position: 'absolute',
-            top: '20%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 30,
-            fontSize: '5cqmin',
-            color: 'white',
-            background: lastRecord.isCorrect
-              ? 'rgba(34,197,94,0.85)'
-              : 'rgba(239,68,68,0.85)',
-            padding: '1cqmin 4cqmin',
-            borderRadius: '1.5cqmin',
-            boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.4)',
-            textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-            WebkitTextStroke: '0.5px rgba(0,0,0,0.3)',
-            border: '0.3cqmin solid rgba(255,255,255,0.4)',
-            pointerEvents: 'none',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {lastRecord.isCorrect ? '🎉 正解！' : isTimeAttack ? '😢 不正解.. +5秒' : '😢 不正解..'}
-        </div>
+        <>
+          <AnswerFeedbackLabel
+            key={currentIndex}
+            isCorrect={lastRecord.isCorrect}
+            isTimeAttack={isTimeAttack}
+          />
+          {lastRecord.isCorrect && (
+            <ConfettiCanvas key={`confetti-${currentIndex}`} triggerKey={currentIndex} />
+          )}
+        </>
       )}
       {/* 左下: やめるボタン */}
       <button
