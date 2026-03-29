@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { generateTimeAttackQuestions } from '../../features/time-attack/generator.ts'
+import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -21,15 +22,22 @@ export function TitleScreen() {
   const { questions: questionPool, answerSets } = useQuestions()
 
   const [showTADialog, setShowTADialog] = useState(false)
+  const [isTAPreloading, setIsTAPreloading] = useState(false)
   const taUnlocked = isTimeAttackUnlocked()
 
-  const handleTimeAttackStart = () => {
-    if (talents.length === 0) return
+  const handleTimeAttackStart = useCallback(async () => {
+    if (talents.length === 0 || isTAPreloading) return
     const questions = generateTimeAttackQuestions(talents, questionPool, answerSets)
+
+    setIsTAPreloading(true)
+    const { firstReady } = preloadQuestionImages(questions, talents)
+    await firstReady
+
     startQuiz(questions)
     goToTimeAttack()
     setShowTADialog(false)
-  }
+    setIsTAPreloading(false)
+  }, [talents, questionPool, answerSets, isTAPreloading, startQuiz, goToTimeAttack])
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -286,10 +294,12 @@ export function TitleScreen() {
                   color: 'white',
                   boxShadow: '0 0.3cqmin 1cqmin rgba(200,150,0,0.4)',
                   textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                  opacity: isTAPreloading ? 0.5 : 1,
                 }}
+                disabled={isTAPreloading}
                 onClick={handleTimeAttackStart}
               >
-                スタート！
+                {isTAPreloading ? '準備中...' : 'スタート！'}
               </button>
             </div>
           </div>

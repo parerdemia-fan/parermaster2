@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import { useSettingsStore, type DormId, type Scope, type GameMode } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
@@ -8,8 +8,10 @@ import { generateNameGuessQuestions } from '../../features/question-types/name-g
 import { generateFaceGuessQuestions } from '../../features/question-types/face-guess/generator.ts'
 import { generateNameBuildQuestions } from '../../features/question-types/name-build/generator.ts'
 import { generateTextQuizQuestions, type QuizSegment } from '../../features/question-types/text-quiz/generator.ts'
+import type { BaseQuestion } from '../../features/quiz/types.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
+import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
 import { toSlotId } from '../../features/achievement/constants.ts'
 import type { BadgeSlotId } from '../../features/achievement/types.ts'
 
@@ -42,6 +44,7 @@ export function SettingScreen() {
       : 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)'
 
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false)
+  const [isPreloading, setIsPreloading] = useState(false)
 
   const handleNameChange = (name: string) => {
     setPlayerName(name)
@@ -73,10 +76,11 @@ export function SettingScreen() {
     downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
   }
 
-  const handleStart = () => {
-    if (loading || talents.length === 0) return
+  const handleStart = useCallback(async () => {
+    if (loading || talents.length === 0 || isPreloading) return
 
     const gen = generation === 'gen2' ? 2 : 1
+    let questions: BaseQuestion[]
 
     if (!isDormMode && gameMode === 'knowledge') {
       // 知識クイズモード（世代別のみ）
@@ -112,45 +116,48 @@ export function SettingScreen() {
         ]
       }
 
-      const questions = generateTextQuizQuestions(pool, segments, difficulty, talents, answerSets)
-      startQuiz(questions)
-      goToQuiz()
-      return
+      questions = generateTextQuizQuestions(pool, segments, difficulty, talents, answerSets)
+    } else {
+      // 顔名前当てモード
+      const filtered = isDormMode
+        ? talents.filter((t) => t.dormitory === scope)  // 寮別: 1期+2期混合
+        : talents.filter((t) => t.generation === gen)    // 世代別: 全員固定
+
+      if (filtered.length < 4) return
+
+      const pool = filtered
+      const generationPool = difficulty === 3
+        ? (isDormMode ? talents.filter((t) => t.dormitory === scope) : talents.filter((t) => t.generation === gen))
+        : undefined
+      const shuffled = shuffleArray(filtered)
+      const typeGenerators = [
+        { generate: (t: Talent[], p: Talent[], d: typeof difficulty) => generateFaceGuessQuestions(t, p, d, generationPool) },
+        { generate: generateNameGuessQuestions },
+        { generate: generateNameBuildQuestions },
+      ]
+      const totalTypes = typeGenerators.length
+      const baseCount = Math.floor(shuffled.length / totalTypes)
+      const remainder = shuffled.length % totalTypes
+
+      questions = []
+      let offset = 0
+      for (let i = 0; i < totalTypes; i++) {
+        const count = baseCount + (i < remainder ? 1 : 0)
+        const slice = shuffled.slice(offset, offset + count)
+        offset += count
+        questions.push(...typeGenerators[i].generate(slice, pool, difficulty))
+      }
     }
 
-    // 顔名前当てモード
-    const filtered = isDormMode
-      ? talents.filter((t) => t.dormitory === scope)  // 寮別: 1期+2期混合
-      : talents.filter((t) => t.generation === gen)    // 世代別: 全員固定
-
-    if (filtered.length < 4) return
-
-    const pool = filtered
-    const generationPool = difficulty === 3
-      ? (isDormMode ? talents.filter((t) => t.dormitory === scope) : talents.filter((t) => t.generation === gen))
-      : undefined
-    const shuffled = shuffleArray(filtered)
-    const typeGenerators = [
-      { generate: (t: Talent[], p: Talent[], d: typeof difficulty) => generateFaceGuessQuestions(t, p, d, generationPool) },
-      { generate: generateNameGuessQuestions },
-      { generate: generateNameBuildQuestions },
-    ]
-    const totalTypes = typeGenerators.length
-    const baseCount = Math.floor(shuffled.length / totalTypes)
-    const remainder = shuffled.length % totalTypes
-
-    const questions = []
-    let offset = 0
-    for (let i = 0; i < totalTypes; i++) {
-      const count = baseCount + (i < remainder ? 1 : 0)
-      const slice = shuffled.slice(offset, offset + count)
-      offset += count
-      questions.push(...typeGenerators[i].generate(slice, pool, difficulty))
-    }
+    // 1問目の画像プリロードを待ってから遷移（残りはバックグラウンドで継続）
+    setIsPreloading(true)
+    const { firstReady } = preloadQuestionImages(questions, talents)
+    await firstReady
 
     startQuiz(questions)
     goToQuiz()
-  }
+    setIsPreloading(false)
+  }, [loading, talents, isPreloading, generation, isDormMode, gameMode, questionPool, difficulty, answerSets, scope, startQuiz, goToQuiz])
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -290,12 +297,12 @@ export function SettingScreen() {
             boxShadow:
               'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
             textShadow: '0 1px 2px rgba(0,0,0,0.2)',
-            opacity: loading ? 0.5 : 1,
+            opacity: loading || isPreloading ? 0.5 : 1,
           }}
-          disabled={loading}
+          disabled={loading || isPreloading}
           onClick={handleStart}
         >
-          {loading ? '読み込み中...' : 'スタート！'}
+          {loading ? '読み込み中...' : isPreloading ? '準備中...' : 'スタート！'}
         </button>
 
         {/* プレイヤー名 */}

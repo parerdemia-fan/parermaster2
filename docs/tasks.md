@@ -13,7 +13,7 @@
 - [ ] SEO対策（robots.txt、sitemap.xml、canonical タグ、meta description、Google Search Console登録）
 - [ ] 縦画面対応
 - [ ] タイトル画面に横画面推奨の画像を表示（前作踏襲、縦画面時のみ）
-- [ ] 問題画像プリロード
+- [x] 問題画像プリロード
 
 ## 2. バグ修正
 
