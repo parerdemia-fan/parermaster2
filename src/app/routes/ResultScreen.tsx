@@ -318,37 +318,75 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                 padding: '2cqmin 3cqmin',
               }}
             >
-              {/* 全問正解時の金色放射状背景（円形にフェードアウト） */}
+              {/* 全問正解時の金色放射状背景 */}
               {isPerfect && (
+                <>
                 <div style={{
                   position: 'absolute',
                   top: '50%',
                   left: '50%',
-                  width: '50cqmin',
-                  height: '50cqmin',
+                  width: '80cqmin',
+                  height: '80cqmin',
                   transform: 'translate(-50%, -50%)',
                   zIndex: 0,
                   borderRadius: '50%',
+                  background: 'radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(255,255,240,0.7) 15%, rgba(255,240,150,0.5) 35%, rgba(255,220,100,0.15) 60%, transparent 80%)',
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '80cqmin',
+                  height: '80cqmin',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 0,
+                  borderRadius: '50%',
+                  WebkitMaskImage: 'radial-gradient(circle, white 0%, white 30%, transparent 70%)',
+                  maskImage: 'radial-gradient(circle, white 0%, white 30%, transparent 70%)',
                   background: `
-                    radial-gradient(circle at center, rgba(255,248,200,0.9) 0%, rgba(255,240,150,0.4) 40%, transparent 70%),
                     conic-gradient(
                       from 0deg at 50% 50%,
-                      rgba(255,215,0,0.25) 0deg, rgba(255,215,0,0) 15deg,
-                      rgba(255,215,0,0) 30deg, rgba(255,215,0,0.25) 45deg,
-                      rgba(255,215,0,0) 60deg, rgba(255,215,0,0) 75deg,
-                      rgba(255,215,0,0.25) 90deg, rgba(255,215,0,0) 105deg,
-                      rgba(255,215,0,0) 120deg, rgba(255,215,0,0.25) 135deg,
-                      rgba(255,215,0,0) 150deg, rgba(255,215,0,0) 165deg,
-                      rgba(255,215,0,0.25) 180deg, rgba(255,215,0,0) 195deg,
-                      rgba(255,215,0,0) 210deg, rgba(255,215,0,0.25) 225deg,
-                      rgba(255,215,0,0) 240deg, rgba(255,215,0,0) 255deg,
-                      rgba(255,215,0,0.25) 270deg, rgba(255,215,0,0) 285deg,
-                      rgba(255,215,0,0) 300deg, rgba(255,215,0,0.25) 315deg,
-                      rgba(255,215,0,0) 330deg, rgba(255,215,0,0) 345deg,
-                      rgba(255,215,0,0.25) 360deg
+                      rgba(255,255,255,0.4) 0deg, rgba(255,255,255,0) 5deg,
+                      rgba(255,255,255,0) 10deg, rgba(255,255,255,0.4) 15deg,
+                      rgba(255,255,255,0) 20deg, rgba(255,255,255,0) 25deg,
+                      rgba(255,255,255,0.4) 30deg, rgba(255,255,255,0) 35deg,
+                      rgba(255,255,255,0) 40deg, rgba(255,255,255,0.4) 45deg,
+                      rgba(255,255,255,0) 50deg, rgba(255,255,255,0) 55deg,
+                      rgba(255,255,255,0.4) 60deg, rgba(255,255,255,0) 65deg,
+                      rgba(255,255,255,0) 70deg, rgba(255,255,255,0.4) 75deg,
+                      rgba(255,255,255,0) 80deg, rgba(255,255,255,0) 85deg,
+                      rgba(255,255,255,0.4) 90deg, rgba(255,255,255,0) 95deg,
+                      rgba(255,255,255,0) 100deg, rgba(255,255,255,0.4) 105deg,
+                      rgba(255,255,255,0) 110deg, rgba(255,255,255,0) 115deg,
+                      rgba(255,255,255,0.4) 120deg, rgba(255,255,255,0) 125deg,
+                      rgba(255,255,255,0) 130deg, rgba(255,255,255,0.4) 135deg,
+                      rgba(255,255,255,0) 140deg, rgba(255,255,255,0) 145deg,
+                      rgba(255,255,255,0.4) 150deg, rgba(255,255,255,0) 155deg,
+                      rgba(255,255,255,0) 160deg, rgba(255,255,255,0.4) 165deg,
+                      rgba(255,255,255,0) 170deg, rgba(255,255,255,0) 175deg,
+                      rgba(255,255,255,0.4) 180deg, rgba(255,255,255,0) 185deg,
+                      rgba(255,255,255,0) 190deg, rgba(255,255,255,0.4) 195deg,
+                      rgba(255,255,255,0) 200deg, rgba(255,255,255,0) 205deg,
+                      rgba(255,255,255,0.4) 210deg, rgba(255,255,255,0) 215deg,
+                      rgba(255,255,255,0) 220deg, rgba(255,255,255,0.4) 225deg,
+                      rgba(255,255,255,0) 230deg, rgba(255,255,255,0) 235deg,
+                      rgba(255,255,255,0.4) 240deg, rgba(255,255,255,0) 245deg,
+                      rgba(255,255,255,0) 250deg, rgba(255,255,255,0.4) 255deg,
+                      rgba(255,255,255,0) 260deg, rgba(255,255,255,0) 265deg,
+                      rgba(255,255,255,0.4) 270deg, rgba(255,255,255,0) 275deg,
+                      rgba(255,255,255,0) 280deg, rgba(255,255,255,0.4) 285deg,
+                      rgba(255,255,255,0) 290deg, rgba(255,255,255,0) 295deg,
+                      rgba(255,255,255,0.4) 300deg, rgba(255,255,255,0) 305deg,
+                      rgba(255,255,255,0) 310deg, rgba(255,255,255,0.4) 315deg,
+                      rgba(255,255,255,0) 320deg, rgba(255,255,255,0) 325deg,
+                      rgba(255,255,255,0.4) 330deg, rgba(255,255,255,0) 335deg,
+                      rgba(255,255,255,0) 340deg, rgba(255,255,255,0.4) 345deg,
+                      rgba(255,255,255,0) 350deg, rgba(255,255,255,0) 355deg,
+                      rgba(255,255,255,0.4) 360deg
                     )
                   `,
                 }} />
+                </>
               )}
 
               {isPerfect && (
@@ -357,7 +395,7 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
                   style={{
                     position: 'relative',
                     zIndex: 1,
-                    fontSize: (showBadge || showTrophy) ? '5cqmin' : '7cqmin',
+                    fontSize: (showBadge || showTrophy) ? '7cqmin' : '9cqmin',
                     color: '#b08101',
                     animation: 'result-perfect-glow 1.5s 1.3s ease-in-out infinite both',
                   }}
