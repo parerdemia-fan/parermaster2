@@ -78,11 +78,7 @@ export function QuizScreen() {
   }
 
   const handleQuit = () => {
-    if (isTimeAttack) {
-      setShowQuitDialog(true)
-    } else {
-      goToTitle()
-    }
+    setShowQuitDialog(true)
   }
 
   return (
@@ -108,23 +104,18 @@ export function QuizScreen() {
           left: '2cqmin',
           bottom: '2cqmin',
           fontSize: '2.5cqmin',
-          padding: '1cqmin 2cqmin',
-          borderRadius: '50%',
+          padding: '1cqmin 2.5cqmin',
+          borderRadius: '5cqmin',
           border: 'none',
           background: 'rgba(255,255,255,0.7)',
           color: '#666',
           zIndex: 20,
-          width: '7cqmin',
-          height: '7cqmin',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
           boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
           backdropFilter: 'blur(6px)',
         }}
         onClick={handleQuit}
       >
-        ←
+        やめる
       </button>
 
       {/* 共通ヘッダー（問題タイプ/問題文/難易度/進捗 + アシスタント） */}
@@ -236,7 +227,7 @@ export function QuizScreen() {
         </div>
       )}
 
-      {/* タイムアタック中断確認ダイアログ */}
+      {/* クイズ中断確認ダイアログ */}
       {showQuitDialog && (
         <div
           className="absolute inset-0 flex items-center justify-center"
@@ -253,7 +244,7 @@ export function QuizScreen() {
             }}
           >
             <span className="font-bold" style={{ fontSize: '4cqmin', color: '#333', marginBottom: '3cqmin' }}>
-              タイムアタックを中断しますか？
+              {isTimeAttack ? 'タイムアタックを中断しますか？' : 'クイズをやめますか？'}
             </span>
             <div className="flex items-center" style={{ gap: '3cqmin' }}>
               <button
@@ -268,7 +259,7 @@ export function QuizScreen() {
                 }}
                 onClick={() => setShowQuitDialog(false)}
               >
-                続ける
+                いいえ
               </button>
               <button
                 className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
@@ -282,7 +273,7 @@ export function QuizScreen() {
                 }}
                 onClick={goToTitle}
               >
-                中断する
+                はい
               </button>
             </div>
           </div>
