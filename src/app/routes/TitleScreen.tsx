@@ -225,11 +225,19 @@ export function TitleScreen() {
 
       {/* タイムアタック確認ダイアログ */}
       {showTADialog && (
-        <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 50 }}
-          onClick={() => setShowTADialog(false)}
-        >
+        <>
+          {/* 画面全体を暗くするオーバーレイ（fixed で 4:3 外もカバー） */}
+          <div
+            className="fixed inset-0"
+            style={{ backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 50 }}
+            onClick={() => setShowTADialog(false)}
+          />
+          {/* ダイアログ本体（absolute で cqmin を維持） */}
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ zIndex: 51 }}
+            onClick={() => setShowTADialog(false)}
+          >
           <div
             className="flex flex-col items-center"
             style={{
@@ -286,6 +294,7 @@ export function TitleScreen() {
             </div>
           </div>
         </div>
+        </>
       )}
     </div>
   )
