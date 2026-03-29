@@ -1,22 +1,13 @@
 import { useRef } from 'react'
-import { useGameStore } from '../../stores/gameStore.ts'
+import { useGameStore, type BadgeAwardResult } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { judgeBadge } from '../../features/achievement/judge.ts'
 import { getBadgeSlotDef, RANK_LABELS, RANK_COLORS } from '../../features/achievement/constants.ts'
-import type { BadgeRank } from '../../features/achievement/types.ts'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 
-interface BadgeAwardResult {
-  awarded: boolean
-  isRankUp: boolean
-  slotLabel: string
-  rank: BadgeRank | null
-  masterAchievement: string | null
-}
-
 export function ResultScreen() {
-  const { questions, correctCount } = useGameStore()
+  const { questions, correctCount, debugBadgeOverride } = useGameStore()
   const { goToTitle, goToSetting, modeCategory, generation, gameMode, scope, difficulty } = useSettingsStore()
   const { awardBadge, getBadgeRank, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
 
@@ -50,36 +41,40 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
   // バッジ判定・付与（初回レンダー時に1回だけ実行）
   const badgeResultRef = useRef<BadgeAwardResult | null>(null)
   if (badgeResultRef.current === null) {
-    const enabledTypes = ['face-guess', 'name-guess', 'name-build']
-    const result = judgeBadge({
-      gameMode,
-      modeCategory,
-      scope,
-      difficulty,
-      correctCount,
-      totalCount: total,
-      enabledTypes,
-    })
+    if (debugBadgeOverride) {
+      badgeResultRef.current = debugBadgeOverride
+    } else {
+      const enabledTypes = ['face-guess', 'name-guess', 'name-build']
+      const result = judgeBadge({
+        gameMode,
+        modeCategory,
+        scope,
+        difficulty,
+        correctCount,
+        totalCount: total,
+        enabledTypes,
+      })
 
-    let awarded = false
-    let isRankUp = false
-    let slotLabel = ''
-    let rank: BadgeRank | null = null
+      let awarded = false
+      let isRankUp = false
+      let slotLabel = ''
+      let rank: BadgeRank | null = null
 
-    if (result.eligible && result.slotId && result.rank) {
-      const prevRank = getBadgeRank(result.slotId)
-      awarded = awardBadge(result.slotId, result.rank)
-      isRankUp = awarded && prevRank !== null
-      slotLabel = getBadgeSlotDef(result.slotId).label
-      rank = result.rank
+      if (result.eligible && result.slotId && result.rank) {
+        const prevRank = getBadgeRank(result.slotId)
+        awarded = awardBadge(result.slotId, result.rank)
+        isRankUp = awarded && prevRank !== null
+        slotLabel = getBadgeSlotDef(result.slotId).label
+        rank = result.rank
+      }
+
+      let masterAchievement: string | null = null
+      if (isParerMaster()) masterAchievement = 'パレ学マスター達成！'
+      else if (isGen2Master()) masterAchievement = '2期生マスター達成！'
+      else if (isGen1Master()) masterAchievement = '1期生マスター達成！'
+
+      badgeResultRef.current = { awarded, isRankUp, slotLabel, rank, masterAchievement }
     }
-
-    let masterAchievement: string | null = null
-    if (isParerMaster()) masterAchievement = 'パレ学マスター達成！'
-    else if (isGen2Master()) masterAchievement = '2期生マスター達成！'
-    else if (isGen1Master()) masterAchievement = '1期生マスター達成！'
-
-    badgeResultRef.current = { awarded, isRankUp, slotLabel, rank, masterAchievement }
   }
   const badgeResult = badgeResultRef.current
 

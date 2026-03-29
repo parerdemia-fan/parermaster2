@@ -13,6 +13,8 @@ import { generateBlurQuestions } from '../../features/question-types/blur/genera
 import { generateSpotlightQuestions } from '../../features/question-types/spotlight/generator.ts'
 import { generateWordSearchQuestions } from '../../features/question-types/word-search/generator.ts'
 import { shuffleArray } from '../../shared/utils/array.ts'
+import type { BaseQuestion } from '../../features/quiz/types.ts'
+import type { BadgeAwardResult } from '../../stores/gameStore.ts'
 
 type FaceNameTypeId = 'face-guess' | 'name-guess' | 'name-build' | 'blur' | 'spotlight' | 'word-search'
 
@@ -254,6 +256,9 @@ export function DebugScreen() {
             ))}
           </div>
 
+          {/* 結果画面プレビュー */}
+          <ResultPreview />
+
           {/* バッジ操作 */}
           <BadgeEditor />
 
@@ -261,6 +266,71 @@ export function DebugScreen() {
           <TimeAttackEditor />
         </div>
       )}
+    </div>
+  )
+}
+
+const NO_BADGE: BadgeAwardResult = { awarded: false, isRankUp: false, slotLabel: '', rank: null, masterAchievement: null }
+
+const RESULT_PREVIEWS: { label: string; correctCount: number; total: number; badgeOverride: BadgeAwardResult }[] = [
+  { label: '50%', correctCount: 5, total: 10, badgeOverride: NO_BADGE },
+  { label: '100% (獲得済)', correctCount: 10, total: 10, badgeOverride: NO_BADGE },
+  { label: '100% (獲得)', correctCount: 10, total: 10, badgeOverride: { awarded: true, isRankUp: false, slotLabel: '1期生・顔名前当て', rank: 'bronze', masterAchievement: null } },
+]
+
+function ResultPreview() {
+  const goToResult = useSettingsStore((s) => s.goToResult)
+
+  const handleClick = (preview: typeof RESULT_PREVIEWS[number]) => {
+    useSettingsStore.setState({
+      generation: 'gen1',
+      modeCategory: 'gen1',
+      gameMode: 'face-name',
+      scope: 'all',
+      difficulty: 1,
+    })
+
+    const dummyQuestions: BaseQuestion[] = Array.from({ length: preview.total }, (_, i) => ({
+      typeId: 'face-guess',
+      difficulty: 1,
+      targetTalent: { id: `dummy-${i}` },
+    } as BaseQuestion))
+
+    useGameStore.setState({
+      questions: dummyQuestions,
+      correctCount: preview.correctCount,
+      debugBadgeOverride: preview.badgeOverride,
+    })
+
+    goToResult()
+  }
+
+  return (
+    <div style={{ marginTop: '2cqmin', width: '100%', maxWidth: '80cqmin' }}>
+      <div className="flex items-center" style={{ gap: '1cqmin', marginBottom: '1cqmin' }}>
+        <span className="font-bold" style={{ fontSize: '3cqmin', color: '#0f0', textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+          Result Screen
+        </span>
+      </div>
+      <div className="flex" style={{ gap: '1cqmin' }}>
+        {RESULT_PREVIEWS.map((preview) => (
+          <button
+            key={preview.label}
+            className="cursor-pointer font-bold transition hover:brightness-120 active:scale-95"
+            style={{
+              fontSize: '2cqmin',
+              padding: '0.8cqmin 1.5cqmin',
+              borderRadius: '0.8cqmin',
+              border: '0.2cqmin solid rgba(255,255,255,0.3)',
+              background: 'rgba(255,255,255,0.1)',
+              color: 'white',
+            }}
+            onClick={() => handleClick(preview)}
+          >
+            {preview.label}
+          </button>
+        ))}
+      </div>
     </div>
   )
 }

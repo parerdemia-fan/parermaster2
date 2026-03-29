@@ -1,5 +1,15 @@
 import { create } from 'zustand'
 import type { AnswerRecord, BaseQuestion } from '../features/quiz/types.ts'
+import type { BadgeRank } from '../features/achievement/types.ts'
+
+/** 結果画面のバッジ表示情報（デバッグ用オーバーライドにも使用） */
+export interface BadgeAwardResult {
+  awarded: boolean
+  isRankUp: boolean
+  slotLabel: string
+  rank: BadgeRank | null
+  masterAchievement: string | null
+}
 
 export type QuizState = 'answering' | 'answered'
 
@@ -16,6 +26,8 @@ interface GameState {
   timerStartedAt: number | null
   accumulatedTime: number
   penaltyCount: number
+  /** デバッグ用: 結果画面のバッジ表示をオーバーライド（nullなら通常判定） */
+  debugBadgeOverride: BadgeAwardResult | null
 }
 
 interface GameActions {
@@ -42,6 +54,7 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   timerStartedAt: null,
   accumulatedTime: 0,
   penaltyCount: 0,
+  debugBadgeOverride: null,
 
   startQuiz: (questions) =>
     set({
@@ -53,6 +66,7 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
       timerStartedAt: null,
       accumulatedTime: 0,
       penaltyCount: 0,
+      debugBadgeOverride: null,
     }),
 
   recordAnswer: (isCorrect, selectedIndex) => {
