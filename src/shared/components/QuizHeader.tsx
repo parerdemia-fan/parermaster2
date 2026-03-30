@@ -75,7 +75,7 @@ function pickComment(
 
 /** ★を0.5刻みで描画（半星対応） */
 function StarRating({ stars }: { stars: number }) {
-  const maxStars = Math.max(5, Math.ceil(stars))
+  const maxStars = 7
   const elements: React.ReactNode[] = []
   for (let i = 1; i <= maxStars; i++) {
     if (stars >= i) {
