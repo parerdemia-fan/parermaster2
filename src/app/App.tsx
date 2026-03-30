@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { GameContainer } from '../shared/components/GameContainer.tsx'
 import { useSettingsStore } from '../stores/settingsStore.ts'
 import type { ModeCategory, Scope } from '../stores/settingsStore.ts'
+import { RoomArea } from '../features/room/RoomArea.tsx'
 import { TitleScreen } from './routes/TitleScreen.tsx'
 import { SettingScreen } from './routes/SettingScreen.tsx'
 import { QuizScreen } from './routes/QuizScreen.tsx'
@@ -53,17 +54,23 @@ export function App() {
   }, [screen, modeCategory, scope])
 
   return (
-    <GameContainer>
-      {screen === 'title' && <TitleScreen />}
-      {screen === 'setting' && <SettingScreen />}
-      {screen === 'quiz' && <QuizScreen />}
-      {screen === 'result' && <ResultScreen />}
-      {screen === 'diary' && <DiaryScreen />}
-      {screen === 'talents' && <TalentListScreen />}
-      {screen === 'achievements' && <AchievementScreen />}
-      {screen === 'about' && <AboutScreen />}
-      {screen === 'time-attack-result' && <TimeAttackResultScreen />}
-      {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
-    </GameContainer>
+    <div className="w-full h-full flex flex-col game-wrapper">
+      <GameContainer>
+        {screen === 'title' && <TitleScreen />}
+        {screen === 'setting' && <SettingScreen />}
+        {screen === 'quiz' && <QuizScreen />}
+        {screen === 'result' && <ResultScreen />}
+        {screen === 'diary' && <DiaryScreen />}
+        {screen === 'talents' && <TalentListScreen />}
+        {screen === 'achievements' && <AchievementScreen />}
+        {screen === 'about' && <AboutScreen />}
+        {screen === 'time-attack-result' && <TimeAttackResultScreen />}
+        {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
+      </GameContainer>
+      {/* 談話室: 2:3 以下のときのみ表示 */}
+      <div className="room-visible">
+        <RoomArea showSelector={screen === 'title'} />
+      </div>
+    </div>
   )
 }

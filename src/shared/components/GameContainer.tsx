@@ -14,7 +14,7 @@ interface GameContainerProps {
  */
 export function GameContainer({ children }: GameContainerProps) {
   return (
-    <div className="w-full flex justify-center items-start shrink-0">
+    <div className="w-full flex justify-center shrink-0">
       <div
         className="flex flex-col items-center justify-center"
         style={{

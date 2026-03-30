@@ -32,10 +32,25 @@ body::before {
   scale: calc(1 + var(--bg-blur-scale, 0));
 }
 
-/* 縦長画面用の背景色 (アスペクト比が 1:1 より縦長の場合) */
-@media (max-aspect-ratio: 1) {
+/* 縦長画面用の背景色 (4:3 より縦長の場合) */
+@media (max-aspect-ratio: 4/3) {
   body {
     background-color: #f0e0e8;
+  }
+}
+
+/* 談話室表示: 2:3 以下のときのみ表示 */
+@media (min-aspect-ratio: 2/3) {
+  .room-visible { display: none; }
+}
+
+/* ゲームエリア配置: 4:3〜2:3 の間は縦中央、2:3 以下は上部 */
+.game-wrapper {
+  align-items: start;
+}
+@media (max-aspect-ratio: 4/3) and (min-aspect-ratio: 2/3) {
+  .game-wrapper {
+    align-items: center;
   }
 }
 
