@@ -73,19 +73,27 @@ function pickComment(
   return picked.replace('{player}', playerName)
 }
 
-/** ★を0.5刻みで描画（半星対応） */
+/** 位置(1〜7)に応じた星の色（黄→橙→ホットピンク） */
+function starColor(index: number): string {
+  const t = (index - 1) / 6 // 0〜1
+  const r = Math.round(251 + (255 - 251) * t)
+  const g = Math.round(191 + (100 - 191) * t)
+  const b = Math.round(36 + (180 - 36) * t)
+  return `rgb(${r},${g},${b})`
+}
+
+/** ★を0.5刻みで描画（半星対応、右に行くほど赤い） */
 function StarRating({ stars }: { stars: number }) {
   const maxStars = 7
   const elements: React.ReactNode[] = []
   for (let i = 1; i <= maxStars; i++) {
+    const color = starColor(i)
     if (stars >= i) {
-      // 塗りつぶし
-      elements.push(<span key={i} style={{ color: '#fbbf24' }}>★</span>)
+      elements.push(<span key={i} style={{ color,  }}>★</span>)
     } else if (stars >= i - 0.5) {
-      // 半星: 左半分が塗り、右半分が空
       elements.push(
         <span key={i} style={{ position: 'relative', display: 'inline-block' }}>
-          <span style={{ color: 'rgba(255,255,255,0.4)' }}>★</span>
+          <span style={{ color: 'rgba(255,255,255,0.4)',  }}>★</span>
           <span
             style={{
               position: 'absolute',
@@ -93,7 +101,7 @@ function StarRating({ stars }: { stars: number }) {
               top: 0,
               overflow: 'hidden',
               width: '50%',
-              color: '#fbbf24',
+              color,
             }}
           >
             ★
@@ -102,7 +110,7 @@ function StarRating({ stars }: { stars: number }) {
       )
     } else {
       // 空
-      elements.push(<span key={i} style={{ color: 'rgba(255,255,255,0.4)' }}>★</span>)
+      elements.push(<span key={i} style={{ color: 'rgba(255,255,255,0.4)',  }}>★</span>)
     }
   }
   return <>{elements}</>
@@ -263,7 +271,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
           >
             {meta.emoji} {meta.label}
           </div>
-          <span style={{ fontSize: '3cqmin', letterSpacing: '0.05em', marginLeft: '2.5cqmin', marginTop: '0.3cqmin' }}>
+          <span style={{ fontSize: '3.5cqmin', letterSpacing: '0.06em', marginLeft: '2.5cqmin', marginTop: '0.3cqmin' }}>
             <StarRating stars={displayStars} />
           </span>
         </div>
