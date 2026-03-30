@@ -176,7 +176,7 @@ function FaceGuessLayoutInner({
                 cursor: isAnswered ? 'default' : 'pointer',
                 opacity,
                 boxShadow,
-                overflow: 'hidden',
+                overflow: 'visible',
                 position: 'relative',
               }}
               disabled={isAnswered}
@@ -187,7 +187,8 @@ function FaceGuessLayoutInner({
                 alt={isAnswered ? question.answerNames[i] : '選択肢'}
                 style={{
                   width: '100%',
-                  height: '100%',
+                  height: 'calc(100% + 1.5cqmin)',
+                  margin: '-1.5cqmin 0 0',
                   objectFit: 'cover',
                   display: 'block',
                   filter: question.isSilhouette && !isAnswered
