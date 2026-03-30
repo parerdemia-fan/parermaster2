@@ -3,6 +3,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { getVersion } from '../../shared/utils/version.ts'
 import { GAME_URL, PARERDEMIA_OFFICIAL_URL, QUESTION_FORM_URL } from '../../shared/constants/urls.ts'
+import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 
 export function AboutScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
@@ -26,8 +27,7 @@ export function AboutScreen() {
 👇今すぐプレイ
 ${GAME_URL}
 #パレ学マスター #パレデミア学園`
-    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    doShareOnX(text)
   }
 
   const handleReset = () => {

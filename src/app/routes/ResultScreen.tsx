@@ -7,6 +7,7 @@ import { getBadgeSlotDef, RANK_LABELS, RANK_COLORS } from '../../features/achiev
 import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.ts'
 import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
+import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 
 function getResultMessage(rate: number, playerName: string): [string, string] {
   if (rate === 100) return [`🎉 パーフェクト！ 🎉`, `${playerName}さん、完璧です！`]
@@ -74,8 +75,7 @@ ${messageLine1} ${messageLine2}${badgeText}
 👇挑戦はこちら
 ${GAME_URL}
 #パレ学マスター #パレデミア学園`
-    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`
-    window.open(url, '_blank', 'noopener,noreferrer')
+    doShareOnX(text)
   }
 
   const accentGradient = isDormMode
@@ -586,7 +586,7 @@ ${GAME_URL}
               flexShrink: 0,
               position: 'relative',
               zIndex: 2,
-              fontSize: '2.8cqmin',
+              fontSize: '3.2cqmin',
               color: '#d6336c',
               textAlign: 'center',
               padding: '0 2cqmin 1.5cqmin',

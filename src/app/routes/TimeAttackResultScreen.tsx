@@ -3,6 +3,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { formatTime, getTimeMessage } from '../../features/time-attack/constants.ts'
 import { GAME_URL } from '../../shared/constants/urls.ts'
+import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 
 const TA_BEST_KEY = 'parermaster2_ta_best'
 
@@ -38,8 +39,7 @@ export function TimeAttackResultScreen() {
   const handleShare = () => {
     const message = getTimeMessage(clearTime)
     const text = `${playerName}: ${message}\n\nパレ学マスター 2nd Season タイムアタック\nクリアタイム: ${formatTime(clearTime)}\n\n👇挑戦はこちら\n${GAME_URL}\n#パレ学マスター #パレデミア学園`
-    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`
-    window.open(url, '_blank')
+    doShareOnX(text)
   }
 
   return (
