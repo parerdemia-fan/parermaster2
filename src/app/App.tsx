@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { GameContainer } from '../shared/components/GameContainer.tsx'
 import { useSettingsStore } from '../stores/settingsStore.ts'
 import type { ModeCategory, Scope } from '../stores/settingsStore.ts'
+import { useScreenMode } from '../shared/hooks/useScreenMode.ts'
 import { RoomArea } from '../features/room/RoomArea.tsx'
 import { TitleScreen } from './routes/TitleScreen.tsx'
 import { SettingScreen } from './routes/SettingScreen.tsx'
@@ -53,8 +54,15 @@ export function App() {
     s.setProperty('--bg-blur-scale', blur > 0 ? '0.03' : '0')
   }, [screen, modeCategory, scope])
 
+  const screenMode = useScreenMode()
+  const showRoom = screenMode === 'portrait-room'
+  const centerVertically = screenMode === 'portrait-center'
+
   return (
-    <div className="w-full h-full flex flex-col game-wrapper">
+    <div
+      className="w-full h-full flex flex-col"
+      style={{ alignItems: centerVertically ? 'center' : 'stretch', justifyContent: centerVertically ? 'center' : 'flex-start' }}
+    >
       <GameContainer>
         {screen === 'title' && <TitleScreen />}
         {screen === 'setting' && <SettingScreen />}
@@ -67,10 +75,7 @@ export function App() {
         {screen === 'time-attack-result' && <TimeAttackResultScreen />}
         {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
       </GameContainer>
-      {/* 談話室: 2:3 以下のときのみ表示 */}
-      <div className="room-visible">
-        <RoomArea showSelector={screen === 'title'} />
-      </div>
+      {showRoom && <RoomArea showSelector={screen === 'title'} />}
     </div>
   )
 }

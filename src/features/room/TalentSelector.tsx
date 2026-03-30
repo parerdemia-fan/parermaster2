@@ -46,18 +46,15 @@ export function TalentSelector({ talents, position, currentTalentId, usedTalentI
     <div
       ref={menuRef}
       style={{
-        position: 'absolute',
-        bottom: '100%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        marginBottom: '4px',
-        background: 'rgba(30,30,30,0.95)',
-        border: '1px solid rgba(100,100,100,0.5)',
-        borderRadius: '8px',
-        boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
-        maxHeight: 'calc(100dvh - 75dvw - 40px)',
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        background: 'rgba(30,30,30,0.97)',
+        borderRadius: '12px 12px 0 0',
+        boxShadow: '0 -4px 16px rgba(0,0,0,0.4)',
+        maxHeight: '60dvh',
         overflowY: 'auto',
-        width: '200px',
         zIndex: 100,
         scrollbarWidth: 'none' as const,
       }}

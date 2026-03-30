@@ -82,18 +82,16 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         )
       })}
 
-      {/* タレント選択ドロップダウン（1つだけ表示） */}
+      {/* タレント選択ドロップダウン（1つだけ表示、fixed で画面下部に展開） */}
       {showSelector && activeSelector && (
-        <div style={{ position: 'absolute', bottom: '8px', left: POSITION_PERCENT[activeSelector], transform: 'translateX(-50%)', zIndex: 100 }}>
-          <TalentSelector
-            talents={talents}
-            position={activeSelector}
-            currentTalentId={slots[activeSelector]}
-            usedTalentIds={usedTalentIds}
-            onSelect={(id) => setSlot(activeSelector, id)}
-            onClose={closeSelector}
-          />
-        </div>
+        <TalentSelector
+          talents={talents}
+          position={activeSelector}
+          currentTalentId={slots[activeSelector]}
+          usedTalentIds={usedTalentIds}
+          onSelect={(id) => setSlot(activeSelector, id)}
+          onClose={closeSelector}
+        />
       )}
 
       {/* 寮選択ボタン（タイトル画面のみ） */}
@@ -138,8 +136,3 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
   )
 }
 
-const POSITION_PERCENT: Record<SlotPosition, string> = {
-  left: '25%',
-  center: '50%',
-  right: '75%',
-}

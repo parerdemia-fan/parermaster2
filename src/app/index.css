@@ -39,20 +39,6 @@ body::before {
   }
 }
 
-/* 談話室表示: 2:3 以下のときのみ表示 */
-@media (min-aspect-ratio: 2/3) {
-  .room-visible { display: none; }
-}
-
-/* ゲームエリア配置: 4:3〜2:3 の間は縦中央、2:3 以下は上部 */
-.game-wrapper {
-  align-items: start;
-}
-@media (max-aspect-ratio: 4/3) and (min-aspect-ratio: 2/3) {
-  .game-wrapper {
-    align-items: center;
-  }
-}
 
 /* 汎用アニメーション */
 @keyframes fadeIn {

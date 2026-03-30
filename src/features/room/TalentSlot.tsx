@@ -9,10 +9,11 @@ interface TalentSlotProps {
   onClick: () => void
 }
 
-const POSITION_LEFT: Record<string, string> = {
-  left: '25%',
-  center: '50%',
-  right: '75%',
+/** クリック領域: 画面幅1/3ずつ均等 */
+const SLOT_LEFT: Record<string, string> = {
+  left: '0%',
+  center: '33.33%',
+  right: '66.66%',
 }
 
 const Z_INDEX: Record<string, number> = {
@@ -24,52 +25,63 @@ const Z_INDEX: Record<string, number> = {
 export function TalentSlot({ talentId, imagePath, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
 
-  // GSAPゆらゆらアニメーション（前作踏襲）
   useEffect(() => {
     const el = imgRef.current
-    if (!el || !talentId) return
+    if (!el) return
 
     const animations: gsap.core.Tween[] = []
-    animations.push(gsap.to(el, { y: '1%', duration: 'random(3, 5)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
-    animations.push(gsap.to(el, { x: '2%', duration: 'random(4, 6)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
-    animations.push(gsap.to(el, { rotation: 'random(-5, 5)', duration: 'random(5, 7)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
-    animations.push(gsap.to(el, { scale: 'random(1, 1.07)', duration: 'random(4, 5)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
+    animations.push(gsap.to(el, { y: 8, duration: 'random(3, 5)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
+    animations.push(gsap.to(el, { x: 4, duration: 'random(4, 6)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
+    animations.push(gsap.to(el, { rotation: 'random(-3, 3)', duration: 'random(5, 7)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
+    animations.push(gsap.to(el, { scale: 1.05, duration: 'random(4, 5)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
 
     return () => { animations.forEach((a) => a.kill()) }
-  }, [talentId])
+  }, [talentId, imagePath])
+
+  const hasTalent = talentId && imagePath
 
   return (
     <div
       style={{
         position: 'absolute',
-        left: POSITION_LEFT[position],
+        left: SLOT_LEFT[position],
         top: 0,
         bottom: 0,
-        transform: 'translateX(-50%)',
+        width: '33.33%',
         zIndex: Z_INDEX[position],
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+        overflow: 'visible',
+        cursor: showSelector ? 'pointer' : 'default',
       }}
+      onClick={showSelector ? onClick : undefined}
     >
-      {talentId && imagePath ? (
+      {hasTalent ? (
         <div
           style={{
             position: 'absolute',
-            inset: 0,
-            overflow: 'hidden',
+            left: 0,
+            right: 0,
+            // 画像高さ150dvwの25%=37.5dvwを下にはみ出す。
+            // ただし上にはみ出さないよう、top >= 0 を保証。
+            // 談話室高さ = 100dvh - 75dvw、画像top = 談話室高さ - 画像高さ + 37.5dvw
+            //   = (100dvh - 75dvw) - 150dvw + 37.5dvw = 100dvh - 187.5dvw
+            // これが負（上にはみ出す）場合は top: 0 にし、下にさらにはみ出させる。
+            top: `max(0px, calc(100dvh - 187.5dvw))`,
             display: 'flex',
             justifyContent: 'center',
-            cursor: showSelector ? 'pointer' : 'default',
+            overflow: 'visible',
+            pointerEvents: 'none',
           }}
-          onClick={showSelector ? onClick : undefined}
         >
           <img
             ref={imgRef}
             src={imagePath}
             alt=""
-            style={{ height: '200%', width: 'auto', maxWidth: 'none' }}
+            style={{
+              height: '150dvw',
+              width: 'auto',
+              maxWidth: 'none',
+              flexShrink: 0,
+            }}
             draggable={false}
           />
         </div>
@@ -79,6 +91,8 @@ export function TalentSlot({ talentId, imagePath, position, showSelector, onClic
           style={{
             position: 'absolute',
             top: '20%',
+            left: '50%',
+            transform: 'translateX(-50%)',
             width: '12dvw',
             height: '12dvw',
             maxWidth: '60px',
