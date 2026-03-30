@@ -11,7 +11,7 @@
 - [x] 案内画面のセクションラベル・ボタンの調整
 - [ ] GitHub Pages対応
 - [x] SEO対策（robots.txt、sitemap.xml、canonical タグ、meta description、Google Search Console登録）
-- [ ] OGP画像（ogp.png）をOGP画面のスクショから生成して public/ に配置
+- [x] OGP画像（ogp.png）をOGP画面のスクショから生成して public/ に配置
 - [ ] Google Search Console にサイト登録＋インデックスリクエスト（デプロイ後）
 - [x] 縦画面対応
 - [x] タイトル画面に横画面推奨の画像を表示（前作踏襲、縦画面時のみ）

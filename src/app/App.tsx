@@ -55,8 +55,6 @@ export function App() {
     s.setProperty('--bg-blur-scale', blur > 0 ? '0.03' : '0')
   }, [screen, modeCategory, scope])
 
-  // OGP画面はGameContainer外で独立表示
-  if (import.meta.env.DEV && screen === 'ogp') return <OgpScreen />
 
   const screenMode = useScreenMode()
   const showRoom = screenMode === 'portrait-room'
@@ -78,6 +76,7 @@ export function App() {
         {screen === 'about' && <AboutScreen />}
         {screen === 'time-attack-result' && <TimeAttackResultScreen />}
         {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
+        {import.meta.env.DEV && screen === 'ogp' && <OgpScreen />}
       </GameContainer>
       {showRoom && <RoomArea showSelector={screen === 'title'} />}
     </div>
