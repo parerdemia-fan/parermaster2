@@ -82,6 +82,21 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         )
       })}
 
+      {/* テーブル（立ち絵の手前） */}
+      <img
+        src={`${BASE}data/images/ui/room_table.png`}
+        alt=""
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          zIndex: 5,
+          pointerEvents: 'none',
+        }}
+        draggable={false}
+      />
+
       {/* タレント選択ドロップダウン（1つだけ表示、fixed で画面下部に展開） */}
       {showSelector && activeSelector && (
         <TalentSelector
