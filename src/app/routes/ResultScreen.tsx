@@ -9,11 +9,11 @@ import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 
 function getResultMessage(rate: number, playerName: string): [string, string] {
-  if (rate === 100) return [`🎉🎉🎉 パーフェクト達成！ 🎉🎉🎉`, `${playerName}さん、完璧です！`]
-  if (rate >= 80) return [`✨ すばらしい！`, `${playerName}さん、もう少しでパーフェクト！`]
-  if (rate >= 60) return [`👏 いい調子！`, `${playerName}さん、なかなかの実力！`]
-  if (rate >= 40) return [`💪 がんばりました！`, `${playerName}さん、まだまだ伸びしろあり！`]
-  return [`📖 何度でもチャレンジ！`, `${playerName}さん、次はもっといけるよ！`]
+  if (rate === 100) return [`🎉 パーフェクト！ 🎉`, `${playerName}さん、完璧です！`]
+  if (rate >= 80) return [`✨ すばらしい！`, `${playerName}さん、あと少し！`]
+  if (rate >= 60) return [`👏 いい調子！`, `${playerName}さん、いい実力！`]
+  if (rate >= 40) return [`💪 がんばりました！`, `${playerName}さん、伸びしろあり！`]
+  return [`📖 チャレンジ！`, `${playerName}さん、次こそは！`]
 }
 
 function getTier(isPerfect: boolean, badgeResult: BadgeAwardResult): number {
@@ -586,11 +586,11 @@ ${GAME_URL}
               flexShrink: 0,
               position: 'relative',
               zIndex: 2,
-              fontSize: '3.2cqmin',
+              fontSize: '2.8cqmin',
               color: '#d6336c',
               textAlign: 'center',
-              padding: '0 3cqmin 1.5cqmin',
-              width: '55cqmin',
+              padding: '0 2cqmin 1.5cqmin',
+              width: '60cqmin',
               maxWidth: '100%',
               alignSelf: 'center',
               ...((showBadge || showTrophy) ? {
