@@ -10,7 +10,7 @@ function makeTalent(id: string, name: string, gen: number, dorm: string): Talent
     familyKana: '', givenKana: '', nickname: '', firstPerson: '', intro: '', dream: '',
     birthday: '', height: 160, bloodType: '', hairColor: 'black', hairStyle: 'ロング',
     eyeColorLeft: '', eyeColorRight: '', mbti: '', fanName: '', fanMark: '',
-    hashtags: [], hobbies: [], skills: [], favorites: [], links: [],
+    hashtags: [], hobbies: [], skills: [], favorites: [], links: [], tone: '',
   }
 }
 

@@ -30,6 +30,7 @@ export interface Talent {
   eyeColorLeft: string
   eyeColorRight: string
   mbti: string
+  tone: string
   fanName: string
   fanMark: string
   hashtags: TalentHashtag[]

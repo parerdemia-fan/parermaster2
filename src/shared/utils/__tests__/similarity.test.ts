@@ -32,6 +32,7 @@ function makeTalent(id: string, hairColor: string, hairStyle: string): Talent {
     skills: [],
     favorites: [],
     links: [],
+    tone: '',
   }
 }
 

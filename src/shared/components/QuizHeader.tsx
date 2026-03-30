@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../hooks/useTalents.ts'
+import { useQuotes, type QuotesData } from '../hooks/useQuotes.ts'
 import { getTalentImagePath } from '../utils/talent.ts'
 import { getDisplayDifficulty } from '../utils/difficulty.ts'
 import { formatTime } from '../../features/time-attack/constants.ts'
@@ -16,8 +17,61 @@ const TYPE_META: Record<string, { emoji: string; label: string; questionText: st
   'word-search': { emoji: '🔍', label: '名前はどこ？', questionText: '名前を探そう！', commentBefore: 'どこにあるかな〜？' },
 }
 
+/** 問題タイプIDとセリフシートの場面名の対応 */
+const TYPE_ID_TO_SCENE: Record<string, string> = {
+  'face-guess': '顔当て',
+  'name-guess': '名前当て',
+  'name-build': '名前を作ろう',
+  'text-quiz': 'テキストクイズ',
+  'blur': 'ぼかし',
+  'spotlight': 'スポットライト',
+  'word-search': '名前を探せ',
+}
+
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
+
+/** セリフ候補の最大文字数（{player}置換後） */
+const MAX_COMMENT_LENGTH = 20
+
+/** quotesデータからセリフをランダム選択する */
+function pickComment(
+  quotes: QuotesData | null,
+  tone: string,
+  talentName: string,
+  scene: string,
+  playerName: string,
+  fallback: string,
+): string {
+  if (!quotes) return fallback
+
+  const groupTone = tone || '丁寧語'
+  const groupLines = quotes.groups[groupTone]?.[scene] ?? []
+  const talentLines = quotes.talents[talentName]?.[scene] ?? []
+  let candidates = [...groupLines, ...talentLines]
+
+  if (candidates.length === 0) return fallback
+
+  // プレイヤー名未設定時は {player} 入りセリフを除外
+  if (!playerName) {
+    candidates = candidates.filter((s) => !s.includes('{player}'))
+  }
+
+  if (candidates.length === 0) return fallback
+
+  // ランダム選択 → {player} 置換 → 文字数チェック
+  // 最大3回試行し、超えたら {player} なしのセリフにフォールバック
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const picked = candidates[Math.floor(Math.random() * candidates.length)]
+    const resolved = picked.replace('{player}', playerName)
+    if (resolved.length <= MAX_COMMENT_LENGTH) return resolved
+    // 長すぎた場合、{player} なしの候補から再選択
+    const safe = candidates.filter((s) => !s.includes('{player}'))
+    if (safe.length > 0) return safe[Math.floor(Math.random() * safe.length)]
+  }
+
+  return fallback
+}
 
 /** ★を0.5刻みで描画（半星対応） */
 function StarRating({ stars }: { stars: number }) {
@@ -115,7 +169,9 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const questions = useGameStore((s) => s.questions)
   const difficulty = useSettingsStore((s) => s.difficulty)
   const isTimeAttack = useSettingsStore((s) => s.isTimeAttack)
+  const playerName = useSettingsStore((s) => s.playerName)
   const { talents } = useTalents()
+  const quotes = useQuotes()
   const current = questions[currentIndex]
 
   // 1問ごとにランダムな1期生をアシスタントとして選出（選択肢のタレントを除外）
@@ -131,7 +187,12 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
     const candidates = excludeIds.size > 0 ? gen1.filter((t) => !excludeIds.has(t.id)) : gen1
     const pool = candidates.length > 0 ? candidates : gen1
     const picked = pool[Math.floor(Math.random() * pool.length)]
-    return { name: picked.nickname || picked.name, image: getTalentImagePath(picked) }
+    return {
+      displayName: picked.nickname || picked.name,
+      talentName: picked.name,
+      tone: picked.tone || '丁寧語',
+      image: getTalentImagePath(picked),
+    }
   }, [talents, currentIndex, questions]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!current) return null
@@ -140,8 +201,14 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
   const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
   const displayStars = current.displayStars ?? getDisplayDifficulty(current.typeId, difficulty)
-  const commentText = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
-  const assistantName = assistant?.name ?? ''
+
+  // セリフ選択: quotesデータがあれば口調グループ+タレント固有から、なければフォールバック
+  const scene = !isAnswered
+    ? TYPE_ID_TO_SCENE[current.typeId] ?? ''
+    : isCorrect ? '正解時' : '不正解時'
+  const fallback = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
+  const commentText = pickComment(quotes, assistant?.tone ?? '', assistant?.talentName ?? '', scene, playerName, fallback)
+  const assistantName = assistant?.displayName ?? ''
   const assistantImage = assistant?.image ?? ''
 
   return (
