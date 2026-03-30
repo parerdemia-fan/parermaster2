@@ -218,7 +218,7 @@ ${GAME_URL}
             zIndex: 1,
             width: showAward ? '85%' : '55%',
             maxWidth: showAward ? '100cqmin' : '65cqmin',
-            height: (showBadge || showTrophy) ? '55cqmin' : '50cqmin',
+            height: '55cqmin',
             transition: 'width 0.6s ease-out, max-width 0.6s ease-out, height 0.6s ease-out',
             background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(240,255,248,0.88) 100%)',
             backdropFilter: 'blur(8px)',
