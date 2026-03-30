@@ -218,7 +218,7 @@ ${GAME_URL}
             zIndex: 1,
             width: showAward ? '85%' : '55%',
             maxWidth: showAward ? '100cqmin' : '65cqmin',
-            height: '42cqmin',
+            height: '50cqmin',
             transition: 'width 0.6s ease-out, max-width 0.6s ease-out',
             background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(240,255,248,0.88) 100%)',
             backdropFilter: 'blur(8px)',
@@ -226,7 +226,9 @@ ${GAME_URL}
             borderRadius: '3cqmin',
             border: '0.4cqmin solid rgba(120,200,170,0.5)',
             boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.12), inset 0 0 0 0.4cqmin rgba(255,255,255,0.8), 0 0 0 0.8cqmin rgba(120,200,170,0.25)',
-            padding: '6cqmin 3cqmin 3cqmin',
+            padding: '6cqmin 3cqmin 2cqmin',
+            display: 'flex',
+            flexDirection: 'column',
             animation: 'result-score-in 0.5s 0.3s both',
           }}
         >
@@ -324,7 +326,7 @@ ${GAME_URL}
           </div>
 
           {/* パネル内コンテンツ */}
-          <div className="flex items-center justify-center" style={{ height: '100%', gap: showAward ? '3cqmin' : '0' , transition: 'gap 0.8s ease-out' }}>
+          <div className="flex items-center justify-center" style={{ flex: 1, minHeight: 0, gap: showAward ? '3cqmin' : '0' , transition: 'gap 0.8s ease-out' }}>
             {/* 左側: スコアエリア */}
             <div
               className="flex flex-col items-center"
