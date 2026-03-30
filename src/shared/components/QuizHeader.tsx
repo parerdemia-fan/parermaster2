@@ -243,7 +243,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
               <div
                 style={{
                   position: 'relative',
-                  padding: '2.5cqmin 1.5cqmin 1.5cqmin 2cqmin',
+                  padding: '2.5cqmin 1cqmin 1.5cqmin 1.2cqmin',
                   fontSize: '1.9cqmin',
                   color: '#444',
                   lineHeight: 1.5,

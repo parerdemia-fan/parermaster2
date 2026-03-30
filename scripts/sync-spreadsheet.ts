@@ -34,6 +34,7 @@ interface SyncConfig {
     awards: string
     questions: string
     answerSets: string
+    quotes: string
   }
 }
 
@@ -216,6 +217,7 @@ function transformTalent(row: RawRow, generation: number) {
     hobbies: toArray(row['hobbies']),
     skills: toArray(row['skills']),
     favorites: toArray(row['favorites']),
+    tone: row['tone'] || '',
     links,
   }
 }
@@ -273,6 +275,52 @@ function transformQuestion(
     comment,
     sourceUrl: row['情報源URL'] || '',
   }
+}
+
+// =============================================================================
+// 変換: セリフ（アシスタントコメント）
+// =============================================================================
+
+/** 基本口調グループ名の一覧 */
+const TONE_GROUPS = new Set([
+  '丁寧語', 'ギャル', 'おっとり', 'ワイルド', '清楚', '元気', '関西弁', 'のじゃ',
+])
+
+function transformQuotes(rows: RawRow[], talentNames: Set<string>) {
+  const groups: Record<string, Record<string, string[]>> = {}
+  const talents: Record<string, Record<string, string[]>> = {}
+
+  for (const row of rows) {
+    const toneType = row['口調タイプ'] || ''
+    const scene = row['場面'] || ''
+    if (!toneType || !scene) continue
+
+    // セリフ1〜セリフ5 を収集（空でないもの）
+    const lines: string[] = []
+    for (let i = 1; i <= 5; i++) {
+      const line = row[`セリフ${i}`] || ''
+      if (line) lines.push(line)
+    }
+    if (lines.length === 0) continue
+
+    if (TONE_GROUPS.has(toneType)) {
+      // 口調グループのセリフ
+      if (!groups[toneType]) groups[toneType] = {}
+      groups[toneType][scene] = lines
+    } else if (talentNames.has(toneType)) {
+      // タレント固有のセリフ
+      if (!talents[toneType]) talents[toneType] = {}
+      talents[toneType][scene] = lines
+    } else {
+      // 未知の口調グループ → 新しいグループとして扱う
+      console.warn(`  ⚠ 未知の口調タイプ: "${toneType}"（グループとして追加）`)
+      TONE_GROUPS.add(toneType)
+      if (!groups[toneType]) groups[toneType] = {}
+      groups[toneType][scene] = lines
+    }
+  }
+
+  return { groups, talents }
 }
 
 // =============================================================================
@@ -365,6 +413,21 @@ async function main() {
     JSON.stringify({ version: 2, questions, answerSets }, null, 2) + '\n',
   )
   console.log(`  → questions.json に書き出し（${questions.length}問、${setCount}セット）\n`)
+
+  // --- セリフ（アシスタントコメント） ---
+  console.log(`[${config.sheets.quotes}] シートを取得中...`)
+  const quoteRows = await fetchSheet(config.questionSpreadsheetId, config.sheets.quotes)
+  const talentNameSet = new Set(allTalents.map(t => t.name))
+  const { groups, talents } = transformQuotes(quoteRows, talentNameSet)
+
+  const groupCount = Object.keys(groups).length
+  const talentQuoteCount = Object.keys(talents).length
+
+  writeFileSync(
+    resolve(OUTPUT_DIR, 'assistant-comments.json'),
+    JSON.stringify({ version: 1, groups, talents }, null, 2) + '\n',
+  )
+  console.log(`  → assistant-comments.json に書き出し（${groupCount}グループ、${talentQuoteCount}名の固有セリフ）\n`)
 
   console.log('同期完了!')
 }
