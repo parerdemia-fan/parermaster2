@@ -72,8 +72,9 @@ ${isPerfect ? `🎉🎉🎉パーフェクト達成！🎉🎉🎉` : `${correct
 ${resultMessage}${badgeText}
 
 👇挑戦はこちら
+${GAME_URL}
 #パレ学マスター #パレデミア学園`
-    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(GAME_URL)}`
+    const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
