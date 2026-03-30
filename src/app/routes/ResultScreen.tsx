@@ -9,11 +9,11 @@ import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 
 function getResultMessage(rate: number, playerName: string): string {
-  if (rate === 100) return `🎉 ${playerName}さん、パーフェクト！`
-  if (rate >= 80) return `✨ ${playerName}さん、すごい！`
-  if (rate >= 60) return `👏 ${playerName}さん、なかなか！`
-  if (rate >= 40) return `💪 ${playerName}さん、がんばりました！`
-  return `📖 ${playerName}さん、もう一回チャレンジ！`
+  if (rate === 100) return `🎉🎉🎉 ${playerName}さん、パーフェクト達成！ 🎉🎉🎉`
+  if (rate >= 80) return `✨ すばらしい！${playerName}さん、もう少しでパーフェクト！`
+  if (rate >= 60) return `👏 いい調子！${playerName}さん、なかなかの実力！`
+  if (rate >= 40) return `💪 ${playerName}さん、まだまだ伸びしろたっぷり！`
+  return `📖 ${playerName}さん、何度でもチャレンジしよう！`
 }
 
 function getTier(isPerfect: boolean, badgeResult: BadgeAwardResult): number {
@@ -57,11 +57,21 @@ export function ResultScreen() {
   const resultMessage = getResultMessage(rate, playerName)
 
   const shareOnX = () => {
-    const text = `${resultMessage}
+    // パーフェクト時のバッジ/称号テキスト（shareOnX時点ではbadgeResultが確定済み）
+    let badgeText = ''
+    if (isPerfect && badgeResult.masterAchievement) {
+      badgeText = `\n🏆 ${badgeResult.masterAchievement}`
+    } else if (isPerfect && badgeResult.awarded && badgeResult.rank) {
+      const rankLabel = RANK_LABELS[badgeResult.rank]
+      badgeText = `\n🏅 ${badgeResult.slotLabel} ${rankLabel}バッジ${badgeResult.isRankUp ? ' ランクアップ！' : ' 獲得！'}`
+    }
 
-パレ学マスター 2nd Season
+    const text = `【パレ学マスター 2nd Season 結果発表】
 ${genLabel} ${modeLabel} ${diffLabel}
-${correctCount}/${total}問正解（${rate}%）
+${isPerfect ? `🎉🎉🎉パーフェクト達成！🎉🎉🎉` : `${correctCount}/${total}問正解（${rate}%）`}
+${resultMessage}${badgeText}
+
+👇挑戦はこちら
 #パレ学マスター #パレデミア学園`
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(GAME_URL)}`
     window.open(url, '_blank', 'noopener,noreferrer')
