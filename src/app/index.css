@@ -37,6 +37,11 @@ body::before {
   body {
     background-color: #f0e0e8;
   }
+  /* 背景画像を4:3エリア内に収める */
+  body::before {
+    height: 75dvw;
+    bottom: auto;
+  }
 }
 
 
