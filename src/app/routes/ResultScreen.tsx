@@ -218,7 +218,7 @@ ${GAME_URL}
             zIndex: 1,
             width: showAward ? '85%' : '55%',
             maxWidth: showAward ? '100cqmin' : '65cqmin',
-            height: '55cqmin',
+            minHeight: '42cqmin',
             transition: 'width 0.6s ease-out, max-width 0.6s ease-out, height 0.6s ease-out',
             background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(240,255,248,0.88) 100%)',
             backdropFilter: 'blur(8px)',
@@ -579,18 +579,20 @@ ${GAME_URL}
             )}
           </div>
 
-          {/* パネル下部中央: メッセージ（absoluteでフローに影響しない） */}
-          <span
+          {/* パネル下部中央: メッセージ */}
+          <div
             className="font-bold"
             style={{
-              position: 'absolute',
-              bottom: '1.5cqmin',
-              left: '3cqmin',
-              right: '3cqmin',
+              flexShrink: 0,
+              position: 'relative',
               zIndex: 2,
               fontSize: '3.2cqmin',
               color: '#d6336c',
               textAlign: 'center',
+              padding: '0 3cqmin 1.5cqmin',
+              width: '55cqmin',
+              maxWidth: '100%',
+              alignSelf: 'center',
               ...((showBadge || showTrophy) ? {
                 opacity: showAward ? 1 : 0,
                 visibility: showAward ? 'visible' as const : 'hidden' as const,
@@ -601,7 +603,7 @@ ${GAME_URL}
             }}
           >
             {resultMessage}
-          </span>
+          </div>
         </div>
 
         {/* ===== ボタン3つ横並び（画面最下部固定） ===== */}
