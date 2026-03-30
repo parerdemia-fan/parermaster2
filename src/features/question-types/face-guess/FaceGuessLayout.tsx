@@ -65,19 +65,36 @@ function FaceGuessLayoutInner({
           overflow: 'hidden',
         }}
       >
-        {/* タレント名 */}
+        {/* 読み仮名 + タレント名 */}
         <div
-          className="font-bold"
           style={{
             flexShrink: 0,
-            fontSize: question.talentName.length > 10 ? '5cqmin' : question.talentName.length > 8 ? '6cqmin' : '8cqmin',
-            color: 'white',
-            textShadow: '0 2px 6px rgba(0,0,0,0.5)',
             textAlign: 'center',
             padding: '2cqmin 1cqmin 1cqmin',
           }}
         >
-          {question.talentName}
+          {question.talentKana && !/^[ァ-ヴー・\s]+$/.test(question.talentName) && (
+            <div
+              style={{
+                fontSize: '3.2cqmin',
+                color: 'rgba(255,255,255,0.75)',
+                letterSpacing: '0.05em',
+                marginBottom: '-1.2cqmin',
+              }}
+            >
+              {question.talentKana}
+            </div>
+          )}
+          <div
+            className="font-bold"
+            style={{
+              fontSize: question.talentName.length > 10 ? '5cqmin' : question.talentName.length > 8 ? '6cqmin' : '8cqmin',
+              color: 'white',
+              textShadow: '0 2px 6px rgba(0,0,0,0.5)',
+            }}
+          >
+            {question.talentName}
+          </div>
         </div>
 
         {/* プロフィールヒント */}

@@ -32,6 +32,7 @@ export function generateFaceGuessQuestions(
       difficulty,
       talentId: talent.id,
       talentName: talent.name,
+      talentKana: talent.kana,
       answerImages: allChoices.map((t) => getTalentImagePath(t)),
       answerTalentIds: allChoices.map((t) => t.id),
       answerNames: allChoices.map((t) => t.name),

@@ -6,6 +6,8 @@ export interface FaceGuessQuestion extends BaseQuestion {
   talentId: string
   /** 出題対象タレント名（問題文として表示） */
   talentName: string
+  /** 出題対象タレント読み仮名 */
+  talentKana: string
   /** 選択肢の顔画像パス */
   answerImages: string[]
   /** 選択肢のタレントID */
