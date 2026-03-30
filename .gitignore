@@ -1,8 +1,11 @@
 .claude/
 node_modules/
 dist/
-scripts/sync-config.json
-secrets/
 .DS_Store
 .mcp.json
 test-results/
+
+# 非公開ファイル
+scripts/
+secrets/
+docs/tasks.md
