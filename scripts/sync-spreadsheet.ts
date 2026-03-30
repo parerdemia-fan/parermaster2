@@ -278,7 +278,7 @@ function transformQuestion(
 }
 
 // =============================================================================
-// 変換: セリフ（アシスタントコメント）
+// 変換: セリフ
 // =============================================================================
 
 /** 基本口調グループ名の一覧 */
@@ -424,10 +424,10 @@ async function main() {
   const talentQuoteCount = Object.keys(talents).length
 
   writeFileSync(
-    resolve(OUTPUT_DIR, 'assistant-comments.json'),
+    resolve(OUTPUT_DIR, 'quotes.json'),
     JSON.stringify({ version: 1, groups, talents }, null, 2) + '\n',
   )
-  console.log(`  → assistant-comments.json に書き出し（${groupCount}グループ、${talentQuoteCount}名の固有セリフ）\n`)
+  console.log(`  → quotes.json に書き出し（${groupCount}グループ、${talentQuoteCount}名の固有セリフ）\n`)
 
   console.log('同期完了!')
 }

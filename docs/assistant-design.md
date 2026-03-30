@@ -90,7 +90,7 @@
 | ギャル | 正解時 | まじ正解じゃん！🎉 | やば〜すご！✨ | 天才じゃん！ | | |
 | 山田花子 | 正解時 | やったー！花子うれしい！ | 花子も正解だと思ってた！ | | | |
 
-→ `pnpm sync` で `public/data/assistant-comments.json` として出力
+→ `pnpm sync` で `public/data/quotes.json` として出力
 
 #### 口調タイプ列がタレント名の場合
 
@@ -143,7 +143,7 @@
 ## 実装方針
 
 1. `talents.json` に `tone` フィールドを追加（sync対応、空欄時は「丁寧語」）
-2. `assistant-comments.json` を `pnpm sync` で生成（`groups` + `talents` の2階層）
+2. `quotes.json` を `pnpm sync` で生成（`groups` + `talents` の2階層）
 3. QuizHeader.tsx のセリフ選択ロジックを変更:
    - アシスタント選出時にタレントの `tone` と `name` を取得
    - `groups[tone][場面]` のセリフ配列を取得
