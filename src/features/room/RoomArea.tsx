@@ -118,7 +118,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
             position: 'absolute',
             top: '8px',
             left: '8px',
-            width: '48px',
+            width: '36px',
             height: 'auto',
             opacity: 0.6,
             pointerEvents: 'none',
