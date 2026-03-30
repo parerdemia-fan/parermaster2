@@ -37,7 +37,10 @@ body::before {
   body {
     background-color: #f0e0e8;
   }
-  /* 背景画像を4:3エリア内に収める */
+}
+
+/* 談話室表示時（2:3 以下）: 背景画像を4:3エリア内に収める */
+@media (max-aspect-ratio: 2/3) {
   body::before {
     height: 75dvw;
     bottom: auto;
