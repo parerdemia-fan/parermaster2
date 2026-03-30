@@ -8,6 +8,14 @@ import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.t
 import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 
+function getResultMessage(rate: number, playerName: string): string {
+  if (rate === 100) return `🎉 ${playerName}さん、パーフェクト！`
+  if (rate >= 80) return `✨ ${playerName}さん、すごい！`
+  if (rate >= 60) return `👏 ${playerName}さん、なかなか！`
+  if (rate >= 40) return `💪 ${playerName}さん、がんばりました！`
+  return `📖 ${playerName}さん、もう一回チャレンジ！`
+}
+
 function getTier(isPerfect: boolean, badgeResult: BadgeAwardResult): number {
   if (!isPerfect) return 2
   if (badgeResult.masterAchievement) return 5
@@ -33,7 +41,7 @@ const SPARKLE_COUNT = 15
 
 export function ResultScreen() {
   const { questions, correctCount, debugBadgeOverride } = useGameStore()
-  const { goToTitle, goToSetting, modeCategory, generation, gameMode, scope, difficulty } = useSettingsStore()
+  const { goToTitle, goToSetting, modeCategory, generation, gameMode, scope, difficulty, playerName } = useSettingsStore()
   const { awardBadge, getBadgeRank, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
 
   const total = questions.length
@@ -46,11 +54,14 @@ export function ResultScreen() {
   const diffLabel = difficulty === 1 ? 'ふつう' : difficulty === 2 ? 'むずかしい' : '激ムズ'
   const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'
 
+  const resultMessage = getResultMessage(rate, playerName)
+
   const shareOnX = () => {
-    const perfectMark = isPerfect ? '🎉全問正解！' : ''
-    const text = `パレ学マスター 2nd Season
+    const text = `${resultMessage}
+
+パレ学マスター 2nd Season
 ${genLabel} ${modeLabel} ${diffLabel}
-${correctCount}/${total}問正解（${rate}%）${perfectMark}
+${correctCount}/${total}問正解（${rate}%）
 #パレ学マスター #パレデミア学園`
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(GAME_URL)}`
     window.open(url, '_blank', 'noopener,noreferrer')
@@ -388,6 +399,20 @@ ${correctCount}/${total}問正解（${rate}%）${perfectMark}
               </span>
               <span style={{ position: 'relative', zIndex: 1, fontSize: '3cqmin', color: '#666', marginTop: '0.5cqmin' }}>
                 正解率：{rate}%
+              </span>
+              <span
+                className="font-bold"
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  fontSize: '3.2cqmin',
+                  color: '#d6336c',
+                  marginTop: '1.5cqmin',
+                  textAlign: 'center',
+                  animation: 'result-fade-up 0.5s 1.2s both',
+                }}
+              >
+                {resultMessage}
               </span>
             </div>
 

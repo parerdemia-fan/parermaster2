@@ -36,7 +36,7 @@ export function TimeAttackResultScreen() {
 
   const handleShare = () => {
     const message = getTimeMessage(clearTime)
-    const text = `${message}\n\nパレ学マスター 2nd Season タイムアタック\nクリアタイム: ${formatTime(clearTime)}\n\n#パレ学マスター`
+    const text = `${playerName}: ${message}\n\nパレ学マスター 2nd Season タイムアタック\nクリアタイム: ${formatTime(clearTime)}\n\n#パレ学マスター`
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`
     window.open(url, '_blank')
   }
