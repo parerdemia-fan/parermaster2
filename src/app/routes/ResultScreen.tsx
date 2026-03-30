@@ -579,17 +579,18 @@ ${GAME_URL}
             )}
           </div>
 
-          {/* パネル下部中央: メッセージ */}
+          {/* パネル下部中央: メッセージ（absoluteでフローに影響しない） */}
           <span
             className="font-bold"
             style={{
-              display: 'block',
-              position: 'relative',
+              position: 'absolute',
+              bottom: '1.5cqmin',
+              left: '3cqmin',
+              right: '3cqmin',
               zIndex: 2,
               fontSize: '3.2cqmin',
               color: '#d6336c',
               textAlign: 'center',
-              padding: '0 3cqmin 2cqmin',
               ...((showBadge || showTrophy) ? {
                 opacity: showAward ? 1 : 0,
                 visibility: showAward ? 'visible' as const : 'hidden' as const,
