@@ -31,10 +31,10 @@ const TYPE_ID_TO_SCENE: Record<string, string> = {
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
 
-/** セリフ候補の最大文字数（{player}置換後） */
-const MAX_COMMENT_LENGTH = 20
+/** 場面ごとの使用済みセリフ。全候補を一巡するまで同じものを出さない */
+const usedComments: Record<string, Set<string>> = {}
 
-/** quotesデータからセリフをランダム選択する */
+/** quotesデータからセリフをローテーション選択する */
 function pickComment(
   quotes: QuotesData | null,
   tone: string,
@@ -59,18 +59,18 @@ function pickComment(
 
   if (candidates.length === 0) return fallback
 
-  // ランダム選択 → {player} 置換 → 文字数チェック
-  // 最大3回試行し、超えたら {player} なしのセリフにフォールバック
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const picked = candidates[Math.floor(Math.random() * candidates.length)]
-    const resolved = picked.replace('{player}', playerName)
-    if (resolved.length <= MAX_COMMENT_LENGTH) return resolved
-    // 長すぎた場合、{player} なしの候補から再選択
-    const safe = candidates.filter((s) => !s.includes('{player}'))
-    if (safe.length > 0) return safe[Math.floor(Math.random() * safe.length)]
+  // 使用済みセットから未使用の候補を絞り込み、全部使い切ったらリセット
+  if (!usedComments[scene]) usedComments[scene] = new Set()
+  let remaining = candidates.filter((s) => !usedComments[scene].has(s))
+  if (remaining.length === 0) {
+    usedComments[scene].clear()
+    remaining = candidates
   }
 
-  return fallback
+  // ランダム選択 → {player} 置換
+  const picked = remaining[Math.floor(Math.random() * remaining.length)]
+  usedComments[scene].add(picked)
+  return picked.replace('{player}', playerName)
 }
 
 /** ★を0.5刻みで描画（半星対応） */
@@ -195,19 +195,33 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
     }
   }, [talents, currentIndex, questions]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ゲーム開始時にセリフのローテーション状態をリセット
+  useEffect(() => {
+    if (currentIndex === 0) {
+      for (const key of Object.keys(usedComments)) {
+        usedComments[key].clear()
+      }
+    }
+  }, [currentIndex])
+
+  // セリフ選択（副作用を含むためuseEffectで実行）
+  const [commentText, setCommentText] = useState('')
+  useEffect(() => {
+    if (!current) return
+    const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
+    const scene = !isAnswered
+      ? TYPE_ID_TO_SCENE[current.typeId] ?? ''
+      : isCorrect ? '正解時' : '不正解時'
+    const fallback = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
+    setCommentText(pickComment(quotes, assistant?.tone ?? '', assistant?.talentName ?? '', scene, playerName, fallback))
+  }, [currentIndex, isAnswered, isCorrect, quotes, assistant, playerName, current])
+
   if (!current) return null
 
   const total = questions.length
   const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
   const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
   const displayStars = current.displayStars ?? getDisplayDifficulty(current.typeId, difficulty)
-
-  // セリフ選択: quotesデータがあれば口調グループ+タレント固有から、なければフォールバック
-  const scene = !isAnswered
-    ? TYPE_ID_TO_SCENE[current.typeId] ?? ''
-    : isCorrect ? '正解時' : '不正解時'
-  const fallback = !isAnswered ? meta.commentBefore : isCorrect ? COMMENT_CORRECT : COMMENT_WRONG
-  const commentText = pickComment(quotes, assistant?.tone ?? '', assistant?.talentName ?? '', scene, playerName, fallback)
   const assistantName = assistant?.displayName ?? ''
   const assistantImage = assistant?.image ?? ''
 
@@ -279,11 +293,11 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
             <div
               style={{
                 position: 'absolute',
-                top: '-1.2cqmin',
+                top: '-1.8cqmin',
                 left: '0.5cqmin',
                 zIndex: 2,
                 padding: '0.3cqmin 2cqmin',
-                fontSize: '1.6cqmin',
+                fontSize: '1.9cqmin',
                 color: 'white',
                 background: 'linear-gradient(135deg, #f0a050, #e08830)',
                 borderRadius: '1cqmin',
@@ -311,10 +325,11 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
                 style={{
                   position: 'relative',
                   padding: '2.5cqmin 1cqmin 1.5cqmin 1.2cqmin',
-                  fontSize: '1.9cqmin',
+                  fontSize: '2.2cqmin',
+                  fontWeight: 'bold',
                   color: '#444',
                   lineHeight: 1.5,
-                  maxWidth: '18cqmin',
+                  width: '21.6cqmin',
                   background: 'rgba(255,255,255,0.85)',
                   display: 'flex',
                   alignItems: 'center',

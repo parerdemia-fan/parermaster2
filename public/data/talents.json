@@ -53,6 +53,7 @@
         "ツンデレ",
         "女の子が頑張るコンテンツ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -123,6 +124,7 @@
         "かわいいもの",
         "異形頭"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -191,6 +193,7 @@
       "favorites": [
         "サンリオ全般"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -263,6 +266,7 @@
         "STARWARS",
         "ブルーアーカイブ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -335,6 +339,7 @@
         "睡眠",
         "コカコーラ"
       ],
+      "tone": "元気",
       "links": [
         {
           "type": "official",
@@ -407,6 +412,7 @@
         "まりおぱーてぃ🎲",
         "大人数のみんなとあそぶこと"
       ],
+      "tone": "元気",
       "links": [
         {
           "type": "official",
@@ -479,6 +485,7 @@
         "犬",
         "予定のない休日"
       ],
+      "tone": "関西弁",
       "links": [
         {
           "type": "official",
@@ -551,6 +558,7 @@
         "マルゲリータ",
         "焼肉のたれがついたごはん"
       ],
+      "tone": "おっとり",
       "links": [
         {
           "type": "official",
@@ -622,6 +630,7 @@
         "パンケーキ",
         "クレープ"
       ],
+      "tone": "おっとり",
       "links": [
         {
           "type": "official",
@@ -690,6 +699,7 @@
         "マーモット",
         "ハシビロコウ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -766,6 +776,7 @@
         "お酒",
         "ふかふかのおふとん"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -837,6 +848,7 @@
         "お菓子",
         "アラザン"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -909,6 +921,7 @@
         "携帯",
         "X(旧：Twitter)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -981,6 +994,7 @@
         "オムライス",
         "梨"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1053,6 +1067,7 @@
         "のり",
         "梅干し"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -1125,6 +1140,7 @@
         "居酒屋",
         "人間"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1197,6 +1213,7 @@
         "クロミちゃん",
         "配信"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1272,6 +1289,7 @@
         "フルーツ",
         "おにく"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1351,6 +1369,7 @@
         "紅茶",
         "美少女"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -1423,6 +1442,7 @@
         "かわいいもの",
         "音楽"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1494,6 +1514,7 @@
         "ミニチュアシュナウザー",
         "フライドポテト"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -1566,6 +1587,7 @@
         "イカゲソのうにうにした部分",
         "好きなことを全力でやってる人の笑顔"
       ],
+      "tone": "ギャル",
       "links": [
         {
           "type": "official",
@@ -1635,6 +1657,7 @@
         "オカルト👻",
         "たぴおか🧋"
       ],
+      "tone": "のじゃ",
       "links": [
         {
           "type": "official",
@@ -1706,6 +1729,7 @@
         "猫",
         "生モノを食べる"
       ],
+      "tone": "関西弁",
       "links": [
         {
           "type": "official",
@@ -1776,6 +1800,7 @@
         "フレーバードティー",
         "春"
       ],
+      "tone": "おっとり",
       "links": [
         {
           "type": "official",
@@ -1848,6 +1873,7 @@
         "マスカット",
         "ちぎったパンのかけら"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -1919,6 +1945,7 @@
         "生クリーム",
         "アニメ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -1990,6 +2017,7 @@
         "ぶさかわなもの",
         "レトロな歌やゲーム"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2059,6 +2087,7 @@
       "favorites": [
         "自分"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2131,6 +2160,7 @@
         "ギャグ漫画",
         "みんなの笑顔"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2201,6 +2231,7 @@
         "映えるもの！",
         "応援してくれるみんな！"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2269,6 +2300,7 @@
         "コードギアス",
         "欅坂46"
       ],
+      "tone": "清楚",
       "links": [
         {
           "type": "official",
@@ -2337,6 +2369,7 @@
       "favorites": [
         "アイドルが大好き！"
       ],
+      "tone": "元気",
       "links": [
         {
           "type": "official",
@@ -2417,6 +2450,7 @@
         "メロンパン",
         "とんかつ"
       ],
+      "tone": "元気",
       "links": [
         {
           "type": "official",
@@ -2486,6 +2520,7 @@
         "お花",
         "栄養剤(甘いもの)"
       ],
+      "tone": "清楚",
       "links": [
         {
           "type": "official",
@@ -2553,6 +2588,7 @@
         "焼き芋",
         "カプセルトイ"
       ],
+      "tone": "清楚",
       "links": [
         {
           "type": "official",
@@ -2625,6 +2661,7 @@
         "みんなとおしゃべり",
         "すてきなおねえさん"
       ],
+      "tone": "ワイルド",
       "links": [
         {
           "type": "official",
@@ -2696,6 +2733,7 @@
         "炭酸飲料",
         "動物(特に猫)"
       ],
+      "tone": "清楚",
       "links": [
         {
           "type": "official",
@@ -2763,6 +2801,7 @@
       "favorites": [
         "魔法少女まどか☆マギカ(特に叛逆の物語が好きです)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2835,6 +2874,7 @@
         "ミュージアム巡り",
         "お酒"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2905,6 +2945,7 @@
         "ピンク色のもの",
         "可愛い動物"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -2977,6 +3018,7 @@
         "ドライフルーツ",
         "可愛いもの"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -3047,6 +3089,7 @@
         "ご飯を食べる",
         "トレカ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -3118,6 +3161,7 @@
         "チャイ",
         "食べること"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -3190,6 +3234,7 @@
         "薔薇",
         "リスナーの皆んな（甘やかしてくれる人）"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -3260,6 +3305,7 @@
         "くま🐻🐻‍❄️",
         "ハンバーガー🍔"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
@@ -3293,7 +3339,7 @@
       "givenName": "まひろ",
       "familyKana": "ホシノ",
       "givenKana": "マヒロ",
-      "nickname": "おぼぼ",
+      "nickname": "",
       "firstPerson": "",
       "intro": "",
       "dream": "ネットミームになる。インターネットの片隅に 私 という存在を残し続ける。",
@@ -3304,7 +3350,7 @@
       "hairStyle": "ロング",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFJ(提唱者)",
+      "mbti": "",
       "fanName": "",
       "fanMark": "",
       "hashtags": [
@@ -3331,26 +3377,11 @@
         "ゲーム全般（プレイは別）",
         "心理学"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO001"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCGyMmGRoI-BOLnEVvcerNoQ"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/oborodukihikaru"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@oboroduki_h01"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/rzs1of1wm9dubfj"
+          "url": "https://www.parerdemia.jp/students/26CO001"
         }
       ]
     },
@@ -3366,7 +3397,7 @@
       "givenKana": "アム",
       "nickname": "",
       "firstPerson": "",
-      "intro": "自宅警備隊一等兵",
+      "intro": "",
       "dream": "人類オタク化計画〜みな平等にオタクになれ〜",
       "birthday": "4月2日",
       "height": 164,
@@ -3375,7 +3406,7 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
+      "mbti": "",
       "fanName": "",
       "fanMark": "",
       "hashtags": [
@@ -3406,26 +3437,11 @@
         "ツンデレ",
         "女の子が頑張るコンテンツ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO002"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCnQFkIgH-2IURW--34owWIw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/sigma_inging"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@sigma_no_live"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/no6wdpxhm75rjo0"
+          "url": "https://www.parerdemia.jp/students/26CO002"
         }
       ]
     },
@@ -3450,9 +3466,9 @@
       "hairStyle": "ロングツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
-      "fanName": "ゆめっこ",
-      "fanMark": "💘",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#ゆめゆめライブ",
@@ -3476,26 +3492,11 @@
         "かわいいもの",
         "異形頭"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO003"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCttSjPiwPYpiPuCrgxK7c1g"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/enomiya_yume"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@enomiya_yume"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/3735ytatlmwifd9"
+          "url": "https://www.parerdemia.jp/students/26CO003"
         }
       ]
     },
@@ -3509,9 +3510,9 @@
       "givenName": "こころ",
       "familyKana": "ユメサキ",
       "givenKana": "ココロ",
-      "nickname": "うなち",
+      "nickname": "",
       "firstPerson": "",
-      "intro": "令和少女漫画の主人公系新人VTuber 🎤🎮💬 桜庭羽奈です🌸",
+      "intro": "",
       "dream": "みんなから愛されるアイドルになって、いつかサンリオとコラボしたいなぁ！応援宜しくね♡",
       "birthday": "7月18日",
       "height": 160,
@@ -3520,9 +3521,9 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ENTP(討論者)",
-      "fanName": "うなふれんず",
-      "fanMark": "🌸🍀︎🪶",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#羽奈と咲く",
@@ -3544,26 +3545,11 @@
       "favorites": [
         "サンリオ全般"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO004"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCPgg_A08ksSYP-VivJGniRw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/unaunasakura"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@unaunasakura"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/4ea4jlozk888oc"
+          "url": "https://www.parerdemia.jp/students/26CO004"
         }
       ]
     },
@@ -3577,7 +3563,7 @@
       "givenName": "める",
       "familyKana": "シラトリ",
       "givenKana": "メル",
-      "nickname": "せなりる",
+      "nickname": "",
       "firstPerson": "",
       "intro": "",
       "dream": "みんなから愛されるアイドルになって大きいステージでライブをすること",
@@ -3588,9 +3574,9 @@
       "hairStyle": "ロングツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ISFJ(擁護者)",
-      "fanName": "りる民",
-      "fanMark": "🎧💎",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#せなりるライブ",
@@ -3616,26 +3602,11 @@
         "STARWARS",
         "ブルーアーカイブ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO005"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCWi_ztz8Xuz4XfzhoG6ZfyA"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/senariruka"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@riruka_sena"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/h2hbqpplbd7oukf"
+          "url": "https://www.parerdemia.jp/students/26CO005"
         }
       ]
     },
@@ -3651,7 +3622,7 @@
       "givenKana": "ノエル",
       "nickname": "",
       "firstPerson": "",
-      "intro": "やっほー🩵めしあがキミの元に舞い降りた🪽🫧夢はいつかあなたの救世主👼🩵パレデミア学園クゥ寮所属ポンコツ救世主の神童めしあです 🍚🪽",
+      "intro": "",
       "dream": "キミの\"救世主\"になること。",
       "birthday": "11月11日",
       "height": 164,
@@ -3660,9 +3631,9 @@
       "hairStyle": "ショートツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ENFP(広報運動家)",
+      "mbti": "",
       "fanName": "",
-      "fanMark": "🍚🪽",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#めしあと一緒",
@@ -3688,26 +3659,11 @@
         "睡眠",
         "コカコーラ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25CO006"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UC6qmN_y3OTthBIjX4XlWfMw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/mesiashindo"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@shindo_mesia"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/5vsxmv8bc2ttb9"
+          "url": "https://www.parerdemia.jp/students/26CO006"
         }
       ]
     },
@@ -3721,9 +3677,9 @@
       "givenName": "ティア",
       "familyKana": "ルナリス",
       "givenKana": "ティア",
-      "nickname": "るろにゃ",
+      "nickname": "",
       "firstPerson": "",
-      "intro": "こんるろにゃー パレデミア学園ミュゥ寮所属、新巻るろなでーす",
+      "intro": "",
       "dream": "雪まつりの雪像になりたーい☆球団とコラボしたーい☆全国ツアーライブしたーい☆",
       "birthday": "2月22日",
       "height": 145,
@@ -3732,9 +3688,9 @@
       "hairStyle": "ロング",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INTP(論理学者)",
-      "fanName": "るろナー",
-      "fanMark": "🐟🍰",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#るろなう",
@@ -3759,26 +3715,11 @@
         "お菓子",
         "アラザン"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME001"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCUd4wJjvPQflbLnsk_YHleA"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/Aramaki_ruronA"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@aramaki_rurona"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/nxrz6il9t7ow8fz"
+          "url": "https://www.parerdemia.jp/students/26ME001"
         }
       ]
     },
@@ -3832,14 +3773,11 @@
         "寝ること(26時間 寝たことある)",
         "アニメ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME002"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@user11123918190031"
+          "url": "https://www.parerdemia.jp/students/26ME002"
         }
       ]
     },
@@ -3853,9 +3791,9 @@
       "givenName": "める",
       "familyKana": "メイガイ",
       "givenKana": "メル",
-      "nickname": "セイセイ",
+      "nickname": "",
       "firstPerson": "",
-      "intro": "あなたの心に傘をさしたい。ミュゥ寮所属氷雨セイです",
+      "intro": "",
       "dream": "崖の上のポニョに出てくる宗介の家みたいな海が見える山の上に家を建ててプール付きの豪邸を建てる",
       "birthday": "4月18日",
       "height": 157,
@@ -3864,9 +3802,9 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
+      "mbti": "",
       "fanName": "",
-      "fanMark": "🧊☔️",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#配信セイ",
@@ -3892,26 +3830,11 @@
         "携帯",
         "X(旧：Twitter)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME003"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCL66HaXfxrR23G8sCU5-cnA"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/Say_Hisame"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@say_hisame"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/p9s3jref4hea2py"
+          "url": "https://www.parerdemia.jp/students/26ME003"
         }
       ]
     },
@@ -3925,7 +3848,7 @@
       "givenName": "くるり",
       "familyKana": "マジン",
       "givenKana": "クルリ",
-      "nickname": "ゆずぴ",
+      "nickname": "",
       "firstPerson": "",
       "intro": "",
       "dream": "3Dお披露目！いろんな歌歌いたい〜VCR参加！！やりたい事沢山応援してね！！！！",
@@ -3936,9 +3859,9 @@
       "hairStyle": "お団子ロング",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ENFJ(主人公)",
+      "mbti": "",
       "fanName": "",
-      "fanMark": "☔️🍊",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#柚の雨宿り",
@@ -3964,26 +3887,11 @@
         "オムライス",
         "梨"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME004"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCrB-SfrqB5ChY8aAT99grXw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/Hisame_Yuzu"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@popo17412"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/saqdc75d878bkh7"
+          "url": "https://www.parerdemia.jp/students/26ME004"
         }
       ]
     },
@@ -4008,9 +3916,9 @@
       "hairStyle": "ロングツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ISFJ(擁護者)",
-      "fanName": "華の民",
-      "fanMark": "💕︎︎🍀︎",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#愛葉の時間",
@@ -4036,26 +3944,11 @@
         "のり",
         "梅干し"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME005"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UC5G2BLvcdLvBwBqgShrag9A"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/@aibahana005"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@aibahana005"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/bot2wq2txlaowe5"
+          "url": "https://www.parerdemia.jp/students/26ME005"
         }
       ]
     },
@@ -4069,9 +3962,9 @@
       "givenName": "さき",
       "familyKana": "ダテンシ",
       "givenKana": "サキ",
-      "nickname": "カシラ",
+      "nickname": "",
       "firstPerson": "",
-      "intro": "ぺけ❌️でもまる⭕️でも全肯定 あなたの心に光を灯す💥ドンドコ提灯のVtuber 灯野ぺけ。だぁ！",
+      "intro": "",
       "dream": "3D化してでっかいステージでライブするぞー！パレデミア学園ごと超有名になる！",
       "birthday": "9月3日",
       "height": 161,
@@ -4080,9 +3973,9 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ENTJ(指揮官)",
-      "fanName": "ぺけのこ",
-      "fanMark": "🏮💥",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#ぺけまるLIVE",
@@ -4108,26 +4001,11 @@
         "居酒屋",
         "人間"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25ME006"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCldoz5HLh6BMW29HGnRpC0Q"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/hino_pekemaru"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@pekemmobznd"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/1grgtr2aqlwpo9i"
+          "url": "https://www.parerdemia.jp/students/26ME006"
         }
       ]
     },
@@ -4141,9 +4019,9 @@
       "givenName": "ぴえ",
       "familyKana": "ヤミノ",
       "givenKana": "ピエ",
-      "nickname": "なちぇ",
+      "nickname": "",
       "firstPerson": "",
-      "intro": "はなまるいぬまるなでなでこ！パレデミア学園のわんちゃんアイドルVtuber",
+      "intro": "",
       "dream": "ルナエイトに選ばれて3Dライブをすること！！絶対に叶えるよ！！！応援してください！♡♡♡",
       "birthday": "1月25日",
       "height": 148,
@@ -4152,9 +4030,9 @@
       "hairStyle": "ロングツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ISFP(冒険者)",
-      "fanName": "なでっこ",
-      "fanMark": "🐶💖💮",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#犬丸すたじお",
@@ -4178,26 +4056,11 @@
         "フレーバードティー",
         "春"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA001"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCdJmJxMfXrlnZabUkuss2EA"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/nadeko_inumaru"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@nadeko_inumaru"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/3e12ltzgfsfspvt"
+          "url": "https://www.parerdemia.jp/students/26WA001"
         }
       ]
     },
@@ -4213,7 +4076,7 @@
       "givenKana": "ロコ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "トコトコテコテコ　トトココです！",
+      "intro": "",
       "dream": "みんなと笑うコト おもしれぇ女で居続けるコト 世界中にトトココを知ってもらうコト",
       "birthday": "8月10日",
       "height": 155,
@@ -4222,9 +4085,9 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ENFP(広報運動家)",
-      "fanName": "トト党",
-      "fanMark": "🩶🕊️✨",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#飛渡トーク",
@@ -4250,26 +4113,11 @@
         "マスカット",
         "ちぎったパンのかけら"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA002"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCMElh_FlHyzp_obVe-b3Qrg"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/totococopopo"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@totococopopo"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/fkuttfzvpw4cdoh"
+          "url": "https://www.parerdemia.jp/students/26WA002"
         }
       ]
     },
@@ -4318,18 +4166,11 @@
       "favorites": [
         "イラストと猫"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA003"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCpReoH42cNwRBH59BLp9NlQ"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@yukishiromagune"
+          "url": "https://www.parerdemia.jp/students/26WA003"
         }
       ]
     },
@@ -4345,7 +4186,7 @@
       "givenKana": "プニ",
       "nickname": "",
       "firstPerson": "私",
-      "intro": "顔が幼くても声が低めな新ジャンルことロリ顔イケボで新しい扉を開いてみせます パレデミア学園バゥ寮所属フローレ・ブランカです",
+      "intro": "",
       "dream": "ドームツアーをして、全国に皆に会いに行き、笑顔を届けること‼️叶えてみせる‼️",
       "birthday": "9月30日",
       "height": 149,
@@ -4354,9 +4195,9 @@
       "hairStyle": "ロング",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
+      "mbti": "",
       "fanName": "",
-      "fanMark": "☁️🧵🪴",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#フローレらんど",
@@ -4381,26 +4222,11 @@
         "生クリーム",
         "アニメ"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA004"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCNb9zRVc1coFKxJAn9lVtsw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/flore_blanka"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@flore_blanka"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/76uaitxtip8rnlk"
+          "url": "https://www.parerdemia.jp/students/26WA004"
         }
       ]
     },
@@ -4416,7 +4242,7 @@
       "givenKana": "メメ",
       "nickname": "",
       "firstPerson": "おで",
-      "intro": "まるはろー！あなたに笑顔の華を咲かせます！ヒーローアイドル関西弁Vtuber雨海まるです🌻",
+      "intro": "",
       "dream": "全国のまるちーずに会えるよう3Dライブツアーを行いたいので応援お願いいたします🫵",
       "birthday": "2月28日",
       "height": 160,
@@ -4425,9 +4251,9 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "ISFP(冒険者)",
-      "fanName": "まるちーず",
-      "fanMark": "☔️🍥",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#まるの放送委員会",
@@ -4452,26 +4278,11 @@
         "ぶさかわなもの",
         "レトロな歌やゲーム"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA005"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCLuPxPlM1v6IOTLxM1TRPzA"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/maru_amami"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@amamimaru"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/i1aqt8gbw21gs92"
+          "url": "https://www.parerdemia.jp/students/26WA005"
         }
       ]
     },
@@ -4487,7 +4298,7 @@
       "givenKana": "ポム",
       "nickname": "",
       "firstPerson": "",
-      "intro": "ぷかぷか〜⸜( ◜࿁◝)⸝︎︎うっかりぷかり月百ぷかり⸜( ◜࿁◝)⸝︎︎♡パレデミア学園♡バゥ寮♡うっかり担当♡月百ぷかりだにょん(๑╹ω╹๑ )",
+      "intro": "",
       "dream": "大きな街の大型ビジョンでおしゃべりして、大勢の人にみてもらいた〜い！⸜( ◜࿁◝)⸝",
       "birthday": "5月24日",
       "height": 128,
@@ -4497,8 +4308,8 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "宇宙の塵",
-      "fanMark": "🏝️◜࿁◝🏝️",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#ぷかぷか浮上",
@@ -4522,22 +4333,11 @@
         "うめぼし(・*・)",
         "パジャマ꒰ᐡ- ‧̫ -ᐡ꒱💤"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WA006"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UC6UBWwdbUVsLXlViUat4lNg"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/tsukimomopukari"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@tsukimomopukari"
+          "url": "https://www.parerdemia.jp/students/26WA006"
         }
       ]
     },
@@ -4562,7 +4362,7 @@
       "hairStyle": "ショート",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
+      "mbti": "",
       "fanName": "",
       "fanMark": "",
       "hashtags": [
@@ -4590,26 +4390,11 @@
         "みんなとおしゃべり",
         "すてきなおねえさん"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH001"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCEJSKIlp0XitVYFjJG7eYBg"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/Aka_kurogane_"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@akakujoeg6e"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/mz0nh584drsiw10"
+          "url": "https://www.parerdemia.jp/students/26WH001"
         }
       ]
     },
@@ -4625,7 +4410,7 @@
       "givenKana": "コマチ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "占いが得意なおセンシティブお姉さんVTuber",
+      "intro": "",
       "dream": "オリジナル曲を3Dライブで歌いたい！皆様を絶対楽しませます！",
       "birthday": "1月18日",
       "height": 161,
@@ -4634,9 +4419,9 @@
       "hairStyle": "三つ編み",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INFP(仲介者)",
-      "fanName": "ふゆの民",
-      "fanMark": "🌲⛄️",
+      "mbti": "",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#ふゆの放送部",
@@ -4661,26 +4446,11 @@
         "炭酸飲料",
         "動物(特に猫)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH002"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCYVPgR8PrA-DjOh36rLvSeg"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/yaemori_fuyuno"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@yaemori_fuyuno"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/t51a885zgsk8fmi"
+          "url": "https://www.parerdemia.jp/students/26WH002"
         }
       ]
     },
@@ -4733,18 +4503,11 @@
         "お茶全般",
         "サラブレッド(馬)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH003"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCWQ16pQrCQFaJLzg4dIIirQ"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@amanodiane"
+          "url": "https://www.parerdemia.jp/students/26WH003"
         }
       ]
     },
@@ -4792,26 +4555,11 @@
       "favorites": [
         "魔法少女まどか☆マギカ(特に叛逆の物語が好きです)"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH004"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCAhdxmsdngH4noySdpVAVWQ"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/Fujinomori_WH"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@fujinomorichitose"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/8rt4jm0s9rpxfa"
+          "url": "https://www.parerdemia.jp/students/26WH004"
         }
       ]
     },
@@ -4838,7 +4586,7 @@
       "eyeColorRight": "",
       "mbti": "",
       "fanName": "",
-      "fanMark": "🌷🔆",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#れりライブ",
@@ -4864,26 +4612,11 @@
         "ミュージアム巡り",
         "お酒"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH005"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UCqcnlq8uJqnGml6hcIrMCZw"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/LilaHanahare"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@hanaharelila"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/fzg8dr4n6tdsz2"
+          "url": "https://www.parerdemia.jp/students/26WH005"
         }
       ]
     },
@@ -4899,7 +4632,7 @@
       "givenKana": "サクラ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "押忍！桜堂ねるっすー！🌸🥋",
+      "intro": "",
       "dream": "3Dモデルで空手の形を披露！そして日本武道館でライブ！応援よろしくお願いします！",
       "birthday": "9月20日",
       "height": 162,
@@ -4909,8 +4642,8 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "ねる帯",
-      "fanMark": "🌸🥋",
+      "fanName": "",
+      "fanMark": "",
       "hashtags": [
         {
           "tag": "#ねる道場",
@@ -4934,26 +4667,11 @@
         "ピンク色のもの",
         "可愛い動物"
       ],
+      "tone": "",
       "links": [
         {
           "type": "official",
-          "url": "https://www.parerdemia.jp/students/25WH006"
-        },
-        {
-          "type": "youtube",
-          "url": "https://www.youtube.com/channel/UC0H7dRRqhfOifbYQ2TURdAg"
-        },
-        {
-          "type": "x",
-          "url": "https://x.com/oudoneru"
-        },
-        {
-          "type": "tiktok",
-          "url": "https://www.tiktok.com/@neruoudo_wh006"
-        },
-        {
-          "type": "marshmallow",
-          "url": "https://marshmallow-qa.com/q5nt50o0ote4v2"
+          "url": "https://www.parerdemia.jp/students/26WH006"
         }
       ]
     }

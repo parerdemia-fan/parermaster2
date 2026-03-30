@@ -475,7 +475,17 @@ function DormButton({
 
 /* ─── 名前変更ダイアログ ─── */
 
-const MAX_NAME_LENGTH = 15
+/** 全角=2、半角=1 として文字幅を計算 */
+function getStringWidth(s: string): number {
+  let width = 0
+  for (const ch of s) {
+    // ASCII範囲（半角英数記号）は1、それ以外（全角）は2
+    width += ch.charCodeAt(0) <= 0x7e ? 1 : 2
+  }
+  return width
+}
+
+const MAX_NAME_WIDTH = 20 // 全角10文字 = 半角20文字
 
 function NameDialog({
   currentName,
@@ -492,7 +502,8 @@ function NameDialog({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const trimmed = value.trim()
-  const canConfirm = trimmed.length > 0 && trimmed.length <= MAX_NAME_LENGTH
+  const currentWidth = getStringWidth(trimmed)
+  const canConfirm = trimmed.length > 0 && currentWidth <= MAX_NAME_WIDTH
 
   const handleConfirm = () => {
     if (canConfirm) onConfirm(trimmed)
@@ -527,11 +538,10 @@ function NameDialog({
           ref={inputRef}
           type="text"
           value={value}
-          maxLength={MAX_NAME_LENGTH}
           autoFocus
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleConfirm()
+          onChange={(e) => {
+            const v = e.target.value
+            if (getStringWidth(v.trim()) <= MAX_NAME_WIDTH) setValue(v)
           }}
           className="font-bold"
           style={{
@@ -551,7 +561,7 @@ function NameDialog({
             marginTop: '1cqmin',
           }}
         >
-          {trimmed.length} / {MAX_NAME_LENGTH}
+          {currentWidth} / {MAX_NAME_WIDTH}
         </span>
         <div
           className="flex items-center justify-center"
