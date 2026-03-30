@@ -109,6 +109,26 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         />
       )}
 
+      {/* 横画面推奨画像（タイトル画面のみ） */}
+      {showSelector && (
+        <img
+          src={`${BASE}data/images/ui/landscape_recommended.png`}
+          alt="横画面推奨"
+          style={{
+            position: 'absolute',
+            top: '8px',
+            left: '8px',
+            width: '48px',
+            height: 'auto',
+            opacity: 0.6,
+            pointerEvents: 'none',
+            userSelect: 'none',
+            zIndex: 10,
+          }}
+          draggable={false}
+        />
+      )}
+
       {/* 寮選択ボタン（タイトル画面のみ） */}
       {showSelector && (
         <div
