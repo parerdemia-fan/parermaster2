@@ -182,10 +182,10 @@ RoomArea（メインコンテナ）
 
 ### 配置場所
 
-`src/app/App.tsx` で GameContainer の直後に配置（前作踏襲）：
+`src/app/App.tsx` で GameContainer の直後に配置。CSS `.room-visible` で 2:3 以下のときのみ表示：
 
 ```tsx
-<div className="hidden portrait:block">
+<div className="room-visible">
   <RoomArea showSelector={screen === 'title'} />
 </div>
 ```
