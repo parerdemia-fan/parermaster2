@@ -8,7 +8,7 @@
 
 - [ ] 結果発表に名前入りのメッセージ追加（Xシェア文言もそれに追従）
 - [x] ゲーム中のタイトルに戻るボタンを「やめる」に変え、確認ダイアログを挟む
-- [ ] 案内画面のセクションラベル・ボタンの調整
+- [x] 案内画面のセクションラベル・ボタンの調整
 - [ ] GitHub Pages対応
 - [ ] SEO対策（robots.txt、sitemap.xml、canonical タグ、meta description、Google Search Console登録）
 - [ ] 縦画面対応

@@ -166,24 +166,31 @@ export function AboutScreen() {
   )
 }
 
+const SECTION_ICONS: Record<string, string> = {
+  'このゲームについて': '🎮',
+  '開発者について': '🤖',
+  'リンク': '🔗',
+  '開発日誌': '📖',
+  '実績リセット': '⚠️',
+  'バージョン': '📋',
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  const icon = SECTION_ICONS[title] ?? ''
   return (
     <section style={{ marginBottom: '3cqmin' }}>
       <div
-        className="font-bold text-center text-white"
+        className="font-bold"
         style={{
-          fontSize: '3cqmin',
-          padding: '0.8cqmin 0',
-          background: 'linear-gradient(180deg, #fcc4dc 0%, #e8789e 100%)',
-          borderRadius: '1.5cqmin',
-          border: '0.2cqmin solid rgba(255,255,255,0.4)',
-          boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)',
-          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-          letterSpacing: '0.1em',
+          fontSize: '3.2cqmin',
+          padding: '0 0 0.8cqmin',
+          borderBottom: '0.3cqmin solid #e8789e',
+          color: '#d6336c',
+          letterSpacing: '0.05em',
           marginBottom: '1.5cqmin',
         }}
       >
-        {title}
+        {icon} {title}
       </div>
       <div style={{ fontSize: '3cqmin', display: 'flex', flexDirection: 'column', gap: '1cqmin' }}>
         {children}
@@ -197,15 +204,13 @@ function LinkButton({ onClick, children }: { onClick: () => void; children: Reac
     <button
       className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
       style={{
-        height: '7cqmin',
-        padding: '0 4cqmin',
+        width: 'fit-content',
+        padding: '1.2cqmin 3cqmin',
         fontSize: '3cqmin',
-        borderRadius: '1.5cqmin',
-        border: '0.2cqmin solid rgba(255,255,255,0.4)',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(240,220,230,0.6) 100%)',
-        boxShadow: 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.3), 0 0.2cqmin 0.5cqmin rgba(0,0,0,0.08)',
-        color: '#555',
-        textAlign: 'left',
+        borderRadius: '5cqmin',
+        border: '0.3cqmin solid #e8789e',
+        background: 'transparent',
+        color: '#d6336c',
       }}
       onClick={onClick}
     >
