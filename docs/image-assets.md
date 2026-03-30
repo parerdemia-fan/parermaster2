@@ -101,7 +101,8 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 | hr | 600×8 | 水平区切り線 | — |
 | label_question | 240×57 | 「問題」ラベル | — |
 | icon_question | 215×341 | クエスチョンマーク装飾 | — |
-| landscape_recommended | 300×300 | 横画面推奨表示 | — |
+| landscape_recommended | 300×300 | 横画面推奨表示 | done |
+| room_table | 1000×352 | 談話室テーブル（立ち絵の手前） | done |
 
 ---
 
@@ -174,7 +175,7 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 
 | 画像 | サイズ (px) | 用途 | 状態 |
 |------|------------|------|------|
-| ogp | 1200×630 | OGP画像 | — |
+| ogp | 1200×630 | OGP画像 | done |
 | favicon-16 | 16×16 | ファビコン | — |
 | favicon-32 | 32×32 | ファビコン | — |
 | apple-touch-icon | 180×180 | Apple Touch Icon | — |

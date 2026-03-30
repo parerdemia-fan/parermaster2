@@ -14,6 +14,7 @@
 | `public/data/questions.json` | 知識クイズ問題（1期生+2期生） | 前作から構造変更 |
 | `public/data/awards.json` | イベント実績データ | 新規（前作はtalents.json内） |
 | `public/data/diary.json` | 開発日誌 | 前作踏襲 |
+| `public/data/quotes.json` | アシスタントセリフ | `pnpm sync` で生成 |
 
 前作の `answer_set.json` は独立ファイルとしては廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。イベント系等のカスタム選択肢セットは questions.json 内の `answerSets` に統合。
 
@@ -272,3 +273,4 @@ export const DORMITORIES = {
 | `playerName` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |
 | `parermaster2_ta_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
 | `parermaster2_diary_entries` | 開発日誌の手記エントリ（動的生成分） | `DiaryMemoirEntry[]` |
+| `parermaster2_room` | 談話室選択状態 | `{ left: string \| null, center: string \| null, right: string \| null, dormitory: DormId }` |

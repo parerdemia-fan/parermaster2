@@ -86,8 +86,9 @@ src/
 │       ├── AchievementScreen.tsx
 │       ├── DiaryScreen.tsx
 │       ├── TimeAttackResultScreen.tsx  # タイムアタック結果画面
+│       ├── AboutScreen.tsx             # 案内画面
 │       ├── DebugScreen.tsx            # デバッグ画面（DEV環境のみ）
-│       └── ...
+│       └── OgpScreen.tsx              # OGP画像生成（DEV環境のみ）
 │
 ├── features/                    # 機能単位のモジュール
 │   ├── quiz/                    # クイズ共通ロジック
@@ -134,9 +135,15 @@ src/
 │   │   ├── constants.ts         # スロット定義, ランク関連ユーティリティ
 │   │   └── judge.ts             # バッジ獲得判定（純粋関数）
 │   │
-│   └── time-attack/             # タイムアタックモード
-│       ├── constants.ts         # 出題構成定義, タイム別メッセージ
-│       └── generator.ts         # 100問生成
+│   ├── time-attack/             # タイムアタックモード
+│   │   ├── constants.ts         # 出題構成定義, タイム別メッセージ
+│   │   └── generator.ts         # 100問生成
+│   │
+│   └── room/                    # 談話室（縦画面下部）
+│       ├── RoomArea.tsx          # メインコンテナ
+│       ├── TalentSlot.tsx        # 立ち絵スロット + GSAPアニメーション
+│       ├── TalentSelector.tsx    # タレント選択UI
+│       └── useRoomStore.ts       # Zustandストア
 │
 ├── stores/                      # Zustand ストア（機能ごとに分割）
 │   ├── gameStore.ts             # ゲーム進行状態
@@ -146,6 +153,11 @@ src/
 ├── shared/                      # 共有ユーティリティ・コンポーネント
 │   ├── components/
 │   ├── hooks/
+│   │   ├── useTalents.ts         # タレントデータ取得
+│   │   ├── useQuestions.ts       # 問題データ取得
+│   │   ├── useQuotes.ts          # セリフデータ取得
+│   │   ├── useScreenMode.ts      # 画面比率モード判定
+│   │   └── ...
 │   ├── utils/
 │   └── types/
 ```

@@ -68,7 +68,7 @@
 - ユーザーが**寮を選択して背景を切り替え**できる（タレント選択とは独立）
 - 切り替えUI：寮ボタン4つ（エンブレムまたはシンプルなボタン）を談話室エリア内に配置。タイトル画面のときのみ表示
 - 背景画像一覧：`bg_wa.png`（バゥ寮）/ `bg_me.png`（ミュゥ寮）/ `bg_co.png`（クゥ寮）/ `bg_wh.png`（ウィニー寮）
-- 選択した寮はLocalStorageに保存（`parermaster2_room_talents` 内に含める）
+- 選択した寮はLocalStorageに保存（`parermaster2_room` 内に含める）
 - 初期値：ランダム
 - 上画面（4:3ゲームエリア）の寮背景と被る場合がありうるが、一旦許容
 
@@ -85,14 +85,16 @@
 
 #### 配置
 
-| スロット | 水平位置 | 備考 |
-|---------|---------|------|
-| 左 | 25% | — |
-| 中央 | 50% | 初期状態ではここに1体（前作同様） |
-| 右 | 75% | — |
+| スロット | クリック領域 | 画像表示位置 | 備考 |
+|---------|------------|------------|------|
+| 左 | 0〜33% | スロット中央 | — |
+| 中央 | 33〜66% | スロット中央 | 初期状態ではここに1体（前作同様） |
+| 右 | 66〜100% | スロット中央 | — |
 
 - 立ち絵画像：`kv/orig/{student_id}.png`（833×1500px、アスペクト比 約1:1.8）
-- 表示方法：テーブルの裏側に立つ形。立ち絵の下部はテーブルで自然に隠れる
+- 立ち絵サイズ：高さ `150dvw`（画面幅依存）
+- 立ち絵の下25%を画面外にはみ出す。上方向にはみ出す場合は下に更にずらす
+- テーブルの裏側に立つ形。立ち絵の下部はテーブルで自然に隠れる
 - GSAPアニメーション：前作踏襲（上下移動・左右移動・回転・拡大縮小を各スロット独立で実行）
 - 重なり順：左が最背面、中央が中間、右が最前面（z-index制御）
 
@@ -152,7 +154,7 @@
 ## データ永続化
 
 - LocalStorage に選択状態を保存
-- キー：`parermaster2_room_talents`
+- キー：`parermaster2_room`
 - 値：`{ left: string | null, center: string | null, right: string | null, dormitory: string }`（タレントIDまたはnull、寮名）
 - 初回アクセス時：中央スロットにランダムな1期生を配置、左右は空、背景の寮はランダム
 
@@ -176,18 +178,19 @@ RoomArea（メインコンテナ）
 - `src/features/room/` ディレクトリに配置
   - `RoomArea.tsx` — メインコンテナ
   - `TalentSlot.tsx` — 立ち絵スロット（アニメーション含む）
-  - `SpeechBubble.tsx` — 吹き出し表示
-  - `TalentSelector.tsx` — ドロップダウン選択UI
+  - `TalentSelector.tsx` — ドロップダウン選択UI（画面下部ボトムシート形式）
   - `useRoomStore.ts` — Zustand ストア（スロット選択状態 + LocalStorage永続化）
+  - `SpeechBubble.tsx` — 吹き出し表示（**未実装**）
 
 ### 配置場所
 
-`src/app/App.tsx` で GameContainer の直後に配置。CSS `.room-visible` で 2:3 以下のときのみ表示：
+`src/app/App.tsx` で GameContainer の直後に配置。`useScreenMode()` フックで 2:3 以下のときのみ表示：
 
 ```tsx
-<div className="room-visible">
-  <RoomArea showSelector={screen === 'title'} />
-</div>
+const screenMode = useScreenMode()
+const showRoom = screenMode === 'portrait-room'
+// ...
+{showRoom && <RoomArea showSelector={screen === 'title'} />}
 ```
 
 ## 前作との差分
