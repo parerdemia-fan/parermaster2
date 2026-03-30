@@ -221,7 +221,8 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   const total = questions.length
   const progress = total > 0 ? ((currentIndex + 1) / total) * 100 : 0
   const meta = TYPE_META[current.typeId] ?? { emoji: '❓', label: '???', questionText: '', commentBefore: '' }
-  const displayStars = current.displayStars ?? getDisplayDifficulty(current.typeId, difficulty)
+  const questionLevel = 'questionLevel' in current ? (current as { questionLevel: number }).questionLevel : undefined
+  const displayStars = current.displayStars ?? getDisplayDifficulty(current.typeId, difficulty, questionLevel)
   const assistantName = assistant?.displayName ?? ''
   const assistantImage = assistant?.image ?? ''
 

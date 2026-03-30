@@ -165,6 +165,7 @@ export function generateTextQuizQuestions(
     return {
       typeId: 'text-quiz' as const,
       difficulty,
+      questionLevel: q.difficulty,
       questionId: q.id,
       question: q.question,
       answers: shuffled,

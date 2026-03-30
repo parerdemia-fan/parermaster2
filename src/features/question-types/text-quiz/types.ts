@@ -2,6 +2,8 @@ import type { BaseQuestion } from '../../quiz/types.ts'
 
 export interface TextQuizQuestion extends BaseQuestion {
   typeId: 'text-quiz'
+  /** 問題データの難易度レベル（0-8、★表示用） */
+  questionLevel: number
   questionId: string
   question: string
   /** シャッフル済み選択肢 */
