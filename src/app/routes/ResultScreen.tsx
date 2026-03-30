@@ -8,12 +8,12 @@ import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.t
 import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 
-function getResultMessage(rate: number, playerName: string): string {
-  if (rate === 100) return `🎉🎉🎉 ${playerName}さん、パーフェクト達成！ 🎉🎉🎉`
-  if (rate >= 80) return `✨ すばらしい！${playerName}さん、もう少しでパーフェクト！`
-  if (rate >= 60) return `👏 いい調子！${playerName}さん、なかなかの実力！`
-  if (rate >= 40) return `💪 ${playerName}さん、まだまだ伸びしろたっぷり！`
-  return `📖 ${playerName}さん、何度でもチャレンジしよう！`
+function getResultMessage(rate: number, playerName: string): [string, string] {
+  if (rate === 100) return [`🎉🎉🎉 パーフェクト達成！ 🎉🎉🎉`, `${playerName}さん、完璧です！`]
+  if (rate >= 80) return [`✨ すばらしい！`, `${playerName}さん、もう少しでパーフェクト！`]
+  if (rate >= 60) return [`👏 いい調子！`, `${playerName}さん、なかなかの実力！`]
+  if (rate >= 40) return [`💪 がんばりました！`, `${playerName}さん、まだまだ伸びしろあり！`]
+  return [`📖 何度でもチャレンジ！`, `${playerName}さん、次はもっといけるよ！`]
 }
 
 function getTier(isPerfect: boolean, badgeResult: BadgeAwardResult): number {
@@ -54,7 +54,7 @@ export function ResultScreen() {
   const diffLabel = difficulty === 1 ? 'ふつう' : difficulty === 2 ? 'むずかしい' : '激ムズ'
   const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'
 
-  const resultMessage = getResultMessage(rate, playerName)
+  const [messageLine1, messageLine2] = getResultMessage(rate, playerName)
 
   const shareOnX = () => {
     // パーフェクト時のバッジ/称号テキスト（shareOnX時点ではbadgeResultが確定済み）
@@ -69,7 +69,7 @@ export function ResultScreen() {
     const text = `【パレ学マスター 2nd Season 結果発表】
 ${genLabel} ${modeLabel} ${diffLabel}
 ${isPerfect ? `🎉🎉🎉パーフェクト達成！🎉🎉🎉` : `${correctCount}/${total}問正解（${rate}%）`}
-${resultMessage}${badgeText}
+${messageLine1} ${messageLine2}${badgeText}
 
 👇挑戦はこちら
 ${GAME_URL}
@@ -602,7 +602,8 @@ ${GAME_URL}
               }),
             }}
           >
-            {resultMessage}
+            <div>{messageLine1}</div>
+            <div>{messageLine2}</div>
           </div>
         </div>
 
