@@ -420,7 +420,9 @@ ${GAME_URL}
                   color: '#d6336c',
                   marginTop: '1.5cqmin',
                   textAlign: 'center',
-                  animation: 'result-fade-up 0.5s 1.2s both',
+                  opacity: (showBadge || showTrophy) ? (showAward ? 1 : 0) : undefined,
+                  transition: (showBadge || showTrophy) ? 'opacity 0.5s ease-out' : undefined,
+                  animation: (showBadge || showTrophy) ? undefined : 'result-fade-up 0.5s 1.2s both',
                 }}
               >
                 {resultMessage}
