@@ -411,22 +411,6 @@ ${GAME_URL}
               <span style={{ position: 'relative', zIndex: 1, fontSize: '3cqmin', color: '#666', marginTop: '0.5cqmin' }}>
                 正解率：{rate}%
               </span>
-              <span
-                className="font-bold"
-                style={{
-                  position: 'relative',
-                  zIndex: 1,
-                  fontSize: '3.2cqmin',
-                  color: '#d6336c',
-                  marginTop: '1.5cqmin',
-                  textAlign: 'center',
-                  opacity: (showBadge || showTrophy) ? (showAward ? 1 : 0) : undefined,
-                  transition: (showBadge || showTrophy) ? 'opacity 0.5s ease-out' : undefined,
-                  animation: (showBadge || showTrophy) ? undefined : 'result-fade-up 0.5s 1.2s both',
-                }}
-              >
-                {resultMessage}
-              </span>
             </div>
 
             {/* 右側: バッジカード（称号がない場合のみ） */}
@@ -592,6 +576,23 @@ ${GAME_URL}
               </div>
             )}
           </div>
+
+          {/* パネル下部中央: メッセージ */}
+          <span
+            className="font-bold"
+            style={{
+              display: 'block',
+              fontSize: '3.2cqmin',
+              color: '#d6336c',
+              textAlign: 'center',
+              padding: '0 3cqmin 2cqmin',
+              opacity: (showBadge || showTrophy) ? (showAward ? 1 : 0) : undefined,
+              transition: (showBadge || showTrophy) ? 'opacity 0.5s ease-out' : undefined,
+              animation: (showBadge || showTrophy) ? undefined : 'result-fade-up 0.5s 1.2s both',
+            }}
+          >
+            {resultMessage}
+          </span>
         </div>
 
         {/* ===== ボタン3つ横並び（画面最下部固定） ===== */}
