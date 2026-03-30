@@ -433,6 +433,24 @@ function BadgeEditor() {
           Reset All
         </button>
       </div>
+
+      {/* OGP画像生成 */}
+      <button
+        className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+        style={{
+          fontSize: '2.5cqmin',
+          padding: '1cqmin 3cqmin',
+          borderRadius: '1cqmin',
+          border: '0.2cqmin solid rgba(100,200,255,0.5)',
+          background: 'rgba(50,100,200,0.6)',
+          color: 'white',
+          alignSelf: 'flex-start',
+        }}
+        onClick={() => useSettingsStore.setState({ screen: 'ogp' })}
+      >
+        OGP画像
+      </button>
+
       <div className="flex flex-col" style={{ gap: '0.8cqmin' }}>
         {BADGE_SLOTS.map((slot) => {
           const current = badges[slot.id] ?? 'none'

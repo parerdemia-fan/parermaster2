@@ -14,6 +14,7 @@ import { AchievementScreen } from './routes/AchievementScreen.tsx'
 import { AboutScreen } from './routes/AboutScreen.tsx'
 import { DebugScreen } from './routes/DebugScreen.tsx'
 import { TimeAttackResultScreen } from './routes/TimeAttackResultScreen.tsx'
+import { OgpScreen } from './routes/OgpScreen.tsx'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -53,6 +54,9 @@ export function App() {
     // ぼかし時に端が透けるのを防ぐため、ぼかし量に応じて拡大
     s.setProperty('--bg-blur-scale', blur > 0 ? '0.03' : '0')
   }, [screen, modeCategory, scope])
+
+  // OGP画面はGameContainer外で独立表示
+  if (import.meta.env.DEV && screen === 'ogp') return <OgpScreen />
 
   const screenMode = useScreenMode()
   const showRoom = screenMode === 'portrait-room'
