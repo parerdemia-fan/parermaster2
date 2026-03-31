@@ -130,7 +130,6 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 | trophy_2nd | 85×70 | 2期生マスター称号 | done |
 | trophy_master | 112×100 | パレ学マスター称号 | done |
 | trophy_grandmaster | 250×250 | パレ学グランドマスター称号 | done |
-| badge_timeattack | 250×250 | タイムアタック解放記念 | — |
 | badge_reserve_1〜4 | 250×250 | 予備（4枚） | — |
 
 ---
