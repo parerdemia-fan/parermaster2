@@ -1218,6 +1218,118 @@
       "eventName": "ジューンブライドイベント",
       "result": "10位",
       "talentId": "25WA010"
+    },
+    {
+      "id": "a187",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a188",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a189",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a190",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA010"
+    },
+    {
+      "id": "a191",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a192",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a193",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a194",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a195",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WA013"
+    },
+    {
+      "id": "a196",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a197",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a198",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a199",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a200",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "2位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a201",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a202",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "4位",
+      "talentId": "25WH005"
     }
   ]
 }
