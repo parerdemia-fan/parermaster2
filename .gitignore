@@ -9,3 +9,5 @@ test-results/
 scripts/
 secrets/
 docs/tasks.md
+*.tsv
+*.py

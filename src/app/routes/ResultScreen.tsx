@@ -7,6 +7,7 @@ import { getBadgeSlotDef, RANK_LABELS, RANK_COLORS } from '../../features/achiev
 import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.ts'
 import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
+import { DORM_LABELS } from '../../shared/constants/dorm.ts'
 import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 
 function getResultMessage(rate: number, playerName: string): [string, string] {
@@ -50,7 +51,6 @@ export function ResultScreen() {
   const isPerfect = correctCount === total && total > 0
 
   const isDormMode = modeCategory === 'dorm'
-  const DORM_LABELS: Record<string, string> = { wa: 'バゥ寮', me: 'ミュゥ寮', co: 'クゥ寮', wh: 'ウィニー寮' }
   const genLabel = isDormMode ? (DORM_LABELS[scope] ?? '寮別モード') : generation === 'gen2' ? '2期生編' : '1期生編'
   const diffLabel = difficulty === 1 ? 'ふつう' : difficulty === 2 ? 'むずかしい' : '激ムズ'
   const modeLabel = gameMode === 'face-name' ? '顔名前当て' : '知識クイズ'

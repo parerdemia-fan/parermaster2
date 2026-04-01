@@ -14,6 +14,7 @@ export function TitleScreen() {
   const goToTalents = useSettingsStore((s) => s.goToTalents)
   const goToAchievements = useSettingsStore((s) => s.goToAchievements)
   const goToAbout = useSettingsStore((s) => s.goToAbout)
+  const goToDiagnosis = useSettingsStore((s) => s.goToDiagnosis)
   const goToDebug = useSettingsStore((s) => s.goToDebug)
   const goToTimeAttack = useSettingsStore((s) => s.goToTimeAttack)
   const startQuiz = useGameStore((s) => s.startQuiz)
@@ -177,14 +178,6 @@ export function TitleScreen() {
         }}
       >
         <SubMenuButton
-          emoji="?"
-          label="案内"
-          useText
-          gradient="linear-gradient(180deg, #b8e6c8 0%, #7cc49a 40%, #5faa7e 100%)"
-          shadowColor="rgba(60,140,90,0.4)"
-          onClick={goToAbout}
-        />
-        <SubMenuButton
           emoji="📋"
           label="寮生一覧"
           gradient="linear-gradient(180deg, #f8c8d8 0%, #e8a0b8 40%, #d4849e 100%)"
@@ -192,11 +185,26 @@ export function TitleScreen() {
           onClick={goToTalents}
         />
         <SubMenuButton
+          emoji="💫"
+          label="相性診断"
+          gradient="linear-gradient(180deg, #e0c8f8 0%, #c8a0e8 40%, #b084d4 100%)"
+          shadowColor="rgba(140,80,180,0.4)"
+          onClick={goToDiagnosis}
+        />
+        <SubMenuButton
           emoji="🏆"
           label="実績"
           gradient="linear-gradient(180deg, #f0d8a0 0%, #d4b870 40%, #c0a050 100%)"
           shadowColor="rgba(160,130,50,0.4)"
           onClick={goToAchievements}
+        />
+        <SubMenuButton
+          emoji="?"
+          label="案内"
+          useText
+          gradient="linear-gradient(180deg, #b8e6c8 0%, #7cc49a 40%, #5faa7e 100%)"
+          shadowColor="rgba(60,140,90,0.4)"
+          onClick={goToAbout}
         />
       </div>
 

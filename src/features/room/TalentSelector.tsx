@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import type { Talent } from '../../shared/types/talent.ts'
 import type { SlotPosition } from './useRoomStore.ts'
+import { DORM_LABELS } from '../../shared/constants/dorm.ts'
 
 interface TalentSelectorProps {
   talents: Talent[]
@@ -12,7 +13,6 @@ interface TalentSelectorProps {
 }
 
 const DORM_ORDER = ['wa', 'me', 'co', 'wh']
-const DORM_LABELS: Record<string, string> = { wa: 'バゥ寮', me: 'ミュゥ寮', co: 'クゥ寮', wh: 'ウィニー寮' }
 
 export function TalentSelector({ talents, position, currentTalentId, usedTalentIds, onSelect, onClose }: TalentSelectorProps) {
   const menuRef = useRef<HTMLDivElement>(null)

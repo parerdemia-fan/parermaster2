@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp' | 'diagnosis' | 'diagnosis-result'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -63,6 +63,8 @@ interface SettingsActions {
   goToDebug: () => void
   goToTimeAttack: () => void
   goToTimeAttackResult: () => void
+  goToDiagnosis: () => void
+  goToDiagnosisResult: () => void
   // ゲーム設定
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
@@ -103,6 +105,8 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToDebug: () => set({ screen: 'debug' }),
     goToTimeAttack: () => set({ screen: 'quiz', isTimeAttack: true }),
     goToTimeAttackResult: () => set({ screen: 'time-attack-result' }),
+    goToDiagnosis: () => set({ screen: 'diagnosis' }),
+    goToDiagnosisResult: () => set({ screen: 'diagnosis-result' }),
 
     // ゲーム設定（変更時にlocalStorageへ保存）
     setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },
