@@ -54,19 +54,20 @@ ${GAME_URL}
       <div
         className="font-bold"
         style={{
-          marginTop: '3cqmin',
-          fontSize: '5cqmin',
+          marginTop: '4cqmin',
+          fontSize: '7cqmin',
           color: '#d6336c',
           textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+          letterSpacing: '0.05em',
         }}
       >
-        ✨ 相性診断の結果 ✨
+        あなたと相性の良い寮生
       </div>
 
       {/* 結果カード */}
       <div
-        className="flex items-end justify-center"
-        style={{ marginTop: '3cqmin', gap: '3cqmin', flex: 1 }}
+        className="flex items-center justify-center"
+        style={{ gap: '3cqmin', flex: 1 }}
       >
         {/* 2位(左) → 1位(中央) → 3位(右) の表彰台順 */}
         {[1, 0, 2].map((rank) => {
