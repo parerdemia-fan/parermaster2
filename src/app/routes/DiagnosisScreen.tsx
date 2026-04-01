@@ -61,14 +61,19 @@ export function DiagnosisScreen() {
         setTimeout(() => {
           if (currentIndex + 1 >= questions.length) {
             const playerVec = PERSONALITY_AXES.map((a) => newScores[a])
-            const results: { talentId: string; similarity: number }[] = []
+            const results: { talentId: string; rawSim: number }[] = []
             for (const [talentId, profile] of Object.entries(profiles)) {
               const talentVec = profileToVector(profile)
               const sim = cosineSimilarity(playerVec, talentVec)
-              results.push({ talentId, similarity: sim })
+              results.push({ talentId, rawSim: sim })
             }
-            results.sort((a, b) => b.similarity - a.similarity)
-            const top3 = results.slice(0, 3)
+            results.sort((a, b) => b.rawSim - a.rawSim)
+            const simMin = results[results.length - 1].rawSim
+            const simRange = 1.0 - simMin || 1
+            const top3 = results.slice(0, 3).map((r) => ({
+              talentId: r.talentId,
+              similarity: (r.rawSim - simMin) / simRange,
+            }))
 
             setDiagnosisResult({ scores: newScores, top3 })
             goToDiagnosisResult()

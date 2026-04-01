@@ -51,7 +51,7 @@
       "choices": [
         { "text": "楽器や絵などの創作系", "scores": { "expression": 3, "thinking": 1 } },
         { "text": "スポーツやアウトドア", "scores": { "interest": 3, "tension": 2 } },
-        { "text": "語学やプログラミング", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "資格の勉強や読書", "scores": { "thinking": 3, "stance": 1 } },
         { "text": "ボランティアや地域活動", "scores": { "stance": 3, "interest": 1 } }
       ]
     },
