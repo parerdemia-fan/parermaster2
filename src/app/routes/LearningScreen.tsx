@@ -3,17 +3,23 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { getTalentImagePath } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
+import { AnswerFeedbackLabel } from '../../shared/components/AnswerFeedbackLabel.tsx'
 import { shuffleArray } from '../../shared/utils/array.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 type Phase = 'memorize' | 'test' | 'complete'
+
+/** テスト1問分のデータ */
+interface TestQuestion {
+  target: Talent
+  choices: Talent[] // シャッフル済みの3択
+}
 
 export function LearningScreen() {
   const { modeCategory, generation, scope } = useSettingsStore()
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const { talents } = useTalents()
 
-  // 出題対象のタレントをフィルタリング＆シャッフル（初回のみ）
   const allTargets = useMemo(() => {
     const isDormMode = modeCategory === 'dorm'
     const gen = generation === 'gen2' ? 2 : 1
@@ -25,31 +31,29 @@ export function LearningScreen() {
 
   const totalCount = allTargets.length
 
-  // 出題リスト（まだ覚えていない人）と覚えたリスト
-  const [queue, setQueue] = useState<Talent[]>(() => [...allTargets])
-  const [learnedSet, setLearnedSet] = useState<Set<string>>(() => new Set())
-
-  // 現在のフェーズ
+  const [queue, setQueue] = useState<Talent[]>([])
+  const [learnedSet, setLearnedSet] = useState<Set<string>>(new Set())
   const [phase, setPhase] = useState<Phase>('memorize')
-
-  // 現在の3人組
-  const [currentGroup, setCurrentGroup] = useState<Talent[]>(() => [])
-  // テストフェーズ: 何人目をテスト中か
+  const [currentGroup, setCurrentGroup] = useState<Talent[]>([])
+  // テスト用: シャッフルされた出題順と各問の選択肢
+  const [testQuestions, setTestQuestions] = useState<TestQuestion[]>([])
   const [testIndex, setTestIndex] = useState(0)
-  // テストフェーズ: 選択状態
   const [selected, setSelected] = useState<number | null>(null)
+  const [initialized, setInitialized] = useState(false)
+  // カードのフェードアウト/イン制御
+  const [cardsVisible, setCardsVisible] = useState(true)
+  // 直前の回答の正誤（ポップアップ表示用）
+  const [lastCorrect, setLastCorrect] = useState<boolean | null>(null)
 
   // 3人組を取り出す
   const pickNextGroup = useCallback((q: Talent[], learned: Set<string>) => {
     const group: Talent[] = []
     const remaining = [...q]
 
-    // キューから最大3人取り出す
     while (group.length < 3 && remaining.length > 0) {
       group.push(remaining.shift()!)
     }
 
-    // 足りない場合、覚えたリストからランダムに補充
     if (group.length < 3 && learned.size > 0) {
       const learnedTalents = allTargets.filter((t) => learned.has(t.id) && !group.some((g) => g.id === t.id))
       const shuffled = shuffleArray(learnedTalents)
@@ -63,76 +67,94 @@ export function LearningScreen() {
     setPhase('memorize')
     setTestIndex(0)
     setSelected(null)
+    setTestQuestions([])
   }, [allTargets])
 
-  // 初回（またはtalentsロード完了後）に3人組を取り出す
+  // 初回
   useEffect(() => {
-    if (allTargets.length > 0 && currentGroup.length === 0) {
-      setQueue([...allTargets])
-      pickNextGroup([...allTargets], new Set())
+    if (allTargets.length > 0 && !initialized) {
+      setInitialized(true)
+      const q = [...allTargets]
+      setQueue(q)
+      pickNextGroup(q, new Set())
     }
-  }, [allTargets]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allTargets, initialized, pickNextGroup])
 
-  // 「覚えた！」ボタン
-  const handleMemorized = useCallback(() => {
-    playSound('tap')
-    setPhase('test')
-    setTestIndex(0)
-    setSelected(null)
+  // フェードアウト→データ切替→フェードインのヘルパー
+  const fadeTransition = useCallback((action: () => void) => {
+    setLastCorrect(null)
+    setCardsVisible(false)
+    setTimeout(() => {
+      action()
+      setCardsVisible(true)
+    }, 750)
   }, [])
 
-  // テストフェーズで選択肢をタップ
+  // 暗記→テストに移る時にテスト問題を生成
+  const startTest = useCallback(() => {
+    playSound('tap')
+    fadeTransition(() => {
+      const questions: TestQuestion[] = shuffleArray([...currentGroup]).map((target) => ({
+        target,
+        choices: shuffleArray([...currentGroup]),
+      }))
+      setTestQuestions(questions)
+      setTestIndex(0)
+      setSelected(null)
+      setPhase('test')
+    })
+  }, [currentGroup, fadeTransition])
+
   const handleTestSelect = useCallback((choiceIndex: number) => {
-    if (selected !== null) return
+    if (selected !== null || testQuestions.length === 0) return
+    playSound('tap')
     setSelected(choiceIndex)
 
-    const target = currentGroup[testIndex]
-    const isCorrect = currentGroup[choiceIndex].id === target.id
+    const q = testQuestions[testIndex]
+    const isCorrect = q.choices[choiceIndex].id === q.target.id
 
-    if (isCorrect) {
-      playSound('correct')
-    } else {
-      playSound('incorrect')
-    }
+    setLastCorrect(isCorrect)
+    playSound(isCorrect ? 'correct' : 'incorrect')
 
-    // 遅延して次へ
+    // 正解/不正解表示後、フェードで次へ（不正解時は正解を確認する時間を長めに）
+    const delay = isCorrect ? 1000 : 1800
     setTimeout(() => {
       const newLearnedSet = new Set(learnedSet)
       let newQueue = [...queue]
 
       if (isCorrect) {
-        newLearnedSet.add(target.id)
+        newLearnedSet.add(q.target.id)
       } else {
-        // 不正解: キューの末尾に戻す（既にキューにいなければ）
-        if (!newQueue.some((t) => t.id === target.id)) {
-          newQueue.push(target)
+        if (!newQueue.some((t) => t.id === q.target.id)) {
+          newQueue.push(q.target)
         }
       }
 
       setLearnedSet(newLearnedSet)
 
       const nextTestIndex = testIndex + 1
-      if (nextTestIndex < currentGroup.length) {
-        // 次のテスト
-        setTestIndex(nextTestIndex)
-        setSelected(null)
+      if (nextTestIndex < testQuestions.length) {
+        // 次のテスト問題へフェード遷移
+        fadeTransition(() => {
+          setTestIndex(nextTestIndex)
+          setSelected(null)
+        })
       } else {
-        // 3人全員テスト完了
-        // キューから覚えた人を除外
         newQueue = newQueue.filter((t) => !newLearnedSet.has(t.id))
         setQueue(newQueue)
 
         if (newQueue.length === 0 && newLearnedSet.size >= totalCount) {
-          // 全員覚えた！
           setPhase('complete')
           playSound('perfect')
         } else {
-          // 次の3人組
-          pickNextGroup(newQueue, newLearnedSet)
+          // 次のグループへフェード遷移
+          fadeTransition(() => {
+            pickNextGroup(newQueue, newLearnedSet)
+          })
         }
       }
-    }, 1000)
-  }, [selected, currentGroup, testIndex, learnedSet, queue, totalCount, pickNextGroup])
+    }, delay)
+  }, [selected, testQuestions, testIndex, learnedSet, queue, totalCount, pickNextGroup, fadeTransition])
 
   if (talents.length === 0 || totalCount === 0) {
     return (
@@ -143,6 +165,7 @@ export function LearningScreen() {
   }
 
   const learnedCount = learnedSet.size
+  const currentTestQ = testQuestions[testIndex]
 
   return (
     <div className="relative w-full h-full flex flex-col animate-fade-in">
@@ -183,7 +206,7 @@ export function LearningScreen() {
             </div>
           </div>
 
-          {/* 中央: フェーズ表示 */}
+          {/* 中央: モード名 */}
           <div
             className="font-bold"
             style={{
@@ -197,7 +220,7 @@ export function LearningScreen() {
             }}
           >
             {phase === 'memorize' && 'この3人をおぼえよう！'}
-            {phase === 'test' && `${currentGroup[testIndex]?.name} はどれ？`}
+            {phase === 'test' && currentTestQ && `${currentTestQ.target.name} はどれ？`}
             {phase === 'complete' && '全員おぼえたね！'}
           </div>
 
@@ -232,26 +255,40 @@ export function LearningScreen() {
 
       {/* メインコンテンツ */}
       {phase === 'memorize' && (
-        <MemorizePhase
-          group={currentGroup}
-          onMemorized={handleMemorized}
-        />
+        <MemorizePhase group={currentGroup} onMemorized={startTest} cardsVisible={cardsVisible} />
       )}
 
-      {phase === 'test' && (
-        <TestPhase
-          group={currentGroup}
-          targetIndex={testIndex}
-          selected={selected}
-          onSelect={handleTestSelect}
-        />
+      {phase === 'test' && currentTestQ && (
+        <>
+          {lastCorrect !== null && (
+            <div style={{
+              position: 'absolute',
+              top: '17cqmin',
+              left: 0,
+              right: 0,
+              height: '10cqmin',
+              zIndex: 40,
+            }}>
+              <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                <AnswerFeedbackLabel
+                  key={`feedback-${testIndex}-${lastCorrect}`}
+                  isCorrect={lastCorrect}
+                  isTimeAttack={false}
+                />
+              </div>
+            </div>
+          )}
+          <TestPhase
+            question={currentTestQ}
+            selected={selected}
+            onSelect={handleTestSelect}
+            cardsVisible={cardsVisible}
+          />
+        </>
       )}
 
       {phase === 'complete' && (
-        <CompletePhase
-          learnedCount={learnedCount}
-          onBack={goToTitle}
-        />
+        <CompletePhase learnedCount={learnedCount} onBack={goToTitle} />
       )}
     </div>
   )
@@ -259,10 +296,38 @@ export function LearningScreen() {
 
 /* ── 暗記フェーズ ── */
 
-function MemorizePhase({ group, onMemorized }: { group: Talent[]; onMemorized: () => void }) {
+const IMG_SIZE = '40cqmin'
+
+function talentNameFontSize(name: string): string {
+  if (name.length <= 5) return '4.5cqmin'
+  if (name.length <= 7) return '3.8cqmin'
+  return '3.2cqmin'
+}
+
+/* ── 3人のカード表示（暗記・テスト共通） ── */
+
+function TalentCards({
+  group,
+  showNames,
+  visible = true,
+  interactive,
+  correctId,
+  selected,
+  isAnswered,
+  onSelect,
+}: {
+  group: Talent[]
+  showNames: boolean
+  visible?: boolean
+  interactive?: boolean
+  correctId?: string
+  selected?: number | null
+  isAnswered?: boolean
+  onSelect?: (index: number) => void
+}) {
   return (
     <div
-      className="flex flex-col items-center justify-center"
+      className="flex items-center justify-center"
       style={{
         position: 'absolute',
         top: '16cqmin',
@@ -270,48 +335,106 @@ function MemorizePhase({ group, onMemorized }: { group: Talent[]; onMemorized: (
         left: 0,
         right: 0,
         zIndex: 3,
+        gap: '3cqmin',
+        opacity: visible ? 1 : 0,
+        transition: 'opacity 0.375s ease',
       }}
     >
-      {/* 3人の顔と名前 */}
-      <div className="flex items-center justify-center" style={{ gap: '4cqmin', flex: 1 }}>
-        {group.map((talent) => (
-          <div key={talent.id} className="flex flex-col items-center" style={{ gap: '1.5cqmin' }}>
+      {group.map((talent, i) => {
+        const isCorrect = correctId ? talent.id === correctId : false
+        const isSelected = selected === i
+        const answered = isAnswered ?? false
+
+        let borderColor = 'rgba(255,255,255,0.8)'
+        let opacity = 1
+        let shadow = '0 0.5cqmin 2cqmin rgba(0,0,0,0.15)'
+
+        if (interactive && answered) {
+          if (isCorrect) {
+            borderColor = 'rgba(34,197,94,0.9)'
+            shadow = '0 0.5cqmin 2cqmin rgba(34,197,94,0.4)'
+          } else if (isSelected) {
+            borderColor = 'rgba(239,68,68,0.9)'
+            shadow = '0 0.5cqmin 2cqmin rgba(239,68,68,0.4)'
+          } else {
+            opacity = 0.4
+          }
+        }
+
+        const nameVisible = showNames || (interactive && answered)
+
+        return (
+          <button
+            key={talent.id}
+            className="flex flex-col items-center transition"
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              cursor: interactive && !answered ? 'pointer' : 'default',
+              opacity,
+              gap: '1.5cqmin',
+            }}
+            disabled={!interactive || answered}
+            onClick={() => onSelect?.(i)}
+          >
             <div
               style={{
-                width: '22cqmin',
-                height: '22cqmin',
+                width: IMG_SIZE,
+                height: IMG_SIZE,
                 borderRadius: '2cqmin',
                 overflow: 'hidden',
-                border: '0.5cqmin solid rgba(255,255,255,0.8)',
-                boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.15)',
+                border: `0.5cqmin solid ${borderColor}`,
+                boxShadow: shadow,
+                transition: 'border-color 0.3s, box-shadow 0.3s',
               }}
             >
               <img
                 src={getTalentImagePath(talent)}
-                alt={talent.name}
+                alt={showNames ? talent.name : ''}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 draggable={false}
               />
             </div>
-            <span
-              className="font-bold"
-              style={{
-                fontSize: '4cqmin',
-                color: 'white',
-                textShadow: '0 1px 4px rgba(0,0,0,0.6)',
-              }}
-            >
-              {talent.name}
-            </span>
-          </div>
-        ))}
-      </div>
+            <TalentNameLabel name={talent.name} visible={nameVisible} />
+          </button>
+        )
+      })}
+    </div>
+  )
+}
 
-      {/* 覚えた！ボタン */}
+function TalentNameLabel({ name, visible = true }: { name: string; visible?: boolean }) {
+  return (
+    <span
+      className="font-bold"
+      style={{
+        fontSize: talentNameFontSize(name),
+        color: 'white',
+        padding: '0.5cqmin 2cqmin',
+        borderRadius: '1cqmin',
+        background: 'rgba(0,0,0,0.45)',
+        visibility: visible ? 'visible' : 'hidden',
+      }}
+    >
+      {name}
+    </span>
+  )
+}
+
+function MemorizePhase({ group, onMemorized, cardsVisible }: { group: Talent[]; onMemorized: () => void; cardsVisible: boolean }) {
+  return (
+    <>
+      <TalentCards group={group} showNames visible={cardsVisible} />
+      {/* 覚えた！ボタン（下部固定） */}
       <button
         className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
         style={{
-          marginBottom: '2cqmin',
+          position: 'absolute',
+          bottom: '3cqmin',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10,
           fontSize: '5cqmin',
           padding: '2cqmin 8cqmin',
           borderRadius: '5cqmin',
@@ -325,110 +448,37 @@ function MemorizePhase({ group, onMemorized }: { group: Talent[]; onMemorized: (
       >
         覚えた！
       </button>
-    </div>
+    </>
   )
 }
 
 /* ── テストフェーズ ── */
 
 function TestPhase({
-  group,
-  targetIndex,
+  question,
   selected,
   onSelect,
+  cardsVisible,
 }: {
-  group: Talent[]
-  targetIndex: number
+  question: TestQuestion
   selected: number | null
   onSelect: (index: number) => void
+  cardsVisible: boolean
 }) {
-  const target = group[targetIndex]
+  const { target, choices } = question
   const isAnswered = selected !== null
 
   return (
-    <div
-      className="flex flex-col items-center justify-center"
-      style={{
-        position: 'absolute',
-        top: '16cqmin',
-        bottom: '3cqmin',
-        left: 0,
-        right: 0,
-        zIndex: 3,
-      }}
-    >
-      {/* 顔画像3枚 */}
-      <div className="flex items-center justify-center" style={{ gap: '4cqmin', flex: 1 }}>
-        {group.map((talent, i) => {
-          const isCorrect = talent.id === target.id
-          const isSelected = selected === i
-
-          let borderColor = 'rgba(255,255,255,0.8)'
-          let opacity = 1
-          let shadow = '0 0.5cqmin 2cqmin rgba(0,0,0,0.15)'
-
-          if (isAnswered) {
-            if (isCorrect) {
-              borderColor = 'rgba(34,197,94,0.9)'
-              shadow = '0 0.5cqmin 2cqmin rgba(34,197,94,0.4)'
-            } else if (isSelected) {
-              borderColor = 'rgba(239,68,68,0.9)'
-              shadow = '0 0.5cqmin 2cqmin rgba(239,68,68,0.4)'
-            } else {
-              opacity = 0.4
-            }
-          }
-
-          return (
-            <button
-              key={talent.id}
-              className="flex flex-col items-center transition"
-              style={{
-                background: 'none',
-                border: 'none',
-                padding: 0,
-                cursor: isAnswered ? 'default' : 'pointer',
-                opacity,
-                gap: '1.5cqmin',
-              }}
-              disabled={isAnswered}
-              onClick={() => onSelect(i)}
-            >
-              <div
-                style={{
-                  width: '22cqmin',
-                  height: '22cqmin',
-                  borderRadius: '2cqmin',
-                  overflow: 'hidden',
-                  border: `0.5cqmin solid ${borderColor}`,
-                  boxShadow: shadow,
-                  transition: 'border-color 0.3s, box-shadow 0.3s',
-                }}
-              >
-                <img
-                  src={getTalentImagePath(talent)}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  draggable={false}
-                />
-              </div>
-              {/* 回答後に名前を表示 */}
-              <span
-                className="font-bold"
-                style={{
-                  fontSize: '3.5cqmin',
-                  color: 'white',
-                  textShadow: '0 1px 4px rgba(0,0,0,0.6)',
-                  visibility: isAnswered ? 'visible' : 'hidden',
-                }}
-              >
-                {talent.name}
-              </span>
-            </button>
-          )
-        })}
-      </div>
-    </div>
+    <TalentCards
+      group={choices}
+      showNames={false}
+      visible={cardsVisible}
+      interactive
+      correctId={target.id}
+      selected={selected}
+      isAnswered={isAnswered}
+      onSelect={onSelect}
+    />
   )
 }
 
