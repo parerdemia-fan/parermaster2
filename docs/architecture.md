@@ -86,6 +86,9 @@ src/
 │       ├── AchievementScreen.tsx
 │       ├── DiaryScreen.tsx
 │       ├── TimeAttackResultScreen.tsx  # タイムアタック結果画面
+│       ├── LearningScreen.tsx         # おぼえようモード
+│       ├── DiagnosisScreen.tsx        # 相性診断
+│       ├── DiagnosisResultScreen.tsx  # 相性診断結果
 │       ├── AboutScreen.tsx             # 案内画面
 │       ├── DebugScreen.tsx            # デバッグ画面（DEV環境のみ）
 │       └── OgpScreen.tsx              # OGP画像生成（DEV環境のみ）
