@@ -6,6 +6,7 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { generateTimeAttackQuestions } from '../../features/time-attack/generator.ts'
 import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
+import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -42,6 +43,7 @@ export function TitleScreen() {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
+      <SakuraPetals />
       {/* 横画面推奨表示（縦画面時のみ） */}
       <div
         className="absolute top-0 left-0 right-0 text-center font-bold z-10"
