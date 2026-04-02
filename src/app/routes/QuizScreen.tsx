@@ -18,6 +18,7 @@ import { WordSearchLayout } from '../../features/question-types/word-search/Word
 import type { WordSearchQuestion } from '../../features/question-types/word-search/types.ts'
 import { AnswerFeedbackLabel } from '../../shared/components/AnswerFeedbackLabel.tsx'
 import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
+import { playSound } from '../../shared/utils/sound.ts'
 
 export function QuizScreen() {
   const { questions, currentIndex, quizState, answerRecords, recordAnswer, nextQuestion, prevQuestion, isLastQuestion,
@@ -30,6 +31,7 @@ export function QuizScreen() {
   // カウントダウン（タイムアタック開始前）
   useEffect(() => {
     if (!isTimeAttack || countdown <= 0) return
+    playSound('tap')
     const timer = setTimeout(() => setCountdown(countdown - 1), 1000)
     return () => clearTimeout(timer)
   }, [isTimeAttack, countdown])
@@ -37,6 +39,7 @@ export function QuizScreen() {
   // カウントダウン完了後にタイマー開始
   useEffect(() => {
     if (isTimeAttack && countdown === 0 && timerStartedAt == null && currentIndex === 0 && quizState === 'answering') {
+      playSound('start')
       startTimer()
     }
   }, [isTimeAttack, countdown, timerStartedAt, currentIndex, quizState, startTimer])
@@ -61,7 +64,12 @@ export function QuizScreen() {
   const handleAnswer = (isCorrect: boolean, selectedIndex?: number) => {
     if (isTimeAttack) pauseTimer()
     recordAnswer(isCorrect, selectedIndex)
-    if (isTimeAttack && !isCorrect) addPenalty()
+    if (isTimeAttack && !isCorrect) {
+      addPenalty()
+      playSound('penalty')
+    } else {
+      playSound(isCorrect ? 'correct' : 'incorrect')
+    }
   }
 
   const handleNext = () => {
@@ -113,7 +121,7 @@ export function QuizScreen() {
           boxShadow: '0 0.2cqmin 0.8cqmin rgba(0,0,0,0.1)',
           backdropFilter: 'blur(6px)',
         }}
-        onClick={handleQuit}
+        onClick={() => { playSound('tap'); handleQuit() }}
       >
         やめる
       </button>
@@ -220,7 +228,7 @@ export function QuizScreen() {
                 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
               textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
-            onClick={handleNext}
+            onClick={() => { playSound('tap'); handleNext() }}
           >
             {isLastQuestion() ? '結果を見る' : '次へ →'}
           </button>}

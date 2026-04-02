@@ -7,6 +7,7 @@ import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { generateTimeAttackQuestions } from '../../features/time-attack/generator.ts'
 import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
 import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
+import { playSound, isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -25,6 +26,7 @@ export function TitleScreen() {
 
   const [showTADialog, setShowTADialog] = useState(false)
   const [isTAPreloading, setIsTAPreloading] = useState(false)
+  const [soundOn, setSoundOn] = useState(isSoundEnabled())
   const taUnlocked = isTimeAttackUnlocked()
 
   const handleTimeAttackStart = useCallback(async () => {
@@ -103,7 +105,7 @@ export function TitleScreen() {
               boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(74,138,96,0.4)',
               textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
-            onClick={() => goToSetting('gen1')}
+            onClick={() => { playSound('tap'); goToSetting('gen1') }}
           >
             🌙 1期生編
           </button>
@@ -120,7 +122,7 @@ export function TitleScreen() {
               boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(192,90,122,0.4)',
               textShadow: '0 1px 2px rgba(0,0,0,0.2)',
             }}
-            onClick={() => goToSetting('gen2')}
+            onClick={() => { playSound('tap'); goToSetting('gen2') }}
           >
             🌸 2期生編
           </button>
@@ -139,7 +141,7 @@ export function TitleScreen() {
             boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(60,100,140,0.4)',
             textShadow: '0 1px 2px rgba(0,0,0,0.2)',
           }}
-          onClick={() => goToSetting('dorm')}
+          onClick={() => { playSound('tap'); goToSetting('dorm') }}
         >
           🏠 寮別モード
         </button>
@@ -164,7 +166,7 @@ export function TitleScreen() {
             textShadow: '0 1px 2px rgba(0,0,0,0.2)',
           }}
           disabled={!taUnlocked}
-          onClick={() => taUnlocked && setShowTADialog(true)}
+          onClick={() => { if (taUnlocked) { playSound('tap'); setShowTADialog(true) } }}
         >
           {taUnlocked ? '⏱️ タイムアタック' : '🔒 タイムアタック'}
         </button>
@@ -229,6 +231,23 @@ export function TitleScreen() {
           DEV
         </button>
       )}
+
+      {/* 左下: 効果音トグル */}
+      <button
+        className="absolute cursor-pointer transition hover:brightness-110 active:scale-95"
+        style={{
+          left: '2cqmin',
+          bottom: '1.5cqmin',
+          fontSize: '3.5cqmin',
+          background: 'none',
+          border: 'none',
+          filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))',
+          zIndex: 10,
+        }}
+        onClick={() => { const next = !soundOn; setSoundOn(next); setSoundEnabled(next) }}
+      >
+        {soundOn ? '🔊' : '🔇'}
+      </button>
 
       {/* 免責テキスト */}
       <div
@@ -339,7 +358,7 @@ function SubMenuButton({
     <button
       className="flex flex-col items-center cursor-pointer transition hover:brightness-110 active:scale-95"
       style={{ background: 'none', border: 'none', padding: 0, position: 'relative' }}
-      onClick={onClick}
+      onClick={() => { playSound('tap'); onClick() }}
     >
       <div
         style={{

@@ -3,6 +3,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
+import { playSound } from '../../shared/utils/sound.ts'
 import { getTalentImagePath, getTalentStandingPath } from '../../shared/utils/talent.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
@@ -77,7 +78,7 @@ export function TalentListScreen() {
             background: 'rgba(255,255,255,0.6)',
             color: '#555',
           }}
-          onClick={goToTitle}
+          onClick={() => { playSound('tap'); goToTitle() }}
         >
           ◀ 戻る
         </button>
@@ -108,7 +109,7 @@ export function TalentListScreen() {
                 color: tab === gen ? 'white' : '#666',
                 boxShadow: tab === gen ? '0 0.2cqmin 0.6cqmin rgba(0,0,0,0.12)' : 'none',
               }}
-              onClick={() => { setTab(gen); setSelected(null) }}
+              onClick={() => { playSound('tap'); setTab(gen); setSelected(null) }}
             >
               {gen}期生
             </button>
@@ -169,7 +170,7 @@ export function TalentListScreen() {
                   return (
                     <button
                       key={talent.id}
-                      onClick={() => handleSelect(talent)}
+                      onClick={() => { playSound('tap'); handleSelect(talent) }}
                       className="relative w-full cursor-pointer transition-transform hover:scale-[1.02]"
                       style={{
                         aspectRatio: '1 / 1',

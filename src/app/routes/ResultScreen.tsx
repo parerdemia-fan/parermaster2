@@ -9,6 +9,7 @@ import { ConfettiCanvas } from '../../shared/components/ConfettiCanvas.tsx'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 import { DORM_LABELS } from '../../shared/constants/dorm.ts'
 import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
+import { playSound } from '../../shared/utils/sound.ts'
 
 function getResultMessage(rate: number, playerName: string): [string, string] {
   if (rate === 100) return [`🎉 パーフェクト！ 🎉`, `${playerName}さん、完璧です！`]
@@ -135,10 +136,10 @@ ${GAME_URL}
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
     if (tier >= 3) {
-      timers.push(setTimeout(() => setShowConfetti(true), 1500))
+      timers.push(setTimeout(() => { setShowConfetti(true); playSound('perfect') }, 1500))
     }
     if (tier >= 4) {
-      timers.push(setTimeout(() => setShowAward(true), 2000))
+      timers.push(setTimeout(() => { setShowAward(true); playSound('levelup') }, 2000))
     }
     return () => timers.forEach(clearTimeout)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

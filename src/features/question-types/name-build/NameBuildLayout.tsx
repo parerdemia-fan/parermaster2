@@ -3,6 +3,7 @@ import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
 import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
+import { playSound } from '../../../shared/utils/sound.ts'
 import type { NameBuildQuestion } from './types.ts'
 
 interface NameBuildLayoutProps {
@@ -176,7 +177,7 @@ function PairPickLayout({
                   padding: '0 1cqmin',
                 }}
                 disabled={isAnswered || isUsed}
-                onClick={() => handleChoiceClick(choice)}
+                onClick={() => { playSound('tap'); handleChoiceClick(choice) }}
               >
                 {choice}
               </button>
@@ -351,7 +352,7 @@ function CharPickLayout({
                   boxShadow,
                 }}
                 disabled={isAnswered || isUsed}
-                onClick={() => handleChoiceClick(i)}
+                onClick={() => { playSound('tap'); handleChoiceClick(i) }}
               >
                 {char}
               </button>

@@ -17,6 +17,7 @@ import { TimeAttackResultScreen } from './routes/TimeAttackResultScreen.tsx'
 import { DiagnosisScreen } from './routes/DiagnosisScreen.tsx'
 import { DiagnosisResultScreen } from './routes/DiagnosisResultScreen.tsx'
 import { OgpScreen } from './routes/OgpScreen.tsx'
+import { preloadSounds } from '../shared/utils/sound.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -47,6 +48,8 @@ export function App() {
   const screen = useSettingsStore((s) => s.screen)
   const modeCategory = useSettingsStore((s) => s.modeCategory)
   const scope = useSettingsStore((s) => s.scope)
+
+  useEffect(() => { preloadSounds() }, [])
 
   useEffect(() => {
     const { url, blur } = getBackground(screen, modeCategory, scope)

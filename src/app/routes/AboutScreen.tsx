@@ -4,6 +4,7 @@ import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { getVersion } from '../../shared/utils/version.ts'
 import { GAME_URL, PARERDEMIA_OFFICIAL_URL, QUESTION_FORM_URL } from '../../shared/constants/urls.ts'
 import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
+import { isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
 export function AboutScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
@@ -11,6 +12,7 @@ export function AboutScreen() {
   const resetAll = useBadgeStore((s) => s.resetAll)
   const [version, setVersion] = useState('')
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+  const [soundOn, setSoundOn] = useState(isSoundEnabled())
 
   useEffect(() => {
     getVersion().then(setVersion)
@@ -135,6 +137,13 @@ ${GAME_URL}
           </LinkButton>
         </Section>
 
+        {/* 効果音 */}
+        <Section title="効果音">
+          <LinkButton onClick={() => { const next = !soundOn; setSoundOn(next); setSoundEnabled(next) }}>
+            {soundOn ? '🔊 効果音: ON' : '🔇 効果音: OFF'}
+          </LinkButton>
+        </Section>
+
         {/* 実績リセット */}
         <Section title="実績リセット">
           {showResetConfirm ? (
@@ -172,6 +181,7 @@ const SECTION_ICONS: Record<string, string> = {
   '開発者について': '🤖',
   'リンク': '🔗',
   '開発日誌': '📖',
+  '効果音': '🔊',
   '実績リセット': '⚠️',
   'バージョン': '📋',
 }

@@ -3,6 +3,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useDiagnosisData, cosineSimilarity, profileToVector, setDiagnosisResult, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { getTalentImagePath } from '../../shared/utils/talent.ts'
+import { playSound } from '../../shared/utils/sound.ts'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../shared/utils/choiceStyle.ts'
 
 
@@ -48,6 +49,7 @@ export function DiagnosisScreen() {
   const handleSelect = useCallback(
     (choiceIndex: number) => {
       if (selected !== null || transitioning) return
+      playSound('tap')
       const choice = questions[currentIndex].choices[choiceIndex]
       const newScores = { ...scores }
       for (const [axis, val] of Object.entries(choice.scores)) {

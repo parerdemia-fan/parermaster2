@@ -14,6 +14,7 @@ import { shuffleArray } from '../../shared/utils/array.ts'
 import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
 import { toSlotId } from '../../features/achievement/constants.ts'
 import type { BadgeSlotId } from '../../features/achievement/types.ts'
+import { playSound } from '../../shared/utils/sound.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -176,7 +177,7 @@ export function SettingScreen() {
             background: 'rgba(255,255,255,0.6)',
             color: '#555',
           }}
-          onClick={goToTitle}
+          onClick={() => { playSound('tap'); goToTitle() }}
         >
           ◀ 戻る
         </button>
@@ -300,7 +301,7 @@ export function SettingScreen() {
             opacity: loading || isPreloading ? 0.5 : 1,
           }}
           disabled={loading || isPreloading}
-          onClick={handleStart}
+          onClick={() => { playSound('tap'); handleStart() }}
         >
           {loading ? '読み込み中...' : isPreloading ? '準備中...' : 'スタート！'}
         </button>
@@ -421,7 +422,7 @@ function PillButton({
         opacity: locked ? 0.7 : 1,
       }}
       disabled={locked}
-      onClick={onClick}
+      onClick={() => { if (onClick) { playSound('tap'); onClick() } }}
     >
       {label}
     </button>
