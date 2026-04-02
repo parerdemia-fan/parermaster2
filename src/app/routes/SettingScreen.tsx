@@ -28,7 +28,7 @@ const DORMS: ReadonlyArray<{ id: DormId; label: string; emblem: string }> = [
 export function SettingScreen() {
   const {
     modeCategory, generation, gameMode, scope, difficulty, playerName,
-    goToTitle, goToQuiz, setGameMode, setScope, setDifficulty, setPlayerName,
+    goToTitle, goToQuiz, goToLearning, setGameMode, setScope, setDifficulty, setPlayerName,
   } = useSettingsStore()
   const startQuiz = useGameStore((s) => s.startQuiz)
   const { talents, loading: talentsLoading } = useTalents()
@@ -54,10 +54,10 @@ export function SettingScreen() {
 
   const isDifficulty3Unlocked = useBadgeStore((s) => s.isDifficulty3Unlocked)
 
-  // 寮別モードでは顔名前当てのみ（知識クイズ非提供）
-  const isFaceName = gameMode === 'face-name' || isDormMode
-  // 知識クイズの難易度は1期生のみ
-  const showDifficulty = isFaceName || generation === 'gen1'
+  const isLearning = gameMode === 'learning'
+  const isFaceName = gameMode === 'face-name'
+  // おぼえようモードでは難易度不要。知識クイズの難易度は1期生のみ
+  const showDifficulty = !isLearning && (isFaceName || generation === 'gen1')
 
   // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
   const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, modeCategory, scope))
@@ -79,6 +79,12 @@ export function SettingScreen() {
 
   const handleStart = useCallback(async () => {
     if (loading || talents.length === 0 || isPreloading) return
+
+    // おぼえようモード → Learning画面へ直接遷移
+    if (gameMode === 'learning') {
+      goToLearning()
+      return
+    }
 
     const gen = generation === 'gen2' ? 2 : 1
     let questions: BaseQuestion[]
@@ -158,7 +164,7 @@ export function SettingScreen() {
     startQuiz(questions)
     goToQuiz()
     setIsPreloading(false)
-  }, [loading, talents, isPreloading, generation, isDormMode, gameMode, questionPool, difficulty, answerSets, scope, startQuiz, goToQuiz])
+  }, [loading, talents, isPreloading, generation, isDormMode, gameMode, questionPool, difficulty, answerSets, scope, startQuiz, goToQuiz, goToLearning])
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
@@ -232,37 +238,33 @@ export function SettingScreen() {
           </>
         )}
 
-        {/* ── ゲーム ──（寮別モードでは顔名前当て固定の旨を表示） */}
-        {isDormMode && (
-          <div
-            style={{
-              fontSize: '2.8cqmin',
-              color: '#888',
-              marginTop: '2cqmin',
-            }}
-          >
-            ※ 寮別モードは顔名前当てのみ
-          </div>
-        )}
-        {!isDormMode && (
-          <>
-            <SectionHeading label="ゲーム" first={!isDormMode} />
-            <div className="flex items-center justify-center" style={{ gap: '3cqmin' }}>
-              <PillButton
-                label="顔名前当て"
-                selected={isFaceName}
-                accentColor={accentColor}
-                onClick={() => handleGameModeChange('face-name')}
-              />
-              <PillButton
-                label="知識クイズ"
-                selected={!isFaceName}
-                accentColor={accentColor}
-                onClick={() => handleGameModeChange('knowledge')}
-              />
-            </div>
-          </>
-        )}
+        {/* ── ゲーム ── */}
+        <SectionHeading label="ゲーム" first={!isDormMode} />
+        <div className="flex items-center justify-center" style={{ gap: isDormMode ? '3cqmin' : '2cqmin' }}>
+          <PillButton
+            label="おぼえよう"
+            selected={gameMode === 'learning'}
+            accentColor={accentColor}
+            size={isDormMode ? undefined : 'small'}
+            onClick={() => handleGameModeChange('learning')}
+          />
+          <PillButton
+            label="顔名前当て"
+            selected={gameMode === 'face-name'}
+            accentColor={accentColor}
+            size={isDormMode ? undefined : 'small'}
+            onClick={() => handleGameModeChange('face-name')}
+          />
+          {!isDormMode && (
+            <PillButton
+              label="知識クイズ"
+              selected={gameMode === 'knowledge'}
+              accentColor={accentColor}
+              size="small"
+              onClick={() => handleGameModeChange('knowledge')}
+            />
+          )}
+        </div>
 
         {/* ── 難易度 ── */}
         {showDifficulty && (

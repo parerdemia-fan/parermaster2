@@ -14,6 +14,7 @@ import { AchievementScreen } from './routes/AchievementScreen.tsx'
 import { AboutScreen } from './routes/AboutScreen.tsx'
 import { DebugScreen } from './routes/DebugScreen.tsx'
 import { TimeAttackResultScreen } from './routes/TimeAttackResultScreen.tsx'
+import { LearningScreen } from './routes/LearningScreen.tsx'
 import { DiagnosisScreen } from './routes/DiagnosisScreen.tsx'
 import { DiagnosisResultScreen } from './routes/DiagnosisResultScreen.tsx'
 import { OgpScreen } from './routes/OgpScreen.tsx'
@@ -80,6 +81,7 @@ export function App() {
         {screen === 'achievements' && <AchievementScreen />}
         {screen === 'about' && <AboutScreen />}
         {screen === 'time-attack-result' && <TimeAttackResultScreen />}
+        {screen === 'learning' && <LearningScreen />}
         {screen === 'diagnosis' && <DiagnosisScreen />}
         {screen === 'diagnosis-result' && <DiagnosisResultScreen />}
         {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
