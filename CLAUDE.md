@@ -37,6 +37,11 @@ Webクイズゲーム。React 19 + TypeScript + Vite 8 + Tailwind CSS v4.2 + Zus
 
 - `public/data/images/` に画像を追加・差し替えしたら `docs/image-assets.md` の該当行の「状態」列を更新する（done / wip / —）
 
+## ネタ候補管理
+
+- `/pick-neta` で抽出したネタ候補にプロデューサーがボツを宣告した場合、その理由を `docs/neta-ng-criteria.md` に追記し、`/pick-neta` コマンド（`.claude/commands/pick-neta.md`）の抽出基準も改善する
+- NG基準が追加されたら、`docs/neta-candidates.md` の既存候補も確認し、同じ理由で該当するものがあれば削除する
+
 ## 注意事項
 
 - `public/data/` のJSONファイル（talents.json, questions.json, awards.json）は `pnpm sync` で生成される成果物。直接編集せず、生成元（`scripts/sync-spreadsheet.ts` またはスプレッドシート）を修正する
