@@ -232,7 +232,7 @@ RoomArea（メインコンテナ）
   - `TalentSlot.tsx` — 立ち絵スロット（アニメーション含む）
   - `TalentSelector.tsx` — ドロップダウン選択UI（画面下部ボトムシート形式）
   - `useRoomStore.ts` — Zustand ストア（スロット選択状態 + LocalStorage永続化）
-  - `SpeechBubble.tsx` — 吹き出し表示（**未実装**）
+  - `SpeechBubble.tsx` — 吹き出し表示
 
 ### 配置場所
 
