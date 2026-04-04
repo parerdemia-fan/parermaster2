@@ -94,8 +94,9 @@ ${GAME_URL}
       badgeResultRef.current = debugBadgeOverride
     } else {
       const enabledTypes = ['face-guess', 'name-guess', 'name-build']
+      const badgeGameMode = gameMode === 'face-name' || gameMode === 'knowledge' ? gameMode : 'face-name'
       const result = judgeBadge({
-        gameMode, modeCategory, scope, difficulty,
+        gameMode: badgeGameMode, modeCategory, scope, difficulty,
         correctCount, totalCount: total, enabledTypes,
       })
 

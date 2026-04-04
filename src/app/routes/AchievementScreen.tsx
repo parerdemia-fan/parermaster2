@@ -24,7 +24,6 @@ function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): { title: s
   const isDorm = slot.id.startsWith('dorm_')
   const area = isDorm ? slot.label : slot.label.replace(/・.*$/, '')
   const mode = slot.category === 'clear' ? '顔名前当て' : '知識クイズ'
-  const rankLabels: Record<BadgeRank, string> = { bronze: 'ブロンズ', silver: 'シルバー', gold: 'ゴールド' }
   const diffLabels: Record<BadgeRank, string> = { bronze: 'ふつう', silver: 'むずかしい', gold: '激ムズ' }
 
   const targetRank = rank ?? 'bronze'
