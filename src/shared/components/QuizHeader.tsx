@@ -2,7 +2,8 @@ import { useMemo, useState, useEffect } from 'react'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../hooks/useTalents.ts'
-import { useQuotes, type QuotesData } from '../hooks/useQuotes.ts'
+import { useQuotes } from '../hooks/useQuotes.ts'
+import { pickQuote, resetQuoteRotation } from '../utils/pickQuote.ts'
 import { getTalentImagePath } from '../utils/talent.ts'
 import { getDisplayDifficulty } from '../utils/difficulty.ts'
 import { formatTime } from '../../features/time-attack/constants.ts'
@@ -31,46 +32,16 @@ const TYPE_ID_TO_SCENE: Record<string, string> = {
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
 
-/** 場面ごとの使用済みセリフ。全候補を一巡するまで同じものを出さない */
-const usedComments: Record<string, Set<string>> = {}
-
-/** quotesデータからセリフをローテーション選択する */
+/** pickQuote のラッパー。fallback を必ず返す */
 function pickComment(
-  quotes: QuotesData | null,
+  quotes: Parameters<typeof pickQuote>[0],
   tone: string,
   talentName: string,
   scene: string,
   playerName: string,
   fallback: string,
 ): string {
-  if (!quotes) return fallback
-
-  const groupTone = tone || '丁寧語'
-  const groupLines = quotes.groups[groupTone]?.[scene] ?? []
-  const talentLines = quotes.talents[talentName]?.[scene] ?? []
-  let candidates = [...groupLines, ...talentLines]
-
-  if (candidates.length === 0) return fallback
-
-  // プレイヤー名未設定時は {player} 入りセリフを除外
-  if (!playerName) {
-    candidates = candidates.filter((s) => !s.includes('{player}'))
-  }
-
-  if (candidates.length === 0) return fallback
-
-  // 使用済みセットから未使用の候補を絞り込み、全部使い切ったらリセット
-  if (!usedComments[scene]) usedComments[scene] = new Set()
-  let remaining = candidates.filter((s) => !usedComments[scene].has(s))
-  if (remaining.length === 0) {
-    usedComments[scene].clear()
-    remaining = candidates
-  }
-
-  // ランダム選択 → {player} 置換
-  const picked = remaining[Math.floor(Math.random() * remaining.length)]
-  usedComments[scene].add(picked)
-  return picked.replace('{player}', playerName)
+  return pickQuote(quotes, tone, talentName, scene, playerName, fallback) ?? fallback
 }
 
 /** 位置(1〜7)に応じた星の色（黄→橙→ホットピンク） */
@@ -206,9 +177,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
   // ゲーム開始時にセリフのローテーション状態をリセット
   useEffect(() => {
     if (currentIndex === 0) {
-      for (const key of Object.keys(usedComments)) {
-        usedComments[key].clear()
-      }
+      resetQuoteRotation()
     }
   }, [currentIndex])
 

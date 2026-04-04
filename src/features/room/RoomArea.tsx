@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useRoomStore, type SlotPosition } from './useRoomStore.ts'
 import { TalentSlot } from './TalentSlot.tsx'
 import { TalentSelector } from './TalentSelector.tsx'
+import { SpeechBubble } from './SpeechBubble.tsx'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { getTalentStandingPath } from '../../shared/utils/talent.ts'
 
@@ -43,6 +44,15 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
 
   const usedTalentIds = new Set(
     Object.values(slots).filter((id): id is string => id !== null),
+  )
+
+  // スロット順（left, center, right）でタレントを並べる（SpeechBubble用）
+  const slotTalents = useMemo(
+    () => SLOT_POSITIONS.map((pos) => {
+      const id = slots[pos]
+      return id ? talents.find((t) => t.id === id) ?? null : null
+    }).filter((t): t is NonNullable<typeof t> => t !== null),
+    [slots, talents],
   )
 
   const bgImage = DORM_BG[dormitory] ?? DORM_BG.wa
@@ -96,6 +106,11 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         }}
         draggable={false}
       />
+
+      {/* 吹き出し（テーブルの手前） */}
+      {slotTalents.length > 0 && !activeSelector && (
+        <SpeechBubble talents={slotTalents} />
+      )}
 
       {/* タレント選択ドロップダウン（1つだけ表示、fixed で画面下部に展開） */}
       {showSelector && activeSelector && (
