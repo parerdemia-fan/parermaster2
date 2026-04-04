@@ -87,8 +87,8 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
       style={{
         position: 'absolute',
         left: `${bubble.centerX}%`,
-        // 立ち絵のy中心に合わせる。画面内にクランプ（上下16pxの余白を確保）
-        top: `clamp(16px, calc(max(0px, 100dvh - 187.5dvw) + 75dvw), calc(100% - 16px))`,
+        // 立ち絵の上から1/3の位置に合わせる。画面内にクランプ（上下16pxの余白を確保）
+        top: `clamp(16px, calc(max(0px, 100dvh - 187.5dvw) + 50dvw), calc(100% - 16px))`,
         transform: 'translate(-50%, -50%)',
         zIndex: 20,
         pointerEvents: 'none',
