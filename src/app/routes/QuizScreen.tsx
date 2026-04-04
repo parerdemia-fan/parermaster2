@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useGameStore } from '../../stores/gameStore.ts'
+import { useGameStore, getPenaltySeconds } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { QuizHeader } from '../../shared/components/QuizHeader.tsx'
 import { NameGuessLayout } from '../../features/question-types/name-guess/NameGuessLayout.tsx'
@@ -65,7 +65,7 @@ export function QuizScreen() {
     if (isTimeAttack) pauseTimer()
     recordAnswer(isCorrect, selectedIndex)
     if (isTimeAttack && !isCorrect) {
-      addPenalty()
+      addPenalty(getPenaltySeconds(current.typeId))
       playSound('penalty')
     } else {
       playSound(isCorrect ? 'correct' : 'incorrect')

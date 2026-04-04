@@ -14,8 +14,17 @@ export interface BadgeAwardResult {
 
 export type QuizState = 'answering' | 'answered'
 
-/** ペナルティ1回あたりの加算秒数 */
-const PENALTY_SECONDS = 5
+/** 問題タイプ別ペナルティ秒数 */
+const PENALTY_SECONDS: Record<string, number> = {
+  'name-build': 15,
+  'blur': 10,
+  'spotlight': 10,
+}
+const DEFAULT_PENALTY_SECONDS = 5
+
+export function getPenaltySeconds(questionType: string): number {
+  return PENALTY_SECONDS[questionType] ?? DEFAULT_PENALTY_SECONDS
+}
 
 interface GameState {
   questions: BaseQuestion[]
@@ -26,7 +35,8 @@ interface GameState {
   // タイマー（タイムアタック用）
   timerStartedAt: number | null
   accumulatedTime: number
-  penaltyCount: number
+  /** ペナルティ累計（ミリ秒） */
+  penaltyMs: number
   /** デバッグ用: 結果画面のバッジ表示をオーバーライド（nullなら通常判定） */
   debugBadgeOverride: BadgeAwardResult | null
 }
@@ -41,7 +51,7 @@ interface GameActions {
   startTimer: () => void
   pauseTimer: () => void
   resumeTimer: () => void
-  addPenalty: () => void
+  addPenalty: (seconds: number) => void
   /** 現在の経過時間（ms）= 累積 + 稼働中の分 + ペナルティ */
   getElapsedMs: () => number
 }
@@ -54,7 +64,7 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   answerRecords: [],
   timerStartedAt: null,
   accumulatedTime: 0,
-  penaltyCount: 0,
+  penaltyMs: 0,
   debugBadgeOverride: null,
 
   startQuiz: (questions) =>
@@ -66,7 +76,7 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
       answerRecords: [],
       timerStartedAt: null,
       accumulatedTime: 0,
-      penaltyCount: 0,
+      penaltyMs: 0,
       debugBadgeOverride: null,
     }),
 
@@ -109,7 +119,7 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
   },
 
   // タイマー
-  startTimer: () => set({ timerStartedAt: Date.now(), accumulatedTime: 0, penaltyCount: 0 }),
+  startTimer: () => set({ timerStartedAt: Date.now(), accumulatedTime: 0, penaltyMs: 0 }),
 
   pauseTimer: () => {
     const { timerStartedAt, accumulatedTime } = get()
@@ -122,11 +132,11 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
 
   resumeTimer: () => set({ timerStartedAt: Date.now() }),
 
-  addPenalty: () => set((s) => ({ penaltyCount: s.penaltyCount + 1 })),
+  addPenalty: (seconds) => set((s) => ({ penaltyMs: s.penaltyMs + seconds * 1000 })),
 
   getElapsedMs: () => {
-    const { timerStartedAt, accumulatedTime, penaltyCount } = get()
+    const { timerStartedAt, accumulatedTime, penaltyMs } = get()
     const running = timerStartedAt != null ? Date.now() - timerStartedAt : 0
-    return accumulatedTime + running + penaltyCount * PENALTY_SECONDS * 1000
+    return accumulatedTime + running + penaltyMs
   },
 }))
