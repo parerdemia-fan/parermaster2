@@ -86,15 +86,18 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
     <div
       style={{
         position: 'absolute',
-        left: `${bubble.centerX}%`,
+        // 左右見切れ防止: 中心位置を指定しつつ、左右8pxの余白内に収める
+        left: '8px',
+        right: '8px',
+        display: 'flex',
+        justifyContent: bubble.centerX < 33 ? 'flex-start' : bubble.centerX > 67 ? 'flex-end' : 'center',
         // 立ち絵の上から1/3の位置に合わせる。画面内にクランプ（上下16pxの余白を確保）
         top: `clamp(16px, calc(max(0px, 100dvh - 187.5dvw) + 50dvw), calc(100% - 16px))`,
-        transform: 'translate(-50%, -50%)',
+        transform: 'translateY(-50%)',
         zIndex: 20,
         pointerEvents: 'none',
         opacity: visible ? 1 : 0,
         transition: `opacity ${FADE_DURATION}ms ease`,
-        maxWidth: 'calc(100% - 16px)',
       }}
     >
       <div
