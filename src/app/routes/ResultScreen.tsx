@@ -68,12 +68,14 @@ export function ResultScreen() {
       badgeText = `\n🏅 ${badgeResult.slotLabel} ${rankLabel}バッジ${badgeResult.isRankUp ? ' ランクアップ！' : ' 獲得！'}`
     }
 
-    const text = `【パレ学マスター 2nd Season 結果発表】
-${genLabel} ${modeLabel} ${diffLabel}
-${isPerfect ? `🎉🎉🎉パーフェクト達成！🎉🎉🎉` : `${correctCount}/${total}問正解（${rate}%）`}
-${messageLine1} ${messageLine2}${badgeText}
+    const scoreOrPerfect = isPerfect
+      ? `🎉 ${playerName}さん、パーフェクト達成！`
+      : `${correctCount}/${total}問正解（${rate}%）\n${messageLine1} ${messageLine2}`
 
-👇挑戦はこちら
+    const text = `パレ学マスター 2nd Season
+${genLabel} ${modeLabel} ${diffLabel}
+${scoreOrPerfect}${badgeText}
+
 ${GAME_URL}
 #パレ学マスター #パレデミア学園`
     doShareOnX(text)

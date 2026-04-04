@@ -19,12 +19,12 @@ export function AboutScreen() {
   }, [])
 
   const shareOnX = () => {
-    const text = `パレデミア学園の寮生クイズゲーム
+    const text = `パレデミア学園の寮生たちの顔と名前を覚えよう！
 『パレ学マスター 2nd Season』
 
-✅顔当て・名前当て
-✅名前を作ろう
-✅知識クイズ
+✅顔当て・名前当て・知識クイズ
+✅相性診断・タイムアタック
+✅おぼえようモード
 
 👇今すぐプレイ
 ${GAME_URL}

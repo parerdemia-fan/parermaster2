@@ -37,12 +37,13 @@ export function DiagnosisResultScreen() {
 
   const handleShare = () => {
     const lines = top3.map((r, i) =>
-      `${RANK_STYLES[i].emoji} ${r.talent.name}（${DORM_LABELS[r.talent.dormitory] ?? ''}）`,
+      `${RANK_STYLES[i].emoji} ${r.talent.name}（${DORM_LABELS[r.talent.dormitory] ?? ''}）${Math.round(r.similarity * 100)}%`,
     )
-    const text = `相性診断の結果✨
+    const text = `パレ学マスター 2nd Season 相性診断✨
 相性の良い寮生は…
 ${lines.join('\n')}
 
+あなたは誰と相性がいい？
 ${GAME_URL}
 #パレ学マスター #パレデミア学園`
     shareOnX(text)

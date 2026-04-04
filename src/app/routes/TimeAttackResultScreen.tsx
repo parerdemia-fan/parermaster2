@@ -38,7 +38,8 @@ export function TimeAttackResultScreen() {
 
   const handleShare = () => {
     const message = getTimeMessage(clearTime)
-    const text = `${playerName}: ${message}\n\nパレ学マスター 2nd Season タイムアタック\nクリアタイム: ${formatTime(clearTime)}\n\n👇挑戦はこちら\n${GAME_URL}\n#パレ学マスター #パレデミア学園`
+    const recordText = isNewRecord ? ' 🎊自己ベスト更新！' : ''
+    const text = `パレ学マスター 2nd Season タイムアタック\n⏱ ${formatTime(clearTime)}${recordText}\n${playerName}: ${message}\n\n${GAME_URL}\n#パレ学マスター #パレデミア学園`
     doShareOnX(text)
   }
 
