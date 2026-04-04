@@ -60,7 +60,7 @@ export function TalentSelector({ talents, position, currentTalentId, usedTalentI
       }}
     >
       {/* ヘッダー */}
-      <div style={{ padding: '6px 12px', fontSize: '12px', color: '#aaa', borderBottom: '1px solid #444' }}>
+      <div style={{ padding: '8px 14px', fontSize: '14px', color: '#aaa', borderBottom: '1px solid #444' }}>
         {posLabel}スロット
       </div>
 
@@ -68,9 +68,9 @@ export function TalentSelector({ talents, position, currentTalentId, usedTalentI
       <button
         style={{
           width: '100%',
-          padding: '8px 12px',
+          padding: '10px 14px',
           textAlign: 'left',
-          fontSize: '13px',
+          fontSize: '16px',
           color: currentTalentId ? '#ff8888' : '#666',
           background: 'none',
           border: 'none',
@@ -89,7 +89,7 @@ export function TalentSelector({ talents, position, currentTalentId, usedTalentI
         if (!list || list.length === 0) return null
         return (
           <div key={dorm}>
-            <div style={{ padding: '4px 12px', fontSize: '11px', color: '#aaa', background: '#222', position: 'sticky', top: 0 }}>
+            <div style={{ padding: '6px 14px', fontSize: '16px', color: '#aaa', background: '#222', position: 'sticky', top: 0 }}>
               {DORM_LABELS[dorm] ?? dorm}
             </div>
             {list.map((t) => {
@@ -101,9 +101,9 @@ export function TalentSelector({ talents, position, currentTalentId, usedTalentI
                   data-selected={isSelected}
                   style={{
                     width: '100%',
-                    padding: '6px 12px',
+                    padding: '8px 14px',
                     textAlign: 'left',
-                    fontSize: '13px',
+                    fontSize: '16px',
                     color: isSelected ? '#ffd700' : isUsed ? '#555' : '#eee',
                     background: 'none',
                     border: 'none',
