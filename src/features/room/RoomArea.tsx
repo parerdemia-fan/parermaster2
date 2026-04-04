@@ -25,7 +25,7 @@ interface RoomAreaProps {
 
 export function RoomArea({ showSelector }: RoomAreaProps) {
   const { talents } = useTalents()
-  const { slots, dormitory, activeSelector, setSlot, setDormitory, openSelector, closeSelector } = useRoomStore()
+  const { slots, dormitory, activeSelector, speechBubble, setSlot, setDormitory, openSelector, closeSelector, setSpeechBubble } = useRoomStore()
 
   // 初回: 中央スロットが空でタレントがいたらランダムに1期生を配置
   useEffect(() => {
@@ -109,7 +109,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
       />
 
       {/* 吹き出し（テーブルの手前） */}
-      {slotTalents.length > 0 && !activeSelector && (
+      {speechBubble && slotTalents.length > 0 && !activeSelector && (
         <SpeechBubble entries={slotTalents} />
       )}
 
@@ -145,7 +145,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         />
       )}
 
-      {/* 寮選択ボタン（タイトル画面のみ） */}
+      {/* 寮選択・吹き出しトグル（タイトル画面のみ） */}
       {showSelector && (
         <div
           style={{
@@ -155,8 +155,31 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
             zIndex: 10,
             display: 'flex',
             gap: '4px',
+            alignItems: 'center',
           }}
         >
+          {/* 吹き出しON/OFF */}
+          <button
+            onClick={() => setSpeechBubble(!speechBubble)}
+            style={{
+              width: '28px',
+              height: '28px',
+              borderRadius: '50%',
+              border: '2px solid transparent',
+              background: 'rgba(0,0,0,0.5)',
+              cursor: 'pointer',
+              opacity: speechBubble ? 1 : 0.4,
+              padding: 0,
+              fontSize: '14px',
+              lineHeight: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            title={speechBubble ? '吹き出し: ON' : '吹き出し: OFF'}
+          >
+            💬
+          </button>
           {DORM_IDS.map((dorm) => (
             <button
               key={dorm}

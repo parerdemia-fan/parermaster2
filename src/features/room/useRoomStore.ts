@@ -13,6 +13,8 @@ interface RoomState {
   dormitory: DormId
   /** 現在開いているセレクターのスロット（null = 閉じている） */
   activeSelector: SlotPosition | null
+  /** 吹き出し表示の ON/OFF */
+  speechBubble: boolean
 }
 
 interface RoomActions {
@@ -20,9 +22,10 @@ interface RoomActions {
   setDormitory: (dorm: DormId) => void
   openSelector: (position: SlotPosition) => void
   closeSelector: () => void
+  setSpeechBubble: (enabled: boolean) => void
 }
 
-function loadState(): Pick<RoomState, 'slots' | 'dormitory'> {
+function loadState(): Pick<RoomState, 'slots' | 'dormitory' | 'speechBubble'> {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) {
@@ -34,22 +37,24 @@ function loadState(): Pick<RoomState, 'slots' | 'dormitory'> {
           right: data.right ?? null,
         },
         dormitory: DORMITORIES.includes(data.dormitory) ? data.dormitory : randomDorm(),
+        speechBubble: data.speechBubble ?? true,
       }
     }
   } catch { /* ignore */ }
-  return { slots: { left: null, center: null, right: null }, dormitory: randomDorm() }
+  return { slots: { left: null, center: null, right: null }, dormitory: randomDorm(), speechBubble: true }
 }
 
 function randomDorm(): DormId {
   return DORMITORIES[Math.floor(Math.random() * DORMITORIES.length)]
 }
 
-function saveState(slots: RoomState['slots'], dormitory: DormId) {
+function saveState(slots: RoomState['slots'], dormitory: DormId, speechBubble: boolean) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     left: slots.left,
     center: slots.center,
     right: slots.right,
     dormitory,
+    speechBubble,
   }))
 }
 
@@ -59,18 +64,24 @@ export const useRoomStore = create<RoomState & RoomActions>()((set, get) => ({
   slots: initial.slots,
   dormitory: initial.dormitory,
   activeSelector: null,
+  speechBubble: initial.speechBubble,
 
   setSlot: (position, talentId) => {
     const slots = { ...get().slots, [position]: talentId }
-    saveState(slots, get().dormitory)
+    saveState(slots, get().dormitory, get().speechBubble)
     set({ slots, activeSelector: null })
   },
 
   setDormitory: (dorm) => {
-    saveState(get().slots, dorm)
+    saveState(get().slots, dorm, get().speechBubble)
     set({ dormitory: dorm })
   },
 
   openSelector: (position) => set({ activeSelector: position }),
   closeSelector: () => set({ activeSelector: null }),
+
+  setSpeechBubble: (enabled) => {
+    saveState(get().slots, get().dormitory, enabled)
+    set({ speechBubble: enabled })
+  },
 }))
