@@ -46,12 +46,13 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
     Object.values(slots).filter((id): id is string => id !== null),
   )
 
-  // スロット順（left, center, right）でタレントを並べる（SpeechBubble用）
+  // スロット位置とタレントのペア（SpeechBubble用）
   const slotTalents = useMemo(
     () => SLOT_POSITIONS.map((pos) => {
       const id = slots[pos]
-      return id ? talents.find((t) => t.id === id) ?? null : null
-    }).filter((t): t is NonNullable<typeof t> => t !== null),
+      const talent = id ? talents.find((t) => t.id === id) ?? null : null
+      return talent ? { position: pos, talent } : null
+    }).filter((e): e is NonNullable<typeof e> => e !== null),
     [slots, talents],
   )
 
@@ -109,7 +110,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
 
       {/* 吹き出し（テーブルの手前） */}
       {slotTalents.length > 0 && !activeSelector && (
-        <SpeechBubble talents={slotTalents} />
+        <SpeechBubble entries={slotTalents} />
       )}
 
       {/* タレント選択ドロップダウン（1つだけ表示、fixed で画面下部に展開） */}

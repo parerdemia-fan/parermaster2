@@ -3,6 +3,7 @@ import { useQuotes } from '../../shared/hooks/useQuotes.ts'
 import { pickQuote } from '../../shared/utils/pickQuote.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import type { Talent } from '../../shared/types/talent.ts'
+import type { SlotPosition } from './useRoomStore.ts'
 
 const SCENE = '談話室'
 const INTERVAL_MIN = 15_000
@@ -10,19 +11,27 @@ const INTERVAL_MAX = 30_000
 const DISPLAY_DURATION = 4_000
 const FADE_DURATION = 400
 
+export interface SlotTalent {
+  position: SlotPosition
+  talent: Talent
+}
+
 interface SpeechBubbleProps {
-  /** スロット順（left, center, right）で並んだタレント配列 */
-  talents: Talent[]
+  /** スロット位置とタレントのペア */
+  entries: SlotTalent[]
 }
 
 function randomInterval(): number {
   return INTERVAL_MIN + Math.random() * (INTERVAL_MAX - INTERVAL_MIN)
 }
 
-/** スロット位置の中心x% */
-const SLOT_CENTER_X = [16.67, 50, 83.33]
+const SLOT_CENTER_X: Record<SlotPosition, number> = {
+  left: 16.67,
+  center: 50,
+  right: 83.33,
+}
 
-export function SpeechBubble({ talents }: SpeechBubbleProps) {
+export function SpeechBubble({ entries }: SpeechBubbleProps) {
   const quotes = useQuotes()
   const playerName = useSettingsStore((s) => s.playerName)
 
@@ -42,14 +51,13 @@ export function SpeechBubble({ talents }: SpeechBubbleProps) {
   }, [])
 
   useEffect(() => {
-    if (!quotes || talents.length === 0) return
+    if (!quotes || entries.length === 0) return
 
     const show = () => {
-      const idx = Math.floor(Math.random() * talents.length)
-      const talent = talents[idx]
-      const centerX = SLOT_CENTER_X[idx] ?? 50
+      const entry = entries[Math.floor(Math.random() * entries.length)]
+      const centerX = SLOT_CENTER_X[entry.position]
 
-      const text = pickQuote(quotes, talent.tone, talent.name, SCENE, playerName)
+      const text = pickQuote(quotes, entry.talent.tone, entry.talent.name, SCENE, playerName)
       if (!text) {
         addTimer(show, randomInterval())
         return
@@ -70,7 +78,7 @@ export function SpeechBubble({ talents }: SpeechBubbleProps) {
     addTimer(show, randomInterval())
 
     return clearAllTimers
-  }, [quotes, talents, playerName, addTimer, clearAllTimers])
+  }, [quotes, entries, playerName, addTimer, clearAllTimers])
 
   if (!bubble) return null
 
