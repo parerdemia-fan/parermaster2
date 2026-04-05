@@ -29,6 +29,13 @@ const TYPE_ID_TO_SCENE: Record<string, string> = {
   'word-search': '名前を探せ',
 }
 
+/** 改行区切りのニックネームからランダムに1つ選ぶ */
+function pickNickname(nickname: string): string {
+  if (!nickname) return ''
+  const names = nickname.split('\n').filter(Boolean)
+  return names[Math.floor(Math.random() * names.length)]
+}
+
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
 const COMMENT_WRONG = 'あちゃ〜、残念！'
 
@@ -167,7 +174,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
     const pool = candidates.length > 0 ? candidates : gen1
     const picked = pool[Math.floor(Math.random() * pool.length)]
     return {
-      displayName: picked.nickname || picked.name,
+      displayName: pickNickname(picked.nickname) || picked.name,
       talentName: picked.name,
       tone: picked.tone || '丁寧語',
       image: getTalentImagePath(picked),
