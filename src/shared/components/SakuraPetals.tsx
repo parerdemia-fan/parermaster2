@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
+import { PETAL_COLORS, drawPetal } from './petalUtils'
 
 const PETAL_COUNT = 15
-const COLORS = ['rgba(255,183,197,0.7)', 'rgba(255,160,180,0.6)', 'rgba(248,200,210,0.65)']
 
 interface Petal {
   x: number
@@ -28,25 +28,13 @@ function createPetal(canvasW: number, canvasH: number, startAbove: boolean): Pet
     swayOffset: Math.random() * Math.PI * 2,
     rotation: Math.random() * Math.PI * 2,
     rotationSpeed: (Math.random() - 0.5) * 0.02,
-    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+    color: PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)],
     opacity: 0.5 + Math.random() * 0.4,
   }
 }
 
-function drawPetal(ctx: CanvasRenderingContext2D, p: Petal) {
-  ctx.save()
-  ctx.globalAlpha = p.opacity
-  ctx.translate(p.x, p.y)
-  ctx.rotate(p.rotation)
-  ctx.fillStyle = p.color
-  // 花びら形状（2つの楕円弧）
-  ctx.beginPath()
-  ctx.ellipse(-p.size * 0.15, 0, p.size * 0.5, p.size, 0, 0, Math.PI * 2)
-  ctx.fill()
-  ctx.beginPath()
-  ctx.ellipse(p.size * 0.15, 0, p.size * 0.5, p.size, 0, 0, Math.PI * 2)
-  ctx.fill()
-  ctx.restore()
+function drawSakuraPetal(ctx: CanvasRenderingContext2D, p: Petal) {
+  drawPetal(ctx, p.x, p.y, p.size, p.rotation, p.opacity, p.color)
 }
 
 export function SakuraPetals() {
@@ -98,7 +86,7 @@ export function SakuraPetals() {
           petals[i] = newP
         }
 
-        drawPetal(ctx!, p)
+        drawSakuraPetal(ctx!, p)
       }
 
       rafId = requestAnimationFrame(animate)

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { ClickPetalEffect } from './ClickPetalEffect';
 
 interface GameContainerProps {
   children: ReactNode;
@@ -14,7 +15,7 @@ interface GameContainerProps {
  */
 export function GameContainer({ children }: GameContainerProps) {
   return (
-    <div className="w-full flex justify-center shrink-0">
+    <div className="relative w-full flex justify-center shrink-0">
       <div
         className="flex flex-col items-center justify-center"
         style={{
@@ -29,6 +30,7 @@ export function GameContainer({ children }: GameContainerProps) {
       >
         {children}
       </div>
+      <ClickPetalEffect />
     </div>
   );
 }
