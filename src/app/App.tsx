@@ -72,20 +72,22 @@ export function App() {
       style={{ alignItems: centerVertically ? 'center' : 'stretch', justifyContent: centerVertically ? 'center' : 'flex-start' }}
     >
       <GameContainer>
-        {screen === 'title' && <TitleScreen />}
-        {screen === 'setting' && <SettingScreen />}
-        {screen === 'quiz' && <QuizScreen />}
-        {screen === 'result' && <ResultScreen />}
-        {screen === 'diary' && <DiaryScreen />}
-        {screen === 'talents' && <TalentListScreen />}
-        {screen === 'achievements' && <AchievementScreen />}
-        {screen === 'about' && <AboutScreen />}
-        {screen === 'time-attack-result' && <TimeAttackResultScreen />}
-        {screen === 'learning' && <LearningScreen />}
-        {screen === 'diagnosis' && <DiagnosisScreen />}
-        {screen === 'diagnosis-result' && <DiagnosisResultScreen />}
-        {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
-        {import.meta.env.DEV && screen === 'ogp' && <OgpScreen />}
+        <div key={screen} className="contents animate-screen-fade">
+          {screen === 'title' && <TitleScreen />}
+          {screen === 'setting' && <SettingScreen />}
+          {screen === 'quiz' && <QuizScreen />}
+          {screen === 'result' && <ResultScreen />}
+          {screen === 'diary' && <DiaryScreen />}
+          {screen === 'talents' && <TalentListScreen />}
+          {screen === 'achievements' && <AchievementScreen />}
+          {screen === 'about' && <AboutScreen />}
+          {screen === 'time-attack-result' && <TimeAttackResultScreen />}
+          {screen === 'learning' && <LearningScreen />}
+          {screen === 'diagnosis' && <DiagnosisScreen />}
+          {screen === 'diagnosis-result' && <DiagnosisResultScreen />}
+          {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
+          {import.meta.env.DEV && screen === 'ogp' && <OgpScreen />}
+        </div>
       </GameContainer>
       {showRoom && <RoomArea showSelector={screen === 'title'} />}
     </div>

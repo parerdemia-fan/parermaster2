@@ -57,3 +57,8 @@ body::before {
 .animate-fade-in {
   animation: fadeIn 0.2s ease-out;
 }
+
+/* 画面遷移フェード */
+.animate-screen-fade {
+  animation: fadeIn 0.3s ease-out;
+}
