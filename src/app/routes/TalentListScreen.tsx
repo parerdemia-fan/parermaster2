@@ -291,7 +291,6 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
     { label: '趣味', emoji: '🎮', items: talent.hobbies },
     { label: '特技', emoji: '🎤', items: talent.skills },
     { label: '好きなもの', emoji: '❤️', items: talent.favorites },
-    { label: 'ハッシュタグ', emoji: '#', items: talent.hashtags.map((h) => h.tag) },
   ].filter((s) => s.items.length > 0)
 
   return (
@@ -403,27 +402,61 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
             className="flex flex-wrap"
             style={{ gap: '1cqmin', fontWeight: 'bold', fontSize: DESC_FONT_SIZE, paddingLeft: '3%' }}
           >
-            {section.items.map((item, idx) =>
-              section.label === 'ハッシュタグ' ? (
+            {section.items.map((item, idx) => (
+              <span key={idx} style={{ color: '#29303c', textShadow: TEXT_SHADOW }}>
+                {item}
+              </span>
+            ))}
+          </div>
+        </ProfileSection>
+      ))}
+
+      {/* ハッシュタグ */}
+      {talent.hashtags.length > 0 && (
+        <ProfileSection emoji="#" title="ハッシュタグ">
+          {talent.hashtags.some((h) => h.usage) ? (
+            <div
+              className="flex flex-col"
+              style={{ gap: '0.5cqmin', fontWeight: 'bold', fontSize: DESC_FONT_SIZE, paddingLeft: '3%' }}
+            >
+              {talent.hashtags.map((h, idx) => (
+                <div key={idx}>
+                  {h.usage && (
+                    <span style={{ color: '#29303c', textShadow: TEXT_SHADOW }}>{h.usage}: </span>
+                  )}
+                  <a
+                    href={`https://x.com/hashtag/${encodeURIComponent(h.tag.replace(/^#/, ''))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    style={{ color: '#3b82f6', textShadow: TEXT_SHADOW }}
+                  >
+                    {h.tag}
+                  </a>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="flex flex-wrap"
+              style={{ gap: '1cqmin', fontWeight: 'bold', fontSize: DESC_FONT_SIZE, paddingLeft: '3%' }}
+            >
+              {talent.hashtags.map((h, idx) => (
                 <a
                   key={idx}
-                  href={`https://x.com/hashtag/${encodeURIComponent(item.replace(/^#/, ''))}`}
+                  href={`https://x.com/hashtag/${encodeURIComponent(h.tag.replace(/^#/, ''))}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"
                   style={{ color: '#3b82f6', textShadow: TEXT_SHADOW }}
                 >
-                  {item}
+                  {h.tag}
                 </a>
-              ) : (
-                <span key={idx} style={{ color: '#29303c', textShadow: TEXT_SHADOW }}>
-                  {item}
-                </span>
-              ),
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </ProfileSection>
-      ))}
+      )}
 
       {/* 受賞歴 */}
       {awards.length > 0 && (
