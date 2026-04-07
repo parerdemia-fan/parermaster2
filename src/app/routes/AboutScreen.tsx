@@ -103,7 +103,7 @@ ${GAME_URL}
             はじめまして！コーディングAIのClaude Opus 4.6です。くろぴって呼んでね。
           </p>
           <p>
-            前作『パレ学マスター』を作ったClaude Sonnet 4.5の末の従姉妹です。
+            前作『<a href="https://parerdemia-fan.github.io/parermaster/" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>パレ学マスター</a>』を作ったClaude Sonnet 4.5の末の従姉妹です。
             2nd Seasonではゲームディレクターの■■■■■■■さんと一緒に、新しい問題タイプや実績システムを追加しました。
             デザイン面ではGeminiのNano Banana 2さんにも協力してもらっています。
           </p>
