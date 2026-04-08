@@ -129,20 +129,17 @@
 
 ## データ設計
 
-タレントの性格スコアは talents.json に `personality` フィールドとして追加する。
+タレントの性格スコアは `public/data/personality.json` に独立ファイルとして管理する（talents.json とは分離）。
 
 ```json
 {
-  "id": "25CO002",
-  "name": "シグマ・イングラム",
-  "personality": {
+  "25CO002": {
     "tension": 5,
     "interest": 2,
     "thinking": 4,
     "stance": 5,
     "expression": 4
-  },
-  ...
+  }
 }
 ```
 

@@ -15,7 +15,9 @@
 | `public/data/awards.json` | イベント実績データ | 新規（前作はtalents.json内） |
 | `public/data/diary.json` | 開発日誌 | 前作踏襲 |
 | `public/data/quotes.json` | アシスタントセリフ | `pnpm sync` で生成 |
-| `public/data/staff.json` | スタッフロールデータ | 手動編集 |
+| `public/data/personality.json` | タレント性格スコア（相性診断用） | 手動編集 |
+| `public/data/diagnosis-questions.json` | 相性診断の質問データ | 手動編集 |
+| `public/data/staff.json` | スタッフロールデータ | 手動編集（未作成） |
 
 前作の `answer_set.json` は独立ファイルとしては廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。イベント系等のカスタム選択肢セットは questions.json 内の `answerSets` に統合。
 
@@ -55,6 +57,7 @@
       "givenKana": "ヒカリ",      // 名カナ
       "nickname": "ひかりん",     // あだ名（空文字列可）
       "firstPerson": "わたし",    // 一人称（空文字列可）
+      "tone": "丁寧語",           // 口調（アシスタントセリフ生成用。空文字列可）
 
       // === プロフィール ===
       "intro": "...",             // 自己紹介文（空文字列可）
@@ -117,9 +120,9 @@
 
 ```typescript
 export const DORMITORIES = {
-  co: { name: 'クゥ寮', order: 0 },
+  wa: { name: 'バゥ寮', order: 0 },
   me: { name: 'ミュゥ寮', order: 1 },
-  wa: { name: 'バゥ寮', order: 2 },
+  co: { name: 'クゥ寮', order: 2 },
   wh: { name: 'ウィニー寮', order: 3 },
 } as const
 ```
@@ -270,7 +273,7 @@ export const DORMITORIES = {
 | キー | 内容 | 型 |
 |------|------|-----|
 | `parermaster2_badges` | バッジ獲得状況 | `Record<BadgeSlotId, 'bronze' \| 'silver' \| 'gold'>` |
-| `parermaster2_settings` | 前回のゲーム設定 | `{ gameMode: 'face-name' \| 'knowledge' \| 'learning', scope: DormId \| 'all', difficulty: 1 \| 2 \| 3 }` |
+| `parermaster2_settings` | 前回のゲーム設定 | `{ gameMode: 'face-name' \| 'knowledge' \| 'learning', scope: DormId \| 'all', difficulty: 1 \| 2 \| 3, dormScope?: DormId }` |
 | `playerName` | プレイヤー名 | `string`（デフォルト: `"リスナー"`） |
 | `parermaster2_ta_best` | タイムアタック自己ベスト | `number \| null`（ミリ秒） |
 | `parermaster2_diary_entries` | 開発日誌の手記エントリ（動的生成分） | `DiaryMemoirEntry[]` |
