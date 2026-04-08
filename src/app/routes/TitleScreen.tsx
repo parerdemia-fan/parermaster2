@@ -438,10 +438,10 @@ function SubMenuButton({
         className="font-bold"
         style={{
           position: 'absolute',
-          bottom: '-1.5cqmin',
+          bottom: '-2cqmin',
           left: '50%',
           transform: 'translateX(-50%)',
-          fontSize: '2.5cqmin',
+          fontSize: '3cqmin',
           color: 'white',
           textShadow: '0 1px 3px rgba(0,0,0,0.5)',
           whiteSpace: 'nowrap',
