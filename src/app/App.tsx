@@ -19,6 +19,7 @@ import { DiagnosisScreen } from './routes/DiagnosisScreen.tsx'
 import { DiagnosisResultScreen } from './routes/DiagnosisResultScreen.tsx'
 import { OgpScreen } from './routes/OgpScreen.tsx'
 import { preloadSounds } from '../shared/utils/sound.ts'
+import { useBackNavigation } from '../shared/hooks/useBackNavigation.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -51,6 +52,7 @@ export function App() {
   const scope = useSettingsStore((s) => s.scope)
 
   useEffect(() => { preloadSounds() }, [])
+  useBackNavigation()
 
   useEffect(() => {
     const { url, blur } = getBackground(screen, modeCategory, scope)

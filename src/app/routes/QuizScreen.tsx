@@ -28,6 +28,12 @@ export function QuizScreen() {
   const [countdown, setCountdown] = useState(isTimeAttack ? 3 : 0)
   const [showQuitDialog, setShowQuitDialog] = useState(false)
 
+  // ブラウザバックで確認ダイアログを表示
+  const backRequestCount = useSettingsStore((s) => s.backRequestCount)
+  useEffect(() => {
+    if (backRequestCount > 0) setShowQuitDialog(true)
+  }, [backRequestCount])
+
   // カウントダウン（タイムアタック開始前）
   useEffect(() => {
     if (!isTimeAttack || countdown <= 0) return

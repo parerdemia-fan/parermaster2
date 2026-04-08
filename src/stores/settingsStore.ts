@@ -66,6 +66,9 @@ interface SettingsActions {
   goToDiagnosis: () => void
   goToDiagnosisResult: () => void
   goToLearning: () => void
+  // ブラウザバック
+  requestBack: () => void
+  backRequestCount: number
   // ゲーム設定
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
@@ -109,6 +112,9 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToDiagnosis: () => set({ screen: 'diagnosis' }),
     goToDiagnosisResult: () => set({ screen: 'diagnosis-result' }),
     goToLearning: () => set({ screen: 'learning' }),
+    // ブラウザバック
+    backRequestCount: 0,
+    requestBack: () => set((s) => ({ backRequestCount: s.backRequestCount + 1 })),
 
     // ゲーム設定（変更時にlocalStorageへ保存）
     setGameMode: (mode) => { set({ gameMode: mode }); persistSettings(get()) },
