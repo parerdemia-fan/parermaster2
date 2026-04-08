@@ -47,9 +47,15 @@ export function SettingScreen() {
   const [isNameDialogOpen, setIsNameDialogOpen] = useState(false)
   const [isPreloading, setIsPreloading] = useState(false)
 
+  const closeNameDialog = () => {
+    // モバイルでIMEを確実に閉じてからダイアログを閉じる
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur()
+    setIsNameDialogOpen(false)
+  }
+
   const handleNameChange = (name: string) => {
     setPlayerName(name)
-    setIsNameDialogOpen(false)
+    closeNameDialog()
   }
 
   const isDifficulty3Unlocked = useBadgeStore((s) => s.isDifficulty3Unlocked)
@@ -312,7 +318,7 @@ export function SettingScreen() {
         <div
           className="flex items-center justify-center"
           style={{
-            marginTop: '2cqmin',
+            marginTop: '3.5cqmin',
             fontSize: '3cqmin',
             color: '#666',
             gap: '1.5cqmin',
@@ -323,9 +329,9 @@ export function SettingScreen() {
           <button
             className="cursor-pointer transition hover:brightness-105 active:scale-95"
             style={{
-              fontSize: '2.5cqmin',
-              padding: '0.5cqmin 1.5cqmin',
-              borderRadius: '1.5cqmin',
+              fontSize: '3cqmin',
+              padding: '0.6cqmin 2cqmin',
+              borderRadius: '2cqmin',
               border: '1px solid #ccc',
               background: 'white',
               color: '#888',
@@ -343,7 +349,7 @@ export function SettingScreen() {
           currentName={playerName}
           accentColor={accentColor}
           onConfirm={handleNameChange}
-          onCancel={() => setIsNameDialogOpen(false)}
+          onCancel={closeNameDialog}
         />
       )}
     </div>
@@ -514,8 +520,13 @@ function NameDialog({
 
   return (
     <div
-      className="absolute inset-0 flex items-center justify-center"
-      style={{ backgroundColor: 'rgba(0,0,0,0.4)', zIndex: 50 }}
+      className="fixed inset-0 flex justify-center"
+      style={{
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        zIndex: 50,
+        alignItems: 'flex-start',
+        paddingTop: '10dvh',
+      }}
       onClick={onCancel}
     >
       <div
@@ -533,57 +544,31 @@ function NameDialog({
       >
         <span
           className="font-bold"
-          style={{ fontSize: '4cqmin', color: '#333', marginBottom: '3cqmin' }}
+          style={{ fontSize: '3.5cqmin', color: '#333', marginBottom: '2cqmin' }}
         >
           名前を入力
         </span>
-        <input
-          ref={inputRef}
-          type="text"
-          value={value}
-          autoFocus
-          onChange={(e) => {
-            const v = e.target.value
-            if (getStringWidth(v.trim()) <= MAX_NAME_WIDTH) setValue(v)
-          }}
-          className="font-bold"
-          style={{
-            fontSize: '4cqmin',
-            padding: '1.5cqmin 2cqmin',
-            borderRadius: '2cqmin',
-            border: '0.3cqmin solid #ccc',
-            outline: 'none',
-            textAlign: 'center',
-            width: '40cqmin',
-          }}
-        />
-        <span
-          style={{
-            fontSize: '2.5cqmin',
-            color: '#999',
-            marginTop: '1cqmin',
-          }}
-        >
-          {currentWidth} / {MAX_NAME_WIDTH}
-        </span>
-        <div
-          className="flex items-center justify-center"
-          style={{ gap: '3cqmin', marginTop: '3cqmin' }}
-        >
-          <button
-            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
-            style={{
-              fontSize: '3.5cqmin',
-              padding: '1.5cqmin 4cqmin',
-              borderRadius: '5cqmin',
-              border: '0.3cqmin solid #ddd',
-              background: 'white',
-              color: '#666',
+        <div className="flex items-center" style={{ gap: '2cqmin' }}>
+          <input
+            ref={inputRef}
+            type="text"
+            value={value}
+            autoFocus
+            onChange={(e) => {
+              const v = e.target.value
+              if (getStringWidth(v.trim()) <= MAX_NAME_WIDTH) setValue(v)
             }}
-            onClick={onCancel}
-          >
-            キャンセル
-          </button>
+            className="font-bold"
+            style={{
+              fontSize: 'max(4cqmin, 16px)',
+              padding: '1.5cqmin 2cqmin',
+              borderRadius: '2cqmin',
+              border: '0.3cqmin solid #ccc',
+              outline: 'none',
+              textAlign: 'center',
+              width: '40cqmin',
+            }}
+          />
           <button
             className="font-bold transition"
             style={{
@@ -594,6 +579,7 @@ function NameDialog({
               background: canConfirm ? accentColor : '#ccc',
               color: 'white',
               cursor: canConfirm ? 'pointer' : 'not-allowed',
+              whiteSpace: 'nowrap',
             }}
             disabled={!canConfirm}
             onClick={handleConfirm}
@@ -601,6 +587,15 @@ function NameDialog({
             決定
           </button>
         </div>
+        <span
+          style={{
+            fontSize: '2.5cqmin',
+            color: '#999',
+            marginTop: '1cqmin',
+          }}
+        >
+          {currentWidth} / {MAX_NAME_WIDTH}
+        </span>
       </div>
     </div>
   )
