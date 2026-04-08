@@ -19,23 +19,35 @@ const RANK_BORDER: Record<BadgeRank, string> = {
   gold: '#daa520',
 }
 
+type TooltipInfo = {
+  title: string
+  condition: string
+  imageSrc?: string
+  rankLabel?: string
+}
+
 /** バッジの条件情報を生成 */
-function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): { title: string; condition: string } {
+function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): TooltipInfo {
   const isDorm = slot.id.startsWith('dorm_')
   const area = isDorm ? slot.label : slot.label.replace(/・.*$/, '')
   const mode = slot.category === 'clear' ? '顔名前当て' : '知識クイズ'
   const diffLabels: Record<BadgeRank, string> = { bronze: 'ふつう', silver: 'むずかしい', gold: '激ムズ' }
+  const shortLabel = isDorm ? slot.label : `${area} ${mode}`
 
+  const imageMap = BADGE_IMAGES[slot.category]
+  const imageSrc = rank && imageMap ? imageMap[rank] : undefined
+  const rankLabel = rank ? RANK_LABELS[rank] : undefined
   const targetRank = rank ?? 'bronze'
 
-  if (slot.maxRank === 'bronze') {
-    return { title: '', condition: `${area} ${mode} 全問正解` }
-  }
-  return { title: '', condition: `${area} ${mode} ${diffLabels[targetRank]} 全問正解` }
+  const condition = slot.maxRank === 'bronze'
+    ? `${area} ${mode} 全問正解`
+    : `${area} ${mode} ${diffLabels[targetRank]} 全問正解`
+
+  return { title: shortLabel, condition, imageSrc, rankLabel }
 }
 
 /** 称号の条件情報を生成 */
-function getTitleTooltip(label: string): { title: string; condition: string } {
+function getTitleTooltip(label: string): TooltipInfo {
   if (label === '1期生マスター') {
     return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド' }
   }
@@ -43,9 +55,49 @@ function getTitleTooltip(label: string): { title: string; condition: string } {
 }
 
 const AREA_STYLES = {
-  gen2: { label: '2期生', gradient: 'linear-gradient(180deg, #fcc4dc 0%, #e8789e 100%)' },
-  gen1: { label: '1期生', gradient: 'linear-gradient(180deg, #a8dbb8 0%, #6aaa80 100%)' },
-  dorm: { label: '寮別', gradient: 'linear-gradient(180deg, #b8d4e8 0%, #5b8db8 100%)' },
+  gen2: { label: '2期生', gradient: 'linear-gradient(180deg, #fcc4dc 0%, #f49aba 40%, #e8789e 100%)' },
+  gen1: { label: '1期生', gradient: 'linear-gradient(180deg, #a8dbb8 0%, #7cbf96 40%, #6aaa80 100%)' },
+  dorm: { label: '寮別', gradient: 'linear-gradient(180deg, #b8d4e8 0%, #7aabc4 40%, #5b8db8 100%)' },
+}
+
+/** ランク別カードスタイル（世代スロット用） */
+const RANK_CARD_STYLES: Record<BadgeRank, { gradient: string; shadow: string }> = {
+  gold: {
+    gradient: 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)',
+    shadow: 'rgba(200,170,0,0.4)',
+  },
+  silver: {
+    gradient: 'linear-gradient(135deg, #fafafa 0%, #e0e0e0 50%, #c8c8c8 100%)',
+    shadow: 'rgba(140,140,140,0.3)',
+  },
+  bronze: {
+    gradient: 'linear-gradient(135deg, #faf0e4 0%, #dbb896 50%, #c8a070 100%)',
+    shadow: 'rgba(170,120,60,0.3)',
+  },
+}
+
+/** 寮別カードスタイル（各寮テーマカラー） */
+const DORM_CARD_STYLES: Record<string, { gradient: string; border: string; shadow: string }> = {
+  dorm_wa: {
+    gradient: 'linear-gradient(135deg, #fff3e0 0%, #ffcc80 50%, #ffb040 100%)',
+    border: '#e6930a',
+    shadow: 'rgba(200,130,20,0.4)',
+  },
+  dorm_me: {
+    gradient: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%)',
+    border: '#e06090',
+    shadow: 'rgba(200,80,140,0.4)',
+  },
+  dorm_co: {
+    gradient: 'linear-gradient(135deg, #e8f5f0 0%, #b2dfdb 50%, #80cbc4 100%)',
+    border: '#4db6ac',
+    shadow: 'rgba(60,150,140,0.4)',
+  },
+  dorm_wh: {
+    gradient: 'linear-gradient(135deg, #f5ebe0 0%, #d7c0a0 50%, #bfa070 100%)',
+    border: '#a08050',
+    shadow: 'rgba(140,110,60,0.4)',
+  },
 }
 
 export function AchievementScreen() {
@@ -59,7 +111,7 @@ export function AchievementScreen() {
     } catch { return null }
   })()
   const isGrandMaster = isParerMaster() && taBest != null && taBest < 5 * 60 * 1000
-  const [tooltip, setTooltip] = useState<{ title: string; condition: string } | null>(null)
+  const [tooltip, setTooltip] = useState<TooltipInfo | null>(null)
 
   const slotsById = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
   const gen2Slots = GEN2_SLOT_IDS.map((id) => slotsById.get(id)!)
@@ -103,67 +155,103 @@ export function AchievementScreen() {
       {/* メインコンテンツ: 横2カラム */}
       <div
         className="flex-1 flex overflow-hidden"
-        style={{ gap: '2cqmin', padding: '2cqmin 2cqmin 2cqmin' }}
+        style={{ gap: '2cqmin', padding: '2cqmin' }}
       >
-        {/* 左カラム: バッジグリッド */}
+        {/* 左カラム: バッジグリッド + タイムアタック */}
         <div
-          className="overflow-y-auto"
+          className="flex flex-col"
           style={{
-            flex: 1,
+            width: '52%',
             minHeight: 0,
-            scrollbarWidth: 'none',
             borderRadius: '3cqmin',
             backgroundColor: 'rgba(255,255,255,0.55)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
-            padding: '2cqmin',
+            padding: '1.5cqmin',
+            gap: '1cqmin',
           }}
         >
           <BadgeArea area={AREA_STYLES.gen1} slots={gen1Slots} badges={badges} columns={2} onShowTooltip={setTooltip} />
           <BadgeArea area={AREA_STYLES.gen2} slots={gen2Slots} badges={badges} columns={2} onShowTooltip={setTooltip} />
-          <BadgeArea area={AREA_STYLES.dorm} slots={dormSlots} badges={badges} columns={4} onShowTooltip={setTooltip} />
+
+          {/* 寮別 + タイムアタック横並び */}
+          <div style={{ display: 'flex', gap: '1cqmin' }}>
+            <div style={{ flex: 1 }}>
+              <RibbonHeader gradient={AREA_STYLES.dorm.gradient} label={AREA_STYLES.dorm.label} />
+              <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '1cqmin' }}>
+                {dormSlots.map((slot) => {
+                  const rank = badges[slot.id] ?? null
+                  return <BadgeSlotCard key={slot.id} slot={slot} rank={rank} onTap={() => setTooltip(getBadgeTooltip(slot, rank))} />
+                })}
+              </div>
+            </div>
+            <div className="flex flex-col" style={{ width: '28%' }}>
+              <RibbonHeader
+                gradient={taUnlocked
+                  ? 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)'
+                  : 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)'}
+                label="TA"
+              />
+              <div
+                className="flex flex-col items-center justify-center"
+                style={{
+                  flex: 1,
+                  padding: '1cqmin',
+                  borderRadius: '2cqmin',
+                  background: taUnlocked
+                    ? 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)'
+                    : 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 50%, #b8b8b8 100%)',
+                  border: taUnlocked
+                    ? '0.3cqmin solid rgba(255,215,0,0.6)'
+                    : '0.3cqmin solid rgba(0,0,0,0.08)',
+                  boxShadow: taUnlocked
+                    ? 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin rgba(200,170,0,0.3)'
+                    : 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.2)',
+                  opacity: taUnlocked ? 1 : 0.6,
+                  gap: '0.3cqmin',
+                }}
+              >
+                <span style={{ fontSize: '4cqmin', lineHeight: 1 }}>
+                  {taUnlocked ? '⏱️' : '🔒'}
+                </span>
+                {taUnlocked && (
+                  <span style={{ fontSize: '2cqmin', color: '#666', textAlign: 'center', marginTop: '0.3cqmin' }}>
+                    {taBest != null ? (
+                      <>自己ベスト<br /><span className="font-bold" style={{ color: '#c48800', fontSize: '2.8cqmin' }}>{formatTime(taBest)}</span></>
+                    ) : (
+                      '未プレイ'
+                    )}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* 右カラム: 称号 + タイムアタック */}
+        {/* 右カラム: 称号 */}
         <div
           className="flex flex-col"
           style={{
-            width: '38%',
+            flex: 1,
             minHeight: 0,
             borderRadius: '3cqmin',
             backgroundColor: 'rgba(255,255,255,0.55)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.1)',
-            padding: '2.5cqmin',
-            gap: '2cqmin',
+            padding: '1.5cqmin',
+            gap: '1.5cqmin',
           }}
         >
-          {/* セクション見出し */}
-          <div
-            className="font-bold text-center text-white"
-            style={{
-              fontSize: '3.5cqmin',
-              padding: '1cqmin 0',
-              background: 'linear-gradient(180deg, #c4b5fd 0%, #9333ea 100%)',
-              borderRadius: '1.5cqmin',
-              border: '0.2cqmin solid rgba(255,255,255,0.4)',
-              boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)',
-              textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-              letterSpacing: '0.1em',
-            }}
-          >
-            総合称号
-          </div>
+          <RibbonHeader
+            gradient="linear-gradient(180deg, #d4c4ff 0%, #a855f7 40%, #7e22ce 100%)"
+            label="総合称号"
+          />
 
-          {/* 称号カード */}
-          <div className="flex flex-col" style={{ gap: '1.5cqmin' }}>
-            <TitleCard label="1期生マスター" achieved={isGen1Master()} image={TROPHY_IMAGES.gen1} gradient="linear-gradient(135deg, #a8dbb8 0%, #6aaa80 100%)" onTap={() => setTooltip(getTitleTooltip('1期生マスター'))} />
-            <TitleCard label="2期生マスター" achieved={isGen2Master()} image={TROPHY_IMAGES.gen2} gradient="linear-gradient(135deg, #fcc4dc 0%, #e8789e 100%)" onTap={() => setTooltip(getTitleTooltip('2期生マスター'))} />
-          </div>
+          <TitleCard label="1期生マスター" achieved={isGen1Master()} image={TROPHY_IMAGES.gen1} gradient="linear-gradient(135deg, #a8dbb8 0%, #7cbf96 50%, #6aaa80 100%)" onTap={() => setTooltip(getTitleTooltip('1期生マスター'))} />
+          <TitleCard label="2期生マスター" achieved={isGen2Master()} image={TROPHY_IMAGES.gen2} gradient="linear-gradient(135deg, #fcc4dc 0%, #f49aba 50%, #e8789e 100%)" onTap={() => setTooltip(getTitleTooltip('2期生マスター'))} />
 
-          {/* パレ学マスター / グランドマスター（シークレット: 達成時のみ表示、残りスペースを使う） */}
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
@@ -171,36 +259,6 @@ export function AchievementScreen() {
                 : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得' }
             )} />
           )}
-
-          {/* タイムアタック */}
-          <div
-            className="flex flex-col items-center"
-            style={{
-              marginTop: 'auto',
-              padding: '2cqmin',
-              borderRadius: '2cqmin',
-              background: taUnlocked
-                ? 'linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(230,160,0,0.15) 100%)'
-                : 'rgba(0,0,0,0.04)',
-              border: taUnlocked
-                ? '0.2cqmin solid rgba(230,160,0,0.3)'
-                : '0.2cqmin solid rgba(0,0,0,0.08)',
-              gap: '0.5cqmin',
-            }}
-          >
-            <span className="font-bold" style={{ fontSize: '3cqmin', color: taUnlocked ? '#c48800' : '#bbb' }}>
-              {taUnlocked ? '⏱️ タイムアタック' : '🔒 タイムアタック'}
-            </span>
-            {taUnlocked && (
-              <span style={{ fontSize: '2.5cqmin', color: '#666' }}>
-                {taBest != null ? (
-                  <>自己ベスト: <span className="font-bold" style={{ color: '#c48800', fontSize: '3.5cqmin' }}>{formatTime(taBest)}</span></>
-                ) : (
-                  '未プレイ'
-                )}
-              </span>
-            )}
-          </div>
         </div>
       </div>
 
@@ -212,31 +270,67 @@ export function AchievementScreen() {
           onClick={() => setTooltip(null)}
         >
           <div
-            className="text-center"
+            className="flex flex-col items-center"
             style={{
               color: '#333',
               background: 'rgba(255,255,255,0.95)',
               backdropFilter: 'blur(8px)',
               padding: '3cqmin 5cqmin',
-              borderRadius: '2cqmin',
-              boxShadow: '0 0.5cqmin 2cqmin rgba(0,0,0,0.2)',
+              borderRadius: '3cqmin',
+              boxShadow: '0 0.5cqmin 3cqmin rgba(0,0,0,0.25)',
+              minWidth: '25cqmin',
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            {tooltip.imageSrc && (
+              <img
+                src={tooltip.imageSrc}
+                alt=""
+                style={{ width: '10cqmin', height: '10cqmin', objectFit: 'contain', marginBottom: '0.5cqmin' }}
+                draggable={false}
+              />
+            )}
             {tooltip.title && (
-              <div className="font-bold" style={{ fontSize: '4cqmin', marginBottom: '1.5cqmin' }}>
+              <div className="font-bold" style={{ fontSize: '3cqmin', marginBottom: '1cqmin' }}>
                 {tooltip.title}
               </div>
             )}
+            {tooltip.rankLabel && (
+              <div className="font-bold" style={{ fontSize: '3.5cqmin', color: '#8a6500', marginBottom: '1.5cqmin' }}>
+                {tooltip.rankLabel}
+              </div>
+            )}
+            <div style={{ width: '80%', height: '1px', background: 'linear-gradient(90deg, transparent, #ccc, transparent)', marginBottom: '1.5cqmin' }} />
             <div style={{ fontSize: '2.5cqmin', color: '#888', marginBottom: '0.5cqmin' }}>
               獲得条件
             </div>
-            <div className="font-bold" style={{ fontSize: '3cqmin', whiteSpace: 'pre-line', lineHeight: 1.8, paddingLeft: '2cqmin', textAlign: 'left' }}>
+            <div className="font-bold" style={{ fontSize: '2.5cqmin', whiteSpace: 'pre-line', lineHeight: 1.8, textAlign: 'center' }}>
               {tooltip.condition}
             </div>
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+/* ── リボン型見出し ── */
+
+function RibbonHeader({ gradient, label }: { gradient: string; label: string }) {
+  return (
+    <div
+      className="font-bold text-center text-white"
+      style={{
+        fontSize: '3cqmin',
+        padding: '0.8cqmin 4cqmin',
+        background: gradient,
+        clipPath: 'polygon(3% 0%, 97% 0%, 100% 50%, 97% 100%, 3% 100%, 0% 50%)',
+        textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+        letterSpacing: '0.1em',
+        marginBottom: '1cqmin',
+      }}
+    >
+      {label}
     </div>
   )
 }
@@ -254,32 +348,16 @@ function BadgeArea({
   slots: BadgeSlotDef[]
   badges: Partial<Record<string, BadgeRank>>
   columns: number
-  onShowTooltip: (info: { title: string; condition: string }) => void
+  onShowTooltip: (info: TooltipInfo) => void
 }) {
   return (
-    <div style={{ marginBottom: '2cqmin' }}>
-      <div
-        className="font-bold text-center text-white"
-        style={{
-          fontSize: '3cqmin',
-          padding: '0.8cqmin 0',
-          background: area.gradient,
-          borderRadius: '1.5cqmin',
-          border: '0.2cqmin solid rgba(255,255,255,0.4)',
-          boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)',
-          textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-          letterSpacing: '0.1em',
-          marginBottom: '1.5cqmin',
-        }}
-      >
-        {area.label}
-      </div>
-
+    <div>
+      <RibbonHeader gradient={area.gradient} label={area.label} />
       <div
         className="grid"
         style={{
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: '1.5cqmin',
+          gap: '1cqmin',
         }}
       >
         {slots.map((slot) => {
@@ -302,8 +380,6 @@ function BadgeSlotCard({
   rank: BadgeRank | null
   onTap: () => void
 }) {
-  // 世代別: エリアバーで世代が分かるのでゲームモード名を表示
-  // 寮別: 寮名を表示
   const isDorm = slot.id.startsWith('dorm_')
   const shortLabel = isDorm
     ? slot.label
@@ -313,38 +389,55 @@ function BadgeSlotCard({
   const imageMap = BADGE_IMAGES[slot.category]
   const imageSrc = rank && imageMap ? imageMap[rank] : null
 
+  let cardBg: string
+  let cardBorder: string
+  let cardShadow: string
+
+  if (!rank) {
+    cardBg = 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 50%, #b8b8b8 100%)'
+    cardBorder = 'rgba(0,0,0,0.08)'
+    cardShadow = 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.2)'
+  } else if (isDorm && DORM_CARD_STYLES[slot.id]) {
+    const dorm = DORM_CARD_STYLES[slot.id]
+    cardBg = dorm.gradient
+    cardBorder = dorm.border
+    cardShadow = `inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin ${dorm.shadow}`
+  } else {
+    const rankStyle = RANK_CARD_STYLES[rank]
+    cardBg = rankStyle.gradient
+    cardBorder = RANK_BORDER[rank]
+    cardShadow = `inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin ${rankStyle.shadow}`
+  }
+
   return (
     <div
       className="flex flex-col items-center justify-center cursor-pointer transition active:scale-95"
       onClick={onTap}
       style={{
-        padding: '1.5cqmin 1cqmin',
+        padding: '1cqmin 0.5cqmin',
         borderRadius: '2cqmin',
-        background: rank === 'gold'
-          ? 'linear-gradient(135deg, #fffcf0 0%, #ffe9a0 100%)'
-          : rank === 'silver'
-            ? 'linear-gradient(135deg, #f8f8f8 0%, #d8d8d8 100%)'
-            : rank === 'bronze'
-              ? 'linear-gradient(135deg, #faf0e4 0%, #e4c8a8 100%)'
-              : 'rgba(200,200,200,0.3)',
+        background: cardBg,
         opacity: rank ? 1 : 0.6,
-        border: rank
-          ? `0.3cqmin solid ${RANK_BORDER[rank]}`
-          : '0.2cqmin solid rgba(0,0,0,0.08)',
-        boxShadow: rank === 'gold'
-          ? '0 0 1.5cqmin rgba(255, 215, 0, 0.5)'
-          : rank === 'silver'
-            ? '0 0 0.8cqmin rgba(160, 160, 160, 0.4)'
-            : 'none',
+        border: `0.3cqmin solid ${cardBorder}`,
+        boxShadow: cardShadow,
       }}
     >
-      {/* バッジ画像 */}
       {imageSrc ? (
-        <div style={{ position: 'relative', width: '8cqmin', height: '8cqmin' }}>
+        <div style={{
+          position: 'relative',
+          width: '8cqmin',
+          height: '8cqmin',
+          borderRadius: '50%',
+          background: 'rgba(255,255,255,0.35)',
+          border: '0.2cqmin solid rgba(255,255,255,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
           <img
             src={imageSrc}
             alt={`${shortLabel} ${rank ? RANK_LABELS[rank] : ''}`}
-            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            style={{ width: '6.5cqmin', height: '6.5cqmin', objectFit: 'contain' }}
             draggable={false}
           />
           {(rank === 'gold' || rank === 'silver') && (
@@ -380,23 +473,13 @@ function BadgeSlotCard({
       <span
         className="font-bold"
         style={{
-          fontSize: '2.5cqmin',
+          fontSize: '2.2cqmin',
           color: rank ? '#444' : '#999',
           textAlign: 'center',
-          marginTop: '0.3cqmin',
-        }}
-      >
-        {shortLabel}
-      </span>
-      <span
-        style={{
-          fontSize: '2cqmin',
-          color: rank ? RANK_BORDER[rank] : '#bbb',
-          fontWeight: 'bold',
           marginTop: '0.2cqmin',
         }}
       >
-        {rank ? RANK_LABELS[rank] : '未獲得'}
+        {shortLabel}
       </span>
     </div>
   )
@@ -419,36 +502,44 @@ function TitleCard({
 }) {
   return (
     <div
-      className="flex items-center justify-center font-bold cursor-pointer transition active:scale-95"
+      className="flex flex-col items-center justify-center font-bold cursor-pointer transition active:scale-95"
       onClick={onTap}
       style={{
-        padding: '2.5cqmin 2cqmin',
+        position: 'relative',
+        flex: 1,
         borderRadius: '2cqmin',
-        background: achieved ? gradient : 'rgba(200,200,200,0.4)',
+        background: achieved
+          ? `radial-gradient(ellipse at center 45%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0.4) 55%, transparent 75%), ${gradient}`
+          : 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 50%, #b8b8b8 100%)',
         border: achieved
-          ? '0.2cqmin solid rgba(255,255,255,0.5)'
-          : '0.2cqmin solid rgba(0,0,0,0.08)',
+          ? '0.3cqmin solid rgba(255,255,255,0.5)'
+          : '0.3cqmin solid rgba(0,0,0,0.08)',
         boxShadow: achieved
-          ? 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.25)'
-          : 'none',
-        gap: '1.5cqmin',
+          ? 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.3cqmin 0.8cqmin rgba(0,0,0,0.15)'
+          : 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.2)',
+        overflow: 'hidden',
       }}
     >
       {achieved ? (
         <img
           src={image}
           alt={label}
-          style={{ height: '6cqmin', width: 'auto', flexShrink: 0, filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}
+          style={{ height: '70%', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.3))' }}
           draggable={false}
         />
       ) : (
-        <span style={{ fontSize: '5cqmin', lineHeight: 1, opacity: 0.5 }}>🔒</span>
+        <span style={{ fontSize: '8cqmin', lineHeight: 1, opacity: 0.5 }}>🔒</span>
       )}
       <span
         style={{
+          position: 'absolute',
+          bottom: '1cqmin',
           fontSize: '3cqmin',
           color: achieved ? 'white' : '#bbb',
-          textShadow: achieved ? '0 1px 2px rgba(0,0,0,0.2)' : 'none',
+          textShadow: achieved
+            ? '0 1px 3px rgba(0,0,0,0.4), 0 0 6px rgba(0,0,0,0.2)'
+            : 'none',
+          letterSpacing: '0.05em',
         }}
       >
         {label}
@@ -504,10 +595,8 @@ function SecretMasterCard({
           ? 'inset 0 0.5cqmin 1cqmin rgba(255,255,255,0.4), 0 0 2cqmin rgba(255,150,150,0.5), 0 0 4cqmin rgba(255,200,100,0.3)'
           : 'inset 0 0.5cqmin 1cqmin rgba(255,255,255,0.4), 0 0 2cqmin rgba(255,215,0,0.5)',
         overflow: 'hidden',
-        gap: '1cqmin',
       }}
     >
-      {/* キラキラエフェクト */}
       {sparkles.map((s, i) => (
         <span
           key={i}
@@ -531,13 +620,13 @@ function SecretMasterCard({
         }
       `}</style>
 
-      {/* トロフィー画像 */}
       <img
         src={image}
         alt={label}
         style={{
-          width: isGrandMaster ? '28cqmin' : '21cqmin',
-          height: isGrandMaster ? '28cqmin' : '21cqmin',
+          height: '80%',
+          maxHeight: '25cqmin',
+          width: 'auto',
           objectFit: 'contain',
           zIndex: 2,
           filter: isGrandMaster ? 'drop-shadow(0 0 1cqmin rgba(255,150,150,0.6))' : 'drop-shadow(0 0 0.5cqmin rgba(255,215,0,0.5))',
@@ -545,13 +634,16 @@ function SecretMasterCard({
         draggable={false}
       />
 
-      {/* 称号名 */}
       <span
         className="font-bold"
         style={{
-          fontSize: '3.5cqmin',
-          color: isGrandMaster ? '#7c2d3e' : '#7c5a00',
-          textShadow: '0 1px 3px rgba(255,255,255,0.5)',
+          position: 'absolute',
+          bottom: '1cqmin',
+          fontSize: '3cqmin',
+          color: 'white',
+          textShadow: isGrandMaster
+            ? '0 1px 3px rgba(124,45,62,0.6), 0 0 8px rgba(124,45,62,0.3)'
+            : '0 1px 3px rgba(124,90,0,0.6), 0 0 8px rgba(124,90,0,0.3)',
           zIndex: 2,
           letterSpacing: '0.1em',
         }}
