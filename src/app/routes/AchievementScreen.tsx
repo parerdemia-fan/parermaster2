@@ -77,27 +77,27 @@ const RANK_CARD_STYLES: Record<BadgeRank, { gradient: string; shadow: string }> 
   },
 }
 
-/** 寮別カードスタイル（各寮テーマカラー） */
+/** 寮別カードスタイル（寮生一覧のセクションラベルと同じテーマカラー） */
 const DORM_CARD_STYLES: Record<string, { gradient: string; border: string; shadow: string }> = {
   dorm_wa: {
-    gradient: 'linear-gradient(135deg, #fff3e0 0%, #ffcc80 50%, #ffb040 100%)',
-    border: '#e6930a',
-    shadow: 'rgba(200,130,20,0.4)',
+    gradient: 'linear-gradient(135deg, #fecaca 0%, #f87171 50%, #ef4444 100%)',
+    border: '#dc2626',
+    shadow: 'rgba(220,38,38,0.4)',
   },
   dorm_me: {
-    gradient: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%)',
-    border: '#e06090',
-    shadow: 'rgba(200,80,140,0.4)',
+    gradient: 'linear-gradient(135deg, #fce7f3 0%, #f9a8d4 50%, #f472b6 100%)',
+    border: '#e44d95',
+    shadow: 'rgba(228,77,149,0.4)',
   },
   dorm_co: {
-    gradient: 'linear-gradient(135deg, #e8f5f0 0%, #b2dfdb 50%, #80cbc4 100%)',
-    border: '#4db6ac',
-    shadow: 'rgba(60,150,140,0.4)',
+    gradient: 'linear-gradient(135deg, #cffafe 0%, #67e8f9 50%, #22d3ee 100%)',
+    border: '#0ea5cf',
+    shadow: 'rgba(14,165,207,0.4)',
   },
   dorm_wh: {
-    gradient: 'linear-gradient(135deg, #f5ebe0 0%, #d7c0a0 50%, #bfa070 100%)',
-    border: '#a08050',
-    shadow: 'rgba(140,110,60,0.4)',
+    gradient: 'linear-gradient(135deg, #d1fae5 0%, #6ee7b7 50%, #22c55e 100%)',
+    border: '#16a34a',
+    shadow: 'rgba(22,163,74,0.4)',
   },
 }
 
