@@ -23,6 +23,7 @@ type TooltipInfo = {
   title: string
   condition: string
   imageSrc?: string
+  imageSize?: string
   rankLabel?: string
 }
 
@@ -43,15 +44,15 @@ function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): TooltipInf
     ? `${area} ${mode} 全問正解`
     : `${area} ${mode} ${diffLabels[targetRank]} 全問正解`
 
-  return { title: shortLabel, condition, imageSrc, rankLabel }
+  return { title: shortLabel, condition, imageSrc, imageSize: '12cqmin', rankLabel }
 }
 
 /** 称号の条件情報を生成 */
 function getTitleTooltip(label: string): TooltipInfo {
   if (label === '1期生マスター') {
-    return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド' }
+    return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド', imageSrc: TROPHY_IMAGES.gen1, imageSize: '18cqmin' }
   }
-  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ ブロンズ' }
+  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ ブロンズ', imageSrc: TROPHY_IMAGES.gen2, imageSize: '18cqmin' }
 }
 
 const AREA_STYLES = {
@@ -100,6 +101,8 @@ const DORM_CARD_STYLES: Record<string, { gradient: string; border: string; shado
   },
 }
 
+const SLOTS_BY_ID = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
+
 export function AchievementScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const { badges, isGen2Master, isGen1Master, isParerMaster, isTimeAttackUnlocked } = useBadgeStore()
@@ -113,7 +116,7 @@ export function AchievementScreen() {
   const isGrandMaster = isParerMaster() && taBest != null && taBest < 5 * 60 * 1000
   const [tooltip, setTooltip] = useState<TooltipInfo | null>(null)
 
-  const slotsById = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
+  const slotsById = SLOTS_BY_ID
   const gen2Slots = GEN2_SLOT_IDS.map((id) => slotsById.get(id)!)
   const gen1Slots = GEN1_SLOT_IDS.map((id) => slotsById.get(id)!)
   const dormSlots = DORM_SLOT_IDS.map((id) => slotsById.get(id)!)
@@ -172,13 +175,13 @@ export function AchievementScreen() {
             gap: '1cqmin',
           }}
         >
-          <BadgeArea area={AREA_STYLES.gen1} slots={gen1Slots} badges={badges} columns={2} onShowTooltip={setTooltip} />
-          <BadgeArea area={AREA_STYLES.gen2} slots={gen2Slots} badges={badges} columns={2} onShowTooltip={setTooltip} />
+          <BadgeArea area={AREA_STYLES.gen1} slots={gen1Slots} badges={badges} columns={2} onShowTooltip={setTooltip} hidden={!gen1Slots.some((s) => badges[s.id])} />
+          <BadgeArea area={AREA_STYLES.gen2} slots={gen2Slots} badges={badges} columns={2} onShowTooltip={setTooltip} hidden={!gen2Slots.some((s) => badges[s.id])} />
 
           {/* 寮別 + タイムアタック横並び */}
           <div style={{ display: 'flex', gap: '1cqmin' }}>
             <div style={{ flex: 1 }}>
-              <RibbonHeader gradient={AREA_STYLES.dorm.gradient} label={AREA_STYLES.dorm.label} />
+              <RibbonHeader gradient={AREA_STYLES.dorm.gradient} label={dormSlots.some((s) => badges[s.id]) ? AREA_STYLES.dorm.label : '？？？'} />
               <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '1cqmin' }}>
                 {dormSlots.map((slot) => {
                   const rank = badges[slot.id] ?? null
@@ -191,7 +194,7 @@ export function AchievementScreen() {
                 gradient={taUnlocked
                   ? 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)'
                   : 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)'}
-                label="TA"
+                label={taUnlocked ? 'TA' : '？？？'}
               />
               <div
                 className="flex flex-col items-center justify-center"
@@ -246,7 +249,7 @@ export function AchievementScreen() {
         >
           <RibbonHeader
             gradient="linear-gradient(180deg, #d4c4ff 0%, #a855f7 40%, #7e22ce 100%)"
-            label="総合称号"
+            label={(isGen1Master() || isGen2Master()) ? '総合称号' : '？？？'}
           />
 
           <TitleCard label="1期生マスター" achieved={isGen1Master()} image={TROPHY_IMAGES.gen1} gradient="linear-gradient(135deg, #a8dbb8 0%, #7cbf96 50%, #6aaa80 100%)" onTap={() => setTooltip(getTitleTooltip('1期生マスター'))} />
@@ -255,8 +258,8 @@ export function AchievementScreen() {
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
-                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 5分以内クリア' }
-                : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得' }
+                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 5分以内クリア', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
+                : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', imageSrc: TROPHY_IMAGES.master, imageSize: '25cqmin' }
             )} />
           )}
         </div>
@@ -286,7 +289,7 @@ export function AchievementScreen() {
               <img
                 src={tooltip.imageSrc}
                 alt=""
-                style={{ width: '10cqmin', height: '10cqmin', objectFit: 'contain', marginBottom: '0.5cqmin' }}
+                style={{ width: tooltip.imageSize ?? '25cqmin', height: tooltip.imageSize ?? '25cqmin', objectFit: 'contain', marginBottom: '0.5cqmin' }}
                 draggable={false}
               />
             )}
@@ -343,16 +346,18 @@ function BadgeArea({
   badges,
   columns,
   onShowTooltip,
+  hidden = false,
 }: {
   area: { label: string; gradient: string }
   slots: BadgeSlotDef[]
   badges: Partial<Record<string, BadgeRank>>
   columns: number
   onShowTooltip: (info: TooltipInfo) => void
+  hidden?: boolean
 }) {
   return (
     <div>
-      <RibbonHeader gradient={area.gradient} label={area.label} />
+      <RibbonHeader gradient={area.gradient} label={hidden ? '？？？' : area.label} />
       <div
         className="grid"
         style={{
@@ -461,7 +466,9 @@ function BadgeSlotCard({
           )}
         </div>
       ) : (
-        <span style={{ fontSize: '5cqmin', lineHeight: 1 }}>🔒</span>
+        <div style={{ width: '8cqmin', height: '8cqmin', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontSize: '5cqmin', lineHeight: 1 }}>🔒</span>
+        </div>
       )}
       <style>{`
         @keyframes badge-sparkle {
@@ -479,7 +486,7 @@ function BadgeSlotCard({
           marginTop: '0.2cqmin',
         }}
       >
-        {shortLabel}
+        {rank ? shortLabel : '？？？'}
       </span>
     </div>
   )
@@ -528,7 +535,7 @@ function TitleCard({
           draggable={false}
         />
       ) : (
-        <span style={{ fontSize: '8cqmin', lineHeight: 1, opacity: 0.5 }}>🔒</span>
+        <span style={{ height: '70%', display: 'flex', alignItems: 'center', fontSize: '8cqmin', lineHeight: 1, opacity: 0.5 }}>🔒</span>
       )}
       <span
         style={{
@@ -542,7 +549,7 @@ function TitleCard({
           letterSpacing: '0.05em',
         }}
       >
-        {label}
+        {achieved ? label : '？？？'}
       </span>
     </div>
   )
