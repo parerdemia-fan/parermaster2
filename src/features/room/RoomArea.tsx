@@ -134,7 +134,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
             position: 'absolute',
             top: '8px',
             left: '8px',
-            width: '36px',
+            width: '72px',
             height: 'auto',
             opacity: 0.6,
             pointerEvents: 'none',
@@ -154,7 +154,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
             right: '8px',
             zIndex: 10,
             display: 'flex',
-            gap: '4px',
+            gap: '6px',
             alignItems: 'center',
           }}
         >
@@ -162,15 +162,15 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
           <button
             onClick={() => setSpeechBubble(!speechBubble)}
             style={{
-              width: '28px',
-              height: '28px',
+              width: '36px',
+              height: '36px',
               borderRadius: '50%',
               border: '2px solid transparent',
               background: 'rgba(0,0,0,0.5)',
               cursor: 'pointer',
               opacity: speechBubble ? 1 : 0.4,
               padding: 0,
-              fontSize: '14px',
+              fontSize: '18px',
               lineHeight: 1,
               display: 'flex',
               alignItems: 'center',
@@ -185,8 +185,8 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
               key={dorm}
               onClick={() => setDormitory(dorm)}
               style={{
-                width: '28px',
-                height: '28px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '50%',
                 border: dormitory === dorm ? '2px solid #fff' : '2px solid transparent',
                 background: 'rgba(0,0,0,0.5)',

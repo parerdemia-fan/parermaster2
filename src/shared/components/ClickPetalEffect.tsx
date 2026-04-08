@@ -36,13 +36,15 @@ export function ClickPetalEffect() {
     const parent = canvas.parentElement
     if (!parent) return
 
-    const rect = parent.getBoundingClientRect()
-    canvas.width = rect.width
-    canvas.height = rect.height
+    function syncSize() {
+      const r = parent!.getBoundingClientRect()
+      canvas!.width = r.width
+      canvas!.height = r.height
+    }
+    syncSize()
     ctxRef.current = canvas.getContext('2d')
-    const w = canvas.width
-    const h = canvas.height
-    const scale = w / 500
+
+    function getScale() { return canvas!.width / 500 }
 
     function animate(now: number) {
       const dt = Math.min((now - lastTimeRef.current) / 1000, 0.05)
@@ -51,8 +53,9 @@ export function ClickPetalEffect() {
       const ctx = ctxRef.current
       if (!ctx) return
       const petals = petalsRef.current
-      ctx.clearRect(0, 0, w, h)
+      ctx.clearRect(0, 0, canvas!.width, canvas!.height)
 
+      const scale = getScale()
       const dragFactor = DRAG ** dt
       let i = 0
       while (i < petals.length) {
@@ -93,14 +96,15 @@ export function ClickPetalEffect() {
       const r = canvasRef.current.getBoundingClientRect()
       const cx = e.clientX - r.left
       const cy = e.clientY - r.top
+      const s = getScale()
       const petals = petalsRef.current
       for (let j = 0; j < PETALS_PER_CLICK; j++) {
         petals.push({
-          x: cx + (Math.random() - 0.5) * 10 * scale,
-          y: cy + (Math.random() - 0.5) * 6 * scale,
-          vx: (Math.random() - 0.5) * 80 * scale,
-          vy: (-30 + Math.random() * 20) * scale,
-          size: (3 + Math.random() * 3) * scale,
+          x: cx + (Math.random() - 0.5) * 10 * s,
+          y: cy + (Math.random() - 0.5) * 6 * s,
+          vx: (Math.random() - 0.5) * 80 * s,
+          vy: (-30 + Math.random() * 20) * s,
+          size: (3 + Math.random() * 3) * s,
           rotation: Math.random() * Math.PI * 2,
           rotationSpeed: (Math.random() - 0.5) * 0.08,
           color: PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)],
@@ -110,9 +114,12 @@ export function ClickPetalEffect() {
       startLoop()
     }
 
+    const handleResize = () => syncSize()
+    window.addEventListener('resize', handleResize)
     parent.addEventListener('click', handleClick, true)
     return () => {
       cancelAnimationFrame(rafRef.current)
+      window.removeEventListener('resize', handleResize)
       parent.removeEventListener('click', handleClick, true)
     }
   }, [])

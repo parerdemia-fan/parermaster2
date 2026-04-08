@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
@@ -10,6 +10,18 @@ import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
 import { playSound, isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
 const BASE = import.meta.env.BASE_URL
+
+function shouldShowFullscreenToggle(): boolean {
+  const isAndroid = /Android/i.test(navigator.userAgent)
+  if (!isAndroid) return false
+  const isPWA = window.matchMedia('(display-mode: standalone)').matches ||
+    window.matchMedia('(display-mode: fullscreen)').matches ||
+    (window.navigator as Navigator & { standalone?: boolean }).standalone === true
+  if (isPWA) return false
+  // フルスクリーン中は縦画面でも解除ボタンを出す、それ以外は横画面のみ
+  if (document.fullscreenElement) return true
+  return window.innerWidth > window.innerHeight
+}
 
 export function TitleScreen() {
   const goToSetting = useSettingsStore((s) => s.goToSetting)
@@ -27,7 +39,35 @@ export function TitleScreen() {
   const [showTADialog, setShowTADialog] = useState(false)
   const [isTAPreloading, setIsTAPreloading] = useState(false)
   const [soundOn, setSoundOn] = useState(isSoundEnabled())
+  const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement)
+  const [showFullscreenToggle, setShowFullscreenToggle] = useState(shouldShowFullscreenToggle())
   const taUnlocked = isTimeAttackUnlocked()
+
+  useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement)
+    document.addEventListener('fullscreenchange', handler)
+    return () => document.removeEventListener('fullscreenchange', handler)
+  }, [])
+
+  useEffect(() => {
+    const handler = () => setShowFullscreenToggle(shouldShowFullscreenToggle())
+    window.addEventListener('resize', handler)
+    window.addEventListener('orientationchange', handler)
+    return () => {
+      window.removeEventListener('resize', handler)
+      window.removeEventListener('orientationchange', handler)
+    }
+  }, [])
+
+  const toggleFullscreen = useCallback(async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen()
+      } else {
+        await document.documentElement.requestFullscreen()
+      }
+    } catch { /* ignore */ }
+  }, [])
 
   const handleTimeAttackStart = useCallback(async () => {
     if (talents.length === 0 || isTAPreloading) return
@@ -232,22 +272,38 @@ export function TitleScreen() {
         </button>
       )}
 
-      {/* 左下: 効果音トグル */}
-      <button
-        className="absolute cursor-pointer transition hover:brightness-110 active:scale-95"
-        style={{
-          left: '2cqmin',
-          bottom: '1.5cqmin',
-          fontSize: '3.5cqmin',
-          background: 'none',
-          border: 'none',
-          filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))',
-          zIndex: 10,
-        }}
-        onClick={() => { const next = !soundOn; setSoundOn(next); setSoundEnabled(next) }}
-      >
-        {soundOn ? '🔊' : '🔇'}
-      </button>
+      {/* 左下: 効果音トグル + 全画面化 */}
+      <div className="absolute flex items-center" style={{ left: '2cqmin', bottom: '1.5cqmin', gap: '2cqmin', zIndex: 10 }}>
+        <button
+          className="cursor-pointer transition hover:brightness-110 active:scale-95"
+          style={{
+            fontSize: '7cqmin',
+            background: 'none',
+            border: 'none',
+            filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))',
+          }}
+          onClick={() => { const next = !soundOn; setSoundOn(next); setSoundEnabled(next) }}
+        >
+          {soundOn ? '🔊' : '🔇'}
+        </button>
+        {showFullscreenToggle && (
+          <button
+            className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
+            style={{
+              fontSize: isFullscreen ? '3.5cqmin' : '5cqmin',
+              padding: isFullscreen ? '1cqmin 3cqmin' : '1.5cqmin 4cqmin',
+              borderRadius: '3cqmin',
+              border: '0.2cqmin solid rgba(255,255,255,0.5)',
+              background: 'rgba(0,0,0,0.4)',
+              color: isFullscreen ? '#8f8' : '#adf',
+              backdropFilter: 'blur(4px)',
+            }}
+            onClick={toggleFullscreen}
+          >
+            全画面{isFullscreen ? '解除' : '化'}
+          </button>
+        )}
+      </div>
 
       {/* 免責テキスト */}
       <div
@@ -362,8 +418,8 @@ function SubMenuButton({
     >
       <div
         style={{
-          width: '10cqmin',
-          height: '10cqmin',
+          width: '12cqmin',
+          height: '12cqmin',
           borderRadius: '50%',
           background: gradient,
           border: '0.3cqmin solid rgba(255,255,255,0.6)',
@@ -371,7 +427,7 @@ function SubMenuButton({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: useText ? '5cqmin' : '4cqmin',
+          fontSize: useText ? '6cqmin' : '5cqmin',
           color: useText ? 'white' : undefined,
           textShadow: useText ? '0 1px 2px rgba(0,0,0,0.2)' : undefined,
         }}
@@ -382,10 +438,10 @@ function SubMenuButton({
         className="font-bold"
         style={{
           position: 'absolute',
-          bottom: '-1cqmin',
+          bottom: '-1.5cqmin',
           left: '50%',
           transform: 'translateX(-50%)',
-          fontSize: '2cqmin',
+          fontSize: '2.5cqmin',
           color: 'white',
           textShadow: '0 1px 3px rgba(0,0,0,0.5)',
           whiteSpace: 'nowrap',
