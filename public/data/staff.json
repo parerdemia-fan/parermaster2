@@ -1,59 +1,46 @@
 [
   {
-    "role": "プログラマー",
-    "members": [
-      "Claude Opus 4.6",
-      "Claude Sonnet 4.5"
-    ]
+    "role": "ディレクター",
+    "members": ["■■■■■■■"]
   },
   {
-    "role": "コーディング環境",
-    "members": [
-      "Claude Code"
-    ]
+    "role": "プログラマー",
+    "members": ["くろぴ（Claude Opus 4.6）"]
   },
   {
     "role": "グラフィックデザイナー",
-    "members": [
-      "Nano Banana 2"
-    ]
+    "members": ["Nano Banana 2（Gemini）"]
   },
   {
     "role": "グラフィックエディター",
-    "members": [
-      "プレビュー.app"
-    ]
+    "members": ["プレビュー.app"]
   },
   {
-    "role": "デプロイメント",
-    "members": [
-      "GitHub Pages"
-    ]
+    "role": "コーディングエージェント",
+    "members": ["Claude Code"]
   },
   {
-    "role": "ディレクター",
-    "members": [
-      "■■■■■■■"
-    ]
-  },
-  {
-    "role": "アドバイザー",
-    "members": [
-      "Gemini 3",
-      "ChatGPT 5"
-    ]
+    "role": "コードエディター",
+    "members": ["Visual Studio Code"]
   },
   {
     "role": "問題作成",
-    "members": [
-      "■■■■■■■",
-      "Grok"
-    ]
+    "members": ["■■■■■■■", "問題提供者のみんなたち"]
+  },
+  {
+    "role": "問題作成サポート",
+    "members": ["くろぴ（Claude Opus 4.6）"]
+  },
+  {
+    "role": "効果音素材",
+    "members": ["効果音ラボ"]
+  },
+  {
+    "role": "デプロイメント",
+    "members": ["GitHub Pages"]
   },
   {
     "role": "原著作",
-    "members": [
-      "パレデミア学園 (株式会社jig.jp)"
-    ]
+    "members": ["パレデミア学園 (株式会社jig.jp)"]
   }
 ]

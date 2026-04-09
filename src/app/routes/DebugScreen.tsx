@@ -133,7 +133,8 @@ export function DebugScreen() {
   } as const
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center overflow-y-auto animate-fade-in" style={{ scrollbarWidth: 'none' as const }}>
+    <div className="relative w-full h-full animate-fade-in">
+    <div className="w-full h-full flex flex-col items-center overflow-y-auto" style={{ scrollbarWidth: 'none' as const }}>
       {/* ヘッダー */}
       <div
         className="w-full flex items-center"
@@ -279,6 +280,7 @@ export function DebugScreen() {
           </button>
         </div>
       )}
+    </div>
 
       {showStaffRoll && (
         <Suspense fallback={null}>
