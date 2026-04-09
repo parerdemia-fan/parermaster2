@@ -125,8 +125,8 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         />
       )}
 
-      {/* 横画面推奨画像（タイトル画面のみ） */}
-      {showSelector && (
+      {/* 横画面推奨画像（タイトル画面のみ、iPhoneでは横にしても変わらないので非表示） */}
+      {showSelector && !/iPhone/i.test(navigator.userAgent) && (
         <img
           src={`${BASE}data/images/ui/landscape_recommended.png`}
           alt="横画面推奨"
