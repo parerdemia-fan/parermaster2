@@ -1,0 +1,59 @@
+[
+  {
+    "role": "プログラマー",
+    "members": [
+      "Claude Opus 4.6",
+      "Claude Sonnet 4.5"
+    ]
+  },
+  {
+    "role": "コーディング環境",
+    "members": [
+      "Claude Code"
+    ]
+  },
+  {
+    "role": "グラフィックデザイナー",
+    "members": [
+      "Nano Banana 2"
+    ]
+  },
+  {
+    "role": "グラフィックエディター",
+    "members": [
+      "プレビュー.app"
+    ]
+  },
+  {
+    "role": "デプロイメント",
+    "members": [
+      "GitHub Pages"
+    ]
+  },
+  {
+    "role": "ディレクター",
+    "members": [
+      "■■■■■■■"
+    ]
+  },
+  {
+    "role": "アドバイザー",
+    "members": [
+      "Gemini 3",
+      "ChatGPT 5"
+    ]
+  },
+  {
+    "role": "問題作成",
+    "members": [
+      "■■■■■■■",
+      "Grok"
+    ]
+  },
+  {
+    "role": "原著作",
+    "members": [
+      "パレデミア学園 (株式会社jig.jp)"
+    ]
+  }
+]

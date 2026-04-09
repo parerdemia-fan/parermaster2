@@ -1,3 +1,4 @@
+import { useState, lazy, Suspense } from 'react'
 import { useSettingsStore, type Difficulty } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
@@ -37,6 +38,8 @@ const TEXT_QUIZ_LEVELS = [1, 2, 3, 4, 5, 6, 7]
 
 const DEBUG_QUESTION_COUNT = 5
 
+const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
+
 export function DebugScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const goToQuiz = useSettingsStore((s) => s.goToQuiz)
@@ -44,6 +47,7 @@ export function DebugScreen() {
   const { talents, loading: talentsLoading } = useTalents()
   const { questions: questionPool, answerSets, loading: questionsLoading } = useQuestions()
   const loading = talentsLoading || questionsLoading
+  const [showStaffRoll, setShowStaffRoll] = useState(false)
 
   const handleFaceNameStart = (typeId: FaceNameTypeId, difficulty: Difficulty) => {
     if (loading || talents.length === 0) return
@@ -264,7 +268,22 @@ export function DebugScreen() {
 
           {/* タイムアタック クリアタイム設定 */}
           <TimeAttackEditor />
+
+          {/* スタッフロール */}
+          <button
+            className="cursor-pointer font-bold"
+            style={{ fontSize: '3cqmin', background: '#444', color: 'white', border: 'none', borderRadius: '1cqmin', padding: '1cqmin 3cqmin' }}
+            onClick={() => setShowStaffRoll(true)}
+          >
+            🎬 スタッフロール再生
+          </button>
         </div>
+      )}
+
+      {showStaffRoll && (
+        <Suspense fallback={null}>
+          <StaffRoll onClose={() => setShowStaffRoll(false)} />
+        </Suspense>
       )}
     </div>
   )

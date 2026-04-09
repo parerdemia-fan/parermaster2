@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, lazy, Suspense } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
@@ -10,6 +10,9 @@ import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
 import { playSound, isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
 const BASE = import.meta.env.BASE_URL
+const STAFF_ROLL_SEEN_KEY = 'parermaster2_staff_roll_seen'
+
+const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
 
 function shouldShowFullscreenToggle(): boolean {
   const isAndroid = /Android/i.test(navigator.userAgent)
@@ -36,9 +39,23 @@ export function TitleScreen() {
   const { talents } = useTalents()
   const { questions: questionPool, answerSets } = useQuestions()
 
+  const isParerMaster = useBadgeStore((s) => s.isParerMaster)
   const [showTADialog, setShowTADialog] = useState(false)
+  const [showStaffRoll, setShowStaffRoll] = useState(false)
   const [isTAPreloading, setIsTAPreloading] = useState(false)
   const [soundOn, setSoundOn] = useState(isSoundEnabled())
+
+  // パレ学マスター称号獲得後の初回自動再生
+  useEffect(() => {
+    if (isParerMaster() && !localStorage.getItem(STAFF_ROLL_SEEN_KEY)) {
+      setShowStaffRoll(true)
+    }
+  }, [isParerMaster])
+
+  const handleStaffRollClose = useCallback(() => {
+    setShowStaffRoll(false)
+    localStorage.setItem(STAFF_ROLL_SEEN_KEY, '1')
+  }, [])
   const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement)
   const [showFullscreenToggle, setShowFullscreenToggle] = useState(shouldShowFullscreenToggle())
   const taUnlocked = isTimeAttackUnlocked()
@@ -390,6 +407,13 @@ export function TitleScreen() {
           </div>
         </div>
         </>
+      )}
+
+      {/* スタッフロール */}
+      {showStaffRoll && (
+        <Suspense fallback={null}>
+          <StaffRoll onClose={handleStaffRollClose} />
+        </Suspense>
       )}
     </div>
   )

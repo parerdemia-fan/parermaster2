@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { getVersion } from '../../shared/utils/version.ts'
@@ -6,12 +6,16 @@ import { GAME_URL, PARERDEMIA_OFFICIAL_URL, QUESTION_FORM_URL } from '../../shar
 import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 import { isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
+const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
+
 export function AboutScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const goToDiary = useSettingsStore((s) => s.goToDiary)
   const resetAll = useBadgeStore((s) => s.resetAll)
+  const isParerMaster = useBadgeStore((s) => s.isParerMaster)
   const [version, setVersion] = useState('')
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+  const [showStaffRoll, setShowStaffRoll] = useState(false)
   const [soundOn, setSoundOn] = useState(isSoundEnabled())
 
   useEffect(() => {
@@ -137,6 +141,15 @@ ${GAME_URL}
           </LinkButton>
         </Section>
 
+        {/* スタッフロール（パレ学マスター称号で解放） */}
+        {isParerMaster() && (
+          <Section title="スタッフロール">
+            <LinkButton onClick={() => setShowStaffRoll(true)}>
+              🎬 スタッフロールを見る
+            </LinkButton>
+          </Section>
+        )}
+
         {/* 効果音 */}
         <Section title="効果音">
           <LinkButton onClick={() => { const next = !soundOn; setSoundOn(next); setSoundEnabled(next) }}>
@@ -172,6 +185,12 @@ ${GAME_URL}
           <p>{version || '読み込み中...'}</p>
         </Section>
       </div>
+
+      {showStaffRoll && (
+        <Suspense fallback={null}>
+          <StaffRoll onClose={() => setShowStaffRoll(false)} />
+        </Suspense>
+      )}
     </div>
   )
 }
@@ -182,6 +201,7 @@ const SECTION_ICONS: Record<string, string> = {
   'リンク': '🔗',
   '開発日誌': '📖',
   '効果音': '🔊',
+  'スタッフロール': '🎬',
   '実績リセット': '⚠️',
   'バージョン': '📋',
 }
