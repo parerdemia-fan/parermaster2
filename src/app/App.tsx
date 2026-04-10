@@ -18,6 +18,7 @@ import { LearningScreen } from './routes/LearningScreen.tsx'
 import { DiagnosisScreen } from './routes/DiagnosisScreen.tsx'
 import { DiagnosisResultScreen } from './routes/DiagnosisResultScreen.tsx'
 import { OgpScreen } from './routes/OgpScreen.tsx'
+import { SkeletonScreen } from './routes/SkeletonScreen.tsx'
 import { preloadSounds } from '../shared/utils/sound.ts'
 import { useBackNavigation } from '../shared/hooks/useBackNavigation.ts'
 
@@ -42,6 +43,9 @@ function getBackground(screen: string, modeCategory: ModeCategory, scope: Scope)
     }
     // 世代別: scope は 'all' 固定 → bg_stage を使用
     return { url: DORM_BG.all, blur: QUIZ_BG_BLUR }
+  }
+  if (screen === 'skeleton') {
+    return { url: DEFAULT_BG, blur: 8 }
   }
   return { url: DEFAULT_BG, blur: 0 }
 }
@@ -85,6 +89,7 @@ export function App() {
           {screen === 'about' && <AboutScreen />}
           {screen === 'time-attack-result' && <TimeAttackResultScreen />}
           {screen === 'learning' && <LearningScreen />}
+          {screen === 'skeleton' && <SkeletonScreen />}
           {screen === 'diagnosis' && <DiagnosisScreen />}
           {screen === 'diagnosis-result' && <DiagnosisResultScreen />}
           {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}

@@ -39,6 +39,11 @@ export function useBackNavigation() {
         return
       }
 
+      if (screen === 'skeleton') {
+        useSettingsStore.getState().goToAbout()
+        return
+      }
+
       goToTitle()
     }
 

@@ -11,6 +11,7 @@ const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
 export function AboutScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const goToDiary = useSettingsStore((s) => s.goToDiary)
+  const goToSkeleton = useSettingsStore((s) => s.goToSkeleton)
   const resetAll = useBadgeStore((s) => s.resetAll)
   const isParerMaster = useBadgeStore((s) => s.isParerMaster)
   const [version, setVersion] = useState('')
@@ -131,6 +132,16 @@ ${GAME_URL}
           </div>
         </Section>
 
+        {/* スケルトンパズル */}
+        <Section title="スケルトンパズル">
+          <p style={{ marginBottom: '1.5cqmin' }}>
+            寮生の名前をグリッドに埋めていくパズルです。
+          </p>
+          <LinkButton onClick={goToSkeleton}>
+            🧩 スケルトンパズルで遊ぶ
+          </LinkButton>
+        </Section>
+
         {/* 開発日誌 */}
         <Section title="開発日誌">
           <p style={{ marginBottom: '1.5cqmin' }}>
@@ -198,6 +209,7 @@ ${GAME_URL}
 const SECTION_ICONS: Record<string, string> = {
   'このゲームについて': '🎮',
   '開発者について': '🤖',
+  'スケルトンパズル': '🧩',
   'リンク': '🔗',
   '開発日誌': '📖',
   '効果音': '🔊',
