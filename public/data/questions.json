@@ -1544,26 +1544,6 @@
     {
       "id": "q078",
       "generation": 1,
-      "question": "鳴き声が「ぱぁ！」の人は？",
-      "answers": [
-        "猫乃間うと",
-        "犬丸なでこ",
-        "飛渡ココ",
-        "亀城ちかり"
-      ],
-      "difficulty": 4,
-      "genre": "特技・所作",
-      "sortAnswers": false,
-      "hideIcon": false,
-      "questionImage": null,
-      "commentImage": null,
-      "answerPool": "",
-      "comment": "嬉しいときや楽しい時に出るそうです",
-      "sourceUrl": "https://www.youtube.com/watch?v=zpBQZYy_TAA&t=4900s"
-    },
-    {
-      "id": "q079",
-      "generation": 1,
       "question": "猫乃間うとが好きな焼き肉は？",
       "answers": [
         "牛タン",
@@ -1582,7 +1562,7 @@
       "sourceUrl": "https://youtu.be/zpBQZYy_TAA?t=4850"
     },
     {
-      "id": "q080",
+      "id": "q079",
       "generation": 1,
       "question": "一人称が「わし」の人は？",
       "answers": [
@@ -1602,7 +1582,7 @@
       "sourceUrl": "https://x.com/search?q=nekonoma_uto%20%E3%82%8F%E3%81%97&src=typed_query&f=top"
     },
     {
-      "id": "q081",
+      "id": "q080",
       "generation": 1,
       "question": "第一回雀魂大会で2位になり、2026年1月11日の配信では完全試合を達成した人は？",
       "answers": [
@@ -1622,7 +1602,7 @@
       "sourceUrl": "https://youtu.be/JZ0fF_Hd0cI?t=12337"
     },
     {
-      "id": "q082",
+      "id": "q081",
       "generation": 1,
       "question": "猫乃間うとが飼っている3匹の猫、まりん・小梅ともう1匹は？",
       "answers": [
@@ -1640,6 +1620,26 @@
       "answerPool": "",
       "comment": "猫乃間うと「おこげは可愛い天使🪽💕」",
       "sourceUrl": "https://x.com/nekonoma_uto/status/1972609705131508030"
+    },
+    {
+      "id": "q082",
+      "generation": 1,
+      "question": "最下位ならバブ化する視聴者参加型雀魂配信をやっているのは？",
+      "answers": [
+        "猫乃間うと",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "babu.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=7FgzF51q1DI"
     },
     {
       "id": "q083",
