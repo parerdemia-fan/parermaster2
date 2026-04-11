@@ -1,6 +1,9 @@
 import { create } from 'zustand'
 import type { AnswerRecord, BaseQuestion } from '../features/quiz/types.ts'
 import type { BadgeRank } from '../features/achievement/types.ts'
+import type { TextQuizQuestion } from '../features/question-types/text-quiz/types.ts'
+import { questionFingerprint } from '../shared/utils/questionFingerprint.ts'
+import { useQuestionHistoryStore } from './questionHistoryStore.ts'
 
 /** 結果画面のバッジ表示情報（デバッグ用オーバーライドにも使用） */
 export interface BadgeAwardResult {
@@ -81,9 +84,16 @@ export const useGameStore = create<GameState & GameActions>()((set, get) => ({
     }),
 
   recordAnswer: (isCorrect, selectedIndex) => {
-    const { currentIndex, correctCount, answerRecords } = get()
+    const { currentIndex, correctCount, answerRecords, questions } = get()
     const newRecords = [...answerRecords]
     newRecords[currentIndex] = { isCorrect, selectedIndex }
+
+    const question = questions[currentIndex]
+    if (question.typeId === 'text-quiz') {
+      const tq = question as TextQuizQuestion
+      const fp = questionFingerprint(tq.question, tq.answers[tq.correctIndex])
+      useQuestionHistoryStore.getState().recordResult(fp, isCorrect)
+    }
 
     set({
       quizState: 'answered',

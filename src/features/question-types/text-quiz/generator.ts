@@ -1,7 +1,9 @@
 import type { Difficulty } from '../../../stores/settingsStore.ts'
 import type { QuestionData } from '../../../shared/types/question.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
-import { shuffleArray } from '../../../shared/utils/array.ts'
+import { shuffleArray, weightedShuffle } from '../../../shared/utils/array.ts'
+import { questionFingerprint } from '../../../shared/utils/questionFingerprint.ts'
+import { useQuestionHistoryStore } from '../../../stores/questionHistoryStore.ts'
 import type { TextQuizQuestion } from './types.ts'
 
 /**
@@ -131,6 +133,14 @@ export function generateTextQuizQuestions(
     byLevel.set(q.difficulty, group)
   }
 
+  // 正解履歴を取得（連続正解回数から重みを計算）
+  const historyRecords = useQuestionHistoryStore.getState().records
+  const getWeight = (q: QuestionData): number => {
+    const fp = questionFingerprint(q.question, q.answers[0])
+    const streak = historyRecords[fp] ?? 0
+    return 1 / Math.pow(2, Math.min(streak, 3))
+  }
+
   // セグメント定義に従って問題を選出
   const selected: QuestionData[] = []
   for (const seg of segments) {
@@ -139,8 +149,8 @@ export function generateTextQuizQuestions(
       // 順番通り（IDやデータ順）
       selected.push(...group.slice(0, seg.count))
     } else {
-      // ランダム
-      selected.push(...shuffleArray(group).slice(0, seg.count))
+      // 正解履歴に基づく重み付きシャッフル
+      selected.push(...weightedShuffle(group, getWeight).slice(0, seg.count))
     }
   }
 

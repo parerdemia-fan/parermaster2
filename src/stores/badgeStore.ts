@@ -101,6 +101,7 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
     localStorage.removeItem(STORAGE_KEY)
     localStorage.removeItem('parermaster2_ta_best')
     localStorage.removeItem('parermaster2_staff_roll_seen')
+    localStorage.removeItem('parermaster2_question_history')
     set({ badges: {} })
   },
 }))
