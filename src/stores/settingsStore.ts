@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp' | 'diagnosis' | 'diagnosis-result' | 'learning' | 'skeleton'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp' | 'diagnosis-intro' | 'diagnosis' | 'diagnosis-result' | 'learning' | 'skeleton'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge' | 'learning'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -63,6 +63,7 @@ interface SettingsActions {
   goToDebug: () => void
   goToTimeAttack: () => void
   goToTimeAttackResult: () => void
+  goToDiagnosisIntro: () => void
   goToDiagnosis: () => void
   goToDiagnosisResult: () => void
   goToLearning: () => void
@@ -110,6 +111,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToDebug: () => set({ screen: 'debug' }),
     goToTimeAttack: () => set({ screen: 'quiz', isTimeAttack: true }),
     goToTimeAttackResult: () => set({ screen: 'time-attack-result' }),
+    goToDiagnosisIntro: () => set({ screen: 'diagnosis-intro' }),
     goToDiagnosis: () => set({ screen: 'diagnosis' }),
     goToDiagnosisResult: () => set({ screen: 'diagnosis-result' }),
     goToLearning: () => set({ screen: 'learning' }),

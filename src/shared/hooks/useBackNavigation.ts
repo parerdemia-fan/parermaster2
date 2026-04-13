@@ -7,7 +7,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
  *
  * - title: 確認ダイアログ → OK なら離脱、キャンセルなら留まる
  * - quiz: store.requestBack() → QuizScreen 側で確認ダイアログを表示
- * - diagnosis-result: → diagnosis
+ * - diagnosis / diagnosis-result: → diagnosis-intro
  * - その他: → title
  */
 export function useBackNavigation() {
@@ -15,7 +15,7 @@ export function useBackNavigation() {
     history.pushState({ app: true }, '')
 
     const handlePopState = () => {
-      const { screen, goToTitle, goToDiagnosis, requestBack } = useSettingsStore.getState()
+      const { screen, goToTitle, requestBack } = useSettingsStore.getState()
 
       if (screen === 'title') {
         if (window.confirm('ページを離れますか？')) {
@@ -34,8 +34,8 @@ export function useBackNavigation() {
         return
       }
 
-      if (screen === 'diagnosis-result') {
-        goToDiagnosis()
+      if (screen === 'diagnosis' || screen === 'diagnosis-result') {
+        useSettingsStore.getState().goToDiagnosisIntro()
         return
       }
 

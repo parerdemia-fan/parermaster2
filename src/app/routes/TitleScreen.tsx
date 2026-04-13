@@ -31,7 +31,7 @@ export function TitleScreen() {
   const goToTalents = useSettingsStore((s) => s.goToTalents)
   const goToAchievements = useSettingsStore((s) => s.goToAchievements)
   const goToAbout = useSettingsStore((s) => s.goToAbout)
-  const goToDiagnosis = useSettingsStore((s) => s.goToDiagnosis)
+  const goToDiagnosisIntro = useSettingsStore((s) => s.goToDiagnosisIntro)
   const goToDebug = useSettingsStore((s) => s.goToDebug)
   const goToTimeAttack = useSettingsStore((s) => s.goToTimeAttack)
   const startQuiz = useGameStore((s) => s.startQuiz)
@@ -250,7 +250,7 @@ export function TitleScreen() {
           label="相性診断"
           gradient="linear-gradient(180deg, #e0c8f8 0%, #c8a0e8 40%, #b084d4 100%)"
           shadowColor="rgba(140,80,180,0.4)"
-          onClick={goToDiagnosis}
+          onClick={goToDiagnosisIntro}
         />
         <SubMenuButton
           emoji="🏆"
