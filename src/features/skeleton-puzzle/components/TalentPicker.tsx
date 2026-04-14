@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import type { PuzzleData, PuzzleWord, Placements } from '../types.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
 import { getTalentImagePath } from '../../../shared/utils/talent.ts'
+import { getWordCells, buildUserGrid } from '../puzzleUtils.ts'
 
 interface TalentPickerProps {
   puzzle: PuzzleData
@@ -10,9 +11,10 @@ interface TalentPickerProps {
   talents: Talent[]
   onSelect: (talentId: string) => void
   onClose: () => void
+  onClear?: () => void
 }
 
-export function TalentPicker({ puzzle, placements, targetWord, talents, onSelect, onClose }: TalentPickerProps) {
+export function TalentPicker({ puzzle, placements, targetWord, talents, onSelect, onClose, onClear }: TalentPickerProps) {
   const puzzleTalents = useMemo(() => {
     const idSet = new Set(puzzle.words.filter((w) => w.talentId).map((w) => w.talentId!))
     return talents.filter((t) => idSet.has(t.id))
@@ -30,6 +32,13 @@ export function TalentPicker({ puzzle, placements, targetWord, talents, onSelect
     }
     return map
   }, [puzzle])
+
+  // 選択中ワードの各マスに入っている文字（交差ワードから）
+  const slotChars = useMemo(() => {
+    const userGrid = buildUserGrid(puzzle, placements)
+    const cells = getWordCells(targetWord)
+    return cells.map(({ row, col }) => userGrid[row]?.[col] ?? null)
+  }, [puzzle, placements, targetWord])
 
   return (
     <div
@@ -63,23 +72,60 @@ export function TalentPicker({ puzzle, placements, targetWord, talents, onSelect
             flexShrink: 0,
           }}
         >
-          <span className="font-bold" style={{ fontSize: '3.2cqmin', color: '#d6336c' }}>
-            {targetWord.length}文字の寮生を選択
-          </span>
-          <button
-            className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
-            style={{
-              fontSize: '2.5cqmin',
-              padding: '0.8cqmin 2.5cqmin',
-              borderRadius: '5cqmin',
-              border: '0.3cqmin solid #e8789e',
-              background: 'transparent',
-              color: '#d6336c',
-            }}
-            onClick={onClose}
-          >
-            閉じる
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5cqmin' }}>
+            {slotChars.map((char, i) => (
+              <div
+                key={i}
+                className="font-bold"
+                style={{
+                  width: '4.5cqmin',
+                  height: '4.5cqmin',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '3cqmin',
+                  border: `0.3cqmin solid ${char ? '#d6336c' : '#ccc'}`,
+                  borderRadius: '0.5cqmin',
+                  background: char ? 'rgba(232,120,158,0.12)' : 'rgba(255,255,255,0.8)',
+                  color: '#d6336c',
+                }}
+              >
+                {char}
+              </div>
+            ))}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5cqmin' }}>
+            {onClear && (
+              <button
+                className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+                style={{
+                  fontSize: '2.5cqmin',
+                  padding: '0.8cqmin 2.5cqmin',
+                  borderRadius: '5cqmin',
+                  border: '0.3cqmin solid #f87171',
+                  background: 'rgba(254,226,226,0.6)',
+                  color: '#dc2626',
+                }}
+                onClick={onClear}
+              >
+                クリア
+              </button>
+            )}
+            <button
+              className="font-bold cursor-pointer transition hover:brightness-105 active:scale-95"
+              style={{
+                fontSize: '2.5cqmin',
+                padding: '0.8cqmin 2.5cqmin',
+                borderRadius: '5cqmin',
+                border: '0.3cqmin solid #e8789e',
+                background: 'transparent',
+                color: '#d6336c',
+              }}
+              onClick={onClose}
+            >
+              閉じる
+            </button>
+          </div>
         </div>
 
         {/* タレント一覧 */}

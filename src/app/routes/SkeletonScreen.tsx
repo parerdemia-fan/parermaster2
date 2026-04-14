@@ -19,6 +19,8 @@ export function SkeletonScreen() {
   const selectVariant = useSkeletonStore((s) => s.selectVariant)
   const clearVariant = useSkeletonStore((s) => s.clearVariant)
   const placeWord = useSkeletonStore((s) => s.placeWord)
+  const removeWord = useSkeletonStore((s) => s.removeWord)
+  const moveWord = useSkeletonStore((s) => s.moveWord)
   const resetProgress = useSkeletonStore((s) => s.resetProgress)
   const getProgress = useSkeletonStore((s) => s.getProgress)
   const markMessageCompleted = useSkeletonStore((s) => s.markMessageCompleted)
@@ -57,10 +59,18 @@ export function SkeletonScreen() {
   const handleTalentSelect = (talentId: string) => {
     if (!currentVariant || !puzzleData || !selectedSlot) return
 
-    placeWord(currentVariant, selectedSlot.word.wordId, talentId)
+    const existingWordId = Object.entries(placements).find(
+      ([wid, tid]) => tid === talentId && Number(wid) !== selectedSlot.word.wordId,
+    )?.[0]
+
+    if (existingWordId !== undefined) {
+      moveWord(currentVariant, Number(existingWordId), selectedSlot.word.wordId, talentId)
+    } else {
+      placeWord(currentVariant, selectedSlot.word.wordId, talentId)
+    }
     setSelectedSlot(null)
 
-    const nextPlacements = { ...placements, [selectedSlot.word.wordId]: talentId }
+    const nextPlacements = getProgress(currentVariant).placements
 
     if (!progress?.messageCompleted) {
       const { complete } = getMessageProgress(puzzleData, nextPlacements)
@@ -74,6 +84,12 @@ export function SkeletonScreen() {
       markPuzzleCompleted(currentVariant)
       setPuzzleJustCompleted(true)
     }
+  }
+
+  const handleClear = () => {
+    if (!currentVariant || !selectedSlot) return
+    removeWord(currentVariant, selectedSlot.word.wordId)
+    setSelectedSlot(null)
   }
 
   const handleReset = () => {
@@ -157,6 +173,7 @@ export function SkeletonScreen() {
           talents={talents}
           onSelect={handleTalentSelect}
           onClose={() => setSelectedSlot(null)}
+          onClear={placements[selectedSlot.word.wordId] ? handleClear : undefined}
         />
       )}
 

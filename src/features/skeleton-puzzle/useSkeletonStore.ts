@@ -12,6 +12,7 @@ interface SkeletonActions {
   clearVariant: () => void
   placeWord: (variant: PuzzleVariant, wordId: number, talentId: string) => void
   removeWord: (variant: PuzzleVariant, wordId: number) => void
+  moveWord: (variant: PuzzleVariant, fromWordId: number, toWordId: number, talentId: string) => void
   markMessageCompleted: (variant: PuzzleVariant) => void
   markPuzzleCompleted: (variant: PuzzleVariant) => void
   resetProgress: (variant: PuzzleVariant) => void
@@ -70,6 +71,15 @@ export const useSkeletonStore = create<SkeletonState & SkeletonActions>()(
       updateAndSave(get, set, variant, (p) => {
         const placements: Placements = { ...p.placements }
         delete placements[wordId]
+        return { ...p, placements }
+      })
+    },
+
+    moveWord: (variant, fromWordId, toWordId, talentId) => {
+      updateAndSave(get, set, variant, (p) => {
+        const placements: Placements = { ...p.placements }
+        delete placements[fromWordId]
+        placements[toWordId] = talentId
         return { ...p, placements }
       })
     },
