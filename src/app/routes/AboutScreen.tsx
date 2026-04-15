@@ -33,7 +33,7 @@ export function AboutScreen() {
 
 👇今すぐプレイ
 ${GAME_URL}
-#パレ学マスター #パレデミア学園`
+#パレ学マスター #パレ学`
     doShareOnX(text)
   }
 

@@ -77,7 +77,7 @@ ${genLabel} ${modeLabel} ${diffLabel}
 ${scoreOrPerfect}${badgeText}
 
 ${GAME_URL}
-#パレ学マスター #パレデミア学園`
+#パレ学マスター #パレ学`
     doShareOnX(text)
   }
 

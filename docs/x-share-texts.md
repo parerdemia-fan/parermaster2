@@ -2,7 +2,7 @@
 
 各画面のXシェア文言を一元管理するドキュメント。
 
-共通ハッシュタグ: `#パレ学マスター #パレデミア学園`
+共通ハッシュタグ: `#パレ学マスター #パレ学`
 共通URL: `https://parerdemia-fan.github.io/parermaster2/`
 
 ---
@@ -19,7 +19,7 @@
 
 👇挑戦はこちら
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 例（通常）:
@@ -31,7 +31,7 @@
 
 👇挑戦はこちら
 https://parerdemia-fan.github.io/parermaster2/
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 例（パーフェクト＋バッジ）:
@@ -44,7 +44,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 👇挑戦はこちら
 https://parerdemia-fan.github.io/parermaster2/
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 ### 改善案
@@ -65,7 +65,7 @@ https://parerdemia-fan.github.io/parermaster2/
 {messageLine1} {messageLine2}
 
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 パーフェクト＋バッジ:
@@ -76,7 +76,7 @@ https://parerdemia-fan.github.io/parermaster2/
 🏅 顔名前当て ゴールドバッジ 獲得！
 
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 変更点:
@@ -98,7 +98,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 👇挑戦はこちら
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 例:
@@ -110,7 +110,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 👇挑戦はこちら
 https://parerdemia-fan.github.io/parermaster2/
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 ### 改善案
@@ -128,7 +128,7 @@ https://parerdemia-fan.github.io/parermaster2/
 {playerName}: {timeMessage}
 
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 自己ベスト更新時:
@@ -138,7 +138,7 @@ https://parerdemia-fan.github.io/parermaster2/
 {playerName}: {timeMessage}
 
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 変更点:
@@ -161,7 +161,7 @@ https://parerdemia-fan.github.io/parermaster2/
 🥉 {name}（{dormLabel}）
 
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 例:
@@ -173,7 +173,7 @@ https://parerdemia-fan.github.io/parermaster2/
 🥉 飛渡ココ（クゥ寮）
 
 https://parerdemia-fan.github.io/parermaster2/
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 ### 改善案
@@ -194,7 +194,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 あなたは誰と相性がいい？
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 変更点:
@@ -218,7 +218,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 👇今すぐプレイ
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 ### 改善案
@@ -239,7 +239,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 👇今すぐプレイ
 {GAME_URL}
-#パレ学マスター #パレデミア学園
+#パレ学マスター #パレ学
 ```
 
 変更点:
@@ -265,7 +265,7 @@ https://parerdemia-fan.github.io/parermaster2/
 
 | 項目 | 現状 | 提案 |
 |------|------|------|
-| ハッシュタグ | `#パレ学マスター #パレデミア学園` 全画面共通 | 統一されているのは良い。維持 |
+| ハッシュタグ | `#パレ学マスター #パレ学` 全画面共通 | 統一されているのは良い。維持 |
 | URL配置 | ハッシュタグの前 | OGPプレビュー生成のため維持 |
 | CTA文言 | 「👇挑戦はこちら」「👇今すぐプレイ」が混在 | 結果シェアは控えめに、紹介シェアだけ強めにする |
 | ゲーム名 | 診断結果のみ欠落 | 全シェアに統一的に含める |
