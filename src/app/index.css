@@ -19,6 +19,8 @@ html, body, #root {
 /* フォント設定 */
 body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  /* body::before の z-index: -1 が html 背景の後ろに回らないようにする */
+  isolation: isolate;
 }
 
 /* 背景画像レイヤー（疑似要素で分離し、ぼかしがコンテンツに影響しないようにする） */
