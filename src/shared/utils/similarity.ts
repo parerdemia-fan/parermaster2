@@ -5,32 +5,36 @@ import { shuffleArray } from './array.ts'
  * 髪色の類似グループ（前作踏襲）
  */
 const SIMILAR_HAIR_COLOR_GROUPS: Record<string, string[]> = {
-  silver: ['lightblue'],
-  lightblue: ['silver', 'blue'],
-  blue: ['lightblue', 'darkblue'],
+  silver: ['lightblue', 'skyblue'],
+  lightblue: ['silver', 'blue', 'skyblue'],
+  skyblue: ['lightblue', 'blue', 'silver'],
+  blue: ['lightblue', 'darkblue', 'skyblue'],
   green: [],
   darkblue: ['blue', 'purple'],
-  purple: ['darkblue'],
+  purple: ['darkblue', 'lightpurple'],
+  lightpurple: ['purple', 'pink'],
   darkpink: ['pink', 'red'],
-  pink: ['red', 'darkpink'],
-  gold: ['yellow'],
-  yellow: ['gold'],
+  pink: ['red', 'darkpink', 'lightpurple'],
+  gold: ['yellow', 'orange'],
+  yellow: ['gold', 'orange'],
+  orange: ['red', 'gold', 'yellow'],
   black: ['darkblue'],
-  red: ['darkpink', 'pink'],
+  red: ['darkpink', 'pink', 'orange'],
 }
 
 /**
  * 髪型の類似グループ（前作踏襲）
  */
 const SIMILAR_HAIR_STYLE_GROUPS: Record<string, string[]> = {
-  'ロング': ['お団子ロング', 'ロングツインテール', '三つ編み'],
-  'ショート': ['お団子ショート', 'ショートツインテール'],
+  'ロング': ['ミドル', 'お団子ロング', 'ロングツインテール', '三つ編み'],
+  'ミドル': ['ロング', 'ショート', 'ポニーテール'],
+  'ショート': ['ミドル', 'お団子ショート', 'ショートツインテール'],
   'お団子ロング': ['お団子ショート', 'ロング', 'ロングツインテール'],
   'お団子ショート': ['お団子ロング', 'ショート', 'ショートツインテール'],
   'ロングツインテール': ['ロング', 'お団子ロング', '三つ編み'],
   'ショートツインテール': ['ショート', 'お団子ショート'],
   '三つ編み': ['ロング', 'お団子ロング', 'ロングツインテール'],
-  'ポニーテール': ['ロングツインテール', 'お団子ロング', 'ショート'],
+  'ポニーテール': ['ミドル', 'ロングツインテール', 'お団子ロング', 'ショート'],
 }
 
 function getSimilarHairColors(hairColor: string): string[] {
