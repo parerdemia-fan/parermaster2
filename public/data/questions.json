@@ -184,9 +184,9 @@
     {
       "id": "q010",
       "generation": 2,
-      "question": "2期生は全部で何人？",
+      "question": "2026年4月にデビューした2期生は何人？",
       "answers": [
-        "24人",
+        "23人",
         "20人",
         "28人",
         "32人"
@@ -309,9 +309,9 @@
         "秋葉原",
         "池袋",
         "渋谷",
-        "名古屋"
+        "ジグ島"
       ],
-      "difficulty": 5,
+      "difficulty": 3,
       "genre": "パレ学",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5040,6 +5040,26 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://youtu.be/rNRAWBbxs54?t=1320"
+    },
+    {
+      "id": "q253",
+      "generation": 2,
+      "question": "パレ学2期生の名前で一番多く使われている漢字は？",
+      "answers": [
+        "凪",
+        "月",
+        "雪",
+        "夜"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
     }
   ],
   "answerSets": {
