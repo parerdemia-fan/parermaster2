@@ -57,16 +57,28 @@ function NameGuessLayoutInner({
         alt="誰でしょう？"
         style={{
           position: 'absolute',
-          left: '-2%',
-          top: '0cqmin',
-          height: '150cqmin',
-          width: 'auto',
-          objectFit: 'contain',
           zIndex: 2,
+          objectFit: 'contain',
           filter: question.isSilhouette && !isAnswered
             ? SILHOUETTE_FILTER
             : undefined,
           transition: 'filter 0.3s',
+          ...(talent?.generation === 2
+            ? {
+                // 正方形画像: 幅基準で固定サイズ、縦中央配置
+                left: '2%',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '42%',
+                height: 'auto',
+              }
+            : {
+                // 縦長立ち絵: 高さ基準、上から表示して下をはみ出す
+                left: '-2%',
+                top: '0cqmin',
+                height: '150cqmin',
+                width: 'auto',
+              }),
         }}
         draggable={false}
       />

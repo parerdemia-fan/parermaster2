@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, isSquareStandingImage } from '../../../shared/utils/talent.ts'
 import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import { playSound } from '../../../shared/utils/sound.ts'
 import type { NameBuildQuestion } from './types.ts'
@@ -396,6 +396,7 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
   const imagePath = talent
     ? getTalentStandingPath(talent)
     : fallbackPath
+  const isSquare = talent ? isSquareStandingImage(talent) : false
 
   return (
     <img
@@ -403,12 +404,22 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
       alt="誰でしょう？"
       style={{
         position: 'absolute',
-        left: '-10%',
-        top: '0cqmin',
-        height: '150cqmin',
-        width: 'auto',
         objectFit: 'contain',
         zIndex: 2,
+        ...(isSquare
+          ? {
+              left: '2%',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '42%',
+              height: 'auto',
+            }
+          : {
+              left: '-10%',
+              top: '0cqmin',
+              height: '150cqmin',
+              width: 'auto',
+            }),
       }}
       draggable={false}
     />

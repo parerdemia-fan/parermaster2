@@ -4,6 +4,7 @@ import gsap from 'gsap'
 interface TalentSlotProps {
   talentId: string | null
   imagePath: string | null
+  isSquare: boolean
   position: 'left' | 'center' | 'right'
   showSelector: boolean
   onClick: () => void
@@ -22,7 +23,7 @@ const Z_INDEX: Record<string, number> = {
   right: 3,
 }
 
-export function TalentSlot({ talentId, imagePath, position, showSelector, onClick }: TalentSlotProps) {
+export function TalentSlot({ talentId, imagePath, isSquare, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
@@ -60,16 +61,17 @@ export function TalentSlot({ talentId, imagePath, position, showSelector, onClic
             position: 'absolute',
             left: 0,
             right: 0,
-            // 画像高さ150dvwの25%=37.5dvwを下にはみ出す。
-            // ただし上にはみ出さないよう、top >= 0 を保証。
-            // 談話室高さ = 100dvh - 75dvw、画像top = 談話室高さ - 画像高さ + 37.5dvw
-            //   = (100dvh - 75dvw) - 150dvw + 37.5dvw = 100dvh - 187.5dvw
-            // これが負（上にはみ出す）場合は top: 0 にし、下にさらにはみ出させる。
-            top: `max(0px, calc(100dvh - 187.5dvw))`,
             display: 'flex',
             justifyContent: 'center',
             overflow: 'visible',
             pointerEvents: 'none',
+            ...(isSquare
+              ? { bottom: '25%' }
+              : {
+                  // 画像高さ150dvwの25%=37.5dvwを下にはみ出す。
+                  // 談話室高さ = 100dvh - 75dvw、画像top = 談話室高さ - 画像高さ + 37.5dvw
+                  top: `max(0px, calc(100dvh - 187.5dvw))`,
+                }),
           }}
         >
           <img
@@ -77,10 +79,10 @@ export function TalentSlot({ talentId, imagePath, position, showSelector, onClic
             src={imagePath}
             alt=""
             style={{
-              height: '150dvw',
-              width: 'auto',
-              maxWidth: 'none',
               flexShrink: 0,
+              ...(isSquare
+                ? { width: '80%', height: 'auto' }
+                : { height: '150dvw', width: 'auto', maxWidth: 'none' }),
             }}
             draggable={false}
           />

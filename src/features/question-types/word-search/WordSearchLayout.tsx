@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, isSquareStandingImage } from '../../../shared/utils/talent.ts'
 import type { WordSearchQuestion } from './types.ts'
 
 interface WordSearchLayoutProps {
@@ -40,6 +40,7 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
 
   const talent = talents.find((t) => t.id === question.talentId)
   const standingPath = talent ? getTalentStandingPath(talent) : undefined
+  const isSquare = talent ? isSquareStandingImage(talent) : false
 
   const rows = question.grid.length
   const cols = question.grid[0].length
@@ -56,13 +57,23 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
           alt=""
           style={{
             position: 'absolute',
-            left: '-8%',
-            bottom: 0,
-            height: '95%',
-            width: 'auto',
             objectFit: 'contain',
             zIndex: 1,
             pointerEvents: 'none',
+            ...(isSquare
+              ? {
+                  left: '2%',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '38%',
+                  height: 'auto',
+                }
+              : {
+                  left: '-8%',
+                  bottom: 0,
+                  height: '95%',
+                  width: 'auto',
+                }),
           }}
           draggable={false}
         />
