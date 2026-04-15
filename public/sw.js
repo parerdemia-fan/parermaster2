@@ -1,2 +1,2 @@
 // キャッシュの名前（バージョン管理用）
-const CACHE_NAME = 'v202604160000';
+const CACHE_NAME = 'v202604160048';
