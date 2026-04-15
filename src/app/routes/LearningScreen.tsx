@@ -134,6 +134,8 @@ export function LearningScreen() {
 
       const nextTestIndex = testIndex + 1
       if (nextTestIndex < testQuestions.length) {
+        // 中間問題でもキューを永続化（不正解の人がキューに戻るようにする）
+        setQueue(newQueue)
         // 次のテスト問題へフェード遷移
         fadeTransition(() => {
           setTestIndex(nextTestIndex)
