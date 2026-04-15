@@ -4,7 +4,7 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
 import { playSound } from '../../shared/utils/sound.ts'
-import { getTalentImagePath, getTalentStandingPath } from '../../shared/utils/talent.ts'
+import { getTalentImagePath, getTalentStandingPath, isSquareStandingImage } from '../../shared/utils/talent.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -261,10 +261,18 @@ export function TalentListScreen() {
           alt={selected.name}
           className="absolute pointer-events-none"
           style={{
-            width: '65cqmin',
-            right: 'calc(50% - 90cqmin)',
-            top: '-3cqmin',
             zIndex: 1,
+            ...(isSquareStandingImage(selected)
+              ? {
+                  width: '42cqmin',
+                  bottom: '2cqmin',
+                  right: '2cqmin',
+                }
+              : {
+                  width: '65cqmin',
+                  top: '-3cqmin',
+                  right: 'calc(50% - 90cqmin)',
+                }),
           }}
           draggable={false}
         />
