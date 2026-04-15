@@ -84,7 +84,7 @@ function NameGuessLayoutInner({
       />
 
       {/* プロフィール（左、立ち絵の腰あたりに重なる） */}
-      {talent && (
+      {talent && (talent.dream || talent.hobbies.length > 0 || talent.favorites.length > 0 || talent.skills.length > 0) && (
         <div
           style={{
             position: 'absolute',

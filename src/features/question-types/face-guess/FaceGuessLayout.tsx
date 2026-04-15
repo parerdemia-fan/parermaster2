@@ -42,6 +42,9 @@ function FaceGuessLayoutInner({
   }
 
   const talent = talents.find((t) => t.id === question.talentId)
+  const hasProfile = talent
+    ? !!(talent.dream || talent.hobbies.length > 0 || talent.skills.length > 0 || talent.favorites.length > 0)
+    : false
 
   return (
     <div
@@ -68,7 +71,12 @@ function FaceGuessLayoutInner({
         {/* 読み仮名 + タレント名 */}
         <div
           style={{
-            flexShrink: 0,
+            flexShrink: hasProfile ? 0 : undefined,
+            flex: hasProfile ? undefined : 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: hasProfile ? undefined : 'center',
             textAlign: 'center',
             padding: '2cqmin 1cqmin 1cqmin',
           }}
@@ -98,7 +106,7 @@ function FaceGuessLayoutInner({
         </div>
 
         {/* プロフィールヒント */}
-        {talent && (
+        {hasProfile && (
           <div
             style={{
               flex: 1,
@@ -114,17 +122,17 @@ function FaceGuessLayoutInner({
               gap: '2cqmin',
             }}
           >
-            {talent.dream && (
-              <ProfileItem emoji="💫" label="夢" text={talent.dream} />
+            {talent!.dream && (
+              <ProfileItem emoji="💫" label="夢" text={talent!.dream} />
             )}
-            {talent.hobbies.length > 0 && (
-              <ProfileItem emoji="🎮" label="趣味" text={talent.hobbies.join('、')} />
+            {talent!.hobbies.length > 0 && (
+              <ProfileItem emoji="🎮" label="趣味" text={talent!.hobbies.join('、')} />
             )}
-            {talent.skills.length > 0 && (
-              <ProfileItem emoji="🎤" label="特技" text={talent.skills.join('、')} />
+            {talent!.skills.length > 0 && (
+              <ProfileItem emoji="🎤" label="特技" text={talent!.skills.join('、')} />
             )}
-            {talent.favorites.length > 0 && (
-              <ProfileItem emoji="❤️" label="好きなもの" text={talent.favorites.join('、')} />
+            {talent!.favorites.length > 0 && (
+              <ProfileItem emoji="❤️" label="好きなもの" text={talent!.favorites.join('、')} />
             )}
           </div>
         )}
