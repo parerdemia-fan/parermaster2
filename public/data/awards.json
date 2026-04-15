@@ -1,0 +1,1335 @@
+{
+  "version": 1,
+  "awards": [
+    {
+      "id": "a001",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "ウィニー寮1位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a002",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "ウィニー寮2位",
+      "talentId": "25WH015"
+    },
+    {
+      "id": "a003",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "クゥ寮1位",
+      "talentId": "25CO011"
+    },
+    {
+      "id": "a004",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "クゥ寮2位",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a005",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "バゥ寮1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a006",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "バゥ寮2位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a007",
+      "eventDate": "202505",
+      "eventName": "浴衣イベント",
+      "result": "ミュゥ寮2位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a008",
+      "eventDate": "202506",
+      "eventName": "水着イベント",
+      "result": "ウィニー寮1位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a009",
+      "eventDate": "202506",
+      "eventName": "水着イベント",
+      "result": "クゥ寮1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a010",
+      "eventDate": "202506",
+      "eventName": "水着イベント",
+      "result": "バゥ寮1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a012",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "ウィニー寮2位",
+      "talentId": "25WH006"
+    },
+    {
+      "id": "a013",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "クゥ寮1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a014",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "クゥ寮2位",
+      "talentId": "25CO006"
+    },
+    {
+      "id": "a015",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "バゥ寮1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a016",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "バゥ寮2位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a017",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "ミュゥ寮1位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a018",
+      "eventDate": "202506",
+      "eventName": "ネームロゴイベント",
+      "result": "ミュゥ寮2位",
+      "talentId": "25ME007"
+    },
+    {
+      "id": "a019",
+      "eventDate": "202506",
+      "eventName": "バゥ寮エアホッケー大会",
+      "result": "優勝",
+      "talentId": "25WA004"
+    },
+    {
+      "id": "a020",
+      "eventDate": "202507",
+      "eventName": "グルメ争奪戦イベント",
+      "result": "1位",
+      "talentId": "25CO013"
+    },
+    {
+      "id": "a021",
+      "eventDate": "202507",
+      "eventName": "グルメ争奪戦イベント",
+      "result": "2位",
+      "talentId": "25ME014"
+    },
+    {
+      "id": "a022",
+      "eventDate": "202507",
+      "eventName": "グルメ争奪戦イベント",
+      "result": "3位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a023",
+      "eventDate": "202507",
+      "eventName": "グルメ争奪戦イベント",
+      "result": "4位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a024",
+      "eventDate": "202507",
+      "eventName": "グルメ争奪戦イベント",
+      "result": "5位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a025",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a026",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "2位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a027",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "3位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a029",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "5位",
+      "talentId": "25ME014"
+    },
+    {
+      "id": "a030",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "6位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a031",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "7位",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a032",
+      "eventDate": "202507",
+      "eventName": "パレデミアン！新しい顔よ！イベント",
+      "result": "8位",
+      "talentId": "25WA010"
+    },
+    {
+      "id": "a033",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a034",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a035",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "3位",
+      "talentId": "25WH006"
+    },
+    {
+      "id": "a036",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "5位",
+      "talentId": "25WA004"
+    },
+    {
+      "id": "a037",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "6位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a040",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "9位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a041",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "10位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a042",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "11位",
+      "talentId": "25WA007"
+    },
+    {
+      "id": "a043",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "12位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a044",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "13位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a045",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "14位",
+      "talentId": "25ME013"
+    },
+    {
+      "id": "a046",
+      "eventDate": "202507",
+      "eventName": "ハロウィンイベント",
+      "result": "15位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a047",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "1位",
+      "talentId": "25WA013"
+    },
+    {
+      "id": "a048",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "2位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a050",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "4位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a051",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "5位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a052",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "6位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a053",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "7位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a054",
+      "eventDate": "202508",
+      "eventName": "アイキャッチイベント(8月)",
+      "result": "8位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a056",
+      "eventDate": "202508",
+      "eventName": "第1回投票イベント",
+      "result": "2位",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a059",
+      "eventDate": "202509",
+      "eventName": "オリジナル曲制作イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a060",
+      "eventDate": "202509",
+      "eventName": "オリジナル曲制作イベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a061",
+      "eventDate": "202509",
+      "eventName": "オリジナル曲制作イベント",
+      "result": "3位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a062",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "1位",
+      "talentId": "25WH006"
+    },
+    {
+      "id": "a063",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a064",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "3位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a065",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "4位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a066",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "5位",
+      "talentId": "25WH015"
+    },
+    {
+      "id": "a067",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "6位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a068",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "7位",
+      "talentId": "25WA007"
+    },
+    {
+      "id": "a069",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "8位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a070",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "9位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a071",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "10位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a072",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "11位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a073",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "12位",
+      "talentId": "25ME008"
+    },
+    {
+      "id": "a074",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "13位",
+      "talentId": "25WA012"
+    },
+    {
+      "id": "a075",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "14位",
+      "talentId": "25ME014"
+    },
+    {
+      "id": "a076",
+      "eventDate": "202509",
+      "eventName": "クリスマスイベント",
+      "result": "15位",
+      "talentId": "25CO002"
+    },
+    {
+      "id": "a078",
+      "eventDate": "202510",
+      "eventName": "BackStage Rookie Challenge Vol.5",
+      "result": "No.2(接客人数No.1)",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a079",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "1位",
+      "talentId": "25WA007"
+    },
+    {
+      "id": "a080",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a081",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "3位",
+      "talentId": "25ME014"
+    },
+    {
+      "id": "a082",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "4位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a083",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "5位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a084",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "6位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a085",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "7位",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a087",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "9位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a088",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "10位",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a089",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "11位",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a090",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "12位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a091",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "13位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a092",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "14位",
+      "talentId": "25CO002"
+    },
+    {
+      "id": "a093",
+      "eventDate": "202510",
+      "eventName": "パレデミアポイント獲得イベント",
+      "result": "15位",
+      "talentId": "25WA004"
+    },
+    {
+      "id": "a094",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a095",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "2位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a096",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "3位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a097",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "4位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a098",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "5位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a099",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "6位",
+      "talentId": "25WH015"
+    },
+    {
+      "id": "a100",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "7位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a101",
+      "eventDate": "202510",
+      "eventName": "新年グッズ化イベント",
+      "result": "8位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a103",
+      "eventDate": "202511",
+      "eventName": "お部屋背景獲得イベント",
+      "result": "2位",
+      "talentId": "25WA007"
+    },
+    {
+      "id": "a104",
+      "eventDate": "202511",
+      "eventName": "お部屋背景獲得イベント",
+      "result": "3位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a105",
+      "eventDate": "202511",
+      "eventName": "お部屋背景獲得イベント",
+      "result": "4位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a106",
+      "eventDate": "202511",
+      "eventName": "お部屋背景獲得イベント",
+      "result": "5位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a107",
+      "eventDate": "202511",
+      "eventName": "お部屋背景獲得イベント",
+      "result": "6位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a108",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a109",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a110",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "3位",
+      "talentId": "25WA007"
+    },
+    {
+      "id": "a111",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "4位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a112",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "5位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a113",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "6位",
+      "talentId": "25CO003"
+    },
+    {
+      "id": "a114",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "7位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a115",
+      "eventDate": "202511",
+      "eventName": "バレンタインイベント",
+      "result": "8位",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a116",
+      "eventDate": "202511",
+      "eventName": "ゲリライベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a117",
+      "eventDate": "202511",
+      "eventName": "ゲリライベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a118",
+      "eventDate": "202511",
+      "eventName": "ゲリライベント",
+      "result": "3位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a119",
+      "eventDate": "202512",
+      "eventName": "ひな祭りイベント",
+      "result": "1位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a120",
+      "eventDate": "202512",
+      "eventName": "ひな祭りイベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a121",
+      "eventDate": "202512",
+      "eventName": "ひな祭りイベント",
+      "result": "3位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a122",
+      "eventDate": "202512",
+      "eventName": "ひな祭りイベント",
+      "result": "4位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a123",
+      "eventDate": "202512",
+      "eventName": "ひな祭りイベント",
+      "result": "5位",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a124",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a125",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "2位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a126",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a127",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "4位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a128",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "5位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a129",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "6位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a130",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "Finalステージ進出",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a132",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "Finalステージ進出",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a133",
+      "eventDate": "202512",
+      "eventName": "第2回投票イベント",
+      "result": "Finalステージ進出",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a134",
+      "eventDate": "202512",
+      "eventName": "第一回パレデミア学園雀魂大会",
+      "result": "2位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a135",
+      "eventDate": "202512",
+      "eventName": "第一回パレデミア学園雀魂大会",
+      "result": "3位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a136",
+      "eventDate": "202512",
+      "eventName": "第一回パレデミア学園雀魂大会",
+      "result": "4位",
+      "talentId": "25WA013"
+    },
+    {
+      "id": "a137",
+      "eventDate": "202512",
+      "eventName": "第一回パレデミア学園雀魂大会",
+      "result": "優勝",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a138",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a139",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "2位",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a140",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "3位",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a141",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "4位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a142",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "5位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a143",
+      "eventDate": "202601",
+      "eventName": "YouTube登録者獲得イベント",
+      "result": "6位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a144",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a145",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a146",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "3位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a147",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "4位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a148",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "5位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a149",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "6位",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a150",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "7位",
+      "talentId": "25ME004"
+    },
+    {
+      "id": "a151",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "8位",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a152",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "9位",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a153",
+      "eventDate": "202601",
+      "eventName": "パラレル職業体験イベント",
+      "result": "10位",
+      "talentId": "25WH006"
+    },
+    {
+      "id": "a154",
+      "eventDate": "202602",
+      "eventName": "アイキャッチイベント(2月)",
+      "result": "1位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a155",
+      "eventDate": "202602",
+      "eventName": "アイキャッチイベント(2月)",
+      "result": "2位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a156",
+      "eventDate": "202602",
+      "eventName": "アイキャッチイベント(2月)",
+      "result": "3位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a157",
+      "eventDate": "202602",
+      "eventName": "アイキャッチイベント(2月)",
+      "result": "4位",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a158",
+      "eventDate": "202602",
+      "eventName": "アイキャッチイベント(2月)",
+      "result": "5位",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a159",
+      "eventDate": "202602",
+      "eventName": "歌ってみた制作イベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a160",
+      "eventDate": "202602",
+      "eventName": "歌ってみた制作イベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a161",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "1位",
+      "talentId": "25WA015"
+    },
+    {
+      "id": "a162",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a163",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a164",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "4位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a165",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "5位",
+      "talentId": "25WA002"
+    },
+    {
+      "id": "a166",
+      "eventDate": "202602",
+      "eventName": "春旅行イベント",
+      "result": "6位",
+      "talentId": "25CO002"
+    },
+    {
+      "id": "a167",
+      "eventDate": "202603",
+      "eventName": "新髪型イベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a168",
+      "eventDate": "202603",
+      "eventName": "新髪型イベント",
+      "result": "2位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a169",
+      "eventDate": "202603",
+      "eventName": "新髪型イベント",
+      "result": "3位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a170",
+      "eventDate": "202603",
+      "eventName": "新髪型イベント",
+      "result": "4位",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a171",
+      "eventDate": "202603",
+      "eventName": "新髪型イベント",
+      "result": "5位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a172",
+      "eventDate": "202603",
+      "eventName": "歌ってみた制作イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a173",
+      "eventDate": "202603",
+      "eventName": "歌ってみた制作イベント",
+      "result": "2位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a174",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "1位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a175",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "2位",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a176",
+      "eventDate": "202603",
+      "eventName": "パレ学1期生学力テスト",
+      "result": "3位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a177",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a178",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "2位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a179",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "3位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a180",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "4位",
+      "talentId": "25WA015"
+    },
+    {
+      "id": "a181",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "5位",
+      "talentId": "25WH010"
+    },
+    {
+      "id": "a182",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "6位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a183",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "7位",
+      "talentId": "25CO003"
+    },
+    {
+      "id": "a184",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "8位",
+      "talentId": "25WA004"
+    },
+    {
+      "id": "a185",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "9位",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a186",
+      "eventDate": "202603",
+      "eventName": "ジューンブライドイベント",
+      "result": "10位",
+      "talentId": "25WA010"
+    },
+    {
+      "id": "a187",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a188",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a189",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a190",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA010"
+    },
+    {
+      "id": "a191",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a192",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a193",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "100時間達成",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a194",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a195",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WA013"
+    },
+    {
+      "id": "a196",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WH007"
+    },
+    {
+      "id": "a197",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a198",
+      "eventDate": "202603",
+      "eventName": "配信時間達成イベント",
+      "result": "75時間達成",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a199",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "1位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a200",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "2位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a201",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a202",
+      "eventDate": "202603",
+      "eventName": "2025年度パレデミアポイントランキング",
+      "result": "4位",
+      "talentId": "25WH005"
+    }
+  ]
+}

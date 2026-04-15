@@ -1,0 +1,46 @@
+[
+  {
+    "role": "ディレクター",
+    "members": ["■■■■■■■"]
+  },
+  {
+    "role": "プログラマー",
+    "members": ["くろぴ（Claude Opus 4.6）"]
+  },
+  {
+    "role": "グラフィックデザイナー",
+    "members": ["Nano Banana 2（Gemini）"]
+  },
+  {
+    "role": "グラフィックエディター",
+    "members": ["プレビュー.app"]
+  },
+  {
+    "role": "コーディングエージェント",
+    "members": ["Claude Code"]
+  },
+  {
+    "role": "コードエディター",
+    "members": ["Visual Studio Code"]
+  },
+  {
+    "role": "問題作成",
+    "members": ["■■■■■■■", "問題提供者のみんなたち"]
+  },
+  {
+    "role": "問題作成サポート",
+    "members": ["くろぴ（Claude Opus 4.6）"]
+  },
+  {
+    "role": "効果音素材",
+    "members": ["効果音ラボ"]
+  },
+  {
+    "role": "デプロイメント",
+    "members": ["GitHub Pages"]
+  },
+  {
+    "role": "原著作",
+    "members": ["パレデミア学園 (株式会社jig.jp)"]
+  }
+]

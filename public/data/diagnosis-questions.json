@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "question": "学園の文化祭。あなたがやりたいのは？",
+      "choices": [
+        { "text": "ステージでパフォーマンス", "scores": { "tension": 3, "expression": 2 } },
+        { "text": "展示の企画・装飾", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "実況・MC担当", "scores": { "tension": 2, "stance": 2 } },
+        { "text": "裏方で運営を支える", "scores": { "thinking": 3, "stance": 2 } }
+      ]
+    },
+    {
+      "question": "休日の過ごし方は？",
+      "choices": [
+        { "text": "家でゲームや動画を満喫", "scores": { "interest": 3, "expression": 1 } },
+        { "text": "友達とカフェやショッピング", "scores": { "stance": 3, "tension": 1 } },
+        { "text": "一人で作品づくりに没頭", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "散歩やカフェ巡りでリフレッシュ", "scores": { "interest": 2, "stance": 1 } }
+      ]
+    },
+    {
+      "question": "グループワークでの役割は？",
+      "choices": [
+        { "text": "みんなを引っ張るリーダー", "scores": { "tension": 3, "stance": 2 } },
+        { "text": "アイデアを出す発案役", "scores": { "expression": 2, "thinking": 2 } },
+        { "text": "メンバーの意見をまとめる調整役", "scores": { "stance": 3, "thinking": 1 } },
+        { "text": "黙々と作業を進める実行役", "scores": { "thinking": 3, "expression": 1 } }
+      ]
+    },
+    {
+      "question": "気になる配信のジャンルは？",
+      "choices": [
+        { "text": "ゲーム実況", "scores": { "interest": 3, "tension": 2 } },
+        { "text": "歌枠・ライブ", "scores": { "expression": 3, "tension": 1 } },
+        { "text": "雑談・お悩み相談", "scores": { "stance": 3, "thinking": 1 } },
+        { "text": "料理や手芸などものづくり系", "scores": { "expression": 2, "interest": 2 } }
+      ]
+    },
+    {
+      "question": "プレゼントを渡すなら？",
+      "choices": [
+        { "text": "手作りのもの", "scores": { "expression": 3, "stance": 2 } },
+        { "text": "相手の趣味をリサーチして選ぶ", "scores": { "thinking": 3, "stance": 2 } },
+        { "text": "面白さ重視のサプライズ", "scores": { "tension": 3, "expression": 1 } },
+        { "text": "一緒にどこかへ出かける", "scores": { "interest": 2, "stance": 2 } }
+      ]
+    },
+    {
+      "question": "新しい趣味を始めるなら？",
+      "choices": [
+        { "text": "楽器や絵などの創作系", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "スポーツやアウトドア", "scores": { "interest": 3, "tension": 2 } },
+        { "text": "資格の勉強や読書", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "ボランティアや地域活動", "scores": { "stance": 3, "interest": 1 } }
+      ]
+    },
+    {
+      "question": "友達といるときの自分は？",
+      "choices": [
+        { "text": "場を盛り上げるムードメーカー", "scores": { "tension": 3, "stance": 2 } },
+        { "text": "みんなの話を聞く聞き役", "scores": { "stance": 3, "thinking": 1 } },
+        { "text": "面白い情報やネタを共有する人", "scores": { "interest": 2, "tension": 2 } },
+        { "text": "自分の世界観を語る人", "scores": { "expression": 2, "interest": 2 } }
+      ]
+    },
+    {
+      "question": "落ち込んだときの対処法は？",
+      "choices": [
+        { "text": "好きな音楽や映像に浸る", "scores": { "expression": 2, "interest": 2 } },
+        { "text": "友達に話を聞いてもらう", "scores": { "stance": 3, "tension": 1 } },
+        { "text": "原因を分析して対策を考える", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "体を動かしてリフレッシュ", "scores": { "tension": 2, "interest": 2 } }
+      ]
+    },
+    {
+      "question": "SNSでよくやることは？",
+      "choices": [
+        { "text": "自分の作品や写真を投稿", "scores": { "expression": 3, "tension": 1 } },
+        { "text": "面白い投稿をリポスト・シェア", "scores": { "tension": 2, "stance": 2 } },
+        { "text": "友達の投稿にコメント・いいね", "scores": { "stance": 2, "expression": 1 } },
+        { "text": "情報収集メインで見る専", "scores": { "thinking": 3, "interest": 1 } }
+      ]
+    },
+    {
+      "question": "旅行で一番楽しみなのは？",
+      "choices": [
+        { "text": "ご当地グルメを食べ歩き", "scores": { "interest": 3, "tension": 1 } },
+        { "text": "美術館や博物館を巡る", "scores": { "thinking": 2, "expression": 2 } },
+        { "text": "現地の人との交流", "scores": { "stance": 2, "tension": 2 } },
+        { "text": "写真や動画で記録を残す", "scores": { "expression": 2, "thinking": 2 } }
+      ]
+    }
+  ]
+}

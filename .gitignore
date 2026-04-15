@@ -1,0 +1,16 @@
+.claude/
+node_modules/
+dist/
+.DS_Store
+.mcp.json
+test-results/
+.playwright-mcp/
+docs/screenshots/
+docs/test-result.md
+
+# 非公開ファイル
+scripts/
+secrets/
+docs/tasks.md
+*.tsv
+*.py

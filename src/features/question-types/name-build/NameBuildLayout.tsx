@@ -1,0 +1,596 @@
+import { useState } from 'react'
+import { useGameStore } from '../../../stores/gameStore.ts'
+import { useTalents } from '../../../shared/hooks/useTalents.ts'
+import { getTalentStandingPath, isSquareStandingImage } from '../../../shared/utils/talent.ts'
+import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
+import { playSound } from '../../../shared/utils/sound.ts'
+import type { NameBuildQuestion } from './types.ts'
+
+interface NameBuildLayoutProps {
+  question: NameBuildQuestion
+  isAnswered: boolean
+  onAnswer: (isCorrect: boolean) => void
+}
+
+export function NameBuildLayout({
+  question,
+  isAnswered,
+  onAnswer,
+}: NameBuildLayoutProps) {
+  return question.difficulty >= 2 ? (
+    <CharPickLayout
+      key={question.talentId}
+      question={question}
+      isAnswered={isAnswered}
+      onAnswer={onAnswer}
+    />
+  ) : (
+    <PairPickLayout
+      key={question.talentId}
+      question={question}
+      isAnswered={isAnswered}
+      onAnswer={onAnswer}
+    />
+  )
+}
+
+// ─── ふつう: 苗字・名前ペア選択 ───────────────────────────
+
+// ★のペアボタン用装飾ゾーン（横長ボタン200x100）
+const NAME_BUILD_PAIR_ZONES = [
+  { x: 80, y: 15, w: 40, h: 50 },
+  { x: 140, y: 20, w: 40, h: 50 },
+]
+
+function PairPickLayout({
+  question,
+  isAnswered,
+  onAnswer,
+}: NameBuildLayoutProps) {
+  const currentIndex = useGameStore((s) => s.currentIndex)
+  const [slots, setSlots] = useState<[string | null, string | null]>([null, null])
+
+  const handleChoiceClick = (choice: string) => {
+    if (isAnswered) return
+    if (choice === slots[0] || choice === slots[1]) return
+
+    if (slots[0] === null) {
+      setSlots([choice, slots[1]])
+    } else if (slots[1] === null) {
+      setSlots([slots[0], choice])
+    }
+  }
+
+  const handleClear = () => {
+    if (isAnswered) return
+    setSlots([null, null])
+  }
+
+  const handleSubmit = () => {
+    if (isAnswered || slots[0] === null || slots[1] === null) return
+    const isCorrect =
+      slots[0] === question.correctFamilyName &&
+      slots[1] === question.correctGivenName
+    onAnswer(isCorrect)
+  }
+
+  const bothFilled = slots[0] !== null && slots[1] !== null
+
+  return (
+    <div
+      className="relative"
+      style={{ flex: 1, width: '100%', overflow: 'hidden' }}
+    >
+      <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
+
+      {/* 右側: スロット＋グリッド＋ボタン */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '16cqmin',
+          right: '2.5cqmin',
+          bottom: '10cqmin',
+          width: '55%',
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '3cqmin',
+          justifyContent: 'center',
+        }}
+      >
+        {/* 回答枠（苗字 + 名前） */}
+        <div
+          className="flex items-center justify-center"
+          style={{ gap: '2cqmin' }}
+        >
+          <PairSlot
+            label="苗字"
+            value={slots[0]}
+            isAnswered={isAnswered}
+            isCorrectSlot={isAnswered && slots[0] === question.correctFamilyName}
+            correctValue={question.correctFamilyName}
+          />
+          <PairSlot
+            label="名前"
+            value={slots[1]}
+            isAnswered={isAnswered}
+            isCorrectSlot={isAnswered && slots[1] === question.correctGivenName}
+            correctValue={question.correctGivenName}
+          />
+        </div>
+
+        {/* 選択肢（2行×4列） */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '1.5cqmin',
+          }}
+        >
+          {question.choices.map((choice, i) => {
+            const isUsed = choice === slots[0] || choice === slots[1]
+            const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+            const patternSvg = generatePattern(palette.motif, palette.motifFill, i * 1000 + currentIndex * 7, NAME_BUILD_PAIR_ZONES, { w: 200, h: 100 })
+            let bg = `url("data:image/svg+xml,${patternSvg}") center / 100% auto no-repeat, ${palette.gradient}`
+            let borderColor = 'rgba(255,255,255,0.7)'
+            let color = '#333'
+            let opacity = isUsed && !isAnswered ? 0.4 : 1
+            let boxShadow = `0 0.5cqmin 1.5cqmin ${palette.outerShadow}, inset 0 1cqmin 3cqmin ${palette.insetShadow}`
+
+            if (isAnswered) {
+              const isCorrectFamily = choice === question.correctFamilyName
+              const isCorrectGiven = choice === question.correctGivenName
+              if (isCorrectFamily || isCorrectGiven) {
+                bg = 'linear-gradient(135deg, rgba(34,197,94,0.92), rgba(22,163,74,0.92))'
+                borderColor = 'rgba(255,255,255,0.8)'
+                color = 'white'
+                boxShadow = '0 0.5cqmin 1.5cqmin rgba(22,163,74,0.5), inset 0 1cqmin 3cqmin rgba(0,80,30,0.2)'
+              } else if (isUsed) {
+                bg = 'linear-gradient(135deg, rgba(239,68,68,0.92), rgba(220,38,38,0.92))'
+                borderColor = 'rgba(255,255,255,0.8)'
+                color = 'white'
+                boxShadow = '0 0.5cqmin 1.5cqmin rgba(220,38,38,0.5), inset 0 1cqmin 3cqmin rgba(100,0,0,0.2)'
+              } else {
+                opacity = 0.4
+              }
+            }
+
+            return (
+              <button
+                key={i}
+                className="font-bold transition active:scale-98"
+                style={{
+                  height: '8cqmin',
+                  fontSize: choice.length <= 3 ? '3cqmin'
+                    : choice.length <= 5 ? '2.6cqmin'
+                    : choice.length <= 7 ? '2.2cqmin'
+                    : '1.8cqmin',
+                  borderRadius: '1.5cqmin',
+                  border: `0.5cqmin solid ${borderColor}`,
+                  background: bg,
+                  color,
+                  opacity,
+                  cursor: isAnswered || isUsed ? 'default' : 'pointer',
+                  boxShadow,
+                  textShadow: '0 0.1cqmin 0.3cqmin rgba(0,0,0,0.15)',
+                  whiteSpace: 'nowrap',
+                  padding: '0 1cqmin',
+                }}
+                disabled={isAnswered || isUsed}
+                onClick={() => { playSound('tap'); handleChoiceClick(choice) }}
+              >
+                {choice}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* クリア＋決定ボタン */}
+        <div style={{ visibility: isAnswered ? 'hidden' : 'visible' }}>
+          <ActionButtons
+            canSubmit={bothFilled}
+            onClear={handleClear}
+            onSubmit={handleSubmit}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── ★★☆/★★★ 1文字ずつ選択 ─────────────────────────────
+
+function CharPickLayout({
+  question,
+  isAnswered,
+  onAnswer,
+}: NameBuildLayoutProps) {
+  const familyLen = question.correctFamilyName.length
+  const givenLen = question.correctGivenName.length
+  const totalChars = familyLen + givenLen
+  const isHard = question.difficulty === 3
+
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([])
+
+  const filledChars = selectedIndices.map((i) => question.choices[i])
+  const usedSet = new Set(selectedIndices)
+  const allFilled = selectedIndices.length >= totalChars
+
+  const handleChoiceClick = (index: number) => {
+    if (isAnswered || usedSet.has(index) || allFilled) return
+    setSelectedIndices([...selectedIndices, index])
+  }
+
+  const handleBackspace = () => {
+    if (isAnswered || selectedIndices.length === 0) return
+    setSelectedIndices(selectedIndices.slice(0, -1))
+  }
+
+  const handleClear = () => {
+    if (isAnswered) return
+    setSelectedIndices([])
+  }
+
+  const handleSubmit = () => {
+    if (isAnswered || !allFilled) return
+    const builtFamily = filledChars.slice(0, familyLen).join('')
+    const builtGiven = filledChars.slice(familyLen).join('')
+    const isCorrect =
+      builtFamily === question.correctFamilyName &&
+      builtGiven === question.correctGivenName
+    onAnswer(isCorrect)
+  }
+
+  const correctChars = [...question.correctFamilyName, ...question.correctGivenName]
+  // 文字数が多い場合はスロットサイズを縮小して折り返しを防止
+  // 右側コンテナ幅≒77cqmin、gap=1cqmin×(totalChars-1)、spacer=2cqmin から逆算
+  const computedSize = (75 - totalChars) / totalChars
+  const slotSize = totalChars <= 5 ? 13 : Math.min(12, Math.max(5.5, computedSize))
+  const slotFontSize = slotSize * 0.5
+  const rightWidth = isHard ? '60%' : '58%'
+
+  return (
+    <div
+      className="relative"
+      style={{ flex: 1, width: '100%', overflow: 'hidden' }}
+    >
+      <TalentImage talentId={question.talentId} fallbackPath={question.talentImagePath} />
+
+      {/* 右側: スロット＋グリッド＋ボタン */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '16cqmin',
+          right: '2.5cqmin',
+          bottom: '10cqmin',
+          width: rightWidth,
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: isHard ? '1.5cqmin' : '2.5cqmin',
+          justifyContent: 'center',
+        }}
+      >
+        {/* 文字スロット */}
+        <div
+          className="flex items-center justify-center"
+          style={{ gap: '1cqmin', flexWrap: 'wrap' }}
+        >
+          {[...question.correctFamilyName].map((correctChar, i) => (
+            <CharSlot
+              key={`f-${i}`}
+              value={filledChars[i] ?? null}
+              isAnswered={isAnswered}
+              isCorrectSlot={isAnswered && filledChars[i] === correctChar}
+              correctValue={correctChar}
+              isCurrent={!isAnswered && filledChars.length === i}
+              size={slotSize}
+              fontSize={slotFontSize}
+            />
+          ))}
+          <div style={{ width: '2cqmin' }} />
+          {[...question.correctGivenName].map((correctChar, i) => {
+            const slotIndex = familyLen + i
+            return (
+              <CharSlot
+                key={`g-${i}`}
+                value={filledChars[slotIndex] ?? null}
+                isAnswered={isAnswered}
+                isCorrectSlot={isAnswered && filledChars[slotIndex] === correctChar}
+                correctValue={correctChar}
+                isCurrent={!isAnswered && filledChars.length === slotIndex}
+                size={slotSize}
+                fontSize={slotFontSize}
+              />
+            )
+          })}
+        </div>
+
+        {/* 選択肢グリッド */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${isHard ? 7 : 5}, 1fr)`,
+            gap: isHard ? '0.8cqmin' : '1.2cqmin',
+          }}
+        >
+          {question.choices.map((char, i) => {
+            const isUsed = usedSet.has(i)
+            const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
+            let bg = palette.gradient
+            let borderColor = 'rgba(255,255,255,0.7)'
+            let color = '#333'
+            let opacity = isUsed && !isAnswered ? 0.4 : 1
+            let boxShadow = `0 0.3cqmin 0.8cqmin ${palette.outerShadow}, inset 0 0.5cqmin 1.5cqmin ${palette.insetShadow}`
+
+            if (isAnswered) {
+              const isCorrectChar = correctChars.includes(char)
+              if (isCorrectChar) {
+                borderColor = '#22c55e'
+                boxShadow = '0 0.3cqmin 0.8cqmin rgba(22,163,74,0.4), inset 0 0.5cqmin 1.5cqmin rgba(0,80,30,0.15)'
+              } else if (isUsed) {
+                borderColor = '#ef4444'
+                boxShadow = '0 0.3cqmin 0.8cqmin rgba(220,38,38,0.4), inset 0 0.5cqmin 1.5cqmin rgba(100,0,0,0.15)'
+              } else {
+                opacity = 0.4
+              }
+            }
+
+            return (
+              <button
+                key={i}
+                className="font-bold transition active:scale-98"
+                style={{
+                  height: isHard ? '6.5cqmin' : '8cqmin',
+                  fontSize: isHard ? '3cqmin' : '3.5cqmin',
+                  borderRadius: '1.5cqmin',
+                  border: `0.5cqmin solid ${borderColor}`,
+                  background: bg,
+                  color,
+                  opacity,
+                  cursor: isAnswered || isUsed ? 'default' : 'pointer',
+                  boxShadow,
+                }}
+                disabled={isAnswered || isUsed}
+                onClick={() => { playSound('tap'); handleChoiceClick(i) }}
+              >
+                {char}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* クリア＋1文字戻す＋決定ボタン */}
+        <div
+          className="flex justify-center"
+          style={{ gap: '2cqmin', visibility: isAnswered ? 'hidden' : 'visible' }}
+        >
+          <ActionButton
+            label="クリア"
+            onClick={handleClear}
+            variant="secondary"
+          />
+          <ActionButton
+            label="1字戻す"
+            onClick={handleBackspace}
+            variant="secondary"
+            disabled={selectedIndices.length === 0}
+          />
+          <ActionButton
+            label="OK"
+            onClick={handleSubmit}
+            variant={allFilled ? 'primary' : 'disabled'}
+            disabled={!allFilled}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── 共通コンポーネント ─────────────────────────────
+
+function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPath: string }) {
+  const { talents } = useTalents()
+  const talent = talents.find((t) => t.id === talentId)
+  const imagePath = talent
+    ? getTalentStandingPath(talent)
+    : fallbackPath
+  const isSquare = talent ? isSquareStandingImage(talent) : false
+
+  return (
+    <img
+      src={imagePath}
+      alt="誰でしょう？"
+      style={{
+        position: 'absolute',
+        objectFit: 'contain',
+        zIndex: 2,
+        ...(isSquare
+          ? {
+              left: '2%',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: '42%',
+              height: 'auto',
+            }
+          : {
+              left: '-10%',
+              top: '0cqmin',
+              height: '150cqmin',
+              width: 'auto',
+            }),
+      }}
+      draggable={false}
+    />
+  )
+}
+
+function PairSlot({
+  label,
+  value,
+  isAnswered,
+  isCorrectSlot,
+  correctValue,
+}: {
+  label: string
+  value: string | null
+  isAnswered: boolean
+  isCorrectSlot: boolean
+  correctValue: string
+}) {
+  let borderColor = 'rgba(180,140,160,0.6)'
+
+  if (isAnswered && value !== null) {
+    if (isCorrectSlot) {
+      borderColor = '#22c55e'
+    } else {
+      borderColor = '#ef4444'
+    }
+  }
+
+  const displayValue = isAnswered ? (isCorrectSlot ? value : correctValue) : value
+
+  return (
+    <div
+      className="flex items-center justify-center font-bold"
+      style={{
+        minWidth: '28cqmin',
+        height: '10cqmin',
+        fontSize: '4.5cqmin',
+        borderRadius: '1.5cqmin',
+        border: `0.5cqmin ${isAnswered ? 'solid' : 'dashed'} ${borderColor}`,
+        background: 'linear-gradient(160deg, rgba(255,245,248,0.92), rgba(255,235,240,0.92))',
+        color: '#333',
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 0.4cqmin 1.2cqmin rgba(180,100,130,0.25), inset 0 0.5cqmin 1.5cqmin rgba(180,100,130,0.08)',
+      }}
+    >
+      {displayValue ?? (
+        <span style={{ fontSize: '2.5cqmin', opacity: 0.5 }}>{label}</span>
+      )}
+    </div>
+  )
+}
+
+function CharSlot({
+  value,
+  isAnswered,
+  isCorrectSlot,
+  correctValue,
+  isCurrent,
+  size = 7,
+  fontSize = 3.5,
+}: {
+  value: string | null
+  isAnswered: boolean
+  isCorrectSlot: boolean
+  correctValue: string
+  isCurrent: boolean
+  size?: number
+  fontSize?: number
+}) {
+  let borderColor = isCurrent ? 'rgba(59,130,246,0.8)' : 'rgba(180,140,160,0.6)'
+
+  if (isAnswered && value !== null) {
+    if (isCorrectSlot) {
+      borderColor = '#22c55e'
+    } else {
+      borderColor = '#ef4444'
+    }
+  }
+
+  const displayValue = isAnswered ? (isCorrectSlot ? value : correctValue) : value
+
+  return (
+    <div
+      className="flex items-center justify-center font-bold"
+      style={{
+        width: `${size}cqmin`,
+        height: `${size}cqmin`,
+        fontSize: `${fontSize}cqmin`,
+        borderRadius: '1cqmin',
+        border: `0.5cqmin ${value ? 'solid' : 'dashed'} ${borderColor}`,
+        background: 'linear-gradient(160deg, rgba(255,245,248,0.92), rgba(255,235,240,0.92))',
+        color: '#333',
+        backdropFilter: 'blur(10px)',
+        boxShadow: '0 0.4cqmin 1.2cqmin rgba(180,100,130,0.25), inset 0 0.5cqmin 1.5cqmin rgba(180,100,130,0.08)',
+        transition: 'border-color 0.15s',
+      }}
+    >
+      {displayValue ?? ''}
+    </div>
+  )
+}
+
+function ActionButtons({
+  canSubmit,
+  onClear,
+  onSubmit,
+}: {
+  canSubmit: boolean
+  onClear: () => void
+  onSubmit: () => void
+}) {
+  return (
+    <div
+      className="flex justify-center"
+      style={{ gap: '3cqmin' }}
+    >
+      <ActionButton label="クリア" onClick={onClear} variant="secondary" />
+      <ActionButton
+        label="OK"
+        onClick={onSubmit}
+        variant={canSubmit ? 'primary' : 'disabled'}
+        disabled={!canSubmit}
+      />
+    </div>
+  )
+}
+
+function ActionButton({
+  label,
+  onClick,
+  variant,
+  disabled = false,
+}: {
+  label: string
+  onClick: () => void
+  variant: 'primary' | 'secondary' | 'disabled'
+  disabled?: boolean
+}) {
+  return (
+    <button
+      className="font-bold transition active:scale-98"
+      style={{
+        height: '7cqmin',
+        padding: '0 5cqmin',
+        fontSize: '3cqmin',
+        borderRadius: '1.5cqmin',
+        border: '0.3cqmin solid',
+        borderColor:
+          variant === 'primary'
+            ? '#3b82f6'
+            : 'rgba(255,255,255,0.5)',
+        background:
+          variant === 'primary'
+            ? 'rgba(59,130,246,0.85)'
+            : variant === 'secondary'
+              ? 'rgba(255,255,255,0.7)'
+              : 'rgba(255,255,255,0.5)',
+        color:
+          variant === 'primary'
+            ? 'white'
+            : variant === 'secondary'
+              ? '#666'
+              : '#aaa',
+        cursor: disabled ? 'default' : 'pointer',
+        backdropFilter: 'blur(4px)',
+      }}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  )
+}
