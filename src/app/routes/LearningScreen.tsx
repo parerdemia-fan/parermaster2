@@ -5,6 +5,7 @@ import { getTalentImagePath } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
 import { AnswerFeedbackLabel } from '../../shared/components/AnswerFeedbackLabel.tsx'
 import { shuffleArray } from '../../shared/utils/array.ts'
+import { kanaToHiragana } from '../../shared/utils/kana.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 type Phase = 'memorize' | 'test' | 'complete'
@@ -398,7 +399,7 @@ function TalentCards({
                 draggable={false}
               />
             </div>
-            <TalentNameLabel name={talent.name} visible={nameVisible} />
+            <TalentNameLabel name={talent.name} kana={talent.kana} visible={nameVisible} />
           </button>
         )
       })}
@@ -406,19 +407,37 @@ function TalentCards({
   )
 }
 
-function TalentNameLabel({ name, visible = true }: { name: string; visible?: boolean }) {
+/** 名前が全てカタカナ（・含む）のみ、または全てひらがなのみかどうか */
+function needsReading(name: string): boolean {
+  if (/^[\u30A0-\u30FF]+$/.test(name)) return false
+  if (/^[\u3040-\u309F]+$/.test(name)) return false
+  return true
+}
+
+function TalentNameLabel({ name, kana, visible = true }: { name: string; kana: string; visible?: boolean }) {
+  const showReading = needsReading(name)
+
   return (
     <span
       className="font-bold"
       style={{
+        display: 'inline-flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         fontSize: talentNameFontSize(name),
         color: 'white',
         padding: '0.5cqmin 2cqmin',
         borderRadius: '1cqmin',
         background: 'rgba(0,0,0,0.45)',
         visibility: visible ? 'visible' : 'hidden',
+        lineHeight: 1.2,
       }}
     >
+      {showReading && (
+        <span style={{ fontSize: '0.55em', opacity: 0.8 }}>
+          {kanaToHiragana(kana)}
+        </span>
+      )}
       {name}
     </span>
   )
