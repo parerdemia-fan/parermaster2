@@ -51,5 +51,12 @@
       </noscript>
     </div>
     <script type="module" src="./src/app/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/parermaster2/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>
