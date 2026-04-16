@@ -8,9 +8,9 @@ const DIFFICULTY_MATRIX: Record<string, Record<Difficulty, number>> = {
   'text-quiz':  { 1: 1.5, 2: 3, 3: 4.5 },
 }
 
-/** text-quiz の difficulty 値 → 表示用★数（そのまま） */
+/** text-quiz の difficulty 値 → 表示用★数（d0は★1として表示） */
 function textQuizStars(d: number): number {
-  return d
+  return d === 0 ? 1 : d
 }
 
 /**

@@ -67,10 +67,30 @@ function fillAnswers(
         }
       }
 
-      // 寮名マッチ（例: [ミュゥ寮] → ミュゥ寮のタレントからランダム）
-      const dormId = DORM_LABEL_TO_ID[setName]
-      if (dormId) {
-        const dormTalents = talentPool.filter((t) => t.dormitory === dormId && !used.has(t.name))
+      // 世代マッチ（例: [1期生] → 1期生タレントからランダム、[全員] → 全タレント）
+      const genMatch = setName === '1期生' ? 1 : setName === '2期生' ? 2 : setName === '全員' ? 0 : null
+      if (genMatch !== null) {
+        const genPool = genMatch === 0 ? talents : talents.filter((t) => t.generation === genMatch)
+        const candidates = genPool.filter((t) => !used.has(t.name))
+        if (candidates.length > 0) {
+          const picked = candidates[Math.floor(Math.random() * candidates.length)]
+          result[i] = picked.name
+          used.add(result[i])
+          continue
+        }
+      }
+
+      // 寮名マッチ（例: [ミュゥ寮] → 問題世代の寮タレント、[バゥ寮1期生] → 指定世代の寮タレント、[クゥ寮全員] → 全世代の寮タレント）
+      const dormGenMatch = setName.match(/^(バゥ寮|ミュゥ寮|クゥ寮|ウィニー寮)(1期生|2期生|全員)?$/)
+      if (dormGenMatch) {
+        const dormId = DORM_LABEL_TO_ID[dormGenMatch[1]]
+        const genSuffix = dormGenMatch[2]
+        // 世代指定あり → 指定世代、なし → 問題のgenerationに従う
+        const basePool = genSuffix === '全員' ? talents
+          : genSuffix === '1期生' ? talents.filter((t) => t.generation === 1)
+          : genSuffix === '2期生' ? talents.filter((t) => t.generation === 2)
+          : talentPool
+        const dormTalents = basePool.filter((t) => t.dormitory === dormId && !used.has(t.name))
         if (dormTalents.length > 0) {
           const picked = dormTalents[Math.floor(Math.random() * dormTalents.length)]
           result[i] = picked.name
