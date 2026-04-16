@@ -12,5 +12,13 @@ docs/test-result.md
 scripts/
 secrets/
 docs/tasks.md
+docs/neta-candidates.md
+docs/neta-ng-criteria.md
+docs/neta-trends.md
+docs/hidden-features-ideas.md
+docs/talent-info-updates.md
+docs/quote-updates.md
+docs/schedule.md
+docs/x-post-collection.md
 *.tsv
 *.py
