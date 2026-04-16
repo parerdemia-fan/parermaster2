@@ -3403,7 +3403,7 @@
       "firstPerson": "",
       "intro": "自称ゲームプログラマーの卵！これから最高の【ゲーム】体験をみんなに届けられるよう頑張っていくで！！",
       "dream": "",
-      "birthday": "",
+      "birthday": "5月10日",
       "height": 0,
       "bloodType": "",
       "hairColor": "darkblue",
@@ -3415,8 +3415,17 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "ゲームプログラム",
+        "お菓子作り",
+        "歌",
+        "ゲーム",
+        "絵"
+      ],
+      "favorites": [
+        "甘いお菓子",
+        "お肉"
+      ],
       "tone": "",
       "links": [
         {
@@ -3426,6 +3435,10 @@
         {
           "type": "x",
           "url": "https://x.com/yoizaka_iori"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/inuchnjqex6fh2z"
         }
       ]
     },
@@ -3485,9 +3498,9 @@
       "firstPerson": "",
       "intro": "初めまして！こんてんどー！",
       "dream": "アナタの一番星になれますように！",
-      "birthday": "",
+      "birthday": "4月17日",
       "height": 0,
-      "bloodType": "",
+      "bloodType": "O型",
       "hairColor": "pink",
       "hairStyle": "お団子ロング",
       "eyeColorLeft": "",
@@ -3497,8 +3510,20 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "DJ",
+        "ダンス",
+        "広島弁"
+      ],
+      "favorites": [
+        "ゲーム！！",
+        "アニメ",
+        "パイナップル",
+        "朝マック",
+        "水曜どうでしょう",
+        "BNR34(ベイサイドブルー)",
+        "ベガ様♡♡♡"
+      ],
       "tone": "",
       "links": [
         {
@@ -3543,8 +3568,17 @@
       "hobbies": [],
       "skills": [],
       "favorites": [
-        "ゲーム大好き",
-        "人間大好き"
+        "ゲーム",
+        "謎解き",
+        "脱出ゲーム",
+        "お芝居",
+        "戦隊モノ",
+        "仮面ライダー",
+        "グミ",
+        "スライム",
+        "熱さまシート",
+        "シーシャ",
+        "ルービックキューブ"
       ],
       "tone": "",
       "links": [
@@ -3761,6 +3795,10 @@
         {
           "type": "tiktok",
           "url": "https://www.tiktok.com/@botan_setu119"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/k7yrdi7ouj8guq7"
         }
       ]
     },
@@ -3808,6 +3846,10 @@
         {
           "type": "tiktok",
           "url": "https://www.tiktok.com/@sakusakusaku107"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/9y00uo067qkeiov"
         }
       ]
     },
@@ -3868,7 +3910,7 @@
       "givenKana": "スズ",
       "nickname": "しらす",
       "firstPerson": "",
-      "intro": "心清らか(？)な清純派(？)アイドル目指してます",
+      "intro": "学園の風紀を正す…いーえっ‼️\n\n規則をキラキラ彩って(❌乱して)みんなをハッピーに(❌問題児に)しちゃおう！ がモットーの裏風紀委員長(❌自称)",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3882,8 +3924,15 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "ダンス",
+        "イラスト描き"
+      ],
+      "favorites": [
+        "歌",
+        "ダンス",
+        "ゲーム"
+      ],
       "tone": "",
       "links": [
         {
@@ -3893,6 +3942,10 @@
         {
           "type": "x",
           "url": "https://x.com/suzu_shirao"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@d_u_bww"
         }
       ]
     },
@@ -4060,7 +4113,17 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "おさんぽ🐾",
+        "おうた🎶",
+        "たくさんたべる🤤",
+        "どうぶつの森🌳",
+        "とうらぶ⚔️",
+        "あくねこ😈🐱",
+        "餃子",
+        "みたらし団子",
+        "サンリオ"
+      ],
       "tone": "",
       "links": [
         {
@@ -4330,7 +4393,7 @@
       "firstPerson": "",
       "intro": "みんなで囲ってね💕︎",
       "dream": "",
-      "birthday": "",
+      "birthday": "8月14日",
       "height": 0,
       "bloodType": "",
       "hairColor": "red",
@@ -4343,7 +4406,14 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "アニメ",
+        "シーシャ",
+        "踊り手",
+        "歌い手",
+        "バッドばつ丸",
+        "オムライス"
+      ],
       "tone": "",
       "links": [
         {
