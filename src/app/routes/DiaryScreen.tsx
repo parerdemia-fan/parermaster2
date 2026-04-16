@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useDiary } from '../../shared/hooks/useDiary.ts'
+import { useTalents } from '../../shared/hooks/useTalents.ts'
+import { parseTextWithTalentIcons } from '../../shared/utils/talentIconParser.tsx'
 
 const backButtonStyle: React.CSSProperties = {
   fontSize: '3cqmin',
@@ -23,6 +25,7 @@ const navButtonStyle: React.CSSProperties = {
 export function DiaryScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const { entries, loading } = useDiary()
+  const { talents } = useTalents()
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const reversedEntries = useMemo(() => [...entries].reverse(), [entries])
 
@@ -106,7 +109,7 @@ export function DiaryScreen() {
                 whiteSpace: 'pre-wrap',
               }}
             >
-              {entry.body}
+              {parseTextWithTalentIcons(entry.body, talents, true)}
             </div>
           </div>
         </div>
