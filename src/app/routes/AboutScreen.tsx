@@ -130,6 +130,9 @@ ${GAME_URL}
               📝 問題を投稿する
             </LinkButton>
           </div>
+          <p style={{ marginTop: '1.5cqmin', fontSize: '2.2cqmin', color: '#888', lineHeight: 1.5 }}>
+            寮生からの問題投稿も大歓迎！自分や同期のことをクイズにしてみてね
+          </p>
         </Section>
 
         {/* スケルトンパズル */}
