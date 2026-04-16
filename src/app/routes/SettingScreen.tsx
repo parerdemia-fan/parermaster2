@@ -62,8 +62,8 @@ export function SettingScreen() {
 
   const isLearning = gameMode === 'learning'
   const isFaceName = gameMode === 'face-name'
-  // おぼえようモードでは難易度不要。知識クイズの難易度は1期生のみ
-  const showDifficulty = !isLearning && (isFaceName || generation === 'gen1')
+  const isGen2Knowledge = !isDormMode && generation === 'gen2' && gameMode === 'knowledge'
+  const showDifficulty = !isLearning && (isFaceName || generation === 'gen1' || isGen2Knowledge)
 
   // ★★★解放判定: 該当スロットのシルバーバッジ獲得で解放
   const difficulty3Unlocked = isDifficulty3Unlocked(toSlotId(gameMode, modeCategory, scope))
@@ -80,7 +80,12 @@ export function SettingScreen() {
   }
   const handleGameModeChange = (newMode: GameMode) => {
     setGameMode(newMode)
-    downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
+    // 2期生知識クイズはきほんのみ選択可
+    if (!isDormMode && generation === 'gen2' && newMode === 'knowledge') {
+      setDifficulty(1)
+    } else {
+      downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
+    }
   }
 
   const handleStart = useCallback(async () => {
@@ -104,8 +109,8 @@ export function SettingScreen() {
 
       let segments: QuizSegment[]
       if (gen === 2) {
-        // 2期生: テキストクイズ1を順番に10問
-        segments = [{ level: 1, count: 10, ordered: true }]
+        // 2期生きほん: d0を順番に10問
+        segments = [{ level: 0, count: 10, ordered: true }]
       } else if (difficulty === 1) {
         // 1期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
         segments = [
@@ -273,7 +278,7 @@ export function SettingScreen() {
         </div>
 
         {/* ── 難易度 ── */}
-        {showDifficulty && (
+        {showDifficulty && !isGen2Knowledge && (
           <>
             <SectionHeading label="難易度" />
             <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
@@ -287,6 +292,16 @@ export function SettingScreen() {
                 locked={!difficulty3Unlocked}
                 onClick={difficulty3Unlocked ? () => setDifficulty(3) : undefined}
               />
+            </div>
+          </>
+        )}
+        {showDifficulty && isGen2Knowledge && (
+          <>
+            <SectionHeading label="難易度" />
+            <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
+              <PillButton label="きほん" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
+              <PillButton label="ふつう（準備中）" selected={false} accentColor={accentColor} size="small" locked onClick={undefined} />
+              <PillButton label="むずかしい（準備中）" selected={false} accentColor={accentColor} size="small" locked onClick={undefined} />
             </div>
           </>
         )}
