@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useGameStore, getPenaltySeconds } from '../../stores/gameStore.ts'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { QuizHeader } from '../../shared/components/QuizHeader.tsx'
@@ -30,8 +30,9 @@ export function QuizScreen() {
 
   // ブラウザバックで確認ダイアログを表示
   const backRequestCount = useSettingsStore((s) => s.backRequestCount)
+  const initialBackCount = useRef(backRequestCount)
   useEffect(() => {
-    if (backRequestCount > 0) setShowQuitDialog(true)
+    if (backRequestCount > initialBackCount.current) setShowQuitDialog(true)
   }, [backRequestCount])
 
   // カウントダウン（タイムアタック開始前）
