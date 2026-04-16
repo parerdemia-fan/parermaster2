@@ -98,7 +98,10 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
         set({ screen: 'setting', modeCategory: 'dorm', gameMode: 'face-name', scope: dormScope })
       } else {
         const gen: Generation = mode === 'gen1' ? 'gen1' : 'gen2'
-        set({ screen: 'setting', modeCategory: mode, generation: gen, scope: 'all' })
+        // 2期生知識クイズはむずかしい（難易度3）未対応のためクランプ
+        const { gameMode, difficulty } = get()
+        const clampedDifficulty = gen === 'gen2' && gameMode === 'knowledge' && difficulty > 2 ? 2 as Difficulty : undefined
+        set({ screen: 'setting', modeCategory: mode, generation: gen, scope: 'all', ...(clampedDifficulty != null && { difficulty: clampedDifficulty }) })
       }
     },
     goToTitle: () => set({ screen: 'title', isTimeAttack: false }),

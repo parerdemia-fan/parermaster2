@@ -44,8 +44,7 @@ export function judgeBadge(input: JudgeInput): JudgeResult {
 
   if (gameMode === 'knowledge') {
     const slotId = toSlotId(gameMode, modeCategory, scope)
-    // 2期生知識クイズは常にブロンズ
-    const rank: BadgeRank = modeCategory === 'gen2' ? 'bronze' : difficultyToRank(difficulty)
+    const rank: BadgeRank = difficultyToRank(difficulty)
     return { eligible: true, slotId, rank }
   }
 

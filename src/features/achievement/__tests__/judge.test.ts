@@ -89,7 +89,7 @@ describe('judgeBadge', () => {
       expect(result.rank).toBe('silver')
     })
 
-    it('2期生知識クイズ → 常にブロンズ', () => {
+    it('2期生知識クイズ きほん → ブロンズ', () => {
       const result = judgeBadge(
         makeInput({
           gameMode: 'knowledge',
@@ -102,6 +102,21 @@ describe('judgeBadge', () => {
       expect(result.eligible).toBe(true)
       expect(result.slotId).toBe('gen2_knowledge')
       expect(result.rank).toBe('bronze')
+    })
+
+    it('2期生知識クイズ ふつう → シルバー', () => {
+      const result = judgeBadge(
+        makeInput({
+          gameMode: 'knowledge',
+          modeCategory: 'gen2',
+          difficulty: 2,
+          correctCount: 25,
+          totalCount: 25,
+        }),
+      )
+      expect(result.eligible).toBe(true)
+      expect(result.slotId).toBe('gen2_knowledge')
+      expect(result.rank).toBe('silver')
     })
 
     it('知識クイズ → enabledTypes は判定に影響しない', () => {
