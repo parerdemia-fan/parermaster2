@@ -87,8 +87,10 @@ src/
 │       ├── DiaryScreen.tsx
 │       ├── TimeAttackResultScreen.tsx  # タイムアタック結果画面
 │       ├── LearningScreen.tsx         # おぼえようモード
+│       ├── DiagnosisIntroScreen.tsx    # 相性診断イントロ
 │       ├── DiagnosisScreen.tsx        # 相性診断
 │       ├── DiagnosisResultScreen.tsx  # 相性診断結果
+│       ├── SkeletonScreen.tsx         # スケルトンパズル
 │       ├── AboutScreen.tsx             # 案内画面
 │       ├── DebugScreen.tsx            # デバッグ画面（DEV環境のみ）
 │       └── OgpScreen.tsx              # OGP画像生成（DEV環境のみ）
@@ -142,16 +144,25 @@ src/
 │   │   ├── constants.ts         # 出題構成定義, タイム別メッセージ
 │   │   └── generator.ts         # 100問生成
 │   │
-│   └── room/                    # 談話室（縦画面下部）
-│       ├── RoomArea.tsx          # メインコンテナ
-│       ├── TalentSlot.tsx        # 立ち絵スロット + GSAPアニメーション
-│       ├── TalentSelector.tsx    # タレント選択UI
-│       └── useRoomStore.ts       # Zustandストア
+│   ├── room/                    # 談話室（縦画面下部）
+│   │   ├── RoomArea.tsx          # メインコンテナ
+│   │   ├── TalentSlot.tsx        # 立ち絵スロット + GSAPアニメーション
+│   │   ├── TalentSelector.tsx    # タレント選択UI
+│   │   ├── SpeechBubble.tsx      # 吹き出し
+│   │   └── useRoomStore.ts       # Zustandストア
+│   │
+│   └── skeleton-puzzle/         # スケルトンパズル
+│       ├── components/           # PuzzleGrid, TalentPicker, HiddenMessageBar
+│       ├── constants.ts          # パズルバリアント定義
+│       ├── types.ts              # PuzzleData, PuzzleWord等
+│       ├── puzzleUtils.ts        # グリッド構築・判定ユーティリティ
+│       └── useSkeletonStore.ts   # Zustandストア
 │
 ├── stores/                      # Zustand ストア（機能ごとに分割）
 │   ├── gameStore.ts             # ゲーム進行状態
 │   ├── settingsStore.ts         # 画面遷移・ゲーム設定
-│   └── badgeStore.ts            # バッジ獲得状態・LocalStorage永続化
+│   ├── badgeStore.ts            # バッジ獲得状態・LocalStorage永続化
+│   └── questionHistoryStore.ts  # 出題履歴（重複排除用）
 │
 ├── shared/                      # 共有ユーティリティ・コンポーネント
 │   ├── components/
@@ -159,8 +170,11 @@ src/
 │   │   ├── useTalents.ts         # タレントデータ取得
 │   │   ├── useQuestions.ts       # 問題データ取得
 │   │   ├── useQuotes.ts          # セリフデータ取得
+│   │   ├── useAwards.ts          # 受賞歴データ取得
+│   │   ├── useDiary.ts           # 開発日誌データ取得
+│   │   ├── useDiagnosis.ts       # 相性診断ロジック
 │   │   ├── useScreenMode.ts      # 画面比率モード判定
-│   │   └── ...
+│   │   └── useBackNavigation.ts  # ブラウザバック制御
 │   ├── utils/
 │   └── types/
 ```

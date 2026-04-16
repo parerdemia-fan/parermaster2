@@ -18,6 +18,7 @@
 | `public/data/personality.json` | タレント性格スコア（相性診断用） | 手動編集 |
 | `public/data/diagnosis-questions.json` | 相性診断の質問データ | 手動編集 |
 | `public/data/staff.json` | スタッフロールデータ | 手動編集 |
+| `public/data/puzzles/*.json` | スケルトンパズルデータ（gen1/gen2/all） | `scripts/convert-puzzle.ts` で生成 |
 
 前作の `answer_set.json` は独立ファイルとしては廃止。寮別タレントリストは talents.json の dormitory フィールドから動的に生成する。イベント系等のカスタム選択肢セットは questions.json 内の `answerSets` に統合。
 
