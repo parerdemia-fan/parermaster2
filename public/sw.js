@@ -9,13 +9,20 @@ self.addEventListener('install', (event) => {
 
 // 2. フェッチ時の処理（ネットワーク優先、失敗時のみキャッシュ）
 self.addEventListener('fetch', (event) => {
+  // データファイルにはキャッシュバスティング用クエリを付与してHTTPキャッシュを回避
+  const url = new URL(event.request.url);
+  const needsBust = url.pathname.endsWith('.json') || url.pathname.endsWith('.png') || url.pathname.endsWith('.mp3');
+  const fetchRequest = needsBust
+    ? new Request(`${url.origin}${url.pathname}?_=${CACHE_NAME}`, { headers: event.request.headers })
+    : event.request;
+
   event.respondWith(
-    fetch(event.request)
+    fetch(fetchRequest)
       .then((response) => {
-        // ネットワーク成功時はキャッシュに保存して返す
+        // ネットワーク成功時はキャッシュに保存して返す（元のURLをキーにする）
         if (response.ok) {
           const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request.url, clone));
         }
         return response;
       })
