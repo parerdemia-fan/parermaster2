@@ -5320,6 +5320,106 @@
       "answerPool": "",
       "comment": "四葉みっけ「優秀すぎる👏💚これは宇宙一の名探偵になる、絶対なるね、確信した！！！」",
       "sourceUrl": "https://x.com/kirara_ginga/status/2044679493672173817"
+    },
+    {
+      "id": "q267",
+      "generation": 2,
+      "question": "天麗らんが好きなBLEACHのキャラは？",
+      "answers": [
+        "市丸ギン",
+        "朽木白哉",
+        "日番谷冬獅郎",
+        "黒崎一護"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "灯野ぺけ。「市丸ギン好きな女は大抵歪んでいるので(ど偏見)、きっと仲良くなれると踏んでいます。ごめんな」",
+      "sourceUrl": "https://x.com/Ran_tenRei/status/2044402660959506474"
+    },
+    {
+      "id": "q268",
+      "generation": 2,
+      "question": "ソフトクリームを超絶綺麗に巻ける特技を持っている2期生、水凪るぅともう一人は誰？",
+      "answers": [
+        "汐月永遠",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "汐月永遠「他寮の同期にも同じ特技の子いて草生えた、ライバルだ🍦🤝🍦」",
+      "sourceUrl": "https://x.com/SizukiTowa2641/status/2044436479129391373"
+    },
+    {
+      "id": "q269",
+      "generation": 2,
+      "question": "露草なぎが好きな逆転裁判シリーズのキャラクターは？",
+      "answers": [
+        "御剣怜侍",
+        "成歩堂龍一",
+        "ゴドー",
+        "綾里真宵"
+      ],
+      "difficulty": 3,
+      "genre": "嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "牡丹雪「ゴトー検事最推しが通ります🫡\n( ﾟДﾟ)_σ異議あり！！」",
+      "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2044377985076302032"
+    },
+    {
+      "id": "q270",
+      "generation": 2,
+      "question": "四葉みっけがウィニー寮に入った理由は？",
+      "answers": [
+        "桜堂ねる先輩がいるから",
+        "くじで決まったから",
+        "友だちに誘われたから",
+        "先生に勧められたから"
+      ],
+      "difficulty": 2,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "桜堂ねる「ありがとー！初めまして✨\nえ、そうなの！よつばちゃん…！\nこちらこそよろしくお願いします🌸お話できるの楽しみ！」",
+      "sourceUrl": "https://x.com/Yotuba_mikke/status/2044359779116781613"
+    },
+    {
+      "id": "q271",
+      "generation": 2,
+      "question": "さくさくさくの苗字と名前の区切りはどうなってる？",
+      "answers": [
+        "さくさく・さく",
+        "さく・さくさく",
+        "さく・さく・さく",
+        "区切りはない"
+      ],
+      "difficulty": 1,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Sakusakusaku107/status/2044348208646897682"
     }
   ],
   "answerSets": {
