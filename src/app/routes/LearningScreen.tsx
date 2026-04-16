@@ -5,7 +5,7 @@ import { getTalentImagePath } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
 import { AnswerFeedbackLabel } from '../../shared/components/AnswerFeedbackLabel.tsx'
 import { shuffleArray } from '../../shared/utils/array.ts'
-import { kanaToHiragana } from '../../shared/utils/kana.ts'
+import { kanaToHiragana, needsReading } from '../../shared/utils/kana.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 type Phase = 'memorize' | 'test' | 'complete'
@@ -405,13 +405,6 @@ function TalentCards({
       })}
     </div>
   )
-}
-
-/** 名前が全てカタカナ（・含む）のみ、または全てひらがなのみかどうか */
-function needsReading(name: string): boolean {
-  if (/^[\u30A0-\u30FF]+$/.test(name)) return false
-  if (/^[\u3040-\u309F]+$/.test(name)) return false
-  return true
 }
 
 function TalentNameLabel({ name, kana, visible = true }: { name: string; kana: string; visible?: boolean }) {

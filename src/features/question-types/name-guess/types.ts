@@ -10,8 +10,6 @@ export interface NameGuessQuestion extends BaseQuestion {
   talentImagePath: string
   /** 選択肢テキスト */
   answers: string[]
-  /** 選択肢の読み仮名（カタカナ） */
-  answerKanas: string[]
   /** 選択肢タレントID（顔画像表示用） */
   answerTalentIds: string[]
   /** 正解のインデックス */

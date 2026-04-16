@@ -1,3 +1,10 @@
+/** 名前が全てカタカナ・中黒・スペースのみ、または全てひらがなのみなら読み仮名不要 */
+export function needsReading(name: string): boolean {
+  if (/^[ァ-ヴー・\s]+$/.test(name)) return false
+  if (/^[ぁ-ゔー\s]+$/.test(name)) return false
+  return true
+}
+
 /**
  * カタカナをひらがなに変換し、点(・)や記号(＝)を除去する
  */

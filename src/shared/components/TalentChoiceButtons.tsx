@@ -2,14 +2,7 @@ import { getTalentImagePath } from '../utils/talent.ts'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../utils/choiceStyle.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useTalents } from '../hooks/useTalents.ts'
-import { kanaToHiragana } from '../utils/kana.ts'
-
-/** 全てカタカナ・中黒・スペースのみ、または全てひらがなのみなら読み不要 */
-function needsReading(name: string): boolean {
-  if (/^[ァ-ヴー・\s]+$/.test(name)) return false
-  if (/^[ぁ-ゔー\s]+$/.test(name)) return false
-  return true
-}
+import { kanaToHiragana, needsReading } from '../utils/kana.ts'
 
 interface TalentChoiceButtonsProps {
   answers: string[]
@@ -20,8 +13,6 @@ interface TalentChoiceButtonsProps {
   onSelect: (index: number) => void
   /** 回答前から顔画像を表示するか（デフォルト: false = 回答後のみ表示） */
   showIconBeforeAnswer?: boolean
-  /** 選択肢の読み仮名（カタカナ） */
-  answerKanas?: string[]
 }
 
 /**
@@ -37,7 +28,6 @@ export function TalentChoiceButtons({
   selected,
   onSelect,
   showIconBeforeAnswer = false,
-  answerKanas,
 }: TalentChoiceButtonsProps) {
   const { talents } = useTalents()
   const currentIndex = useGameStore((s) => s.currentIndex)
@@ -141,9 +131,9 @@ export function TalentChoiceButtons({
                 pointerEvents: 'none',
               }}
             >
-              {answerKanas?.[i] && needsReading(answer) && (
+              {answerTalents[i]?.kana && needsReading(answer) && (
                 <span style={{ fontSize: '0.5em', opacity: 0.7, lineHeight: 1 }}>
-                  {kanaToHiragana(answerKanas[i])}
+                  {kanaToHiragana(answerTalents[i].kana)}
                 </span>
               )}
               {answer}
