@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, type RefObject } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { TalentChoiceButtons } from '../../../shared/components/TalentChoiceButtons.tsx'
 import type { SpotlightQuestion } from './types.ts'
 
@@ -30,20 +30,13 @@ export function SpotlightLayout({ question, isAnswered, onAnswer }: SpotlightLay
   )
 }
 
-/** ref先のimg要素にマスクスタイルを直接適用する */
-function applyMask(imgRef: RefObject<HTMLImageElement | null>, x: number, y: number, radius: number) {
-  const el = imgRef.current
-  if (!el) return
-  const rPct = radius * 100
-  const value = `radial-gradient(circle at ${x * 100}% ${y * 100}%, black 0%, black ${rPct}%, transparent ${rPct + 5}%)`
-  el.style.maskImage = value
-  el.style.webkitMaskImage = value
-}
-
 function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayoutProps) {
   const [selected, setSelected] = useState<number | null>(null)
-  const imgRef = useRef<HTMLImageElement>(null)
 
+  // スポットライト位置（0〜1の正規化座標）と半径
+  const [spotX, setSpotX] = useState(0.5)
+  const [spotY, setSpotY] = useState(0.5)
+  const [spotRadius, setSpotRadius] = useState(SPOTLIGHT_RADIUS_START)
   const targetRef = useRef({ x: Math.random() * 0.6 + 0.2, y: Math.random() * 0.6 + 0.2 })
   const posRef = useRef({ x: 0.5, y: 0.5 })
   const rafRef = useRef<number>(0)
@@ -56,16 +49,10 @@ function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayou
     }
   }, [])
 
-  // スポットライトアニメーション（ref直接DOM操作でReact再レンダーを回避）
+  // スポットライトアニメーション
   useEffect(() => {
     if (isAnswered) {
       cancelAnimationFrame(rafRef.current)
-      // 回答後はマスクを解除して全体表示
-      const el = imgRef.current
-      if (el) {
-        el.style.maskImage = ''
-        el.style.webkitMaskImage = ''
-      }
       return
     }
 
@@ -89,9 +76,10 @@ function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayou
       // 半径を時間経過で拡大
       const elapsed = Date.now() - startTimeRef.current
       const progress = Math.min(elapsed / GROW_DURATION, 1)
-      const radius = SPOTLIGHT_RADIUS_START + (SPOTLIGHT_RADIUS_END - SPOTLIGHT_RADIUS_START) * progress
+      setSpotRadius(SPOTLIGHT_RADIUS_START + (SPOTLIGHT_RADIUS_END - SPOTLIGHT_RADIUS_START) * progress)
 
-      applyMask(imgRef, pos.x, pos.y, radius)
+      setSpotX(pos.x)
+      setSpotY(pos.y)
       rafRef.current = requestAnimationFrame(animate)
     }
 
@@ -104,6 +92,15 @@ function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayou
     setSelected(index)
     onAnswer(index === question.correctIndex)
   }
+
+  // スポットライトのマスク（回答後は全体表示）
+  const radiusPct = spotRadius * 100
+  const maskStyle = isAnswered
+    ? undefined
+    : {
+        maskImage: `radial-gradient(circle at ${spotX * 100}% ${spotY * 100}%, black 0%, black ${radiusPct}%, transparent ${radiusPct + 5}%)`,
+        WebkitMaskImage: `radial-gradient(circle at ${spotX * 100}% ${spotY * 100}%, black 0%, black ${radiusPct}%, transparent ${radiusPct + 5}%)`,
+      }
 
   return (
     <div
@@ -127,7 +124,6 @@ function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayou
         }}
       >
         <img
-          ref={imgRef}
           src={question.talentImagePath}
           alt="誰でしょう？"
           style={{
@@ -135,6 +131,7 @@ function SpotlightLayoutInner({ question, isAnswered, onAnswer }: SpotlightLayou
             height: '100%',
             objectFit: 'cover',
             transition: isAnswered ? 'mask-image 0.3s' : undefined,
+            ...maskStyle,
           }}
           draggable={false}
         />
