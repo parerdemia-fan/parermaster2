@@ -51,7 +51,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
     () => SLOT_POSITIONS.map((pos) => {
       const id = slots[pos]
       const talent = id ? talents.find((t) => t.id === id) ?? null : null
-      return talent ? { position: pos, talent } : null
+      return talent ? { position: pos, talent, isSquare: isSquareStandingImage(talent) } : null
     }).filter((e): e is NonNullable<typeof e> => e !== null),
     [slots, talents],
   )
