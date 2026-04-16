@@ -289,7 +289,7 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
     { label: '誕生日', value: talent.birthday },
     { label: '身長', value: talent.height ? `${talent.height}cm` : '' },
     { label: '学籍番号', value: talent.id },
-    { label: 'ニックネーム', value: talent.nickname },
+    { label: 'ニックネーム', value: talent.nickname.replace(/\n/g, ' / ') },
     { label: '一人称', value: talent.firstPerson },
     { label: 'ファンネーム', value: talent.fanName },
     { label: 'ファンマーク', value: talent.fanMark },
