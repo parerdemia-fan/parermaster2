@@ -2,7 +2,7 @@ import type { PuzzleVariant } from './types.ts'
 
 export const PUZZLE_VARIANTS: { variant: PuzzleVariant; label: string; ready: boolean }[] = [
   { variant: 'gen1', label: '1期生', ready: true },
-  { variant: 'gen2', label: '2期生', ready: false },
+  { variant: 'gen2', label: '2期生', ready: true },
   { variant: 'all', label: '全員', ready: false },
 ]
 
