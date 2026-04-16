@@ -3924,7 +3924,7 @@
     {
       "id": "q197",
       "generation": 1,
-      "question": "パレ学で唯一の濃い金髪の人は？",
+      "question": "パレ学1期生で唯一の濃い金髪の人は？",
       "answers": [
         "黄金つむぎ",
         "",
@@ -5164,7 +5164,7 @@
     {
       "id": "q259",
       "generation": 0,
-      "question": "2期生デビュー直後に「モチモチ2期生」の絵を描く配信を行ったのは？",
+      "question": "2期生デビュー直後に「モチモチ2期生」の絵を描く配信を行った先輩は？",
       "answers": [
         "黄金つむぎ",
         "[1期生]",
@@ -5184,14 +5184,14 @@
     {
       "id": "q260",
       "generation": 0,
-      "question": "2期生との初絡みで絡んだ人全員に忍たま乱太郎の布教を始めた人は？",
+      "question": "2期生との初絡みで絡んだ人全員に忍たま乱太郎の布教を始めた先輩は？",
       "answers": [
         "フローレ・ブランカ",
         "堂下さとり",
         "久堂れしあ",
         "[1期生]"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5231,7 +5231,7 @@
         "",
         ""
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5311,7 +5311,7 @@
         "",
         ""
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5411,7 +5411,7 @@
         "さく・さく・さく",
         "区切りはない"
       ],
-      "difficulty": 1,
+      "difficulty": 2,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5420,6 +5420,26 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://x.com/Sakusakusaku107/status/2044348208646897682"
+    },
+    {
+      "id": "q272",
+      "generation": 2,
+      "question": "誰のツイート？\n「是非とも私めに焼きそばパンを買わせてください‼️\n休憩のチャイムがなればいち早くダッシュします✋」",
+      "answers": [
+        "水凪るぅ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "水凪るぅ「水凪 るぅと書いて舎弟とお呼びください\n(ﾉⲺⲻ Ⲻ)ﾉﾉ_ _)╮(ﾉⲺⲻ Ⲻ)ﾉﾉ_ _)╮」",
+      "sourceUrl": "https://x.com/Minagi__Ru/status/2044381988103287101"
     }
   ],
   "answerSets": {
