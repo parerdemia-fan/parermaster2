@@ -32,7 +32,10 @@ function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): TooltipInf
   const isDorm = slot.id.startsWith('dorm_')
   const area = isDorm ? slot.label : slot.label.replace(/・.*$/, '')
   const mode = slot.category === 'clear' ? '顔名前当て' : '知識クイズ'
-  const diffLabels: Record<BadgeRank, string> = { bronze: 'ふつう', silver: 'むずかしい', gold: '激ムズ' }
+  const isGen2 = slot.id.startsWith('gen2_')
+  const diffLabels: Record<BadgeRank, string> = isGen2
+    ? { bronze: 'きほん', silver: 'ふつう', gold: 'むずかしい' }
+    : { bronze: 'ふつう', silver: 'むずかしい', gold: '激ムズ' }
   const shortLabel = isDorm ? slot.label : `${area} ${mode}`
 
   const imageMap = BADGE_IMAGES[slot.category]
@@ -52,7 +55,7 @@ function getTitleTooltip(label: string): TooltipInfo {
   if (label === '1期生マスター') {
     return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド', imageSrc: TROPHY_IMAGES.gen1, imageSize: '18cqmin' }
   }
-  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ ブロンズ', imageSrc: TROPHY_IMAGES.gen2, imageSize: '18cqmin' }
+  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ シルバー', imageSrc: TROPHY_IMAGES.gen2, imageSize: '18cqmin' }
 }
 
 const AREA_STYLES = {

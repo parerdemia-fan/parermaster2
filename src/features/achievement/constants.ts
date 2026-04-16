@@ -13,7 +13,7 @@ export interface BadgeSlotDef {
 export const BADGE_SLOTS: readonly BadgeSlotDef[] = [
   // 2期生エリア
   { id: 'gen2_all', label: '2期生', category: 'clear', maxRank: 'gold' },
-  { id: 'gen2_knowledge', label: '2期生・知識クイズ', category: 'knowledge', maxRank: 'bronze' },
+  { id: 'gen2_knowledge', label: '2期生・知識クイズ', category: 'knowledge', maxRank: 'silver' },
   // 1期生エリア
   { id: 'gen1_all', label: '1期生', category: 'clear', maxRank: 'gold' },
   { id: 'gen1_knowledge', label: '1期生・知識クイズ', category: 'knowledge', maxRank: 'gold' },

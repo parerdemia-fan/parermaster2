@@ -80,9 +80,9 @@ export function SettingScreen() {
   }
   const handleGameModeChange = (newMode: GameMode) => {
     setGameMode(newMode)
-    // 2期生知識クイズはきほんのみ選択可
-    if (!isDormMode && generation === 'gen2' && newMode === 'knowledge') {
-      setDifficulty(1)
+    // 2期生知識クイズはむずかしい（難易度3）未対応のため2以下に制限
+    if (!isDormMode && generation === 'gen2' && newMode === 'knowledge' && difficulty > 2) {
+      setDifficulty(2)
     } else {
       downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
     }
@@ -108,9 +108,16 @@ export function SettingScreen() {
       if (pool.length === 0) return
 
       let segments: QuizSegment[]
-      if (gen === 2) {
+      if (gen === 2 && difficulty === 1) {
         // 2期生きほん: d0を順番に10問
         segments = [{ level: 0, count: 10, ordered: true }]
+      } else if (gen === 2 && difficulty === 2) {
+        // 2期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
+        segments = [
+          { level: 1, count: 10, ordered: true },
+          { level: 2, count: 10, ordered: false },
+          { level: 3, count: 5, ordered: false },
+        ]
       } else if (difficulty === 1) {
         // 1期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
         segments = [
@@ -300,7 +307,7 @@ export function SettingScreen() {
             <SectionHeading label="難易度" />
             <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
               <PillButton label="きほん" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
-              <PillButton label="ふつう（準備中）" selected={false} accentColor={accentColor} size="small" locked onClick={undefined} />
+              <PillButton label="ふつう" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
               <PillButton label="むずかしい（準備中）" selected={false} accentColor={accentColor} size="small" locked onClick={undefined} />
             </div>
           </>
