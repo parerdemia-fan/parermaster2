@@ -3,6 +3,7 @@ import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import { CHOICE_PALETTES, FACE_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { useGameStore } from '../../../stores/gameStore.ts'
+import { kanaToHiragana } from '../../../shared/utils/kana.ts'
 import type { FaceGuessQuestion } from './types.ts'
 
 interface FaceGuessLayoutProps {
@@ -81,7 +82,7 @@ function FaceGuessLayoutInner({
             padding: '2cqmin 1cqmin 1cqmin',
           }}
         >
-          {question.talentKana && !/^[ァ-ヴー・\s]+$/.test(question.talentName) && (
+          {question.talentKana && !/^[ァ-ヴー・\s]+$/.test(question.talentName) && !/^[ぁ-ゔー\s]+$/.test(question.talentName) && (
             <div
               style={{
                 fontSize: '3.2cqmin',
@@ -90,7 +91,7 @@ function FaceGuessLayoutInner({
                 marginBottom: '-1.2cqmin',
               }}
             >
-              {question.talentKana}
+              {kanaToHiragana(question.talentKana)}
             </div>
           )}
           <div

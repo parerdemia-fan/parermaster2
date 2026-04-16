@@ -5,6 +5,7 @@ import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
 import { playSound } from '../../shared/utils/sound.ts'
 import { getTalentImagePath, getTalentStandingPath, isSquareStandingImage } from '../../shared/utils/talent.ts'
+import { kanaToHiragana } from '../../shared/utils/kana.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
@@ -304,9 +305,11 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
   return (
     <div style={{ width: '64cqmin', padding: '3cqmin 4cqmin' }}>
       {/* 読み仮名 */}
-      <p style={{ fontSize: '3cqmin', color: '#304056', textShadow: TEXT_SHADOW, marginBottom: '-0.5cqmin' }}>
-        {talent.kana}
-      </p>
+      {!/^[ァ-ヴー・\s]+$/.test(talent.name) && !/^[ぁ-ゔー\s]+$/.test(talent.name) && (
+        <p style={{ fontSize: '3cqmin', color: '#304056', textShadow: TEXT_SHADOW, marginBottom: '-0.5cqmin' }}>
+          {kanaToHiragana(talent.kana)}
+        </p>
+      )}
 
       {/* 名前 */}
       <h2
