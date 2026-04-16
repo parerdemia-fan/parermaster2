@@ -66,8 +66,10 @@ export function SakuraPetals() {
 
     let rafId: number
     let time = 0
+    let paused = false
 
     function animate() {
+      if (paused) return
       ctx!.clearRect(0, 0, canvas!.width, canvas!.height)
       time++
 
@@ -92,9 +94,23 @@ export function SakuraPetals() {
       rafId = requestAnimationFrame(animate)
     }
 
+    function onVisibilityChange() {
+      if (document.hidden) {
+        paused = true
+        cancelAnimationFrame(rafId)
+      } else {
+        paused = false
+        rafId = requestAnimationFrame(animate)
+      }
+    }
+
+    document.addEventListener('visibilitychange', onVisibilityChange)
     rafId = requestAnimationFrame(animate)
 
-    return () => cancelAnimationFrame(rafId)
+    return () => {
+      cancelAnimationFrame(rafId)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+    }
   }, [])
 
   return (

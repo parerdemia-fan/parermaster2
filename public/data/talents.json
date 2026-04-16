@@ -170,7 +170,7 @@
       "givenName": "羽奈",
       "familyKana": "サクラバ",
       "givenKana": "ウナ",
-      "nickname": "うなち",
+      "nickname": "うなち\n会長",
       "firstPerson": "",
       "intro": "令和少女漫画の主人公系VTuber 🎤🎮💬 桜庭羽奈です🌸",
       "dream": "みんなから愛されるアイドルになって、いつかサンリオとコラボしたいなぁ！応援宜しくね♡",
@@ -3359,9 +3359,9 @@
       "givenName": "ねむる",
       "familyKana": "ヤウ",
       "givenKana": "ネムル",
-      "nickname": "",
+      "nickname": "やうる",
       "firstPerson": "",
-      "intro": "",
+      "intro": "びびねむい。\nそんな日々が楽しくなるくらいたくさん一緒にすごそうね。",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3401,7 +3401,7 @@
       "givenKana": "イオリ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "自称ゲームプログラマーの卵！これから最高の【ゲーム】体験をみんなに届けられるよう頑張っていくで！！",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3441,7 +3441,7 @@
       "givenKana": "アンニン",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "食べるの大好き！ゆったり癒し系VTuberの\n香桜(こさくら)あんにんです🌸\n\nこれからたくさんの癒しと音をお届けしていく所存！\nあなたの居場所になりたいな。",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3456,7 +3456,9 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "食べること"
+      ],
       "tone": "",
       "links": [
         {
@@ -3481,8 +3483,8 @@
       "givenKana": "ライラ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
-      "dream": "",
+      "intro": "初めまして！こんてんどー！",
+      "dream": "アナタの一番星になれますように！",
       "birthday": "",
       "height": 0,
       "bloodType": "",
@@ -3506,6 +3508,10 @@
         {
           "type": "x",
           "url": "https://x.com/tendo_lyra"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@tendo_lyra"
         }
       ]
     },
@@ -3521,9 +3527,9 @@
       "givenKana": "マヨ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "そこのキミ、万夜を見よ〜〜っ！🫵\n唯一のオレンジ髪です🍊",
       "dream": "",
-      "birthday": "",
+      "birthday": "7月21日",
       "height": 0,
       "bloodType": "",
       "hairColor": "orange",
@@ -3536,7 +3542,10 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "ゲーム大好き",
+        "人間大好き"
+      ],
       "tone": "",
       "links": [
         {
@@ -3546,6 +3555,14 @@
         {
           "type": "x",
           "url": "https://x.com/mayo_yunagi"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@mayo_yunagi"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/kfg1i6hjt6s4va7"
         }
       ]
     },
@@ -3576,7 +3593,9 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "中日ドラゴンズ"
+      ],
       "tone": "",
       "links": [
         {
@@ -3601,9 +3620,9 @@
       "givenKana": "ラン",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "楽しく生きることがモットーのお嬢様ギャル！毎日ぶち上げてこ〜",
       "dream": "",
-      "birthday": "",
+      "birthday": "9月23日",
       "height": 0,
       "bloodType": "",
       "hairColor": "yellow",
@@ -3616,7 +3635,20 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "からあげ",
+        "横浜F・マリノス",
+        "横浜DeNAベイスターズ",
+        "バスケ",
+        "キラキラしたもの",
+        "べんきょう",
+        "美味しいもの全般",
+        "旅行",
+        "かわいいもの",
+        "市丸ギン",
+        "水族館",
+        "etc…"
+      ],
       "tone": "",
       "links": [
         {
@@ -3626,6 +3658,10 @@
         {
           "type": "x",
           "url": "https://x.com/Ran_tenRei"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@ran_run_tenrei"
         }
       ]
     },
@@ -3641,7 +3677,7 @@
       "givenKana": "トワ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "激メロダウナー系お姉さんギャルです💙",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3655,7 +3691,9 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
+      "skills": [
+        "ソフトクリーム超絶綺麗に巻ける"
+      ],
       "favorites": [],
       "tone": "",
       "links": [
@@ -3666,6 +3704,10 @@
         {
           "type": "x",
           "url": "https://x.com/SizukiTowa2641"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@eternal_par2604"
         }
       ]
     },
@@ -3681,7 +3723,7 @@
       "givenKana": "セツ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "ピオカ片手に今日もチル🧋トレードマークは赤眼鏡！おしゃれ番長目指して邁進中👠",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3695,8 +3737,17 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "料理",
+        "人の顔と名前を覚えること"
+      ],
+      "favorites": [
+        "タピオカ",
+        "おしゃれ",
+        "ゲーム",
+        "少年漫画",
+        "ニコニコ動画"
+      ],
       "tone": "",
       "links": [
         {
@@ -3706,6 +3757,10 @@
         {
           "type": "x",
           "url": "https://x.com/botan_setu119"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@botan_setu119"
         }
       ]
     },
@@ -3721,8 +3776,8 @@
       "givenKana": "サク",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
-      "dream": "",
+      "intro": "絵を描くことと文章を書くことが大好き💓みんなの居場所になりたいな❣️",
+      "dream": "本を出す！ 作詞する！",
       "birthday": "",
       "height": 0,
       "bloodType": "",
@@ -3736,7 +3791,10 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "絵を描くこと",
+        "文章を書くこと"
+      ],
       "tone": "",
       "links": [
         {
@@ -3746,6 +3804,10 @@
         {
           "type": "x",
           "url": "https://x.com/Sakusakusaku107"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@sakusakusaku107"
         }
       ]
     },
@@ -3761,22 +3823,27 @@
       "givenKana": "キララ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
-      "dream": "",
-      "birthday": "",
+      "intro": "どんな謎もキララにおまかせ🔍️",
+      "dream": "助手のキミと一緒に宇宙一の名探偵になること！",
+      "birthday": "7月7日",
       "height": 0,
       "bloodType": "",
       "hairColor": "blue",
       "hairStyle": "ショートツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "",
+      "mbti": "INTJ",
       "fanName": "",
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "プログラミング",
+        "ネイル"
+      ],
+      "favorites": [
+        "ミステリー小説"
+      ],
       "tone": "",
       "links": [
         {
@@ -3799,9 +3866,9 @@
       "givenName": "すず",
       "familyKana": "シラオ",
       "givenKana": "スズ",
-      "nickname": "",
+      "nickname": "しらす",
       "firstPerson": "",
-      "intro": "",
+      "intro": "心清らか(？)な清純派(？)アイドル目指してます",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3841,7 +3908,7 @@
       "givenKana": "アカネ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "赤髪と黒メッシュが特徴の自称バゥ寮の赤色担当としてトップアイドル目指して頑張るよっ✊🏻🎀",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3856,7 +3923,16 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "FPS",
+        "歌うこと",
+        "少女漫画",
+        "バームクーヘン",
+        "紅茶",
+        "ゲーム配信を見ること",
+        "おしゃべり",
+        "スヌーピー"
+      ],
       "tone": "",
       "links": [
         {
@@ -3881,7 +3957,7 @@
       "givenKana": "レンコン",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "きらきらのアイドル目指すVTuber✨\nせいいっぱい頑張るよ！！！",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3921,8 +3997,8 @@
       "givenKana": "ルゥ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
-      "dream": "",
+      "intro": "パレデミア学園2期生バウ寮所属🐶\nパワーみなぎる💪\n水凪るぅ(みなぎ るぅ)です⚡️",
+      "dream": "体験型LIVEを作るのが夢",
       "birthday": "",
       "height": 0,
       "bloodType": "",
@@ -3935,8 +4011,12 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "ソフトクリーム超絶綺麗に巻けます🍦"
+      ],
+      "favorites": [
+        "歌う事がすっっっっっごく大好きです♡"
+      ],
       "tone": "",
       "links": [
         {
@@ -3946,6 +4026,10 @@
         {
           "type": "x",
           "url": "https://x.com/Minagi__Ru"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@minagi__ru"
         }
       ]
     },
@@ -3961,7 +4045,7 @@
       "givenKana": "ナノ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "＼なののこと好きなのー？／\n1番かわいい狛犬アイドルになるから見守っててね🐶",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -3986,6 +4070,10 @@
         {
           "type": "x",
           "url": "https://x.com/komashirobmxf"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@komashironano"
         }
       ]
     },
@@ -4002,8 +4090,8 @@
       "nickname": "",
       "firstPerson": "",
       "intro": "",
-      "dream": "",
-      "birthday": "",
+      "dream": "みんなのお月さまになりたい",
+      "birthday": "11月19日",
       "height": 0,
       "bloodType": "",
       "hairColor": "skyblue",
@@ -4016,7 +4104,12 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "トマト: アイコ(赤黄共に)",
+        "ゲーム: 龍が如く, Dead by Daylight ※最近までプロエアパーを名乗っておりましたお察しください",
+        "音楽: 今はメタル",
+        "楽器: 最近チェロの音にハマり中, ベースも練習中"
+      ],
       "tone": "",
       "links": [
         {
@@ -4026,6 +4119,10 @@
         {
           "type": "x",
           "url": "https://x.com/mino_micoto"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@mino_micoto"
         }
       ]
     },
@@ -4041,9 +4138,9 @@
       "givenKana": "ナギ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "露草（つゆくさ）なぎです！\nトレードマークはおっきいアホ毛⬇️\n覚えてね🎶💕",
       "dream": "",
-      "birthday": "",
+      "birthday": "1月11日",
       "height": 0,
       "bloodType": "",
       "hairColor": "skyblue",
@@ -4056,7 +4153,18 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "寝ること",
+        "ゲーム(ドラクエ ポケモン 逆転裁判 ペルソナなど…)",
+        "刀剣乱舞",
+        "読書",
+        "旅行",
+        "キャベツ",
+        "きゅうり🥒",
+        "梅干し(しょっぱいやつ)",
+        "チョコレート🍫",
+        "アイスクリーム🍨"
+      ],
       "tone": "",
       "links": [
         {
@@ -4081,9 +4189,9 @@
       "givenKana": "ホマレ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "こんゆき〜❄️歌って喋る、狼系Vtuberの雪紫だよ〜",
       "dream": "",
-      "birthday": "",
+      "birthday": "2月17日",
       "height": 0,
       "bloodType": "",
       "hairColor": "purple",
@@ -4095,8 +4203,12 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [],
+      "skills": [
+        "料理(目分量)"
+      ],
+      "favorites": [
+        "歌"
+      ],
       "tone": "",
       "links": [
         {
@@ -4121,7 +4233,7 @@
       "givenKana": "イオ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "初めましてー！無月いおﾃﾞｽ！\n明るい紫髪と右目隠れがトレードマークだ！",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -4146,6 +4258,10 @@
         {
           "type": "x",
           "url": "https://x.com/62ki_10"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@62ki_10"
         }
       ]
     },
@@ -4161,9 +4277,9 @@
       "givenKana": "ミッケ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "🍀君をみっけ！🍀パレデミア学園ウィニー寮2期生、四葉みっけだよー！みっけと一緒に思い出みつけていこ！",
       "dream": "",
-      "birthday": "",
+      "birthday": "4月3日",
       "height": 0,
       "bloodType": "",
       "hairColor": "green",
@@ -4176,7 +4292,14 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "梅干し",
+        "可愛いもの収集",
+        "小説",
+        "音楽(ケルト音楽)",
+        "クトゥルフ神話",
+        "TRPG"
+      ],
       "tone": "",
       "links": [
         {
@@ -4186,6 +4309,10 @@
         {
           "type": "x",
           "url": "https://x.com/Yotuba_mikke"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@yotuba_mikke"
         }
       ]
     },
@@ -4201,7 +4328,7 @@
       "givenKana": "ムイ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "みんなで囲ってね💕︎",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -4241,7 +4368,7 @@
       "givenKana": "ダークウェル",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "1 ：風吹けば名無し「陰キャ厨二病がVTuber始めた結果ｗｗｗ",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -4256,7 +4383,9 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "あんスタ"
+      ],
       "tone": "",
       "links": [
         {
@@ -4266,6 +4395,10 @@
         {
           "type": "x",
           "url": "https://x.com/nikodarkwell"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@nikodarkwell"
         }
       ]
     }
