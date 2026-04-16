@@ -30,10 +30,11 @@ export function TalentSlot({ talentId, imagePath, isSquare, position, showSelect
     const el = imgRef.current
     if (!el) return
 
-    const tl = gsap.timeline({ repeat: -1, yoyo: true, defaults: { ease: 'sine.inOut' } })
-    tl.to(el, { y: 8, x: 4, rotation: 2, scale: 1.03, duration: 4 })
+    const tweens: gsap.core.Tween[] = []
+    tweens.push(gsap.to(el, { y: 8, rotation: 'random(-3, 3)', duration: 'random(3, 5)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
+    tweens.push(gsap.to(el, { x: 4, scale: 1.05, duration: 'random(4, 6)', ease: 'sine.inOut', yoyo: true, repeat: -1 }))
 
-    return () => { tl.kill() }
+    return () => { tweens.forEach((t) => t.kill()) }
   }, [talentId, imagePath])
 
   const hasTalent = talentId && imagePath
