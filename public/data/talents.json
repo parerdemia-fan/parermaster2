@@ -116,11 +116,15 @@
       "hashtags": [
         {
           "tag": "#ゆめゆめライブ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#えのみやの絵",
-          "usage": ""
+          "usage": "FA"
+        },
+        {
+          "tag": "#ゆめに夢見て",
+          "usage": "エゴサ"
         }
       ],
       "hobbies": [
@@ -187,11 +191,11 @@
       "hashtags": [
         {
           "tag": "#羽奈と咲く",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#羽奈らぶアート",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -256,11 +260,11 @@
       "hashtags": [
         {
           "tag": "#せなりるライブ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#せなりるアート",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -329,11 +333,11 @@
       "hashtags": [
         {
           "tag": "#めしあと一緒",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#めしあぎゃらりー",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -402,11 +406,11 @@
       "hashtags": [
         {
           "tag": "#スイカライブ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#畑スイあーと",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -459,7 +463,7 @@
       "familyKana": "ヤマダ",
       "givenKana": "スバル",
       "nickname": "",
-      "firstPerson": "",
+      "firstPerson": "アタシ",
       "intro": "関西弁×低音ボイス アコギ弾き語りと生肉を愛する女",
       "dream": "世界一周(ワンマンツアー)",
       "birthday": "9月1日",
@@ -475,11 +479,11 @@
       "hashtags": [
         {
           "tag": "#スバルさんお疲れ様です",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#スバァーート",
-          "usage": ""
+          "usage": "FA"
         },
         {
           "tag": "#山田精肉所",
@@ -552,11 +556,15 @@
       "hashtags": [
         {
           "tag": "#ほわの空中散歩",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ほわの絵日記",
-          "usage": ""
+          "usage": "FA"
+        },
+        {
+          "tag": "#ほわのごはんどき",
+          "usage": "ごはん"
         }
       ],
       "hobbies": [
@@ -625,11 +633,11 @@
       "hashtags": [
         {
           "tag": "#うとすとりぃむ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#うとの絵",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -680,13 +688,13 @@
       "givenName": "ルカ",
       "familyKana": "カナタ",
       "givenKana": "ルカ",
-      "nickname": "ルカ姉",
-      "firstPerson": "",
-      "intro": "",
+      "nickname": "ルカ姉\nルカ姐",
+      "firstPerson": "おれ",
+      "intro": "日付変更線の彼方からこんにちは🎧",
       "dream": "存在を世に知らしめる。",
       "birthday": "2月20日",
       "height": 163,
-      "bloodType": "",
+      "bloodType": "AB",
       "hairColor": "black",
       "hairStyle": "ショート",
       "eyeColorLeft": "",
@@ -697,10 +705,14 @@
       "hashtags": [
         {
           "tag": "#カナタソラカラ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#彼方に投げる",
+          "usage": "FA"
+        },
+        {
+          "tag": "飯:飯みルカ",
           "usage": ""
         }
       ],
@@ -766,15 +778,15 @@
       "hashtags": [
         {
           "tag": "#ゆらぐっどたいむ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ゆらぐあ〜〜と",
-          "usage": ""
+          "usage": "FA"
         },
         {
           "tag": "#ゆらみて",
-          "usage": ""
+          "usage": "エゴサ"
         }
       ],
       "hobbies": [
@@ -843,11 +855,15 @@
       "hashtags": [
         {
           "tag": "#るろなう",
+          "usage": "配信"
+        },
+        {
+          "tag": "FA#るろなぁーと",
           "usage": ""
         },
         {
-          "tag": "#るろなぁーと",
-          "usage": ""
+          "tag": "#るろなと一緒",
+          "usage": "グッズ"
         }
       ],
       "hobbies": [
@@ -915,11 +931,11 @@
       "hashtags": [
         {
           "tag": "#配信セイ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#確認セイ",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -987,12 +1003,16 @@
       "fanMark": "☔️🍊",
       "hashtags": [
         {
-          "tag": "#柚の雨宿り",
+          "tag": "総合:オイヒサメ",
           "usage": ""
         },
         {
+          "tag": "#柚の雨宿り",
+          "usage": "配信"
+        },
+        {
           "tag": "#ユズラン像",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1046,7 +1066,7 @@
       "givenKana": "ハナ",
       "nickname": "",
       "firstPerson": "",
-      "intro": "",
+      "intro": "ばななじゃないよはなだよ愛葉はな(あいばはな)です！",
       "dream": "無理せず長く続けること、3Dライブをやりたい！",
       "birthday": "11月1日",
       "height": 152,
@@ -1061,11 +1081,11 @@
       "hashtags": [
         {
           "tag": "#愛葉の時間",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#はなちゃん見て",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1134,11 +1154,11 @@
       "hashtags": [
         {
           "tag": "#ぺけですかまるですか",
-          "usage": ""
+          "usage": "総合"
         },
         {
           "tag": "#ぺけまるLIVE",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ぺけもまるも全部まる",
@@ -1211,11 +1231,15 @@
       "hashtags": [
         {
           "tag": "#アゲハが来たぞ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#アゲハさん観察日記",
-          "usage": ""
+          "usage": "FA"
+        },
+        {
+          "tag": "#影抜き",
+          "usage": "切り抜き"
         }
       ],
       "hobbies": [
@@ -1284,15 +1308,15 @@
       "hashtags": [
         {
           "tag": "#おとみまいるーむ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#まいるちゃんへ",
-          "usage": ""
+          "usage": "FA"
         },
         {
           "tag": "#のぞきにまいる",
-          "usage": ""
+          "usage": "エゴサ"
         }
       ],
       "hobbies": [
@@ -1360,15 +1384,15 @@
       "hashtags": [
         {
           "tag": "#すずきにさとうで忙しい",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#さとうのいらすとう",
-          "usage": ""
+          "usage": "FA"
         },
         {
           "tag": "#おすずのぐっず",
-          "usage": ""
+          "usage": "グッズ"
         },
         {
           "tag": "#おさとうぼいす",
@@ -1440,11 +1464,11 @@
       "hashtags": [
         {
           "tag": "#恋したわこ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#こいさわーと",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1580,16 +1604,16 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "ESFP(エンターテイナー)",
-      "fanName": "",
+      "fanName": "のんぱ",
       "fanMark": "❤️‍🔥👠💋",
       "hashtags": [
         {
           "tag": "#のんだべり",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#のんへの写メール",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1658,11 +1682,11 @@
       "hashtags": [
         {
           "tag": "#夜宵放送局おんえあ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#魔界13丁目の美術館",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1728,11 +1752,11 @@
       "hashtags": [
         {
           "tag": "#アカ生",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#アカ展",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1799,12 +1823,16 @@
       "fanMark": "🐶💖💮",
       "hashtags": [
         {
+          "tag": "#犬丸王国",
+          "usage": "総合"
+        },
+        {
           "tag": "#犬丸すたじお",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#なでコレクション",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1870,12 +1898,16 @@
       "fanMark": "🩶🕊️✨",
       "hashtags": [
         {
-          "tag": "#飛渡トーク",
-          "usage": ""
+          "tag": "#トトココ",
+          "usage": "総合"
+        },
+        {
+          "tag": "#トトトーク",
+          "usage": "配信"
         },
         {
           "tag": "#トト党絵巻",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1944,11 +1976,11 @@
       "hashtags": [
         {
           "tag": "#フローレらんど",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ふろーれんず",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2016,11 +2048,11 @@
       "hashtags": [
         {
           "tag": "#まるの放送委員会",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#まるちあーと",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2088,11 +2120,11 @@
       "hashtags": [
         {
           "tag": "#サイダーストリーム",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#しゆアトリエ",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2158,11 +2190,11 @@
       "hashtags": [
         {
           "tag": "#さとりちゃんどうしたの",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#こっそりさとり",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2231,11 +2263,11 @@
       "hashtags": [
         {
           "tag": "#毎日あまあわ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#あまあわーと",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2298,11 +2330,11 @@
       "hashtags": [
         {
           "tag": "#あいするじゅうでん",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#あいするじゅへ",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2371,11 +2403,11 @@
       "hashtags": [
         {
           "tag": "#夢ト見成長日記",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#夢トアート",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2436,15 +2468,15 @@
       "hashtags": [
         {
           "tag": "#黄金つむぎ",
-          "usage": ""
+          "usage": "総合"
         },
         {
           "tag": "#黄金レトリーム",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#お絵か金メダル",
-          "usage": ""
+          "usage": "FA"
         },
         {
           "tag": "#ちらりツム",
@@ -2520,12 +2552,12 @@
       "fanMark": "🌷📖🌷",
       "hashtags": [
         {
-          "tag": "#おはなし植物館",
-          "usage": ""
+          "tag": "#あいうえおかしな成長記録",
+          "usage": "配信"
         },
         {
-          "tag": "#オハナの庭",
-          "usage": ""
+          "tag": "#あいう絵オハナ",
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2587,11 +2619,11 @@
       "hashtags": [
         {
           "tag": "#ひお生",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#アトリエール斗瀬",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2659,11 +2691,11 @@
       "hashtags": [
         {
           "tag": "#あかはいしん",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#黒鋼これ見て",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2732,11 +2764,11 @@
       "hashtags": [
         {
           "tag": "#ふゆの放送部",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ふゆの美術室",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2804,11 +2836,11 @@
       "hashtags": [
         {
           "tag": "#ちとせらいぶ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#藤森あーと",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -2867,16 +2899,24 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "",
+      "fanName": "ハレタミン",
       "fanMark": "🌷🔆",
       "hashtags": [
         {
           "tag": "#れりライブ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#れりらアート",
-          "usage": ""
+          "usage": "FA"
+        },
+        {
+          "tag": "#晴れたよりら",
+          "usage": "グッズ"
+        },
+        {
+          "tag": "#りら見",
+          "usage": "エゴサ"
         }
       ],
       "hobbies": [
@@ -2945,11 +2985,11 @@
       "hashtags": [
         {
           "tag": "#ねる道場",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ねるグラフィック",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -3016,11 +3056,11 @@
       "hashtags": [
         {
           "tag": "#れっしーあ配信中",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#れしあのお絵かき帳",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -3093,7 +3133,11 @@
         },
         {
           "tag": "#ろーずぶれいどぎゃらりー",
-          "usage": "ファンアート"
+          "usage": "FA"
+        },
+        {
+          "tag": "#ロズブレ様が見てる",
+          "usage": "エゴサ"
         }
       ],
       "hobbies": [
@@ -3160,11 +3204,11 @@
       "hashtags": [
         {
           "tag": "#もしもし天ちゃん",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#天の天気図",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -3232,11 +3276,11 @@
       "hashtags": [
         {
           "tag": "#ローズの鍛錬",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ローズ絵日記",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -3305,11 +3349,11 @@
       "hashtags": [
         {
           "tag": "#七音うらいぶ",
-          "usage": ""
+          "usage": "配信"
         },
         {
           "tag": "#ななおとみゅーじあむ",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -3376,7 +3420,10 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "ポチャッコ",
+        "ゼンゼロ"
+      ],
       "tone": "",
       "links": [
         {
@@ -3424,7 +3471,10 @@
       ],
       "favorites": [
         "甘いお菓子",
-        "お肉"
+        "お肉",
+        "コーヒー",
+        "ゴールデンカムイ",
+        "TRPG"
       ],
       "tone": "",
       "links": [
@@ -3435,6 +3485,10 @@
         {
           "type": "x",
           "url": "https://x.com/yoizaka_iori"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://tiktok.com/@yoizaka_iori"
         },
         {
           "type": "marshmallow",
@@ -3481,6 +3535,10 @@
         {
           "type": "x",
           "url": "https://x.com/annin_kosakura"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@annin_kosakura"
         }
       ]
     },
@@ -3881,7 +3939,8 @@
       "hobbies": [],
       "skills": [
         "プログラミング",
-        "ネイル"
+        "ネイル",
+        "パーソナルカラー診断"
       ],
       "favorites": [
         "ミステリー小説"
@@ -3895,6 +3954,10 @@
         {
           "type": "x",
           "url": "https://x.com/kirara_ginga"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@kirara_ginga"
         }
       ]
     },
@@ -3995,6 +4058,10 @@
         {
           "type": "x",
           "url": "https://x.com/Hisui_Ak4ne"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@hisui_ak4ne"
         }
       ]
     },
@@ -4025,7 +4092,9 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "お絵描き"
+      ],
       "tone": "元気",
       "links": [
         {
@@ -4035,6 +4104,10 @@
         {
           "type": "x",
           "url": "https://x.com/Renkon_Fuyu"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@huyuboshi.renkon"
         }
       ]
     },
@@ -4068,7 +4141,8 @@
         "ソフトクリーム超絶綺麗に巻けます🍦"
       ],
       "favorites": [
-        "歌う事がすっっっっっごく大好きです♡"
+        "歌う事がすっっっっっごく大好きです♡",
+        "忍たま乱太郎好きです。きり丸くん好き"
       ],
       "tone": "元気",
       "links": [
@@ -4237,6 +4311,10 @@
         {
           "type": "x",
           "url": "https://x.com/Nagi_tsuyukusa"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@nagi_tsuyukusa"
         }
       ]
     },
@@ -4281,6 +4359,10 @@
         {
           "type": "x",
           "url": "https://x.com/yukimurahomare"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@parerapbcc1"
         }
       ]
     },
@@ -4311,7 +4393,10 @@
       "hashtags": [],
       "hobbies": [],
       "skills": [],
-      "favorites": [],
+      "favorites": [
+        "コーヒー",
+        "ハンバーガー"
+      ],
       "tone": "関西弁",
       "links": [
         {
@@ -4423,6 +4508,10 @@
         {
           "type": "x",
           "url": "https://x.com/kako_mui"
+        },
+        {
+          "type": "tiktok",
+          "url": "https://www.tiktok.com/@kako_mui"
         }
       ]
     },
@@ -4451,8 +4540,12 @@
       "fanName": "",
       "fanMark": "",
       "hashtags": [],
-      "hobbies": [],
-      "skills": [],
+      "hobbies": [
+        "クソコラ"
+      ],
+      "skills": [
+        "動画編集"
+      ],
       "favorites": [
         "あんスタ"
       ],
