@@ -134,7 +134,6 @@ function NameGuessLayoutInner({
       >
         <TalentChoiceButtons
           answers={question.answers}
-          answerKanas={question.answerKanas}
           answerTalentIds={question.answerTalentIds}
           correctIndex={question.correctIndex}
           isAnswered={isAnswered}

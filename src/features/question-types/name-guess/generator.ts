@@ -33,7 +33,6 @@ export function generateNameGuessQuestions(
       talentName: talent.name,
       talentImagePath: getTalentImagePath(talent),
       answers: allChoices.map((t) => t.name),
-      answerKanas: allChoices.map((t) => t.kana),
       answerTalentIds: allChoices.map((t) => t.id),
       correctIndex,
       isSilhouette: difficulty === 3,
