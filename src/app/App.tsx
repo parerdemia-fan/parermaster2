@@ -20,6 +20,7 @@ import { DiagnosisScreen } from './routes/DiagnosisScreen.tsx'
 import { DiagnosisResultScreen } from './routes/DiagnosisResultScreen.tsx'
 import { OgpScreen } from './routes/OgpScreen.tsx'
 import { SkeletonScreen } from './routes/SkeletonScreen.tsx'
+import { KvScaleCheckScreen } from './routes/KvScaleCheckScreen.tsx'
 import { preloadSounds } from '../shared/utils/sound.ts'
 import { useBackNavigation } from '../shared/hooks/useBackNavigation.ts'
 
@@ -96,6 +97,7 @@ export function App() {
           {screen === 'diagnosis-result' && <DiagnosisResultScreen />}
           {import.meta.env.DEV && screen === 'debug' && <DebugScreen />}
           {import.meta.env.DEV && screen === 'ogp' && <OgpScreen />}
+          {import.meta.env.DEV && screen === 'kv-scale-check' && <KvScaleCheckScreen />}
         </div>
       </GameContainer>
       {showRoom && <RoomArea showSelector={screen === 'title'} />}

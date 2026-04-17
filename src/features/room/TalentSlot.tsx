@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useKvScale } from './useKvScaleStore.ts'
+import { getKvImageStyle } from './kvScaleStyle.ts'
 
 interface TalentSlotProps {
   talentId: string | null
@@ -25,6 +27,8 @@ const Z_INDEX: Record<string, number> = {
 
 export function TalentSlot({ talentId, imagePath, isSquare, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
+  const kvScale = useKvScale(isSquare ? null : talentId)
+  const kvStyle = getKvImageStyle(kvScale)
 
   useEffect(() => {
     const el = imgRef.current
@@ -65,11 +69,7 @@ export function TalentSlot({ talentId, imagePath, isSquare, position, showSelect
             pointerEvents: 'none',
             ...(isSquare
               ? { bottom: '25%' }
-              : {
-                  // 画像高さ150dvwの25%=37.5dvwを下にはみ出す。
-                  // 談話室高さ = 100dvh - 75dvw、画像top = 談話室高さ - 画像高さ + 37.5dvw
-                  top: `max(0px, calc(100dvh - 187.5dvw))`,
-                }),
+              : { top: kvStyle.containerTop }),
           }}
         >
           <img
@@ -80,7 +80,7 @@ export function TalentSlot({ talentId, imagePath, isSquare, position, showSelect
               flexShrink: 0,
               ...(isSquare
                 ? { width: '80%', height: 'auto' }
-                : { height: '150dvw', width: 'auto', maxWidth: 'none' }),
+                : { height: kvStyle.imgHeight, width: 'auto', maxWidth: 'none' }),
             }}
             draggable={false}
           />
