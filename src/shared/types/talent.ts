@@ -18,7 +18,7 @@ export interface Talent {
   givenName: string
   familyKana: string
   givenKana: string
-  nickname: string
+  nicknames: string[]
   firstPerson: string
   intro: string
   dream: string

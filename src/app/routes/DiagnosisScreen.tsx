@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useDiagnosisData, cosineSimilarity, profileToVector, setDiagnosisResult, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
-import { getTalentImagePath } from '../../shared/utils/talent.ts'
+import { getTalentImagePath, pickTalentDisplayName } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../shared/utils/choiceStyle.ts'
 
@@ -40,7 +40,7 @@ export function DiagnosisScreen() {
     const picked = gen1[Math.floor(Math.random() * gen1.length)]
     const comment = ASSISTANT_COMMENTS[Math.floor(Math.random() * ASSISTANT_COMMENTS.length)]
     return {
-      name: picked.nickname || picked.name,
+      name: pickTalentDisplayName(picked),
       image: getTalentImagePath(picked),
       comment,
     }

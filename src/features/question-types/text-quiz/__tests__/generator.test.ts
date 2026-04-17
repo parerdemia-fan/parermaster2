@@ -6,7 +6,7 @@ import type { Talent } from '../../../../shared/types/talent.ts'
 function makeTalent(id: string, name: string, gen: number, dorm: string): Talent {
   return {
     id, generation: gen, dormitory: dorm, name, kana: '', familyName: '', givenName: '',
-    familyKana: '', givenKana: '', nickname: '', firstPerson: '', intro: '', dream: '',
+    familyKana: '', givenKana: '', nicknames: [], firstPerson: '', intro: '', dream: '',
     birthday: '', height: 160, bloodType: '', hairColor: '', hairStyle: '',
     eyeColorLeft: '', eyeColorRight: '', mbti: '', fanName: '', fanMark: '',
     hashtags: [], hobbies: [], skills: [], favorites: [], links: [], tone: '',

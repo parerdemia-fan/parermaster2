@@ -4,7 +4,7 @@ import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../hooks/useTalents.ts'
 import { useQuotes } from '../hooks/useQuotes.ts'
 import { pickQuote, resetQuoteRotation } from '../utils/pickQuote.ts'
-import { getTalentImagePath } from '../utils/talent.ts'
+import { getTalentImagePath, pickTalentDisplayName } from '../utils/talent.ts'
 import { getDisplayDifficulty } from '../utils/difficulty.ts'
 import { formatTime } from '../../features/time-attack/constants.ts'
 
@@ -27,13 +27,6 @@ const TYPE_ID_TO_SCENE: Record<string, string> = {
   'blur': 'ぼかし',
   'spotlight': 'スポットライト',
   'word-search': '名前を探せ',
-}
-
-/** 改行区切りのニックネームからランダムに1つ選ぶ */
-function pickNickname(nickname: string): string {
-  if (!nickname) return ''
-  const names = nickname.split('\n').filter(Boolean)
-  return names[Math.floor(Math.random() * names.length)]
 }
 
 const COMMENT_CORRECT = 'すごい！正解だよ〜！'
@@ -174,7 +167,7 @@ export function QuizHeader({ isAnswered, isCorrect }: QuizHeaderProps) {
     const pool = candidates.length > 0 ? candidates : gen1
     const picked = pool[Math.floor(Math.random() * pool.length)]
     return {
-      displayName: pickNickname(picked.nickname) || picked.name,
+      displayName: pickTalentDisplayName(picked),
       talentName: picked.name,
       tone: picked.tone || '丁寧語',
       image: getTalentImagePath(picked),
