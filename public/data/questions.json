@@ -5440,6 +5440,26 @@
       "answerPool": "",
       "comment": "水凪るぅ「水凪 るぅと書いて舎弟とお呼びください\n(ﾉⲺⲻ Ⲻ)ﾉﾉ_ _)╮(ﾉⲺⲻ Ⲻ)ﾉﾉ_ _)╮」",
       "sourceUrl": "https://x.com/Minagi__Ru/status/2044381988103287101"
+    },
+    {
+      "id": "q273",
+      "generation": 2,
+      "question": "初投稿動画で、最長で33.5時間睡眠したことを紹介した人は誰？",
+      "answers": [
+        "夜雨ねむる",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/shorts/4TMHTjHhAq4"
     }
   ],
   "answerSets": {
