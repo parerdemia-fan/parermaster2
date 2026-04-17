@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp' | 'diagnosis-intro' | 'diagnosis' | 'diagnosis-result' | 'learning' | 'skeleton'
+export type Screen = 'title' | 'setting' | 'quiz' | 'result' | 'diary' | 'talents' | 'achievements' | 'about' | 'debug' | 'time-attack-result' | 'ogp' | 'diagnosis-intro' | 'diagnosis' | 'diagnosis-result' | 'learning' | 'skeleton' | 'kv-scale-check'
 export type Generation = 'gen1' | 'gen2'
 export type GameMode = 'face-name' | 'knowledge' | 'learning'
 export type DormId = 'wa' | 'me' | 'co' | 'wh'
@@ -68,6 +68,7 @@ interface SettingsActions {
   goToDiagnosisResult: () => void
   goToLearning: () => void
   goToSkeleton: () => void
+  goToKvScaleCheck: () => void
   // ブラウザバック
   requestBack: () => void
   backRequestCount: number
@@ -119,6 +120,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     goToDiagnosisResult: () => set({ screen: 'diagnosis-result' }),
     goToLearning: () => set({ screen: 'learning' }),
     goToSkeleton: () => set({ screen: 'skeleton' }),
+    goToKvScaleCheck: () => set({ screen: 'kv-scale-check' }),
     // ブラウザバック
     backRequestCount: 0,
     requestBack: () => set((s) => ({ backRequestCount: s.backRequestCount + 1 })),

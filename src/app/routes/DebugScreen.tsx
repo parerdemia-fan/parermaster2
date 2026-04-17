@@ -498,22 +498,37 @@ function BadgeEditor() {
         })}
       </div>
 
-      {/* OGP画像生成 */}
-      <button
-        className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
-        style={{
-          fontSize: '2.5cqmin',
-          padding: '1cqmin 3cqmin',
-          borderRadius: '1cqmin',
-          border: '0.2cqmin solid rgba(100,200,255,0.5)',
-          background: 'rgba(50,100,200,0.6)',
-          color: 'white',
-          alignSelf: 'flex-start',
-        }}
-        onClick={() => useSettingsStore.setState({ screen: 'ogp' })}
-      >
-        OGP画像
-      </button>
+      {/* OGP画像生成 & KV立ち絵スケール */}
+      <div style={{ display: 'flex', gap: '1cqmin', alignSelf: 'flex-start' }}>
+        <button
+          className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+          style={{
+            fontSize: '2.5cqmin',
+            padding: '1cqmin 3cqmin',
+            borderRadius: '1cqmin',
+            border: '0.2cqmin solid rgba(100,200,255,0.5)',
+            background: 'rgba(50,100,200,0.6)',
+            color: 'white',
+          }}
+          onClick={() => useSettingsStore.setState({ screen: 'ogp' })}
+        >
+          OGP画像
+        </button>
+        <button
+          className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+          style={{
+            fontSize: '2.5cqmin',
+            padding: '1cqmin 3cqmin',
+            borderRadius: '1cqmin',
+            border: '0.2cqmin solid rgba(255,180,100,0.5)',
+            background: 'rgba(180,100,40,0.6)',
+            color: 'white',
+          }}
+          onClick={() => useSettingsStore.getState().goToKvScaleCheck()}
+        >
+          KV立ち絵スケール
+        </button>
+      </div>
     </div>
   )
 }
