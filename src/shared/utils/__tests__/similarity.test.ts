@@ -13,7 +13,7 @@ function makeTalent(id: string, hairColor: string, hairStyle: string): Talent {
     givenName: '',
     familyKana: '',
     givenKana: '',
-    nickname: '',
+    nicknames: [],
     firstPerson: '',
     intro: '',
     dream: '',

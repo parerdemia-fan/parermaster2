@@ -22,3 +22,10 @@ export function getTalentStandingPath(talent: Talent): string {
   }
   return `${BASE}data/images/kv/orig/${talent.id}.png`
 }
+
+/** タレントの表示名を返す（ニックネームがあればランダムに1つ、なければフルネーム） */
+export function pickTalentDisplayName(talent: Talent): string {
+  const { nicknames } = talent
+  if (nicknames.length === 0) return talent.name
+  return nicknames[Math.floor(Math.random() * nicknames.length)]
+}

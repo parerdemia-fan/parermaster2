@@ -7,7 +7,7 @@ import type { QuestionData } from '../../../shared/types/question.ts'
 function makeTalent(id: string, name: string, gen: number, dorm: string): Talent {
   return {
     id, generation: gen, dormitory: dorm, name, kana: '', familyName: name.slice(0, 2), givenName: name.slice(2),
-    familyKana: '', givenKana: '', nickname: '', firstPerson: '', intro: '', dream: '',
+    familyKana: '', givenKana: '', nicknames: [], firstPerson: '', intro: '', dream: '',
     birthday: '', height: 160, bloodType: '', hairColor: 'black', hairStyle: 'ロング',
     eyeColorLeft: '', eyeColorRight: '', mbti: '', fanName: '', fanMark: '',
     hashtags: [], hobbies: [], skills: [], favorites: [], links: [], tone: '',
