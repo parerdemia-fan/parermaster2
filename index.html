@@ -64,9 +64,18 @@
     <script type="module" src="./src/app/main.tsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/parermaster2/sw.js');
-        });
+        // dev 環境（localhost/127.0.0.1）では SW が Vite の .json モジュール解決と干渉するため
+        // 登録しない。既に登録済みなら解除する。
+        const isDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        if (isDev) {
+          navigator.serviceWorker.getRegistrations().then((regs) => {
+            regs.forEach((r) => r.unregister());
+          });
+        } else {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/parermaster2/sw.js');
+          });
+        }
       }
     </script>
   </body>
