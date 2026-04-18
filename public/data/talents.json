@@ -775,7 +775,7 @@
       "givenKana": "ユラグ",
       "nicknames": [],
       "firstPerson": "",
-      "intro": "あなたのお姉さんVTuber",
+      "intro": "あなたのお姉さんアイドルVTuber",
       "dream": "ゆらぎながら自分の道を進み、ルナグランデで光の海を見ること＆Ch登録者100万人",
       "birthday": "5月12日",
       "height": 159,
@@ -3772,7 +3772,7 @@
       "hairStyle": "ショートツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "",
+      "mbti": "INTP(論理学者)",
       "fanName": "",
       "fanMark": "",
       "hashtags": [],
@@ -3992,7 +3992,7 @@
       "hairStyle": "ショートツインテール",
       "eyeColorLeft": "",
       "eyeColorRight": "",
-      "mbti": "INTJ",
+      "mbti": "INTJ(建築家)",
       "fanName": "",
       "fanMark": "",
       "hashtags": [],
@@ -4071,6 +4071,10 @@
         {
           "type": "tiktok",
           "url": "https://www.tiktok.com/@d_u_bww"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/31g1q8wkzxvo9b6"
         }
       ]
     },
