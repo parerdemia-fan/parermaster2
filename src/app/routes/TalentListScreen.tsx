@@ -473,7 +473,7 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
       {awards.length > 0 && (
         <ProfileSection emoji="🏆" title="受賞歴">
           <div
-            className="flex flex-wrap"
+            className="flex flex-col"
             style={{ gap: '1cqmin', fontWeight: 'bold', fontSize: DESC_FONT_SIZE, paddingLeft: '3%' }}
           >
             {awards.map((a) => (
