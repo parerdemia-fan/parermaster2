@@ -851,7 +851,7 @@
       "familyKana": "アラマキ",
       "givenKana": "ルロナ",
       "nicknames": [
-        "るろにゃ"
+        "るろにゃん"
       ],
       "firstPerson": "おれ",
       "intro": "こんるろにゃー パレデミア学園ミュゥ寮所属、新巻るろなでーす",
@@ -4223,6 +4223,10 @@
         {
           "type": "tiktok",
           "url": "https://www.tiktok.com/@minagi__ru"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/iekl9pfd71ewxcu"
         }
       ]
     },
