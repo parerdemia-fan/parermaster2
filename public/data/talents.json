@@ -469,7 +469,9 @@
       "givenName": "スバル",
       "familyKana": "ヤマダ",
       "givenKana": "スバル",
-      "nicknames": [],
+      "nicknames": [
+        "すばるん"
+      ],
       "firstPerson": "アタシ",
       "intro": "関西弁×低音ボイス アコギ弾き語りと生肉を愛する女",
       "dream": "世界一周(ワンマンツアー)",
@@ -481,7 +483,7 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "ISTP(巨匠)",
-      "fanName": "",
+      "fanName": "山田精肉所",
       "fanMark": "",
       "hashtags": [
         {
@@ -546,10 +548,12 @@
       "givenName": "ほわり",
       "familyKana": "オウウン",
       "givenKana": "ホワリ",
-      "nicknames": [],
+      "nicknames": [
+        "ほわ"
+      ],
       "firstPerson": "",
-      "intro": "",
-      "dream": "学園でナンバー1オンリー1なアイドルになること☆みんなでリアルライブもしたい！",
+      "intro": "あなたのこころに春をおとどけします🌸",
+      "dream": "3D配信で食べまくる🍴😋",
       "birthday": "1月20日",
       "height": 150,
       "bloodType": "",
@@ -1313,7 +1317,9 @@
       "givenName": "まいる",
       "familyKana": "オトミ",
       "givenKana": "マイル",
-      "nicknames": [],
+      "nicknames": [
+        "まいるん"
+      ],
       "firstPerson": "",
       "intro": "まいるの音、みてきいて！❄️ なまらめんこいどさんこぎゃうVTuber🎶",
       "dream": "北極で3Dライブ！オーロラの下で、北極の動物たちとたわむれたい！北極行けるようにがんばるので、応援よろしくお願いします！♡",
@@ -2281,7 +2287,9 @@
       "givenName": "あわ",
       "familyKana": "アマト",
       "givenKana": "アワ",
-      "nicknames": [],
+      "nicknames": [
+        "あわたん"
+      ],
       "firstPerson": "",
       "intro": "弾ける笑顔をあなたにお届けっ！ 強炭酸系アイドルVTuber 天透あわです",
       "dream": "宇宙一のしゅわっと強炭酸なアイドルになること！はやく3Dの姿になって踊りたい〜！！",
@@ -2517,11 +2525,11 @@
         },
         {
           "tag": "#ちらりツム",
-          "usage": ""
+          "usage": "エゴサ"
         },
         {
           "tag": "#黄金のお宝",
-          "usage": ""
+          "usage": "グッズ"
         }
       ],
       "hobbies": [
@@ -2932,7 +2940,7 @@
       "dream": "ナレーションのお仕事ができるVTuberになる！",
       "birthday": "8月22日",
       "height": 165,
-      "bloodType": "",
+      "bloodType": "A",
       "hairColor": "darkblue",
       "hairStyle": "ポニーテール",
       "eyeColorLeft": "",
@@ -3078,7 +3086,9 @@
       "givenName": "れしあ",
       "familyKana": "クドウ",
       "givenKana": "レシア",
-      "nicknames": [],
+      "nicknames": [
+        "れっしーあ"
+      ],
       "firstPerson": "",
       "intro": "弱々系お姉ちゃん れしれし れしれし れっしーあ♪こと久堂れしあです",
       "dream": "目指せ！100万回再生される動画！そして誰かの記憶に残るVtuberになること✨",
@@ -3155,7 +3165,7 @@
         "ロズブレ"
       ],
       "firstPerson": "",
-      "intro": "",
+      "intro": "記憶を亡くした祓魔師",
       "dream": "夢は3Dモデルで演劇をすること＆宇宙一の歌姫になることです、絶対叶えるので皆さん私を見守っててください。",
       "birthday": "11月26日",
       "height": 163,
@@ -3302,7 +3312,7 @@
       "givenKana": "ダマスクハート",
       "nicknames": [],
       "firstPerson": "",
-      "intro": "",
+      "intro": "ダマスク！明るく！朝が来る！\n貴方のハートに夜明けをお届け！\n薔薇の女王、ローズ・ダマスクハートです🥀🤍\n宜しくお願いします🫶🏻🥰",
       "dream": "いつか薔薇が満開に咲き誇る夢のステージに皆んなを連れて行く！見届けてくれるかな？",
       "birthday": "2月7日",
       "height": 163,
@@ -3312,8 +3322,8 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "",
-      "fanMark": "",
+      "fanName": "薔薇の標的者",
+      "fanMark": "🥀🗝️",
       "hashtags": [
         {
           "tag": "#ローズの鍛錬",
@@ -3525,7 +3535,7 @@
         "ゴールデンカムイ",
         "TRPG"
       ],
-      "tone": "",
+      "tone": "関西弁",
       "links": [
         {
           "type": "youtube",
@@ -3981,7 +3991,9 @@
       "givenName": "キララ",
       "familyKana": "ギンガ",
       "givenKana": "キララ",
-      "nicknames": [],
+      "nicknames": [
+        "キラ"
+      ],
       "firstPerson": "",
       "intro": "どんな謎もキララにおまかせ🔍️",
       "dream": "助手のキミと一緒に宇宙一の名探偵になること！",
