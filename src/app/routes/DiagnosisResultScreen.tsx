@@ -4,7 +4,7 @@ import { getTalentImagePath } from '../../shared/utils/talent.ts'
 import { shareOnX } from '../../shared/utils/share.ts'
 import { GAME_URL } from '../../shared/constants/urls.ts'
 import { DORM_LABELS } from '../../shared/constants/dorm.ts'
-import { getDiagnosisResult } from '../../shared/hooks/useDiagnosis.ts'
+import { getDiagnosisResult, GEN_LABELS, toDiagnosisGenKey } from '../../shared/hooks/useDiagnosis.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
 const RANK_STYLES = [
@@ -16,7 +16,9 @@ const RANK_STYLES = [
 
 export function DiagnosisResultScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
-  const goToDiagnosis = useSettingsStore((s) => s.goToDiagnosis)
+  const goToDiagnosisIntro = useSettingsStore((s) => s.goToDiagnosisIntro)
+  const diagnosisGeneration = useSettingsStore((s) => s.diagnosisGeneration)
+  const genLabel = GEN_LABELS[toDiagnosisGenKey(diagnosisGeneration)]
   const { talents } = useTalents()
 
   const result = getDiagnosisResult()
@@ -39,7 +41,7 @@ export function DiagnosisResultScreen() {
     const lines = top3.map((r, i) =>
       `${RANK_STYLES[i].emoji} ${r.talent.name}（${DORM_LABELS[r.talent.dormitory] ?? ''}）${Math.round(r.similarity * 100)}%`,
     )
-    const text = `パレ学マスター 2nd Season 相性診断✨
+    const text = `パレ学マスター 2nd Season 相性診断✨（${genLabel}）
 相性の良い寮生は…
 ${lines.join('\n')}
 
@@ -155,7 +157,7 @@ ${GAME_URL}
           bg="linear-gradient(180deg, #b8d4e8, #7aabc4)"
           color="white"
           border="0.3cqmin solid rgba(255,255,255,0.5)"
-          onClick={goToDiagnosis}
+          onClick={goToDiagnosisIntro}
         />
         <ActionButton
           label="𝕏 シェアする"

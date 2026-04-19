@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
-import { useDiagnosisData, cosineSimilarity, profileToVector, setDiagnosisResult, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
+import { useDiagnosisData, computeTop3, setDiagnosisResult, toDiagnosisGenKey, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { getTalentImagePath, pickTalentDisplayName } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
@@ -23,7 +23,9 @@ const ASSISTANT_COMMENTS = [
 export function DiagnosisScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
   const goToDiagnosisResult = useSettingsStore((s) => s.goToDiagnosisResult)
-  const { questions, profiles, loading } = useDiagnosisData()
+  const diagnosisGeneration = useSettingsStore((s) => s.diagnosisGeneration)
+  const genKey = toDiagnosisGenKey(diagnosisGeneration)
+  const { questions, profiles, loading } = useDiagnosisData(genKey)
   const { talents } = useTalents()
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -33,18 +35,18 @@ export function DiagnosisScreen() {
   const [selected, setSelected] = useState<number | null>(null)
   const [transitioning, setTransitioning] = useState(false)
 
-  // 1問ごとにランダムな1期生をアシスタントとして選出
+  // 1問ごとに同世代のタレントをアシスタントとして選出
   const assistant = useMemo(() => {
-    const gen1 = talents.filter((t) => t.generation === 1)
-    if (gen1.length === 0) return null
-    const picked = gen1[Math.floor(Math.random() * gen1.length)]
+    const pool = talents.filter((t) => t.generation === genKey)
+    if (pool.length === 0) return null
+    const picked = pool[Math.floor(Math.random() * pool.length)]
     const comment = ASSISTANT_COMMENTS[Math.floor(Math.random() * ASSISTANT_COMMENTS.length)]
     return {
       name: pickTalentDisplayName(picked),
       image: getTalentImagePath(picked),
       comment,
     }
-  }, [talents, currentIndex]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [talents, currentIndex, genKey]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleSelect = useCallback(
     (choiceIndex: number) => {
@@ -62,21 +64,7 @@ export function DiagnosisScreen() {
         setTransitioning(true)
         setTimeout(() => {
           if (currentIndex + 1 >= questions.length) {
-            const playerVec = PERSONALITY_AXES.map((a) => newScores[a])
-            const results: { talentId: string; rawSim: number }[] = []
-            for (const [talentId, profile] of Object.entries(profiles)) {
-              const talentVec = profileToVector(profile)
-              const sim = cosineSimilarity(playerVec, talentVec)
-              results.push({ talentId, rawSim: sim })
-            }
-            results.sort((a, b) => b.rawSim - a.rawSim)
-            const simMin = results[results.length - 1].rawSim
-            const simRange = 1.0 - simMin || 1
-            const top3 = results.slice(0, 3).map((r) => ({
-              talentId: r.talentId,
-              similarity: (r.rawSim - simMin) / simRange,
-            }))
-
+            const top3 = computeTop3(newScores, profiles, questions, { algorithm: 'legacy' })
             setDiagnosisResult({ scores: newScores, top3 })
             goToDiagnosisResult()
           } else {

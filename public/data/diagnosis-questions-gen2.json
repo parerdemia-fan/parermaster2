@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "question": "新しいコミュニティに入ったとき、まず何する？",
+      "choices": [
+        { "text": "大声で挨拶して顔を売る", "scores": { "tension": 3, "stance": 2 } },
+        { "text": "作品や個性で自己紹介", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "観察して雰囲気を掴む", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "好きな話題で仲間探し", "scores": { "interest": 3, "stance": 1 } }
+      ]
+    },
+    {
+      "question": "カフェで注文するとしたら？",
+      "choices": [
+        { "text": "映える限定ドリンク", "scores": { "tension": 3, "interest": 1 } },
+        { "text": "定番の無難な一杯", "scores": { "stance": 2, "thinking": 2 } },
+        { "text": "自分好みにカスタマイズ", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "友達と同じものを頼む", "scores": { "stance": 3, "tension": 1 } }
+      ]
+    },
+    {
+      "question": "買い物で最後の決め手は？",
+      "choices": [
+        { "text": "コスパ重視で値段", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "推しブランドや作家", "scores": { "interest": 3, "expression": 1 } },
+        { "text": "限定感や話題性", "scores": { "tension": 3, "expression": 1 } },
+        { "text": "みんなが使ってる定番", "scores": { "stance": 3, "tension": 1 } }
+      ]
+    },
+    {
+      "question": "部屋で一番好きな時間は？",
+      "choices": [
+        { "text": "友達と通話してワイワイ", "scores": { "stance": 3, "tension": 1 } },
+        { "text": "作業机で創作に集中", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "ベッドで好きな作品", "scores": { "interest": 3, "stance": 1 } },
+        { "text": "音楽で踊ったり歌ったり", "scores": { "tension": 3, "expression": 1 } }
+      ]
+    },
+    {
+      "question": "見るならどんなコンテンツ？",
+      "choices": [
+        { "text": "ワイワイ系ゲーム配信", "scores": { "interest": 3, "tension": 2 } },
+        { "text": "癒し系の雑談・ASMR", "scores": { "stance": 2, "interest": 1 } },
+        { "text": "作り込んだ編集動画", "scores": { "expression": 2, "thinking": 2 } },
+        { "text": "ライブ感ある即興配信", "scores": { "tension": 2, "expression": 2 } }
+      ]
+    },
+    {
+      "question": "自分を楽しませるためにお金を使うなら？",
+      "choices": [
+        { "text": "ライブの現地参戦", "scores": { "tension": 3, "interest": 2 } },
+        { "text": "推しグッズをコンプ", "scores": { "interest": 3, "expression": 1 } },
+        { "text": "創作や趣味の道具", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "大事な人と何かする", "scores": { "stance": 3, "tension": 1 } }
+      ]
+    },
+    {
+      "question": "もし注目を浴びるとしたら、どんな風に？",
+      "choices": [
+        { "text": "派手に目立って沸かす", "scores": { "expression": 3, "tension": 2 } },
+        { "text": "作品や成果で見せる", "scores": { "expression": 2, "thinking": 2 } },
+        { "text": "心に寄り添う言葉で", "scores": { "stance": 3, "expression": 1 } },
+        { "text": "意外なネタで驚かせる", "scores": { "thinking": 3, "interest": 1 } }
+      ]
+    },
+    {
+      "question": "推しへのメッセージを送るなら？",
+      "choices": [
+        { "text": "熱い長文で想いを全開", "scores": { "tension": 3, "stance": 1 } },
+        { "text": "スタンプや絵文字を連打", "scores": { "tension": 2, "interest": 2 } },
+        { "text": "自作の作品を添えて", "scores": { "expression": 3, "thinking": 1 } },
+        { "text": "丁寧に感謝を伝える", "scores": { "stance": 3, "thinking": 1 } }
+      ]
+    },
+    {
+      "question": "褒められて一番うれしい言葉は？",
+      "choices": [
+        { "text": "「誰より元気だね！」", "scores": { "tension": 3, "expression": 1 } },
+        { "text": "「センスが抜群！」", "scores": { "expression": 3, "interest": 1 } },
+        { "text": "「頭の回転早いね」", "scores": { "thinking": 3, "stance": 1 } },
+        { "text": "「気が利くし優しい」", "scores": { "stance": 3, "tension": 1 } }
+      ]
+    },
+    {
+      "question": "将来、どんな自分になっていたい？",
+      "choices": [
+        { "text": "華やかなスター", "scores": { "tension": 2, "expression": 2 } },
+        { "text": "みんなに愛される存在", "scores": { "stance": 3, "tension": 1 } },
+        { "text": "挑戦し続ける人", "scores": { "thinking": 2, "expression": 2 } },
+        { "text": "自分らしさを貫く人", "scores": { "interest": 2, "thinking": 2 } }
+      ]
+    }
+  ]
+}

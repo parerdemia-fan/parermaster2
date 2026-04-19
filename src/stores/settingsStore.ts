@@ -46,6 +46,8 @@ interface SettingsState {
   difficulty: Difficulty
   // タイムアタック
   isTimeAttack: boolean
+  // 相性診断の世代
+  diagnosisGeneration: Generation
   // プレイヤー
   playerName: string
 }
@@ -76,6 +78,8 @@ interface SettingsActions {
   setGameMode: (mode: GameMode) => void
   setScope: (scope: Scope) => void
   setDifficulty: (difficulty: Difficulty) => void
+  // 相性診断
+  setDiagnosisGeneration: (gen: Generation) => void
   // プレイヤー
   setPlayerName: (name: string) => void
 }
@@ -90,6 +94,7 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
     gameMode: saved.gameMode ?? 'face-name',
     scope: saved.scope ?? 'all',
     difficulty: saved.difficulty ?? 1,
+    diagnosisGeneration: 'gen1',
     playerName: localStorage.getItem('playerName') ?? 'リスナー',
 
     // 画面遷移
@@ -134,6 +139,9 @@ export const useSettingsStore = create<SettingsState & SettingsActions>()(
       persistSettings({ ...state, dormScope })
     },
     setDifficulty: (difficulty) => { set({ difficulty }); persistSettings(get()) },
+
+    // 相性診断
+    setDiagnosisGeneration: (gen) => set({ diagnosisGeneration: gen }),
 
     // プレイヤー
     setPlayerName: (name) => {
