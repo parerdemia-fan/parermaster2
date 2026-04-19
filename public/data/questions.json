@@ -5460,6 +5460,126 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/shorts/4TMHTjHhAq4"
+    },
+    {
+      "id": "q274",
+      "generation": 2,
+      "question": "「バゥ寮の赤色担当」を自称する2期生は？",
+      "answers": [
+        "翡翠あかね",
+        "[バゥ寮]",
+        "[バゥ寮]",
+        "[バゥ寮]"
+      ],
+      "difficulty": 1,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": true,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Hisui_Ak4ne/status/2044424187553648891"
+    },
+    {
+      "id": "q275",
+      "generation": 2,
+      "question": "冬星れんこんが尊敬しているパレ学外のVTuberは？",
+      "answers": [
+        "星街すいせい",
+        "兎田ぺこら",
+        "宝鐘マリン",
+        "白上フブキ"
+      ],
+      "difficulty": 3,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "冬星れんこん「れんこんもみんなに届く歌を歌いたくて、ボイトレ頑張って通ってるよっ」",
+      "sourceUrl": "https://x.com/Renkon_Fuyu/status/2045173638325031174"
+    },
+    {
+      "id": "q276",
+      "generation": 2,
+      "question": "狛社なのが忍たま乱太郎でメロがりを奏でているキャラクターは？",
+      "answers": [
+        "斜堂影麿",
+        "土井半助",
+        "山田伝蔵",
+        "学園長"
+      ],
+      "difficulty": 3,
+      "genre": "嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "フローレ・ブランカ「メロがりを奏でていて最高だね👍✨」",
+      "sourceUrl": "https://x.com/komashirobmxf/status/2044434376356966705"
+    },
+    {
+      "id": "q277",
+      "generation": 2,
+      "question": "火狐むいのキャッチフレーズは？",
+      "answers": [
+        "みんなで囲ってね🌸",
+        "みんなを囲うよ💖",
+        "狐に囲まれたい🦊",
+        "火に囲まれる前に逃げろ〜🔥"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/kako_mui/status/2044625678415593926"
+    },
+    {
+      "id": "q278",
+      "generation": 2,
+      "question": "巳野みことが好きなミニトマトの品種は？",
+      "answers": [
+        "アイコ",
+        "アメーラルビンズ",
+        "北の太陽",
+        "シシリアンルージュ"
+      ],
+      "difficulty": 3,
+      "genre": "嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/mino_micoto/status/2044536129052152101"
+    },
+    {
+      "id": "q279",
+      "generation": 2,
+      "question": "パレ学2期生でデビュー後に最初に誕生日を迎えたのは？",
+      "answers": [
+        "天堂ライラ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天堂ライラ「動画作るのに5時間かかってた…😭\n絶対みて欲しくってぇ…」\n👇️👇️👇️",
+      "sourceUrl": "https://www.youtube.com/watch?v=xNF8n6vHlG0"
     }
   ],
   "answerSets": {
