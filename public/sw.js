@@ -1,5 +1,5 @@
 // キャッシュの名前（バージョン管理用）
-const CACHE_NAME = 'v202604191951';
+const CACHE_NAME = 'v202604192159';
 
 // 1. インストール時の処理
 self.addEventListener('install', (event) => {
