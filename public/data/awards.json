@@ -1330,6 +1330,27 @@
       "eventName": "2025年度パレデミアポイントランキング",
       "result": "4位",
       "talentId": "25WH005"
+    },
+    {
+      "id": "a203",
+      "eventDate": "202604",
+      "eventName": "ぶいかふぇ♪NEXT 出演権獲得イベント",
+      "result": "1位",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a204",
+      "eventDate": "202604",
+      "eventName": "ぶいかふぇ♪NEXT 出演権獲得イベント",
+      "result": "2位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a205",
+      "eventDate": "202604",
+      "eventName": "ぶいかふぇ♪NEXT 出演権獲得イベント",
+      "result": "3位",
+      "talentId": "25ME009"
     }
   ]
 }
