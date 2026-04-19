@@ -15,8 +15,9 @@
 | `public/data/awards.json` | イベント実績データ | 新規（前作はtalents.json内） |
 | `public/data/diary.json` | 開発日誌 | 前作踏襲 |
 | `public/data/quotes.json` | アシスタントセリフ | `pnpm sync` で生成 |
-| `public/data/personality.json` | タレント性格スコア（相性診断用） | 手動編集 |
-| `public/data/diagnosis-questions.json` | 相性診断の質問データ | 手動編集 |
+| `public/data/personality.json` | タレント性格スコア（相性診断用、1期生・2期生両方） | 手動編集 |
+| `public/data/diagnosis-questions-gen1.json` | 1期生編の相性診断 質問データ | 手動編集 |
+| `public/data/diagnosis-questions-gen2.json` | 2期生編の相性診断 質問データ | 手動編集 |
 | `public/data/staff.json` | スタッフロールデータ | 手動編集 |
 | `public/data/puzzles/*.json` | スケルトンパズルデータ（gen1/gen2/all） | `scripts/convert-puzzle.ts` で生成 |
 
