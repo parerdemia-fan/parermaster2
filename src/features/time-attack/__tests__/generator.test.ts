@@ -22,7 +22,7 @@ function makeQuestion(id: string, difficulty: number): QuestionData {
   }
 }
 
-// 70名のタレントを生成（1期生46名 + 2期生24名）
+// 69名のタレントを生成（1期生46名 + 2期生23名）
 function createTalentPool(): Talent[] {
   const talents: Talent[] = []
   const dorms = ['wa', 'me', 'co', 'wh']
@@ -30,8 +30,8 @@ function createTalentPool(): Talent[] {
   for (let i = 0; i < 46; i++) {
     talents.push(makeTalent(`g1_${i}`, `一期生${String(i).padStart(2, '0')}太郎`, 1, dorms[i % 4]))
   }
-  // 2期生24名
-  for (let i = 0; i < 24; i++) {
+  // 2期生23名
+  for (let i = 0; i < 23; i++) {
     talents.push(makeTalent(`g2_${i}`, `二期生${String(i).padStart(2, '0')}花子`, 2, dorms[i % 4]))
   }
   return talents
@@ -86,23 +86,23 @@ describe('generateTimeAttackQuestions', () => {
       .filter((q) => faceNameTypes.has(q.typeId))
       .map((q) => (q as unknown as { talentId: string }).talentId)
 
-    // 70問（全タレント数）
-    expect(talentIds).toHaveLength(70)
+    // 69問（全タレント数）
+    expect(talentIds).toHaveLength(69)
     // 重複なし
-    expect(new Set(talentIds).size).toBe(70)
+    expect(new Set(talentIds).size).toBe(69)
   })
 
-  it('顔名前系の問題数が全タレント数(70)と一致する', () => {
+  it('顔名前系の問題数が全タレント数(69)と一致する', () => {
     const faceNameTypes = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
     const totalFaceName = TIME_ATTACK_SECTIONS
       .filter((s) => faceNameTypes.has(s.typeId))
       .reduce((sum, s) => sum + s.count, 0)
-    expect(totalFaceName).toBe(70)
+    expect(totalFaceName).toBe(69)
     expect(totalFaceName).toBe(TALENTS.length)
   })
 
-  it('テキストクイズの問題数が30問', () => {
+  it('テキストクイズの問題数が31問', () => {
     const textQuizCount = result.filter((q) => q.typeId === 'text-quiz').length
-    expect(textQuizCount).toBe(30)
+    expect(textQuizCount).toBe(31)
   })
 })
