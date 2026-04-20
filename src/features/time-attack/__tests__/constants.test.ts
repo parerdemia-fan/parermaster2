@@ -20,28 +20,28 @@ describe('formatTime', () => {
 })
 
 describe('getTimeMessage', () => {
-  it('5分未満で最高メッセージ', () => {
-    expect(getTimeMessage(4 * 60000)).toContain('神')
-  })
-
-  it('5〜7分', () => {
-    expect(getTimeMessage(6 * 60000)).toContain('マスター')
+  it('7分未満で最高メッセージ', () => {
+    expect(getTimeMessage(6 * 60000)).toContain('神')
   })
 
   it('7〜9分', () => {
-    expect(getTimeMessage(8 * 60000)).toContain('腕前')
+    expect(getTimeMessage(8 * 60000)).toContain('マスター')
   })
 
   it('9〜11分', () => {
-    expect(getTimeMessage(10 * 60000)).toContain('伸びしろ')
+    expect(getTimeMessage(10 * 60000)).toContain('腕前')
   })
 
   it('11〜13分', () => {
-    expect(getTimeMessage(12 * 60000)).toContain('おめでとう')
+    expect(getTimeMessage(12 * 60000)).toContain('伸びしろ')
   })
 
-  it('13分以上', () => {
-    expect(getTimeMessage(15 * 60000)).toContain('完走')
+  it('13〜15分', () => {
+    expect(getTimeMessage(14 * 60000)).toContain('おめでとう')
+  })
+
+  it('15分以上', () => {
+    expect(getTimeMessage(16 * 60000)).toContain('完走')
   })
 })
 
