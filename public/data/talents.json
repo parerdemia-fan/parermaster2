@@ -3585,7 +3585,8 @@
       "hobbies": [],
       "skills": [],
       "favorites": [
-        "食べること"
+        "食べること",
+        "お菓子作り"
       ],
       "tone": "丁寧語",
       "links": [
@@ -4030,6 +4031,10 @@
         {
           "type": "tiktok",
           "url": "https://www.tiktok.com/@kirara_ginga"
+        },
+        {
+          "type": "marshmallow",
+          "url": "https://marshmallow-qa.com/xjwaq826homk3ds"
         }
       ]
     },
@@ -4205,7 +4210,7 @@
       "givenKana": "ルゥ",
       "nicknames": [],
       "firstPerson": "",
-      "intro": "パレデミア学園2期生バウ寮所属🐶\nパワーみなぎる💪\n水凪るぅ(みなぎ るぅ)です⚡️",
+      "intro": "⚡️エネルギー過多注意⚡️ パレデミア学園2期生バゥ寮 充電系VTuber 歌で元気フルチャージ",
       "dream": "体験型LIVEを作るのが夢",
       "birthday": "10月21日",
       "height": 0,
@@ -4486,7 +4491,9 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
+      "skills": [
+        "低音ボイス"
+      ],
       "favorites": [
         "コーヒー",
         "ハンバーガー"
