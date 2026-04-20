@@ -28,8 +28,8 @@ export const TIME_ATTACK_SECTIONS: readonly TimeAttackSection[] = [
   { typeId: 'name-guess',  difficulty: 3, count: 6, displayStars: 5.5 },
   { typeId: 'text-quiz',   difficulty: 3, level: 6, count: 5, displayStars: 6 },
   { typeId: 'name-build',  difficulty: 3, count: 6, displayStars: 6 },
-  { typeId: 'word-search', difficulty: 3, count: 4, displayStars: 6.5 },
-  { typeId: 'text-quiz',   difficulty: 3, level: 7, count: 5, displayStars: 7 },
+  { typeId: 'word-search', difficulty: 3, count: 3, displayStars: 6.5 },
+  { typeId: 'text-quiz',   difficulty: 3, level: 7, count: 6, displayStars: 7 },
 ]
 
 /** タイムに応じたX共有メッセージ */
