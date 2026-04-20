@@ -35,11 +35,11 @@ export const TIME_ATTACK_SECTIONS: readonly TimeAttackSection[] = [
 /** タイムに応じたX共有メッセージ */
 export function getTimeMessage(elapsedMs: number): string {
   const minutes = elapsedMs / 60000
-  if (minutes < 5) return '驚異的なタイム！パレ学の神！'
-  if (minutes < 7) return 'すごい！パレ学マスターの実力！'
-  if (minutes < 9) return '素晴らしい！かなりの腕前！'
-  if (minutes < 11) return 'いい感じ！まだまだ伸びしろあり！'
-  if (minutes < 13) return 'クリアおめでとう！'
+  if (minutes < 7) return '驚異的なタイム！パレ学の神！'
+  if (minutes < 9) return 'すごい！パレ学マスターの実力！'
+  if (minutes < 11) return '素晴らしい！かなりの腕前！'
+  if (minutes < 13) return 'いい感じ！まだまだ伸びしろあり！'
+  if (minutes < 15) return 'クリアおめでとう！'
   return '完走おめでとう！次はもっと速く！'
 }
 

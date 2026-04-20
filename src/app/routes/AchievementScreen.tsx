@@ -116,7 +116,7 @@ export function AchievementScreen() {
       return raw ? Number(raw) : null
     } catch { return null }
   })()
-  const isGrandMaster = isParerMaster() && taBest != null && taBest < 5 * 60 * 1000
+  const isGrandMaster = isParerMaster() && taBest != null && taBest < (7 * 60 + 21) * 1000
   const [tooltip, setTooltip] = useState<TooltipInfo | null>(null)
 
   const slotsById = SLOTS_BY_ID
@@ -261,7 +261,7 @@ export function AchievementScreen() {
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
-                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 5分以内クリア', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
+                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分21秒以内クリア', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
                 : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', imageSrc: TROPHY_IMAGES.master, imageSize: '25cqmin' }
             )} />
           )}
