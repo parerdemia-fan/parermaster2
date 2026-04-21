@@ -3569,9 +3569,9 @@
         "あんにゃん"
       ],
       "firstPerson": "",
-      "intro": "食べるの大好き！ゆったり癒し系VTuberの\n香桜(こさくら)あんにんです🌸\n\nこれからたくさんの癒しと音をお届けしていく所存！\nあなたの居場所になりたいな。",
+      "intro": "超ど清純学園アイドル♪ このゆったりボイスでみんなに癒しをお届けするよ",
       "dream": "",
-      "birthday": "",
+      "birthday": "3月27日",
       "height": 0,
       "bloodType": "",
       "hairColor": "black",
@@ -3583,10 +3583,11 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
-      "favorites": [
-        "食べること",
+      "skills": [
         "お菓子作り"
+      ],
+      "favorites": [
+        "食べること"
       ],
       "tone": "丁寧語",
       "links": [
@@ -4208,7 +4209,9 @@
       "givenName": "るぅ",
       "familyKana": "ミナギ",
       "givenKana": "ルゥ",
-      "nicknames": [],
+      "nicknames": [
+        "るぅこ"
+      ],
       "firstPerson": "",
       "intro": "⚡️エネルギー過多注意⚡️ パレデミア学園2期生バゥ寮 充電系VTuber 歌で元気フルチャージ",
       "dream": "体験型LIVEを作るのが夢",
@@ -4223,7 +4226,9 @@
       "fanName": "",
       "fanMark": "",
       "hashtags": [],
-      "hobbies": [],
+      "hobbies": [
+        "虹の端っこ探し"
+      ],
       "skills": [
         "ソフトクリーム超絶綺麗に巻けます🍦"
       ],
