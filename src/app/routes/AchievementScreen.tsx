@@ -32,8 +32,10 @@ function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): TooltipInf
   const isDorm = slot.id.startsWith('dorm_')
   const area = isDorm ? slot.label : slot.label.replace(/・.*$/, '')
   const mode = slot.category === 'clear' ? '顔名前当て' : '知識クイズ'
-  const isGen2 = slot.id.startsWith('gen2_')
-  const diffLabels: Record<BadgeRank, string> = isGen2
+  // 2期生知識クイズのみ難易度ラベルが { きほん / ふつう / むずかしい }。
+  // 2期生顔名前当ては1期生と同じ { ふつう / むずかしい / 激ムズ }。
+  const isGen2Knowledge = slot.id === 'gen2_knowledge'
+  const diffLabels: Record<BadgeRank, string> = isGen2Knowledge
     ? { bronze: 'きほん', silver: 'ふつう', gold: 'むずかしい' }
     : { bronze: 'ふつう', silver: 'むずかしい', gold: '激ムズ' }
   const shortLabel = isDorm ? slot.label : `${area} ${mode}`

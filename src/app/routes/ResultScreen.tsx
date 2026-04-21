@@ -100,6 +100,11 @@ ${GAME_URL}
         correctCount, totalCount: total, enabledTypes,
       })
 
+      // awardBadge前のマスター達成状態（新規達成判定用）
+      const wasParerMaster = isParerMaster()
+      const wasGen2Master = isGen2Master()
+      const wasGen1Master = isGen1Master()
+
       let awarded = false
       let isRankUp = false
       let slotLabel = ''
@@ -116,9 +121,9 @@ ${GAME_URL}
       }
 
       let masterAchievement: string | null = null
-      if (isParerMaster()) masterAchievement = 'パレ学マスター達成！'
-      else if (isGen2Master()) masterAchievement = '2期生マスター達成！'
-      else if (isGen1Master()) masterAchievement = '1期生マスター達成！'
+      if (!wasParerMaster && isParerMaster()) masterAchievement = 'パレ学マスター達成！'
+      else if (!wasGen2Master && isGen2Master()) masterAchievement = '2期生マスター達成！'
+      else if (!wasGen1Master && isGen1Master()) masterAchievement = '1期生マスター達成！'
 
       badgeResultRef.current = { awarded, isRankUp, slotLabel, rank, badgeCategory, masterAchievement }
     }
