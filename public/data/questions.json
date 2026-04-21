@@ -2724,7 +2724,7 @@
     {
       "id": "q137",
       "generation": 1,
-      "question": "ミュゥ寮で恋歌さわこだけが持つ特徴は？",
+      "question": "ミュゥ寮1期生で恋歌さわこだけが持つ特徴は？",
       "answers": [
         "メガネをかけている",
         "赤髪",
@@ -5720,6 +5720,66 @@
       "answerPool": "",
       "comment": "狛社なの「なでこ先輩に憧れて入学しました😭😭😭\nなでこ先輩みたいな可愛いわんわんアイドルになれるように頑張ります🫶」",
       "sourceUrl": "https://x.com/nadeko_inumaru/status/2045415515099922507"
+    },
+    {
+      "id": "q287",
+      "generation": 1,
+      "question": "2026年4月発売の職業体験グッズで雨海まるがなった職業は？",
+      "answers": [
+        "ドラマー",
+        "ギタリスト",
+        "ピアニスト",
+        "バイオリニスト"
+      ],
+      "difficulty": 4,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "雨海まる「おで！無事にドラマー（バンドマン）になれやした🥁✨\n皆様のおかげで一度諦めた夢をこうやって叶えてもらえたことがとても嬉しいですし、なんかこう胸熱です🥲✨」",
+      "sourceUrl": "https://x.com/maru_amami/status/2046178782596501617"
+    },
+    {
+      "id": "q288",
+      "generation": 1,
+      "question": "2026年4月発売の職業体験グッズで緋雨柚がなった職業は？",
+      "answers": [
+        "看護師",
+        "キャビンアテンダント",
+        "ゆず農家",
+        "気象予報士"
+      ],
+      "difficulty": 3,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "緋雨柚「皆様のおかげでなんと！！！\n職業体験グッズ出ました🫶🫶🫶\n看護師といえば注射💉\n差し方を何一つ理解してないゆずぴに注射してもらいたいそこのあなた、どうぞ手に取って下さいまし！！」",
+      "sourceUrl": "https://x.com/Hisame_Yuzu/status/2046398715653681487"
+    },
+    {
+      "id": "q289",
+      "generation": 2,
+      "question": "宵坂伊織が二度と作らんと決めたお菓子は？",
+      "answers": [
+        "わらび餅",
+        "草だんご",
+        "水まんじゅう",
+        "いちご大福"
+      ],
+      "difficulty": 4,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "宵坂伊織「ちゃんとわらび粉で作ったのに\n匂い凄いし😱ず～～っとこねてるから\n筋肉痛なるしできつかった・・・\n\nあ、味は美味しかったで✨」",
+      "sourceUrl": "https://x.com/yoizaka_iori/status/2046571477605224866"
     }
   ],
   "answerSets": {
