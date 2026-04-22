@@ -710,7 +710,7 @@
       "dream": "存在を世に知らしめる。",
       "birthday": "2月20日",
       "height": 163,
-      "bloodType": "AB",
+      "bloodType": "AB型",
       "hairColor": "black",
       "hairStyle": "ショート",
       "eyeColorLeft": "",
@@ -728,8 +728,8 @@
           "usage": "FA"
         },
         {
-          "tag": "飯:飯みルカ",
-          "usage": ""
+          "tag": "#飯みルカ",
+          "usage": "飯"
         }
       ],
       "hobbies": [
@@ -876,8 +876,8 @@
           "usage": "配信"
         },
         {
-          "tag": "FA#るろなぁーと",
-          "usage": ""
+          "tag": "#るろなぁーと",
+          "usage": "FA"
         },
         {
           "tag": "#るろなと一緒",
@@ -1025,8 +1025,8 @@
       "fanMark": "☔️🍊",
       "hashtags": [
         {
-          "tag": "総合:オイヒサメ",
-          "usage": ""
+          "tag": "#オイヒサメ",
+          "usage": "総合"
         },
         {
           "tag": "#柚の雨宿り",
@@ -2940,7 +2940,7 @@
       "dream": "ナレーションのお仕事ができるVTuberになる！",
       "birthday": "8月22日",
       "height": 165,
-      "bloodType": "A",
+      "bloodType": "A型",
       "hairColor": "darkblue",
       "hairStyle": "ポニーテール",
       "eyeColorLeft": "",

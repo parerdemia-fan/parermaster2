@@ -4511,7 +4511,7 @@
         "",
         ""
       ],
-      "difficulty": 3,
+      "difficulty": 2,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4552,7 +4552,7 @@
         ""
       ],
       "difficulty": 6,
-      "genre": "グッズ",
+      "genre": "ツイート",
       "sortAnswers": false,
       "hideIcon": false,
       "questionImage": null,
@@ -4584,6 +4584,26 @@
     {
       "id": "q230",
       "generation": 1,
+      "question": "パレ学で最もXのポスト数が多いのは誰？ ※2026年4月時点",
+      "answers": [
+        "花晴りら",
+        "瀬奈りるか",
+        "天辻ゆらぐ",
+        "藤森ちとせ"
+      ],
+      "difficulty": 3,
+      "genre": "ツイート",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "2026年4月23日時点で約25,600ポストでした。",
+      "sourceUrl": "https://x.com/LilaHanahare"
+    },
+    {
+      "id": "q231",
+      "generation": 1,
       "question": "よく圧倒的自由な配信を行っているウィニー寮のピンク髪の人は？",
       "answers": [
         "桜堂ねる",
@@ -4602,7 +4622,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q231",
+      "id": "q232",
       "generation": 1,
       "question": "ネームロゴに黒帯が描かれているのは誰？",
       "answers": [
@@ -4622,7 +4642,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q232",
+      "id": "q233",
       "generation": 1,
       "question": "桜堂ねるが年末年始に食べていた珍しい根菜は？",
       "answers": [
@@ -4642,7 +4662,7 @@
       "sourceUrl": "https://x.com/oudoneru/status/2006314003233161223"
     },
     {
-      "id": "q233",
+      "id": "q234",
       "generation": 1,
       "question": "桜堂ねるがエイプリルフールに変えた名前は？",
       "answers": [
@@ -4662,7 +4682,7 @@
       "sourceUrl": "https://x.com/oudoneru/status/2039308248302666059/photo/1"
     },
     {
-      "id": "q234",
+      "id": "q235",
       "generation": 1,
       "question": "パレ学1期生で青髪オッドアイの人は誰？",
       "answers": [
@@ -4682,7 +4702,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q235",
+      "id": "q236",
       "generation": 1,
       "question": "ウィニー寮で華道の準師範の人は？",
       "answers": [
@@ -4702,7 +4722,7 @@
       "sourceUrl": "https://www.parerdemia.jp/students/25WH007"
     },
     {
-      "id": "q236",
+      "id": "q237",
       "generation": 1,
       "question": "久堂れしあの初めての歌ってみた動画の曲は？",
       "answers": [
@@ -4722,7 +4742,7 @@
       "sourceUrl": "https://x.com/reshia_kudou/status/1914596538975981640"
     },
     {
-      "id": "q237",
+      "id": "q238",
       "generation": 1,
       "question": "ファンマークが🥀⚔️の、記憶を亡くした祓魔師といえば？",
       "answers": [
@@ -4742,7 +4762,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q238",
+      "id": "q239",
       "generation": 1,
       "question": "初配信で殺人チャーハン(未遂)の話をしたのは？",
       "answers": [
@@ -4762,7 +4782,7 @@
       "sourceUrl": "https://x.com/search?q=hizukiroseblade%20%E3%83%81%E3%83%A3%E3%83%BC%E3%83%8F%E3%83%B3&src=typed_query&f=top"
     },
     {
-      "id": "q239",
+      "id": "q240",
       "generation": 1,
       "question": "緋月・ローズ・ブレイドがマシュマロで好きなアーティストを聞かれたときに名前を挙げた人は？",
       "answers": [
@@ -4782,7 +4802,7 @@
       "sourceUrl": "https://marshmallow-qa.com/messages/10383928-5ce0-47bb-95c1-d249b15e99aa?utm_medium=twitter&utm_source=answer"
     },
     {
-      "id": "q240",
+      "id": "q241",
       "generation": 1,
       "question": "緋月・ローズ・ブレイドが「世界を救う」と絶賛する中華料理は？",
       "answers": [
@@ -4802,7 +4822,7 @@
       "sourceUrl": "https://x.com/hizukiroseblade/status/1994924925753462831"
     },
     {
-      "id": "q241",
+      "id": "q242",
       "generation": 1,
       "question": "アイドル目指すシーシャ屋Vtuberといえば？",
       "answers": [
@@ -4822,7 +4842,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q242",
+      "id": "q243",
       "generation": 1,
       "question": "水無瀬天が好きな雨に関する言葉は？",
       "answers": [
@@ -4842,7 +4862,7 @@
       "sourceUrl": "https://x.com/Minase_Ame/status/1921238374435672232"
     },
     {
-      "id": "q243",
+      "id": "q244",
       "generation": 1,
       "question": "水無瀬天がお土産でもらって「食べ方がわかりませんでした…」と困惑したものは？",
       "answers": [
@@ -4862,7 +4882,7 @@
       "sourceUrl": "https://x.com/Minase_Ame/status/1965100712846917830"
     },
     {
-      "id": "q244",
+      "id": "q245",
       "generation": 1,
       "question": "9.5cmヒールで劇ムズ足ダンスの踊ってみた動画を出したのは誰？",
       "answers": [
@@ -4882,7 +4902,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/Y4uGDCB6ycc"
     },
     {
-      "id": "q245",
+      "id": "q246",
       "generation": 1,
       "question": "ウィニー寮所属 自称なろう系アイドルvtuberといえば？",
       "answers": [
@@ -4902,7 +4922,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q246",
+      "id": "q247",
       "generation": 1,
       "question": "ローズ・ダマスクハートが顔にくっつけている食べ物は？",
       "answers": [
@@ -4922,7 +4942,7 @@
       "sourceUrl": "https://x.com/rose_damaskht/status/1943513752860557788"
     },
     {
-      "id": "q247",
+      "id": "q248",
       "generation": 1,
       "question": "ローズ・ダマスクハートのネームロゴのoの文字の中に描かれているものは？",
       "answers": [
@@ -4942,7 +4962,7 @@
       "sourceUrl": "https://x.com/rose_damaskht/status/1973890580003631271/photo/1"
     },
     {
-      "id": "q248",
+      "id": "q249",
       "generation": 1,
       "question": "亡国の王女でたびたび海外に出張するなど世界で活躍している寮生は？",
       "answers": [
@@ -4962,7 +4982,7 @@
       "sourceUrl": "https://x.com/i/status/2010543027031568892"
     },
     {
-      "id": "q249",
+      "id": "q250",
       "generation": 1,
       "question": "七音うらが得意な楽器は？",
       "answers": [
@@ -4982,7 +5002,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q250",
+      "id": "q251",
       "generation": 1,
       "question": "七音うらのネームロゴに入っている一番大きいモチーフは？",
       "answers": [
@@ -5002,7 +5022,7 @@
       "sourceUrl": "https://youtu.be/mRfPP8GWdAA?t=791"
     },
     {
-      "id": "q251",
+      "id": "q252",
       "generation": 1,
       "question": "お正月グッズで七音うらは何をしている？",
       "answers": [
@@ -5022,7 +5042,7 @@
       "sourceUrl": "https://x.com/parerdemia/status/2008087610733035887"
     },
     {
-      "id": "q252",
+      "id": "q253",
       "generation": 1,
       "question": "犬丸なでこ・灯野ぺけ。・雨海まるの3人の第1回まるまるまるコラボでプレイしたゲームは？",
       "answers": [
@@ -5042,7 +5062,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=B9AE5oKbuUo"
     },
     {
-      "id": "q253",
+      "id": "q254",
       "generation": 1,
       "question": "レポコラボ中に昔のあだ名の話になった時に「ごぼう」と答えた寮生はだれ？",
       "answers": [
@@ -5062,7 +5082,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/e33zwWZQkr0"
     },
     {
-      "id": "q254",
+      "id": "q255",
       "generation": 1,
       "question": "シグマ・イングラムによる相栖るじゅの第一印象は？",
       "answers": [
@@ -5082,7 +5102,7 @@
       "sourceUrl": "https://youtu.be/rNRAWBbxs54?t=1320"
     },
     {
-      "id": "q255",
+      "id": "q256",
       "generation": 2,
       "question": "パレ学2期生の名前で一番多く使われている漢字は？",
       "answers": [
@@ -5102,7 +5122,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q256",
+      "id": "q257",
       "generation": 2,
       "question": "天堂ライラのあいさつは？",
       "answers": [
@@ -5122,7 +5142,7 @@
       "sourceUrl": "https://x.com/tendo_lyra/status/2044543809586139267"
     },
     {
-      "id": "q257",
+      "id": "q258",
       "generation": 2,
       "question": "パレ学で唯一のオレンジ髪は？",
       "answers": [
@@ -5142,7 +5162,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q258",
+      "id": "q259",
       "generation": 2,
       "question": "パレ学2期生で唯一の緑髪は？",
       "answers": [
@@ -5162,7 +5182,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q259",
+      "id": "q260",
       "generation": 0,
       "question": "2期生デビュー直後に「モチモチ2期生」の絵を描く配信を行った先輩は？",
       "answers": [
@@ -5182,7 +5202,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=gMl3AYajdXk"
     },
     {
-      "id": "q260",
+      "id": "q261",
       "generation": 0,
       "question": "2期生との初絡みで絡んだ人全員に忍たま乱太郎の布教を始めた先輩は？",
       "answers": [
@@ -5202,7 +5222,7 @@
       "sourceUrl": "https://x.com/i/status/2044425929775346015"
     },
     {
-      "id": "q261",
+      "id": "q262",
       "generation": 2,
       "question": "誕生日が七夕の寮生は誰？",
       "answers": [
@@ -5222,7 +5242,7 @@
       "sourceUrl": "https://x.com/kirara_ginga/status/2044521917529657632"
     },
     {
-      "id": "q262",
+      "id": "q263",
       "generation": 2,
       "question": "初配信前に出した最初の動画でVRChatの動画を出したのは？",
       "answers": [
@@ -5242,7 +5262,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=iMLDhFzYmsY"
     },
     {
-      "id": "q263",
+      "id": "q264",
       "generation": 2,
       "question": "公式の2期生集合写真で確認できるオッドアイの人数は？",
       "answers": [
@@ -5262,7 +5282,7 @@
       "sourceUrl": "https://x.com/parerdemia/status/2044325042084032520"
     },
     {
-      "id": "q264",
+      "id": "q265",
       "generation": 2,
       "question": "牡丹雪のトレードマークは？",
       "answers": [
@@ -5282,7 +5302,7 @@
       "sourceUrl": "https://x.com/botan_setu119"
     },
     {
-      "id": "q265",
+      "id": "q266",
       "generation": 2,
       "question": "裏風紀委員長を自称している寮生は誰？",
       "answers": [
@@ -5302,7 +5322,7 @@
       "sourceUrl": "https://x.com/suzu_shirao/status/2044689524488536182"
     },
     {
-      "id": "q266",
+      "id": "q267",
       "generation": 2,
       "question": "美容師の免許を持っていてパーソナルカラー診断もできる2期生は誰？",
       "answers": [
@@ -5322,7 +5342,7 @@
       "sourceUrl": "https://x.com/kirara_ginga/status/2044679493672173817"
     },
     {
-      "id": "q267",
+      "id": "q268",
       "generation": 2,
       "question": "天麗らんが好きなBLEACHのキャラは？",
       "answers": [
@@ -5342,7 +5362,7 @@
       "sourceUrl": "https://x.com/Ran_tenRei/status/2044402660959506474"
     },
     {
-      "id": "q268",
+      "id": "q269",
       "generation": 2,
       "question": "ソフトクリームを超絶綺麗に巻ける特技を持っている2期生、水凪るぅともう一人は誰？",
       "answers": [
@@ -5362,7 +5382,7 @@
       "sourceUrl": "https://x.com/SizukiTowa2641/status/2044436479129391373"
     },
     {
-      "id": "q269",
+      "id": "q270",
       "generation": 2,
       "question": "露草なぎが好きな逆転裁判シリーズのキャラクターは？",
       "answers": [
@@ -5382,7 +5402,7 @@
       "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2044377985076302032"
     },
     {
-      "id": "q270",
+      "id": "q271",
       "generation": 2,
       "question": "四葉みっけがウィニー寮に入った理由は？",
       "answers": [
@@ -5402,7 +5422,7 @@
       "sourceUrl": "https://x.com/Yotuba_mikke/status/2044359779116781613"
     },
     {
-      "id": "q271",
+      "id": "q272",
       "generation": 2,
       "question": "さくさくさくの苗字と名前の区切りはどうなってる？",
       "answers": [
@@ -5422,7 +5442,7 @@
       "sourceUrl": "https://x.com/Sakusakusaku107/status/2044348208646897682"
     },
     {
-      "id": "q272",
+      "id": "q273",
       "generation": 2,
       "question": "誰のツイート？\n「是非とも私めに焼きそばパンを買わせてください‼️\n休憩のチャイムがなればいち早くダッシュします✋」",
       "answers": [
@@ -5442,7 +5462,7 @@
       "sourceUrl": "https://x.com/Minagi__Ru/status/2044381988103287101"
     },
     {
-      "id": "q273",
+      "id": "q274",
       "generation": 2,
       "question": "初投稿動画で、最長で33.5時間睡眠したことを紹介した人は誰？",
       "answers": [
@@ -5462,7 +5482,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/4TMHTjHhAq4"
     },
     {
-      "id": "q274",
+      "id": "q275",
       "generation": 2,
       "question": "「バゥ寮の赤色担当」を自称する2期生は？",
       "answers": [
@@ -5482,7 +5502,7 @@
       "sourceUrl": "https://x.com/Hisui_Ak4ne/status/2044424187553648891"
     },
     {
-      "id": "q275",
+      "id": "q276",
       "generation": 2,
       "question": "冬星れんこんが尊敬しているパレ学外のVTuberは？",
       "answers": [
@@ -5502,7 +5522,7 @@
       "sourceUrl": "https://x.com/Renkon_Fuyu/status/2045173638325031174"
     },
     {
-      "id": "q276",
+      "id": "q277",
       "generation": 2,
       "question": "狛社なのが忍たま乱太郎でメロがりを奏でているキャラクターは？",
       "answers": [
@@ -5522,7 +5542,7 @@
       "sourceUrl": "https://x.com/komashirobmxf/status/2044434376356966705"
     },
     {
-      "id": "q277",
+      "id": "q278",
       "generation": 2,
       "question": "火狐むいのキャッチフレーズは？",
       "answers": [
@@ -5542,7 +5562,7 @@
       "sourceUrl": "https://x.com/kako_mui/status/2044625678415593926"
     },
     {
-      "id": "q278",
+      "id": "q279",
       "generation": 2,
       "question": "巳野みことが好きなミニトマトの品種は？",
       "answers": [
@@ -5562,7 +5582,7 @@
       "sourceUrl": "https://x.com/mino_micoto/status/2044536129052152101"
     },
     {
-      "id": "q279",
+      "id": "q280",
       "generation": 2,
       "question": "パレ学2期生でデビュー後に最初に誕生日を迎えたのは？",
       "answers": [
@@ -5582,7 +5602,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=xNF8n6vHlG0"
     },
     {
-      "id": "q280",
+      "id": "q281",
       "generation": 2,
       "question": "自己紹介動画が開発中のゲームの中での自己紹介になっていたのは誰？",
       "answers": [
@@ -5602,7 +5622,7 @@
       "sourceUrl": "https://x.com/yoizaka_iori/status/2044662392211357903"
     },
     {
-      "id": "q281",
+      "id": "q282",
       "generation": 2,
       "question": "2期生で黒髪三つ編みのゆったり癒し系VTuberといえば誰？",
       "answers": [
@@ -5622,7 +5642,7 @@
       "sourceUrl": "https://x.com/annin_kosakura/status/2044331938803265932"
     },
     {
-      "id": "q282",
+      "id": "q283",
       "generation": 2,
       "question": "夏凪はつみが苦手なマリオ64のステージは？",
       "answers": [
@@ -5642,7 +5662,7 @@
       "sourceUrl": "https://x.com/Natsunagi823/status/2044725308163784783"
     },
     {
-      "id": "q283",
+      "id": "q284",
       "generation": 2,
       "question": "歌って喋る、狼系Vtuberといえば誰？",
       "answers": [
@@ -5662,7 +5682,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q284",
+      "id": "q285",
       "generation": 2,
       "question": "右目隠れで唯一無二のpurple hairといえば？",
       "answers": [
@@ -5682,7 +5702,7 @@
       "sourceUrl": "https://x.com/62ki_10/status/2045349134744564190"
     },
     {
-      "id": "q285",
+      "id": "q286",
       "generation": 0,
       "question": "夕凪万夜が入学前にパレ学で一番最初に知ったと告白した1期生の先輩は？",
       "answers": [
@@ -5702,7 +5722,7 @@
       "sourceUrl": "https://x.com/mayo_yunagi/status/2045428877028438044"
     },
     {
-      "id": "q286",
+      "id": "q287",
       "generation": 0,
       "question": "犬丸なでこ・黄金つむぎ・狛社なのの3人で結成された、犬つながりのトリオ名は？",
       "answers": [
@@ -5722,7 +5742,7 @@
       "sourceUrl": "https://x.com/nadeko_inumaru/status/2045415515099922507"
     },
     {
-      "id": "q287",
+      "id": "q288",
       "generation": 1,
       "question": "2026年4月発売の職業体験グッズで雨海まるがなった職業は？",
       "answers": [
@@ -5742,7 +5762,7 @@
       "sourceUrl": "https://x.com/maru_amami/status/2046178782596501617"
     },
     {
-      "id": "q288",
+      "id": "q289",
       "generation": 1,
       "question": "2026年4月発売の職業体験グッズで緋雨柚がなった職業は？",
       "answers": [
@@ -5762,7 +5782,7 @@
       "sourceUrl": "https://x.com/Hisame_Yuzu/status/2046398715653681487"
     },
     {
-      "id": "q289",
+      "id": "q290",
       "generation": 2,
       "question": "宵坂伊織が二度と作らんと決めたお菓子は？",
       "answers": [
@@ -5782,7 +5802,7 @@
       "sourceUrl": "https://x.com/yoizaka_iori/status/2046571477605224866"
     },
     {
-      "id": "q290",
+      "id": "q291",
       "generation": 2,
       "question": "友達に聞いた天麗らんお嬢エピソード5選の「その1」は？",
       "answers": [
@@ -5802,7 +5822,7 @@
       "sourceUrl": "https://www.tiktok.com/@ran_run_tenrei/video/7631157684112231698"
     },
     {
-      "id": "q291",
+      "id": "q292",
       "generation": 2,
       "question": "情報セキュリティマネジメント・ITパスポート・基本情報技術者・応用情報技術者・情報安全確保支援士の資格を持っているのは？",
       "answers": [
@@ -5811,7 +5831,7 @@
         "",
         ""
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5820,6 +5840,26 @@
       "answerPool": "",
       "comment": "宵坂伊織「とんでもねえ逸材だあ・・・！」",
       "sourceUrl": "https://www.youtube.com/shorts/83c-MK6M2cg"
+    },
+    {
+      "id": "q293",
+      "generation": 1,
+      "question": "黄金つむぎがYouTubeに初めて投稿して絶賛された歌みた動画の曲は？",
+      "answers": [
+        "ファンサ",
+        "アイドル",
+        "かわいいだけじゃダメですか",
+        "可愛くてごめん"
+      ],
+      "difficulty": 4,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "白尾すず「無敵のアイドルだぁ😭♡\n素敵✨愛を感じる✨\n涙が止まらないうぉううぉう😭」",
+      "sourceUrl": "https://www.youtube.com/watch?v=Gd6IdZVLJLk"
     }
   ],
   "answerSets": {
