@@ -102,6 +102,7 @@ function TextQuizLayoutInner({
               fontSize: '4.5cqmin',
               color: 'white',
               lineHeight: 1.5,
+              whiteSpace: 'pre-wrap',
               textShadow: '0 1px 3px rgba(0,0,0,0.4)',
             }}
           >
