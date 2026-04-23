@@ -5694,7 +5694,7 @@
       "difficulty": 1,
       "genre": "",
       "sortAnswers": false,
-      "hideIcon": false,
+      "hideIcon": true,
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
@@ -5791,7 +5791,7 @@
         "水まんじゅう",
         "いちご大福"
       ],
-      "difficulty": 4,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5811,7 +5811,7 @@
         "家に執事がいる",
         "バイオリンを習っていた"
       ],
-      "difficulty": 5,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5831,7 +5831,7 @@
         "",
         ""
       ],
-      "difficulty": 5,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -5860,6 +5860,26 @@
       "answerPool": "",
       "comment": "白尾すず「無敵のアイドルだぁ😭♡\n素敵✨愛を感じる✨\n涙が止まらないうぉううぉう😭」",
       "sourceUrl": "https://www.youtube.com/watch?v=Gd6IdZVLJLk"
+    },
+    {
+      "id": "q294",
+      "generation": 2,
+      "question": "誰のツイート？\n「ふっ\n私の辞書に罵倒の文字はないのだっ」",
+      "answers": [
+        "香桜あんにん",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/annin_kosakura/status/2046961200056209797"
     }
   ],
   "answerSets": {
