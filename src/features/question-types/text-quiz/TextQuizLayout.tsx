@@ -97,7 +97,7 @@ function TextQuizLayoutInner({
           }}
         >
           <span
-            className="font-bold text-center"
+            className="font-bold text-left"
             style={{
               fontSize: '4.5cqmin',
               color: 'white',
