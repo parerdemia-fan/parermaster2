@@ -112,16 +112,16 @@ export function SettingScreen() {
         // 2期生きほん: d0を順番に10問
         segments = [{ level: 0, count: 10, ordered: true }]
       } else if (gen === 2 && difficulty === 2) {
-        // 2期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
+        // 2期生ふつう: TQ1〜TQ3からランダム出題
         segments = [
-          { level: 1, count: 10, ordered: true },
+          { level: 1, count: 10, ordered: false },
           { level: 2, count: 10, ordered: false },
           { level: 3, count: 5, ordered: false },
         ]
       } else if (difficulty === 1) {
-        // 1期生ふつう: TQ1順番10問 → TQ2ランダム10問 → TQ3ランダム5問
+        // 1期生ふつう: TQ1〜TQ3からランダム出題
         segments = [
-          { level: 1, count: 10, ordered: true },
+          { level: 1, count: 10, ordered: false },
           { level: 2, count: 10, ordered: false },
           { level: 3, count: 5, ordered: false },
         ]
