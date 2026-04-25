@@ -160,6 +160,7 @@ function TextQuizLayoutInner({
                     fontSize: '2.5cqmin',
                     color: 'rgba(255,255,255,0.88)',
                     lineHeight: 1.6,
+                    whiteSpace: 'pre-wrap',
                   }}
                 >
                   {parseTextWithTalentIcons(question.comment, talents, true)}
