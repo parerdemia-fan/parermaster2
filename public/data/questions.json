@@ -5844,7 +5844,7 @@
     {
       "id": "q293",
       "generation": 2,
-      "question": "情報セキュリティマネジメント・ITパスポート・基本情報技術者・応用情報技術者・情報安全確保支援士の資格を持っているのは？",
+      "question": "情報セキュリティマネジメント・ITパスポート・基本情報技術者・応用情報技術者・情報安全確保支援士・日商簿記3級の資格を持っているのは？",
       "answers": [
         "冬星れんこん",
         "",
@@ -5920,6 +5920,86 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://x.com/kamekichikari/status/2044771772361511349"
+    },
+    {
+      "id": "q297",
+      "generation": 2,
+      "question": "夜雨ねむるが推しているサンリオキャラは？",
+      "answers": [
+        "ポチャッコ",
+        "クロミ",
+        "シナモロール",
+        "マイメロディ"
+      ],
+      "difficulty": 2,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夜雨ねむる「やうるちゃんからのお願いと致しましてはサンリオキャラクター大賞においてポチャッコくんに投票してくれたら泣いて喜びます🤭」",
+      "sourceUrl": "https://x.com/Yaunemuru/status/2044341980516516093"
+    },
+    {
+      "id": "q298",
+      "generation": 2,
+      "question": "天麗らんが「ガチで飲めません」と告白した飲み物は？",
+      "answers": [
+        "コーヒー",
+        "炭酸飲料",
+        "野菜ジュース",
+        "牛乳"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天麗らん「逆コーヒーガチ勢です！！」",
+      "sourceUrl": "https://x.com/Ran_tenRei/status/2047466979033022956"
+    },
+    {
+      "id": "q299",
+      "generation": 2,
+      "question": "無月いおがYouTubeの初投稿ショート動画で歌ってみた曲は？",
+      "answers": [
+        "ファタール (GEMN)",
+        "TEST ME (ちゃんみな)",
+        "メフィスト (女王蜂)",
+        "セレナーデ (なとり)"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "ニコ・ダークウェル「さすいお」",
+      "sourceUrl": "https://www.youtube.com/watch?v=gQkYLhobqz0"
+    },
+    {
+      "id": "q300",
+      "generation": 2,
+      "question": "火狐むいが「実はむいは○○ッ子」と語った大ファンのアーティストは？",
+      "answers": [
+        "LiSA",
+        "Aimer",
+        "Ado",
+        "YOASOBI"
+      ],
+      "difficulty": 2,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "火狐むい「15周年サイコーだった🍓」",
+      "sourceUrl": "https://x.com/kako_mui/status/2045689639739285793"
     }
   ],
   "answerSets": {
