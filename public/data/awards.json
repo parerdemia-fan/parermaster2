@@ -1351,6 +1351,62 @@
       "eventName": "ぶいかふぇ♪NEXT 出演権獲得イベント",
       "result": "3位",
       "talentId": "25ME009"
+    },
+    {
+      "id": "a206",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a207",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a208",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "3位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a209",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "4位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a210",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "5位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a211",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "6位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a212",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "7位",
+      "talentId": "25WA005"
+    },
+    {
+      "id": "a213",
+      "eventDate": "202604",
+      "eventName": "夏祭りイベント",
+      "result": "8位",
+      "talentId": "25WH005"
     }
   ]
 }
