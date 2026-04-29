@@ -11,7 +11,9 @@
       "givenName": "イングラム",
       "familyKana": "シグマ",
       "givenKana": "イングラム",
-      "nicknames": [],
+      "nicknames": [
+        "Σ"
+      ],
       "firstPerson": "",
       "intro": "自宅警備隊一等兵",
       "dream": "人類オタク化計画〜みな平等にオタクになれ〜",
@@ -23,7 +25,7 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "INFP(仲介者)",
-      "fanName": "",
+      "fanName": "シグナー",
       "fanMark": "",
       "hashtags": [
         {
@@ -197,7 +199,7 @@
           "usage": "配信"
         },
         {
-          "tag": "#羽奈らぶアート",
+          "tag": "#うならぶアート",
           "usage": "FA"
         }
       ],
@@ -418,6 +420,10 @@
         {
           "tag": "#畑スイあーと",
           "usage": "FA"
+        },
+        {
+          "tag": "#カットスイカ",
+          "usage": "切り抜き"
         }
       ],
       "hobbies": [
@@ -496,7 +502,7 @@
         },
         {
           "tag": "#山田精肉所",
-          "usage": ""
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -777,7 +783,9 @@
       "givenName": "ゆらぐ",
       "familyKana": "アマツジ",
       "givenKana": "ユラグ",
-      "nicknames": [],
+      "nicknames": [
+        "ゆら姉"
+      ],
       "firstPerson": "",
       "intro": "あなたのお姉さんアイドルVTuber",
       "dream": "ゆらぎながら自分の道を進み、ルナグランデで光の海を見ること＆Ch登録者100万人",
@@ -1160,7 +1168,8 @@
       "familyKana": "ヒノ",
       "givenKana": "ペケマル",
       "nicknames": [
-        "カシラ"
+        "カシラ",
+        "ぺけまる"
       ],
       "firstPerson": "",
       "intro": "ぺけ❌️でもまる⭕️でも全肯定 あなたの心に光を灯す💥ドンドコ提灯のVtuber 灯野ぺけ。です！よろぴこまる〜",
@@ -1181,12 +1190,8 @@
           "usage": "総合"
         },
         {
-          "tag": "#ぺけまるLIVE",
-          "usage": "配信"
-        },
-        {
           "tag": "#ぺけもまるも全部まる",
-          "usage": ""
+          "usage": "FA"
         }
       ],
       "hobbies": [
@@ -1264,8 +1269,12 @@
           "usage": "FA"
         },
         {
-          "tag": "#影抜き",
+          "tag": "#陰抜き",
           "usage": "切り抜き"
+        },
+        {
+          "tag": "#アゲハさん見やがれください",
+          "usage": "見ろ陰山"
         }
       ],
       "hobbies": [
@@ -1420,11 +1429,11 @@
         },
         {
           "tag": "#おすずのぐっず",
-          "usage": "グッズ"
+          "usage": "グッズ感想"
         },
         {
           "tag": "#おさとうぼいす",
-          "usage": ""
+          "usage": "ボイス感想"
         }
       ],
       "hobbies": [
@@ -3585,7 +3594,12 @@
       "mbti": "",
       "fanName": "",
       "fanMark": "",
-      "hashtags": [],
+      "hashtags": [
+        {
+          "tag": "#あんにんいーつ",
+          "usage": "ごはん"
+        }
+      ],
       "hobbies": [],
       "skills": [
         "お菓子作り"
@@ -3695,7 +3709,9 @@
       "fanMark": "",
       "hashtags": [],
       "hobbies": [],
-      "skills": [],
+      "skills": [
+        "プログラミング(Java/JavaScript/VBA/VB.NET/MySQL/C#/HTML・CSS)"
+      ],
       "favorites": [
         "ゲーム",
         "謎解き",
@@ -3757,6 +3773,7 @@
       "hobbies": [],
       "skills": [],
       "favorites": [
+        "人怖系ホラーゲーム",
         "中日ドラゴンズ"
       ],
       "tone": "",
@@ -4295,7 +4312,7 @@
       "firstPerson": "",
       "intro": "＼なののこと好きなのー？／\n1番かわいい狛犬アイドルになるから見守っててね🐶",
       "dream": "",
-      "birthday": "",
+      "birthday": "11月15日",
       "height": 0,
       "bloodType": "",
       "hairColor": "darkblue",
@@ -4521,7 +4538,7 @@
       "givenKana": "イオ",
       "nicknames": [],
       "firstPerson": "",
-      "intro": "初めましてー！無月いおﾃﾞｽ！\n明るい紫髪と右目隠れがトレードマークだ！",
+      "intro": "映像作りとゲームが趣味の低音系新人Vtuber\n明るい紫髪と右目隠れがトレードマークだ！",
       "dream": "",
       "birthday": "",
       "height": 0,
@@ -4697,7 +4714,8 @@
         "クソコラ"
       ],
       "skills": [
-        "動画編集"
+        "動画編集",
+        "弾き語り"
       ],
       "favorites": [
         "あんスタ"
