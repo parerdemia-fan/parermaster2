@@ -263,7 +263,7 @@ export function AchievementScreen() {
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
-                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分21秒以内クリア', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
+                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分切り', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
                 : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', imageSrc: TROPHY_IMAGES.master, imageSize: '25cqmin' }
             )} />
           )}

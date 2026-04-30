@@ -10,8 +10,8 @@ export interface TimeAttackSection {
   displayStars: number
 }
 
-/** パレ学グランドマスター称号の達成タイム閾値（7分21秒、ms） */
-export const GRANDMASTER_THRESHOLD_MS = (7 * 60 + 21) * 1000
+/** パレ学グランドマスター称号の達成タイム閾値（7分切り、ms） */
+export const GRANDMASTER_THRESHOLD_MS = 7 * 60 * 1000
 
 /** タイムアタック 全100問の出題構成（18セクション） */
 export const TIME_ATTACK_SECTIONS: readonly TimeAttackSection[] = [

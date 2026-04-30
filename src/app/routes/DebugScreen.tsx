@@ -373,9 +373,9 @@ const FULL_PARER_MASTER_BADGES: Record<BadgeSlotId, BadgeRank> = {
 }
 
 const TA_RESULT_PREVIEWS: { label: string; clearMs: number; prevBest: number | null }[] = [
-  // GRANDMASTER_THRESHOLD_MS = 441000ms (7:21)
-  { label: 'GM 新規達成',     clearMs: 7 * 60 * 1000,                   prevBest: null },
-  { label: 'GM 既達成+更新',  clearMs: 5 * 60 * 1000,                   prevBest: 6 * 60 * 1000 },
+  // GRANDMASTER_THRESHOLD_MS = 420000ms (7:00 切り)
+  { label: 'GM 新規達成',     clearMs: 6 * 60 * 1000,                   prevBest: null },
+  { label: 'GM 既達成+更新',  clearMs: 5 * 60 * 1000,                   prevBest: GRANDMASTER_THRESHOLD_MS - 60000 },
   { label: 'GM 未達+ベスト更新', clearMs: GRANDMASTER_THRESHOLD_MS + 30000, prevBest: GRANDMASTER_THRESHOLD_MS + 60000 },
   { label: 'GM 未達+据置',    clearMs: 12 * 60 * 1000,                  prevBest: 8 * 60 * 1000 },
 ]
