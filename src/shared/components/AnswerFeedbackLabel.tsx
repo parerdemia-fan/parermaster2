@@ -1,10 +1,12 @@
 interface AnswerFeedbackLabelProps {
   isCorrect: boolean
   isTimeAttack: boolean
+  /** タイムアタック不正解時のペナルティ秒数（タイムアタック以外では未使用） */
+  penaltySeconds?: number
 }
 
-export function AnswerFeedbackLabel({ isCorrect, isTimeAttack }: AnswerFeedbackLabelProps) {
-  const text = isCorrect ? '🎉 正解！' : isTimeAttack ? '😢 不正解.. +5秒' : '😢 不正解..'
+export function AnswerFeedbackLabel({ isCorrect, isTimeAttack, penaltySeconds = 5 }: AnswerFeedbackLabelProps) {
+  const text = isCorrect ? '🎉 正解！' : isTimeAttack ? `😢 不正解.. +${penaltySeconds}秒` : '😢 不正解..'
 
   return (
     <>

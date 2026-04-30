@@ -105,6 +105,7 @@ export function QuizScreen() {
             key={currentIndex}
             isCorrect={lastRecord.isCorrect}
             isTimeAttack={isTimeAttack}
+            penaltySeconds={getPenaltySeconds(current.typeId)}
           />
           {lastRecord.isCorrect && (
             <ConfettiCanvas key={`confetti-${currentIndex}`} triggerKey={currentIndex} />
