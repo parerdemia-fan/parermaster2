@@ -3,6 +3,7 @@ import { useSettingsStore, type Difficulty } from '../../stores/settingsStore.ts
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { BADGE_SLOTS, RANK_LABELS, RANK_COLORS } from '../../features/achievement/constants.ts'
+import { GRANDMASTER_THRESHOLD_MS } from '../../features/time-attack/constants.ts'
 import type { BadgeRank, BadgeSlotId } from '../../features/achievement/types.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
@@ -264,6 +265,9 @@ export function DebugScreen() {
           {/* 結果画面プレビュー */}
           <ResultPreview />
 
+          {/* タイムアタック結果画面プレビュー */}
+          <TimeAttackResultPreview />
+
           {/* バッジ操作 */}
           <BadgeEditor />
 
@@ -336,6 +340,80 @@ function ResultPreview() {
       </div>
       <div className="flex" style={{ gap: '1cqmin' }}>
         {RESULT_PREVIEWS.map((preview) => (
+          <button
+            key={preview.label}
+            className="cursor-pointer font-bold transition hover:brightness-120 active:scale-95"
+            style={{
+              fontSize: '2cqmin',
+              padding: '0.8cqmin 1.5cqmin',
+              borderRadius: '0.8cqmin',
+              border: '0.2cqmin solid rgba(255,255,255,0.3)',
+              background: 'rgba(255,255,255,0.1)',
+              color: 'white',
+            }}
+            onClick={() => handleClick(preview)}
+          >
+            {preview.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const FULL_PARER_MASTER_BADGES: Record<BadgeSlotId, BadgeRank> = {
+  gen1_all: 'gold',
+  gen1_knowledge: 'gold',
+  gen2_all: 'gold',
+  gen2_knowledge: 'silver',
+  dorm_wa: 'gold',
+  dorm_me: 'gold',
+  dorm_co: 'gold',
+  dorm_wh: 'gold',
+}
+
+const TA_RESULT_PREVIEWS: { label: string; clearMs: number; prevBest: number | null }[] = [
+  // GRANDMASTER_THRESHOLD_MS = 441000ms (7:21)
+  { label: 'GM 新規達成',     clearMs: 7 * 60 * 1000,                   prevBest: null },
+  { label: 'GM 既達成+更新',  clearMs: 5 * 60 * 1000,                   prevBest: 6 * 60 * 1000 },
+  { label: 'GM 未達+ベスト更新', clearMs: GRANDMASTER_THRESHOLD_MS + 30000, prevBest: GRANDMASTER_THRESHOLD_MS + 60000 },
+  { label: 'GM 未達+据置',    clearMs: 12 * 60 * 1000,                  prevBest: 8 * 60 * 1000 },
+]
+
+function TimeAttackResultPreview() {
+  const goToTimeAttackResult = useSettingsStore((s) => s.goToTimeAttackResult)
+
+  const handleClick = (preview: typeof TA_RESULT_PREVIEWS[number]) => {
+    localStorage.setItem('parermaster2_badges', JSON.stringify(FULL_PARER_MASTER_BADGES))
+    useBadgeStore.setState({ badges: { ...FULL_PARER_MASTER_BADGES } })
+
+    if (preview.prevBest == null) {
+      localStorage.removeItem('parermaster2_ta_best')
+    } else {
+      localStorage.setItem('parermaster2_ta_best', String(preview.prevBest))
+    }
+
+    useGameStore.setState({
+      timerStartedAt: null,
+      accumulatedTime: preview.clearMs,
+      penaltyMs: 0,
+    })
+
+    goToTimeAttackResult()
+  }
+
+  return (
+    <div style={{ marginTop: '2cqmin', width: '100%', maxWidth: '80cqmin' }}>
+      <div className="flex items-center" style={{ gap: '1cqmin', marginBottom: '1cqmin' }}>
+        <span className="font-bold" style={{ fontSize: '3cqmin', color: '#0f0', textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
+          TA Result Screen
+        </span>
+        <span style={{ fontSize: '2cqmin', color: 'rgba(255,255,255,0.5)' }}>
+          (バッジ全埋め + clearTime/prevBest を仕込んで遷移)
+        </span>
+      </div>
+      <div className="flex" style={{ gap: '1cqmin', flexWrap: 'wrap' }}>
+        {TA_RESULT_PREVIEWS.map((preview) => (
           <button
             key={preview.label}
             className="cursor-pointer font-bold transition hover:brightness-120 active:scale-95"
