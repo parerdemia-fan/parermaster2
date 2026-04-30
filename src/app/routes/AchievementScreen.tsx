@@ -11,7 +11,7 @@ import {
 } from '../../features/achievement/constants.ts'
 import type { BadgeRank } from '../../features/achievement/types.ts'
 import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.ts'
-import { formatTime } from '../../features/time-attack/constants.ts'
+import { formatTime, GRANDMASTER_THRESHOLD_MS } from '../../features/time-attack/constants.ts'
 
 const RANK_BORDER: Record<BadgeRank, string> = {
   bronze: '#cd7f32',
@@ -118,7 +118,7 @@ export function AchievementScreen() {
       return raw ? Number(raw) : null
     } catch { return null }
   })()
-  const isGrandMaster = isParerMaster() && taBest != null && taBest < (7 * 60 + 21) * 1000
+  const isGrandMaster = isParerMaster() && taBest != null && taBest < GRANDMASTER_THRESHOLD_MS
   const [tooltip, setTooltip] = useState<TooltipInfo | null>(null)
 
   const slotsById = SLOTS_BY_ID
@@ -263,7 +263,7 @@ export function AchievementScreen() {
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
-                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分21秒以内クリア', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
+                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分切り', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
                 : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', imageSrc: TROPHY_IMAGES.master, imageSize: '25cqmin' }
             )} />
           )}
