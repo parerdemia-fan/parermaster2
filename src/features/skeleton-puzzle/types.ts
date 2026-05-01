@@ -8,7 +8,7 @@ export type CellContent = string | null
 export interface PuzzleWord {
   /** ワードID（0始まり連番） */
   wordId: number
-  /** 対応タレントID（null = ぱれでみあがくえん等の特殊ワード） */
+  /** 対応タレントID（null = タレントに紐付かない特殊ワード。拡張用） */
   talentId: string | null
   /** ひらがな名（点なし） */
   hiragana: string
