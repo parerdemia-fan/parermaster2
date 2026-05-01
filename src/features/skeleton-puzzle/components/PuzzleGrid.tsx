@@ -2,7 +2,6 @@ import { useMemo, useState, useRef, useCallback } from 'react'
 import type { PuzzleData, Placements, SelectedSlot } from '../types.ts'
 import { getWordCells, buildUserGrid, findConflicts } from '../puzzleUtils.ts'
 import { NUMBERED_LABELS } from '../constants.ts'
-import { useScreenMode } from '../../../shared/hooks/useScreenMode.ts'
 
 interface PuzzleGridProps {
   puzzle: PuzzleData
@@ -140,8 +139,6 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
   const scaleRef = useRef(1)
   const txRef = useRef(0)
   const tyRef = useRef(0)
-  const screenMode = useScreenMode()
-  const portrait = screenMode !== 'landscape'
   const [zoomed, setZoomed] = useState(false)
 
   const touchStateRef = useRef<{
@@ -184,7 +181,6 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
   }, [])
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (!portrait) return
     const ts = touchStateRef.current
     if (e.touches.length === 2) {
       e.preventDefault()
@@ -206,10 +202,9 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
       ts.startTy = tyRef.current
       ts.moved = false
     }
-  }, [portrait])
+  }, [])
 
   const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!portrait) return
     const ts = touchStateRef.current
     if (ts.type === 'pinch' && e.touches.length === 2) {
       e.preventDefault()
@@ -239,7 +234,7 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
         applyTransform()
       }
     }
-  }, [portrait, clampTranslation, applyTransform])
+  }, [clampTranslation, applyTransform])
 
   const handleTouchEnd = useCallback(() => {
     const ts = touchStateRef.current
@@ -277,7 +272,7 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
     <div
       ref={containerRef}
       className="relative flex items-center justify-center"
-      style={{ flex: 1, width: '100%', overflow: 'hidden', touchAction: portrait ? 'none' : 'auto' }}
+      style={{ flex: 1, width: '100%', overflow: 'hidden', touchAction: 'none' }}
       onClick={() => { if (directionPicker) setDirectionPicker(null) }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -292,7 +287,7 @@ export function PuzzleGrid({ puzzle, placements, selectedSlot, onSelectSlot }: P
           padding: `${framePad + lineW}cqmin`,
           background: 'rgba(255,255,255,0.15)',
           transformOrigin: 'center center',
-          willChange: portrait ? 'transform' : 'auto',
+          willChange: 'transform',
         }}
       >
         <div
