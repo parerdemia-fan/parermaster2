@@ -6300,6 +6300,66 @@
       "answerPool": "",
       "comment": "四葉みっけ「みっけの梅伝説を聞いてほしい」",
       "sourceUrl": "https://x.com/Yotuba_mikke/status/2045789501180813468"
+    },
+    {
+      "id": "q316",
+      "generation": 2,
+      "question": "2期生の激メロダウナー系お姉さんギャルといえば誰？",
+      "answers": [
+        "汐月永遠",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q317",
+      "generation": 2,
+      "question": "2期生ミュゥ寮で魚のヘアピンを付けている人、さくさくさくともうひとりは誰？",
+      "answers": [
+        "汐月永遠",
+        "銀河キララ",
+        "天麗らん",
+        "牡丹雪"
+      ],
+      "difficulty": 1,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": true,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q318",
+      "generation": 1,
+      "question": "第2回投票イベントF6ファンダムアートグッズで猫乃間うとが着ている服は何？",
+      "answers": [
+        "ぱ-Tシャツ",
+        "3匹の猫のTシャツ",
+        "ベビー服",
+        "大人スーツ"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "nekonoma_fandom.png",
+      "answerPool": "",
+      "comment": "猫乃間うと「みんなの1票1票のおかげで、うちの猫たちも一緒に入れてもらってます🐱🐱🐱\nとっても嬉しい本当にありがとう🥹💫」",
+      "sourceUrl": "https://x.com/nekonoma_uto/status/2050860030417928326"
     }
   ],
   "answerSets": {
