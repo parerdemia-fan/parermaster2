@@ -1407,6 +1407,104 @@
       "eventName": "夏祭りイベント",
       "result": "8位",
       "talentId": "25WH005"
+    },
+    {
+      "id": "a214",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a215",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a216",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a217",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a218",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a219",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a220",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a221",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a222",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a223",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a224",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25ME007"
+    },
+    {
+      "id": "a225",
+      "eventDate": "202604",
+      "eventName": "配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25ME004"
+    },
+    {
+      "id": "a226",
+      "eventDate": "202605",
+      "eventName": "達成型イベント",
+      "result": "SDイラスト獲得",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a227",
+      "eventDate": "202605",
+      "eventName": "達成型イベント",
+      "result": "SDイラスト獲得",
+      "talentId": "25CO014"
     }
   ]
 }
