@@ -14,7 +14,6 @@ const FADE_DURATION = 400
 export interface SlotTalent {
   position: SlotPosition
   talent: Talent
-  isSquare: boolean
 }
 
 interface SpeechBubbleProps {
@@ -36,7 +35,7 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
   const quotes = useQuotes()
   const playerName = useSettingsStore((s) => s.playerName)
 
-  const [bubble, setBubble] = useState<{ text: string; centerX: number; isSquare: boolean } | null>(null)
+  const [bubble, setBubble] = useState<{ text: string; centerX: number } | null>(null)
   const [visible, setVisible] = useState(false)
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
@@ -64,7 +63,7 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
         return
       }
 
-      setBubble({ text, centerX, isSquare: entry.isSquare })
+      setBubble({ text, centerX })
       setVisible(true)
 
       addTimer(() => {
@@ -114,7 +113,7 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
           boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
         }}
       >
-        {/* 尻尾（立ち絵: 上向き、正方形画像: 下向き） */}
+        {/* 尻尾: 立ち絵の顔（吹き出しの上）を指す向きに固定 */}
         <div
           style={{
             position: 'absolute',
@@ -124,9 +123,8 @@ export function SpeechBubble({ entries }: SpeechBubbleProps) {
             height: 0,
             borderLeft: '8px solid transparent',
             borderRight: '8px solid transparent',
-            ...(bubble.isSquare
-              ? { bottom: '-8px', borderTop: '8px solid rgba(255, 255, 255, 0.92)' }
-              : { top: '-8px', borderBottom: '8px solid rgba(255, 255, 255, 0.92)' }),
+            top: '-8px',
+            borderBottom: '8px solid rgba(255, 255, 255, 0.92)',
           }}
         />
         {bubble.text}

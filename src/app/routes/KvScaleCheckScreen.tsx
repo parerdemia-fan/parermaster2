@@ -7,12 +7,24 @@ import { useKvScaleStore, useKvScale, resolveKvScale } from '../../features/room
 import { getKvImageStyle } from '../../features/room/kvScaleStyle.ts'
 
 const GUIDELINE_KEY = 'parermaster2_kv_check_guideline'
+const GEN_KEY = 'parermaster2_kv_check_gen'
+
+type GenFilter = 1 | 2
 
 export function KvScaleCheckScreen() {
   const { talents } = useTalents()
-  const gen1 = useMemo(
-    () => talents.filter((t) => t.generation === 1),
-    [talents],
+
+  const [gen, setGen] = useState<GenFilter>(() => {
+    try {
+      const raw = localStorage.getItem(GEN_KEY)
+      if (raw === '2') return 2
+    } catch { /* ignore */ }
+    return 1
+  })
+
+  const filtered = useMemo(
+    () => talents.filter((t) => t.generation === gen),
+    [talents, gen],
   )
 
   const overrides = useKvScaleStore((s) => s.overrides)
@@ -35,9 +47,15 @@ export function KvScaleCheckScreen() {
     try { localStorage.setItem(GUIDELINE_KEY, String(v)) } catch { /* ignore */ }
   }
 
+  const updateGen = (g: GenFilter) => {
+    setGen(g)
+    try { localStorage.setItem(GEN_KEY, String(g)) } catch { /* ignore */ }
+  }
+
+  // 表示中の世代のうち、デフォルト 1.0 と異なる値を持つエントリを集める
   const buildEntries = (): [string, number][] => {
     const entries: [string, number][] = []
-    for (const t of gen1) {
+    for (const t of filtered) {
       const s = resolveKvScale(t.id, overrides)
       if (s !== 1.0) entries.push([t.id, s])
     }
@@ -53,7 +71,7 @@ export function KvScaleCheckScreen() {
     const body = buildEntries()
       .map(([id, v]) => `  '${id}': ${v.toFixed(3)},`)
       .join('\n')
-    const code = `export const KV_SCALE_MAP: Readonly<Record<string, number>> = {\n${body}\n}\n`
+    const code = `// ${gen}期生\n${body}\n`
     navigator.clipboard.writeText(code)
   }
 
@@ -87,6 +105,21 @@ export function KvScaleCheckScreen() {
         >
           ← 戻る
         </button>
+        <div style={{ display: 'flex', gap: '4px' }}>
+          {([1, 2] as const).map((g) => (
+            <button
+              key={g}
+              onClick={() => updateGen(g)}
+              style={{
+                ...tbBtn,
+                background: gen === g ? 'rgba(80,160,255,0.5)' : tbBtn.background,
+                fontWeight: gen === g ? 'bold' : 'normal',
+              }}
+            >
+              {g}期生
+            </button>
+          ))}
+        </div>
         <button onClick={copyJson} style={tbBtn}>JSONコピー</button>
         <button onClick={copyTs} style={tbBtn}>TSコピー</button>
         <button onClick={handleResetAll} style={{ ...tbBtn, background: 'rgba(200,50,50,0.7)' }}>Reset All</button>
@@ -115,7 +148,7 @@ export function KvScaleCheckScreen() {
       {/* 立ち絵の dvh 座標は viewport 基準なのでスクロール領域は inset: 0 で保つ（ツールバー下にオフセットすると足下基準が狂う） */}
       <div style={{ position: 'absolute', inset: 0, overflowX: 'auto', overflowY: 'hidden' }}>
         <div style={{ display: 'flex', width: 'max-content', height: '100%' }}>
-          {gen1.map((t) => (
+          {filtered.map((t) => (
             <TalentColumn key={t.id} talent={t} />
           ))}
         </div>
@@ -169,7 +202,8 @@ function TalentColumn({ talent }: { talent: Talent }) {
   const scale = useKvScale(talent.id)
   const setOverride = useKvScaleStore((s) => s.setOverride)
   const resetOverride = useKvScaleStore((s) => s.resetOverride)
-  const style = getKvImageStyle(scale)
+  const generation: 1 | 2 = talent.generation === 2 ? 2 : 1
+  const style = getKvImageStyle(scale, generation)
   const src = getTalentStandingPath(talent)
 
   return (

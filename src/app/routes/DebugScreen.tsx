@@ -39,6 +39,9 @@ const TEXT_QUIZ_LEVELS = [1, 2, 3, 4, 5, 6, 7]
 
 const DEBUG_QUESTION_COUNT = 5
 
+const DEBUG_GEN_KEY = 'parermaster2_debug_gen'
+type DebugGen = 1 | 2
+
 const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
 
 export function DebugScreen() {
@@ -49,19 +52,32 @@ export function DebugScreen() {
   const { questions: questionPool, answerSets, loading: questionsLoading } = useQuestions()
   const loading = talentsLoading || questionsLoading
   const [showStaffRoll, setShowStaffRoll] = useState(false)
+  const [debugGen, setDebugGen] = useState<DebugGen>(() => {
+    try {
+      const raw = localStorage.getItem(DEBUG_GEN_KEY)
+      if (raw === '2') return 2
+    } catch { /* ignore */ }
+    return 1
+  })
+
+  const updateDebugGen = (g: DebugGen) => {
+    setDebugGen(g)
+    try { localStorage.setItem(DEBUG_GEN_KEY, String(g)) } catch { /* ignore */ }
+  }
 
   const handleFaceNameStart = (typeId: FaceNameTypeId, difficulty: Difficulty) => {
     if (loading || talents.length === 0) return
 
+    const settingsGen = debugGen === 2 ? 'gen2' : 'gen1'
     useSettingsStore.setState({
-      generation: 'gen1',
-      modeCategory: 'gen1',
+      generation: settingsGen,
+      modeCategory: settingsGen,
       gameMode: 'face-name',
       scope: 'all',
       difficulty,
     })
 
-    const filtered = talents.filter((t) => t.generation === 1)
+    const filtered = talents.filter((t) => t.generation === debugGen)
     if (filtered.length < DEBUG_QUESTION_COUNT) return
 
     const targets = shuffleArray(filtered).slice(0, DEBUG_QUESTION_COUNT)
@@ -185,6 +201,28 @@ export function DebugScreen() {
             marginBottom: '2cqmin',
           }}
         >
+          {/* 世代切替 */}
+          <div className="flex items-center" style={{ gap: '1cqmin', alignSelf: 'flex-start' }}>
+            <span style={{ fontSize: '2.5cqmin', color: 'rgba(255,255,255,0.7)' }}>対象:</span>
+            {([1, 2] as const).map((g) => (
+              <button
+                key={g}
+                className="cursor-pointer font-bold transition hover:brightness-110 active:scale-95"
+                style={{
+                  fontSize: '2.5cqmin',
+                  padding: '0.6cqmin 1.6cqmin',
+                  borderRadius: '0.8cqmin',
+                  border: debugGen === g ? '0.2cqmin solid #6cf' : '0.2cqmin solid rgba(255,255,255,0.25)',
+                  background: debugGen === g ? 'rgba(80,160,255,0.4)' : 'rgba(255,255,255,0.08)',
+                  color: 'white',
+                }}
+                onClick={() => updateDebugGen(g)}
+              >
+                {g}期生
+              </button>
+            ))}
+          </div>
+
           {/* 難易度ヘッダー */}
           <div className="grid" style={{ gridTemplateColumns: '20cqmin repeat(3, 18cqmin)', gap: '1.5cqmin' }}>
             <div />

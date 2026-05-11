@@ -4,7 +4,7 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
 import { playSound } from '../../shared/utils/sound.ts'
-import { getTalentImagePath, getTalentStandingPath, isSquareStandingImage } from '../../shared/utils/talent.ts'
+import { getTalentImagePath, getTalentStandingPath } from '../../shared/utils/talent.ts'
 import { kanaToHiragana, needsReading } from '../../shared/utils/kana.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
@@ -64,10 +64,10 @@ export function TalentListScreen() {
 
   return (
     <div className="w-full h-full flex flex-col animate-fade-in" style={{ overflow: 'visible' }}>
-      {/* ヘッダー */}
+      {/* ヘッダー（立ち絵がボタンの上に被らないよう zIndex を上げる） */}
       <div
         className="w-full flex items-center shrink-0"
-        style={{ padding: '2cqmin 3cqmin 0' }}
+        style={{ padding: '2cqmin 3cqmin 0', position: 'relative', zIndex: 10 }}
       >
         <button
           className="font-bold cursor-pointer transition hover:brightness-110 active:scale-95"
@@ -263,17 +263,13 @@ export function TalentListScreen() {
           className="absolute pointer-events-none"
           style={{
             zIndex: 1,
-            ...(isSquareStandingImage(selected)
-              ? {
-                  width: '42cqmin',
-                  bottom: '2cqmin',
-                  right: '2cqmin',
-                }
-              : {
-                  width: '65cqmin',
-                  top: '-3cqmin',
-                  right: 'calc(50% - 90cqmin)',
-                }),
+            // 1期生: 上に少しはみ出して下を大きく見切れさせる配置（画像内に上余白あり）
+            // 2期生: 画像内上余白がないので、世代切替タブの下端（8cqmin）から開始。
+            // メインコンテンツ領域（上端 ≈10cqmin）から 2cqmin 上にはみ出る形に。
+            // height は 92cqmin で下端 100cqmin に揃え、はみ出しなし
+            ...(selected.generation === 2
+              ? { height: '90cqmin', width: 'auto', top: '10cqmin', right: 'calc(50% - 88cqmin)' }
+              : { width: '65cqmin', top: '-3cqmin', right: 'calc(50% - 90cqmin)' }),
           }}
           draggable={false}
         />
