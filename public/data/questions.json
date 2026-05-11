@@ -6400,6 +6400,66 @@
       "answerPool": "",
       "comment": "171cmです",
       "sourceUrl": ""
+    },
+    {
+      "id": "q321",
+      "generation": 1,
+      "question": "桜庭羽奈の初オリ曲『シャイニングデイズ』、冒頭の歌詞の「Shining Days 輝く日々 私たちだけの◯◯」の◯◯に入るものは？",
+      "answers": [
+        "物語",
+        "メロディ",
+        "合言葉",
+        "青空"
+      ],
+      "difficulty": 4,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "桜庭羽奈「「頑張る人への応援歌」がテーマです。何かを頑張る人、これから頑張ろうとしてる人、辛くて挫けそうな人、いろんな場面であなたの力になれる歌を届けたい。そんな気持ちで作りました！」",
+      "sourceUrl": "https://www.youtube.com/watch?v=tBKTH4iDSE0"
+    },
+    {
+      "id": "q322",
+      "generation": 1,
+      "question": "天辻ゆらぐの初オリ曲『My Fluctuation』、Fluctuationとはどういう意味？",
+      "answers": [
+        "揺らぎ",
+        "くらげ",
+        "潜る",
+        "波"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天辻ゆらぐ「この私の「揺らぎ」が、また新しい出逢いへと\n波のように繋がっていく、そんな楽曲になっていたら嬉しいです🪼✨️」",
+      "sourceUrl": "https://www.youtube.com/watch?v=ZM_tDXd5YNw"
+    },
+    {
+      "id": "q323",
+      "generation": 1,
+      "question": "犬丸なでこの初オリ曲『わんちゃん☆エブリデイ！』の歌詞、「犬丸王国は、いつでもキミの◯◯◯◯！」の◯◯◯◯に入るものは？",
+      "answers": [
+        "帰る場所",
+        "ユートピア",
+        "味方だよ",
+        "そばにある"
+      ],
+      "difficulty": 4,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "犬丸なでこ「宇宙まるごとみーんな元気にしちゃうわんね！！(*^^*)」",
+      "sourceUrl": "https://www.youtube.com/watch?v=URF_GrVr2uA"
     }
   ],
   "answerSets": {
