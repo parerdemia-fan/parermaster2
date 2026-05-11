@@ -57,7 +57,7 @@ function TextQuizLayoutInner({
       className="relative"
       style={{ flex: 1, width: '100%', overflow: 'hidden' }}
     >
-      {/* 左側: 位置決めラッパー（中央寄せ） */}
+      {/* 左側: 位置決めラッパー（中央寄せ）。下端はやめるボタン（≈[93.5, 98]cqmin）を避ける */}
       <div
         style={{
           position: 'absolute',
@@ -69,7 +69,7 @@ function TextQuizLayoutInner({
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          paddingBottom: '15cqmin',
+          paddingBottom: '6cqmin',
           pointerEvents: 'none',
         }}
       >
