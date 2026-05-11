@@ -6,7 +6,7 @@ import { getKvImageStyle } from './kvScaleStyle.ts'
 interface TalentSlotProps {
   talentId: string | null
   imagePath: string | null
-  isSquare: boolean
+  generation: 1 | 2
   position: 'left' | 'center' | 'right'
   showSelector: boolean
   onClick: () => void
@@ -25,10 +25,10 @@ const Z_INDEX: Record<string, number> = {
   right: 3,
 }
 
-export function TalentSlot({ talentId, imagePath, isSquare, position, showSelector, onClick }: TalentSlotProps) {
+export function TalentSlot({ talentId, imagePath, generation, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
-  const kvScale = useKvScale(isSquare ? null : talentId)
-  const kvStyle = getKvImageStyle(kvScale)
+  const kvScale = useKvScale(talentId)
+  const kvStyle = getKvImageStyle(kvScale, generation)
 
   useEffect(() => {
     const el = imgRef.current
@@ -63,13 +63,11 @@ export function TalentSlot({ talentId, imagePath, isSquare, position, showSelect
             position: 'absolute',
             left: 0,
             right: 0,
+            top: kvStyle.containerTop,
             display: 'flex',
             justifyContent: 'center',
             overflow: 'visible',
             pointerEvents: 'none',
-            ...(isSquare
-              ? { bottom: '25%' }
-              : { top: kvStyle.containerTop }),
           }}
         >
           <img
@@ -78,9 +76,9 @@ export function TalentSlot({ talentId, imagePath, isSquare, position, showSelect
             alt=""
             style={{
               flexShrink: 0,
-              ...(isSquare
-                ? { width: '80%', height: 'auto' }
-                : { height: kvStyle.imgHeight, width: 'auto', maxWidth: 'none' }),
+              height: kvStyle.imgHeight,
+              width: 'auto',
+              maxWidth: 'none',
             }}
             draggable={false}
           />

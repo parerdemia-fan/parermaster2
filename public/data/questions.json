@@ -6360,6 +6360,46 @@
       "answerPool": "",
       "comment": "猫乃間うと「みんなの1票1票のおかげで、うちの猫たちも一緒に入れてもらってます🐱🐱🐱\nとっても嬉しい本当にありがとう🥹💫」",
       "sourceUrl": "https://x.com/nekonoma_uto/status/2050860030417928326"
+    },
+    {
+      "id": "q319",
+      "generation": 2,
+      "question": "2期生で最も背が低いのは誰？",
+      "answers": [
+        "四葉みっけ",
+        "ニコ・ダークウェル",
+        "さくさくさく",
+        "冬星れんこん"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "139cmです",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q320",
+      "generation": 2,
+      "question": "2期生で最も背が高いのは誰？",
+      "answers": [
+        "牡丹雪",
+        "夕凪万夜",
+        "巳野みこと",
+        "無月いお"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "171cmです",
+      "sourceUrl": ""
     }
   ],
   "answerSets": {

@@ -63,22 +63,14 @@ function NameGuessLayoutInner({
             ? SILHOUETTE_FILTER
             : undefined,
           transition: 'filter 0.3s',
+          // 1期生立ち絵: top:0 から height:150cqmin で配置（画像内の上余白がヘッダーに隠れて顔は見える）
+          // 2期生は画像内の上余白がないので top:14cqmin (QuizHeader 直下) スタートで、
+          // 高さは1期生並みに大きくして下に大きくはみ出させる。
+          // 画像幅も比例して大きくなる (≈ 105cqmin) ため、left で中央位置を1期生に揃える
           ...(talent?.generation === 2
-            ? {
-                // 正方形画像: 幅基準で固定サイズ、縦中央配置
-                left: '2%',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '42%',
-                height: 'auto',
-              }
-            : {
-                // 縦長立ち絵: 高さ基準、上から表示して下をはみ出す
-                left: '-2%',
-                top: '0cqmin',
-                height: '150cqmin',
-                width: 'auto',
-              }),
+            ? { top: '14cqmin', height: '150cqmin', left: '-10%' }
+            : { top: '0cqmin', height: '150cqmin', left: '-2%' }),
+          width: 'auto',
         }}
         draggable={false}
       />

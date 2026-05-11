@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath, isSquareStandingImage } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
 import type { WordSearchQuestion } from './types.ts'
 
 interface WordSearchLayoutProps {
@@ -40,7 +40,7 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
 
   const talent = talents.find((t) => t.id === question.talentId)
   const standingPath = talent ? getTalentStandingPath(talent) : undefined
-  const isSquare = talent ? isSquareStandingImage(talent) : false
+  const isGen2 = talent?.generation === 2
 
   const rows = question.grid.length
   const cols = question.grid[0].length
@@ -60,20 +60,13 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
             objectFit: 'contain',
             zIndex: 1,
             pointerEvents: 'none',
-            ...(isSquare
-              ? {
-                  left: '2%',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  width: '38%',
-                  height: 'auto',
-                }
-              : {
-                  left: '-8%',
-                  bottom: 0,
-                  height: '95%',
-                  width: 'auto',
-                }),
+            // 1期生は bottom:0 から height:95% (画像内上余白がヘッダー裏に隠れる)。
+            // 2期生は画像内の上余白がないので top:14cqmin スタートで、高さは1期生より
+            // 大きくして下にはみ出させる。left で中央位置を1期生に揃える
+            ...(isGen2
+              ? { top: '14cqmin', height: '130%', left: '-22%' }
+              : { bottom: 0, height: '95%', left: '-8%' }),
+            width: 'auto',
           }}
           draggable={false}
         />

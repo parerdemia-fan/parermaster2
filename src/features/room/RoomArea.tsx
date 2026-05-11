@@ -4,7 +4,7 @@ import { TalentSlot } from './TalentSlot.tsx'
 import { TalentSelector } from './TalentSelector.tsx'
 import { SpeechBubble } from './SpeechBubble.tsx'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath, isSquareStandingImage } from '../../shared/utils/talent.ts'
+import { getTalentStandingPath } from '../../shared/utils/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -51,7 +51,7 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
     () => SLOT_POSITIONS.map((pos) => {
       const id = slots[pos]
       const talent = id ? talents.find((t) => t.id === id) ?? null : null
-      return talent ? { position: pos, talent, isSquare: isSquareStandingImage(talent) } : null
+      return talent ? { position: pos, talent } : null
     }).filter((e): e is NonNullable<typeof e> => e !== null),
     [slots, talents],
   )
@@ -80,14 +80,14 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         const talentId = slots[pos]
         const talent = talentId ? talents.find((t) => t.id === talentId) : null
         const imagePath = talent ? getTalentStandingPath(talent) : null
-        const isSquare = talent ? isSquareStandingImage(talent) : false
+        const generation = talent?.generation === 2 ? 2 : 1
 
         return (
           <TalentSlot
             key={pos}
             talentId={talentId}
             imagePath={imagePath}
-            isSquare={isSquare}
+            generation={generation}
             position={pos}
             showSelector={showSelector}
             onClick={() => openSelector(pos)}
