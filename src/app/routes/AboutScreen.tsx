@@ -2,7 +2,7 @@ import { useEffect, useState, lazy, Suspense } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
 import { getVersion } from '../../shared/utils/version.ts'
-import { GAME_URL, PARERDEMIA_OFFICIAL_URL, QUESTION_FORM_URL } from '../../shared/constants/urls.ts'
+import { GAME_URL, PARERDEMIA_OFFICIAL_URL, PARERDEMIA_DASHBOARD_URL, QUESTION_FORM_URL } from '../../shared/constants/urls.ts'
 import { shareOnX as doShareOnX } from '../../shared/utils/share.ts'
 import { isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
 
@@ -123,6 +123,12 @@ ${GAME_URL}
             <LinkButton onClick={() => window.open(PARERDEMIA_OFFICIAL_URL, '_blank', 'noopener,noreferrer')}>
               🏫 パレデミア学園公式サイト
             </LinkButton>
+            <LinkButton onClick={() => window.open(PARERDEMIA_DASHBOARD_URL, '_blank', 'noopener,noreferrer')}>
+              📊 パレ学ダッシュボード（非公式）
+            </LinkButton>
+            <p style={{ fontSize: '2.2cqmin', color: '#888', lineHeight: 1.5, marginTop: '-0.8cqmin', marginLeft: '1cqmin' }}>
+              パレ学のYouTube配信や動画を一覧表示
+            </p>
             <LinkButton onClick={shareOnX}>
               𝕏 シェアする
             </LinkButton>
