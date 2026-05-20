@@ -3848,7 +3848,7 @@
       "familyKana": "ナツナギ",
       "givenKana": "ハツミ",
       "nicknames": [],
-      "firstPerson": "",
+      "firstPerson": "姫",
       "intro": "",
       "dream": "RTA in Japanに出たいです　お願いします",
       "birthday": "8月23日",
@@ -4035,6 +4035,10 @@
         {
           "tag": "#永遠に見てほしい",
           "usage": "FA"
+        },
+        {
+          "tag": "#To汐月永遠",
+          "usage": "他"
         }
       ],
       "hobbies": [
@@ -4112,6 +4116,10 @@
         {
           "tag": "#せっちゃん見て",
           "usage": "FA"
+        },
+        {
+          "tag": "#ぼたんの窓口",
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -4757,6 +4765,10 @@
         {
           "tag": "#つゆくさスケッチ",
           "usage": "FA"
+        },
+        {
+          "tag": "#なぎなぎみてね",
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -4821,9 +4833,13 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "",
+      "fanName": "ゆき群れ",
       "fanMark": "❄️💟🐺",
       "hashtags": [
+        {
+          "tag": "総合:ゆきむらほまれ",
+          "usage": ""
+        },
         {
           "tag": "#ゆきむらじお",
           "usage": "配信"
@@ -4895,8 +4911,12 @@
       "fanMark": "🌑☪️",
       "hashtags": [
         {
-          "tag": "#観月いお",
+          "tag": "#無月いお",
           "usage": "総合"
+        },
+        {
+          "tag": "#観月いお",
+          "usage": "配信"
         },
         {
           "tag": "#観測されたいお",
@@ -4967,6 +4987,10 @@
         {
           "tag": "#絵をみっけ",
           "usage": "FA"
+        },
+        {
+          "tag": "#みつけてみっけ",
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -5084,7 +5108,9 @@
       "givenName": "ダークウェル",
       "familyKana": "ニコ",
       "givenKana": "ダークウェル",
-      "nicknames": [],
+      "nicknames": [
+        "ニコウェル"
+      ],
       "firstPerson": "僕",
       "intro": "1 ：風吹けば名無し「陰キャ厨二病がVTuber始めた結果ｗｗｗ",
       "dream": "厨二病の神としてタワマンに城を構え、パレデミア学園のバラエティ担当として名を馳せ、でっかいライブをやる(文字数)",
