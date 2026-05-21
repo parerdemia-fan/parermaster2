@@ -1505,6 +1505,48 @@
       "eventName": "達成型イベント",
       "result": "SDイラスト獲得",
       "talentId": "25CO014"
+    },
+    {
+      "id": "a228",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a229",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "2位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a230",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "3位",
+      "talentId": "25WA013"
+    },
+    {
+      "id": "a231",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "4位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a232",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "5位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a233",
+      "eventDate": "202505",
+      "eventName": "美容室イベント",
+      "result": "6位",
+      "talentId": "25CO002"
     }
   ]
 }
