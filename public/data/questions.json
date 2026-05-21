@@ -6680,6 +6680,46 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/watch?v=rOTZV4ownR8"
+    },
+    {
+      "id": "q335",
+      "generation": 2,
+      "question": "自転車(エアロバイク)を漕ぎながら初配信を行った人は？",
+      "answers": [
+        "水凪るぅ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q336",
+      "generation": 2,
+      "question": "翡翠あかねが大好きな、「がちがちにオタクしてた、私の世界一」のグループは？",
+      "answers": [
+        "BiSH",
+        "DISH//",
+        "M!LK",
+        "JO1"
+      ],
+      "difficulty": 3,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=VP9SqhRvaLY"
     }
   ],
   "answerSets": {
