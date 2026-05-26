@@ -815,6 +815,10 @@
         {
           "tag": "#ゆらみて",
           "usage": "エゴサ"
+        },
+        {
+          "tag": "#ゆらぐっず",
+          "usage": "グッズ"
         }
       ],
       "hobbies": [
@@ -1585,6 +1589,10 @@
         {
           "tag": "#かめきち描いたよ",
           "usage": "FA"
+        },
+        {
+          "tag": "#みじかめきち",
+          "usage": "切り抜き"
         }
       ],
       "hobbies": [
@@ -1883,6 +1891,10 @@
         {
           "tag": "#なでコレクション",
           "usage": "FA"
+        },
+        {
+          "tag": "#なちぇこれくしょん",
+          "usage": "趣味の記録"
         }
       ],
       "hobbies": [
@@ -2616,6 +2628,10 @@
         {
           "tag": "#あいう絵オハナ",
           "usage": "FA"
+        },
+        {
+          "tag": "#おはなし植物館",
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -2901,6 +2917,10 @@
         {
           "tag": "#藤森あーと",
           "usage": "FA"
+        },
+        {
+          "tag": "#みてのもり",
+          "usage": "総合"
         }
       ],
       "hobbies": [
@@ -3565,7 +3585,7 @@
       "eyeColorLeft": "",
       "eyeColorRight": "",
       "mbti": "",
-      "fanName": "",
+      "fanName": "宵の民",
       "fanMark": "💻🎧",
       "hashtags": [
         {
@@ -3727,8 +3747,8 @@
           "usage": "FA"
         },
         {
-          "tag": "お昼枠#ライランチ",
-          "usage": ""
+          "tag": "#ライランチ",
+          "usage": "お昼枠"
         }
       ],
       "hobbies": [
@@ -3783,7 +3803,7 @@
       "familyKana": "ユウナギ",
       "givenKana": "マヨ",
       "nicknames": [],
-      "firstPerson": "",
+      "firstPerson": "うち",
       "intro": "そこのキミ、万夜を見よ〜〜っ！🫵\n唯一のオレンジ髪です🍊",
       "dream": "みんなで大型イベント開催！",
       "birthday": "7月21日",
@@ -4787,7 +4807,9 @@
       "givenName": "なぎ",
       "familyKana": "ツユクサ",
       "givenKana": "ナギ",
-      "nicknames": [],
+      "nicknames": [
+        "なぎなぎ"
+      ],
       "firstPerson": "",
       "intro": "こんなぎ〜！ 空からぽつり一雫 露草なぎだよ〜！",
       "dream": "好きなゲームのお仕事をすること！\n色んなところに旅をしたい✈️",
@@ -4881,8 +4903,8 @@
       "fanMark": "❄️💟🐺",
       "hashtags": [
         {
-          "tag": "総合:ゆきむらほまれ",
-          "usage": ""
+          "tag": "#ゆきむらほまれ",
+          "usage": "総合"
         },
         {
           "tag": "#ゆきむらじお",
