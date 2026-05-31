@@ -41,6 +41,24 @@ function getDetailNameFontSize(text: string): string {
   return `${Math.min(40 / text.length, 10)}cqmin`
 }
 
+/** "YYYYMM" を日本式年度（4月始まり）に変換する */
+function getFiscalYear(eventDate: string): number {
+  const year = Number(eventDate.slice(0, 4))
+  const month = Number(eventDate.slice(4, 6))
+  return month >= 4 ? year : year - 1
+}
+
+/** 受賞歴を年度ごとにまとめ、年度昇順・年度内はeventDate昇順で返す */
+function groupAwardsByFiscalYear(awards: Award[]): { year: number; items: Award[] }[] {
+  const map = new Map<number, Award[]>()
+  for (const a of [...awards].sort((x, y) => x.eventDate.localeCompare(y.eventDate))) {
+    const fy = getFiscalYear(a.eventDate)
+    if (!map.has(fy)) map.set(fy, [])
+    map.get(fy)!.push(a)
+  }
+  return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([year, items]) => ({ year, items }))
+}
+
 const TAB_ACCENT = '#d6336c'
 
 export function TalentListScreen() {
@@ -465,17 +483,34 @@ function TalentDetail({ talent, awards }: { talent: Talent; awards: Award[] }) {
         </ProfileSection>
       )}
 
-      {/* 受賞歴 */}
+      {/* 受賞歴（年度ごとにセクション分け、年度昇順・年度内も時系列昇順） */}
       {awards.length > 0 && (
         <ProfileSection emoji="🏆" title="受賞歴">
-          <div
-            className="flex flex-col"
-            style={{ gap: '1cqmin', fontWeight: 'bold', fontSize: DESC_FONT_SIZE, paddingLeft: '3%' }}
-          >
-            {awards.map((a) => (
-              <span key={a.id} style={{ color: '#29303c', textShadow: TEXT_SHADOW }}>
-                {a.eventName} {a.result}
-              </span>
+          <div className="flex flex-col" style={{ gap: '1.5cqmin', paddingLeft: '3%' }}>
+            {groupAwardsByFiscalYear(awards).map(({ year, items }) => (
+              <div key={year} className="flex flex-col" style={{ gap: '0.5cqmin' }}>
+                <div
+                  className="font-bold"
+                  style={{
+                    fontSize: '2.2cqmin',
+                    color: '#b45309',
+                    textShadow: TEXT_SHADOW,
+                    borderBottom: '0.2cqmin solid rgba(180,83,9,0.35)',
+                    paddingBottom: '0.3cqmin',
+                  }}
+                >
+                  {year}年度
+                </div>
+                {items.map((a) => (
+                  <span
+                    key={a.id}
+                    className="font-bold"
+                    style={{ fontSize: DESC_FONT_SIZE, color: '#29303c', textShadow: TEXT_SHADOW }}
+                  >
+                    {a.eventName} {a.result}
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </ProfileSection>
