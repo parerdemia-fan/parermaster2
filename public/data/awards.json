@@ -1575,6 +1575,97 @@
       "eventName": "SDイラスト獲得イベント",
       "result": "4位",
       "talentId": "26CO004"
+    },
+    {
+      "id": "a238",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a239",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "2位",
+      "talentId": "25ME007"
+    },
+    {
+      "id": "a240",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a241",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "4位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a242",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "5位",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a243",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "6位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a244",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "7位",
+      "talentId": "25WH015"
+    },
+    {
+      "id": "a245",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "8位",
+      "talentId": "25CO003"
+    },
+    {
+      "id": "a246",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "1位",
+      "talentId": "26WH005"
+    },
+    {
+      "id": "a247",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "2位",
+      "talentId": "26WH001"
+    },
+    {
+      "id": "a248",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "3位",
+      "talentId": "26WH003"
+    },
+    {
+      "id": "a249",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "4位",
+      "talentId": "26ME003"
+    },
+    {
+      "id": "a250",
+      "eventDate": "202605",
+      "eventName": "水着グッズ化イベント",
+      "result": "5位",
+      "talentId": "26WA003"
     }
   ]
 }
