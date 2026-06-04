@@ -39,8 +39,10 @@ Webクイズゲーム。React 19 + TypeScript + Vite 8 + Tailwind CSS v4.2 + Zus
 
 ## ネタ候補管理
 
-- `/pick-neta` で抽出したネタ候補にプロデューサーがボツを宣告した場合、その理由を `docs/neta-ng-criteria.md` に追記し、`/pick-neta` コマンド（`.claude/commands/pick-neta.md`）の抽出基準も改善する
-- NG基準が追加されたら、`docs/neta-candidates.md` の既存候補も確認し、同じ理由で該当するものがあれば削除する
+- ネタ候補は Google スプレッドシートの**「知識問題候補」シート**で運用する。`/pick-neta` が候補を push し、プロデューサーがシート上で判定（判定ステータス列）、`/judge-neta` がその判定を取り込む。スクリプトは `scripts/neta-sheet.ts`（`pnpm neta:ensure` / `neta:push` / `neta:pull`）
+- `docs/neta-candidates.md` は**凍結アーカイブ**（過去の却下表の参考のみ。新規候補は書き込まない）
+- NG 基準の正本は `docs/neta-ng-criteria.md`、抽出方針・採用傾向は `docs/neta-trends.md`（統計は `pnpm trends:stats` で自動再生成）
+- プロデューサーがボツを宣告した場合、その理由を `docs/neta-ng-criteria.md` に追記し、`docs/neta-trends.md`「2. 現在の申し送り」に反映する。`/pick-neta` の抽出基準は申し送り経由で改善する
 
 ## 注意事項
 

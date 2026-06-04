@@ -9,7 +9,11 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "sync": "tsx scripts/sync-spreadsheet.ts"
+    "sync": "tsx scripts/sync-spreadsheet.ts",
+    "neta:ensure": "tsx scripts/neta-sheet.ts ensure",
+    "neta:push": "tsx scripts/neta-sheet.ts push",
+    "neta:pull": "tsx scripts/neta-sheet.ts pull",
+    "trends:stats": "python3 scripts/analyze-questions.py --write-trends"
   },
   "dependencies": {
     "gsap": "^3.14.2",

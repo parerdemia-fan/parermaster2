@@ -5484,6 +5484,26 @@
     {
       "id": "q275",
       "generation": 1,
+      "question": "堂下さとりが一番好きなSEVENTEENアイスはどれ？",
+      "answers": [
+        "カラフルチョコ〈ミルク〉",
+        "クッキー＆クリーム",
+        "ソーダフロート",
+        "チョコミント"
+      ],
+      "difficulty": 6,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天透あわ「ねえあわもこれ好き‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️」",
+      "sourceUrl": "https://x.com/doushitasatori/status/2042472286427746387"
+    },
+    {
+      "id": "q276",
+      "generation": 1,
       "question": "ミュゥ寮の名前の由来は猫の鳴き声ですが、猫乃間うとはどの寮？",
       "answers": [
         "クゥ寮",
@@ -5502,7 +5522,7 @@
       "sourceUrl": "https://www.parerdemia.jp/students/25CO012"
     },
     {
-      "id": "q276",
+      "id": "q277",
       "generation": 1,
       "question": "猫乃間うとが好きな焼き肉は？",
       "answers": [
@@ -5522,7 +5542,7 @@
       "sourceUrl": "https://youtu.be/zpBQZYy_TAA?t=4850"
     },
     {
-      "id": "q277",
+      "id": "q278",
       "generation": 1,
       "question": "一人称が「わし」の人は？",
       "answers": [
@@ -5542,7 +5562,7 @@
       "sourceUrl": "https://x.com/search?q=nekonoma_uto%20%E3%82%8F%E3%81%97&src=typed_query&f=top"
     },
     {
-      "id": "q278",
+      "id": "q279",
       "generation": 1,
       "question": "第一回雀魂大会で2位になり、2026年1月11日の配信では完全試合を達成した人は？",
       "answers": [
@@ -5562,7 +5582,7 @@
       "sourceUrl": "https://youtu.be/JZ0fF_Hd0cI?t=12337"
     },
     {
-      "id": "q279",
+      "id": "q280",
       "generation": 1,
       "question": "猫乃間うとが飼っている3匹の猫、まりん・小梅ともう1匹は？",
       "answers": [
@@ -5582,7 +5602,7 @@
       "sourceUrl": "https://x.com/nekonoma_uto/status/1972609705131508030"
     },
     {
-      "id": "q280",
+      "id": "q281",
       "generation": 1,
       "question": "最下位ならバブ化する視聴者参加型雀魂配信をやっているのは？",
       "answers": [
@@ -5602,7 +5622,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=7FgzF51q1DI"
     },
     {
-      "id": "q281",
+      "id": "q282",
       "generation": 1,
       "question": "第2回投票イベントF6ファンダムアートグッズで猫乃間うとが着ている服は何？",
       "answers": [
@@ -5622,7 +5642,27 @@
       "sourceUrl": "https://x.com/nekonoma_uto/status/2050860030417928326"
     },
     {
-      "id": "q282",
+      "id": "q283",
+      "generation": 1,
+      "question": "猫乃間うとがライブピクトのお題を読み間違えた禊で1週間改名した名前は？",
+      "answers": [
+        "猫乃間うも",
+        "猫乃間うよ",
+        "猫乃間うお",
+        "猫乃間うの"
+      ],
+      "difficulty": 6,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "「初めまして！\n猫の間でうもうもしたい、猫乃間うもです✨✨」",
+      "sourceUrl": "https://www.youtube.com/shorts/Mz8_Pl8XoN4"
+    },
+    {
+      "id": "q284",
       "generation": 2,
       "question": "裏風紀委員長を自称している寮生は誰？",
       "answers": [
@@ -5642,7 +5682,7 @@
       "sourceUrl": "https://x.com/suzu_shirao/status/2044689524488536182"
     },
     {
-      "id": "q283",
+      "id": "q285",
       "generation": 2,
       "question": "ハッシュタグにも使用されている白尾すずの愛称は？",
       "answers": [
@@ -5662,7 +5702,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q284",
+      "id": "q286",
       "generation": 2,
       "question": "白尾すずが作るのも食べるのも好きな、作るのが難しいスイーツは？",
       "answers": [
@@ -5682,7 +5722,7 @@
       "sourceUrl": "https://youtu.be/4ngpeGG0Z2E?t=711"
     },
     {
-      "id": "q285",
+      "id": "q287",
       "generation": 1,
       "question": "畑スイカのファンネームは？",
       "answers": [
@@ -5702,7 +5742,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q286",
+      "id": "q288",
       "generation": 1,
       "question": "この画像の作者は？",
       "answers": [
@@ -5722,7 +5762,7 @@
       "sourceUrl": "https://x.com/HATASUIKA/status/1960972761607888952"
     },
     {
-      "id": "q287",
+      "id": "q289",
       "generation": 1,
       "question": "クゥ寮の1期生で最も背が低いのは誰？",
       "answers": [
@@ -5742,7 +5782,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q288",
+      "id": "q290",
       "generation": 1,
       "question": "お料理対決オフコラボの英語のお買い物リストで畑スイカがわからなかったものは？",
       "answers": [
@@ -5762,7 +5802,7 @@
       "sourceUrl": "https://youtu.be/_Oir6eSVf3Q?t=229"
     },
     {
-      "id": "q289",
+      "id": "q291",
       "generation": 1,
       "question": "タロット占いができるのは？",
       "answers": [
@@ -5782,7 +5822,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q290",
+      "id": "q292",
       "generation": 1,
       "question": "八重森ふゆののネームロゴの「重」の時に描かれているものは？",
       "answers": [
@@ -5802,7 +5842,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q291",
+      "id": "q293",
       "generation": 1,
       "question": "八重森ふゆのがタロットカードで当てたものは？",
       "answers": [
@@ -5822,7 +5862,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2005204324205678857"
     },
     {
-      "id": "q292",
+      "id": "q294",
       "generation": 1,
       "question": "八重森ふゆのの年齢は？",
       "answers": [
@@ -5842,7 +5882,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/5KH20X--jM0"
     },
     {
-      "id": "q293",
+      "id": "q295",
       "generation": 1,
       "question": "八重森ふゆのが2026年の初詣で奉納した絵馬の形は？",
       "answers": [
@@ -5862,7 +5902,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2008803932207018111"
     },
     {
-      "id": "q294",
+      "id": "q296",
       "generation": 1,
       "question": "八重森ふゆのが応援しているプロ野球チームは？",
       "answers": [
@@ -5882,7 +5922,7 @@
       "sourceUrl": "https://x.com/yaemori_fuyuno/status/2040037100452724741"
     },
     {
-      "id": "q295",
+      "id": "q297",
       "generation": 1,
       "question": "彼方ルカのファンネームは？",
       "answers": [
@@ -5902,7 +5942,7 @@
       "sourceUrl": "https://youtu.be/Bpp7FsCI7YI?t=1258"
     },
     {
-      "id": "q296",
+      "id": "q298",
       "generation": 1,
       "question": "彼方ルカのネームロゴの「方」の字に描かれているものは？",
       "answers": [
@@ -5922,7 +5962,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q297",
+      "id": "q299",
       "generation": 1,
       "question": "彼方ルカの寿司で鬼滅メン決めよう会で鬼舞辻無惨は？",
       "answers": [
@@ -5942,7 +5982,7 @@
       "sourceUrl": "https://x.com/Ruka__Kanata/status/2000956092889882912"
     },
     {
-      "id": "q298",
+      "id": "q300",
       "generation": 1,
       "question": "パレデミア学園声劇サークルのサークル長さん様は誰？",
       "answers": [
@@ -5962,7 +6002,7 @@
       "sourceUrl": "https://www.youtube.com/live/dXpQnprMfQA"
     },
     {
-      "id": "q299",
+      "id": "q301",
       "generation": 1,
       "question": "彼方ルカが「真相にたどり着く瞬間はコナンだった」と語った推理ゲームは？",
       "answers": [
@@ -5982,7 +6022,7 @@
       "sourceUrl": "https://x.com/Ruka__Kanata/status/2040438003995492390"
     },
     {
-      "id": "q300",
+      "id": "q302",
       "generation": 1,
       "question": "緋雨柚のファンマークは？",
       "answers": [
@@ -6002,7 +6042,7 @@
       "sourceUrl": "https://youtu.be/obKW1uLdceQ?t=2240"
     },
     {
-      "id": "q301",
+      "id": "q303",
       "generation": 1,
       "question": "ミュゥ寮の銀髪オッドアイの人は誰？",
       "answers": [
@@ -6022,7 +6062,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q302",
+      "id": "q304",
       "generation": 1,
       "question": "オーディションでセミのモノマネをしたのは誰？",
       "answers": [
@@ -6042,7 +6082,7 @@
       "sourceUrl": "https://youtu.be/kStZKpKGwoM?t=2376"
     },
     {
-      "id": "q303",
+      "id": "q305",
       "generation": 1,
       "question": "ミュゥ寮マイクラサーバーで最初の建物(プレハブ)を建てた人は？",
       "answers": [
@@ -6062,7 +6102,7 @@
       "sourceUrl": "https://x.com/Hisame_Yuzu/status/2010067679005335583"
     },
     {
-      "id": "q304",
+      "id": "q306",
       "generation": 1,
       "question": "2026年4月発売の職業体験グッズで緋雨柚がなった職業は？",
       "answers": [
@@ -6082,7 +6122,7 @@
       "sourceUrl": "https://x.com/Hisame_Yuzu/status/2046398715653681487"
     },
     {
-      "id": "q305",
+      "id": "q307",
       "generation": 1,
       "question": "ファンマークが🥀⚔️の、記憶を亡くした祓魔師といえば？",
       "answers": [
@@ -6102,7 +6142,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q306",
+      "id": "q308",
       "generation": 1,
       "question": "初配信で殺人チャーハン(未遂)の話をしたのは？",
       "answers": [
@@ -6122,7 +6162,7 @@
       "sourceUrl": "https://x.com/search?q=hizukiroseblade%20%E3%83%81%E3%83%A3%E3%83%BC%E3%83%8F%E3%83%B3&src=typed_query&f=top"
     },
     {
-      "id": "q307",
+      "id": "q309",
       "generation": 1,
       "question": "緋月・ローズ・ブレイドがマシュマロで好きなアーティストを聞かれたときに名前を挙げた人は？",
       "answers": [
@@ -6142,7 +6182,7 @@
       "sourceUrl": "https://marshmallow-qa.com/messages/10383928-5ce0-47bb-95c1-d249b15e99aa?utm_medium=twitter&utm_source=answer"
     },
     {
-      "id": "q308",
+      "id": "q310",
       "generation": 1,
       "question": "緋月・ローズ・ブレイドが「世界を救う」と絶賛する中華料理は？",
       "answers": [
@@ -6162,7 +6202,7 @@
       "sourceUrl": "https://x.com/hizukiroseblade/status/1994924925753462831"
     },
     {
-      "id": "q309",
+      "id": "q311",
       "generation": 1,
       "question": "1周年記念配信で初めてマスクを外したのは誰？",
       "answers": [
@@ -6182,7 +6222,7 @@
       "sourceUrl": "https://x.com/hizukiroseblade/status/2053482156824166666"
     },
     {
-      "id": "q310",
+      "id": "q312",
       "generation": 1,
       "question": "飛渡ココに関係の深い動物は？",
       "answers": [
@@ -6202,7 +6242,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q311",
+      "id": "q313",
       "generation": 1,
       "question": "2025年5月11日の初配信から10時間×30日=300時間配信を行ったのは誰？",
       "answers": [
@@ -6222,7 +6262,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q312",
+      "id": "q314",
       "generation": 1,
       "question": "飛渡ココのネームロゴの1つ目の「コ」に描かれているものは？",
       "answers": [
@@ -6242,7 +6282,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q313",
+      "id": "q315",
       "generation": 1,
       "question": "パレ学MBTIまとめを作った人は？",
       "answers": [
@@ -6262,7 +6302,7 @@
       "sourceUrl": "https://x.com/totococopopo/status/2004932973737771173"
     },
     {
-      "id": "q314",
+      "id": "q316",
       "generation": 1,
       "question": "飛渡ココが描く「おはぽぽ漫画」に登場する食パンのキャラの名前は？",
       "answers": [
@@ -6282,7 +6322,7 @@
       "sourceUrl": "https://x.com/totococopopo/status/2002846663778717988"
     },
     {
-      "id": "q315",
+      "id": "q317",
       "generation": 1,
       "question": "飛渡ココのネイルの色は何？",
       "answers": [
@@ -6302,7 +6342,7 @@
       "sourceUrl": "https://x.com/totococopopo/status/2033096978004128110"
     },
     {
-      "id": "q316",
+      "id": "q318",
       "generation": 1,
       "question": "氷雨セイのヘッドホンの色は？",
       "answers": [
@@ -6322,7 +6362,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q317",
+      "id": "q319",
       "generation": 1,
       "question": "じゃがいもの芽を食べてしまい死にそうになったのは誰？",
       "answers": [
@@ -6342,7 +6382,7 @@
       "sourceUrl": "https://www.tiktok.com/@say_hisame/video/7506107434033745170"
     },
     {
-      "id": "q318",
+      "id": "q320",
       "generation": 1,
       "question": "入寮式で全寮で運動会をやりたいと言っていたのは誰？",
       "answers": [
@@ -6362,7 +6402,7 @@
       "sourceUrl": "https://youtu.be/kStZKpKGwoM?t=2275"
     },
     {
-      "id": "q319",
+      "id": "q321",
       "generation": 1,
       "question": "脚に魚の形のステッカー？を貼っているのは誰？",
       "answers": [
@@ -6382,7 +6422,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q320",
+      "id": "q322",
       "generation": 2,
       "question": "巳野みことが好きなミニトマトの品種は？",
       "answers": [
@@ -6402,7 +6442,7 @@
       "sourceUrl": "https://x.com/mino_micoto/status/2044536129052152101"
     },
     {
-      "id": "q321",
+      "id": "q323",
       "generation": 2,
       "question": "メタル好きの巳野みことが「今アツい」と語った海外メタルバンドは？",
       "answers": [
@@ -6422,7 +6462,7 @@
       "sourceUrl": "https://x.com/mino_micoto/status/2045576218922381408"
     },
     {
-      "id": "q322",
+      "id": "q324",
       "generation": 2,
       "question": "巳野みことのファンネームはどれ？",
       "answers": [
@@ -6442,7 +6482,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/lzd9cQcWqyg"
     },
     {
-      "id": "q323",
+      "id": "q325",
       "generation": 1,
       "question": "学マスガチ勢の銀髪ツインテオッドアイの人は？",
       "answers": [
@@ -6462,7 +6502,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q324",
+      "id": "q326",
       "generation": 1,
       "question": "夢ト見りんねの初めての寮外コラボ相手は？",
       "answers": [
@@ -6482,7 +6522,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q325",
+      "id": "q327",
       "generation": 1,
       "question": "夢ト見りんねが神ゲーだと言っていたゲームは？",
       "answers": [
@@ -6502,7 +6542,7 @@
       "sourceUrl": "https://x.com/search?q=Yumetomi_Rinne%20APEX&src=typed_query&f=live"
     },
     {
-      "id": "q326",
+      "id": "q328",
       "generation": 2,
       "question": "右目隠れで唯一無二のpurple hairといえば？",
       "answers": [
@@ -6522,7 +6562,7 @@
       "sourceUrl": "https://x.com/62ki_10/status/2045349134744564190"
     },
     {
-      "id": "q327",
+      "id": "q329",
       "generation": 2,
       "question": "無月いおがYouTubeの初投稿ショート動画で歌ってみた曲は？",
       "answers": [
@@ -6542,7 +6582,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=gQkYLhobqz0"
     },
     {
-      "id": "q328",
+      "id": "q330",
       "generation": 2,
       "question": "2026年5月27日の配信でYouTubeチャンネル登録者数500名を2期生で初めて達成したのは？",
       "answers": [
@@ -6562,7 +6602,7 @@
       "sourceUrl": "https://x.com/62ki_10/status/2059697026741518763"
     },
     {
-      "id": "q329",
+      "id": "q331",
       "generation": 2,
       "question": "初投稿動画で、最長で33.5時間睡眠したことを紹介した人は誰？",
       "answers": [
@@ -6582,7 +6622,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/4TMHTjHhAq4"
     },
     {
-      "id": "q330",
+      "id": "q332",
       "generation": 2,
       "question": "夜雨ねむるが推しているサンリオキャラは？",
       "answers": [
@@ -6602,7 +6642,7 @@
       "sourceUrl": "https://x.com/Yaunemuru/status/2044341980516516093"
     },
     {
-      "id": "q331",
+      "id": "q333",
       "generation": 2,
       "question": "ももが好きで利きももが特技の人は？",
       "answers": [
@@ -6622,7 +6662,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q332",
+      "id": "q334",
       "generation": 1,
       "question": "語尾が「のじゃ」で魔界出身の人は？",
       "answers": [
@@ -6642,7 +6682,7 @@
       "sourceUrl": "https://x.com/yayoikaren/status/1940025548174237896"
     },
     {
-      "id": "q333",
+      "id": "q335",
       "generation": 1,
       "question": "ハロウィングッズで夜宵カレンは何になった？",
       "answers": [
@@ -6662,7 +6702,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q334",
+      "id": "q336",
       "generation": 1,
       "question": "誰のツイート？\n「童磨様にえらい‼️がんばったね‼️してもらえたから明日からも生きる🤩🤩🤩🤩🤩👍👍👍👍👍💖💖💖💖💖サイコ～～～～～⤴️⤴️⤴️⤴️⤴️」",
       "answers": [
@@ -6682,7 +6722,7 @@
       "sourceUrl": "https://x.com/yayoikaren/status/1959644316546261281"
     },
     {
-      "id": "q335",
+      "id": "q337",
       "generation": 2,
       "question": "パレ学で唯一のオレンジ髪は？",
       "answers": [
@@ -6702,7 +6742,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q336",
+      "id": "q338",
       "generation": 0,
       "question": "夕凪万夜が入学前にパレ学で一番最初に知ったと告白した1期生の先輩は？",
       "answers": [
@@ -6722,7 +6762,7 @@
       "sourceUrl": "https://x.com/mayo_yunagi/status/2045428877028438044"
     },
     {
-      "id": "q337",
+      "id": "q339",
       "generation": 2,
       "question": "殺陣・体術・ガンアクション・パルクールの経験者は？",
       "answers": [
@@ -6742,7 +6782,7 @@
       "sourceUrl": "https://youtu.be/5UsERXSEgOs?t=1559"
     },
     {
-      "id": "q338",
+      "id": "q340",
       "generation": 1,
       "question": "鈴木沙透のファンネームは？",
       "answers": [
@@ -6762,7 +6802,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q339",
+      "id": "q341",
       "generation": 1,
       "question": "前髪に大きい黒兎の髪留めをつけている人は？",
       "answers": [
@@ -6782,7 +6822,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q340",
+      "id": "q342",
       "generation": 1,
       "question": "鈴木沙透が初めて入賞したグッズ化イベントは？",
       "answers": [
@@ -6802,7 +6842,7 @@
       "sourceUrl": "https://x.com/seabass_sugar/status/1976598498184429816"
     },
     {
-      "id": "q341",
+      "id": "q343",
       "generation": 1,
       "question": "鈴木沙透のXのIDは？",
       "answers": [
@@ -6822,7 +6862,7 @@
       "sourceUrl": "https://x.com/seabass_sugar"
     },
     {
-      "id": "q342",
+      "id": "q344",
       "generation": 1,
       "question": "ミュゥ寮マイクラサーバーで洞窟にいたチキンジョッキーを倒してLava Chickenのレコードを手に入れた人は？",
       "answers": [
@@ -6842,7 +6882,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=7Vq5nwKmduI&t=4686s"
     },
     {
-      "id": "q343",
+      "id": "q345",
       "generation": 1,
       "question": "恋歌さわこのメガネを取るとどうなっている？",
       "answers": [
@@ -6862,7 +6902,7 @@
       "sourceUrl": "https://x.com/Ageha_kageyama/status/1979705608535458248"
     },
     {
-      "id": "q344",
+      "id": "q346",
       "generation": 1,
       "question": "お菓子作りの国家資格を持っているDJは？",
       "answers": [
@@ -6882,7 +6922,7 @@
       "sourceUrl": "https://youtu.be/kStZKpKGwoM?t=4943"
     },
     {
-      "id": "q345",
+      "id": "q347",
       "generation": 1,
       "question": "ミュゥ寮1期生で恋歌さわこだけが持つ特徴は？",
       "answers": [
@@ -6902,7 +6942,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q346",
+      "id": "q348",
       "generation": 1,
       "question": "恋歌さわこが「午年なので踊ってみました！」という動画で踊っていた曲は？",
       "answers": [
@@ -6922,7 +6962,7 @@
       "sourceUrl": "https://www.youtube.com/shorts/A5pheV-GZZY"
     },
     {
-      "id": "q347",
+      "id": "q349",
       "generation": 2,
       "question": "露草なぎが好きな逆転裁判シリーズのキャラクターは？",
       "answers": [
@@ -6942,7 +6982,7 @@
       "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2044377985076302032"
     },
     {
-      "id": "q348",
+      "id": "q350",
       "generation": 2,
       "question": "露草なぎが刀剣乱舞で推している刀剣男士は？",
       "answers": [
@@ -6962,7 +7002,7 @@
       "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2047247030129733831"
     },
     {
-      "id": "q349",
+      "id": "q351",
       "generation": 2,
       "question": "露草なぎが自分のトレードマークと宣言しているパーツは？",
       "answers": [
@@ -6982,7 +7022,7 @@
       "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2044336582015299709"
     },
     {
-      "id": "q350",
+      "id": "q352",
       "generation": 2,
       "question": "「バゥ寮の赤色担当」を自称する2期生は？",
       "answers": [
@@ -7002,7 +7042,7 @@
       "sourceUrl": "https://x.com/Hisui_Ak4ne/status/2044424187553648891"
     },
     {
-      "id": "q351",
+      "id": "q353",
       "generation": 2,
       "question": "翡翠あかねが大好きな、「がちがちにオタクしてた、私の世界一」のグループは？",
       "answers": [
@@ -7022,7 +7062,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=VP9SqhRvaLY"
     },
     {
-      "id": "q352",
+      "id": "q354",
       "generation": 2,
       "question": "2期生のツインお団子ヘアー、天堂ライラともう一人は誰？",
       "answers": [
@@ -7042,7 +7082,7 @@
       "sourceUrl": ""
     },
     {
-      "id": "q353",
+      "id": "q355",
       "generation": 0,
       "question": "クゥ寮の共通タグは？",
       "answers": [
@@ -7060,6 +7100,206 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://x.com/unaunasakura/status/2059950367094575335"
+    },
+    {
+      "id": "q356",
+      "generation": 2,
+      "question": "夏凪はつみが『結構ガチ』と語るあんスタの担当ユニットは？",
+      "answers": [
+        "ALKALOID",
+        "Knights",
+        "Trickstar",
+        "fine"
+      ],
+      "difficulty": 5,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "ニコ・ダークウェル「当方、アンデPとラビおじです。」",
+      "sourceUrl": "https://x.com/Natsunagi823/status/2056319787136155744"
+    },
+    {
+      "id": "q357",
+      "generation": 2,
+      "question": "夏凪はつみの配信ハッシュタグは？",
+      "answers": [
+        "#夏凪はつみと地獄まで",
+        "#夏凪はつみと天国まで",
+        "#夏凪はつみと最果てまで",
+        "#夏凪はつみと海の底まで"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夏凪はつみ「地獄でまってる」",
+      "sourceUrl": "https://x.com/Natsunagi823/status/2056185674987147387"
+    },
+    {
+      "id": "q358",
+      "generation": 2,
+      "question": "汐月永遠のファンネームは？",
+      "answers": [
+        "しづとも",
+        "下僕",
+        "とわフレ",
+        "汐彩の民"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/SizukiTowa2641/status/2058945826110775345"
+    },
+    {
+      "id": "q359",
+      "generation": 2,
+      "question": "『私の配信では私が絶対の王であり法律です、みなさんよろしくお願いします😘』と宣言したのは？",
+      "answers": [
+        "汐月永遠",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "ツイート",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/SizukiTowa2641/status/2056073869010870534"
+    },
+    {
+      "id": "q360",
+      "generation": 2,
+      "question": "火狐むいが自己紹介で名乗る「きつねの村からやってきた○○お姉さん」とは？",
+      "answers": [
+        "オタク",
+        "あやかし",
+        "もののけ",
+        "最強"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/kako_mui/status/2054421032610742778"
+    },
+    {
+      "id": "q361",
+      "generation": 2,
+      "question": "露草なぎが「まじで青春」と語り、リメイクをずっと待ち望んでいるスクエニ作品は？",
+      "answers": [
+        "ドラクエ9",
+        "クロノ・トリガー",
+        "Final Fantasy VI",
+        "ゼノギアス"
+      ],
+      "difficulty": 5,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夕凪万夜「なかま」",
+      "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2059599767332876518"
+    },
+    {
+      "id": "q362",
+      "generation": 2,
+      "question": "無月いおがYouTubeで自己紹介より先に公開した、自分を分析する動画の企画は？",
+      "answers": [
+        "MBTI診断",
+        "心理テスト",
+        "占い鑑定",
+        "適性診断"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=VCUSxUx6tWo"
+    },
+    {
+      "id": "q363",
+      "generation": 2,
+      "question": "宵坂伊織が全巻買って何度も読み返し、アニメも実写も見たうえで「やっぱり漫画が一番好き」と語った作品は？",
+      "answers": [
+        "いぬやしき",
+        "鬼滅の刃",
+        "ゴールデンカムイ",
+        "進撃の巨人"
+      ],
+      "difficulty": 5,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/yoizaka_iori/status/2044596916433064281"
+    },
+    {
+      "id": "q364",
+      "generation": 2,
+      "question": "自称ゲームプログラマーの卵・宵坂伊織が「ばっかやってきた」と語った、主に学んできたプログラミング言語は？",
+      "answers": [
+        "C言語",
+        "Python",
+        "Ruby",
+        "JavaScript"
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夕凪万夜「C言語できるんは尊敬なんよ…」",
+      "sourceUrl": "https://x.com/yoizaka_iori/status/2046210946964885707"
+    },
+    {
+      "id": "q365",
+      "generation": 2,
+      "question": "宵坂伊織が投稿している、選択肢で展開が変わるゲーム寸劇ショート動画を制作するのに使っているゲームエンジンは？",
+      "answers": [
+        "Unity",
+        "Unreal Engine",
+        "Godot",
+        "GameMaker"
+      ],
+      "difficulty": 6,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "宵坂伊織「寸劇とか今投稿してんのはUnityってゲームエンジンで作ってんで！」",
+      "sourceUrl": "https://x.com/yoizaka_iori/status/2047489041814392902"
     }
   ],
   "answerSets": {
