@@ -13,6 +13,7 @@
     "neta:ensure": "tsx scripts/neta-sheet.ts ensure",
     "neta:push": "tsx scripts/neta-sheet.ts push",
     "neta:pull": "tsx scripts/neta-sheet.ts pull",
+    "neta:stats": "tsx scripts/neta-sheet.ts stats",
     "trends:stats": "python3 scripts/analyze-questions.py --write-trends"
   },
   "dependencies": {

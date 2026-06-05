@@ -7300,6 +7300,86 @@
       "answerPool": "",
       "comment": "宵坂伊織「寸劇とか今投稿してんのはUnityってゲームエンジンで作ってんで！」",
       "sourceUrl": "https://x.com/yoizaka_iori/status/2047489041814392902"
+    },
+    {
+      "id": "q366",
+      "generation": 2,
+      "question": "夕凪万夜が原神で「最推し」と公言しているキャラクターは？",
+      "answers": [
+        "早柚",
+        "七七",
+        "ノエル",
+        "フィッシュル"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夕凪万夜「早柚ちゃんんんんんん(最推し)」",
+      "sourceUrl": "https://x.com/mayo_yunagi/status/2052730650587967708"
+    },
+    {
+      "id": "q367",
+      "generation": 2,
+      "question": "冬星れんこんが決めたファンネーム「れんちゅ」の「ちゅ」は、何の言葉から取られている？",
+      "answers": [
+        "ありがと、ちゅ",
+        "ちゅーる",
+        "ちゅーりっぷ",
+        "琉球語のちゅ(人)"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Renkon_Fuyu/status/2057980444289974724"
+    },
+    {
+      "id": "q368",
+      "generation": 2,
+      "question": "ハロウィン(10月31日)が誕生日なのは誰？",
+      "answers": [
+        "ニコ・ダークウェル",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q369",
+      "generation": 2,
+      "question": "ニコ・ダークウェルが「僕の笑いの師匠」と慕い、弟子入りした先輩は？",
+      "answers": [
+        "堂下さとり",
+        "[1期生]",
+        "[1期生]",
+        "[1期生]"
+      ],
+      "difficulty": 5,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "ニコ・ダークウェル「いつも配信で元気もらってます！\nどこまでもついて行かせてください！！」",
+      "sourceUrl": "https://x.com/nikodarkwell/status/2057405697420361987"
     }
   ],
   "answerSets": {
