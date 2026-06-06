@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useEffect } from 'react'
 import { useSettingsStore, type DormId, type Scope, type GameMode } from '../../stores/settingsStore.ts'
 import { useGameStore } from '../../stores/gameStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
@@ -74,18 +74,21 @@ export function SettingScreen() {
       setDifficulty(2)
     }
   }
+
+  // 設定画面表示時、現在のスロットで難易度3（むずかしい/激ムズ）が未解放なら下げる
+  // （別スロットで選んだ難易度3が未解放スロットへ持ち越されるのを防ぐ）
+  useEffect(() => {
+    downgradeDifficultyIfLocked(toSlotId(gameMode, modeCategory, scope))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const handleScopeChange = (newScope: Scope) => {
     setScope(newScope)
     downgradeDifficultyIfLocked(toSlotId(gameMode, modeCategory, newScope))
   }
   const handleGameModeChange = (newMode: GameMode) => {
     setGameMode(newMode)
-    // 2期生知識クイズはむずかしい（難易度3）未対応のため2以下に制限
-    if (!isDormMode && generation === 'gen2' && newMode === 'knowledge' && difficulty > 2) {
-      setDifficulty(2)
-    } else {
-      downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
-    }
+    downgradeDifficultyIfLocked(toSlotId(newMode, modeCategory, scope))
   }
 
   const handleStart = useCallback(async () => {
@@ -117,6 +120,13 @@ export function SettingScreen() {
           { level: 1, count: 7, ordered: false },
           { level: 2, count: 8, ordered: false },
           { level: 3, count: 10, ordered: false },
+        ]
+      } else if (gen === 2 && difficulty === 3) {
+        // 2期生むずかしい: TQ3ランダム10問 → TQ4ランダム15問 → TQ5ランダム5問（1期生むずかしいと同構成）
+        segments = [
+          { level: 3, count: 10, ordered: false },
+          { level: 4, count: 15, ordered: false },
+          { level: 5, count: 5, ordered: false },
         ]
       } else if (difficulty === 1) {
         // 1期生ふつう: TQ1〜TQ3からランダム出題
@@ -308,7 +318,14 @@ export function SettingScreen() {
             <div className="flex items-center justify-center" style={{ gap: '2cqmin' }}>
               <PillButton label="きほん" selected={difficulty === 1} accentColor={accentColor} size="small" onClick={() => setDifficulty(1)} />
               <PillButton label="ふつう" selected={difficulty === 2} accentColor={accentColor} size="small" onClick={() => setDifficulty(2)} />
-              <PillButton label="むずかしい（準備中）" selected={false} accentColor={accentColor} size="small" locked onClick={undefined} />
+              <PillButton
+                label={difficulty3Unlocked ? 'むずかしい' : '🔒 むずかしい'}
+                selected={difficulty === 3}
+                accentColor={accentColor}
+                size="small"
+                locked={!difficulty3Unlocked}
+                onClick={difficulty3Unlocked ? () => setDifficulty(3) : undefined}
+              />
             </div>
           </>
         )}

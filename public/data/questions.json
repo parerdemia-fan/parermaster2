@@ -2091,7 +2091,7 @@
         "みずびたシティー",
         "チックタックロック"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2171,7 +2171,7 @@
         "Ado",
         "YOASOBI"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2531,7 +2531,7 @@
         "明智小五郎",
         "江戸川コナン"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -2831,7 +2831,7 @@
         "山田伝蔵",
         "学園長"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -3651,7 +3651,7 @@
         "水まんじゅう",
         "いちご大福"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4251,7 +4251,7 @@
         "海蛍",
         "躁転彼女"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4291,7 +4291,7 @@
         "ハスキーボイス",
         "ウィスパーボイス"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4771,7 +4771,7 @@
         "日番谷冬獅郎",
         "黒崎一護"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "プロフィール",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4831,7 +4831,7 @@
         "モーツァルト「トルコ行進曲」",
         "ベートーヴェン「エリーゼのために」"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -4951,7 +4951,7 @@
         "宝鐘マリン",
         "白上フブキ"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6431,7 +6431,7 @@
         "北の太陽",
         "シシリアンルージュ"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6451,7 +6451,7 @@
         "EPICA",
         "THROWN"
       ],
-      "difficulty": 3,
+      "difficulty": 5,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6571,7 +6571,7 @@
         "メフィスト (女王蜂)",
         "セレナーデ (なとり)"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6631,7 +6631,7 @@
         "シナモロール",
         "マイメロディ"
       ],
-      "difficulty": 2,
+      "difficulty": 3,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6971,7 +6971,7 @@
         "ゴドー",
         "綾里真宵"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -6991,7 +6991,7 @@
         "鶴丸国永",
         "加州清光"
       ],
-      "difficulty": 3,
+      "difficulty": 4,
       "genre": "",
       "sortAnswers": false,
       "hideIcon": false,
@@ -7264,7 +7264,7 @@
     {
       "id": "q364",
       "generation": 2,
-      "question": "自称ゲームプログラマーの卵・宵坂伊織が「ばっかやってきた」と語った、主に学んできたプログラミング言語は？",
+      "question": "自称ゲームプログラマーの卵・宵坂伊織が「◯◯◯ばっかやってきた」と語った、主に学んできたプログラミング言語は？",
       "answers": [
         "C言語",
         "Python",
@@ -7291,7 +7291,7 @@
         "Godot",
         "GameMaker"
       ],
-      "difficulty": 6,
+      "difficulty": 5,
       "genre": "エピソード",
       "sortAnswers": false,
       "hideIcon": false,
@@ -7311,7 +7311,7 @@
         "ノエル",
         "フィッシュル"
       ],
-      "difficulty": 4,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,

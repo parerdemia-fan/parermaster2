@@ -403,7 +403,7 @@ const FULL_PARER_MASTER_BADGES: Record<BadgeSlotId, BadgeRank> = {
   gen1_all: 'gold',
   gen1_knowledge: 'gold',
   gen2_all: 'gold',
-  gen2_knowledge: 'silver',
+  gen2_knowledge: 'gold',
   dorm_wa: 'gold',
   dorm_me: 'gold',
   dorm_co: 'gold',
