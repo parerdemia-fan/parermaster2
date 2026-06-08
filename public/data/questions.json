@@ -7380,6 +7380,46 @@
       "answerPool": "",
       "comment": "ニコ・ダークウェル「いつも配信で元気もらってます！\nどこまでもついて行かせてください！！」",
       "sourceUrl": "https://x.com/nikodarkwell/status/2057405697420361987"
+    },
+    {
+      "id": "q370",
+      "generation": 2,
+      "question": "さくさくさくが初めて投稿したnoteのタイトルで、自分を「○○系Vtuber」と称した。○○に入る動物は？",
+      "answers": [
+        "ナマケモノ",
+        "たぬき",
+        "コアラ",
+        "レッサーパンダ"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Sakusakusaku107/status/2052602660122157241"
+    },
+    {
+      "id": "q371",
+      "generation": 2,
+      "question": "香桜あんにんが「自分が育ったアニメ」として、週1で語る会を開いているほど好きな作品は？",
+      "answers": [
+        "ドラゴンボール",
+        "ワンピース",
+        "NARUTO",
+        "BLEACH"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/annin_kosakura/status/2057480888636801051"
     }
   ],
   "answerSets": {
