@@ -7420,6 +7420,86 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://x.com/annin_kosakura/status/2057480888636801051"
+    },
+    {
+      "id": "q372",
+      "generation": 1,
+      "question": "猫の間でうとうとしたい猫乃間うとの身長は？",
+      "answers": [
+        "143cm",
+        "148cm",
+        "152cm",
+        "138cm"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": true,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/nekonoma_uto/status/2061364747153645727"
+    },
+    {
+      "id": "q373",
+      "generation": 1,
+      "question": "フローレ・ブランカがアニメも忍ミュも推しと公言している、忍たま乱太郎のキャラクターは？",
+      "answers": [
+        "七松小平太",
+        "立花仙蔵",
+        "食満留三郎",
+        "中在家長次"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/flore_blanka/status/2044765784224981255"
+    },
+    {
+      "id": "q374",
+      "generation": 1,
+      "question": "雨海まるが「人生を変えたアニメ」と語り、憧れてドラムを始めるきっかけになったキャラクターは？",
+      "answers": [
+        "りっちゃん(けいおん！)",
+        "爆豪勝己(ヒロアカ)",
+        "黒鉄音羽(ロックレディ)",
+        "ヤス(NANA)"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/maru_amami/status/1908464728487366710"
+    },
+    {
+      "id": "q375",
+      "generation": 1,
+      "question": "空手家VTuber・桜堂ねるが修めている空手の流派は？",
+      "answers": [
+        "糸東流",
+        "松濤館流",
+        "剛柔流",
+        "和道流"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "桜堂ねる「稽古の時間だー！ 今日も頑張るぞー。押忍！」",
+      "sourceUrl": "https://x.com/oudoneru/status/1907017597994070208"
     }
   ],
   "answerSets": {
