@@ -7500,6 +7500,46 @@
       "answerPool": "",
       "comment": "桜堂ねる「稽古の時間だー！ 今日も頑張るぞー。押忍！」",
       "sourceUrl": "https://x.com/oudoneru/status/1907017597994070208"
+    },
+    {
+      "id": "q376",
+      "generation": 2,
+      "question": "冬星れんこんがモンスターハンターで使用している武器は？",
+      "answers": [
+        "ガンランス",
+        "弓",
+        "大剣",
+        "スラッシュアックス"
+      ],
+      "difficulty": 5,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=9A4P6JsjiKQ"
+    },
+    {
+      "id": "q377",
+      "generation": 1,
+      "question": "ギフトをもらったときなどに「ちゅきりーぬ😚」と言う人は誰？",
+      "answers": [
+        "堂下さとり",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
     }
   ],
   "answerSets": {
