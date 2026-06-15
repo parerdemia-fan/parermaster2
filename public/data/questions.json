@@ -6584,7 +6584,7 @@
     {
       "id": "q330",
       "generation": 2,
-      "question": "2026年5月27日の配信でYouTubeチャンネル登録者数500名を2期生で初めて達成したのは？",
+      "question": "2026年6月13日の配信でYouTubeチャンネル登録者数1,000名を2期生で初めて達成したのは？",
       "answers": [
         "無月いお",
         "",
@@ -6598,8 +6598,8 @@
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "無月いお「ほんとに！嬉しい！😭😭\n今年中の目標だったんだよ…？まだ5月だよ？😭」",
-      "sourceUrl": "https://x.com/62ki_10/status/2059697026741518763"
+      "comment": "無月いお「よっしゃぁああああああ‼️\n【🔥Youtube登録1000名様突破🔥】\n感情を文字にするのってムズいね。\nうちの気持ちがみんなに伝わってたら嬉しいな\nまだまだここからだよ！れつごー🙌✨」",
+      "sourceUrl": "https://x.com/62ki_10/status/2065699221194555488"
     },
     {
       "id": "q331",
@@ -7540,6 +7540,26 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": ""
+    },
+    {
+      "id": "q378",
+      "generation": 2,
+      "question": "2026年6月の2期生ネームロゴ獲得イベント(達成型)で何人がネームロゴを獲得した？",
+      "answers": [
+        "11人",
+        "9人",
+        "7人",
+        "5人"
+      ],
+      "difficulty": 5,
+      "genre": "",
+      "sortAnswers": true,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "おめでとうございます！！",
+      "sourceUrl": "https://x.com/parerdemia/status/2066468617630388350"
     }
   ],
   "answerSets": {
