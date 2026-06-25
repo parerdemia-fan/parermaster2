@@ -7560,6 +7560,126 @@
       "answerPool": "",
       "comment": "おめでとうございます！！",
       "sourceUrl": "https://x.com/parerdemia/status/2066468617630388350"
+    },
+    {
+      "id": "q379",
+      "generation": 1,
+      "question": "パレデミア学園声劇サークル第2回公演のタイトルは？",
+      "answers": [
+        "それいけ新卒妖精ピップルン‼",
+        "がんばれ婚活スライムぷにるん‼",
+        "たたかえ魔法女子マジョーラ‼",
+        "まけるな就活精霊ぴかりん‼"
+      ],
+      "difficulty": 6,
+      "genre": "",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=BLQq1lcEy_s"
+    },
+    {
+      "id": "q380",
+      "generation": 2,
+      "question": "水凪るぅが5月25日に歌いながら完走した「フィットネスバイク耐久」の距離は？",
+      "answers": [
+        "100km",
+        "42.195km",
+        "50km",
+        "200km"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "「100kmになった瞬間に表示がゼロに戻ってしまった」と本人が報告している。",
+      "sourceUrl": "https://x.com/Minagi__Ru/status/2058918017183158281"
+    },
+    {
+      "id": "q381",
+      "generation": 2,
+      "question": "水凪るぅがYouTube初投稿でcoverした楽曲は？",
+      "answers": [
+        "クレイジーウォウウォ！！",
+        "好きすぎて滅！",
+        "太陽系デスコ",
+        "明日への手紙"
+      ],
+      "difficulty": 5,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=lHwBEf-4ERI"
+    },
+    {
+      "id": "q382",
+      "generation": 2,
+      "question": "クラゲ好きの水凪るぅが愛用している、くらげの傘は？",
+      "answers": [
+        "ミズクラゲの傘",
+        "カツオノエボシの傘",
+        "アカクラゲの傘",
+        "キクラゲの傘"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "「るぅの傘はね雨空を泳ぐクラゲの傘って調べたら出てくるよ✨」",
+      "sourceUrl": "https://x.com/Minagi__Ru/status/2064861837221564646"
+    },
+    {
+      "id": "q383",
+      "generation": 1,
+      "question": "黄金つむぎが使う、配信終わりの決め挨拶は？",
+      "answers": [
+        "おつむぎゅ",
+        "おつぎゅ〜ん",
+        "おつめだる",
+        "おつむぎー"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/tsumugyu_gold/status/2046286332411212279"
+    },
+    {
+      "id": "q384",
+      "generation": 2,
+      "question": "狛社なのが「この世界で1番好き」と語っているテレビドラマは？",
+      "answers": [
+        "相棒",
+        "科捜研の女",
+        "古畑任三郎",
+        "踊る大捜査線"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "狛社なの「みんなはドラマ見るの好きー？」",
+      "sourceUrl": "https://x.com/komashirobmxf/status/2062308493999456360"
     }
   ],
   "answerSets": {
