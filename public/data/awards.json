@@ -1904,6 +1904,90 @@
       "eventName": "ネームロゴ獲得イベント",
       "result": "ネームロゴ獲得",
       "talentId": "26ME005"
+    },
+    {
+      "id": "a285",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "1位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a286",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a287",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "3位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a288",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "4位",
+      "talentId": "25ME004"
+    },
+    {
+      "id": "a289",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "5位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a290",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "6位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a291",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "7位",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a292",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "1位",
+      "talentId": "26WH003"
+    },
+    {
+      "id": "a293",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "2位",
+      "talentId": "26WH006"
+    },
+    {
+      "id": "a294",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "3位",
+      "talentId": "26CO004"
+    },
+    {
+      "id": "a295",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "4位",
+      "talentId": "26WA004"
+    },
+    {
+      "id": "a296",
+      "eventDate": "202606",
+      "eventName": "秋旅行グッズ化イベント",
+      "result": "5位",
+      "talentId": "26WH001"
     }
   ]
 }
