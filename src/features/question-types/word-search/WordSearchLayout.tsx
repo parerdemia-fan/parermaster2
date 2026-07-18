@@ -1,7 +1,17 @@
 import { useState } from 'react'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath, usesLive2dImages } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, getStandingImageVariant } from '../../../shared/utils/talent.ts'
+import type { StandingImageVariant } from '../../../shared/utils/talent.ts'
 import type { WordSearchQuestion } from './types.ts'
+
+// 立ち絵の縦配置（word-search はグリッド背後の装飾。bottom基準・%）。
+// kv2（2期生KV）は横長で顔が大きく写り上余白が約1%のため、高さを0.8倍にし
+// top:14cqmin 起点にして頭位置・顔サイズを kv1 に揃える（name-guess等と同じ思想）。
+const WS_STANDING_STYLE: Record<StandingImageVariant, { top?: string; bottom?: number; height: string; left: string }> = {
+  kv1: { bottom: 0, height: '95%', left: '-8%' },
+  kv2: { top: '14cqmin', height: '76%', left: '-8%' },
+  live2d: { top: '14cqmin', height: '130%', left: '-22%' },
+}
 
 interface WordSearchLayoutProps {
   question: WordSearchQuestion
@@ -40,7 +50,7 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
 
   const talent = talents.find((t) => t.id === question.talentId)
   const standingPath = talent ? getTalentStandingPath(talent) : undefined
-  const live2d = talent ? usesLive2dImages(talent) : false
+  const standingVariant: StandingImageVariant = talent ? getStandingImageVariant(talent) : 'kv1'
 
   const rows = question.grid.length
   const cols = question.grid[0].length
@@ -60,12 +70,8 @@ function WordSearchLayoutInner({ question, isAnswered, onAnswer }: WordSearchLay
             objectFit: 'contain',
             zIndex: 1,
             pointerEvents: 'none',
-            // KV立ち絵は bottom:0 から height:95% (画像内上余白がヘッダー裏に隠れる)。
-            // live2d立ち絵は画像内の上余白がないので top:14cqmin スタートで、高さはKVより
-            // 大きくして下にはみ出させる。left で中央位置をKVに揃える
-            ...(live2d
-              ? { top: '14cqmin', height: '130%', left: '-22%' }
-              : { bottom: 0, height: '95%', left: '-8%' }),
+            // 立ち絵の縦配置はバリアント別（WS_STANDING_STYLE）
+            ...WS_STANDING_STYLE[standingVariant],
             width: 'auto',
           }}
           draggable={false}

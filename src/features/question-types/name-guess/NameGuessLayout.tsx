@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath, usesLive2dImages } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, getStandingImageVariant } from '../../../shared/utils/talent.ts'
+import type { StandingImageVariant } from '../../../shared/utils/talent.ts'
+import { getQuizStandingTopHeight } from '../standingStyle.ts'
 import { TalentChoiceButtons } from '../../../shared/components/TalentChoiceButtons.tsx'
 import type { NameGuessQuestion } from './types.ts'
 
@@ -46,6 +48,14 @@ function NameGuessLayoutInner({
     ? getTalentStandingPath(talent)
     : question.talentImagePath
 
+  const variant: StandingImageVariant = talent ? getStandingImageVariant(talent) : 'kv1'
+  // 横位置は画面ごとに調整。kv2 は kv1 と同じ位置でおおむね中央が揃う
+  const standingLeft: Record<StandingImageVariant, string> = {
+    kv1: '-2%',
+    kv2: '-2%',
+    live2d: '-10%',
+  }
+
   return (
     <div
       className="relative"
@@ -63,13 +73,9 @@ function NameGuessLayoutInner({
             ? SILHOUETTE_FILTER
             : undefined,
           transition: 'filter 0.3s',
-          // KV立ち絵: top:0 から height:150cqmin で配置（画像内の上余白がヘッダーに隠れて顔は見える）
-          // live2d立ち絵は画像内の上余白がないので top:14cqmin (QuizHeader 直下) スタートで、
-          // 高さはKV並みに大きくして下に大きくはみ出させる。
-          // 画像幅も比例して大きくなる (≈ 105cqmin) ため、left で中央位置をKVに揃える
-          ...(talent && usesLive2dImages(talent)
-            ? { top: '14cqmin', height: '150cqmin', left: '-10%' }
-            : { top: '0cqmin', height: '150cqmin', left: '-2%' }),
+          // 立ち絵の縦配置はバリアント別（standingStyle.ts）。横位置は standingLeft で調整
+          ...getQuizStandingTopHeight(variant),
+          left: standingLeft[variant],
           width: 'auto',
         }}
         draggable={false}
