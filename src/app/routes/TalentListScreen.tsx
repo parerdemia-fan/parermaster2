@@ -281,13 +281,17 @@ export function TalentListScreen() {
           className="absolute pointer-events-none"
           style={{
             zIndex: 1,
-            // KV立ち絵: 上に少しはみ出して下を大きく見切れさせる配置（画像内に上余白あり）
-            // live2d立ち絵: 画像内上余白がないので、世代切替タブの下端（8cqmin）から開始。
-            // メインコンテンツ領域（上端 ≈10cqmin）から 2cqmin 上にはみ出る形に。
-            // height は 92cqmin で下端 100cqmin に揃え、はみ出しなし
+            // 1期生KV立ち絵: 画像内に上余白（高さの約10%）があるため、上に少しはみ出させて
+            // 下を大きく見切れさせる配置。
+            // 2期生KV立ち絵: 上余白がほぼなく（約1%）縦横比もバラバラなので、幅ではなく
+            // 高さで指定。頭が世代切替タブ（下端≈8cqmin）に被らないよう top 9cqmin から
+            // 開始し、下端=100cqmin で上下とも見切れなく収める。
+            // live2d立ち絵: 上余白がないので世代切替タブの下から開始し、はみ出しなし。
             ...(usesLive2dImages(selected)
               ? { height: '90cqmin', width: 'auto', top: '10cqmin', right: 'calc(50% - 88cqmin)' }
-              : { width: '65cqmin', top: '-3cqmin', right: 'calc(50% - 90cqmin)' }),
+              : selected.generation === 2
+                ? { height: '91cqmin', width: 'auto', top: '9cqmin', right: 'calc(50% - 90cqmin)' }
+                : { width: '65cqmin', top: '-3cqmin', right: 'calc(50% - 90cqmin)' }),
           }}
           draggable={false}
         />
