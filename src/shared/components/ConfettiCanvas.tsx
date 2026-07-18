@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { isPageActive, onPageActiveChange } from '../utils/pageActivity.ts'
 
 const PARTICLE_COUNT = 50
 const BURST_DURATION_MS = 2000
@@ -70,7 +71,18 @@ export function ConfettiCanvas({ triggerKey, repeat, repeatInterval = 800 }: Con
     const allParticles: Particle[] = []
     let rafId: number
     let intervalId: ReturnType<typeof setInterval> | null = null
+    let paused = false
     const startTime = performance.now()
+
+    // リピートモード用: ランダム位置からのバースト追加
+    const spawnRepeatBurst = () => {
+      allParticles.push(...createParticles(
+        Math.random() * rect.width,
+        Math.random() * rect.height * 0.6,
+        scale * (0.6 + Math.random() * 0.4),
+        performance.now(),
+      ))
+    }
 
     // 初回バースト
     allParticles.push(...createParticles(
@@ -80,19 +92,9 @@ export function ConfettiCanvas({ triggerKey, repeat, repeatInterval = 800 }: Con
       startTime,
     ))
 
-    // リピートモード: 定期的にランダム位置から追加
-    if (repeat) {
-      intervalId = setInterval(() => {
-        allParticles.push(...createParticles(
-          Math.random() * rect.width,
-          Math.random() * rect.height * 0.6,
-          scale * (0.6 + Math.random() * 0.4),
-          performance.now(),
-        ))
-      }, repeatInterval)
-    }
-
     function animate(now: number) {
+      if (paused) return
+
       // 単発モード: 時間切れで停止
       if (!repeat && now - startTime > BURST_DURATION_MS) {
         ctx!.clearRect(0, 0, canvas!.width, canvas!.height)
@@ -133,11 +135,37 @@ export function ConfettiCanvas({ triggerKey, repeat, repeatInterval = 800 }: Con
       rafId = requestAnimationFrame(animate)
     }
 
-    rafId = requestAnimationFrame(animate)
+    const start = () => {
+      if (repeat && intervalId === null) {
+        intervalId = setInterval(spawnRepeatBurst, repeatInterval)
+      }
+      rafId = requestAnimationFrame(animate)
+    }
+    const stop = () => {
+      cancelAnimationFrame(rafId)
+      if (intervalId !== null) {
+        clearInterval(intervalId)
+        intervalId = null
+      }
+    }
+
+    // タブ非表示・ウィンドウ非フォーカス中は停止（発熱対策）。復帰時はすぐ1発撒いて間を持たせる
+    const unsubscribe = onPageActiveChange((active) => {
+      paused = !active
+      if (active) {
+        if (repeat) spawnRepeatBurst()
+        start()
+      } else {
+        stop()
+      }
+    })
+
+    paused = !isPageActive()
+    if (!paused) start()
 
     return () => {
-      cancelAnimationFrame(rafId)
-      if (intervalId) clearInterval(intervalId)
+      stop()
+      unsubscribe()
     }
   }, [triggerKey, repeat, repeatInterval])
 

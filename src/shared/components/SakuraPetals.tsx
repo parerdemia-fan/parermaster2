@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { PETAL_COLORS, drawPetal } from './petalUtils'
+import { isPageActive, onPageActiveChange } from '../utils/pageActivity.ts'
 
 const PETAL_COUNT = 15
 
@@ -94,22 +95,22 @@ export function SakuraPetals() {
       rafId = requestAnimationFrame(animate)
     }
 
-    function onVisibilityChange() {
-      if (document.hidden) {
-        paused = true
-        cancelAnimationFrame(rafId)
-      } else {
-        paused = false
+    // タブ非表示・ウィンドウ非フォーカス中は描画を止める（発熱対策）
+    const unsubscribe = onPageActiveChange((active) => {
+      paused = !active
+      if (active) {
         rafId = requestAnimationFrame(animate)
+      } else {
+        cancelAnimationFrame(rafId)
       }
-    }
+    })
 
-    document.addEventListener('visibilitychange', onVisibilityChange)
-    rafId = requestAnimationFrame(animate)
+    paused = !isPageActive()
+    if (!paused) rafId = requestAnimationFrame(animate)
 
     return () => {
       cancelAnimationFrame(rafId)
-      document.removeEventListener('visibilitychange', onVisibilityChange)
+      unsubscribe()
     }
   }, [])
 
