@@ -29,7 +29,9 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-image: var(--bg-image, url('/parermaster2/data/images/ui/bg_title.png'));
+  /* 背景は App が季節定数（CURRENT_SEASON）から --bg-image を設定する。
+     未設定時は html の background-color を見せる（季節に依存しないフォールバック）。 */
+  background-image: var(--bg-image, none);
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;

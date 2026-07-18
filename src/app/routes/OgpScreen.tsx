@@ -1,3 +1,5 @@
+import { TITLE_BG, TITLE_LOGO } from '../../shared/constants/season.ts'
+
 const BASE = import.meta.env.BASE_URL
 
 export function OgpScreen() {
@@ -7,7 +9,7 @@ export function OgpScreen() {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        backgroundImage: `url('${BASE}data/images/ui/bg_title.png')`,
+        backgroundImage: `url('${TITLE_BG}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -18,7 +20,7 @@ export function OgpScreen() {
         style={{ zIndex: 1, paddingTop: '2cqmin' }}
       >
         <img
-          src={`${BASE}data/images/ui/logo_title_landscape.png`}
+          src={TITLE_LOGO}
           alt="パレ学マスター 2nd Season"
           style={{ height: '60cqmin', width: 'auto', filter: 'drop-shadow(0 0.5cqmin 1.5cqmin rgba(0,0,0,0.3))' }}
         />

@@ -89,7 +89,8 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 | bg_co | 1400×782 | クゥ寮ゲーム背景（世代共通） | done |
 | bg_wh | 1400×782 | ウィニー寮ゲーム背景（世代共通） | done |
 | bg_stage | 1400×782 | 全員モード背景（世代共通） | done |
-| bg_title | 1399×1140 | タイトル / 設定画面背景 | done |
+| bg_title | 1399×1140 | タイトル / 設定画面背景（春） | done |
+| bg_title_summer | 2754×1536 | タイトル / 設定画面背景（夏・縁日） | done |
 | bg_achievement | 1399×1140 | アチーブメント画面背景 | — |
 
 ---
@@ -138,7 +139,8 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 
 | 画像 | サイズ (px) | 用途 | 状態 |
 |------|------------|------|------|
-| logo_title_landscape | 3500×任意 | タイトルロゴ（横画面用） | done |
+| logo_title_landscape | 3500×任意 | タイトルロゴ（横画面用・春） | done |
+| logo_title_landscape_summer | 2528×1696 | タイトルロゴ（横画面用・夏祭り） | done |
 | logo_title_portrait | 任意×3000 | タイトルロゴ（縦画面用） | — |
 | parerdemia_logo | 任意 | パレデミアロゴ | — |
 

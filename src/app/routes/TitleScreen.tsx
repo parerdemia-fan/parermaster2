@@ -8,8 +8,8 @@ import { generateTimeAttackQuestions } from '../../features/time-attack/generato
 import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
 import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
 import { playSound, isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
+import { TITLE_LOGO, PETALS_ENABLED } from '../../shared/constants/season.ts'
 
-const BASE = import.meta.env.BASE_URL
 const STAFF_ROLL_SEEN_KEY = 'parermaster2_staff_roll_seen'
 
 const StaffRoll = lazy(() => import('../../shared/components/StaffRoll.tsx'))
@@ -102,7 +102,7 @@ export function TitleScreen() {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
-      <SakuraPetals />
+      {PETALS_ENABLED && <SakuraPetals />}
       {/* 横画面推奨表示（縦画面時のみ） */}
       <div
         className="absolute top-0 left-0 right-0 text-center font-bold z-10"
@@ -126,7 +126,7 @@ export function TitleScreen() {
 
       {/* ロゴ */}
       <img
-        src={`${BASE}data/images/ui/logo_title_landscape.png`}
+        src={TITLE_LOGO}
         alt="パレ学マスター 2nd Season"
         style={{
           marginTop: '3cqmin',

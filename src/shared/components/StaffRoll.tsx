@@ -4,6 +4,7 @@ import { useTalents } from '../hooks/useTalents.ts'
 import { useQuestions } from '../hooks/useQuestions.ts'
 import { shuffleArray } from '../utils/array.ts'
 import { DORM_LABELS } from '../constants/dorm.ts'
+import { TITLE_LOGO } from '../constants/season.ts'
 import type { DormId } from '../../stores/settingsStore.ts'
 import type { Talent } from '../types/talent.ts'
 
@@ -235,7 +236,7 @@ export default function StaffRoll({ onClose }: { onClose: () => void }) {
       {/* ロゴ画像（最後にフェードイン） */}
       <img
         ref={logoRef}
-        src={`${BASE}data/images/ui/logo_title_landscape.png`}
+        src={TITLE_LOGO}
         alt="パレ学マスター 2nd Season"
         style={{
           position: 'absolute',
