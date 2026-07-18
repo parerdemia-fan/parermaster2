@@ -1,27 +1,33 @@
+import type { StandingImageVariant } from '../../shared/utils/talent.ts'
+
 /**
  * scale は画像の上端（頭の位置）を固定したまま高さを伸縮させる。
  * 上半身の位置を scale によらず不変にするため（縦方向にズレると違和感）。
  * 縮んだ分は画面下にはみ出す足下が短くなるだけ。
  *
- * 世代別ベース:
- * - 1期生（kv/orig 833×1500）: 150dvw。下を画面外にはみ出して上半身中心の構図
- * - 2期生（live2d/orig 800×1143前後）: 120dvw。バストアップで顔が大きいので
- *   小さめのベース + コンテナ上端を下にずらして縦位置を1期生に揃える
+ * バリアント別ベース（バリアント定義は shared/utils/talent.ts）:
+ * - kv1: 150dvw。下を画面外にはみ出して上半身中心の構図
+ * - kv2: 120dvw（kv1 の0.8倍）。1期生より横長のため等高だとキャラが大きく
+ *   描画される分を縮小。画像内上余白が約1%しかないので（kv1 は約10%）、
+ *   コンテナを 14dvw 下げて頭の位置を kv1 に揃える
+ * - live2d: 120dvw。バストアップで顔が大きいので小さめのベース +
+ *   コンテナを 15dvw 下げて縦位置をKVに揃える
  */
-const GEN1_BASE_HEIGHT_DVW = 150
-const GEN2_BASE_HEIGHT_DVW = 120
+const BASE_HEIGHT_DVW: Record<StandingImageVariant, number> = {
+  kv1: 150,
+  kv2: 120,
+  live2d: 120,
+}
+const DOWN_DVW: Record<StandingImageVariant, number> = {
+  kv1: 0,
+  kv2: 14,
+  live2d: 15,
+}
 const BASE_TOP_OFFSET_DVW = 187.5
-const GEN2_DOWN_DVW = 15
 
-export function getKvImageStyle(scale: number, generation: 1 | 2 = 1): { containerTop: string; imgHeight: string } {
-  if (generation === 2) {
-    return {
-      containerTop: `max(0px, calc(100dvh - ${BASE_TOP_OFFSET_DVW - GEN2_DOWN_DVW}dvw))`,
-      imgHeight: `${GEN2_BASE_HEIGHT_DVW * scale}dvw`,
-    }
-  }
+export function getKvImageStyle(scale: number, variant: StandingImageVariant): { containerTop: string; imgHeight: string } {
   return {
-    containerTop: `max(0px, calc(100dvh - ${BASE_TOP_OFFSET_DVW}dvw))`,
-    imgHeight: `${GEN1_BASE_HEIGHT_DVW * scale}dvw`,
+    containerTop: `max(0px, calc(100dvh - ${BASE_TOP_OFFSET_DVW - DOWN_DVW[variant]}dvw))`,
+    imgHeight: `${BASE_HEIGHT_DVW[variant] * scale}dvw`,
   }
 }

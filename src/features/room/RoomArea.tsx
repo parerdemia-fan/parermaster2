@@ -4,7 +4,7 @@ import { TalentSlot } from './TalentSlot.tsx'
 import { TalentSelector } from './TalentSelector.tsx'
 import { SpeechBubble } from './SpeechBubble.tsx'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../shared/utils/talent.ts'
+import { getTalentStandingPath, getStandingImageVariant } from '../../shared/utils/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -80,14 +80,14 @@ export function RoomArea({ showSelector }: RoomAreaProps) {
         const talentId = slots[pos]
         const talent = talentId ? talents.find((t) => t.id === talentId) : null
         const imagePath = talent ? getTalentStandingPath(talent) : null
-        const generation = talent?.generation === 2 ? 2 : 1
+        const variant = talent ? getStandingImageVariant(talent) : 'kv1'
 
         return (
           <TalentSlot
             key={pos}
             talentId={talentId}
             imagePath={imagePath}
-            generation={generation}
+            variant={variant}
             position={pos}
             showSelector={showSelector}
             onClick={() => openSelector(pos)}

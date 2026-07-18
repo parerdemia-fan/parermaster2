@@ -16,8 +16,8 @@
 - 配置先:
   - `public/data/images/ui/` — UIアセット（ボタン、パネル、背景、ロゴ等）
   - `public/data/images/questions/` — 知識クイズの問題・解説画像
-  - `public/data/images/live2d/` — 2期生画像（orig + sq）
-  - `public/data/images/kv/` — 1期生画像（orig + sq）
+  - `public/data/images/live2d/` — 2期生のKV未提供タレント画像（orig + sq、現在は冬星れんこんのみ）
+  - `public/data/images/kv/` — 1期生・2期生のキービジュアル画像（orig + sq）
 
 ### 状態の凡例
 
@@ -89,7 +89,8 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 | bg_co | 1400×782 | クゥ寮ゲーム背景（世代共通） | done |
 | bg_wh | 1400×782 | ウィニー寮ゲーム背景（世代共通） | done |
 | bg_stage | 1400×782 | 全員モード背景（世代共通） | done |
-| bg_title | 1399×1140 | タイトル / 設定画面背景 | done |
+| bg_title | 1399×1140 | タイトル / 設定画面背景（春） | done |
+| bg_title_summer | 2754×1536 | タイトル / 設定画面背景（夏・縁日） | done |
 | bg_achievement | 1399×1140 | アチーブメント画面背景 | — |
 
 ---
@@ -138,7 +139,8 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 
 | 画像 | サイズ (px) | 用途 | 状態 |
 |------|------------|------|------|
-| logo_title_landscape | 3500×任意 | タイトルロゴ（横画面用） | done |
+| logo_title_landscape | 3500×任意 | タイトルロゴ（横画面用・春） | done |
+| logo_title_landscape_summer | 2528×1696 | タイトルロゴ（横画面用・夏祭り） | done |
 | logo_title_portrait | 任意×3000 | タイトルロゴ（縦画面用） | — |
 | parerdemia_logo | 任意 | パレデミアロゴ | — |
 
@@ -163,8 +165,10 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 |------|------------|------|------|------|
 | kv/sq/*.png | 360×360 | 1期生・正方形 | done | 前作からそのまま利用 |
 | kv/orig/*.png | 833×1500 | 1期生・立ち絵 | done | 前作からそのまま利用 |
-| live2d/sq/*.png | 任意 | 2期生・正方形 | wip | お披露目後に差し替え |
-| live2d/orig/*.webp | 800×1143〜1283 | 2期生・立ち絵 | wip | バストアップ寄り。1期生よりアスペクト比が幅広のため KV_SCALE_MAP で個別補正（暫定 0.7） |
+| kv/sq/26*.png | 360×360 | 2期生・正方形 | done | 公式サイトKVから切り出し（冬星れんこんを除く22名） |
+| kv/orig/26*.webp | 1200×1586〜1963 | 2期生・立ち絵 | done | 公式サイトKV（冬星れんこんを除く22名）。高さは個体差あり |
+| live2d/sq/*.png | 任意 | 2期生・正方形 | wip | KV未提供の冬星れんこん（26WA003）のみ使用。KV公開後に差し替え |
+| live2d/orig/*.webp | 800×1143〜1283 | 2期生・立ち絵 | wip | 同上。バストアップ寄りのため専用の表示ベース（120dvw）で補正 |
 
 ---
 

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, getStandingImageVariant } from '../../../shared/utils/talent.ts'
+import type { StandingImageVariant } from '../../../shared/utils/talent.ts'
+import { getQuizStandingTopHeight } from '../standingStyle.ts'
 import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import { playSound } from '../../../shared/utils/sound.ts'
 import type { NameBuildQuestion } from './types.ts'
@@ -396,7 +398,13 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
   const imagePath = talent
     ? getTalentStandingPath(talent)
     : fallbackPath
-  const isGen2 = talent?.generation === 2
+  const variant: StandingImageVariant = talent ? getStandingImageVariant(talent) : 'kv1'
+  // 横位置は画面ごとに調整。kv2 は kv1 と同じ位置でおおむね中央が揃う
+  const standingLeft: Record<StandingImageVariant, string> = {
+    kv1: '-10%',
+    kv2: '-10%',
+    live2d: '-18%',
+  }
 
   return (
     <img
@@ -406,12 +414,9 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
         position: 'absolute',
         objectFit: 'contain',
         zIndex: 2,
-        // 1期生は top:0 から height:150cqmin で配置（画像内上余白がヘッダーに隠れる）。
-        // 2期生は画像内の上余白がないので top:14cqmin スタートで、高さは1期生並みに
-        // 大きくして下に大きくはみ出させる。left で中央位置を1期生に揃える
-        ...(isGen2
-          ? { top: '14cqmin', height: '150cqmin', left: '-18%' }
-          : { top: '0cqmin', height: '150cqmin', left: '-10%' }),
+        // 立ち絵の縦配置はバリアント別（standingStyle.ts）。横位置は standingLeft で調整
+        ...getQuizStandingTopHeight(variant),
+        left: standingLeft[variant],
         width: 'auto',
       }}
       draggable={false}

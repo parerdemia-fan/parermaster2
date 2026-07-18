@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { ClickPetalEffect } from './ClickPetalEffect';
+import { PETALS_ENABLED } from '../constants/season.ts';
 
 interface GameContainerProps {
   children: ReactNode;
@@ -26,7 +27,7 @@ export function GameContainer({ children }: GameContainerProps) {
       >
         {children}
       </div>
-      <ClickPetalEffect />
+      {PETALS_ENABLED && <ClickPetalEffect />}
     </div>
   );
 }

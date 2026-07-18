@@ -23,6 +23,7 @@ import { SkeletonScreen } from './routes/SkeletonScreen.tsx'
 import { KvScaleCheckScreen } from './routes/KvScaleCheckScreen.tsx'
 import { preloadSounds } from '../shared/utils/sound.ts'
 import { useBackNavigation } from '../shared/hooks/useBackNavigation.ts'
+import { TITLE_BG } from '../shared/constants/season.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -33,7 +34,7 @@ const DORM_BG: Record<Scope, string> = {
   wh: `${BASE}data/images/ui/bg_wh.png`,
   all: `${BASE}data/images/ui/bg_stage.png`,
 }
-const DEFAULT_BG = `${BASE}data/images/ui/bg_title.png`
+const DEFAULT_BG = TITLE_BG
 
 /** クイズ画面の背景ぼかし強度（px） */
 const QUIZ_BG_BLUR = 3

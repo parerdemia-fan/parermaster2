@@ -2,11 +2,12 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useKvScale } from './useKvScaleStore.ts'
 import { getKvImageStyle } from './kvScaleStyle.ts'
+import type { StandingImageVariant } from '../../shared/utils/talent.ts'
 
 interface TalentSlotProps {
   talentId: string | null
   imagePath: string | null
-  generation: 1 | 2
+  variant: StandingImageVariant
   position: 'left' | 'center' | 'right'
   showSelector: boolean
   onClick: () => void
@@ -25,10 +26,10 @@ const Z_INDEX: Record<string, number> = {
   right: 3,
 }
 
-export function TalentSlot({ talentId, imagePath, generation, position, showSelector, onClick }: TalentSlotProps) {
+export function TalentSlot({ talentId, imagePath, variant, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
   const kvScale = useKvScale(talentId)
-  const kvStyle = getKvImageStyle(kvScale, generation)
+  const kvStyle = getKvImageStyle(kvScale, variant)
 
   useEffect(() => {
     const el = imgRef.current
