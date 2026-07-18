@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath, usesLive2dImages } from '../../shared/utils/talent.ts'
+import { getTalentStandingPath, getStandingImageVariant } from '../../shared/utils/talent.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 import { useKvScaleStore, useKvScale, resolveKvScale } from '../../features/room/useKvScaleStore.ts'
 import { getKvImageStyle } from '../../features/room/kvScaleStyle.ts'
@@ -202,7 +202,7 @@ function TalentColumn({ talent }: { talent: Talent }) {
   const scale = useKvScale(talent.id)
   const setOverride = useKvScaleStore((s) => s.setOverride)
   const resetOverride = useKvScaleStore((s) => s.resetOverride)
-  const style = getKvImageStyle(scale, usesLive2dImages(talent))
+  const style = getKvImageStyle(scale, getStandingImageVariant(talent))
   const src = getTalentStandingPath(talent)
 
   return (

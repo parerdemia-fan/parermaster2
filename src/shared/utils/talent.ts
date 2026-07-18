@@ -7,6 +7,20 @@ export function usesLive2dImages(talent: Talent): boolean {
   return talent.id === '26WA003'
 }
 
+/**
+ * 立ち絵の表示バリアント。画像の寸法・画像内の上余白が異なるため、
+ * 談話室等の表示ベース（kvScaleStyle.ts）はこの単位で切り替える。
+ * - kv1: 1期生KV（833×1500、上余白 約10%）
+ * - kv2: 2期生KV（1200×1586〜1963、上余白 約1%）
+ * - live2d: KV未提供タレントの代替（800×1143前後、バストアップ）
+ */
+export type StandingImageVariant = 'kv1' | 'kv2' | 'live2d'
+
+export function getStandingImageVariant(talent: Talent): StandingImageVariant {
+  if (usesLive2dImages(talent)) return 'live2d'
+  return talent.generation === 2 ? 'kv2' : 'kv1'
+}
+
 /** 正方形サムネイル画像パス（KVから切り出したsq。KV未提供タレントのみlive2d/sq） */
 export function getTalentImagePath(talent: Talent): string {
   if (usesLive2dImages(talent)) {
