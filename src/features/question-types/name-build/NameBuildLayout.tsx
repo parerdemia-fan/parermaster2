@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, usesLive2dImages } from '../../../shared/utils/talent.ts'
 import { CHOICE_PALETTES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
 import { playSound } from '../../../shared/utils/sound.ts'
 import type { NameBuildQuestion } from './types.ts'
@@ -396,7 +396,7 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
   const imagePath = talent
     ? getTalentStandingPath(talent)
     : fallbackPath
-  const isGen2 = talent?.generation === 2
+  const live2d = talent ? usesLive2dImages(talent) : false
 
   return (
     <img
@@ -406,10 +406,10 @@ function TalentImage({ talentId, fallbackPath }: { talentId: string; fallbackPat
         position: 'absolute',
         objectFit: 'contain',
         zIndex: 2,
-        // 1期生は top:0 から height:150cqmin で配置（画像内上余白がヘッダーに隠れる）。
-        // 2期生は画像内の上余白がないので top:14cqmin スタートで、高さは1期生並みに
-        // 大きくして下に大きくはみ出させる。left で中央位置を1期生に揃える
-        ...(isGen2
+        // KV立ち絵は top:0 から height:150cqmin で配置（画像内上余白がヘッダーに隠れる）。
+        // live2d立ち絵は画像内の上余白がないので top:14cqmin スタートで、高さはKV並みに
+        // 大きくして下に大きくはみ出させる。left で中央位置をKVに揃える
+        ...(live2d
           ? { top: '14cqmin', height: '150cqmin', left: '-18%' }
           : { top: '0cqmin', height: '150cqmin', left: '-10%' }),
         width: 'auto',

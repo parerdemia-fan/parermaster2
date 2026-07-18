@@ -6,7 +6,7 @@ import { getKvImageStyle } from './kvScaleStyle.ts'
 interface TalentSlotProps {
   talentId: string | null
   imagePath: string | null
-  generation: 1 | 2
+  live2d: boolean
   position: 'left' | 'center' | 'right'
   showSelector: boolean
   onClick: () => void
@@ -25,10 +25,10 @@ const Z_INDEX: Record<string, number> = {
   right: 3,
 }
 
-export function TalentSlot({ talentId, imagePath, generation, position, showSelector, onClick }: TalentSlotProps) {
+export function TalentSlot({ talentId, imagePath, live2d, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
   const kvScale = useKvScale(talentId)
-  const kvStyle = getKvImageStyle(kvScale, generation)
+  const kvStyle = getKvImageStyle(kvScale, live2d)
 
   useEffect(() => {
     const el = imgRef.current

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { SILHOUETTE_FILTER } from '../../../shared/utils/style.ts'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
-import { getTalentStandingPath } from '../../../shared/utils/talent.ts'
+import { getTalentStandingPath, usesLive2dImages } from '../../../shared/utils/talent.ts'
 import { TalentChoiceButtons } from '../../../shared/components/TalentChoiceButtons.tsx'
 import type { NameGuessQuestion } from './types.ts'
 
@@ -63,11 +63,11 @@ function NameGuessLayoutInner({
             ? SILHOUETTE_FILTER
             : undefined,
           transition: 'filter 0.3s',
-          // 1期生立ち絵: top:0 から height:150cqmin で配置（画像内の上余白がヘッダーに隠れて顔は見える）
-          // 2期生は画像内の上余白がないので top:14cqmin (QuizHeader 直下) スタートで、
-          // 高さは1期生並みに大きくして下に大きくはみ出させる。
-          // 画像幅も比例して大きくなる (≈ 105cqmin) ため、left で中央位置を1期生に揃える
-          ...(talent?.generation === 2
+          // KV立ち絵: top:0 から height:150cqmin で配置（画像内の上余白がヘッダーに隠れて顔は見える）
+          // live2d立ち絵は画像内の上余白がないので top:14cqmin (QuizHeader 直下) スタートで、
+          // 高さはKV並みに大きくして下に大きくはみ出させる。
+          // 画像幅も比例して大きくなる (≈ 105cqmin) ため、left で中央位置をKVに揃える
+          ...(talent && usesLive2dImages(talent)
             ? { top: '14cqmin', height: '150cqmin', left: '-10%' }
             : { top: '0cqmin', height: '150cqmin', left: '-2%' }),
           width: 'auto',

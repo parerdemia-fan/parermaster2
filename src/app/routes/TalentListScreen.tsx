@@ -4,7 +4,7 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useAwards } from '../../shared/hooks/useAwards.ts'
 import type { Award } from '../../shared/types/award.ts'
 import { playSound } from '../../shared/utils/sound.ts'
-import { getTalentImagePath, getTalentStandingPath } from '../../shared/utils/talent.ts'
+import { getTalentImagePath, getTalentStandingPath, usesLive2dImages } from '../../shared/utils/talent.ts'
 import { kanaToHiragana, needsReading } from '../../shared/utils/kana.ts'
 import type { Talent } from '../../shared/types/talent.ts'
 
@@ -281,11 +281,11 @@ export function TalentListScreen() {
           className="absolute pointer-events-none"
           style={{
             zIndex: 1,
-            // 1期生: 上に少しはみ出して下を大きく見切れさせる配置（画像内に上余白あり）
-            // 2期生: 画像内上余白がないので、世代切替タブの下端（8cqmin）から開始。
+            // KV立ち絵: 上に少しはみ出して下を大きく見切れさせる配置（画像内に上余白あり）
+            // live2d立ち絵: 画像内上余白がないので、世代切替タブの下端（8cqmin）から開始。
             // メインコンテンツ領域（上端 ≈10cqmin）から 2cqmin 上にはみ出る形に。
             // height は 92cqmin で下端 100cqmin に揃え、はみ出しなし
-            ...(selected.generation === 2
+            ...(usesLive2dImages(selected)
               ? { height: '90cqmin', width: 'auto', top: '10cqmin', right: 'calc(50% - 88cqmin)' }
               : { width: '65cqmin', top: '-3cqmin', right: 'calc(50% - 90cqmin)' }),
           }}

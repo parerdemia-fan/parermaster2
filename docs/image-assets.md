@@ -16,8 +16,8 @@
 - 配置先:
   - `public/data/images/ui/` — UIアセット（ボタン、パネル、背景、ロゴ等）
   - `public/data/images/questions/` — 知識クイズの問題・解説画像
-  - `public/data/images/live2d/` — 2期生画像（orig + sq）
-  - `public/data/images/kv/` — 1期生画像（orig + sq）
+  - `public/data/images/live2d/` — 2期生のKV未提供タレント画像（orig + sq、現在は冬星れんこんのみ）
+  - `public/data/images/kv/` — 1期生・2期生のキービジュアル画像（orig + sq）
 
 ### 状態の凡例
 
@@ -163,8 +163,10 @@ left / middle / right の3ファイル構成。テキスト無しの汎用ボタ
 |------|------------|------|------|------|
 | kv/sq/*.png | 360×360 | 1期生・正方形 | done | 前作からそのまま利用 |
 | kv/orig/*.png | 833×1500 | 1期生・立ち絵 | done | 前作からそのまま利用 |
-| live2d/sq/*.png | 任意 | 2期生・正方形 | wip | お披露目後に差し替え |
-| live2d/orig/*.webp | 800×1143〜1283 | 2期生・立ち絵 | wip | バストアップ寄り。1期生よりアスペクト比が幅広のため KV_SCALE_MAP で個別補正（暫定 0.7） |
+| kv/sq/26*.png | 360×360 | 2期生・正方形 | done | 公式サイトKVから切り出し（冬星れんこんを除く22名） |
+| kv/orig/26*.webp | 1200×1586〜1963 | 2期生・立ち絵 | done | 公式サイトKV（冬星れんこんを除く22名）。高さは個体差あり |
+| live2d/sq/*.png | 任意 | 2期生・正方形 | wip | KV未提供の冬星れんこん（26WA003）のみ使用。KV公開後に差し替え |
+| live2d/orig/*.webp | 800×1143〜1283 | 2期生・立ち絵 | wip | 同上。バストアップ寄りのため専用の表示ベース（120dvw）で補正 |
 
 ---
 
