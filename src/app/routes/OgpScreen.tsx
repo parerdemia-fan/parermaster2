@@ -29,7 +29,7 @@ export function OgpScreen() {
           className="font-bold"
           style={{ fontSize: '8cqmin', color: 'white', textShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.9), 0 0 2cqmin rgba(0,0,0,0.6), 0 0 4cqmin rgba(0,0,0,0.3)', letterSpacing: '0.1em', whiteSpace: 'nowrap', marginTop: '1cqmin' }}
         >
-          祝・２期生入学！
+          パレ学夏祭り！
         </div>
 
         <div className="flex" style={{ gap: '3cqmin', position: 'absolute', bottom: '4cqmin' }}>
