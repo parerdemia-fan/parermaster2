@@ -2184,6 +2184,125 @@
       "eventName": "ダイヤ達成イベント(Live2D表情差分)",
       "result": "50,000ダイヤ達成",
       "talentId": "26ME001"
+    },
+    {
+      "id": "a325",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "1位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a326",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a327",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "3位",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a328",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "4位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a329",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "5位",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a330",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "6位",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a331",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "7位",
+      "talentId": "25ME009"
+    },
+    {
+      "id": "a332",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "8位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a333",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "9位",
+      "talentId": "25ME004"
+    },
+    {
+      "id": "a334",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "10位",
+      "talentId": "25ME011"
+    },
+    {
+      "id": "a335",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "11位",
+      "talentId": "25ME012"
+    },
+    {
+      "id": "a336",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "1位",
+      "talentId": "26WH003"
+    },
+    {
+      "id": "a337",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "2位",
+      "talentId": "26CO006"
+    },
+    {
+      "id": "a338",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "3位",
+      "talentId": "26ME003"
+    },
+    {
+      "id": "a339",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "4位",
+      "talentId": "26CO004"
+    },
+    {
+      "id": "a340",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "5位",
+      "talentId": "26ME001"
+    },
+    {
+      "id": "a341",
+      "eventDate": "202607",
+      "eventName": "ハロウィングッズ化イベント",
+      "result": "6位",
+      "talentId": "26WH001"
     }
   ]
 }
