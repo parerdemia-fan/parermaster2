@@ -29,7 +29,8 @@
 - スプレッドシートのシート構成: 1期生, 受賞歴, 知識問題, 選択肢セット（知識問題シートに「世代」列を持ち、問題ごとに世代を明示する）
 - スクリプト: `scripts/sync-spreadsheet.ts`
 - 設定（スプレッドシートID・認証情報パス）: `scripts/sync-config.json`（gitignore対象）
-- 退学者（dropout列に値がある行）はtalents.json・awards.jsonから自動的に除外される
+- 収録対象は `parermaster` 列で管理する。この列が**空の行**は talents.json・awards.json から自動的に除外される（`dropout` 列は同期処理では参照しない。退学者でも `parermaster` に値があれば収録される）
+- `parermaster` 列自体が存在しないシートは除外判定をスキップし、全行を収録する（警告を表示）
 
 ---
 
