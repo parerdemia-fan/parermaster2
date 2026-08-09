@@ -2303,6 +2303,174 @@
       "eventName": "ハロウィングッズ化イベント",
       "result": "6位",
       "talentId": "26WH001"
+    },
+    {
+      "id": "a342",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25WH005"
+    },
+    {
+      "id": "a343",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25WH004"
+    },
+    {
+      "id": "a344",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25CO005"
+    },
+    {
+      "id": "a345",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25CO012"
+    },
+    {
+      "id": "a346",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a347",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a348",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25WA008"
+    },
+    {
+      "id": "a349",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25WA009"
+    },
+    {
+      "id": "a350",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a351",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a352",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "25ME001"
+    },
+    {
+      "id": "a353",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "26CO003"
+    },
+    {
+      "id": "a354",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "150pt達成",
+      "talentId": "26WH003"
+    },
+    {
+      "id": "a355",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "26CO004"
+    },
+    {
+      "id": "a356",
+      "eventDate": "202607",
+      "eventName": "7月配信時間＆YouTube登録者獲得イベント",
+      "result": "100pt達成",
+      "talentId": "26ME003"
+    },
+    {
+      "id": "a357",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "1位",
+      "talentId": "25CO014"
+    },
+    {
+      "id": "a358",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "2位",
+      "talentId": "25WA001"
+    },
+    {
+      "id": "a359",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "3位",
+      "talentId": "25ME006"
+    },
+    {
+      "id": "a360",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "4位",
+      "talentId": "25CO004"
+    },
+    {
+      "id": "a361",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "5位",
+      "talentId": "25ME004"
+    },
+    {
+      "id": "a362",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "1位",
+      "talentId": "26WH003"
+    },
+    {
+      "id": "a363",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "2位",
+      "talentId": "26ME003"
+    },
+    {
+      "id": "a364",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "3位",
+      "talentId": "26ME004"
+    },
+    {
+      "id": "a365",
+      "eventDate": "202608",
+      "eventName": "秋の大運動会グッズ化イベント",
+      "result": "4位",
+      "talentId": "26CO003"
     }
   ]
 }
