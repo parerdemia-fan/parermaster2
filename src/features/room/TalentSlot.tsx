@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useKvScale } from './useKvScaleStore.ts'
-import { getKvImageStyle } from './kvScaleStyle.ts'
-import type { StandingImageVariant } from '../../shared/utils/talent.ts'
+import { getStandingStyle, ROOM_AREA_HEIGHT_CSS } from './kvScaleStyle.ts'
+import { getStandingImageVariant } from '../../shared/utils/talent.ts'
+import type { Talent } from '../../shared/types/talent.ts'
 
 interface TalentSlotProps {
-  talentId: string | null
+  talent: Talent | null
   imagePath: string | null
-  variant: StandingImageVariant
   position: 'left' | 'center' | 'right'
   showSelector: boolean
   onClick: () => void
@@ -26,10 +26,16 @@ const Z_INDEX: Record<string, number> = {
   right: 3,
 }
 
-export function TalentSlot({ talentId, imagePath, variant, position, showSelector, onClick }: TalentSlotProps) {
+export function TalentSlot({ talent, imagePath, position, showSelector, onClick }: TalentSlotProps) {
   const imgRef = useRef<HTMLImageElement>(null)
-  const kvScale = useKvScale(talentId)
-  const kvStyle = getKvImageStyle(kvScale, variant)
+  const talentId = talent?.id ?? null
+  const headScale = useKvScale(talentId)
+  const kvStyle = talent
+    ? getStandingStyle(talent.id, getStandingImageVariant(talent), talent.height, {
+        areaHeightCss: ROOM_AREA_HEIGHT_CSS,
+        headScale,
+      })
+    : null
 
   useEffect(() => {
     const el = imgRef.current
@@ -42,7 +48,7 @@ export function TalentSlot({ talentId, imagePath, variant, position, showSelecto
     return () => { tweens.forEach((t) => t.kill()) }
   }, [talentId, imagePath])
 
-  const hasTalent = talentId && imagePath
+  const hasTalent = imagePath && kvStyle
 
   return (
     <div
@@ -77,8 +83,8 @@ export function TalentSlot({ talentId, imagePath, variant, position, showSelecto
             alt=""
             style={{
               flexShrink: 0,
-              height: kvStyle.imgHeight,
-              width: 'auto',
+              width: kvStyle.imgWidth,
+              height: 'auto',
               maxWidth: 'none',
             }}
             draggable={false}

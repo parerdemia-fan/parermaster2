@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { KV_SCALE_MAP } from './kvScaleMap.ts'
+import { HEAD_SCALE_MAP } from './kvScaleMap.ts'
 
 const STORAGE_KEY = 'parermaster2_kv_scale_overrides'
 
@@ -47,10 +47,10 @@ export const useKvScaleStore = create<KvScaleState & KvScaleActions>()((set, get
   },
 }))
 
-/** overrides > KV_SCALE_MAP > 1.0 */
+/** overrides > HEAD_SCALE_MAP > 1.0 */
 export function resolveKvScale(talentId: string | null, overrides: Record<string, number>): number {
   if (!talentId) return 1.0
-  return overrides[talentId] ?? KV_SCALE_MAP[talentId] ?? 1.0
+  return overrides[talentId] ?? HEAD_SCALE_MAP[talentId] ?? 1.0
 }
 
 export function useKvScale(talentId: string | null): number {
