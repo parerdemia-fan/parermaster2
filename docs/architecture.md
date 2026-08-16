@@ -149,6 +149,10 @@ src/
 │   │   ├── TalentSlot.tsx        # 立ち絵スロット + GSAPアニメーション
 │   │   ├── TalentSelector.tsx    # タレント選択UI
 │   │   ├── SpeechBubble.tsx      # 吹き出し
+│   │   ├── kvMetrics.ts          # 立ち絵の実測値（顔サイズ・顎y座標）
+│   │   ├── kvScaleStyle.ts       # 立ち絵の表示サイズ・縦位置の計算
+│   │   ├── kvScaleMap.ts         # 顔サイズ倍率の個別補正（通常は空）
+│   │   ├── useKvScaleStore.ts    # 倍率の一時上書き（チェック画面用）
 │   │   └── useRoomStore.ts       # Zustandストア
 │   │
 │   └── skeleton-puzzle/         # スケルトンパズル
