@@ -120,6 +120,25 @@ describe('generateTextQuizQuestions', () => {
     }
   })
 
+  it('sortAnswers=true の選択肢は数値を数値として扱う自然順に並ぶ', () => {
+    const q = makeQuestion('nq1', 1, 0)
+    q.answers = ['ドラクエ3', 'ドラクエ5', 'ドラクエ8', 'ドラクエ11']
+    q.sortAnswers = true
+    const segments: QuizSegment[] = [{ level: 1, count: 1, ordered: true }]
+    const result = generateTextQuizQuestions([q], segments, 1, TALENTS, ANSWER_SETS)
+    expect(result[0].answers).toEqual(['ドラクエ3', 'ドラクエ5', 'ドラクエ8', 'ドラクエ11'])
+    expect(result[0].answers[result[0].correctIndex]).toBe('ドラクエ3')
+  })
+
+  it('sortAnswers=true は単位付きの数値も桁数に惑わされず並ぶ', () => {
+    const q = makeQuestion('nq2', 1, 0)
+    q.answers = ['20個', '5個', '10個', '30個']
+    q.sortAnswers = true
+    const segments: QuizSegment[] = [{ level: 1, count: 1, ordered: true }]
+    const result = generateTextQuizQuestions([q], segments, 1, TALENTS, ANSWER_SETS)
+    expect(result[0].answers).toEqual(['5個', '10個', '20個', '30個'])
+  })
+
   it('[寮名] の選択肢が該当寮のタレントで補完される', () => {
     const q = makeQuestion('dq1', 1, 0)
     q.answers = ['正解', '[バゥ寮]', '[ミュゥ寮]', '[クゥ寮]']

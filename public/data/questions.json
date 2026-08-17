@@ -7680,6 +7680,206 @@
       "answerPool": "",
       "comment": "狛社なの「みんなはドラマ見るの好きー？」",
       "sourceUrl": "https://x.com/komashirobmxf/status/2062308493999456360"
+    },
+    {
+      "id": "q385",
+      "generation": 2,
+      "question": "天堂ライラが一番好きなドラゴンクエストのナンバリング作品は？",
+      "answers": [
+        "ドラクエ3",
+        "ドラクエ5",
+        "ドラクエ8",
+        "ドラクエ11"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": true,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/tendo_lyra/status/2059382566113902745"
+    },
+    {
+      "id": "q386",
+      "generation": 2,
+      "question": "「ウォーデン推し、ディープダーク大好きさん」の2期生は誰？",
+      "answers": [
+        "天堂ライラ",
+        "[2期生]",
+        "[2期生]",
+        "[2期生]"
+      ],
+      "difficulty": 5,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/tendo_lyra/status/2060901955665613270"
+    },
+    {
+      "id": "q387",
+      "generation": 2,
+      "question": "狛社なのが「動いたよ記念」として投稿した歌みた動画の曲は？",
+      "answers": [
+        "ドレミファロンド",
+        "懺悔参り",
+        "スキスキ絶頂症",
+        "ヴィラン"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "狛社なの「わんわんご機嫌にロンドしてるヨ みんな見て見て〜！！！🫶」",
+      "sourceUrl": "https://x.com/komashirobmxf/status/2050547217992499657"
+    },
+    {
+      "id": "q388",
+      "generation": 2,
+      "question": "白尾すずが決めた2つのファンネームは？",
+      "answers": [
+        "すずっ子・すずノコ",
+        "しらす隊・くじら隊",
+        "しらゆり組・すずらん組",
+        "しらたま・すずだま"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "白尾すず「私が優柔不断なゆえに！！！🥹」",
+      "sourceUrl": "https://x.com/suzu_shirao/status/2059294194817261992"
+    },
+    {
+      "id": "q389",
+      "generation": 2,
+      "question": "夜雨ねむるが「勝手な目標」として掲げている野望は？",
+      "answers": [
+        "パレ学生全員のオリ曲を書く",
+        "パレ学生全員とコラボ配信する",
+        "パレ学生全員をお絵描きする",
+        "パレ学生全員と歌ってみたを出す"
+      ],
+      "difficulty": 2,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "灯野ぺけ。「てか、作曲家って凄すぎ😳ぺけ。横転🫨」",
+      "sourceUrl": "https://x.com/Yaunemuru/status/2047140460314103813"
+    },
+    {
+      "id": "q390",
+      "generation": 2,
+      "question": "巳野みことが同期の狛社なのと組んだ、お互いの髪型にちなんだ同盟の名前は？",
+      "answers": [
+        "三つ編み同盟",
+        "おさげ同盟",
+        "ツインテ同盟",
+        "ポニテ同盟"
+      ],
+      "difficulty": 2,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": true,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/mino_micoto/status/2046207053400789210"
+    },
+    {
+      "id": "q391",
+      "generation": 2,
+      "question": "巳野みことが「1番好きなトースト」として紹介したレシピは、パンにオリーブオイルを塗って何をふりかける？",
+      "answers": [
+        "粉チーズ",
+        "シナモンシュガー",
+        "きなこ",
+        "黒こしょう"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "巳野みこと「幸せな気持ちになれますよ」",
+      "sourceUrl": "https://x.com/mino_micoto/status/2050682490633982352"
+    },
+    {
+      "id": "q392",
+      "generation": 1,
+      "question": "シグマ・イングラムがものまねを収録するほど好きなキャラクターは？",
+      "answers": [
+        "コジコジ",
+        "ぼのぼの",
+        "ケロロ軍曹",
+        "ちびまる子"
+      ],
+      "difficulty": 4,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/sigma_inging/status/2041646729007976516"
+    },
+    {
+      "id": "q393",
+      "generation": 1,
+      "question": "シグマ・イングラムが2026年4月1日の誕生日前夜に開催したクイズ企画の名前は？",
+      "answers": [
+        "シグマ王",
+        "シグマ杯",
+        "シグマ祭",
+        "シグマ大戦"
+      ],
+      "difficulty": 5,
+      "genre": "イベント",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=p1niF69omSU"
+    },
+    {
+      "id": "q394",
+      "generation": 1,
+      "question": "シグマ・イングラムが人生一番泣いたことは？(第1回シグマ王の問題より引用)",
+      "answers": [
+        "幼稚園の卒園式",
+        "クレヨンしんちゃんの映画",
+        "あの花最終回",
+        "シグパパに怒られたとき"
+      ],
+      "difficulty": 7,
+      "genre": "イベント",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=p1niF69omSU"
     }
   ],
   "answerSets": {

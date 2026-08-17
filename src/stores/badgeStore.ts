@@ -49,7 +49,6 @@ interface BadgeActions {
   isGen2Master: () => boolean
   isGen1Master: () => boolean
   isParerMaster: () => boolean
-  isTimeAttackUnlocked: () => boolean
   /** 全バッジ・称号をリセット */
   resetAll: () => void
 }
@@ -83,8 +82,6 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
   isGen2Master: () => isAreaComplete(get().badges, GEN2_SLOT_IDS),
   isGen1Master: () => isAreaComplete(get().badges, GEN1_SLOT_IDS),
   isParerMaster: () => get().isGen2Master() && get().isGen1Master(),
-  // タイムアタック解放 = 両世代マスター（世代別4スロットが全て最大）と同値
-  isTimeAttackUnlocked: () => get().isGen2Master() && get().isGen1Master(),
 
   resetAll: () => {
     localStorage.removeItem(STORAGE_KEY)
