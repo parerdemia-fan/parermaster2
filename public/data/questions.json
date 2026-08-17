@@ -4959,7 +4959,7 @@
       "commentImage": null,
       "answerPool": "",
       "comment": "冬星れんこん「れんこんもみんなに届く歌を歌いたくて、ボイトレ頑張って通ってるよっ」",
-      "sourceUrl": "https://x.com/Renkon_Fuyu/status/2045173638325031174"
+      "sourceUrl": ""
     },
     {
       "id": "q249",
@@ -7339,7 +7339,7 @@
       "commentImage": null,
       "answerPool": "",
       "comment": "",
-      "sourceUrl": "https://x.com/Renkon_Fuyu/status/2057980444289974724"
+      "sourceUrl": ""
     },
     {
       "id": "q368",
@@ -7880,6 +7880,206 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/watch?v=p1niF69omSU"
+    },
+    {
+      "id": "q395",
+      "generation": 1,
+      "question": "瀬奈りるかが「一番好きなミステリー小説」として薦めていた作品は？",
+      "answers": [
+        "十角館の殺人",
+        "白鳥とコウモリ",
+        "獄門島",
+        "占星術殺人事件"
+      ],
+      "difficulty": 7,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "瀬奈りるか「記憶消してもっかい読みたい🥹🥹」",
+      "sourceUrl": "https://x.com/senariruka/status/2047289479988482418"
+    },
+    {
+      "id": "q396",
+      "generation": 1,
+      "question": "瀬奈りるかが「人生で1番好きな映画」と語ったスター・ウォーズのスピンオフ作品は？",
+      "answers": [
+        "ローグ・ワン",
+        "マンダロリアン",
+        "クローン・ウォーズ",
+        "ハン・ソロ"
+      ],
+      "difficulty": 6,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天辻ゆらぐ「そうなんじゃ！スターウォーズ好きのせなりるちゃんがおすすめするなら間違いないね🚀一作完結なのありがたい！見てみるよ〜〜！」",
+      "sourceUrl": "https://x.com/senariruka/status/2019082821038678485"
+    },
+    {
+      "id": "q397",
+      "generation": 1,
+      "question": "山田スバルと天辻ゆらぐの低音ボイス同士によるコラボに付いたコラボネームは？",
+      "answers": [
+        "クゥ寮低音部",
+        "クゥ・コード",
+        "アルト姉妹",
+        "ゆらすばラプソディ"
+      ],
+      "difficulty": 5,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/subaru_yamada10/status/1933178152576221441"
+    },
+    {
+      "id": "q398",
+      "generation": 1,
+      "question": "陰山アゲハの部屋の壁一面を埋め尽くしているぬいぐるみは何のキャラ？",
+      "answers": [
+        "クロミ",
+        "シナモロール",
+        "マイメロディ",
+        "ポムポムプリン"
+      ],
+      "difficulty": 6,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "夜雨ねむる「うぅ…圧を感じる…🥺」",
+      "sourceUrl": "https://x.com/Ageha_kageyama/status/2044349593606094867"
+    },
+    {
+      "id": "q399",
+      "generation": 1,
+      "question": "亀城ちかりが配信終わりによく使う締めの挨拶は？",
+      "answers": [
+        "おつかめさま",
+        "おつちかり",
+        "おつきち",
+        "かめばいばい"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://youtu.be/pwCPQgC-E8s?t=8422"
+    },
+    {
+      "id": "q400",
+      "generation": 1,
+      "question": "花晴りらが配信で自分の母親や父親を指して呼ぶ独自の呼び方は？",
+      "answers": [
+        "妖精さん",
+        "天使さん",
+        "魔女さん",
+        "小人さん"
+      ],
+      "difficulty": 3,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/LilaHanahare/status/2061394481296130052"
+    },
+    {
+      "id": "q401",
+      "generation": 2,
+      "question": "「お嬢様ギャル」天麗らんが、初めて読んだ伊坂幸太郎作品として挙げた小説は？",
+      "answers": [
+        "重力ピエロ",
+        "ゴールデンスランバー",
+        "アヒルと鴨のコインロッカー",
+        "オーデュボンの祈り"
+      ],
+      "difficulty": 6,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Ran_tenRei/status/2058458020838055982"
+    },
+    {
+      "id": "q402",
+      "generation": 2,
+      "question": "TRPG好きの四葉みっけが「唯一本で持っている」と言ったクトゥルフ神話TRPGのシナリオは？",
+      "answers": [
+        "台風の目",
+        "悪霊の家",
+        "クトゥルフ2010",
+        "狂気山脈にて"
+      ],
+      "difficulty": 7,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Yotuba_mikke/status/2044579895502946665"
+    },
+    {
+      "id": "q403",
+      "generation": 2,
+      "question": "狛社なののキービジュアルのテーマは？",
+      "answers": [
+        "みんなを受け止める狛犬",
+        "みんなを見守る狛犬",
+        "みんなを守り抜く狛犬",
+        "みんなに祈りを届ける狛犬"
+      ],
+      "difficulty": 5,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "狛社なの「お目目かっぴらいたお顔の写真も撮りたかったんだけどやめました、アイドルなので♡」",
+      "sourceUrl": "https://x.com/komashirobmxf/status/2075357757402972250"
+    },
+    {
+      "id": "q404",
+      "generation": 2,
+      "question": "露草なぎが同期のニコ・ダークウェルにオススメされて配信で遊び始めたゲームは？",
+      "answers": [
+        "アクアリウムは踊らない",
+        "都市伝説解体センター",
+        "パラノマサイト",
+        "和階堂真の事件簿"
+      ],
+      "difficulty": 6,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Nagi_tsuyukusa/status/2056336244041498896"
     }
   ],
   "answerSets": {
