@@ -8083,7 +8083,7 @@
     },
     {
       "id": "q405",
-      "generation": 0,
+      "generation": 2,
       "question": "第3回投票イベントで1stステージを開始数分で最速突破したのは誰？",
       "answers": [
         "水凪るぅ",
@@ -8100,6 +8100,26 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": ""
+    },
+    {
+      "id": "q406",
+      "generation": 2,
+      "question": "第3回投票イベントで1stステージを総合1位で突破したのは誰？",
+      "answers": [
+        "無月いお",
+        "[第3回投票イベント1st突破者]",
+        "[第3回投票イベント1st突破者]",
+        "[第3回投票イベント1st突破者]"
+      ],
+      "difficulty": 3,
+      "genre": "イベント",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "無月いお「投票イベ1stステージ突破ありがとｯ🎉 400票超え！？とんでもない数だぁ🙌」",
+      "sourceUrl": "https://x.com/62ki_10/status/2089031158055219309"
     }
   ],
   "answerSets": {
