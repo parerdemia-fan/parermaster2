@@ -110,8 +110,7 @@ const SLOTS_BY_ID = new Map(BADGE_SLOTS.map((s) => [s.id, s]))
 
 export function AchievementScreen() {
   const goToTitle = useSettingsStore((s) => s.goToTitle)
-  const { badges, isGen2Master, isGen1Master, isParerMaster, isTimeAttackUnlocked } = useBadgeStore()
-  const taUnlocked = isTimeAttackUnlocked()
+  const { badges, isGen2Master, isGen1Master, isParerMaster } = useBadgeStore()
   const taBest = (() => {
     try {
       const raw = localStorage.getItem('parermaster2_ta_best')
@@ -196,10 +195,8 @@ export function AchievementScreen() {
             </div>
             <div className="flex flex-col" style={{ width: '28%' }}>
               <RibbonHeader
-                gradient={taUnlocked
-                  ? 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)'
-                  : 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)'}
-                label={taUnlocked ? 'TA' : '？？？'}
+                gradient="linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)"
+                label="TA"
               />
               <div
                 className="flex flex-col items-center justify-center"
@@ -207,31 +204,20 @@ export function AchievementScreen() {
                   flex: 1,
                   padding: '1cqmin',
                   borderRadius: '2cqmin',
-                  background: taUnlocked
-                    ? 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)'
-                    : 'linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 50%, #b8b8b8 100%)',
-                  border: taUnlocked
-                    ? '0.3cqmin solid rgba(255,215,0,0.6)'
-                    : '0.3cqmin solid rgba(0,0,0,0.08)',
-                  boxShadow: taUnlocked
-                    ? 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin rgba(200,170,0,0.3)'
-                    : 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.2)',
-                  opacity: taUnlocked ? 1 : 0.6,
+                  background: 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)',
+                  border: '0.3cqmin solid rgba(255,215,0,0.6)',
+                  boxShadow: 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin rgba(200,170,0,0.3)',
                   gap: '0.3cqmin',
                 }}
               >
-                <span style={{ fontSize: '4cqmin', lineHeight: 1 }}>
-                  {taUnlocked ? '⏱️' : '🔒'}
+                <span style={{ fontSize: '4cqmin', lineHeight: 1 }}>⏱️</span>
+                <span style={{ fontSize: '2cqmin', color: '#666', textAlign: 'center', marginTop: '0.3cqmin' }}>
+                  {taBest != null ? (
+                    <>自己ベスト<br /><span className="font-bold" style={{ color: '#c48800', fontSize: '2.8cqmin' }}>{formatTime(taBest)}</span></>
+                  ) : (
+                    '未プレイ'
+                  )}
                 </span>
-                {taUnlocked && (
-                  <span style={{ fontSize: '2cqmin', color: '#666', textAlign: 'center', marginTop: '0.3cqmin' }}>
-                    {taBest != null ? (
-                      <>自己ベスト<br /><span className="font-bold" style={{ color: '#c48800', fontSize: '2.8cqmin' }}>{formatTime(taBest)}</span></>
-                    ) : (
-                      '未プレイ'
-                    )}
-                  </span>
-                )}
               </div>
             </div>
           </div>

@@ -35,7 +35,6 @@ export function TitleScreen() {
   const goToDebug = useSettingsStore((s) => s.goToDebug)
   const goToTimeAttack = useSettingsStore((s) => s.goToTimeAttack)
   const startQuiz = useGameStore((s) => s.startQuiz)
-  const isTimeAttackUnlocked = useBadgeStore((s) => s.isTimeAttackUnlocked)
   const { talents } = useTalents()
   const { questions: questionPool, answerSets } = useQuestions()
 
@@ -58,7 +57,6 @@ export function TitleScreen() {
   }, [])
   const [isFullscreen, setIsFullscreen] = useState(!!document.fullscreenElement)
   const [showFullscreenToggle, setShowFullscreenToggle] = useState(shouldShowFullscreenToggle())
-  const taUnlocked = isTimeAttackUnlocked()
 
   useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement)
@@ -205,27 +203,20 @@ export function TitleScreen() {
 
         {/* タイムアタック（下段） */}
         <button
-          className={`font-bold whitespace-nowrap ${taUnlocked ? 'cursor-pointer transition hover:brightness-105 active:scale-95' : 'cursor-not-allowed'}`}
+          className="font-bold whitespace-nowrap cursor-pointer transition hover:brightness-105 active:scale-95"
           style={{
             fontSize: '4cqmin',
             padding: '1.5cqmin 5cqmin',
             borderRadius: '5cqmin',
-            border: taUnlocked
-              ? '0.3cqmin solid rgba(255,255,255,0.5)'
-              : '0.3cqmin solid rgba(255,255,255,0.3)',
-            background: taUnlocked
-              ? 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)'
-              : 'linear-gradient(180deg, #d0d0d0 0%, #b0b0b0 40%, #999 100%)',
-            color: taUnlocked ? 'white' : 'rgba(255,255,255,0.7)',
-            boxShadow: taUnlocked
-              ? 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(200,150,0,0.4)'
-              : 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.2), 0 0.4cqmin 1cqmin rgba(0,0,0,0.15)',
+            border: '0.3cqmin solid rgba(255,255,255,0.5)',
+            background: 'linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)',
+            color: 'white',
+            boxShadow: 'inset 0 0.4cqmin 0.6cqmin rgba(255,255,255,0.3), 0 0.4cqmin 1cqmin rgba(200,150,0,0.4)',
             textShadow: '0 1px 2px rgba(0,0,0,0.2)',
           }}
-          disabled={!taUnlocked}
-          onClick={() => { if (taUnlocked) { playSound('tap'); setShowTADialog(true) } }}
+          onClick={() => { playSound('tap'); setShowTADialog(true) }}
         >
-          {taUnlocked ? '⏱️ タイムアタック' : '🔒 タイムアタック'}
+          ⏱️ タイムアタック
         </button>
       </div>
 
