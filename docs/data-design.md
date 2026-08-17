@@ -154,7 +154,7 @@ export const DORMITORIES = {
       ],
       "difficulty": 2,           // 難易度（0〜8。前作は0〜5だったが拡張可能に）
       "genre": "プロフィール",    // ジャンル（表示用。判定には使わない）
-      "sortAnswers": false,      // 選択肢をソートして表示するか
+      "sortAnswers": false,      // 選択肢をシャッフルせず昇順に並べて表示するか（数値は自然順）
       "hideIcon": false,         // タレントアイコンを回答前に隠すか
       "questionImage": null,     // 問題画像ファイル名（null=なし。配置先: public/data/images/questions/）
       "commentImage": null,      // 解説画像ファイル名（null=なし。同上）
@@ -227,7 +227,13 @@ export const DORMITORIES = {
    d. `[寮名+世代]` / `[寮名+全員]` → generationを無視し指定条件の寮タレントからランダム選出
 3. 空文字列 → 問題の世代でフィルタしたタレントプールから未使用の名前をランダム選出
 4. 正解や既に使用した名前とは重複しない
-5. 補完後にシャッフル（`sortAnswers=true` の場合はソート）して表示
+5. 補完後にシャッフルして表示
+
+**選択肢の並び順（`sortAnswers`）:**
+
+- `false` — ランダムにシャッフル（通常）
+- `true` — シャッフルせず昇順に並べる。数値を数値として比較するため「5個 → 10個 → 20個」「ドラクエ3 → ドラクエ11」のように桁数の違う数値も自然順になる（`Intl.Collator('ja', { numeric: true })`）
+- 数量・年号・ナンバリング作品など、大小の並びに意味がある選択肢で `true` にする
 
 ---
 

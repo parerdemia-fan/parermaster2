@@ -19,6 +19,12 @@ export interface QuizSegment {
 }
 
 /**
+ * sortAnswers=true の選択肢の並び順比較
+ * 数値を数値として扱うため「ドラクエ3」→「ドラクエ11」「5個」→「10個」の自然順になる
+ */
+const answerCollator = new Intl.Collator('ja', { numeric: true })
+
+/**
  * [セット名] 形式かどうか判定し、セット名を返す
  */
 function extractSetName(answer: string): string | null {
@@ -186,7 +192,9 @@ export function generateTextQuizQuestions(
     const filled = fillAnswers(q.answers, talents, answerSets, q.generation)
     const correctAnswer = filled[0]
 
-    const shuffled = q.sortAnswers ? [...filled].sort() : shuffleArray(filled)
+    const shuffled = q.sortAnswers
+      ? [...filled].sort(answerCollator.compare)
+      : shuffleArray(filled)
     const correctIndex = shuffled.indexOf(correctAnswer)
 
     // 全選択肢がタレント名か判定
