@@ -8120,6 +8120,166 @@
       "answerPool": "",
       "comment": "無月いお「投票イベ1stステージ突破ありがとｯ🎉 400票超え！？とんでもない数だぁ🙌」",
       "sourceUrl": "https://x.com/62ki_10/status/2089031158055219309"
+    },
+    {
+      "id": "q407",
+      "generation": 2,
+      "question": "水凪るぅがリスナー投票で決めた、ご飯写真用のタグは？",
+      "answers": [
+        "#るぅの餌付け",
+        "#食事るぅ",
+        "#食べるぅ",
+        "#食え水凪"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Minagi__Ru/status/2068190807493062938"
+    },
+    {
+      "id": "q408",
+      "generation": 2,
+      "question": "汐月永遠がゴールデンウィーク初日に「これから戦です」と語ったとき、自らを何と名乗った？",
+      "answers": [
+        "労働戦士ギャルエターナル",
+        "エターナルワーカー汐月",
+        "祝日出勤兵トワイライト",
+        "労働ギャル・シヅキング"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "汐月永遠「みんな頑張るぞー！おー！！(ง ᐕ) ง」",
+      "sourceUrl": "https://x.com/SizukiTowa2641/status/2050417639730926063"
+    },
+    {
+      "id": "q409",
+      "generation": 2,
+      "question": "無月いおが「Vtuberとしての人権獲得」と言って探しに出かけ、7月20日に手に入れたPCパーツは？",
+      "answers": [
+        "64GBのメモリ",
+        "4TBのSSD",
+        "新型のグラボ",
+        "27インチモニター"
+      ],
+      "difficulty": 4,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/62ki_10/status/2079070072522633409"
+    },
+    {
+      "id": "q410",
+      "generation": 2,
+      "question": "無月いおがデビュー当初からずっと着たいと言っていたハロウィン衣装は？",
+      "answers": [
+        "チャイナ服",
+        "メイド服",
+        "ナース服",
+        "ゴシックドレス"
+      ],
+      "difficulty": 5,
+      "genre": "容姿",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/62ki_10/status/2079203627328254343"
+    },
+    {
+      "id": "q411",
+      "generation": 1,
+      "question": "藤森ちとせが配信概要欄の「注意事項？」で「話題に出さないでね」とお願いしている野菜は？",
+      "answers": [
+        "トマト🍅",
+        "かぼちゃ🎃",
+        "ナス🍆",
+        "キノコ🍄"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=bYl7vApr2Xw"
+    },
+    {
+      "id": "q412",
+      "generation": 1,
+      "question": "亀城ちかりが部屋の片付け中に引き出しから出てきて「忍者になりたかったんだなぁ」と語ったものは？",
+      "answers": [
+        "クナイ",
+        "まきびし",
+        "忍者刀",
+        "巻物"
+      ],
+      "difficulty": 5,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "亀城ちかり「まあまあ大きくなってから買ってるのが恥ずかしポイント」",
+      "sourceUrl": "https://x.com/kamekichikari/status/2018220730757091551"
+    },
+    {
+      "id": "q413",
+      "generation": 1,
+      "question": "緋月・ローズ・ブレイドとローズ・ダマスクハートによる「Wローズコラボ」のテーマは？",
+      "answers": [
+        "恋愛相談",
+        "怪談朗読",
+        "料理対決",
+        "麻雀対決"
+      ],
+      "difficulty": 4,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/rose_damaskht/status/1973526732289556822"
+    },
+    {
+      "id": "q414",
+      "generation": 2,
+      "question": "2026年5月16日に2部制で行われたウィニー寮2期生の初配信リレーで、トリを務めたのは？",
+      "answers": [
+        "火狐むい",
+        "露草なぎ",
+        "四葉みっけ",
+        "雪紫誉"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "無月いお「1部2部ともに ～完～ ‼️ 様子がおかしい？ ウィニー寮2期生をよろしくお願いします！」",
+      "sourceUrl": "https://x.com/kako_mui/status/2054171654151086440"
     }
   ],
   "answerSets": {
