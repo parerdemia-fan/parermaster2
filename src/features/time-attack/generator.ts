@@ -66,7 +66,8 @@ export function generateTimeAttackQuestions(
     } else {
       // テキストクイズ
       const segments: QuizSegment[] = [{ level: section.level!, count: section.count, ordered: false }]
-      sectionQuestions = generateTextQuizQuestions(questionPool, segments, section.difficulty, talents, answerSets)
+      // answerScope=0: タイムアタックは全世代対象なので answerSets も1期生・2期生の両方から出す
+      sectionQuestions = generateTextQuizQuestions(questionPool, segments, section.difficulty, talents, answerSets, 0)
     }
 
     // 各問題に displayStars を設定

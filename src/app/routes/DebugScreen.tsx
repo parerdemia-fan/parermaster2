@@ -127,7 +127,7 @@ export function DebugScreen() {
     if (pool.length === 0) return
 
     const segments = [{ level, count: DEBUG_QUESTION_COUNT, ordered: false }]
-    const questions = generateTextQuizQuestions(pool, segments, 1, talents, answerSets)
+    const questions = generateTextQuizQuestions(pool, segments, 1, talents, answerSets, 1)
     startQuiz(questions)
     goToQuiz()
   }

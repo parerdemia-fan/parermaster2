@@ -151,7 +151,8 @@ export function SettingScreen() {
         ]
       }
 
-      questions = generateTextQuizQuestions(pool, segments, difficulty, talents, answerSets)
+      // answerScope=gen: 世代混在の answerSets はプレイ中のモードの世代のみ選択肢に出す
+      questions = generateTextQuizQuestions(pool, segments, difficulty, talents, answerSets, gen)
     } else {
       // 顔名前当てモード
       const filtered = isDormMode
