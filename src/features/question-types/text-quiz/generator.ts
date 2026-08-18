@@ -43,12 +43,14 @@ const DORM_LABEL_TO_ID: Record<string, string> = {
 /**
  * 空の選択肢と [セット名] 形式の選択肢を補完する
  * @param generation 問題の世代（0=全員、1=1期生、2=2期生）
+ * @param answerScope answerSets の選択肢スコープ（0=全員、1=1期生、2=2期生）
  */
 function fillAnswers(
   answers: string[],
   talents: Talent[],
   answerSets: Record<string, string[]>,
   generation: number,
+  answerScope: number,
 ): string[] {
   const result = [...answers]
   const used = new Set(result.filter((a) => a !== '' && !extractSetName(a)))
@@ -65,7 +67,16 @@ function fillAnswers(
       // answerSets から検索
       const members = answerSets[setName]
       if (members) {
-        const candidates = members.filter((m) => !used.has(m))
+        const unused = members.filter((m) => !used.has(m))
+        // 世代混在セットをスコープで絞り込む。talents.json に無いメンバー（外部ゲスト等）は
+        // 世代を判定できないため常に候補に残す。絞り込みで0件になる場合は絞り込みなしにフォールバック
+        const scoped = answerScope === 0
+          ? unused
+          : unused.filter((m) => {
+              const memberGen = talents.find((t) => t.name === m)?.generation
+              return memberGen === undefined || memberGen === answerScope
+            })
+        const candidates = scoped.length > 0 ? scoped : unused
         if (candidates.length > 0) {
           result[i] = candidates[Math.floor(Math.random() * candidates.length)]
           used.add(result[i])
@@ -143,6 +154,7 @@ function resolveAnswerTalentIds(
  * @param pool 出題候補の問題データ（世代フィルタ済み）
  * @param segments 問題構成定義（レベル・問題数・順序の配列）
  * @param difficulty 設定難易度（UIの難易度表示用）
+ * @param answerScope answerSets の選択肢スコープ（0=全員/タイムアタック、1=1期生モード、2=2期生モード）
  */
 export function generateTextQuizQuestions(
   pool: QuestionData[],
@@ -150,6 +162,7 @@ export function generateTextQuizQuestions(
   difficulty: Difficulty,
   talents: Talent[],
   answerSets: Record<string, string[]>,
+  answerScope: number,
 ): TextQuizQuestion[] {
   // 難易度ごとにグループ分け
   const byLevel = new Map<number, QuestionData[]>()
@@ -189,7 +202,7 @@ export function generateTextQuizQuestions(
 
   return selected.map((q) => {
     // 選択肢を補完
-    const filled = fillAnswers(q.answers, talents, answerSets, q.generation)
+    const filled = fillAnswers(q.answers, talents, answerSets, q.generation, answerScope)
     const correctAnswer = filled[0]
 
     const shuffled = q.sortAnswers
