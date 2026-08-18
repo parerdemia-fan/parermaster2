@@ -2320,7 +2320,7 @@
       "dream": "宇宙一のしゅわっと強炭酸なアイドルになること！はやく3Dの姿になって踊りたい〜！！",
       "birthday": "3月8日",
       "height": 158,
-      "bloodType": "",
+      "bloodType": "A型",
       "hairColor": "gold",
       "hairStyle": "ショート",
       "eyeColorLeft": "",
@@ -4613,6 +4613,10 @@
         {
           "tag": "#るぅぶるぅ",
           "usage": "FA"
+        },
+        {
+          "tag": "#るぅの餌付け",
+          "usage": "ご飯"
         }
       ],
       "hobbies": [
