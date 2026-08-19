@@ -15,7 +15,7 @@
   - 前作のダークファンタジー風ではなく、カジュアルゲーム・知育アプリに近い印象
 - 配置先:
   - `public/data/images/ui/` — UIアセット（ボタン、パネル、背景、ロゴ等）
-  - `public/data/images/questions/` — 知識クイズの問題・解説画像
+  - `public/data/images/questions/` — 知識クイズの問題・解説画像（個別一覧は本書では管理しない。正本は `public/data/questions.json` の `questionImage` / `commentImage` / 本文中の `[image:○○.png]`）
   - `public/data/images/live2d/` — 2期生のKV未提供タレント画像（orig + sq、現在は冬星れんこんのみ）
   - `public/data/images/kv/` — 1期生・2期生のキービジュアル画像（orig + sq）
 

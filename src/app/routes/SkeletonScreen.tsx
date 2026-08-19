@@ -13,7 +13,8 @@ const BASE = import.meta.env.BASE_URL
 
 export function SkeletonScreen() {
   const goToAbout = useSettingsStore((s) => s.goToAbout)
-  const { talents } = useTalents()
+  // パズルデータが talentId で参照しているため、非表示タレントも含めないとパズルが完成できない
+  const { talents } = useTalents(true)
 
   const currentVariant = useSkeletonStore((s) => s.currentVariant)
   const selectVariant = useSkeletonStore((s) => s.selectVariant)

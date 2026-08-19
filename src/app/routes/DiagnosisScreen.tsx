@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
-import { useDiagnosisData, computeTop3, setDiagnosisResult, toDiagnosisGenKey, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
+import { useDiagnosisData, computeTop3, filterProfilesByTalents, setDiagnosisResult, toDiagnosisGenKey, PERSONALITY_AXES } from '../../shared/hooks/useDiagnosis.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { getTalentImagePath, pickTalentDisplayName } from '../../shared/utils/talent.ts'
 import { playSound } from '../../shared/utils/sound.ts'
@@ -35,6 +35,8 @@ export function DiagnosisScreen() {
   const [selected, setSelected] = useState<number | null>(null)
   const [transitioning, setTransitioning] = useState(false)
 
+  const visibleProfiles = useMemo(() => filterProfilesByTalents(profiles, talents), [profiles, talents])
+
   // 1問ごとに同世代のタレントをアシスタントとして選出
   const assistant = useMemo(() => {
     const pool = talents.filter((t) => t.generation === genKey)
@@ -64,7 +66,7 @@ export function DiagnosisScreen() {
         setTransitioning(true)
         setTimeout(() => {
           if (currentIndex + 1 >= questions.length) {
-            const top3 = computeTop3(newScores, profiles, questions, { algorithm: 'legacy' })
+            const top3 = computeTop3(newScores, visibleProfiles, questions, { algorithm: 'legacy' })
             setDiagnosisResult({ scores: newScores, top3 })
             goToDiagnosisResult()
           } else {
@@ -75,7 +77,7 @@ export function DiagnosisScreen() {
         }, 300)
       }, 600)
     },
-    [selected, transitioning, scores, currentIndex, questions, profiles, goToDiagnosisResult],
+    [selected, transitioning, scores, currentIndex, questions, visibleProfiles, goToDiagnosisResult],
   )
 
   if (loading || questions.length === 0 || talents.length === 0) {

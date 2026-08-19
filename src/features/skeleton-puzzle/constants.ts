@@ -10,6 +10,15 @@ export const NUMBERED_LABELS = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯
 
 export const STORAGE_KEY_PREFIX = 'parermaster2_skeleton_'
 
+/**
+ * 保存キーの版（未記載＝初版）。進捗は wordId をキーに保存するため、
+ * パズルデータの wordId 構成を変更したら該当 variant の版を上げて既存進捗を捨てる
+ */
+const STORAGE_KEY_VERSION: Partial<Record<PuzzleVariant, number>> = {
+  gen1: 2,
+}
+
 export function getStorageKey(variant: PuzzleVariant): string {
-  return `${STORAGE_KEY_PREFIX}${variant}`
+  const version = STORAGE_KEY_VERSION[variant]
+  return `${STORAGE_KEY_PREFIX}${variant}${version ? `_v${version}` : ''}`
 }
