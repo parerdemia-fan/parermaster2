@@ -12,6 +12,8 @@ export interface Talent {
   id: string
   generation: number
   dormitory: string
+  /** ゲーム内で露出させないタレント。既定では useTalents() から除外される */
+  hidden: boolean
   name: string
   kana: string
   familyName: string

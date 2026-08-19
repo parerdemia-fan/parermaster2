@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { Talent } from '../types/talent.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -62,6 +63,18 @@ function filterProfilesByGen(
     if (id.startsWith(prefix)) out[id] = p
   }
   return out
+}
+
+/**
+ * 表示対象のタレントのプロファイルのみに絞る
+ * personality.json は talents.json と独立したデータのため、非表示タレントが診断結果に出ないよう明示的に除外する
+ */
+export function filterProfilesByTalents(
+  profiles: Record<string, PersonalityProfile>,
+  talents: Talent[],
+): Record<string, PersonalityProfile> {
+  const ids = new Set(talents.map((t) => t.id))
+  return Object.fromEntries(Object.entries(profiles).filter(([id]) => ids.has(id)))
 }
 
 function updateAllProfiles(all: Record<string, PersonalityProfile>): void {

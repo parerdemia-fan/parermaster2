@@ -9,9 +9,11 @@ import {
   computeTop3,
   cosineSimilarity,
   profileToVector,
+  filterProfilesByTalents,
   type PersonalityProfile,
   type DiagnosisQuestion,
 } from '../useDiagnosis.ts'
+import type { Talent } from '../../types/talent.ts'
 
 const PERSONALITY_PATH = resolve(__dirname, '../../../../public/data/personality.json')
 const QUESTIONS_GEN1_PATH = resolve(__dirname, '../../../../public/data/diagnosis-questions-gen1.json')
@@ -208,4 +210,22 @@ describe('Monte Carlo バイアス比較', () => {
     expect(t3L.zeroCount).toBe(0)
     expect(t3P.zeroCount).toBe(0)
   }, 30000)
+})
+
+describe('filterProfilesByTalents', () => {
+  const profiles: Record<string, PersonalityProfile> = {
+    VISIBLE: { tension: 5, interest: 5, thinking: 5, stance: 5, expression: 5 },
+    HIDDEN: { tension: 1, interest: 1, thinking: 1, stance: 1, expression: 1 },
+  }
+  const talents = [{ id: 'VISIBLE' } as Talent]
+
+  it('talents に居ないプロファイルを診断候補から除外する', () => {
+    expect(Object.keys(filterProfilesByTalents(profiles, talents))).toEqual(['VISIBLE'])
+  })
+
+  it('除外されたプロファイルは computeTop3 の結果に出てこない', () => {
+    const scores = Object.fromEntries(PERSONALITY_AXES.map((a) => [a, 1]))
+    const top3 = computeTop3(scores, filterProfilesByTalents(profiles, talents), questions)
+    expect(top3.map((r) => r.talentId)).not.toContain('HIDDEN')
+  })
 })
