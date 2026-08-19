@@ -69,6 +69,7 @@
 - localStorage に配置済みワード・クリア状態を保存
 - パズル種類ごとに独立（`parermaster2_skeleton_gen1` 等）
 - リセットボタンで進捗をクリア（確認ダイアログあり）
+- 配置は `wordId` をキーに保存するため、パズルデータの `wordId` 構成（ワードの追加・削除・繰り下げ）を変更したら `constants.ts` の `STORAGE_KEY_VERSION` で該当 variant の版を上げる。保存キーが変わり（`parermaster2_skeleton_gen1_v2` 等）、ずれた既存進捗を読み込まずに強制リセットできる
 
 ## データ形式
 
