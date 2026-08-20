@@ -8360,6 +8360,206 @@
       "answerPool": "",
       "comment": "水凪るぅと雪紫誉がカツ丼で一致、牡丹雪は親子丼、香桜あんにんはビビンバ丼だった",
       "sourceUrl": "https://x.com/annin_kosakura/status/2087172590364488079"
+    },
+    {
+      "id": "q419",
+      "generation": 1,
+      "question": "2025年度パレポイントランキング上位4名によるユニット名は？",
+      "answers": [
+        "きゅるん同盟",
+        "きゃわん同盟",
+        "きょろん同盟",
+        "きゃいん同盟"
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "kyurun.png",
+      "answerPool": "",
+      "comment": "グッズも販売されました",
+      "sourceUrl": "https://x.com/hino_pekemaru/status/2089627776693555312"
+    },
+    {
+      "id": "q420",
+      "generation": 2,
+      "question": "四葉みっけのファンネームは？",
+      "answers": [
+        "みーっけ隊",
+        "四葉探索隊",
+        "クローバー隊",
+        "民草"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Yotuba_mikke/status/2066146135148986571"
+    },
+    {
+      "id": "q421",
+      "generation": 2,
+      "question": "銀河キララの決め台詞は？",
+      "answers": [
+        "キラリと解決",
+        "キララが照らす",
+        "星より速く解決",
+        "銀河一の推理"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/kirara_ginga/status/2046114756977942645"
+    },
+    {
+      "id": "q422",
+      "generation": 1,
+      "question": "花晴りらのプロフィールにある「あなたの明日の◯◯になりたい」の◯◯は？",
+      "answers": [
+        "理由",
+        "光",
+        "支え",
+        "希望"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/LilaHanahare/status/2053876985299091792"
+    },
+    {
+      "id": "q423",
+      "generation": 1,
+      "question": "ファンマークが🥩ひとつだけの寮生は？",
+      "answers": [
+        "山田スバル",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": ""
+    },
+    {
+      "id": "q424",
+      "generation": 2,
+      "question": "寮生名鑑の特技欄が「耳がいい(絶対音感ではないけど音程を正確に聞き取れる)」になっているのは？",
+      "answers": [
+        "翡翠あかね",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/shorts/jTsmrbiYTBo"
+    },
+    {
+      "id": "q425",
+      "generation": 1,
+      "question": "七音うらの2026年誕生日グッズ、手に持っているものは何？",
+      "answers": [
+        "拡声器",
+        "マレット(マリンバを叩く棒)",
+        "ハンバーガー",
+        "三連アイス"
+      ],
+      "difficulty": 3,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "ura_birthday.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/NanaotoUra/status/2056014608796942706"
+    },
+    {
+      "id": "q426",
+      "generation": 1,
+      "question": "七音うらが配信開始時によく投稿している一言は？",
+      "answers": [
+        "ちょっと！",
+        "ﾃﾞﾃﾞｰﾝ",
+        "うぇーい",
+        "今日もギリギリ"
+      ],
+      "difficulty": 6,
+      "genre": "ツイート",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/search?q=from%3ANanaotoUra%20%E3%81%A1%E3%82%87%E3%81%A3%E3%81%A8&src=typed_query&f=live"
+    },
+    {
+      "id": "q427",
+      "generation": 1,
+      "question": "2026年5月22日～31日に開催された女性配信者限定GTAサーバー「ぷるぐらっ！」に参加したのは誰？",
+      "answers": [
+        "愛乃宮ゆめ",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 7,
+      "genre": "イベント",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/enomiya_yume/status/2049457029606175038"
+    },
+    {
+      "id": "q428",
+      "generation": 2,
+      "question": "マイクラのパレ学2期生サーバーで初期スポーン地点近くに小屋を建てたのは誰？",
+      "answers": [
+        "夕凪万夜",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=u6SQpbvoIqk"
     }
   ],
   "answerSets": {
