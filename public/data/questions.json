@@ -8560,6 +8560,186 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/watch?v=u6SQpbvoIqk"
+    },
+    {
+      "id": "q429",
+      "generation": 2,
+      "question": "汐月永遠の名前の読みは？",
+      "answers": [
+        "しづきとわ",
+        "しづきえいえん",
+        "しおつきふぉーえばー",
+        "しおづきえたーなる"
+      ],
+      "difficulty": 1,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/SizukiTowa2641/status/2044768898625798158"
+    },
+    {
+      "id": "q430",
+      "generation": 1,
+      "question": "天透あわが名乗っている「◯◯系アイドルVtuber」の◯◯は？",
+      "answers": [
+        "強炭酸",
+        "バブル",
+        "シャボン",
+        "うたかた"
+      ],
+      "difficulty": 1,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "「パレデミア学園 🏫 バゥ寮 所属🐶🐾 弾ける笑顔をあなたにお届けっ！強炭酸系アイドルVtuber 天透あわです🫧」",
+      "sourceUrl": "https://x.com/amatoawa"
+    },
+    {
+      "id": "q431",
+      "generation": 1,
+      "question": "桜堂ねるが毎日投稿しているショート動画のテーマは？",
+      "answers": [
+        "今日は何の日",
+        "今日の天気",
+        "今日の名言",
+        "今日の運勢"
+      ],
+      "difficulty": 2,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=vkar0G2pyWk"
+    },
+    {
+      "id": "q432",
+      "generation": 1,
+      "question": "ひな祭りグッズでバスケットボールを持っているのは誰？",
+      "answers": [
+        "雛菊のん",
+        "鈴木沙透",
+        "桜庭羽奈",
+        "天透あわ"
+      ],
+      "difficulty": 4,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "non_basket.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Hinagiku_Non/status/2032064004374610348"
+    },
+    {
+      "id": "q433",
+      "generation": 1,
+      "question": "職業体験グッズで新巻るろながなった職業は？",
+      "answers": [
+        "科学者",
+        "料理人",
+        "ピアニスト",
+        "プログラマー"
+      ],
+      "difficulty": 4,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "rurona_scientist.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Aramaki_ruronA/status/2046146820569755856"
+    },
+    {
+      "id": "q434",
+      "generation": 1,
+      "question": "ジューンブライドグッズで唯一和装だったのは誰？",
+      "answers": [
+        "久堂れしあ",
+        "相栖るじゅ",
+        "愛乃宮ゆめ",
+        "フローレ・ブランカ"
+      ],
+      "difficulty": 5,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "reshia_june.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/reshia_kudou/status/2067636769143816697"
+    },
+    {
+      "id": "q435",
+      "generation": 1,
+      "question": "パレデミア学園のグッズで初めて木札キーホルダーとビールジョッキが出たのはどのシリーズ？",
+      "answers": [
+        "夏祭りグッズ",
+        "ハロウィングッズ",
+        "水着グッズ",
+        "クリスマスグッズ"
+      ],
+      "difficulty": 3,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/parerdemia/status/2077687076255137934"
+    },
+    {
+      "id": "q436",
+      "generation": 1,
+      "question": "夏祭りグッズで犬丸なでこが右手に持っているものは何？",
+      "answers": [
+        "ピンクのかざぐるま",
+        "ピンクの綿あめ",
+        "ピンクのべっこう飴",
+        "ピンクのヨーヨー"
+      ],
+      "difficulty": 6,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "nadeko_fes.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/nadeko_inumaru/status/2082678398443491740"
+    },
+    {
+      "id": "q437",
+      "generation": 1,
+      "question": "夏祭りグッズで灯野ぺけ。が持っている射的の銃に書かれている文字は？",
+      "answers": [
+        "美遊浮",
+        "覇麗de魅愛",
+        "お祭り女",
+        "❌️⭕️"
+      ],
+      "difficulty": 6,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "peke_fes.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/hino_pekemaru/status/2077671523712929856"
     }
   ],
   "answerSets": {
