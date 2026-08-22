@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import type { BadgeRank, BadgeSlotId } from '../features/achievement/types.ts'
+import { useQuestionHistoryStore } from './questionHistoryStore.ts'
 import {
   GEN1_SLOT_IDS,
   GEN2_SLOT_IDS,
@@ -87,7 +88,7 @@ export const useBadgeStore = create<BadgeState & BadgeActions>()((set, get) => (
     localStorage.removeItem(STORAGE_KEY)
     localStorage.removeItem('parermaster2_ta_best')
     localStorage.removeItem('parermaster2_staff_roll_seen')
-    localStorage.removeItem('parermaster2_question_history')
+    useQuestionHistoryStore.getState().reset()
     set({ badges: {} })
   },
 }))
