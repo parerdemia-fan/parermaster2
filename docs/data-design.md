@@ -333,3 +333,5 @@ export const DORMITORIES = {
 | `parermaster2_diary_entries` | 開発日誌の手記エントリ（動的生成分） | `DiaryMemoirEntry[]` |
 | `parermaster2_room` | 談話室選択状態 | `{ left: string \| null, center: string \| null, right: string \| null, dormitory: DormId }` |
 | `parermaster2_staff_roll_seen` | スタッフロール初回自動再生済みフラグ | `boolean` |
+| `parermaster2_question_history` | 知識問題の連続正解回数（出題重み付け用） | `Record<フィンガープリント, number>` |
+| `parermaster2_question_cleared` | 一度でも正解した知識問題（実績の正解数表示用） | `string[]`（フィンガープリントの配列） |

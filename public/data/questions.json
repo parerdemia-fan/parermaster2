@@ -5404,12 +5404,12 @@
     {
       "id": "q271",
       "generation": 1,
-      "question": "2025年に堂下さとりが食べたソフトクリームの数は？",
+      "question": "2026年上半期(1/1〜6/30)に堂下さとりが食べたソフトクリームの数は？",
       "answers": [
-        "547個",
-        "389個",
-        "216個",
-        "155個"
+        "367個",
+        "250個",
+        "185個",
+        "123個"
       ],
       "difficulty": 5,
       "genre": "エピソード",
@@ -5418,8 +5418,8 @@
       "questionImage": null,
       "commentImage": null,
       "answerPool": "",
-      "comment": "堂下さとり「本人的にはあんまり納得いってないです。もっとやれました。」",
-      "sourceUrl": "https://www.youtube.com/shorts/Qd5sgF_3GOU"
+      "comment": "堂下さとり「これソフトクリームだけなんで、アイスは入れてません」",
+      "sourceUrl": "https://youtu.be/dzUsmH7h6SM?t=1729"
     },
     {
       "id": "q272",
@@ -7891,7 +7891,7 @@
         "アヒルと鴨のコインロッカー",
         "オーデュボンの祈り"
       ],
-      "difficulty": 6,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -7911,7 +7911,7 @@
         "クトゥルフ2010",
         "狂気山脈にて"
       ],
-      "difficulty": 7,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -7951,7 +7951,7 @@
         "パラノマサイト",
         "和階堂真の事件簿"
       ],
-      "difficulty": 6,
+      "difficulty": 5,
       "genre": "趣味嗜好",
       "sortAnswers": false,
       "hideIcon": false,
@@ -8740,6 +8740,126 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://x.com/hino_pekemaru/status/2077671523712929856"
+    },
+    {
+      "id": "q438",
+      "generation": 1,
+      "question": "ローズ・ダマスクハートの座右の銘は？",
+      "answers": [
+        "推した事を後悔させない！",
+        "今日も無傷じゃ帰さない！",
+        "今日も明日も無理はしない！",
+        "推しは絶対裏切らない！"
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "同じツイートでオリジナルソング『薔薇の偶像 〜マグナスルナの軌跡〜』のタイトル決定も発表し、「厨二感ぷんぷんで大好き」と喜んでいた。",
+      "sourceUrl": "https://x.com/rose_damaskht/status/1922588402718757208"
+    },
+    {
+      "id": "q439",
+      "generation": 2,
+      "question": "天麗らんが7月に始めたラジオ動画のタイトルは？",
+      "answers": [
+        "らんじお。",
+        "天麗ラヂオ",
+        "らんらん放送局",
+        "お嬢ラジオ"
+      ],
+      "difficulty": 5,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天麗らん「ぜひ作業中や勉強中、寝る前のお供に、のんびり聴いていただけたら嬉しいです📻✨」",
+      "sourceUrl": "https://www.youtube.com/watch?v=bQ2O8VIU0qY"
+    },
+    {
+      "id": "q440",
+      "generation": 1,
+      "question": "堂下さとりが朝の配信でやった「10000回混ぜチャレンジ」の食べ物は？",
+      "answers": [
+        "納豆",
+        "メレンゲ",
+        "とろろ",
+        "ソフトクリーム"
+      ],
+      "difficulty": 2,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/doushitasatori/status/2064372351387767021"
+    },
+    {
+      "id": "q441",
+      "generation": 2,
+      "question": "銀河キララが自分の赤い瞳をルビーの色と表現している理由は？",
+      "answers": [
+        "7月の誕生石がルビーだから",
+        "星野ルビィが好きだから",
+        "プログラミング言語Rubyが使えるから",
+        "宝石言葉が探偵だから"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/kirara_ginga/status/2051683287232561554"
+    },
+    {
+      "id": "q442",
+      "generation": 2,
+      "question": "白尾すずが初配信告知で「◯◯◯◯◯◯×アイドル候補生」と表記した、フランス原産の猫種は何？",
+      "answers": [
+        "シャルトリュー",
+        "ロシアンブルー",
+        "ブリティッシュショートヘア",
+        "コラット"
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/suzu_shirao/status/2055033857188229405"
+    },
+    {
+      "id": "q443",
+      "generation": 2,
+      "question": "さくさくさくがリクエストを受けて描き、その後配信に登場させたりマンガを描いたりした動物は？",
+      "answers": [
+        "マーモット",
+        "ナマケモノ",
+        "レッサーパンダ",
+        "カワウソ"
+      ],
+      "difficulty": 5,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "saku_marmot.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://youtu.be/jIMjXc3sn0A?t=8794"
     }
   ],
   "answerSets": {

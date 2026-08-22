@@ -138,6 +138,8 @@ src/
 │   ├── achievement/             # アチーブメント（バッジ）
 │   │   ├── types.ts             # BadgeRank, BadgeSlotId
 │   │   ├── constants.ts         # スロット定義, ランク関連ユーティリティ
+│   │   ├── images.ts            # バッジ・トロフィー画像パス
+│   │   ├── clearedStats.ts      # 知識クイズ正解済み数・★別内訳の集計（純粋関数）
 │   │   └── judge.ts             # バッジ獲得判定（純粋関数）
 │   │
 │   ├── time-attack/             # タイムアタックモード

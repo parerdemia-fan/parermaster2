@@ -1,6 +1,16 @@
-import { useState } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
+import { createPortal } from 'react-dom'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useBadgeStore } from '../../stores/badgeStore.ts'
+import { useQuestionHistoryStore, type ClearedRecords, type HistoryRecords } from '../../stores/questionHistoryStore.ts'
+import { useQuestions } from '../../shared/hooks/useQuestions.ts'
+import type { QuestionData } from '../../shared/types/question.ts'
+import {
+  buildStarBreakdown,
+  countClearedQuestions,
+  filterByGeneration,
+  type GenerationFilter,
+} from '../../features/achievement/clearedStats.ts'
 import {
   GEN2_SLOT_IDS,
   GEN1_SLOT_IDS,
@@ -13,18 +23,46 @@ import type { BadgeRank } from '../../features/achievement/types.ts'
 import { BADGE_IMAGES, TROPHY_IMAGES } from '../../features/achievement/images.ts'
 import { formatTime, GRANDMASTER_THRESHOLD_MS } from '../../features/time-attack/constants.ts'
 
+/**
+ * ポップアップ内のサイズ単位。ポップアップは 4:3 コンテナの外（body 直下）に出すため、
+ * コンテナ基準の cqmin ではなくビューポート基準で決める。
+ *
+ * - `1dvmin`: デスクトップの見た目（コンテナ基準だった頃と同値）
+ * - `5.5px`: モバイルでも読めるようにする下限
+ * - `1.55dvw` / `1.38dvh`: 最も背が高い内訳ポップアップ（約 59 × 68 単位）が
+ *   画面の 92% × 94% に収まるようにする上限。内容の行数を増やすときは要再計算
+ */
+const TIP_UNIT = 'min(max(1dvmin, 5.5px), 1.55dvw, 1.38dvh)'
+
+/** ポップアップ内のサイズ指定（TIP_UNIT の n 倍） */
+function tu(n: number): string {
+  return `calc(${n} * var(--tip-unit))`
+}
+
 const RANK_BORDER: Record<BadgeRank, string> = {
   bronze: '#cd7f32',
   silver: '#a0a0a0',
   gold: '#daa520',
 }
 
+/** 正解済み内訳パネルに渡す集計元データ */
+type ClearedStatsSource = {
+  questions: readonly QuestionData[]
+  cleared: ClearedRecords
+  records: HistoryRecords
+}
+
 type TooltipInfo = {
   title: string
   condition: string
+  /** 条件文の見出し（省略時は見出しなし） */
+  conditionLabel?: string
   imageSrc?: string
-  imageSize?: string
+  /** 画像サイズ（TIP_UNIT 倍率） */
+  imageSize?: number
   rankLabel?: string
+  /** 指定すると★別内訳パネルを表示する */
+  clearedStats?: ClearedStatsSource
 }
 
 /** バッジの条件情報を生成 */
@@ -49,15 +87,15 @@ function getBadgeTooltip(slot: BadgeSlotDef, rank: BadgeRank | null): TooltipInf
     ? `${area} ${mode} 全問正解`
     : `${area} ${mode} ${diffLabels[targetRank]} 全問正解`
 
-  return { title: shortLabel, condition, imageSrc, imageSize: '12cqmin', rankLabel }
+  return { title: shortLabel, condition, conditionLabel: '獲得条件', imageSrc, imageSize: 12, rankLabel }
 }
 
 /** 称号の条件情報を生成 */
 function getTitleTooltip(label: string): TooltipInfo {
   if (label === '1期生マスター') {
-    return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド', imageSrc: TROPHY_IMAGES.gen1, imageSize: '18cqmin' }
+    return { title: label, condition: '1期生 顔名前当て ゴールド\n+ 1期生 知識クイズ ゴールド', conditionLabel: '獲得条件', imageSrc: TROPHY_IMAGES.gen1, imageSize: 18 }
   }
-  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ ゴールド', imageSrc: TROPHY_IMAGES.gen2, imageSize: '18cqmin' }
+  return { title: label, condition: '2期生 顔名前当て ゴールド\n+ 2期生 知識クイズ ゴールド', conditionLabel: '獲得条件', imageSrc: TROPHY_IMAGES.gen2, imageSize: 18 }
 }
 
 const AREA_STYLES = {
@@ -119,6 +157,15 @@ export function AchievementScreen() {
   })()
   const isGrandMaster = isParerMaster() && taBest != null && taBest < GRANDMASTER_THRESHOLD_MS
   const [tooltip, setTooltip] = useState<TooltipInfo | null>(null)
+
+  // 知識クイズの正解数（一度でも正解した問題数 / 現存する全問題数）
+  const { questions: questionPool } = useQuestions()
+  const cleared = useQuestionHistoryStore((s) => s.cleared)
+  const records = useQuestionHistoryStore((s) => s.records)
+  const clearedCount = useMemo(
+    () => countClearedQuestions(cleared, questionPool),
+    [cleared, questionPool],
+  )
 
   const slotsById = SLOTS_BY_ID
   const gen2Slots = GEN2_SLOT_IDS.map((id) => slotsById.get(id)!)
@@ -193,31 +240,35 @@ export function AchievementScreen() {
                 })}
               </div>
             </div>
-            <div className="flex flex-col" style={{ width: '28%' }}>
-              <RibbonHeader
-                gradient="linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)"
-                label="TA"
-              />
-              <div
-                className="flex flex-col items-center justify-center"
-                style={{
-                  flex: 1,
-                  padding: '1cqmin',
-                  borderRadius: '2cqmin',
-                  background: 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)',
-                  border: '0.3cqmin solid rgba(255,215,0,0.6)',
-                  boxShadow: 'inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin rgba(200,170,0,0.3)',
-                  gap: '0.3cqmin',
-                }}
-              >
-                <span style={{ fontSize: '4cqmin', lineHeight: 1 }}>⏱️</span>
-                <span style={{ fontSize: '2cqmin', color: '#666', textAlign: 'center', marginTop: '0.3cqmin' }}>
-                  {taBest != null ? (
-                    <>自己ベスト<br /><span className="font-bold" style={{ color: '#c48800', fontSize: '2.8cqmin' }}>{formatTime(taBest)}</span></>
-                  ) : (
-                    '未プレイ'
-                  )}
-                </span>
+            <div className="flex flex-col" style={{ width: '28%', gap: '1cqmin' }}>
+              <div className="flex flex-col" style={{ flex: 1, minHeight: 0 }}>
+                <RibbonHeader
+                  gradient="linear-gradient(180deg, #ffd700 0%, #ffb700 40%, #e6a000 100%)"
+                  label="TA"
+                />
+                <StatCard
+                  emoji="⏱️"
+                  label="自己ベスト"
+                  value={taBest != null ? formatTime(taBest) : '未プレイ'}
+                  style={STAT_CARD_STYLES.timeAttack}
+                  onTap={() => setTooltip(TIME_ATTACK_TOOLTIP)}
+                />
+              </div>
+              <div className="flex flex-col" style={{ flex: 1, minHeight: 0 }}>
+                <RibbonHeader
+                  gradient="linear-gradient(180deg, #d8c4f5 0%, #b088e0 40%, #9163c8 100%)"
+                  label="知識"
+                />
+                <StatCard
+                  emoji="⭕"
+                  label="正解済み"
+                  value={questionPool.length > 0 ? `${clearedCount}/${questionPool.length}` : '…'}
+                  style={STAT_CARD_STYLES.knowledge}
+                  onTap={() => setTooltip({
+                    ...CLEARED_COUNT_TOOLTIP,
+                    clearedStats: { questions: questionPool, cleared, records },
+                  })}
+                />
               </div>
             </div>
           </div>
@@ -249,61 +300,275 @@ export function AchievementScreen() {
           {(isParerMaster() || isGrandMaster) && (
             <SecretMasterCard isGrandMaster={isGrandMaster} onTap={() => setTooltip(
               isGrandMaster
-                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分切り', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: '25cqmin' }
-                : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', imageSrc: TROPHY_IMAGES.master, imageSize: '25cqmin' }
+                ? { title: 'パレ学グランドマスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得\n+ タイムアタック 7分切り', conditionLabel: '獲得条件', imageSrc: TROPHY_IMAGES.grandmaster, imageSize: 25 }
+                : { title: 'パレ学マスター', condition: '1期生マスター 取得\n+ 2期生マスター 取得', conditionLabel: '獲得条件', imageSrc: TROPHY_IMAGES.master, imageSize: 25 }
             )} />
           )}
         </div>
       </div>
 
-      {/* 条件ポップアップ */}
-      {tooltip && (
+      {/* 条件ポップアップ（4:3コンテナの外に出して画面いっぱいを使う） */}
+      {tooltip && createPortal(
         <div
-          className="absolute inset-0 flex items-center justify-center"
-          style={{ backgroundColor: 'rgba(0,0,0,0.3)', zIndex: 50 }}
+          className="fixed inset-0 flex items-center justify-center"
+          style={{ backgroundColor: 'rgba(0,0,0,0.3)', zIndex: 100 }}
           onClick={() => setTooltip(null)}
         >
           <div
             className="flex flex-col items-center"
             style={{
+              '--tip-unit': TIP_UNIT,
               color: '#333',
               background: 'rgba(255,255,255,0.95)',
               backdropFilter: 'blur(8px)',
-              padding: '3cqmin 5cqmin',
-              borderRadius: '3cqmin',
-              boxShadow: '0 0.5cqmin 3cqmin rgba(0,0,0,0.25)',
-              minWidth: '25cqmin',
-            }}
+              padding: `${tu(3)} ${tu(5)}`,
+              borderRadius: tu(3),
+              boxShadow: `0 ${tu(0.5)} ${tu(3)} rgba(0,0,0,0.25)`,
+              minWidth: tu(25),
+              // 内容が増えても画面外にはみ出さない保険
+              maxHeight: '94dvh',
+              overflowY: 'auto',
+            } as CSSProperties}
             onClick={(e) => e.stopPropagation()}
           >
             {tooltip.imageSrc && (
               <img
                 src={tooltip.imageSrc}
                 alt=""
-                style={{ width: tooltip.imageSize ?? '25cqmin', height: tooltip.imageSize ?? '25cqmin', objectFit: 'contain', marginBottom: '0.5cqmin' }}
+                style={{ width: tu(tooltip.imageSize ?? 25), height: tu(tooltip.imageSize ?? 25), objectFit: 'contain', marginBottom: tu(0.5) }}
                 draggable={false}
               />
             )}
             {tooltip.title && (
-              <div className="font-bold" style={{ fontSize: '3cqmin', marginBottom: '1cqmin' }}>
+              <div className="font-bold" style={{ fontSize: tu(3), marginBottom: tu(1) }}>
                 {tooltip.title}
               </div>
             )}
             {tooltip.rankLabel && (
-              <div className="font-bold" style={{ fontSize: '3.5cqmin', color: '#8a6500', marginBottom: '1.5cqmin' }}>
+              <div className="font-bold" style={{ fontSize: tu(3.5), color: '#8a6500', marginBottom: tu(1.5) }}>
                 {tooltip.rankLabel}
               </div>
             )}
-            <div style={{ width: '80%', height: '1px', background: 'linear-gradient(90deg, transparent, #ccc, transparent)', marginBottom: '1.5cqmin' }} />
-            <div style={{ fontSize: '2.5cqmin', color: '#888', marginBottom: '0.5cqmin' }}>
-              獲得条件
-            </div>
-            <div className="font-bold" style={{ fontSize: '2.5cqmin', whiteSpace: 'pre-line', lineHeight: 1.8, textAlign: 'center' }}>
+            <div style={{ width: '80%', height: '1px', background: 'linear-gradient(90deg, transparent, #ccc, transparent)', marginBottom: tu(1.5) }} />
+            {tooltip.conditionLabel && (
+              <div style={{ fontSize: tu(2.5), color: '#888', marginBottom: tu(0.5) }}>
+                {tooltip.conditionLabel}
+              </div>
+            )}
+            <div className="font-bold" style={{ fontSize: tu(2.5), whiteSpace: 'pre-line', lineHeight: 1.8, textAlign: 'center' }}>
               {tooltip.condition}
             </div>
+            {tooltip.clearedStats && <ClearedStatsPanel {...tooltip.clearedStats} />}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
+    </div>
+  )
+}
+
+/* ── ★別内訳（正解済みポップアップ内） ── */
+
+/** 内訳バー・凡例の色 */
+const STATS_COLORS = {
+  cleared: '#9163c8',
+  wrong: '#f0b429',
+  untouched: 'rgba(0,0,0,0.10)',
+}
+
+const GEN_TABS: readonly { value: GenerationFilter; label: string }[] = [
+  { value: 'all', label: '全体' },
+  { value: 1, label: '1期生' },
+  { value: 2, label: '2期生' },
+]
+
+const STATS_LEGEND: readonly { color: string; label: string }[] = [
+  { color: STATS_COLORS.cleared, label: '正解済み' },
+  { color: STATS_COLORS.wrong, label: '未正解' },
+  { color: STATS_COLORS.untouched, label: '未出題' },
+]
+
+function ClearedStatsPanel({ questions, cleared, records }: ClearedStatsSource) {
+  // 共通問題（世代0）は1期生・2期生の両タブに含まれるため、タブごとの合計は全体と一致しない
+  const [genTab, setGenTab] = useState<GenerationFilter>('all')
+  const rows = useMemo(
+    () => buildStarBreakdown(filterByGeneration(questions, genTab), cleared, records),
+    [questions, cleared, records, genTab],
+  )
+  const clearedTotal = rows.reduce((n, row) => n + row.cleared, 0)
+  const questionTotal = rows.reduce((n, row) => n + row.total, 0)
+
+  return (
+    <div style={{ width: tu(48), marginTop: tu(1.5) }}>
+      {/* 世代タブ */}
+      <div className="flex justify-center" style={{ gap: tu(1), marginBottom: tu(1.5) }}>
+        {GEN_TABS.map((tab) => {
+          const active = tab.value === genTab
+          return (
+            <button
+              key={String(tab.value)}
+              className="font-bold cursor-pointer transition active:scale-95"
+              onClick={() => setGenTab(tab.value)}
+              style={{
+                fontSize: tu(2.2),
+                padding: `${tu(0.6)} ${tu(2.5)}`,
+                borderRadius: tu(3),
+                border: `${tu(0.25)} solid ${active ? STATS_COLORS.cleared : 'rgba(0,0,0,0.15)'}`,
+                background: active ? STATS_COLORS.cleared : 'rgba(255,255,255,0.8)',
+                color: active ? 'white' : '#888',
+              }}
+            >
+              {tab.label}
+            </button>
+          )
+        })}
+      </div>
+
+      {rows.map((row) => (
+        <div
+          key={row.stars}
+          className="flex items-center"
+          style={{ gap: tu(1.5), marginTop: tu(0.8) }}
+        >
+          <span
+            className="font-bold"
+            style={{ fontSize: tu(2.2), color: '#c9a600', width: tu(5), whiteSpace: 'nowrap' }}
+          >
+            ★{row.stars}
+          </span>
+          <div
+            className="flex"
+            style={{
+              flex: 1,
+              height: tu(1.4),
+              borderRadius: tu(0.7),
+              background: STATS_COLORS.untouched,
+              overflow: 'hidden',
+            }}
+          >
+            <div style={{ width: `${(row.cleared / row.total) * 100}%`, background: STATS_COLORS.cleared }} />
+            <div style={{ width: `${((row.attempted - row.cleared) / row.total) * 100}%`, background: STATS_COLORS.wrong }} />
+          </div>
+          <span
+            className="font-bold"
+            style={{ fontSize: tu(2.2), color: '#6b3fa0', width: tu(10), textAlign: 'right' }}
+          >
+            {row.cleared}/{row.total}
+          </span>
+        </div>
+      ))}
+
+      <div
+        className="flex items-center"
+        style={{
+          gap: tu(1.5),
+          marginTop: tu(1),
+          paddingTop: tu(1),
+          borderTop: '1px solid rgba(0,0,0,0.12)',
+        }}
+      >
+        <span className="font-bold" style={{ fontSize: tu(2.2), color: '#888', flex: 1 }}>
+          合計
+        </span>
+        <span
+          className="font-bold"
+          style={{ fontSize: tu(2.5), color: '#6b3fa0', width: tu(12), textAlign: 'right' }}
+        >
+          {clearedTotal}/{questionTotal}
+        </span>
+      </div>
+
+      {/* 凡例 */}
+      <div className="flex justify-center" style={{ gap: tu(2), marginTop: tu(1.5) }}>
+        {STATS_LEGEND.map((item) => (
+          <span key={item.label} className="flex items-center" style={{ gap: tu(0.6) }}>
+            <span
+              style={{
+                width: tu(1.6),
+                height: tu(1.6),
+                borderRadius: tu(0.4),
+                background: item.color,
+                flexShrink: 0,
+              }}
+            />
+            <span style={{ fontSize: tu(2.1), color: '#888' }}>{item.label}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ── 数値カード（タイムアタック自己ベスト / 知識クイズ正解数） ── */
+
+interface StatCardStyle {
+  background: string
+  border: string
+  shadow: string
+  valueColor: string
+}
+
+const STAT_CARD_STYLES: Record<'timeAttack' | 'knowledge', StatCardStyle> = {
+  timeAttack: {
+    background: 'linear-gradient(135deg, #fff8e1 0%, #ffe082 50%, #ffd54f 100%)',
+    border: 'rgba(255,215,0,0.6)',
+    shadow: 'rgba(200,170,0,0.3)',
+    valueColor: '#c48800',
+  },
+  knowledge: {
+    background: 'linear-gradient(135deg, #f6efff 0%, #ddc8f5 50%, #c9adec 100%)',
+    border: 'rgba(145,99,200,0.5)',
+    shadow: 'rgba(120,80,180,0.3)',
+    valueColor: '#6b3fa0',
+  },
+}
+
+const TIME_ATTACK_TOOLTIP: TooltipInfo = {
+  title: 'タイムアタック 自己ベスト',
+  condition: 'タイムアタックを完走した最速タイム',
+}
+
+const CLEARED_COUNT_TOOLTIP: TooltipInfo = {
+  title: '知識クイズ 正解済み',
+  condition: '一度でも正解した問題数 ／ 現在の全問題数',
+}
+
+function StatCard({
+  emoji,
+  label,
+  value,
+  style,
+  onTap,
+}: {
+  emoji: string
+  label: string
+  value: string
+  style: StatCardStyle
+  onTap: () => void
+}) {
+  return (
+    <div
+      className="flex flex-col items-center justify-center cursor-pointer transition active:scale-95"
+      onClick={onTap}
+      style={{
+        flex: 1,
+        minHeight: 0,
+        padding: '0.5cqmin',
+        borderRadius: '2cqmin',
+        background: style.background,
+        border: `0.3cqmin solid ${style.border}`,
+        boxShadow: `inset 0 0.3cqmin 0.5cqmin rgba(255,255,255,0.4), 0 0.3cqmin 0.8cqmin ${style.shadow}`,
+      }}
+    >
+      <span style={{ fontSize: '2cqmin', color: '#666', textAlign: 'center', lineHeight: 1.4 }}>
+        {emoji} {label}
+      </span>
+      <span
+        className="font-bold"
+        style={{ fontSize: '2.8cqmin', color: style.valueColor, lineHeight: 1.4 }}
+      >
+        {value}
+      </span>
     </div>
   )
 }
