@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTalents } from '../../../shared/hooks/useTalents.ts'
 import { parseTextWithTalentIcons } from '../../../shared/utils/talentIconParser.tsx'
 import { CHOICE_PALETTES, NAME_GUESS_ZONES, generatePattern } from '../../../shared/utils/choiceStyle.ts'
+import { parseColorCode } from '../../../shared/utils/colorCode.ts'
 import { TalentChoiceButtons } from '../../../shared/components/TalentChoiceButtons.tsx'
 import { useGameStore } from '../../../stores/gameStore.ts'
 import type { TextQuizQuestion } from './types.ts'
@@ -266,6 +267,7 @@ function TextChoices({
       }}
     >
       {question.answers.map((answer, i) => {
+        const colorCode = parseColorCode(answer)
         const palette = CHOICE_PALETTES[i % CHOICE_PALETTES.length]
         const patternSvg = generatePattern(palette.motif, palette.motifFill, i * 1000 + currentIndex * 7, NAME_GUESS_ZONES)
         let bg = `url("data:image/svg+xml,${patternSvg}") center / 100% auto no-repeat, ${palette.gradient}`
@@ -299,7 +301,7 @@ function TextChoices({
             className="font-bold transition active:scale-98"
             style={{
               height: '13cqmin',
-              fontSize: getAnswerFontSize(answer),
+              fontSize: colorCode ? '4cqmin' : getAnswerFontSize(answer),
               padding: '0 3cqmin',
               borderRadius: '2cqmin',
               border: `0.5cqmin solid ${borderColor}`,
@@ -316,11 +318,39 @@ function TextChoices({
             disabled={isAnswered}
             onClick={() => onSelect(i)}
           >
-            {answer}
+            {colorCode ? <ColorSwatchLabel colorCode={colorCode} label={answer} /> : answer}
           </button>
         )
       })}
     </div>
+  )
+}
+
+/* ── カラーコード選択肢（色見本＋コード文字列） ── */
+
+function ColorSwatchLabel({ colorCode, label }: { colorCode: string; label: string }) {
+  return (
+    <span
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '3cqmin',
+      }}
+    >
+      <span
+        style={{
+          flexShrink: 0,
+          width: '16cqmin',
+          height: '8.5cqmin',
+          borderRadius: '1.5cqmin',
+          background: colorCode,
+          border: '0.4cqmin solid rgba(255,255,255,0.85)',
+          boxShadow: `0 0 2cqmin ${colorCode}, 0 0.3cqmin 0.8cqmin rgba(0,0,0,0.3)`,
+        }}
+      />
+      <span style={{ fontFamily: 'ui-monospace, monospace', letterSpacing: '0.04em' }}>{label}</span>
+    </span>
   )
 }
 
