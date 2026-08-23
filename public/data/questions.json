@@ -8860,6 +8860,46 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://youtu.be/jIMjXc3sn0A?t=8794"
+    },
+    {
+      "id": "q444",
+      "generation": 1,
+      "question": "100時間カレーさんとのコラボ賞品が発売され、初めての食レポに挑戦したのは誰？",
+      "answers": [
+        "雛菊のん",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "雛菊のん「めっちゃカレー美味しかった🍛🍛 2皿ぺろりだった☺️」",
+      "sourceUrl": "https://x.com/Hinagiku_Non/status/2091138767608516933"
+    },
+    {
+      "id": "q445",
+      "generation": 1,
+      "question": "天辻ゆらぐのペンライトカラーは？",
+      "answers": [
+        "#808bf8",
+        "#80c7f8",
+        "#b180f8",
+        "#505ff5"
+      ],
+      "difficulty": 6,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "天辻ゆらぐ「2本持ちの方は青と紫でお願いします💙💜」",
+      "sourceUrl": "https://x.com/YuraguAmatsuji/status/2065832092433535014"
     }
   ],
   "answerSets": {
