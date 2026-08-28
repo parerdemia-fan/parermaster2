@@ -8900,6 +8900,46 @@
       "answerPool": "",
       "comment": "天辻ゆらぐ「2本持ちの方は青と紫でお願いします💙💜」",
       "sourceUrl": "https://x.com/YuraguAmatsuji/status/2065832092433535014"
+    },
+    {
+      "id": "q446",
+      "generation": 1,
+      "question": "第2回投票イベントグッズで花晴りらが口にくわえている物は何？",
+      "answers": [
+        "ヘアゴム",
+        "棒付き飴",
+        "おしゃぶり",
+        "シャボン玉吹き棒"
+      ],
+      "difficulty": 3,
+      "genre": "グッズ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "lila_2nd.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/LilaHanahare/status/2088207461710958766"
+    },
+    {
+      "id": "q447",
+      "generation": 0,
+      "question": "第3回投票イベントで3rdステージ突破者にプレゼントされるものは？",
+      "answers": [
+        "ぱれがく丸Tシャツ",
+        "ぱ-Tシャツ",
+        "れ-Tシャツ",
+        "水1ケース"
+      ],
+      "difficulty": 4,
+      "genre": "イベント",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "瀬奈りるか「ぱれがく丸Tおそろいしよう🥳」",
+      "sourceUrl": "https://x.com/parerdemia/status/2091840415523864835"
     }
   ],
   "answerSets": {
