@@ -8940,6 +8940,46 @@
       "answerPool": "",
       "comment": "瀬奈りるか「ぱれがく丸Tおそろいしよう🥳」",
       "sourceUrl": "https://x.com/parerdemia/status/2091840415523864835"
+    },
+    {
+      "id": "q448",
+      "generation": 1,
+      "question": "愛乃宮ゆめの配信終了のあいさつは？",
+      "answers": [
+        "夢でも会いに来てね",
+        "今夜も良い夢見てね",
+        "あなたの夢が叶いますように",
+        "きゅるきゅるどりーむ"
+      ],
+      "difficulty": 3,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://youtu.be/BBNPVioldfQ?t=6999"
+    },
+    {
+      "id": "q449",
+      "generation": 2,
+      "question": "パレデミア学園で名前の読みに「なぎ」が入っているのは何人？",
+      "answers": [
+        "5人",
+        "4人",
+        "3人",
+        "2人"
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "2期生の露草なぎ 夏凪はつみ 水凪るぅ 夕凪万夜 の4人・・と思いきや、1期生の雛菊のんを入れて5人でした",
+      "sourceUrl": ""
     }
   ],
   "answerSets": {
