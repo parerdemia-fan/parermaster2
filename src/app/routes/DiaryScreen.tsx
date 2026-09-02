@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useSettingsStore } from '../../stores/settingsStore.ts'
 import { useDiary } from '../../shared/hooks/useDiary.ts'
 import { useTalents } from '../../shared/hooks/useTalents.ts'
-import { parseTextWithTalentIcons } from '../../shared/utils/talentIconParser.tsx'
+import { parseTextWithLinks } from '../../shared/utils/talentIconParser.tsx'
 
 const backButtonStyle: React.CSSProperties = {
   fontSize: '3cqmin',
@@ -109,7 +109,7 @@ export function DiaryScreen() {
                 whiteSpace: 'pre-wrap',
               }}
             >
-              {parseTextWithTalentIcons(entry.body, talents, true)}
+              {parseTextWithLinks(entry.body, talents, true)}
             </div>
           </div>
         </div>

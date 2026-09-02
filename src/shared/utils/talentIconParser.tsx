@@ -1,5 +1,6 @@
 /**
  * テキスト中のタレント名を検出し、名前の後ろにインラインアイコンを挿入する
+ * 開発日誌など Markdown リンク記法を許すテキストには parseTextWithLinks を使う
  */
 
 import type { Talent } from '../types/talent.ts'
@@ -121,6 +122,60 @@ export function parseTextWithTalentIcons(
   if (lastIndex < text.length) {
     parts.push(<span key={`t-${key++}`}>{text.slice(lastIndex)}</span>)
   }
+
+  return parts.length > 0 ? parts : [text]
+}
+
+// Markdown リンク記法 `[表示テキスト](URL)`。スキームは http/https のみ許可する
+const MARKDOWN_LINK_SOURCE = String.raw`\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)`
+
+/**
+ * Markdown リンク記法をリンクに変換し、それ以外の部分はタレントアイコンを付与して返す
+ * @param text 変換対象テキスト
+ * @param talents タレントデータ配列
+ * @param showIcon true: タレント画像を表示 / false: 👤 プレースホルダー
+ */
+export function parseTextWithLinks(
+  text: string,
+  talents: Talent[],
+  showIcon: boolean,
+): React.ReactNode[] {
+  // RegExp は stateful（lastIndex）なので都度生成する
+  const pattern = new RegExp(MARKDOWN_LINK_SOURCE, 'g')
+
+  const parts: React.ReactNode[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+  let key = 0
+
+  const pushPlainText = (plain: string) => {
+    if (plain.length === 0) return
+    // parseTextWithTalentIcons が返す key は呼び出しごとに振り直されるため span で包んで衝突を避ける
+    parts.push(
+      <span key={`p-${key++}`}>{parseTextWithTalentIcons(plain, talents, showIcon)}</span>,
+    )
+  }
+
+  while ((match = pattern.exec(text)) !== null) {
+    pushPlainText(text.slice(lastIndex, match.index))
+
+    parts.push(
+      <a
+        key={`l-${key++}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:opacity-80"
+        style={{ color: '#3b82f6' }}
+      >
+        {match[1]}
+      </a>,
+    )
+
+    lastIndex = match.index + match[0].length
+  }
+
+  pushPlainText(text.slice(lastIndex))
 
   return parts.length > 0 ? parts : [text]
 }
