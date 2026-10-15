@@ -6,9 +6,9 @@ import { useTalents } from '../../shared/hooks/useTalents.ts'
 import { useQuestions } from '../../shared/hooks/useQuestions.ts'
 import { generateTimeAttackQuestions } from '../../features/time-attack/generator.ts'
 import { preloadQuestionImages } from '../../shared/utils/preloadImages.ts'
-import { SakuraPetals } from '../../shared/components/SakuraPetals.tsx'
+import { FallingPieces } from '../../shared/components/FallingPieces.tsx'
 import { playSound, isSoundEnabled, setSoundEnabled } from '../../shared/utils/sound.ts'
-import { TITLE_LOGO, PETALS_ENABLED } from '../../shared/constants/season.ts'
+import { TITLE_LOGO, FALLING_KIND } from '../../shared/constants/season.ts'
 
 const STAFF_ROLL_SEEN_KEY = 'parermaster2_staff_roll_seen'
 
@@ -100,7 +100,7 @@ export function TitleScreen() {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden animate-fade-in">
-      {PETALS_ENABLED && <SakuraPetals />}
+      {FALLING_KIND && <FallingPieces kind={FALLING_KIND} />}
       {/* 横画面推奨表示（縦画面時のみ） */}
       <div
         className="absolute top-0 left-0 right-0 text-center font-bold z-10"

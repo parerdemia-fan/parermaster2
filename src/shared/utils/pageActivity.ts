@@ -3,7 +3,7 @@
  *
  * タブが隠れている（document.hidden）だけでなく、ウィンドウのフォーカスが
  * 他アプリ・他ウィンドウに移っている場合も非アクティブとみなす。
- * 常時動き続ける演出（桜の花びら・紙吹雪リピート等）の一時停止に使う。
+ * 常時動き続ける演出（舞い落ちる花びら・葉、紙吹雪リピート等）の一時停止に使う。
  */
 export function isPageActive(): boolean {
   return !document.hidden && document.hasFocus()
