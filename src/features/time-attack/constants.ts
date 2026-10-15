@@ -13,24 +13,30 @@ export interface TimeAttackSection {
 /** パレ学グランドマスター称号の達成タイム閾値（7分切り、ms） */
 export const GRANDMASTER_THRESHOLD_MS = 7 * 60 * 1000
 
-/** タイムアタック 全100問の出題構成（18セクション） */
+/** 顔名前系の問題タイプID（全タレントから1人1回ずつ出題する） */
+export const TALENT_TYPE_IDS: ReadonlySet<string> = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
+
+/**
+ * タイムアタック 全100問の出題構成（18セクション）
+ * 顔名前系の合計は表示対象タレント数以下にする（→ docs/question-types.md 出題構成）
+ */
 export const TIME_ATTACK_SECTIONS: readonly TimeAttackSection[] = [
-  { typeId: 'face-guess',  difficulty: 1, count: 6, displayStars: 1 },
+  { typeId: 'face-guess',  difficulty: 1, count: 5, displayStars: 1 },
   { typeId: 'name-guess',  difficulty: 1, count: 6, displayStars: 1.5 },
   { typeId: 'text-quiz',   difficulty: 1, level: 2, count: 5, displayStars: 2 },
-  { typeId: 'name-build',  difficulty: 1, count: 6, displayStars: 2 },
+  { typeId: 'name-build',  difficulty: 1, count: 5, displayStars: 2 },
   { typeId: 'blur',        difficulty: 3, count: 6, displayStars: 2.5 },
-  { typeId: 'text-quiz',   difficulty: 1, level: 3, count: 5, displayStars: 3 },
+  { typeId: 'text-quiz',   difficulty: 1, level: 3, count: 6, displayStars: 3 },
   { typeId: 'face-guess',  difficulty: 2, count: 6, displayStars: 3 },
   { typeId: 'name-guess',  difficulty: 2, count: 6, displayStars: 3.5 },
-  { typeId: 'text-quiz',   difficulty: 2, level: 4, count: 5, displayStars: 4 },
-  { typeId: 'name-build',  difficulty: 2, count: 6, displayStars: 4 },
+  { typeId: 'text-quiz',   difficulty: 2, level: 4, count: 6, displayStars: 4 },
+  { typeId: 'name-build',  difficulty: 2, count: 5, displayStars: 4 },
   { typeId: 'spotlight',   difficulty: 3, count: 6, displayStars: 4.5 },
-  { typeId: 'text-quiz',   difficulty: 2, level: 5, count: 5, displayStars: 5 },
+  { typeId: 'text-quiz',   difficulty: 2, level: 5, count: 6, displayStars: 5 },
   { typeId: 'face-guess',  difficulty: 3, count: 6, displayStars: 5 },
   { typeId: 'name-guess',  difficulty: 3, count: 6, displayStars: 5.5 },
-  { typeId: 'text-quiz',   difficulty: 3, level: 6, count: 5, displayStars: 6 },
-  { typeId: 'name-build',  difficulty: 3, count: 6, displayStars: 6 },
+  { typeId: 'text-quiz',   difficulty: 3, level: 6, count: 6, displayStars: 6 },
+  { typeId: 'name-build',  difficulty: 3, count: 5, displayStars: 6 },
   { typeId: 'word-search', difficulty: 3, count: 3, displayStars: 6.5 },
   { typeId: 'text-quiz',   difficulty: 3, level: 7, count: 6, displayStars: 7 },
 ]

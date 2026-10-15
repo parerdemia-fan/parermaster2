@@ -9,14 +9,11 @@ import { generateTextQuizQuestions, type QuizSegment } from '../question-types/t
 import { generateBlurQuestions } from '../question-types/blur/generator.ts'
 import { generateSpotlightQuestions } from '../question-types/spotlight/generator.ts'
 import { generateWordSearchQuestions } from '../question-types/word-search/generator.ts'
-import { TIME_ATTACK_SECTIONS } from './constants.ts'
-
-/** 顔名前系の問題タイプID */
-const TALENT_TYPE_IDS = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
+import { TALENT_TYPE_IDS, TIME_ATTACK_SECTIONS } from './constants.ts'
 
 /**
  * タイムアタック用の100問を生成する
- * 顔名前系: 全タレント（1期+2期 = 70名）をシャッフルし、各タレントが1回だけ出題される
+ * 顔名前系: 全タレント（hidden を除く1期+2期）をシャッフルし、各タレントが1回だけ出題される
  * テキストクイズ: 該当レベルからランダム選出
  */
 export function generateTimeAttackQuestions(

@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { generateTimeAttackQuestions } from '../generator.ts'
-import { TIME_ATTACK_SECTIONS } from '../constants.ts'
+import { TALENT_TYPE_IDS, TIME_ATTACK_SECTIONS } from '../constants.ts'
 import type { Talent } from '../../../shared/types/talent.ts'
 import type { QuestionData } from '../../../shared/types/question.ts'
 
@@ -22,12 +24,12 @@ function makeQuestion(id: string, difficulty: number): QuestionData {
   }
 }
 
-// 69名のタレントを生成（1期生46名 + 2期生23名）
+// 表示対象と同じ65名のタレントを生成（1期生42名 + 2期生23名）
 function createTalentPool(): Talent[] {
   const talents: Talent[] = []
   const dorms = ['wa', 'me', 'co', 'wh']
-  // 1期生46名
-  for (let i = 0; i < 46; i++) {
+  // 1期生42名
+  for (let i = 0; i < 42; i++) {
     talents.push(makeTalent(`g1_${i}`, `一期生${String(i).padStart(2, '0')}太郎`, 1, dorms[i % 4]))
   }
   // 2期生23名
@@ -51,6 +53,9 @@ function createQuestionPool(): QuestionData[] {
 const TALENTS = createTalentPool()
 const QUESTIONS = createQuestionPool()
 const ANSWER_SETS: Record<string, string[]> = {}
+const TOTAL_FACE_NAME = TIME_ATTACK_SECTIONS
+  .filter((s) => TALENT_TYPE_IDS.has(s.typeId))
+  .reduce((sum, s) => sum + s.count, 0)
 
 describe('generateTimeAttackQuestions', () => {
   const result = generateTimeAttackQuestions(TALENTS, QUESTIONS, ANSWER_SETS)
@@ -81,28 +86,32 @@ describe('generateTimeAttackQuestions', () => {
   })
 
   it('顔名前系で各タレントが1回だけ出題される（重複なし）', () => {
-    const faceNameTypes = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
     const talentIds = result
-      .filter((q) => faceNameTypes.has(q.typeId))
+      .filter((q) => TALENT_TYPE_IDS.has(q.typeId))
       .map((q) => (q as unknown as { talentId: string }).talentId)
 
-    // 69問（全タレント数）
-    expect(talentIds).toHaveLength(69)
+    // 65問（全タレント数）
+    expect(talentIds).toHaveLength(65)
     // 重複なし
-    expect(new Set(talentIds).size).toBe(69)
+    expect(new Set(talentIds).size).toBe(65)
   })
 
-  it('顔名前系の問題数が全タレント数(69)と一致する', () => {
-    const faceNameTypes = new Set(['face-guess', 'name-guess', 'name-build', 'blur', 'spotlight', 'word-search'])
-    const totalFaceName = TIME_ATTACK_SECTIONS
-      .filter((s) => faceNameTypes.has(s.typeId))
-      .reduce((sum, s) => sum + s.count, 0)
-    expect(totalFaceName).toBe(69)
-    expect(totalFaceName).toBe(TALENTS.length)
+  it('顔名前系の問題数が全タレント数(65)と一致する', () => {
+    expect(TOTAL_FACE_NAME).toBe(65)
+    expect(TOTAL_FACE_NAME).toBe(TALENTS.length)
   })
 
-  it('テキストクイズの問題数が31問', () => {
+  it('テキストクイズの問題数が35問', () => {
     const textQuizCount = result.filter((q) => q.typeId === 'text-quiz').length
-    expect(textQuizCount).toBe(31)
+    expect(textQuizCount).toBe(35)
+  })
+
+  // タレントが非表示・除外されて顔名前系の必要数を下回ると100問未満になる（過去に2回発生）
+  it('顔名前系の問題数が実データの表示対象タレント数以下', () => {
+    const talentsJson = JSON.parse(
+      readFileSync(resolve(__dirname, '../../../../public/data/talents.json'), 'utf-8'),
+    ) as { talents: Talent[] }
+    const visibleCount = talentsJson.talents.filter((t) => !t.hidden).length
+    expect(TOTAL_FACE_NAME).toBeLessThanOrEqual(visibleCount)
   })
 })
