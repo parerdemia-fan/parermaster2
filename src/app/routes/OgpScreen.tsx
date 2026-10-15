@@ -1,4 +1,4 @@
-import { TITLE_BG, TITLE_LOGO } from '../../shared/constants/season.ts'
+import { TITLE_BG, TITLE_LOGO, OGP_CAPTION } from '../../shared/constants/season.ts'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -29,7 +29,7 @@ export function OgpScreen() {
           className="font-bold"
           style={{ fontSize: '8cqmin', color: 'white', textShadow: '0 0.3cqmin 0.6cqmin rgba(0,0,0,0.9), 0 0 2cqmin rgba(0,0,0,0.6), 0 0 4cqmin rgba(0,0,0,0.3)', letterSpacing: '0.1em', whiteSpace: 'nowrap', marginTop: '1cqmin' }}
         >
-          パレ学夏祭り！
+          {OGP_CAPTION}
         </div>
 
         <div className="flex" style={{ gap: '3cqmin', position: 'absolute', bottom: '4cqmin' }}>

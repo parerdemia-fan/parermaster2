@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import { ClickPetalEffect } from './ClickPetalEffect';
-import { PETALS_ENABLED } from '../constants/season.ts';
+import { ClickFallingEffect } from './ClickFallingEffect.tsx';
+import { FALLING_KIND } from '../constants/season.ts';
 
 interface GameContainerProps {
   children: ReactNode;
@@ -27,7 +27,7 @@ export function GameContainer({ children }: GameContainerProps) {
       >
         {children}
       </div>
-      {PETALS_ENABLED && <ClickPetalEffect />}
+      {FALLING_KIND && <ClickFallingEffect kind={FALLING_KIND} />}
     </div>
   );
 }
