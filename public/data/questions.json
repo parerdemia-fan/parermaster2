@@ -9040,6 +9040,366 @@
       "answerPool": "",
       "comment": "",
       "sourceUrl": "https://www.youtube.com/watch?v=uPXHj5ikLK8"
+    },
+    {
+      "id": "q453",
+      "generation": 2,
+      "question": "狛社なのが吹ける楽器は？",
+      "answers": [
+        "フルート",
+        "クラリネット",
+        "トランペット",
+        "オーボエ"
+      ],
+      "difficulty": 3,
+      "genre": "特技・所作",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/komashirobmxf/status/2045811305521787115"
+    },
+    {
+      "id": "q454",
+      "generation": 1,
+      "question": "シグマ・イングラムが好きな駄菓子は？",
+      "answers": [
+        "タラタラしてんじゃねぇよ",
+        "うまい棒",
+        "よっちゃんイカ",
+        "ビッグカツ"
+      ],
+      "difficulty": 4,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.parerdemia.jp/students/25CO002"
+    },
+    {
+      "id": "q455",
+      "generation": 1,
+      "question": "陰山アゲハのエゴサタグは？",
+      "answers": [
+        "#アゲハさん見やがれください",
+        "#アゲハ見ろ",
+        "#アゲハ様ご覧ください",
+        "#アゲハちゃん見て"
+      ],
+      "difficulty": 5,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/ageha_kageyama"
+    },
+    {
+      "id": "q456",
+      "generation": 1,
+      "question": "桜堂ねる2026年お誕生日マフラータオルに書かれている文字は？",
+      "answers": [
+        "押忍!!",
+        "OSS!!",
+        "おす!!",
+        "オス!!"
+      ],
+      "difficulty": 2,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": "oss.png",
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/oudoneru/status/2102138312324698173"
+    },
+    {
+      "id": "q457",
+      "generation": 2,
+      "question": "狛社なのの「狛社」の読みは？",
+      "answers": [
+        "こましろ",
+        "こまやしろ",
+        "はくしゃ",
+        "こまじゃ"
+      ],
+      "difficulty": 3,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/komashirobmxf"
+    },
+    {
+      "id": "q458",
+      "generation": 2,
+      "question": "水凪るぅのふるさとの名前は？",
+      "answers": [
+        "ボルトピア",
+        "エレキランド",
+        "サンダータウン",
+        "プラズマシティ"
+      ],
+      "difficulty": 4,
+      "genre": "プロフィール",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/Minagi__Ru/status/2045422277387588093"
+    },
+    {
+      "id": "q459",
+      "generation": 1,
+      "question": "スーパーりる民になった人に「監獄へようこそ」などと言われるたびに瀬奈りるかが「監獄じゃないよ〇〇です」と言い返している〇〇は？",
+      "answers": [
+        "ユートピア",
+        "シャングリラ",
+        "サンクチュアリ",
+        "エデン"
+      ],
+      "difficulty": 4,
+      "genre": "エピソード",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "瀬奈りるか「脱獄は禁止です👼🏻👼🏻👼🏻」",
+      "sourceUrl": "https://x.com/senariruka/status/2022653603396399166"
+    },
+    {
+      "id": "q460",
+      "generation": 1,
+      "question": "灯野ぺけ。が「使っていきたいミュゥ寮タグ」として広めているハッシュタグは？",
+      "answers": [
+        "#ニャォミャォミュゥ",
+        "#ギャゥミャォミュゥ",
+        "#ニャァミャァミュゥ",
+        "#ミュゥミュゥミュゥ"
+      ],
+      "difficulty": 5,
+      "genre": "ツイート",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/hino_pekemaru/status/2044343405413826930"
+    },
+    {
+      "id": "q461",
+      "generation": 1,
+      "question": "猫乃間うとと犬丸なでこがコラボ配信のタイトルで名乗っているコンビ名は？",
+      "answers": [
+        "わんにゃんツインズ",
+        "わんにゃんシスターズ",
+        "にゃんわんコンビ",
+        "いぬねこツインズ"
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=kceP58PUdJM"
+    },
+    {
+      "id": "q462",
+      "generation": 1,
+      "question": "藤森ちとせがマイクラで超激レアな青いウーパールーパーを見つけたときの配信タイトルにあった「◯◯◯◯匹繁殖させても見つからない」の数は？",
+      "answers": [
+        "1600匹",
+        "1200匹",
+        "800匹",
+        "3000匹"
+      ],
+      "difficulty": 5,
+      "genre": "配信",
+      "sortAnswers": true,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "藤森ちとせ「ちとせが青くなってからすぐ出ましたもんね～🐟 青くなって良かったのもり😉✨」",
+      "sourceUrl": "https://www.youtube.com/watch?v=d_bY8nm64vM"
+    },
+    {
+      "id": "q463",
+      "generation": 1,
+      "question": "No.1アイスVtuberの堂下さとりが「世界で2番目に好き」と言っている食べ物は？",
+      "answers": [
+        "もみじ饅頭",
+        "生八つ橋",
+        "カステラ",
+        "人形焼"
+      ],
+      "difficulty": 2,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=ZIiwA-ugRjc"
+    },
+    {
+      "id": "q464",
+      "generation": 1,
+      "question": "愛乃宮ゆめが月に1回ゲストを自分のお部屋に招いていろんなお話をするコラボ企画の名前は？",
+      "answers": [
+        "愛乃宮と夜更けまで。",
+        "愛乃宮と朝まで。",
+        "愛乃宮と夢の中まで。",
+        "愛乃宮と0時まで。"
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://www.youtube.com/watch?v=WlVWSQfgPMc"
+    },
+    {
+      "id": "q465",
+      "generation": 1,
+      "question": "桜堂ねるとローズ・ダマスクハートの2人で組んだユニットの名前は？",
+      "answers": [
+        "ごぼうモンキー",
+        "ごぼうパンダ",
+        "だいこんモンキー",
+        "ごぼうゴリラ"
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "このユニット名で『ポニーテールとシュシュ』の歌ってみたを公開し、翌日にはコラボ歌枠「ごぼモン（仮）」も配信したよ",
+      "sourceUrl": "https://www.youtube.com/watch?v=YDY3I2ZfEzE"
+    },
+    {
+      "id": "q466",
+      "generation": 1,
+      "question": "陰山アゲハ企画の「パレ学夏のチーデス大会2026」で、陰山アゲハ・愛葉はな・恋歌さわこの3人が組んだチームの名前は？",
+      "answers": [
+        "威嚇だけは一丁前",
+        "きるきるきるっぴ",
+        "逃げちゃダメだ",
+        "みにまむ三銃士"
+      ],
+      "difficulty": 4,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "愛葉はな「企画＆誘ってくれたアゲハちゃん本当にありがとう🫶😭」",
+      "sourceUrl": "https://x.com/Ageha_kageyama/status/2090416218599743579"
+    },
+    {
+      "id": "q467",
+      "generation": 1,
+      "question": "桜庭羽奈がいつも大事にしているシマエナガの名前は？",
+      "answers": [
+        "おにぎり",
+        "だてまき",
+        "おもち",
+        "ましゅまろ"
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "桜庭羽奈『うなのおはVより、おにぎりのおはVの方が伸びる現象なにこれ』",
+      "sourceUrl": "https://x.com/unaunasakura/status/2066711475402785015"
+    },
+    {
+      "id": "q468",
+      "generation": 1,
+      "question": "桜庭羽奈と犬丸なでこの2人組の呼び名は？",
+      "answers": [
+        "う〜なちぇ",
+        "うなでこ",
+        "さくらいぬ",
+        "う〜わん"
+      ],
+      "difficulty": 3,
+      "genre": "コラボ",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "犬丸なでこ『う〜なちぇコラボ、たくさんお話できて嬉しかった！！(⸝⸝⸝ᵒ̴̶̷ωᵒ̴̶̷⸝⸝⸝)ﾊﾟｧｧｧｧ』",
+      "sourceUrl": "https://www.youtube.com/watch?v=UwTb36zSFjc"
+    },
+    {
+      "id": "q469",
+      "generation": 2,
+      "question": "YouTubeメンバーシップのランクに「テーブル席」「カウンター席」という名前を付けているのは？",
+      "answers": [
+        "無月いお",
+        "",
+        "",
+        ""
+      ],
+      "difficulty": 4,
+      "genre": "活動",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "",
+      "sourceUrl": "https://x.com/62ki_10/status/2089966364022936051"
+    },
+    {
+      "id": "q470",
+      "generation": 1,
+      "question": "陰山アゲハが『1番好きな曲』と言っている平沢進の曲は？",
+      "answers": [
+        "庭師KING",
+        "白虎野の娘",
+        "パレード",
+        "Forces"
+      ],
+      "difficulty": 5,
+      "genre": "趣味嗜好",
+      "sortAnswers": false,
+      "hideIcon": false,
+      "questionImage": null,
+      "commentImage": null,
+      "answerPool": "",
+      "comment": "牡丹雪「あ、アゲハ先輩もしや馬の骨の方ですか！？！？！？」",
+      "sourceUrl": "https://x.com/Ageha_kageyama/status/2044350829420052599"
     }
   ],
   "answerSets": {
